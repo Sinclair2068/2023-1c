@@ -1,13 +1,13 @@
-!classDefinition: #I category: 'NaturalsNumbers'!
+!classDefinition: #I category: 'NaturalNumbers'!
 DenotativeObject subclass: #I
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'NaturalsNumbers'!
+	category: 'NaturalNumbers'!
 
 "-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- "!
 
-!classDefinition: 'I class' category: 'NaturalsNumbers'!
+!classDefinition: 'I class' category: 'NaturalNumbers'!
 I class
 	instanceVariableNames: 'next previous'!
 
@@ -55,7 +55,7 @@ substractFrom: aNaturalNumber
 	^aNaturalNumber previous! !
 
 
-!I class methodsFor: '--** private fileout/in **--' stamp: 'AS 4/2/2023 20:01:58'!
+!I class methodsFor: '--** private fileout/in **--' stamp: 'WAL 4/2/2023 21:47:49'!
 initializeCollaboratorsFromFile
 	"Auto generated method for loading purposes - Do not modify it"
 
@@ -63,16 +63,16 @@ initializeCollaboratorsFromFile
 	previous := I.! !
 
 
-!classDefinition: #II category: 'NaturalsNumbers'!
+!classDefinition: #II category: 'NaturalNumbers'!
 DenotativeObject subclass: #II
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'NaturalsNumbers'!
+	category: 'NaturalNumbers'!
 
 "-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- "!
 
-!classDefinition: 'II class' category: 'NaturalsNumbers'!
+!classDefinition: 'II class' category: 'NaturalNumbers'!
 II class
 	instanceVariableNames: 'next previous'!
 
@@ -81,9 +81,11 @@ clearNext
 	next := nil
 ! !
 
-!II class methodsFor: 'private' stamp: 'AS 4/2/2023 19:46:10'!
+!II class methodsFor: 'private' stamp: 'WAL 4/2/2023 21:46:41'!
 divideTo: aNaturalNumber
-	(self greaterThanMe: aNaturalNumber) ifTrue: [^(I + (self divideTo: (aNaturalNumber - self)))]
+	(self greaterThanMe: aNaturalNumber) ifTrue: [
+		^(I + (self divideTo: (aNaturalNumber - self)))
+	]
 	ifFalse: [^I]
 ! !
 
@@ -92,11 +94,12 @@ greaterThanMe: aNaturalNumber
 	(self = aNaturalNumber) ifTrue: [^false].
 	^(self previous) greaterThanMe: aNaturalNumber! !
 
-!II class methodsFor: 'private' stamp: 'AS 4/2/2023 19:38:44'!
+!II class methodsFor: 'private' stamp: 'WAL 4/2/2023 21:43:05'!
 next
 	next ifNil: [
 		next := II createChildNamed: self name, 'I'.
-		next previous: self].
+		next previous: self
+	].
 	^next.! !
 
 !II class methodsFor: 'private' stamp: 'AS 3/31/2023 16:45:08'!
@@ -140,7 +143,7 @@ negativeNumbersNotSupportedErrorDescription
 	^'Negative numbers not supported'! !
 
 
-!II class methodsFor: '--** private fileout/in **--' stamp: 'AS 4/2/2023 20:01:58'!
+!II class methodsFor: '--** private fileout/in **--' stamp: 'WAL 4/2/2023 21:47:49'!
 initializeCollaboratorsFromFile
 	"Auto generated method for loading purposes - Do not modify it"
 
@@ -148,20 +151,20 @@ initializeCollaboratorsFromFile
 	previous := I.! !
 
 
-!classDefinition: #III category: 'NaturalsNumbers'!
+!classDefinition: #III category: 'NaturalNumbers'!
 II subclass: #III
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'NaturalsNumbers'!
+	category: 'NaturalNumbers'!
 
 "-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- "!
 
-!classDefinition: 'III class' category: 'NaturalsNumbers'!
+!classDefinition: 'III class' category: 'NaturalNumbers'!
 III class
 	instanceVariableNames: ''!
 
-!III class methodsFor: '--** private fileout/in **--' stamp: 'AS 4/2/2023 20:01:58'!
+!III class methodsFor: '--** private fileout/in **--' stamp: 'WAL 4/2/2023 21:47:49'!
 initializeCollaboratorsFromFile
 	"Auto generated method for loading purposes - Do not modify it"
 
@@ -169,20 +172,20 @@ initializeCollaboratorsFromFile
 	previous := II.! !
 
 
-!classDefinition: #IIII category: 'NaturalsNumbers'!
+!classDefinition: #IIII category: 'NaturalNumbers'!
 II subclass: #IIII
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'NaturalsNumbers'!
+	category: 'NaturalNumbers'!
 
 "-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- "!
 
-!classDefinition: 'IIII class' category: 'NaturalsNumbers'!
+!classDefinition: 'IIII class' category: 'NaturalNumbers'!
 IIII class
 	instanceVariableNames: ''!
 
-!IIII class methodsFor: '--** private fileout/in **--' stamp: 'AS 4/2/2023 20:01:58'!
+!IIII class methodsFor: '--** private fileout/in **--' stamp: 'WAL 4/2/2023 21:47:49'!
 initializeCollaboratorsFromFile
 	"Auto generated method for loading purposes - Do not modify it"
 
