@@ -741,7 +741,7 @@ isNegative
 	^false! !
 
 
-!EnteroPositivoSalvoCeroNiUno methodsFor: 'arithmetic operations' stamp: 'AS 4/19/2023 19:29:54'!
+!EnteroPositivoSalvoCeroNiUno methodsFor: 'arithmetic operations' stamp: 'AS 4/19/2023 19:57:36'!
 divideAnEntero: unEntero
 
 	| greatestCommonDivisor numerator denominator |
@@ -749,8 +749,18 @@ divideAnEntero: unEntero
 	greatestCommonDivisor := unEntero greatestCommonDivisorWith: self. 
 	numerator := unEntero // greatestCommonDivisor.
 	denominator := self // greatestCommonDivisor.
+
+	^denominator divideANumerator: numerator
 	
-	^denominator divideANumerator: numerator! !
+	"Si el denominador es 1, debe devolver un Entero, en caso contrario debe devolver una fracción
+	Para quitar el if, hicimos un nuevo mensaje (divideANumerator) que diferencie entre el 1 y los demás enteros."
+	
+"	(denominator isOne)	 ifTrue: [^numerator].
+	^Fraccion new initializeWith: numerator over: denominator"
+
+	
+	
+! !
 
 !EnteroPositivoSalvoCeroNiUno methodsFor: 'arithmetic operations' stamp: 'AS 4/19/2023 19:05:40'!
 fibonacci
