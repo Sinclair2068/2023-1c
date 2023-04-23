@@ -145,148 +145,177 @@ test10CanNotTopWhenThereAreNoObjectsInTheStack
 
 !classDefinition: #SentenceFinderByPrefixTest category: 'Stack-Exercise'!
 TestCase subclass: #SentenceFinderByPrefixTest
-	instanceVariableNames: ''
+	instanceVariableNames: 'sentenceFinder'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Stack-Exercise'!
 
-!SentenceFinderByPrefixTest methodsFor: 'test' stamp: 'WAL 4/22/2023 16:46:01'!
+!SentenceFinderByPrefixTest methodsFor: 'test' stamp: 'AS 4/23/2023 19:46:26'!
 test01CanNotUsePrefixWithSpaceCharacters
 
-	| stack sentenceFinder |
+	| stack prefix |
 	
-	stack := OOStack new.
-	
-	sentenceFinder := SentenceFinderByPrefix new.
+	stack := self createEmptyStack.
+	prefix := 'prefix with spaces'.
 	
 	self
-		should: [ sentenceFinder  selectFromStack: stack sentencesPrefixedWith: 'prefix with spaces' ]
+		should: [ sentenceFinder selectFromStack: stack sentencesPrefixedWith: prefix ]
 		raise: Error 
 		withExceptionDo: [ :anError |
 			self assert: anError messageText = SentenceFinderByPrefix prefixWithSpaceCharacterErrorDescription.
-			self assert: stack isEmpty ]
+			self assertStackMustBeEmpty: stack]
 		
 ! !
 
-!SentenceFinderByPrefixTest methodsFor: 'test' stamp: 'WAL 4/22/2023 16:46:05'!
+!SentenceFinderByPrefixTest methodsFor: 'test' stamp: 'AS 4/23/2023 19:46:26'!
 test02CanNotUseEmptyPrefix
 
-	| stack sentenceFinder |
+	| stack prefix |
 	
-	stack := OOStack new.
-	
-	sentenceFinder := SentenceFinderByPrefix new.
+	stack := self createEmptyStack.
+	prefix := ''. 
 	
 	self
-		should: [ sentenceFinder  selectFromStack: stack sentencesPrefixedWith: '' ]
+		should: [ sentenceFinder selectFromStack: stack sentencesPrefixedWith: prefix ]
 		raise: Error 
 		withExceptionDo: [ :anError |
 			self assert: anError messageText = SentenceFinderByPrefix prefixEmptyErrorDescription.
-			self assert: stack isEmpty ]
+			self assertStackMustBeEmpty: stack]
 		
 ! !
 
-!SentenceFinderByPrefixTest methodsFor: 'test' stamp: 'WAL 4/22/2023 18:45:42'!
+!SentenceFinderByPrefixTest methodsFor: 'test' stamp: 'AS 4/23/2023 19:12:03'!
 test03EmptyStackShouldReturnEmptyCollection
 
 	self
 		testFinderWithPrefix: 'Fire'
 		onStackWith: #()
-		shouldReturn: (OrderedCollection newFrom: #() )! !
+		shouldReturn: (self createEmptyExpectedResult)! !
 
-!SentenceFinderByPrefixTest methodsFor: 'test' stamp: 'WAL 4/22/2023 18:45:34'!
+!SentenceFinderByPrefixTest methodsFor: 'test' stamp: 'AS 4/23/2023 19:11:48'!
 test04IfNotFoundReturnedCollectionShouldBeEmpty
 	
 	self
 		testFinderWithPrefix: 'Fire'
 		onStackWith: #('Iceberg' 'Ice breaker' 'Stormy winter')
-		shouldReturn: ( OrderedCollection newFrom: #() )! !
+		shouldReturn: (self createEmptyExpectedResult )! !
 
-!SentenceFinderByPrefixTest methodsFor: 'test' stamp: 'WAL 4/22/2023 18:45:31'!
+!SentenceFinderByPrefixTest methodsFor: 'test' stamp: 'AS 4/23/2023 19:10:18'!
 test05IfOneFoundReturnOneFound
 
 	self
 		testFinderWithPrefix: 'Storm'
 		onStackWith: #('Iceberg' 'Ice breaker' 'Stormy winter')
-		shouldReturn: ( OrderedCollection newFrom: #('Stormy winter') )! !
+		shouldReturn: (self createExpectedResultFrom: #('Stormy winter'))! !
 
-!SentenceFinderByPrefixTest methodsFor: 'test' stamp: 'WAL 4/22/2023 18:45:29'!
+!SentenceFinderByPrefixTest methodsFor: 'test' stamp: 'AS 4/23/2023 19:09:57'!
 test06IfMoreThanOneFoundReturnAllFound
 
 	self
 		testFinderWithPrefix: 'Ice'
 		onStackWith: #('Iceberg' 'Ice breaker' 'Stormy winter')
-		shouldReturn: ( OrderedCollection newFrom: #('Iceberg' 'Ice breaker') )! !
+		shouldReturn: (self createExpectedResultFrom: #('Iceberg' 'Ice breaker'))! !
 
 
-!SentenceFinderByPrefixTest methodsFor: 'test auxiliary' stamp: 'WAL 4/22/2023 18:20:06'!
-addToCollection: returnedCollection fromOOStack: anOOStack
+!SentenceFinderByPrefixTest methodsFor: 'setUp' stamp: 'AS 4/23/2023 19:30:38'!
+setUp
+
+	sentenceFinder := SentenceFinderByPrefix new.	
+! !
+
+
+!SentenceFinderByPrefixTest methodsFor: 'assertions' stamp: 'AS 4/23/2023 19:40:33'!
+assertContentFromStack: aStack equalsTo: originalContent
+
+	self assert: (self createCollectionOfTheContentOf: aStack) equals: (originalContent)
+! !
+
+!SentenceFinderByPrefixTest methodsFor: 'assertions' stamp: 'AS 4/23/2023 19:46:26'!
+assertStackMustBeEmpty: aStack
+
+	self assert: aStack isEmpty.
+! !
+
+
+!SentenceFinderByPrefixTest methodsFor: 'test auxiliary' stamp: 'AS 4/23/2023 19:03:30'!
+addToCollection: returnedCollection fromStack: anOOStack
 
 	| value |
 
 	(anOOStack isEmpty) ifFalse: [
+		
 		value := anOOStack pop.
-		
-		self addToCollection: returnedCollection fromOOStack: anOOStack.
-		
+			
+		self addToCollection: returnedCollection fromStack: anOOStack.		
 		returnedCollection add: value.
 		
-		anOOStack push: value.
-		
+		anOOStack push: value.		
 	]! !
 
-!SentenceFinderByPrefixTest methodsFor: 'test auxiliary' stamp: 'WAL 4/22/2023 18:16:53'!
-convertStackToOrderedCollection: anOOStack
+!SentenceFinderByPrefixTest methodsFor: 'test auxiliary' stamp: 'AS 4/23/2023 19:40:33'!
+createCollectionOfTheContentOf: anOOStack
 
 	| returnedCollection |
 	
 	returnedCollection := OrderedCollection new.
 	
 	self  addToCollection: returnedCollection
-		fromOOStack: anOOStack .
+		fromStack: anOOStack .
 
 	^returnedCollection! !
 
-!SentenceFinderByPrefixTest methodsFor: 'test auxiliary' stamp: 'WAL 4/22/2023 18:27:38'!
-createStackFromArrayOfSentences: anArrayOfSentencesToStack
+!SentenceFinderByPrefixTest methodsFor: 'test auxiliary' stamp: 'AS 4/23/2023 19:11:10'!
+createEmptyExpectedResult
 	
-	| stack |
+	^ OrderedCollection new.! !
+
+!SentenceFinderByPrefixTest methodsFor: 'test auxiliary' stamp: 'AS 4/23/2023 19:25:48'!
+createEmptyStack
+
+	^ OOStack new.! !
+
+!SentenceFinderByPrefixTest methodsFor: 'test auxiliary' stamp: 'AS 4/23/2023 19:09:17'!
+createExpectedResultFrom: anArrayOfSentences
 	
-	stack := OOStack new.
-	anArrayOfSentencesToStack do: [:aSentence | stack push: aSentence].
+	^ OrderedCollection newFrom: anArrayOfSentences! !
+
+!SentenceFinderByPrefixTest methodsFor: 'test auxiliary' stamp: 'AS 4/23/2023 19:34:28'!
+createStackFrom: anArrayOfSentencesToStack
 	
-	^stack
+	| newStack |
+	
+	newStack := OOStack new.
+	anArrayOfSentencesToStack do: [:aSentence | newStack push: aSentence].
+	
+	^newStack
 	! !
 
-!SentenceFinderByPrefixTest methodsFor: 'test auxiliary' stamp: 'WAL 4/22/2023 18:50:45'!
+!SentenceFinderByPrefixTest methodsFor: 'test auxiliary' stamp: 'AS 4/23/2023 19:50:54'!
 testFinderWithPrefix: aPrefix onStackWith: anArrayOfSentencesToStack shouldReturn:  anExpectedResult
 
-	| stack originalSentences finder finderResult |
+	| stack originalStackContent finderResult |
 	
-	stack:= self createStackFromArrayOfSentences: anArrayOfSentencesToStack.
+	stack := self createStackFrom: anArrayOfSentencesToStack.
+	originalStackContent := self createCollectionOfTheContentOf: stack.
 	
-	originalSentences := self convertStackToOrderedCollection: stack.
-	
-	finder := SentenceFinderByPrefix new.
-	finderResult := finder selectFromStack: stack sentencesPrefixedWith: aPrefix.
+	finderResult := sentenceFinder selectFromStack: stack sentencesPrefixedWith: aPrefix.
 		
 	self assert: finderResult equals: anExpectedResult.
-	self assert: originalSentences equals: (self convertStackToOrderedCollection: stack).
+	self assertContentFromStack: stack equalsTo: originalStackContent.
 	! !
 
 
 !classDefinition: #OOStack category: 'Stack-Exercise'!
 Object subclass: #OOStack
-	instanceVariableNames: 'topElement size'
+	instanceVariableNames: 'top size'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Stack-Exercise'!
 
-!OOStack methodsFor: 'initialize' stamp: 'WAL 4/22/2023 11:52:03'!
+!OOStack methodsFor: 'initialize' stamp: 'AS 4/23/2023 18:28:39'!
 initialize
 
-	topElement := OOStackEmptyElement new.
-	
+	top := OOStackEmptyElement new.	
 	size := 0! !
 
 
@@ -297,23 +326,21 @@ isEmpty
 
 	"Evitamos ^topElement isEmpty, es decir, evitamos implementar isEmpty en los elementos"! !
 
-!OOStack methodsFor: 'stack operations' stamp: 'WAL 4/22/2023 11:45:18'!
+!OOStack methodsFor: 'stack operations' stamp: 'AS 4/23/2023 18:29:24'!
 pop
 
-	| returnTop |
+	| currentTop |
 
-	returnTop := topElement value .
-	topElement := topElement previous .
-	
+	currentTop := top value .
+	top := top previous .	
 	size := size -1.
 	
-	^returnTop! !
+	^currentTop! !
 
-!OOStack methodsFor: 'stack operations' stamp: 'WAL 4/22/2023 11:54:40'!
+!OOStack methodsFor: 'stack operations' stamp: 'AS 4/23/2023 18:29:35'!
 push: aValueToStack
 
-	topElement := OOStackNonEmptyElement withValue: aValueToStack stackOn: topElement.
-	
+	top := OOStackNonEmptyElement withValue: aValueToStack stackOn: top.	
 	size := size +1
  	! !
 
@@ -322,10 +349,10 @@ size
 
 	^size! !
 
-!OOStack methodsFor: 'stack operations' stamp: 'WAL 4/22/2023 11:46:07'!
+!OOStack methodsFor: 'stack operations' stamp: 'AS 4/23/2023 18:28:31'!
 top
 
-	^topElement value! !
+	^top value! !
 
 "-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- "!
 
@@ -449,11 +476,13 @@ validateNotEmptyPrefix: aString
 	aString isEmpty ifTrue: [ self error: SentenceFinderByPrefix prefixEmptyErrorDescription ]! !
 
 
-!SentenceFinderByPrefix methodsFor: 'private' stamp: 'WAL 4/22/2023 17:52:31'!
+!SentenceFinderByPrefix methodsFor: 'private' stamp: 'AS 4/23/2023 18:32:30'!
 addTo: collectionToReturn sentencesPrefixedWith: aPrefix fromOOStack: anOOStack
-
-
 	
+	"Notar que primero se hace la recursión y luego se agrega (si correspone) la oración
+	a la colección. Se hace en este orden para que las oraciones en la colección queden 
+	en el mismo orden que tenían en el stack."
+		
 	(anOOStack isEmpty) ifFalse: [
 		
 		| sentence |
