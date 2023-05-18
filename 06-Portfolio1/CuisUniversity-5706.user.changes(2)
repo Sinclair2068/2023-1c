@@ -1,1 +1,2895 @@
 
+
+----QUIT----(20 March 2023 11:15:29) CuisUniversity-5706.image priorSource: 4313282!
+
+----STARTUP---- (20 March 2023 11:15:29) as /Users/hernan/Documents/Cuis/5.0-64Bits/Cuis-University-Installer/CuisUniversity-5706.image!
+
+
+----QUIT----(20 March 2023 11:15:30) CuisUniversity-5706.image priorSource: 8712809!
+
+----STARTUP---- (16 May 2023 15:44:08) as F:\CUIS University 6\CuisUniversity-5706.image!
+
+
+----End fileIn of E:\ISW1\06-Portfolio\Portfolio-Ejercicio.st----!
+!ReceptiveAccount methodsFor: 'balance' stamp: 'AS 5/16/2023 15:48:14' prior: 50604151!
+balance
+
+	^transactions inject: [0] into: [ :balance :aTransaction | aTransaction addToBalance: balance ]! !
+
+!testRun: #ReceptiveAccountTest #test01ReceptiveAccountHaveZeroAsBalanceWhenCreated stamp: 'AS 5/16/2023 15:48:18'!
+FAILURE!
+
+!testRun: #ReceptiveAccountTest #test02DepositIncreasesBalanceOnTransactionValue stamp: 'AS 5/16/2023 15:48:18'!
+ERROR!
+
+!testRun: #ReceptiveAccountTest #test03WithdrawDecreasesBalanceOnTransactionValue stamp: 'AS 5/16/2023 15:48:18'!
+ERROR!
+
+!testRun: #ReceptiveAccountTest #test04WithdrawValueMustBePositive stamp: 'AS 5/16/2023 15:48:18'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test05ReceptiveAccountKnowsRegisteredTransactions stamp: 'AS 5/16/2023 15:48:18'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test06ReceptiveAccountDoNotKnowNotRegisteredTransactions stamp: 'AS 5/16/2023 15:48:18'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test07AccountKnowsItsTransactions stamp: 'AS 5/16/2023 15:48:18'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test01ReceptiveAccountHaveZeroAsBalanceWhenCreated stamp: 'AS 5/16/2023 15:48:22'!
+FAILURE!
+!ReceptiveAccount methodsFor: 'balance' stamp: 'AS 5/16/2023 15:52:43' prior: 50604164!
+balance
+	| balance |
+	
+	balance := 0.
+	
+	transactions do: [ :aTransaction | aTransaction addToBalance: balance ].
+	
+	^balance! !
+
+!testRun: #ReceptiveAccountTest #test01ReceptiveAccountHaveZeroAsBalanceWhenCreated stamp: 'AS 5/16/2023 15:52:46'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test02DepositIncreasesBalanceOnTransactionValue stamp: 'AS 5/16/2023 15:52:46'!
+ERROR!
+
+!testRun: #ReceptiveAccountTest #test03WithdrawDecreasesBalanceOnTransactionValue stamp: 'AS 5/16/2023 15:52:46'!
+ERROR!
+
+!testRun: #ReceptiveAccountTest #test04WithdrawValueMustBePositive stamp: 'AS 5/16/2023 15:52:46'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test05ReceptiveAccountKnowsRegisteredTransactions stamp: 'AS 5/16/2023 15:52:46'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test06ReceptiveAccountDoNotKnowNotRegisteredTransactions stamp: 'AS 5/16/2023 15:52:46'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test07AccountKnowsItsTransactions stamp: 'AS 5/16/2023 15:52:46'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test02DepositIncreasesBalanceOnTransactionValue stamp: 'AS 5/16/2023 15:52:48'!
+ERROR!
+!Deposit methodsFor: 'category-name' stamp: 'AS 5/16/2023 15:53:00'!
+addToBalance: balance 
+	self shouldBeImplemented.! !
+!Deposit methodsFor: 'category-name' stamp: 'AS 5/16/2023 15:53:14' prior: 50604238!
+addToBalance: balance 
+	
+	^balance + value! !
+
+!testRun: #ReceptiveAccountTest #test02DepositIncreasesBalanceOnTransactionValue stamp: 'AS 5/16/2023 15:53:17'!
+FAILURE!
+
+!testRun: #ReceptiveAccountTest #test03WithdrawDecreasesBalanceOnTransactionValue stamp: 'AS 5/16/2023 15:53:53'!
+ERROR!
+!Withdraw methodsFor: 'category-name' stamp: 'AS 5/16/2023 15:54:01'!
+addToBalance: balance 
+	self shouldBeImplemented.! !
+!Withdraw methodsFor: 'category-name' stamp: 'AS 5/16/2023 15:54:14' prior: 50604255!
+addToBalance: balance 
+	
+	^balance + value! !
+
+!testRun: #ReceptiveAccountTest #test03WithdrawDecreasesBalanceOnTransactionValue stamp: 'AS 5/16/2023 15:54:16'!
+FAILURE!
+!ReceptiveAccount methodsFor: 'balance' stamp: 'AS 5/16/2023 15:56:36' prior: 50604201!
+balance
+	| balance |
+	
+	balance := 0.
+	
+	transactions do: [ :aTransaction | balance := aTransaction addToBalance: balance ].
+	
+	^balance! !
+
+!testRun: #ReceptiveAccountTest #test01ReceptiveAccountHaveZeroAsBalanceWhenCreated stamp: 'AS 5/16/2023 16:05:08'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test02DepositIncreasesBalanceOnTransactionValue stamp: 'AS 5/16/2023 16:05:08'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test03WithdrawDecreasesBalanceOnTransactionValue stamp: 'AS 5/16/2023 16:05:08'!
+FAILURE!
+
+!testRun: #ReceptiveAccountTest #test04WithdrawValueMustBePositive stamp: 'AS 5/16/2023 16:05:08'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test05ReceptiveAccountKnowsRegisteredTransactions stamp: 'AS 5/16/2023 16:05:08'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test06ReceptiveAccountDoNotKnowNotRegisteredTransactions stamp: 'AS 5/16/2023 16:05:08'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test07AccountKnowsItsTransactions stamp: 'AS 5/16/2023 16:05:08'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test03WithdrawDecreasesBalanceOnTransactionValue stamp: 'AS 5/16/2023 16:05:08'!
+FAILURE!
+!Withdraw methodsFor: 'category-name' stamp: 'AS 5/16/2023 16:05:21' prior: 50604260!
+addToBalance: balance 
+	
+	^balance - value! !
+
+!testRun: #ReceptiveAccountTest #test01ReceptiveAccountHaveZeroAsBalanceWhenCreated stamp: 'AS 5/16/2023 16:05:23'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test02DepositIncreasesBalanceOnTransactionValue stamp: 'AS 5/16/2023 16:05:23'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test03WithdrawDecreasesBalanceOnTransactionValue stamp: 'AS 5/16/2023 16:05:23'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test04WithdrawValueMustBePositive stamp: 'AS 5/16/2023 16:05:23'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test05ReceptiveAccountKnowsRegisteredTransactions stamp: 'AS 5/16/2023 16:05:23'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test06ReceptiveAccountDoNotKnowNotRegisteredTransactions stamp: 'AS 5/16/2023 16:05:23'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test07AccountKnowsItsTransactions stamp: 'AS 5/16/2023 16:05:23'!
+PASSED!
+
+TestCase subclass: #PortfolioTest
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Ejercicio'!
+
+!classDefinition: #PortfolioTest category: 'Portfolio-Ejercicio' stamp: 'AS 5/16/2023 16:05:44'!
+TestCase subclass: #PortfolioTest
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Ejercicio'!
+!AccountTransaction methodsFor: 'value' stamp: 'AS 5/16/2023 16:06:26'!
+addToBalance: balance 
+
+	self subclassResponsibility ! !
+
+!classDefinition: #Portfolio category: 'Portfolio-Ejercicio' stamp: 'AS 5/16/2023 16:18:53'!
+Object subclass: #Portfolio
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Ejercicio'!
+!PortfolioTest methodsFor: 'no messages' stamp: 'AS 5/16/2023 16:18:42'!
+test01PortfolioWithOneAccountShouldReturnAccountBalance
+
+	| account portfolio |
+	
+	account := ReceptiveAccount new.
+	Deposit register: 100 on: account.
+	
+	portfolio := Portfolio new.
+	portfolio add: account.
+	
+	self assert: account balance equals: portfolio balance.! !
+
+!testRun: #PortfolioTest #test01PortfolioWithOneAccountShouldReturnAccountBalance stamp: 'AS 5/16/2023 16:19:11'!
+ERROR!
+!Portfolio methodsFor: 'balance' stamp: 'AS 5/16/2023 16:19:37'!
+add: account 
+	self shouldBeImplemented.! !
+
+!classDefinition: #Portfolio category: 'Portfolio-Ejercicio' stamp: 'AS 5/16/2023 16:20:11'!
+Object subclass: #Portfolio
+	instanceVariableNames: 'account'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Ejercicio'!
+!Portfolio methodsFor: 'balance' stamp: 'AS 5/16/2023 16:20:01' prior: 50604376!
+add: anAccount 
+	
+	account := anAccount! !
+
+!testRun: #PortfolioTest #test01PortfolioWithOneAccountShouldReturnAccountBalance stamp: 'AS 5/16/2023 16:20:15'!
+ERROR!
+!Portfolio methodsFor: 'balance' stamp: 'AS 5/16/2023 16:20:22'!
+balance
+	self shouldBeImplemented.! !
+!Portfolio methodsFor: 'balance' stamp: 'AS 5/16/2023 16:20:35' prior: 50604396!
+balance
+	
+	^account balance! !
+
+!testRun: #PortfolioTest #test01PortfolioWithOneAccountShouldReturnAccountBalance stamp: 'AS 5/16/2023 16:20:37'!
+PASSED!
+
+!testRun: #PortfolioTest #test01PortfolioWithOneAccountShouldReturnAccountBalance stamp: 'AS 5/16/2023 16:20:37'!
+PASSED!
+!PortfolioTest methodsFor: 'test' stamp: 'AS 5/16/2023 16:22:51'!
+test02PortfolioWithTwoAccountShouldReturnSumAccountsBalance
+
+	| account1 account2 portfolio |
+	
+	account1 := ReceptiveAccount new.
+	Deposit register: 100 on: account1.
+	
+	account2 := ReceptiveAccount new.
+	Deposit register: 250 on: account2.	
+	
+	portfolio := Portfolio new.
+	portfolio add: account1.
+	portfolio add: account2.
+	
+	self 
+		assert: account1 balance + account2 balance
+		equals: portfolio balance.! !
+
+!testRun: #PortfolioTest #test02PortfolioWithTwoAccountShouldReturnSumAccountsBalance stamp: 'AS 5/16/2023 16:22:53'!
+FAILURE!
+
+Object subclass: #Portfolio
+	instanceVariableNames: 'accounts'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Ejercicio'!
+
+!classDefinition: #Portfolio category: 'Portfolio-Ejercicio' stamp: 'AS 5/16/2023 16:23:13'!
+Object subclass: #Portfolio
+	instanceVariableNames: 'accounts'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Ejercicio'!
+!Portfolio methodsFor: 'balance' stamp: 'AS 5/16/2023 16:23:36' overrides: 16920235!
+initialize
+	
+	accounts := OrderedCollection new.! !
+!Portfolio methodsFor: 'accounts' stamp: 'AS 5/16/2023 16:24:14' prior: 50604388!
+add: anAccount 
+	
+	accounts add: anAccount! !
+!Portfolio methodsFor: 'balance' stamp: 'AS 5/16/2023 16:24:43' prior: 50604400!
+balance
+	
+	^accounts sum: [ :account | account balance ] ifEmpty: [0].! !
+
+!testRun: #PortfolioTest #test01PortfolioWithOneAccountShouldReturnAccountBalance stamp: 'AS 5/16/2023 16:24:47'!
+PASSED!
+
+!testRun: #PortfolioTest #test02PortfolioWithTwoAccountShouldReturnSumAccountsBalance stamp: 'AS 5/16/2023 16:24:47'!
+PASSED!
+!PortfolioTest methodsFor: 'test' stamp: 'AS 5/16/2023 16:26:53'!
+test03PortfolioWithOnePortfolioShouldReturnPortfolioBalance
+
+	| account portfolio childPortfolio|
+	
+	account := ReceptiveAccount new.
+	Deposit register: 100 on: account.
+	
+	childPortfolio := Portfolio new.
+	childPortfolio add: account.
+	
+	portfolio := Portfolio new.
+	portfolio add: childPortfolio.
+	
+	self assert: childPortfolio balance equals: portfolio balance.! !
+
+!testRun: #PortfolioTest #test03PortfolioWithOnePortfolioShouldReturnPortfolioBalance stamp: 'AS 5/16/2023 16:26:57'!
+PASSED!
+
+!testRun: #PortfolioTest #test01PortfolioWithOneAccountShouldReturnAccountBalance stamp: 'AS 5/16/2023 16:26:57'!
+PASSED!
+
+!testRun: #PortfolioTest #test02PortfolioWithTwoAccountShouldReturnSumAccountsBalance stamp: 'AS 5/16/2023 16:26:57'!
+PASSED!
+
+!testRun: #PortfolioTest #test03PortfolioWithOnePortfolioShouldReturnPortfolioBalance stamp: 'AS 5/16/2023 16:26:57'!
+PASSED!
+!Portfolio methodsFor: 'accounts' stamp: 'AS 5/16/2023 16:28:13'!
+addAccount: anAccount 
+	
+	accounts add: anAccount! !
+!PortfolioTest methodsFor: 'as yet unclassified' stamp: 'AS 5/16/2023 16:28:13' prior: 50604411!
+test02PortfolioWithTwoAccountShouldReturnSumAccountsBalance
+
+	| account1 account2 portfolio |
+	
+	account1 := ReceptiveAccount new.
+	Deposit register: 100 on: account1.
+	
+	account2 := ReceptiveAccount new.
+	Deposit register: 250 on: account2.	
+	
+	portfolio := Portfolio new.
+	portfolio addAccount: account1.
+	portfolio addAccount: account2.
+	
+	self 
+		assert: account1 balance + account2 balance
+		equals: portfolio balance.! !
+!PortfolioTest methodsFor: 'as yet unclassified' stamp: 'AS 5/16/2023 16:28:13' prior: 50604465!
+test03PortfolioWithOnePortfolioShouldReturnPortfolioBalance
+
+	| account portfolio childPortfolio|
+	
+	account := ReceptiveAccount new.
+	Deposit register: 100 on: account.
+	
+	childPortfolio := Portfolio new.
+	childPortfolio addAccount: account.
+	
+	portfolio := Portfolio new.
+	portfolio addAccount: childPortfolio.
+	
+	self assert: childPortfolio balance equals: portfolio balance.! !
+!Portfolio methodsFor: 'as yet unclassified' stamp: 'AS 5/16/2023 16:28:13' prior: 50604448!
+add: anAccount 
+	
+	accounts addAccount: anAccount! !
+!PortfolioTest methodsFor: 'as yet unclassified' stamp: 'AS 5/16/2023 16:28:13' prior: 50604361!
+test01PortfolioWithOneAccountShouldReturnAccountBalance
+
+	| account portfolio |
+	
+	account := ReceptiveAccount new.
+	Deposit register: 100 on: account.
+	
+	portfolio := Portfolio new.
+	portfolio addAccount: account.
+	
+	self assert: account balance equals: portfolio balance.! !
+!ReceptiveAccount methodsFor: 'as yet unclassified' stamp: 'AS 5/16/2023 16:28:13' prior: 50604142!
+register: aTransaction
+
+	transactions addAccount: aTransaction 
+! !
+!Portfolio methodsFor: 'as yet unclassified' stamp: 'AS 5/16/2023 16:28:13' prior: 50604495!
+addAccount: anAccount 
+	
+	accounts addAccount: anAccount! !
+
+!methodRemoval: Portfolio #add: stamp: 'AS 5/16/2023 16:28:13'!
+add: anAccount 
+	
+	accounts addAccount: anAccount!
+
+!testRun: #PortfolioTest #test01PortfolioWithOneAccountShouldReturnAccountBalance stamp: 'AS 5/16/2023 16:28:18'!
+ERROR!
+
+!testRun: #PortfolioTest #test02PortfolioWithTwoAccountShouldReturnSumAccountsBalance stamp: 'AS 5/16/2023 16:28:18'!
+ERROR!
+
+!testRun: #PortfolioTest #test03PortfolioWithOnePortfolioShouldReturnPortfolioBalance stamp: 'AS 5/16/2023 16:28:18'!
+ERROR!
+
+!testRun: #PortfolioTest #test01PortfolioWithOneAccountShouldReturnAccountBalance stamp: 'AS 5/16/2023 16:28:39'!
+ERROR!
+!ReceptiveAccount methodsFor: 'transactions' stamp: 'AS 5/16/2023 16:29:43' prior: 50604549!
+register: aTransaction
+
+	transactions add: aTransaction 
+! !
+
+!testRun: #ReceptiveAccountTest #test01ReceptiveAccountHaveZeroAsBalanceWhenCreated stamp: 'AS 5/16/2023 16:29:49'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test02DepositIncreasesBalanceOnTransactionValue stamp: 'AS 5/16/2023 16:29:49'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test03WithdrawDecreasesBalanceOnTransactionValue stamp: 'AS 5/16/2023 16:29:49'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test04WithdrawValueMustBePositive stamp: 'AS 5/16/2023 16:29:49'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test05ReceptiveAccountKnowsRegisteredTransactions stamp: 'AS 5/16/2023 16:29:49'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test06ReceptiveAccountDoNotKnowNotRegisteredTransactions stamp: 'AS 5/16/2023 16:29:49'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test07AccountKnowsItsTransactions stamp: 'AS 5/16/2023 16:29:49'!
+PASSED!
+!PortfolioTest methodsFor: 'test' stamp: 'AS 5/16/2023 16:40:35' prior: 50604517!
+test03PortfolioWithOnePortfolioShouldReturnPortfolioBalance
+
+	| account portfolio childPortfolio|
+	
+	account := ReceptiveAccount new.
+	Deposit register: 100 on: account.
+	
+	childPortfolio := Portfolio new.
+	childPortfolio addAccount: account.
+	
+	portfolio := Portfolio new.
+	portfolio addPortfolio: childPortfolio.
+	
+	self assert: childPortfolio balance equals: portfolio balance.! !
+
+!testRun: #PortfolioTest #test03PortfolioWithOnePortfolioShouldReturnPortfolioBalance stamp: 'AS 5/16/2023 16:40:39'!
+ERROR!
+
+!testRun: #ReceptiveAccountTest #test01ReceptiveAccountHaveZeroAsBalanceWhenCreated stamp: 'AS 5/16/2023 16:58:28'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test01ReceptiveAccountHaveZeroAsBalanceWhenCreated stamp: 'AS 5/16/2023 16:58:31'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test02DepositIncreasesBalanceOnTransactionValue stamp: 'AS 5/16/2023 16:58:31'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test03WithdrawDecreasesBalanceOnTransactionValue stamp: 'AS 5/16/2023 16:58:32'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test04WithdrawValueMustBePositive stamp: 'AS 5/16/2023 16:58:32'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test05ReceptiveAccountKnowsRegisteredTransactions stamp: 'AS 5/16/2023 16:58:32'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test06ReceptiveAccountDoNotKnowNotRegisteredTransactions stamp: 'AS 5/16/2023 16:58:32'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test07AccountKnowsItsTransactions stamp: 'AS 5/16/2023 16:58:32'!
+PASSED!
+
+!testRun: #PortfolioTest #test01PortfolioWithOneAccountShouldReturnAccountBalance stamp: 'AS 5/16/2023 16:58:35'!
+ERROR!
+
+!testRun: #PortfolioTest #test02PortfolioWithTwoAccountShouldReturnSumAccountsBalance stamp: 'AS 5/16/2023 16:58:35'!
+ERROR!
+
+!testRun: #PortfolioTest #test03PortfolioWithOnePortfolioShouldReturnPortfolioBalance stamp: 'AS 5/16/2023 16:58:35'!
+ERROR!
+!Portfolio methodsFor: 'accounts' stamp: 'AS 5/16/2023 16:59:03' prior: 50604555!
+addAccount: anAccount 
+	
+	accounts add: anAccount! !
+
+!testRun: #PortfolioTest #test01PortfolioWithOneAccountShouldReturnAccountBalance stamp: 'AS 5/16/2023 16:59:06'!
+PASSED!
+
+!testRun: #PortfolioTest #test02PortfolioWithTwoAccountShouldReturnSumAccountsBalance stamp: 'AS 5/16/2023 16:59:06'!
+PASSED!
+
+!testRun: #PortfolioTest #test03PortfolioWithOnePortfolioShouldReturnPortfolioBalance stamp: 'AS 5/16/2023 16:59:06'!
+ERROR!
+
+!testRun: #PortfolioTest #test03PortfolioWithOnePortfolioShouldReturnPortfolioBalance stamp: 'AS 5/16/2023 16:59:06'!
+ERROR!
+!Portfolio methodsFor: 'accounts' stamp: 'AS 5/16/2023 16:59:15'!
+addPortfolio: childPortfolio 
+	self shouldBeImplemented.! !
+
+!classDefinition: #Portfolio category: 'Portfolio-Ejercicio' stamp: 'AS 5/16/2023 16:59:38'!
+Object subclass: #Portfolio
+	instanceVariableNames: 'accounts portfolio'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Ejercicio'!
+!Portfolio methodsFor: 'accounts' stamp: 'AS 5/16/2023 16:59:36' prior: 50604691!
+addPortfolio: aPortfolio 
+	
+	portfolio := aPortfolio! !
+
+!testRun: #PortfolioTest #test03PortfolioWithOnePortfolioShouldReturnPortfolioBalance stamp: 'AS 5/16/2023 16:59:40'!
+FAILURE!
+!Portfolio methodsFor: 'balance' stamp: 'AS 5/16/2023 17:00:28' prior: 50604452!
+balance
+	
+	| balance |
+		
+	balance := accounts sum: [ :account | account balance ] ifEmpty: [0].
+	balance := balance + portfolio balance.
+	
+	^balance.! !
+
+!testRun: #PortfolioTest #test01PortfolioWithOneAccountShouldReturnAccountBalance stamp: 'AS 5/16/2023 17:00:29'!
+ERROR!
+
+!testRun: #PortfolioTest #test02PortfolioWithTwoAccountShouldReturnSumAccountsBalance stamp: 'AS 5/16/2023 17:00:29'!
+ERROR!
+
+!testRun: #PortfolioTest #test03PortfolioWithOnePortfolioShouldReturnPortfolioBalance stamp: 'AS 5/16/2023 17:00:29'!
+ERROR!
+!Portfolio methodsFor: 'balance' stamp: 'AS 5/16/2023 17:02:44' prior: 50604713!
+balance
+	
+	| balance |
+		
+	balance := accounts sum: [ :account | account balance ] ifEmpty: [0].	
+	portfolio ifNotNil: 
+		[ balance := balance + portfolio balance ].
+	
+	^balance.! !
+
+!testRun: #PortfolioTest #test01PortfolioWithOneAccountShouldReturnAccountBalance stamp: 'AS 5/16/2023 17:02:45'!
+PASSED!
+
+!testRun: #PortfolioTest #test02PortfolioWithTwoAccountShouldReturnSumAccountsBalance stamp: 'AS 5/16/2023 17:02:45'!
+PASSED!
+
+!testRun: #PortfolioTest #test03PortfolioWithOnePortfolioShouldReturnPortfolioBalance stamp: 'AS 5/16/2023 17:02:45'!
+PASSED!
+!PortfolioTest methodsFor: 'test' stamp: 'AS 5/16/2023 17:03:22'!
+test03PortfolioWithTwoPortfoliosShouldReturnSumPortfoliosBalance
+
+	| account portfolio childPortfolio|
+	
+	account := ReceptiveAccount new.
+	Deposit register: 100 on: account.
+	
+	childPortfolio := Portfolio new.
+	childPortfolio addAccount: account.
+	
+	portfolio := Portfolio new.
+	portfolio addPortfolio: childPortfolio.
+	
+	self assert: childPortfolio balance equals: portfolio balance.! !
+!PortfolioTest methodsFor: 'test' stamp: 'AS 5/16/2023 17:05:09' prior: 50604753!
+test03PortfolioWithTwoPortfoliosShouldReturnSumPortfoliosBalance
+
+	| portfolio accountPortfolio1 accountPortfolio2 childPortfolio1 childPortfolio2 |
+	
+	accountPortfolio1 := ReceptiveAccount new.
+	Deposit register: 100 on: accountPortfolio1.
+	
+	childPortfolio1 := Portfolio new.
+	childPortfolio1 addAccount: accountPortfolio1.
+	
+	accountPortfolio2 := ReceptiveAccount new.
+	Deposit register: 150 on: accountPortfolio2.
+	
+	childPortfolio2 := Portfolio new.
+	childPortfolio2 addAccount: accountPortfolio2.	
+	
+	portfolio := Portfolio new.
+	portfolio addPortfolio: childPortfolio1.
+	portfolio addPortfolio: childPortfolio2.
+	
+	self 
+		assert: childPortfolio1 balance + childPortfolio2 balance
+		equals: portfolio balance.! !
+
+!testRun: #PortfolioTest #test03PortfolioWithTwoPortfoliosShouldReturnSumPortfoliosBalance stamp: 'AS 5/16/2023 17:05:12'!
+FAILURE!
+
+Object subclass: #Portfolio
+	instanceVariableNames: 'accounts portfolios'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Ejercicio'!
+
+!classDefinition: #Portfolio category: 'Portfolio-Ejercicio' stamp: 'AS 5/16/2023 17:05:21'!
+Object subclass: #Portfolio
+	instanceVariableNames: 'accounts portfolios'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Ejercicio'!
+!Portfolio methodsFor: 'initialization' stamp: 'AS 5/16/2023 17:05:37' prior: 50604443 overrides: 16920235!
+initialize
+	
+	accounts := OrderedCollection new.
+	portfolios := OrderedCollection new.! !
+!Portfolio methodsFor: 'accounts' stamp: 'AS 5/16/2023 17:05:50' prior: 50604704!
+addPortfolio: aPortfolio 
+	
+	portfolios add: aPortfolio! !
+!Portfolio methodsFor: 'balance' stamp: 'AS 5/16/2023 17:06:50' prior: 50604733!
+balance
+	
+	| balance |
+		
+	balance := accounts sum: [ :account | account balance ] ifEmpty: [0].	
+	balance := balance + portfolios sum: [ :portfolio | portfolio balance ] ifEmpty: [0].
+	
+	^balance.! !
+
+!testRun: #PortfolioTest #test01PortfolioWithOneAccountShouldReturnAccountBalance stamp: 'AS 5/16/2023 17:06:55'!
+FAILURE!
+
+!testRun: #PortfolioTest #test02PortfolioWithTwoAccountShouldReturnSumAccountsBalance stamp: 'AS 5/16/2023 17:06:55'!
+FAILURE!
+
+!testRun: #PortfolioTest #test03PortfolioWithOnePortfolioShouldReturnPortfolioBalance stamp: 'AS 5/16/2023 17:06:55'!
+ERROR!
+
+!testRun: #PortfolioTest #test03PortfolioWithTwoPortfoliosShouldReturnSumPortfoliosBalance stamp: 'AS 5/16/2023 17:06:55'!
+ERROR!
+!Portfolio methodsFor: 'balance' stamp: 'AS 5/16/2023 17:07:22' prior: 50604822!
+balance
+	
+	| balance |
+		
+	balance := accounts sum: [ :account | account balance ] ifEmpty: [0].	
+	balance := balance + (portfolios sum: [ :portfolio | portfolio balance ] ifEmpty: [0]).
+	
+	^balance.! !
+
+!testRun: #PortfolioTest #test01PortfolioWithOneAccountShouldReturnAccountBalance stamp: 'AS 5/16/2023 17:07:25'!
+PASSED!
+
+!testRun: #PortfolioTest #test02PortfolioWithTwoAccountShouldReturnSumAccountsBalance stamp: 'AS 5/16/2023 17:07:25'!
+PASSED!
+
+!testRun: #PortfolioTest #test03PortfolioWithOnePortfolioShouldReturnPortfolioBalance stamp: 'AS 5/16/2023 17:07:25'!
+PASSED!
+
+!testRun: #PortfolioTest #test03PortfolioWithTwoPortfoliosShouldReturnSumPortfoliosBalance stamp: 'AS 5/16/2023 17:07:25'!
+PASSED!
+!PortfolioTest methodsFor: 'test' stamp: 'AS 5/16/2023 17:07:36'!
+test04PortfolioWithTwoPortfoliosShouldReturnSumPortfoliosBalance
+
+	| portfolio accountPortfolio1 accountPortfolio2 childPortfolio1 childPortfolio2 |
+	
+	accountPortfolio1 := ReceptiveAccount new.
+	Deposit register: 100 on: accountPortfolio1.
+	
+	childPortfolio1 := Portfolio new.
+	childPortfolio1 addAccount: accountPortfolio1.
+	
+	accountPortfolio2 := ReceptiveAccount new.
+	Deposit register: 150 on: accountPortfolio2.
+	
+	childPortfolio2 := Portfolio new.
+	childPortfolio2 addAccount: accountPortfolio2.	
+	
+	portfolio := Portfolio new.
+	portfolio addPortfolio: childPortfolio1.
+	portfolio addPortfolio: childPortfolio2.
+	
+	self 
+		assert: childPortfolio1 balance + childPortfolio2 balance
+		equals: portfolio balance.! !
+
+!methodRemoval: PortfolioTest #test03PortfolioWithTwoPortfoliosShouldReturnSumPortfoliosBalance stamp: 'AS 5/16/2023 17:07:36'!
+test03PortfolioWithTwoPortfoliosShouldReturnSumPortfoliosBalance
+
+	| portfolio accountPortfolio1 accountPortfolio2 childPortfolio1 childPortfolio2 |
+	
+	accountPortfolio1 := ReceptiveAccount new.
+	Deposit register: 100 on: accountPortfolio1.
+	
+	childPortfolio1 := Portfolio new.
+	childPortfolio1 addAccount: accountPortfolio1.
+	
+	accountPortfolio2 := ReceptiveAccount new.
+	Deposit register: 150 on: accountPortfolio2.
+	
+	childPortfolio2 := Portfolio new.
+	childPortfolio2 addAccount: accountPortfolio2.	
+	
+	portfolio := Portfolio new.
+	portfolio addPortfolio: childPortfolio1.
+	portfolio addPortfolio: childPortfolio2.
+	
+	self 
+		assert: childPortfolio1 balance + childPortfolio2 balance
+		equals: portfolio balance.!
+
+----SNAPSHOT----(16 May 2023 17:14:11) CuisUniversity-5706.image priorSource: 8713034!
+
+!testRun: #PortfolioTest #test04PortfolioWithTwoPortfoliosShouldReturnSumPortfoliosBalance stamp: 'AS 5/17/2023 08:42:31'!
+PASSED!
+
+!testRun: #PortfolioTest #test01PortfolioWithOneAccountShouldReturnAccountBalance stamp: 'AS 5/17/2023 08:42:32'!
+PASSED!
+
+!testRun: #PortfolioTest #test02PortfolioWithTwoAccountShouldReturnSumAccountsBalance stamp: 'AS 5/17/2023 08:42:32'!
+PASSED!
+
+!testRun: #PortfolioTest #test03PortfolioWithOnePortfolioShouldReturnPortfolioBalance stamp: 'AS 5/17/2023 08:42:32'!
+PASSED!
+
+!testRun: #PortfolioTest #test04PortfolioWithTwoPortfoliosShouldReturnSumPortfoliosBalance stamp: 'AS 5/17/2023 08:42:32'!
+PASSED!
+!PortfolioTest methodsFor: 'accounts' stamp: 'AS 5/17/2023 08:46:36'!
+accountWithDepositOf: anAmount
+	
+	| account |
+
+	account := ReceptiveAccount new.
+	Deposit register: 100 on: account.
+	
+	^account! !
+!PortfolioTest methodsFor: 'test' stamp: 'AS 5/17/2023 08:47:37' prior: 50604537!
+test01PortfolioWithOneAccountShouldReturnAccountBalance
+
+	| account portfolio |
+	
+	account := self accountWithDepositOf: 100.
+	
+	portfolio := Portfolio new.
+	portfolio addAccount: account.
+	
+	self assert: account balance equals: portfolio balance.! !
+
+!testRun: #PortfolioTest #test01PortfolioWithOneAccountShouldReturnAccountBalance stamp: 'AS 5/17/2023 08:47:37'!
+PASSED!
+
+!testRun: #PortfolioTest #test01PortfolioWithOneAccountShouldReturnAccountBalance stamp: 'AS 5/17/2023 08:47:37'!
+PASSED!
+
+!testRun: #PortfolioTest #test02PortfolioWithTwoAccountShouldReturnSumAccountsBalance stamp: 'AS 5/17/2023 08:47:37'!
+PASSED!
+
+!testRun: #PortfolioTest #test03PortfolioWithOnePortfolioShouldReturnPortfolioBalance stamp: 'AS 5/17/2023 08:47:37'!
+PASSED!
+
+!testRun: #PortfolioTest #test04PortfolioWithTwoPortfoliosShouldReturnSumPortfoliosBalance stamp: 'AS 5/17/2023 08:47:37'!
+PASSED!
+!PortfolioTest methodsFor: 'test' stamp: 'AS 5/17/2023 08:48:14' prior: 50604500!
+test02PortfolioWithTwoAccountShouldReturnSumAccountsBalance
+
+	| account1 account2 portfolio |
+	
+	account1 := self accountWithDepositOf: 100.
+	account2 := self accountWithDepositOf: 250.
+	
+	portfolio := Portfolio new.
+	portfolio addAccount: account1.
+	portfolio addAccount: account2.
+	
+	self 
+		assert: account1 balance + account2 balance
+		equals: portfolio balance.! !
+
+!testRun: #PortfolioTest #test02PortfolioWithTwoAccountShouldReturnSumAccountsBalance stamp: 'AS 5/17/2023 08:48:15'!
+PASSED!
+
+!testRun: #PortfolioTest #test01PortfolioWithOneAccountShouldReturnAccountBalance stamp: 'AS 5/17/2023 08:48:15'!
+PASSED!
+
+!testRun: #PortfolioTest #test02PortfolioWithTwoAccountShouldReturnSumAccountsBalance stamp: 'AS 5/17/2023 08:48:15'!
+PASSED!
+
+!testRun: #PortfolioTest #test03PortfolioWithOnePortfolioShouldReturnPortfolioBalance stamp: 'AS 5/17/2023 08:48:15'!
+PASSED!
+
+!testRun: #PortfolioTest #test04PortfolioWithTwoPortfoliosShouldReturnSumPortfoliosBalance stamp: 'AS 5/17/2023 08:48:15'!
+PASSED!
+!PortfolioTest methodsFor: 'test' stamp: 'AS 5/17/2023 08:48:37' prior: 50604610!
+test03PortfolioWithOnePortfolioShouldReturnPortfolioBalance
+
+	| account portfolio childPortfolio|
+	
+	account := self accountWithDepositOf: 100.
+	
+	childPortfolio := Portfolio new.
+	childPortfolio addAccount: account.
+	
+	portfolio := Portfolio new.
+	portfolio addPortfolio: childPortfolio.
+	
+	self assert: childPortfolio balance equals: portfolio balance.! !
+
+!testRun: #PortfolioTest #test03PortfolioWithOnePortfolioShouldReturnPortfolioBalance stamp: 'AS 5/17/2023 08:48:38'!
+PASSED!
+
+!testRun: #PortfolioTest #test01PortfolioWithOneAccountShouldReturnAccountBalance stamp: 'AS 5/17/2023 08:48:38'!
+PASSED!
+
+!testRun: #PortfolioTest #test02PortfolioWithTwoAccountShouldReturnSumAccountsBalance stamp: 'AS 5/17/2023 08:48:38'!
+PASSED!
+
+!testRun: #PortfolioTest #test03PortfolioWithOnePortfolioShouldReturnPortfolioBalance stamp: 'AS 5/17/2023 08:48:38'!
+PASSED!
+
+!testRun: #PortfolioTest #test04PortfolioWithTwoPortfoliosShouldReturnSumPortfoliosBalance stamp: 'AS 5/17/2023 08:48:38'!
+PASSED!
+!PortfolioTest methodsFor: 'test' stamp: 'AS 5/17/2023 08:49:23' prior: 50604872!
+test04PortfolioWithTwoPortfoliosShouldReturnSumPortfoliosBalance
+
+	| portfolio accountPortfolio1 accountPortfolio2 childPortfolio1 childPortfolio2 |
+	
+	accountPortfolio1 := self accountWithDepositOf: 100.	
+	childPortfolio1 := Portfolio new.
+	childPortfolio1 addAccount: accountPortfolio1.
+	
+	accountPortfolio2 := self accountWithDepositOf: 150.
+	childPortfolio2 := Portfolio new.
+	childPortfolio2 addAccount: accountPortfolio2.	
+	
+	portfolio := Portfolio new.
+	portfolio addPortfolio: childPortfolio1.
+	portfolio addPortfolio: childPortfolio2.
+	
+	self 
+		assert: childPortfolio1 balance + childPortfolio2 balance
+		equals: portfolio balance.! !
+
+!testRun: #PortfolioTest #test04PortfolioWithTwoPortfoliosShouldReturnSumPortfoliosBalance stamp: 'AS 5/17/2023 08:49:25'!
+PASSED!
+
+!testRun: #PortfolioTest #test01PortfolioWithOneAccountShouldReturnAccountBalance stamp: 'AS 5/17/2023 08:49:25'!
+PASSED!
+
+!testRun: #PortfolioTest #test02PortfolioWithTwoAccountShouldReturnSumAccountsBalance stamp: 'AS 5/17/2023 08:49:25'!
+PASSED!
+
+!testRun: #PortfolioTest #test03PortfolioWithOnePortfolioShouldReturnPortfolioBalance stamp: 'AS 5/17/2023 08:49:25'!
+PASSED!
+
+!testRun: #PortfolioTest #test04PortfolioWithTwoPortfoliosShouldReturnSumPortfoliosBalance stamp: 'AS 5/17/2023 08:49:25'!
+PASSED!
+!PortfolioTest methodsFor: 'accounts' stamp: 'AS 5/17/2023 09:02:00'!
+portfolioWithAccounts: anArrayOfAccounts
+	
+	| portfolio |
+
+	portfolio := Portfolio new.
+	anArrayOfAccounts do: [ :account | portfolio add: account ].
+	
+	^portfolio! !
+!PortfolioTest methodsFor: 'test' stamp: 'AS 5/17/2023 09:02:27' prior: 50604953!
+test01PortfolioWithOneAccountShouldReturnAccountBalance
+
+	| account portfolio |
+	
+	account := self accountWithDepositOf: 100.
+	portfolio := self portfolioWithAccounts: { account }.
+	
+	self assert: account balance equals: portfolio balance.! !
+
+!testRun: #PortfolioTest #test01PortfolioWithOneAccountShouldReturnAccountBalance stamp: 'AS 5/17/2023 09:02:28'!
+ERROR!
+!PortfolioTest methodsFor: 'accounts' stamp: 'AS 5/17/2023 09:02:42' prior: 50605095!
+portfolioWithAccounts: anArrayOfAccounts
+	
+	| portfolio |
+
+	portfolio := Portfolio new.
+	anArrayOfAccounts do: [ :account | portfolio addAccount: account ].
+	
+	^portfolio! !
+
+!testRun: #PortfolioTest #test01PortfolioWithOneAccountShouldReturnAccountBalance stamp: 'AS 5/17/2023 09:02:46'!
+PASSED!
+
+!testRun: #PortfolioTest #test02PortfolioWithTwoAccountShouldReturnSumAccountsBalance stamp: 'AS 5/17/2023 09:02:46'!
+PASSED!
+
+!testRun: #PortfolioTest #test03PortfolioWithOnePortfolioShouldReturnPortfolioBalance stamp: 'AS 5/17/2023 09:02:46'!
+PASSED!
+
+!testRun: #PortfolioTest #test04PortfolioWithTwoPortfoliosShouldReturnSumPortfoliosBalance stamp: 'AS 5/17/2023 09:02:46'!
+PASSED!
+!PortfolioTest methodsFor: 'test' stamp: 'AS 5/17/2023 09:03:15' prior: 50604984!
+test02PortfolioWithTwoAccountShouldReturnSumAccountsBalance
+
+	| account1 account2 portfolio |
+	
+	account1 := self accountWithDepositOf: 100.
+	account2 := self accountWithDepositOf: 250.
+	
+	portfolio := self portfolioWithAccounts: { account1. account2 }.
+	
+	self 
+		assert: account1 balance + account2 balance
+		equals: portfolio balance.! !
+
+!testRun: #PortfolioTest #test02PortfolioWithTwoAccountShouldReturnSumAccountsBalance stamp: 'AS 5/17/2023 09:03:17'!
+PASSED!
+
+!testRun: #PortfolioTest #test01PortfolioWithOneAccountShouldReturnAccountBalance stamp: 'AS 5/17/2023 09:03:17'!
+PASSED!
+
+!testRun: #PortfolioTest #test02PortfolioWithTwoAccountShouldReturnSumAccountsBalance stamp: 'AS 5/17/2023 09:03:17'!
+PASSED!
+
+!testRun: #PortfolioTest #test03PortfolioWithOnePortfolioShouldReturnPortfolioBalance stamp: 'AS 5/17/2023 09:03:17'!
+PASSED!
+
+!testRun: #PortfolioTest #test04PortfolioWithTwoPortfoliosShouldReturnSumPortfoliosBalance stamp: 'AS 5/17/2023 09:03:17'!
+PASSED!
+!PortfolioTest methodsFor: 'test' stamp: 'AS 5/17/2023 09:03:57' prior: 50605018!
+test03PortfolioWithOnePortfolioShouldReturnPortfolioBalance
+
+	| account portfolio childPortfolio|
+	
+	account := self accountWithDepositOf: 100.
+	childPortfolio := self portfolioWithAccounts: { account }.
+	
+	portfolio := Portfolio new.
+	portfolio addPortfolio: childPortfolio.
+	
+	self assert: childPortfolio balance equals: portfolio balance.! !
+!PortfolioTest methodsFor: 'accounts' stamp: 'AS 5/17/2023 09:04:58'!
+portfolioWithPortfolios: anArrayOfPortfolios
+	
+	| portfolio |
+
+	portfolio := Portfolio new.
+	anArrayOfPortfolios do: [ :childPortfolio | portfolio addPortfolio: childPortfolio ].
+	
+	^portfolio! !
+
+!testRun: #PortfolioTest #test01PortfolioWithOneAccountShouldReturnAccountBalance stamp: 'AS 5/17/2023 09:04:59'!
+PASSED!
+
+!testRun: #PortfolioTest #test02PortfolioWithTwoAccountShouldReturnSumAccountsBalance stamp: 'AS 5/17/2023 09:04:59'!
+PASSED!
+
+!testRun: #PortfolioTest #test03PortfolioWithOnePortfolioShouldReturnPortfolioBalance stamp: 'AS 5/17/2023 09:04:59'!
+PASSED!
+
+!testRun: #PortfolioTest #test04PortfolioWithTwoPortfoliosShouldReturnSumPortfoliosBalance stamp: 'AS 5/17/2023 09:04:59'!
+PASSED!
+!PortfolioTest methodsFor: 'test' stamp: 'AS 5/17/2023 09:05:24' prior: 50605176!
+test03PortfolioWithOnePortfolioShouldReturnPortfolioBalance
+
+	| account portfolio childPortfolio|
+	
+	account := self accountWithDepositOf: 100.
+	childPortfolio := self portfolioWithAccounts: { account }.
+	
+	portfolio := self portfolioWithPortfolios: { childPortfolio }.
+	
+	self assert: childPortfolio balance equals: portfolio balance.! !
+
+!testRun: #PortfolioTest #test03PortfolioWithOnePortfolioShouldReturnPortfolioBalance stamp: 'AS 5/17/2023 09:05:25'!
+PASSED!
+
+!testRun: #PortfolioTest #test01PortfolioWithOneAccountShouldReturnAccountBalance stamp: 'AS 5/17/2023 09:05:25'!
+PASSED!
+
+!testRun: #PortfolioTest #test02PortfolioWithTwoAccountShouldReturnSumAccountsBalance stamp: 'AS 5/17/2023 09:05:25'!
+PASSED!
+
+!testRun: #PortfolioTest #test03PortfolioWithOnePortfolioShouldReturnPortfolioBalance stamp: 'AS 5/17/2023 09:05:25'!
+PASSED!
+
+!testRun: #PortfolioTest #test04PortfolioWithTwoPortfoliosShouldReturnSumPortfoliosBalance stamp: 'AS 5/17/2023 09:05:25'!
+PASSED!
+!PortfolioTest methodsFor: 'test' stamp: 'AS 5/17/2023 09:07:07' prior: 50605052!
+test04PortfolioWithTwoPortfoliosShouldReturnSumPortfoliosBalance
+
+	| portfolio accountPortfolio1 accountPortfolio2 childPortfolio1 childPortfolio2 |
+	
+	accountPortfolio1 := self accountWithDepositOf: 100.	
+	childPortfolio1 := self portfolioWithAccounts: { accountPortfolio1 }.
+		
+	accountPortfolio2 := self accountWithDepositOf: 150.
+	childPortfolio2 := self portfolioWithAccounts: { accountPortfolio2 }.
+		
+	portfolio := self portfolioWithPortfolios: { childPortfolio1. childPortfolio2 }.
+	
+	self 
+		assert: childPortfolio1 balance + childPortfolio2 balance
+		equals: portfolio balance.! !
+
+!testRun: #PortfolioTest #test04PortfolioWithTwoPortfoliosShouldReturnSumPortfoliosBalance stamp: 'AS 5/17/2023 09:07:10'!
+PASSED!
+
+!testRun: #PortfolioTest #test01PortfolioWithOneAccountShouldReturnAccountBalance stamp: 'AS 5/17/2023 09:07:10'!
+PASSED!
+
+!testRun: #PortfolioTest #test02PortfolioWithTwoAccountShouldReturnSumAccountsBalance stamp: 'AS 5/17/2023 09:07:10'!
+PASSED!
+
+!testRun: #PortfolioTest #test03PortfolioWithOnePortfolioShouldReturnPortfolioBalance stamp: 'AS 5/17/2023 09:07:10'!
+PASSED!
+
+!testRun: #PortfolioTest #test04PortfolioWithTwoPortfoliosShouldReturnSumPortfoliosBalance stamp: 'AS 5/17/2023 09:07:10'!
+PASSED!
+!PortfolioTest methodsFor: 'test' stamp: 'AS 5/17/2023 09:12:59'!
+test05PortfolioHasRegisteredTransactionsInChildAccounts
+
+	| portfolio account transaction |
+	
+	account := ReceptiveAccount new.	
+	transaction := Deposit register: 100 on: account.
+	
+	portfolio := self portfolioWithAccounts: { account }.
+	
+	self assert: (portfolio hasRegistered: transaction)! !
+
+!testRun: #PortfolioTest #test05PortfolioHasRegisteredTransactionsInChildAccounts stamp: 'AS 5/17/2023 09:13:12'!
+ERROR!
+!Portfolio methodsFor: 'transactions' stamp: 'AS 5/17/2023 09:13:32'!
+hasRegistered: transaction 
+	self shouldBeImplemented.! !
+!Portfolio methodsFor: 'transactions' stamp: 'AS 5/17/2023 09:14:34' prior: 50605305!
+hasRegistered: aTransaction 
+
+	^accounts anySatisfy: [ :account | account hasRegistered: aTransaction ].! !
+
+!testRun: #PortfolioTest #test01PortfolioWithOneAccountShouldReturnAccountBalance stamp: 'AS 5/17/2023 09:14:37'!
+PASSED!
+
+!testRun: #PortfolioTest #test02PortfolioWithTwoAccountShouldReturnSumAccountsBalance stamp: 'AS 5/17/2023 09:14:37'!
+PASSED!
+
+!testRun: #PortfolioTest #test03PortfolioWithOnePortfolioShouldReturnPortfolioBalance stamp: 'AS 5/17/2023 09:14:37'!
+PASSED!
+
+!testRun: #PortfolioTest #test04PortfolioWithTwoPortfoliosShouldReturnSumPortfoliosBalance stamp: 'AS 5/17/2023 09:14:37'!
+PASSED!
+
+!testRun: #PortfolioTest #test05PortfolioHasRegisteredTransactionsInChildAccounts stamp: 'AS 5/17/2023 09:14:37'!
+PASSED!
+
+!testRun: #PortfolioTest #test05PortfolioHasRegisteredTransactionsInChildAccounts stamp: 'AS 5/17/2023 09:14:39'!
+PASSED!
+
+!testRun: #PortfolioTest #test01PortfolioWithOneAccountShouldReturnAccountBalance stamp: 'AS 5/17/2023 09:14:39'!
+PASSED!
+
+!testRun: #PortfolioTest #test02PortfolioWithTwoAccountShouldReturnSumAccountsBalance stamp: 'AS 5/17/2023 09:14:39'!
+PASSED!
+
+!testRun: #PortfolioTest #test03PortfolioWithOnePortfolioShouldReturnPortfolioBalance stamp: 'AS 5/17/2023 09:14:39'!
+PASSED!
+
+!testRun: #PortfolioTest #test04PortfolioWithTwoPortfoliosShouldReturnSumPortfoliosBalance stamp: 'AS 5/17/2023 09:14:39'!
+PASSED!
+
+!testRun: #PortfolioTest #test05PortfolioHasRegisteredTransactionsInChildAccounts stamp: 'AS 5/17/2023 09:14:39'!
+PASSED!
+!PortfolioTest methodsFor: 'test' stamp: 'AS 5/17/2023 09:15:01'!
+test06PortfolioHasRegisteredTransactionsInChildportfolios
+
+	| portfolio account transaction |
+	
+	account := ReceptiveAccount new.	
+	transaction := Deposit register: 100 on: account.
+	
+	portfolio := self portfolioWithAccounts: { account }.
+	
+	self assert: (portfolio hasRegistered: transaction)! !
+!PortfolioTest methodsFor: 'test' stamp: 'AS 5/17/2023 09:16:18' prior: 50605359!
+test06PortfolioHasRegisteredTransactionsInChildportfolios
+
+	| account transaction childPortfolio portfolio |
+	
+	account := ReceptiveAccount new.	
+	transaction := Deposit register: 100 on: account.
+	
+	childPortfolio := self portfolioWithAccounts: { account }.
+	
+	portfolio := self portfolioWithPortfolios: { childPortfolio }.
+	
+	self assert: (portfolio hasRegistered: transaction)! !
+
+!testRun: #PortfolioTest #test06PortfolioHasRegisteredTransactionsInChildportfolios stamp: 'AS 5/17/2023 09:16:21'!
+FAILURE!
+!Portfolio methodsFor: 'transactions' stamp: 'AS 5/17/2023 09:18:48' prior: 50605310!
+hasRegistered: aTransaction 
+
+	
+	
+	(accounts anySatisfy: [ :account | account hasRegistered: aTransaction ]) ifTrue: [ ^true ].
+	^portfolios anySatisfy: [ :portfolio | portfolio hasRegistered: aTransaction ].
+	! !
+!Portfolio methodsFor: 'transactions' stamp: 'AS 5/17/2023 09:18:55' prior: 50605390!
+hasRegistered: aTransaction 
+		
+	(accounts anySatisfy: [ :account | account hasRegistered: aTransaction ]) ifTrue: [ ^true ].
+	^portfolios anySatisfy: [ :portfolio | portfolio hasRegistered: aTransaction ].
+	! !
+
+!testRun: #PortfolioTest #test01PortfolioWithOneAccountShouldReturnAccountBalance stamp: 'AS 5/17/2023 09:18:56'!
+PASSED!
+
+!testRun: #PortfolioTest #test02PortfolioWithTwoAccountShouldReturnSumAccountsBalance stamp: 'AS 5/17/2023 09:18:56'!
+PASSED!
+
+!testRun: #PortfolioTest #test03PortfolioWithOnePortfolioShouldReturnPortfolioBalance stamp: 'AS 5/17/2023 09:18:56'!
+PASSED!
+
+!testRun: #PortfolioTest #test04PortfolioWithTwoPortfoliosShouldReturnSumPortfoliosBalance stamp: 'AS 5/17/2023 09:18:56'!
+PASSED!
+
+!testRun: #PortfolioTest #test05PortfolioHasRegisteredTransactionsInChildAccounts stamp: 'AS 5/17/2023 09:18:56'!
+PASSED!
+
+!testRun: #PortfolioTest #test06PortfolioHasRegisteredTransactionsInChildportfolios stamp: 'AS 5/17/2023 09:18:56'!
+PASSED!
+!PortfolioTest methodsFor: 'test' stamp: 'AS 5/17/2023 09:22:18'!
+test06PortfolioHasRegisteredTransactionsInChildPortfolios
+
+	| account transaction childPortfolio portfolio |
+	
+	account := ReceptiveAccount new.	
+	transaction := Deposit register: 100 on: account.
+	
+	childPortfolio := self portfolioWithAccounts: { account }.
+	
+	portfolio := self portfolioWithPortfolios: { childPortfolio }.
+	
+	self assert: (portfolio hasRegistered: transaction)! !
+
+!methodRemoval: PortfolioTest #test06PortfolioHasRegisteredTransactionsInChildportfolios stamp: 'AS 5/17/2023 09:22:18'!
+test06PortfolioHasRegisteredTransactionsInChildportfolios
+
+	| account transaction childPortfolio portfolio |
+	
+	account := ReceptiveAccount new.	
+	transaction := Deposit register: 100 on: account.
+	
+	childPortfolio := self portfolioWithAccounts: { account }.
+	
+	portfolio := self portfolioWithPortfolios: { childPortfolio }.
+	
+	self assert: (portfolio hasRegistered: transaction)!
+!PortfolioTest methodsFor: 'test' stamp: 'AS 5/17/2023 09:22:54'!
+test07PortfolioKnowsChildAccountsTransactions
+
+	| account transaction childPortfolio portfolio |
+	
+	account := ReceptiveAccount new.	
+	transaction := Deposit register: 100 on: account.
+	
+	childPortfolio := self portfolioWithAccounts: { account }.
+	
+	portfolio := self portfolioWithPortfolios: { childPortfolio }.
+	
+	self assert: (portfolio hasRegistered: transaction)! !
+!PortfolioTest methodsFor: 'test' stamp: 'AS 5/17/2023 09:25:05' prior: 50605463!
+test07PortfolioKnowsChildAccountsTransactions
+
+	| account transaction childPortfolio portfolio |
+	
+	account := ReceptiveAccount new.	
+	transaction := Deposit register: 100 on: account.
+	
+	childPortfolio := self portfolioWithAccounts: { account }.
+	
+	portfolio := self portfolioWithAccounts: { account }.
+	
+	self assert: 1 equals: portfolio transactions size.
+	self assert: (portfolio transactions includes: transaction).! !
+!PortfolioTest methodsFor: 'test' stamp: 'AS 5/17/2023 09:25:16' prior: 50605478!
+test07PortfolioKnowsChildAccountsTransactions
+
+	| account transaction portfolio |
+	
+	account := ReceptiveAccount new.	
+	transaction := Deposit register: 100 on: account.
+		
+	portfolio := self portfolioWithAccounts: { account }.
+	
+	self assert: 1 equals: portfolio transactions size.
+	self assert: (portfolio transactions includes: transaction).! !
+
+!testRun: #PortfolioTest #test07PortfolioKnowsChildAccountsTransactions stamp: 'AS 5/17/2023 09:25:21'!
+ERROR!
+!Portfolio methodsFor: 'transactions' stamp: 'AS 5/17/2023 09:25:28'!
+transactions
+	self shouldBeImplemented.! !
+!Portfolio methodsFor: 'transactions' stamp: 'AS 5/17/2023 09:28:52' prior: 50605511!
+transactions
+	
+	^accounts 
+		inject: [ OrderedCollection new ] 
+		into: [ :transactions :account | transactions add: account transactions copy ]! !
+
+!testRun: #PortfolioTest #test07PortfolioKnowsChildAccountsTransactions stamp: 'AS 5/17/2023 09:28:54'!
+ERROR!
+!Portfolio methodsFor: 'transactions' stamp: 'AS 5/17/2023 09:31:37' prior: 50605516!
+transactions
+	
+	^accounts 
+		inject: [ OrderedCollection new ] 
+		into: [ :transactions :account | transactions addAll: account transactions copy ]! !
+
+!testRun: #PortfolioTest #test01PortfolioWithOneAccountShouldReturnAccountBalance stamp: 'AS 5/17/2023 09:31:40'!
+PASSED!
+
+!testRun: #PortfolioTest #test02PortfolioWithTwoAccountShouldReturnSumAccountsBalance stamp: 'AS 5/17/2023 09:31:40'!
+PASSED!
+
+!testRun: #PortfolioTest #test03PortfolioWithOnePortfolioShouldReturnPortfolioBalance stamp: 'AS 5/17/2023 09:31:40'!
+PASSED!
+
+!testRun: #PortfolioTest #test04PortfolioWithTwoPortfoliosShouldReturnSumPortfoliosBalance stamp: 'AS 5/17/2023 09:31:40'!
+PASSED!
+
+!testRun: #PortfolioTest #test05PortfolioHasRegisteredTransactionsInChildAccounts stamp: 'AS 5/17/2023 09:31:40'!
+PASSED!
+
+!testRun: #PortfolioTest #test06PortfolioHasRegisteredTransactionsInChildPortfolios stamp: 'AS 5/17/2023 09:31:40'!
+PASSED!
+
+!testRun: #PortfolioTest #test07PortfolioKnowsChildAccountsTransactions stamp: 'AS 5/17/2023 09:31:40'!
+ERROR!
+
+!testRun: #PortfolioTest #test07PortfolioKnowsChildAccountsTransactions stamp: 'AS 5/17/2023 09:31:40'!
+ERROR!
+!Portfolio methodsFor: 'transactions' stamp: 'AS 5/17/2023 09:32:33' prior: 50605527!
+transactions
+	
+	^accounts 
+		inject: OrderedCollection new
+		into: [ :transactions :account | transactions addAll: account transactions copy ]! !
+
+!testRun: #PortfolioTest #test01PortfolioWithOneAccountShouldReturnAccountBalance stamp: 'AS 5/17/2023 09:32:35'!
+PASSED!
+
+!testRun: #PortfolioTest #test02PortfolioWithTwoAccountShouldReturnSumAccountsBalance stamp: 'AS 5/17/2023 09:32:35'!
+PASSED!
+
+!testRun: #PortfolioTest #test03PortfolioWithOnePortfolioShouldReturnPortfolioBalance stamp: 'AS 5/17/2023 09:32:35'!
+PASSED!
+
+!testRun: #PortfolioTest #test04PortfolioWithTwoPortfoliosShouldReturnSumPortfoliosBalance stamp: 'AS 5/17/2023 09:32:35'!
+PASSED!
+
+!testRun: #PortfolioTest #test05PortfolioHasRegisteredTransactionsInChildAccounts stamp: 'AS 5/17/2023 09:32:35'!
+PASSED!
+
+!testRun: #PortfolioTest #test06PortfolioHasRegisteredTransactionsInChildPortfolios stamp: 'AS 5/17/2023 09:32:35'!
+PASSED!
+
+!testRun: #PortfolioTest #test07PortfolioKnowsChildAccountsTransactions stamp: 'AS 5/17/2023 09:32:35'!
+PASSED!
+!PortfolioTest methodsFor: 'test' stamp: 'AS 5/17/2023 09:34:07'!
+test08PortfolioKnowsChildPortfoliosTransactions
+
+	| account transaction childPortfolio portfolio |
+	
+	account := ReceptiveAccount new.	
+	transaction := Deposit register: 100 on: account.
+		
+	childPortfolio := self portfolioWithAccounts: { account }.
+	
+	portfolio := self portfolioWithPortfolios: { childPortfolio }.
+	
+	self assert: 1 equals: portfolio transactions size.
+	self assert: (portfolio transactions includes: transaction).! !
+
+!testRun: #PortfolioTest #test08PortfolioKnowsChildPortfoliosTransactions stamp: 'AS 5/17/2023 09:34:09'!
+FAILURE!
+!Portfolio methodsFor: 'transactions' stamp: 'AS 5/17/2023 09:34:51' prior: 50605566!
+transactions
+	
+	^accounts 
+		inject: OrderedCollection new
+		into: [ :accountTransactions :account | accountTransactions addAll: account transactions copy ]! !
+!Portfolio methodsFor: 'transactions' stamp: 'AS 5/17/2023 09:36:49' prior: 50605620!
+transactions
+	
+	| transactions |
+	
+	transactions := OrderedCollection new.
+	
+	transactions addAll: (accounts 
+		inject: OrderedCollection new
+		into: [ :accountTransactions :account | accountTransactions addAll: account transactions copy ]).
+		
+	transactions addAll: (portfolios 
+		inject: OrderedCollection new
+		into: [ :portfolioTransactions :portfolio | portfolioTransactions addAll: portfolio transactions copy ])		
+		
+	^transactions.
+		! !
+
+!testRun: #PortfolioTest #test01PortfolioWithOneAccountShouldReturnAccountBalance stamp: 'AS 5/17/2023 09:36:50'!
+PASSED!
+
+!testRun: #PortfolioTest #test02PortfolioWithTwoAccountShouldReturnSumAccountsBalance stamp: 'AS 5/17/2023 09:36:50'!
+PASSED!
+
+!testRun: #PortfolioTest #test03PortfolioWithOnePortfolioShouldReturnPortfolioBalance stamp: 'AS 5/17/2023 09:36:50'!
+PASSED!
+
+!testRun: #PortfolioTest #test04PortfolioWithTwoPortfoliosShouldReturnSumPortfoliosBalance stamp: 'AS 5/17/2023 09:36:50'!
+PASSED!
+
+!testRun: #PortfolioTest #test05PortfolioHasRegisteredTransactionsInChildAccounts stamp: 'AS 5/17/2023 09:36:50'!
+PASSED!
+
+!testRun: #PortfolioTest #test06PortfolioHasRegisteredTransactionsInChildPortfolios stamp: 'AS 5/17/2023 09:36:50'!
+PASSED!
+
+!testRun: #PortfolioTest #test07PortfolioKnowsChildAccountsTransactions stamp: 'AS 5/17/2023 09:36:50'!
+ERROR!
+
+!testRun: #PortfolioTest #test08PortfolioKnowsChildPortfoliosTransactions stamp: 'AS 5/17/2023 09:36:50'!
+ERROR!
+
+!testRun: #PortfolioTest #test07PortfolioKnowsChildAccountsTransactions stamp: 'AS 5/17/2023 09:36:56'!
+ERROR!
+!Portfolio methodsFor: 'transactions' stamp: 'AS 5/17/2023 09:37:30' prior: 50605628!
+transactions
+	
+	| transactions |
+	
+	transactions := OrderedCollection new.
+	
+	transactions addAll: (accounts 
+		inject: OrderedCollection new
+		into: [ :accountTransactions :account | accountTransactions addAll: account transactions copy ]).
+		
+	transactions addAll: (portfolios 
+		inject: OrderedCollection new
+		into: [ :portfolioTransactions :portfolio | portfolioTransactions addAll: portfolio transactions copy ])	.
+		
+	^transactions.
+		! !
+
+!testRun: #PortfolioTest #test01PortfolioWithOneAccountShouldReturnAccountBalance stamp: 'AS 5/17/2023 09:37:31'!
+PASSED!
+
+!testRun: #PortfolioTest #test02PortfolioWithTwoAccountShouldReturnSumAccountsBalance stamp: 'AS 5/17/2023 09:37:31'!
+PASSED!
+
+!testRun: #PortfolioTest #test03PortfolioWithOnePortfolioShouldReturnPortfolioBalance stamp: 'AS 5/17/2023 09:37:31'!
+PASSED!
+
+!testRun: #PortfolioTest #test04PortfolioWithTwoPortfoliosShouldReturnSumPortfoliosBalance stamp: 'AS 5/17/2023 09:37:31'!
+PASSED!
+
+!testRun: #PortfolioTest #test05PortfolioHasRegisteredTransactionsInChildAccounts stamp: 'AS 5/17/2023 09:37:31'!
+PASSED!
+
+!testRun: #PortfolioTest #test06PortfolioHasRegisteredTransactionsInChildPortfolios stamp: 'AS 5/17/2023 09:37:31'!
+PASSED!
+
+!testRun: #PortfolioTest #test07PortfolioKnowsChildAccountsTransactions stamp: 'AS 5/17/2023 09:37:31'!
+PASSED!
+
+!testRun: #PortfolioTest #test08PortfolioKnowsChildPortfoliosTransactions stamp: 'AS 5/17/2023 09:37:31'!
+PASSED!
+!Portfolio methodsFor: 'transactions' stamp: 'AS 5/17/2023 09:38:54' prior: 50605679!
+transactions
+	
+	| transactions |
+	
+	transactions := OrderedCollection new.
+	
+	transactions addAll: (accounts do: [ :account | ^account transactions copy ]).
+		
+	transactions addAll: (portfolios 
+		inject: OrderedCollection new
+		into: [ :portfolioTransactions :portfolio | portfolioTransactions addAll: portfolio transactions copy ])	.
+		
+	^transactions.
+		! !
+
+!testRun: #PortfolioTest #test01PortfolioWithOneAccountShouldReturnAccountBalance stamp: 'AS 5/17/2023 09:38:55'!
+PASSED!
+
+!testRun: #PortfolioTest #test02PortfolioWithTwoAccountShouldReturnSumAccountsBalance stamp: 'AS 5/17/2023 09:38:55'!
+PASSED!
+
+!testRun: #PortfolioTest #test03PortfolioWithOnePortfolioShouldReturnPortfolioBalance stamp: 'AS 5/17/2023 09:38:55'!
+PASSED!
+
+!testRun: #PortfolioTest #test04PortfolioWithTwoPortfoliosShouldReturnSumPortfoliosBalance stamp: 'AS 5/17/2023 09:38:55'!
+PASSED!
+
+!testRun: #PortfolioTest #test05PortfolioHasRegisteredTransactionsInChildAccounts stamp: 'AS 5/17/2023 09:38:55'!
+PASSED!
+
+!testRun: #PortfolioTest #test06PortfolioHasRegisteredTransactionsInChildPortfolios stamp: 'AS 5/17/2023 09:38:55'!
+PASSED!
+
+!testRun: #PortfolioTest #test07PortfolioKnowsChildAccountsTransactions stamp: 'AS 5/17/2023 09:38:55'!
+PASSED!
+
+!testRun: #PortfolioTest #test08PortfolioKnowsChildPortfoliosTransactions stamp: 'AS 5/17/2023 09:38:55'!
+PASSED!
+!Portfolio methodsFor: 'transactions' stamp: 'AS 5/17/2023 09:39:24' prior: 50605727!
+transactions
+	
+	| transactions |
+	
+	transactions := OrderedCollection new.
+	
+	transactions addAll: (accounts do: [ :account | ^account transactions copy ]).	
+	transactions addAll: (portfolios do: [ :portfolio | ^portfolio transactions copy ]).
+		
+	^transactions.
+		! !
+
+!testRun: #PortfolioTest #test01PortfolioWithOneAccountShouldReturnAccountBalance stamp: 'AS 5/17/2023 09:39:26'!
+PASSED!
+
+!testRun: #PortfolioTest #test02PortfolioWithTwoAccountShouldReturnSumAccountsBalance stamp: 'AS 5/17/2023 09:39:26'!
+PASSED!
+
+!testRun: #PortfolioTest #test03PortfolioWithOnePortfolioShouldReturnPortfolioBalance stamp: 'AS 5/17/2023 09:39:26'!
+PASSED!
+
+!testRun: #PortfolioTest #test04PortfolioWithTwoPortfoliosShouldReturnSumPortfoliosBalance stamp: 'AS 5/17/2023 09:39:26'!
+PASSED!
+
+!testRun: #PortfolioTest #test05PortfolioHasRegisteredTransactionsInChildAccounts stamp: 'AS 5/17/2023 09:39:26'!
+PASSED!
+
+!testRun: #PortfolioTest #test06PortfolioHasRegisteredTransactionsInChildPortfolios stamp: 'AS 5/17/2023 09:39:26'!
+PASSED!
+
+!testRun: #PortfolioTest #test07PortfolioKnowsChildAccountsTransactions stamp: 'AS 5/17/2023 09:39:26'!
+PASSED!
+
+!testRun: #PortfolioTest #test08PortfolioKnowsChildPortfoliosTransactions stamp: 'AS 5/17/2023 09:39:26'!
+PASSED!
+!Portfolio methodsFor: 'transactions' stamp: 'AS 5/17/2023 09:40:57' prior: 50605400!
+hasRegistered: aTransaction 
+		
+	^(accounts anySatisfy: [ :account | account hasRegistered: aTransaction ]) or:
+	(portfolios anySatisfy: [ :portfolio | portfolio hasRegistered: aTransaction ]).
+	! !
+
+!testRun: #PortfolioTest #test01PortfolioWithOneAccountShouldReturnAccountBalance stamp: 'AS 5/17/2023 09:40:57'!
+PASSED!
+
+!testRun: #PortfolioTest #test02PortfolioWithTwoAccountShouldReturnSumAccountsBalance stamp: 'AS 5/17/2023 09:40:57'!
+PASSED!
+
+!testRun: #PortfolioTest #test03PortfolioWithOnePortfolioShouldReturnPortfolioBalance stamp: 'AS 5/17/2023 09:40:57'!
+PASSED!
+
+!testRun: #PortfolioTest #test04PortfolioWithTwoPortfoliosShouldReturnSumPortfoliosBalance stamp: 'AS 5/17/2023 09:40:57'!
+PASSED!
+
+!testRun: #PortfolioTest #test05PortfolioHasRegisteredTransactionsInChildAccounts stamp: 'AS 5/17/2023 09:40:57'!
+PASSED!
+
+!testRun: #PortfolioTest #test06PortfolioHasRegisteredTransactionsInChildPortfolios stamp: 'AS 5/17/2023 09:40:57'!
+PASSED!
+
+!testRun: #PortfolioTest #test07PortfolioKnowsChildAccountsTransactions stamp: 'AS 5/17/2023 09:40:57'!
+PASSED!
+
+!testRun: #PortfolioTest #test08PortfolioKnowsChildPortfoliosTransactions stamp: 'AS 5/17/2023 09:40:57'!
+PASSED!
+!PortfolioTest methodsFor: 'accounts' stamp: 'AS 5/17/2023 09:43:42'!
+depositOf: anAmount on: anAccount
+	
+	^Deposit register: anAmount on: anAccount! !
+!PortfolioTest methodsFor: 'test' stamp: 'AS 5/17/2023 09:44:23' prior: 50605289!
+test05PortfolioHasRegisteredTransactionsInChildAccounts
+
+	| portfolio account transaction |
+	
+	account := ReceptiveAccount new.	
+	transaction := self depositOf: 100 on: account.
+	
+	portfolio := self portfolioWithAccounts: { account }.
+	
+	self assert: (portfolio hasRegistered: transaction)! !
+
+!testRun: #PortfolioTest #test05PortfolioHasRegisteredTransactionsInChildAccounts stamp: 'AS 5/17/2023 09:44:24'!
+PASSED!
+
+!testRun: #PortfolioTest #test01PortfolioWithOneAccountShouldReturnAccountBalance stamp: 'AS 5/17/2023 09:44:24'!
+PASSED!
+
+!testRun: #PortfolioTest #test02PortfolioWithTwoAccountShouldReturnSumAccountsBalance stamp: 'AS 5/17/2023 09:44:24'!
+PASSED!
+
+!testRun: #PortfolioTest #test03PortfolioWithOnePortfolioShouldReturnPortfolioBalance stamp: 'AS 5/17/2023 09:44:24'!
+PASSED!
+
+!testRun: #PortfolioTest #test04PortfolioWithTwoPortfoliosShouldReturnSumPortfoliosBalance stamp: 'AS 5/17/2023 09:44:24'!
+PASSED!
+
+!testRun: #PortfolioTest #test05PortfolioHasRegisteredTransactionsInChildAccounts stamp: 'AS 5/17/2023 09:44:24'!
+PASSED!
+
+!testRun: #PortfolioTest #test06PortfolioHasRegisteredTransactionsInChildPortfolios stamp: 'AS 5/17/2023 09:44:24'!
+PASSED!
+
+!testRun: #PortfolioTest #test07PortfolioKnowsChildAccountsTransactions stamp: 'AS 5/17/2023 09:44:24'!
+PASSED!
+
+!testRun: #PortfolioTest #test08PortfolioKnowsChildPortfoliosTransactions stamp: 'AS 5/17/2023 09:44:24'!
+PASSED!
+!PortfolioTest methodsFor: 'test' stamp: 'AS 5/17/2023 09:44:33' prior: 50605433!
+test06PortfolioHasRegisteredTransactionsInChildPortfolios
+
+	| account transaction childPortfolio portfolio |
+	
+	account := ReceptiveAccount new.	
+	transaction := self depositOf: 100 on: account.
+	
+	childPortfolio := self portfolioWithAccounts: { account }.
+	
+	portfolio := self portfolioWithPortfolios: { childPortfolio }.
+	
+	self assert: (portfolio hasRegistered: transaction)! !
+!PortfolioTest methodsFor: 'test' stamp: 'AS 5/17/2023 09:44:38' prior: 50605494!
+test07PortfolioKnowsChildAccountsTransactions
+
+	| account transaction portfolio |
+	
+	account := ReceptiveAccount new.	
+	transaction := self depositOf: 100 on: account.
+		
+	portfolio := self portfolioWithAccounts: { account }.
+	
+	self assert: 1 equals: portfolio transactions size.
+	self assert: (portfolio transactions includes: transaction).! !
+!PortfolioTest methodsFor: 'test' stamp: 'AS 5/17/2023 09:44:44' prior: 50605600!
+test08PortfolioKnowsChildPortfoliosTransactions
+
+	| account transaction childPortfolio portfolio |
+	
+	account := ReceptiveAccount new.	
+	transaction := self depositOf: 100 on: account.
+		
+	childPortfolio := self portfolioWithAccounts: { account }.
+	
+	portfolio := self portfolioWithPortfolios: { childPortfolio }.
+	
+	self assert: 1 equals: portfolio transactions size.
+	self assert: (portfolio transactions includes: transaction).! !
+!PortfolioTest methodsFor: 'test' stamp: 'AS 5/17/2023 09:45:02' prior: 50605936!
+test08PortfolioKnowsChildPortfoliosTransactions
+
+	| account transaction childPortfolio portfolio |
+	
+	account := ReceptiveAccount new.	
+	transaction := self depositOf: 100 on: account.		
+	childPortfolio := self portfolioWithAccounts: { account }.
+	
+	portfolio := self portfolioWithPortfolios: { childPortfolio }.
+	
+	self assert: 1 equals: portfolio transactions size.
+	self assert: (portfolio transactions includes: transaction).! !
+!PortfolioTest methodsFor: 'test' stamp: 'AS 5/17/2023 09:45:08' prior: 50605922!
+test07PortfolioKnowsChildAccountsTransactions
+
+	| account transaction portfolio |
+	
+	account := ReceptiveAccount new.	
+	transaction := self depositOf: 100 on: account.		
+	portfolio := self portfolioWithAccounts: { account }.
+	
+	self assert: 1 equals: portfolio transactions size.
+	self assert: (portfolio transactions includes: transaction).! !
+!PortfolioTest methodsFor: 'test' stamp: 'AS 5/17/2023 09:45:13' prior: 50605907!
+test06PortfolioHasRegisteredTransactionsInChildPortfolios
+
+	| account transaction childPortfolio portfolio |
+	
+	account := ReceptiveAccount new.	
+	transaction := self depositOf: 100 on: account.	
+	childPortfolio := self portfolioWithAccounts: { account }.
+	
+	portfolio := self portfolioWithPortfolios: { childPortfolio }.
+	
+	self assert: (portfolio hasRegistered: transaction)! !
+!PortfolioTest methodsFor: 'test' stamp: 'AS 5/17/2023 09:45:17' prior: 50605860!
+test05PortfolioHasRegisteredTransactionsInChildAccounts
+
+	| portfolio account transaction |
+	
+	account := ReceptiveAccount new.	
+	transaction := self depositOf: 100 on: account.	
+	portfolio := self portfolioWithAccounts: { account }.
+	
+	self assert: (portfolio hasRegistered: transaction)! !
+!PortfolioTest methodsFor: 'test' stamp: 'AS 5/17/2023 09:45:29' prior: 50605142!
+test02PortfolioWithTwoAccountShouldReturnSumAccountsBalance
+
+	| account1 account2 portfolio |
+	
+	account1 := self accountWithDepositOf: 100.
+	account2 := self accountWithDepositOf: 250.	
+	portfolio := self portfolioWithAccounts: { account1. account2 }.
+	
+	self 
+		assert: account1 balance + account2 balance
+		equals: portfolio balance.! !
+
+Object subclass: #CustomerProduct
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Ejercicio'!
+
+!classDefinition: #CustomerProduct category: 'Portfolio-Ejercicio' stamp: 'AS 5/17/2023 09:52:48'!
+Object subclass: #CustomerProduct
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Ejercicio'!
+
+!classRemoval: #CustomerProduct stamp: 'AS 5/17/2023 09:53:44'!
+Object subclass: #CustomerProduct
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Ejercicio'!
+
+----SNAPSHOT----(17 May 2023 09:54:50) CuisUniversity-5706.image priorSource: 8744734!
+
+----STARTUP---- (17 May 2023 19:08:39) as F:\CUIS University 6\CuisUniversity-5706.image!
+
+!Portfolio methodsFor: 'balance' stamp: 'AS 5/17/2023 19:17:06' prior: 50604847!
+balance
+			
+	^ accounts sum: [ :account | account balance ] ifEmpty: [0]
+		+ (portfolios sum: [ :portfolio | portfolio balance ] ifEmpty: [0])
+! !
+
+!testRun: #PortfolioTest #test01PortfolioWithOneAccountShouldReturnAccountBalance stamp: 'AS 5/17/2023 19:17:08'!
+ERROR!
+
+!testRun: #PortfolioTest #test02PortfolioWithTwoAccountShouldReturnSumAccountsBalance stamp: 'AS 5/17/2023 19:17:08'!
+ERROR!
+
+!testRun: #PortfolioTest #test03PortfolioWithOnePortfolioShouldReturnPortfolioBalance stamp: 'AS 5/17/2023 19:17:08'!
+ERROR!
+
+!testRun: #PortfolioTest #test04PortfolioWithTwoPortfoliosShouldReturnSumPortfoliosBalance stamp: 'AS 5/17/2023 19:17:08'!
+ERROR!
+
+!testRun: #PortfolioTest #test05PortfolioHasRegisteredTransactionsInChildAccounts stamp: 'AS 5/17/2023 19:17:08'!
+PASSED!
+
+!testRun: #PortfolioTest #test06PortfolioHasRegisteredTransactionsInChildPortfolios stamp: 'AS 5/17/2023 19:17:08'!
+PASSED!
+
+!testRun: #PortfolioTest #test07PortfolioKnowsChildAccountsTransactions stamp: 'AS 5/17/2023 19:17:08'!
+PASSED!
+
+!testRun: #PortfolioTest #test08PortfolioKnowsChildPortfoliosTransactions stamp: 'AS 5/17/2023 19:17:08'!
+PASSED!
+!Portfolio methodsFor: 'balance' stamp: 'AS 5/17/2023 19:17:18' prior: 50606049!
+balance
+			
+	^ (accounts sum: [ :account | account balance ] ifEmpty: [0])
+		+ (portfolios sum: [ :portfolio | portfolio balance ] ifEmpty: [0])
+! !
+
+!testRun: #PortfolioTest #test01PortfolioWithOneAccountShouldReturnAccountBalance stamp: 'AS 5/17/2023 19:17:18'!
+PASSED!
+
+!testRun: #PortfolioTest #test02PortfolioWithTwoAccountShouldReturnSumAccountsBalance stamp: 'AS 5/17/2023 19:17:18'!
+PASSED!
+
+!testRun: #PortfolioTest #test03PortfolioWithOnePortfolioShouldReturnPortfolioBalance stamp: 'AS 5/17/2023 19:17:18'!
+PASSED!
+
+!testRun: #PortfolioTest #test04PortfolioWithTwoPortfoliosShouldReturnSumPortfoliosBalance stamp: 'AS 5/17/2023 19:17:18'!
+PASSED!
+
+!testRun: #PortfolioTest #test05PortfolioHasRegisteredTransactionsInChildAccounts stamp: 'AS 5/17/2023 19:17:18'!
+PASSED!
+
+!testRun: #PortfolioTest #test06PortfolioHasRegisteredTransactionsInChildPortfolios stamp: 'AS 5/17/2023 19:17:18'!
+PASSED!
+
+!testRun: #PortfolioTest #test07PortfolioKnowsChildAccountsTransactions stamp: 'AS 5/17/2023 19:17:18'!
+PASSED!
+
+!testRun: #PortfolioTest #test08PortfolioKnowsChildPortfoliosTransactions stamp: 'AS 5/17/2023 19:17:18'!
+PASSED!
+!Portfolio methodsFor: 'transactions' stamp: 'AS 5/17/2023 19:24:49' prior: 50605772!
+transactions
+	
+	| transactions |
+	
+	transactions := OrderedCollection new.
+	
+	transactions addAll: (accounts do: [ :account | ^account transactions ]).	
+	transactions addAll: (portfolios do: [ :portfolio | ^portfolio transactions ]).
+		
+	^transactions.
+		! !
+
+!testRun: #PortfolioTest #test01PortfolioWithOneAccountShouldReturnAccountBalance stamp: 'AS 5/17/2023 19:24:49'!
+PASSED!
+
+!testRun: #PortfolioTest #test02PortfolioWithTwoAccountShouldReturnSumAccountsBalance stamp: 'AS 5/17/2023 19:24:49'!
+PASSED!
+
+!testRun: #PortfolioTest #test03PortfolioWithOnePortfolioShouldReturnPortfolioBalance stamp: 'AS 5/17/2023 19:24:49'!
+PASSED!
+
+!testRun: #PortfolioTest #test04PortfolioWithTwoPortfoliosShouldReturnSumPortfoliosBalance stamp: 'AS 5/17/2023 19:24:49'!
+PASSED!
+
+!testRun: #PortfolioTest #test05PortfolioHasRegisteredTransactionsInChildAccounts stamp: 'AS 5/17/2023 19:24:49'!
+PASSED!
+
+!testRun: #PortfolioTest #test06PortfolioHasRegisteredTransactionsInChildPortfolios stamp: 'AS 5/17/2023 19:24:49'!
+PASSED!
+
+!testRun: #PortfolioTest #test07PortfolioKnowsChildAccountsTransactions stamp: 'AS 5/17/2023 19:24:49'!
+PASSED!
+
+!testRun: #PortfolioTest #test08PortfolioKnowsChildPortfoliosTransactions stamp: 'AS 5/17/2023 19:24:49'!
+PASSED!
+!PortfolioTest methodsFor: 'test' stamp: 'AS 5/17/2023 19:38:23'!
+test09PortfolioCantHaveRepeatedElements
+
+	| account transaction childPortfolio1 childPortfolio2 portfolio |
+	
+	account := ReceptiveAccount new.	
+	transaction := self depositOf: 100 on: account.		
+	
+	childPortfolio1 := self portfolioWithAccounts: { account }.	
+	childPortfolio2 := self portfolioWithAccounts: { account }.
+	
+	self 
+		should: [ 	portfolio := self portfolioWithPortfolios: { childPortfolio1, childPortfolio2 } ]
+		raise: Error
+		withExceptionDo: [ :error | 
+			self assert: (portfolio hasTransaction: transaction) 
+			].
+! !
+!PortfolioTest methodsFor: 'test' stamp: 'AS 5/17/2023 19:39:40' prior: 50606167!
+test09PortfolioCantHaveRepeatedElements
+
+	| account transaction childPortfolio1 childPortfolio2 portfolio |
+	
+	account := ReceptiveAccount new.	
+	transaction := self depositOf: 100 on: account.		
+	
+	childPortfolio1 := self portfolioWithAccounts: { account }.	
+	childPortfolio2 := self portfolioWithAccounts: { account }.
+	
+	self 
+		should: [ 	portfolio := self portfolioWithPortfolios: { childPortfolio1, childPortfolio2 } ]
+		raise: Error
+		withExceptionDo: [ :error | 
+			self assert: (portfolio hasRegistered: transaction).
+			self assert: childPortfolio1 balance equals: portfolio balance
+			].
+! !
+
+!testRun: #PortfolioTest #test09PortfolioCantHaveRepeatedElements stamp: 'AS 5/17/2023 19:39:41'!
+ERROR!
+!PortfolioTest methodsFor: 'test' stamp: 'AS 5/17/2023 19:41:20' prior: 50606187!
+test09PortfolioCantHaveRepeatedElements
+
+	| account transaction childPortfolio1 childPortfolio2 portfolio |
+	
+	account := ReceptiveAccount new.	
+	transaction := self depositOf: 100 on: account.		
+	
+	childPortfolio1 := self portfolioWithAccounts: { account }.	
+	childPortfolio2 := self portfolioWithAccounts: { account }.
+	
+	portfolio := Portfolio new.
+	portfolio addPortfolio: childPortfolio1.
+	
+	self 
+		should: [ 	portfolio addPortfolio: childPortfolio2 ]
+		raise: Error
+		withExceptionDo: [ :error | 
+			self assert: (portfolio hasRegistered: transaction).
+			self assert: childPortfolio1 balance equals: portfolio balance
+			].
+! !
+
+!testRun: #PortfolioTest #test09PortfolioCantHaveRepeatedElements stamp: 'AS 5/17/2023 19:41:21'!
+FAILURE!
+
+a := ReceptiveAccount new.!
+
+b := ReceptiveAccount new.!
+
+c := Set new.!
+
+c add: a!
+
+c add: b.!
+
+c!
+
+uno := 1.!
+
+uno1 := 1.!
+
+d := Set new.!
+
+d add: uno.!
+
+d add: uno1.!
+
+d!
+!PortfolioTest methodsFor: 'test' stamp: 'AS 5/17/2023 19:56:44' prior: 50606212!
+test09PortfolioCantHaveRepeatedElements
+
+	| account portfolio |
+	
+	account := ReceptiveAccount new.	
+		
+	portfolio := Portfolio new.
+	portfolio addAccount: account.
+	
+	self 
+		should: [ 	portfolio addAccount: account ]
+		raise: Error
+! !
+
+!testRun: #PortfolioTest #test09PortfolioCantHaveRepeatedElements stamp: 'AS 5/17/2023 19:56:46'!
+FAILURE!
+!Portfolio methodsFor: 'accounts' stamp: 'AS 5/17/2023 20:01:00' prior: 50604671!
+addAccount: anAccount 
+	
+	(accounts anySatisfy: [ :account | account == anAccount ])
+		ifTrue: [ self error: 'La cuenta ya pertenece al portfolio' ]
+		ifFalse: [ accounts add: anAccount ]! !
+
+!testRun: #PortfolioTest #test01PortfolioWithOneAccountShouldReturnAccountBalance stamp: 'AS 5/17/2023 20:01:03'!
+PASSED!
+
+!testRun: #PortfolioTest #test02PortfolioWithTwoAccountShouldReturnSumAccountsBalance stamp: 'AS 5/17/2023 20:01:03'!
+PASSED!
+
+!testRun: #PortfolioTest #test03PortfolioWithOnePortfolioShouldReturnPortfolioBalance stamp: 'AS 5/17/2023 20:01:03'!
+PASSED!
+
+!testRun: #PortfolioTest #test04PortfolioWithTwoPortfoliosShouldReturnSumPortfoliosBalance stamp: 'AS 5/17/2023 20:01:03'!
+PASSED!
+
+!testRun: #PortfolioTest #test05PortfolioHasRegisteredTransactionsInChildAccounts stamp: 'AS 5/17/2023 20:01:03'!
+PASSED!
+
+!testRun: #PortfolioTest #test06PortfolioHasRegisteredTransactionsInChildPortfolios stamp: 'AS 5/17/2023 20:01:03'!
+PASSED!
+
+!testRun: #PortfolioTest #test07PortfolioKnowsChildAccountsTransactions stamp: 'AS 5/17/2023 20:01:03'!
+PASSED!
+
+!testRun: #PortfolioTest #test08PortfolioKnowsChildPortfoliosTransactions stamp: 'AS 5/17/2023 20:01:03'!
+PASSED!
+
+!testRun: #PortfolioTest #test09PortfolioCantHaveRepeatedElements stamp: 'AS 5/17/2023 20:01:03'!
+PASSED!
+!Portfolio methodsFor: 'accounts' stamp: 'AS 5/17/2023 20:02:30' prior: 50606258!
+addAccount: anAccount 
+	
+	(accounts includes: anAccount)
+		ifTrue: [ self error: 'La cuenta ya pertenece al portfolio' ]
+		ifFalse: [ accounts add: anAccount ]! !
+
+!testRun: #PortfolioTest #test01PortfolioWithOneAccountShouldReturnAccountBalance stamp: 'AS 5/17/2023 20:02:31'!
+PASSED!
+
+!testRun: #PortfolioTest #test02PortfolioWithTwoAccountShouldReturnSumAccountsBalance stamp: 'AS 5/17/2023 20:02:31'!
+PASSED!
+
+!testRun: #PortfolioTest #test03PortfolioWithOnePortfolioShouldReturnPortfolioBalance stamp: 'AS 5/17/2023 20:02:31'!
+PASSED!
+
+!testRun: #PortfolioTest #test04PortfolioWithTwoPortfoliosShouldReturnSumPortfoliosBalance stamp: 'AS 5/17/2023 20:02:31'!
+PASSED!
+
+!testRun: #PortfolioTest #test05PortfolioHasRegisteredTransactionsInChildAccounts stamp: 'AS 5/17/2023 20:02:31'!
+PASSED!
+
+!testRun: #PortfolioTest #test06PortfolioHasRegisteredTransactionsInChildPortfolios stamp: 'AS 5/17/2023 20:02:31'!
+PASSED!
+
+!testRun: #PortfolioTest #test07PortfolioKnowsChildAccountsTransactions stamp: 'AS 5/17/2023 20:02:31'!
+PASSED!
+
+!testRun: #PortfolioTest #test08PortfolioKnowsChildPortfoliosTransactions stamp: 'AS 5/17/2023 20:02:31'!
+PASSED!
+
+!testRun: #PortfolioTest #test09PortfolioCantHaveRepeatedElements stamp: 'AS 5/17/2023 20:02:31'!
+PASSED!
+!PortfolioTest methodsFor: 'test' stamp: 'AS 5/17/2023 20:03:10'!
+test09PortfolioCantHaveRepeatedAccounts
+
+	| account portfolio |
+	
+	account := ReceptiveAccount new.	
+		
+	portfolio := Portfolio new.
+	portfolio addAccount: account.
+	
+	self 
+		should: [ 	portfolio addAccount: account ]
+		raise: Error
+! !
+
+!methodRemoval: PortfolioTest #test09PortfolioCantHaveRepeatedElements stamp: 'AS 5/17/2023 20:03:10'!
+test09PortfolioCantHaveRepeatedElements
+
+	| account portfolio |
+	
+	account := ReceptiveAccount new.	
+		
+	portfolio := Portfolio new.
+	portfolio addAccount: account.
+	
+	self 
+		should: [ 	portfolio addAccount: account ]
+		raise: Error
+!
+!PortfolioTest methodsFor: 'test' stamp: 'AS 5/17/2023 20:06:30'!
+test10PortfolioCantHaveTheSameAccountsInChildPortfolios
+
+	| account parentPortfolio childPortfolio|
+	
+	account := ReceptiveAccount new.	
+		
+	parentPortfolio := Portfolio new.
+	parentPortfolio addAccount: account.
+	
+	childPortfolio := Portfolio new.
+	parentPortfolio addPortfolio: childPortfolio.
+		
+	self 
+		should: [ 	childPortfolio addAccount: account ]
+		raise: Error
+! !
+
+!testRun: #PortfolioTest #test10PortfolioCantHaveTheSameAccountsInChildPortfolios stamp: 'AS 5/17/2023 20:06:32'!
+FAILURE!
+!Portfolio methodsFor: 'accounts' stamp: 'AS 5/17/2023 20:10:41' prior: 50606301!
+addAccount: anAccount 
+	
+	(accounts includes: anAccount)
+		ifTrue: [ self error: 'La cuenta ya pertenece al portfolio' ]
+		ifFalse: [ (portfolios hasAccount: anAccount)
+				ifTrue: [ self error: 'La cuenta ya pertenece al portfolio' ]
+				ifFalse: [ accounts add: anAccount ]
+				]
+			! !
+
+a := 1.
+b := 2.
+
+c := OrderedCollection new.
+c add: 1.
+c add: 2.
+!
+
+c includes: 3.!
+!Portfolio methodsFor: 'accounts' stamp: 'AS 5/17/2023 20:14:27'!
+hasAccount: anAccount 
+	
+	^(accounts includes: anAccount) or: 	(portfolios hasAccount: anAccount)
+			! !
+!Portfolio methodsFor: 'accounts' stamp: 'AS 5/17/2023 20:16:08' prior: 50606397!
+hasAccount: anAccount 
+	
+	^(accounts includes: anAccount) or: 	(portfolios anySatisfy: [ :portfolio | portfolio hasAccount: anAccount ])
+			! !
+!Portfolio methodsFor: 'accounts' stamp: 'AS 5/17/2023 20:17:25' prior: 50606383!
+addAccount: anAccount 
+	
+	(self hasAccount: anAccount)
+		ifTrue: [ self error: 'La cuenta ya pertenece al portfolio' ].
+		
+	accounts add: anAccount
+			! !
+
+!testRun: #PortfolioTest #test01PortfolioWithOneAccountShouldReturnAccountBalance stamp: 'AS 5/17/2023 20:17:28'!
+PASSED!
+
+!testRun: #PortfolioTest #test02PortfolioWithTwoAccountShouldReturnSumAccountsBalance stamp: 'AS 5/17/2023 20:17:28'!
+PASSED!
+
+!testRun: #PortfolioTest #test03PortfolioWithOnePortfolioShouldReturnPortfolioBalance stamp: 'AS 5/17/2023 20:17:28'!
+PASSED!
+
+!testRun: #PortfolioTest #test04PortfolioWithTwoPortfoliosShouldReturnSumPortfoliosBalance stamp: 'AS 5/17/2023 20:17:28'!
+PASSED!
+
+!testRun: #PortfolioTest #test05PortfolioHasRegisteredTransactionsInChildAccounts stamp: 'AS 5/17/2023 20:17:28'!
+PASSED!
+
+!testRun: #PortfolioTest #test06PortfolioHasRegisteredTransactionsInChildPortfolios stamp: 'AS 5/17/2023 20:17:28'!
+PASSED!
+
+!testRun: #PortfolioTest #test07PortfolioKnowsChildAccountsTransactions stamp: 'AS 5/17/2023 20:17:28'!
+PASSED!
+
+!testRun: #PortfolioTest #test08PortfolioKnowsChildPortfoliosTransactions stamp: 'AS 5/17/2023 20:17:28'!
+PASSED!
+
+!testRun: #PortfolioTest #test09PortfolioCantHaveRepeatedAccounts stamp: 'AS 5/17/2023 20:17:28'!
+PASSED!
+
+!testRun: #PortfolioTest #test10PortfolioCantHaveTheSameAccountsInChildPortfolios stamp: 'AS 5/17/2023 20:17:28'!
+FAILURE!
+
+!testRun: #PortfolioTest #test10PortfolioCantHaveTheSameAccountsInChildPortfolios stamp: 'AS 5/17/2023 20:17:28'!
+FAILURE!
+!PortfolioTest methodsFor: 'test' stamp: 'AS 5/17/2023 20:18:22' prior: 50606364!
+test10PortfolioCantHaveTheSameAccountsInChildPortfolios
+
+	| account parentPortfolio childPortfolio|
+	
+	account := ReceptiveAccount new.	
+		
+	parentPortfolio := Portfolio new.
+	parentPortfolio addAccount: account.
+	
+	childPortfolio := Portfolio new.
+	parentPortfolio addPortfolio: childPortfolio.
+	childPortfolio addAccount: account.
+		
+	self 
+		should: [ 	parentPortfolio addAccount: account ]
+		raise: Error
+! !
+
+!testRun: #PortfolioTest #test10PortfolioCantHaveTheSameAccountsInChildPortfolios stamp: 'AS 5/17/2023 20:18:23'!
+PASSED!
+
+!testRun: #PortfolioTest #test01PortfolioWithOneAccountShouldReturnAccountBalance stamp: 'AS 5/17/2023 20:18:23'!
+PASSED!
+
+!testRun: #PortfolioTest #test02PortfolioWithTwoAccountShouldReturnSumAccountsBalance stamp: 'AS 5/17/2023 20:18:23'!
+PASSED!
+
+!testRun: #PortfolioTest #test03PortfolioWithOnePortfolioShouldReturnPortfolioBalance stamp: 'AS 5/17/2023 20:18:23'!
+PASSED!
+
+!testRun: #PortfolioTest #test04PortfolioWithTwoPortfoliosShouldReturnSumPortfoliosBalance stamp: 'AS 5/17/2023 20:18:23'!
+PASSED!
+
+!testRun: #PortfolioTest #test05PortfolioHasRegisteredTransactionsInChildAccounts stamp: 'AS 5/17/2023 20:18:23'!
+PASSED!
+
+!testRun: #PortfolioTest #test06PortfolioHasRegisteredTransactionsInChildPortfolios stamp: 'AS 5/17/2023 20:18:23'!
+PASSED!
+
+!testRun: #PortfolioTest #test07PortfolioKnowsChildAccountsTransactions stamp: 'AS 5/17/2023 20:18:23'!
+PASSED!
+
+!testRun: #PortfolioTest #test08PortfolioKnowsChildPortfoliosTransactions stamp: 'AS 5/17/2023 20:18:23'!
+PASSED!
+
+!testRun: #PortfolioTest #test09PortfolioCantHaveRepeatedAccounts stamp: 'AS 5/17/2023 20:18:23'!
+PASSED!
+
+!testRun: #PortfolioTest #test10PortfolioCantHaveTheSameAccountsInChildPortfolios stamp: 'AS 5/17/2023 20:18:23'!
+PASSED!
+!PortfolioTest methodsFor: 'test' stamp: 'AS 5/17/2023 20:19:14'!
+test11PortfolioCantHaveTheSameAccountsInChildPortfolios2
+
+	| account parentPortfolio childPortfolio|
+	
+	account := ReceptiveAccount new.	
+		
+	parentPortfolio := Portfolio new.
+	parentPortfolio addAccount: account.
+	
+	childPortfolio := Portfolio new.
+	parentPortfolio addPortfolio: childPortfolio.
+	childPortfolio addAccount: account.
+		
+	self 
+		should: [ 	parentPortfolio addAccount: account ]
+		raise: Error
+! !
+!PortfolioTest methodsFor: 'test' stamp: 'AS 5/17/2023 20:19:30'!
+test11PortfolioCantHaveTheSameAccountsInParentPortfolio
+
+	| account parentPortfolio childPortfolio|
+	
+	account := ReceptiveAccount new.	
+		
+	parentPortfolio := Portfolio new.
+	parentPortfolio addAccount: account.
+	
+	childPortfolio := Portfolio new.
+	parentPortfolio addPortfolio: childPortfolio.
+	childPortfolio addAccount: account.
+		
+	self 
+		should: [ 	parentPortfolio addAccount: account ]
+		raise: Error
+! !
+
+!methodRemoval: PortfolioTest #test11PortfolioCantHaveTheSameAccountsInChildPortfolios2 stamp: 'AS 5/17/2023 20:19:32'!
+test11PortfolioCantHaveTheSameAccountsInChildPortfolios2
+
+	| account parentPortfolio childPortfolio|
+	
+	account := ReceptiveAccount new.	
+		
+	parentPortfolio := Portfolio new.
+	parentPortfolio addAccount: account.
+	
+	childPortfolio := Portfolio new.
+	parentPortfolio addPortfolio: childPortfolio.
+	childPortfolio addAccount: account.
+		
+	self 
+		should: [ 	parentPortfolio addAccount: account ]
+		raise: Error
+!
+!PortfolioTest methodsFor: 'test' stamp: 'AS 5/17/2023 20:19:52' prior: 50606533!
+test11PortfolioCantHaveTheSameAccountsInParentPortfolio
+
+	| account parentPortfolio childPortfolio|
+	
+	account := ReceptiveAccount new.	
+		
+	parentPortfolio := Portfolio new.
+	parentPortfolio addAccount: account.
+	
+	childPortfolio := Portfolio new.
+	parentPortfolio addPortfolio: childPortfolio.
+		
+	self 
+		should: [ 	childPortfolio addAccount: account ]
+		raise: Error
+! !
+
+!testRun: #PortfolioTest #test11PortfolioCantHaveTheSameAccountsInParentPortfolio stamp: 'AS 5/17/2023 20:19:54'!
+FAILURE!
+
+Object subclass: #Portfolio
+	instanceVariableNames: 'accounts portfolios parent'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Ejercicio'!
+
+!classDefinition: #Portfolio category: 'Portfolio-Ejercicio' stamp: 'AS 5/17/2023 20:20:07'!
+Object subclass: #Portfolio
+	instanceVariableNames: 'accounts portfolios parent'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Ejercicio'!
+!Portfolio methodsFor: 'private' stamp: 'AS 5/17/2023 20:21:36' prior: 50604817!
+addPortfolio: aPortfolio 
+	
+	portfolios add: aPortfolio.
+	aPortfolio parent: self.! !
+!Portfolio methodsFor: 'private' stamp: 'AS 5/17/2023 20:22:07'!
+parent: aPortfolio
+
+	parent := aPortfolio
+	
+	! !
+!Portfolio methodsFor: 'private' stamp: 'AS 5/17/2023 20:22:25'!
+parent
+
+	^parent	
+	! !
+!Portfolio methodsFor: 'private' stamp: 'AS 5/17/2023 20:31:10'!
+root
+	
+	parent ifNil: [ ^self ].
+	^parent root! !
+!Portfolio methodsFor: 'accounts' stamp: 'AS 5/17/2023 20:31:59' prior: 50606411!
+addAccount: anAccount 
+	
+	(self root hasAccount: anAccount)
+		ifTrue: [ self error: 'La cuenta ya pertenece al portfolio' ].
+		
+	accounts add: anAccount
+			! !
+
+!testRun: #PortfolioTest #test01PortfolioWithOneAccountShouldReturnAccountBalance stamp: 'AS 5/17/2023 20:32:00'!
+PASSED!
+
+!testRun: #PortfolioTest #test02PortfolioWithTwoAccountShouldReturnSumAccountsBalance stamp: 'AS 5/17/2023 20:32:00'!
+PASSED!
+
+!testRun: #PortfolioTest #test03PortfolioWithOnePortfolioShouldReturnPortfolioBalance stamp: 'AS 5/17/2023 20:32:00'!
+PASSED!
+
+!testRun: #PortfolioTest #test04PortfolioWithTwoPortfoliosShouldReturnSumPortfoliosBalance stamp: 'AS 5/17/2023 20:32:00'!
+PASSED!
+
+!testRun: #PortfolioTest #test05PortfolioHasRegisteredTransactionsInChildAccounts stamp: 'AS 5/17/2023 20:32:00'!
+PASSED!
+
+!testRun: #PortfolioTest #test06PortfolioHasRegisteredTransactionsInChildPortfolios stamp: 'AS 5/17/2023 20:32:00'!
+PASSED!
+
+!testRun: #PortfolioTest #test07PortfolioKnowsChildAccountsTransactions stamp: 'AS 5/17/2023 20:32:00'!
+PASSED!
+
+!testRun: #PortfolioTest #test08PortfolioKnowsChildPortfoliosTransactions stamp: 'AS 5/17/2023 20:32:00'!
+PASSED!
+
+!testRun: #PortfolioTest #test09PortfolioCantHaveRepeatedAccounts stamp: 'AS 5/17/2023 20:32:00'!
+PASSED!
+
+!testRun: #PortfolioTest #test10PortfolioCantHaveTheSameAccountsInChildPortfolios stamp: 'AS 5/17/2023 20:32:00'!
+ERROR!
+
+!testRun: #PortfolioTest #test11PortfolioCantHaveTheSameAccountsInParentPortfolio stamp: 'AS 5/17/2023 20:32:00'!
+PASSED!
+
+!testRun: #PortfolioTest #test10PortfolioCantHaveTheSameAccountsInChildPortfolios stamp: 'AS 5/17/2023 20:32:00'!
+ERROR!
+
+!testRun: #PortfolioTest #test01PortfolioWithOneAccountShouldReturnAccountBalance stamp: 'AS 5/17/2023 20:33:16'!
+PASSED!
+
+!testRun: #PortfolioTest #test02PortfolioWithTwoAccountShouldReturnSumAccountsBalance stamp: 'AS 5/17/2023 20:33:16'!
+PASSED!
+
+!testRun: #PortfolioTest #test03PortfolioWithOnePortfolioShouldReturnPortfolioBalance stamp: 'AS 5/17/2023 20:33:16'!
+PASSED!
+
+!testRun: #PortfolioTest #test04PortfolioWithTwoPortfoliosShouldReturnSumPortfoliosBalance stamp: 'AS 5/17/2023 20:33:16'!
+PASSED!
+
+!testRun: #PortfolioTest #test05PortfolioHasRegisteredTransactionsInChildAccounts stamp: 'AS 5/17/2023 20:33:16'!
+PASSED!
+
+!testRun: #PortfolioTest #test06PortfolioHasRegisteredTransactionsInChildPortfolios stamp: 'AS 5/17/2023 20:33:16'!
+PASSED!
+
+!testRun: #PortfolioTest #test07PortfolioKnowsChildAccountsTransactions stamp: 'AS 5/17/2023 20:33:16'!
+PASSED!
+
+!testRun: #PortfolioTest #test08PortfolioKnowsChildPortfoliosTransactions stamp: 'AS 5/17/2023 20:33:16'!
+PASSED!
+
+!testRun: #PortfolioTest #test09PortfolioCantHaveRepeatedAccounts stamp: 'AS 5/17/2023 20:33:16'!
+PASSED!
+
+!testRun: #PortfolioTest #test10PortfolioCantHaveTheSameAccountsInChildPortfolios stamp: 'AS 5/17/2023 20:33:16'!
+ERROR!
+
+!testRun: #PortfolioTest #test11PortfolioCantHaveTheSameAccountsInParentPortfolio stamp: 'AS 5/17/2023 20:33:16'!
+PASSED!
+
+!testRun: #PortfolioTest #test10PortfolioCantHaveTheSameAccountsInChildPortfolios stamp: 'AS 5/17/2023 20:33:16'!
+ERROR!
+
+!testRun: #PortfolioTest #test01PortfolioWithOneAccountShouldReturnAccountBalance stamp: 'AS 5/17/2023 20:33:25'!
+PASSED!
+
+!testRun: #PortfolioTest #test02PortfolioWithTwoAccountShouldReturnSumAccountsBalance stamp: 'AS 5/17/2023 20:33:25'!
+PASSED!
+
+!testRun: #PortfolioTest #test03PortfolioWithOnePortfolioShouldReturnPortfolioBalance stamp: 'AS 5/17/2023 20:33:25'!
+PASSED!
+
+!testRun: #PortfolioTest #test04PortfolioWithTwoPortfoliosShouldReturnSumPortfoliosBalance stamp: 'AS 5/17/2023 20:33:25'!
+PASSED!
+
+!testRun: #PortfolioTest #test05PortfolioHasRegisteredTransactionsInChildAccounts stamp: 'AS 5/17/2023 20:33:25'!
+PASSED!
+
+!testRun: #PortfolioTest #test06PortfolioHasRegisteredTransactionsInChildPortfolios stamp: 'AS 5/17/2023 20:33:25'!
+PASSED!
+
+!testRun: #PortfolioTest #test07PortfolioKnowsChildAccountsTransactions stamp: 'AS 5/17/2023 20:33:25'!
+PASSED!
+
+!testRun: #PortfolioTest #test08PortfolioKnowsChildPortfoliosTransactions stamp: 'AS 5/17/2023 20:33:25'!
+PASSED!
+
+!testRun: #PortfolioTest #test09PortfolioCantHaveRepeatedAccounts stamp: 'AS 5/17/2023 20:33:25'!
+PASSED!
+
+!testRun: #PortfolioTest #test10PortfolioCantHaveTheSameAccountsInChildPortfolios stamp: 'AS 5/17/2023 20:33:25'!
+ERROR!
+
+!testRun: #PortfolioTest #test11PortfolioCantHaveTheSameAccountsInParentPortfolio stamp: 'AS 5/17/2023 20:33:25'!
+PASSED!
+
+!testRun: #PortfolioTest #test10PortfolioCantHaveTheSameAccountsInChildPortfolios stamp: 'AS 5/17/2023 20:33:25'!
+ERROR!
+!PortfolioTest methodsFor: 'test' stamp: 'AS 5/17/2023 20:34:28' prior: 50606461!
+test10PortfolioCantHaveTheSameAccountsInChildPortfolios
+
+	| account parentPortfolio childPortfolio|
+	
+	account := ReceptiveAccount new.	
+		
+	parentPortfolio := Portfolio new.
+	
+	childPortfolio := Portfolio new.
+	parentPortfolio addPortfolio: childPortfolio.
+	childPortfolio addAccount: account.
+		
+	self 
+		should: [ 	parentPortfolio addAccount: account ]
+		raise: Error
+! !
+!PortfolioTest methodsFor: 'test' stamp: 'AS 5/17/2023 20:35:08'!
+test10PortfolioCantHaveTheSameAccountsInParentPortfolio
+
+	| account parentPortfolio childPortfolio|
+	
+	account := ReceptiveAccount new.	
+		
+	parentPortfolio := Portfolio new.
+	
+	childPortfolio := Portfolio new.
+	parentPortfolio addPortfolio: childPortfolio.
+	childPortfolio addAccount: account.
+		
+	self 
+		should: [ 	parentPortfolio addAccount: account ]
+		raise: Error
+! !
+
+!methodRemoval: PortfolioTest #test10PortfolioCantHaveTheSameAccountsInChildPortfolios stamp: 'AS 5/17/2023 20:35:08'!
+test10PortfolioCantHaveTheSameAccountsInChildPortfolios
+
+	| account parentPortfolio childPortfolio|
+	
+	account := ReceptiveAccount new.	
+		
+	parentPortfolio := Portfolio new.
+	
+	childPortfolio := Portfolio new.
+	parentPortfolio addPortfolio: childPortfolio.
+	childPortfolio addAccount: account.
+		
+	self 
+		should: [ 	parentPortfolio addAccount: account ]
+		raise: Error
+!
+!PortfolioTest methodsFor: 'test' stamp: 'AS 5/17/2023 20:35:19'!
+test11PortfolioCantHaveTheSameAccountsInChildPortfolio
+
+	| account parentPortfolio childPortfolio|
+	
+	account := ReceptiveAccount new.	
+		
+	parentPortfolio := Portfolio new.
+	parentPortfolio addAccount: account.
+	
+	childPortfolio := Portfolio new.
+	parentPortfolio addPortfolio: childPortfolio.
+		
+	self 
+		should: [ 	childPortfolio addAccount: account ]
+		raise: Error
+! !
+
+!methodRemoval: PortfolioTest #test11PortfolioCantHaveTheSameAccountsInParentPortfolio stamp: 'AS 5/17/2023 20:35:19'!
+test11PortfolioCantHaveTheSameAccountsInParentPortfolio
+
+	| account parentPortfolio childPortfolio|
+	
+	account := ReceptiveAccount new.	
+		
+	parentPortfolio := Portfolio new.
+	parentPortfolio addAccount: account.
+	
+	childPortfolio := Portfolio new.
+	parentPortfolio addPortfolio: childPortfolio.
+		
+	self 
+		should: [ 	childPortfolio addAccount: account ]
+		raise: Error
+!
+
+!testRun: #PortfolioTest #test11PortfolioCantHaveTheSameAccountsInChildPortfolio stamp: 'AS 5/17/2023 20:35:23'!
+PASSED!
+
+!testRun: #PortfolioTest #test01PortfolioWithOneAccountShouldReturnAccountBalance stamp: 'AS 5/17/2023 20:35:23'!
+PASSED!
+
+!testRun: #PortfolioTest #test02PortfolioWithTwoAccountShouldReturnSumAccountsBalance stamp: 'AS 5/17/2023 20:35:23'!
+PASSED!
+
+!testRun: #PortfolioTest #test03PortfolioWithOnePortfolioShouldReturnPortfolioBalance stamp: 'AS 5/17/2023 20:35:23'!
+PASSED!
+
+!testRun: #PortfolioTest #test04PortfolioWithTwoPortfoliosShouldReturnSumPortfoliosBalance stamp: 'AS 5/17/2023 20:35:23'!
+PASSED!
+
+!testRun: #PortfolioTest #test05PortfolioHasRegisteredTransactionsInChildAccounts stamp: 'AS 5/17/2023 20:35:23'!
+PASSED!
+
+!testRun: #PortfolioTest #test06PortfolioHasRegisteredTransactionsInChildPortfolios stamp: 'AS 5/17/2023 20:35:23'!
+PASSED!
+
+!testRun: #PortfolioTest #test07PortfolioKnowsChildAccountsTransactions stamp: 'AS 5/17/2023 20:35:23'!
+PASSED!
+
+!testRun: #PortfolioTest #test08PortfolioKnowsChildPortfoliosTransactions stamp: 'AS 5/17/2023 20:35:23'!
+PASSED!
+
+!testRun: #PortfolioTest #test09PortfolioCantHaveRepeatedAccounts stamp: 'AS 5/17/2023 20:35:23'!
+PASSED!
+
+!testRun: #PortfolioTest #test10PortfolioCantHaveTheSameAccountsInParentPortfolio stamp: 'AS 5/17/2023 20:35:23'!
+PASSED!
+
+!testRun: #PortfolioTest #test11PortfolioCantHaveTheSameAccountsInChildPortfolio stamp: 'AS 5/17/2023 20:35:23'!
+PASSED!
+!PortfolioTest methodsFor: 'test' stamp: 'AS 5/17/2023 20:35:41'!
+test10PortfolioCantHaveTheSameAccountsInChildPortfolio
+
+	| account parentPortfolio childPortfolio|
+	
+	account := ReceptiveAccount new.	
+		
+	parentPortfolio := Portfolio new.
+	parentPortfolio addAccount: account.
+	
+	childPortfolio := Portfolio new.
+	parentPortfolio addPortfolio: childPortfolio.
+		
+	self 
+		should: [ 	childPortfolio addAccount: account ]
+		raise: Error
+! !
+
+!methodRemoval: PortfolioTest #test11PortfolioCantHaveTheSameAccountsInChildPortfolio stamp: 'AS 5/17/2023 20:35:41'!
+test11PortfolioCantHaveTheSameAccountsInChildPortfolio
+
+	| account parentPortfolio childPortfolio|
+	
+	account := ReceptiveAccount new.	
+		
+	parentPortfolio := Portfolio new.
+	parentPortfolio addAccount: account.
+	
+	childPortfolio := Portfolio new.
+	parentPortfolio addPortfolio: childPortfolio.
+		
+	self 
+		should: [ 	childPortfolio addAccount: account ]
+		raise: Error
+!
+!PortfolioTest methodsFor: 'test' stamp: 'AS 5/17/2023 20:35:49'!
+test11PortfolioCantHaveTheSameAccountsInParentPortfolio
+
+	| account parentPortfolio childPortfolio|
+	
+	account := ReceptiveAccount new.	
+		
+	parentPortfolio := Portfolio new.
+	
+	childPortfolio := Portfolio new.
+	parentPortfolio addPortfolio: childPortfolio.
+	childPortfolio addAccount: account.
+		
+	self 
+		should: [ 	parentPortfolio addAccount: account ]
+		raise: Error
+! !
+
+!methodRemoval: PortfolioTest #test10PortfolioCantHaveTheSameAccountsInParentPortfolio stamp: 'AS 5/17/2023 20:35:49'!
+test10PortfolioCantHaveTheSameAccountsInParentPortfolio
+
+	| account parentPortfolio childPortfolio|
+	
+	account := ReceptiveAccount new.	
+		
+	parentPortfolio := Portfolio new.
+	
+	childPortfolio := Portfolio new.
+	parentPortfolio addPortfolio: childPortfolio.
+	childPortfolio addAccount: account.
+		
+	self 
+		should: [ 	parentPortfolio addAccount: account ]
+		raise: Error
+!
+!PortfolioTest methodsFor: 'test' stamp: 'AS 5/17/2023 20:40:04'!
+test12PortfolioCanHaveTwoParents
+
+	| parentPortfolio1 parentPortfolio2 childPortfolio |
+			
+	parentPortfolio1 := Portfolio new.
+	parentPortfolio2 := Portfolio new.
+	
+	childPortfolio := Portfolio new.
+	
+	parentPortfolio1 addPortfolio: childPortfolio.
+	
+	parentPortfolio2 addPortfolio: childPortfolio.
+			
+	self assert: 	childPortfolio parent equals: parentPortfolio1
+! !
+
+!testRun: #PortfolioTest #test12PortfolioCanHaveTwoParents stamp: 'AS 5/17/2023 20:44:05'!
+FAILURE!
+
+Object subclass: #Portfolio
+	instanceVariableNames: 'accounts portfolios parents'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Ejercicio'!
+
+!classDefinition: #Portfolio category: 'Portfolio-Ejercicio' stamp: 'AS 5/17/2023 20:44:21'!
+Object subclass: #Portfolio
+	instanceVariableNames: 'accounts portfolios parents'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Ejercicio'!
+!Portfolio methodsFor: 'initialization' stamp: 'AS 5/17/2023 20:44:56' prior: 50604811 overrides: 16920235!
+initialize
+	
+	accounts := OrderedCollection new.
+	portfolios := OrderedCollection new.
+	parents := OrderedCollection new.! !
+
+Object subclass: #Portfolio
+	instanceVariableNames: 'accounts portfolios parent1 parent2'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Ejercicio'!
+
+!classDefinition: #Portfolio category: 'Portfolio-Ejercicio' stamp: 'AS 5/17/2023 20:47:14'!
+Object subclass: #Portfolio
+	instanceVariableNames: 'accounts portfolios parent1 parent2'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Ejercicio'!
+!Portfolio methodsFor: 'initialization' stamp: 'AS 5/17/2023 20:47:25' prior: 50606971 overrides: 16920235!
+initialize
+	
+	accounts := OrderedCollection new.
+	portfolios := OrderedCollection new.
+	! !
+!Portfolio methodsFor: 'private' stamp: 'AS 5/17/2023 20:51:55'!
+roots
+	
+	| roots |
+	
+	roots := OrderedCollection new.
+	
+	parent1 addRootsTo: roots.
+	parent2 addRootsTo: roots.
+	
+	^roots! !
+!Portfolio methodsFor: 'private' stamp: 'AS 5/17/2023 20:53:38'!
+addRootsTo: aRootCollection
+	
+	parent1 ifNil: [ aRootCollection add: self ].
+	parent1 ifNotNil: [ parent1 addRootsTo: aRootCollection ].
+	
+	parent2 ifNil: [ aRootCollection add: self ].
+	parent2 ifNotNil: [ parent2 addRootsTo: aRootCollection ].	
+! !
+!Portfolio methodsFor: 'private' stamp: 'AS 5/17/2023 20:55:51' prior: 50606603!
+parent: aPortfolio
+
+	parent1 ifNil: [parent1 := aPortfolio].
+	parent2 ifNil: [parent2 := aPortfolio].
+		
+	! !
+!Portfolio methodsFor: 'private' stamp: 'AS 5/17/2023 21:00:02' prior: 50607014!
+parent: aPortfolio
+
+	(parent1 isNil)
+		ifTrue: [ parent1 := aPortfolio ] 
+		ifFalse: [ parent2 := aPortfolio]
+		
+	! !
+!Portfolio methodsFor: 'private' stamp: 'AS 5/17/2023 21:01:16'!
+parents
+
+	^OrderedCollection new with: parent1 with: parent2
+	! !
+
+!testRun: #PortfolioTest #test01PortfolioWithOneAccountShouldReturnAccountBalance stamp: 'AS 5/17/2023 21:01:38'!
+PASSED!
+
+!testRun: #PortfolioTest #test02PortfolioWithTwoAccountShouldReturnSumAccountsBalance stamp: 'AS 5/17/2023 21:01:38'!
+PASSED!
+
+!testRun: #PortfolioTest #test03PortfolioWithOnePortfolioShouldReturnPortfolioBalance stamp: 'AS 5/17/2023 21:01:38'!
+PASSED!
+
+!testRun: #PortfolioTest #test04PortfolioWithTwoPortfoliosShouldReturnSumPortfoliosBalance stamp: 'AS 5/17/2023 21:01:38'!
+PASSED!
+
+!testRun: #PortfolioTest #test05PortfolioHasRegisteredTransactionsInChildAccounts stamp: 'AS 5/17/2023 21:01:38'!
+PASSED!
+
+!testRun: #PortfolioTest #test06PortfolioHasRegisteredTransactionsInChildPortfolios stamp: 'AS 5/17/2023 21:01:38'!
+PASSED!
+
+!testRun: #PortfolioTest #test07PortfolioKnowsChildAccountsTransactions stamp: 'AS 5/17/2023 21:01:38'!
+PASSED!
+
+!testRun: #PortfolioTest #test08PortfolioKnowsChildPortfoliosTransactions stamp: 'AS 5/17/2023 21:01:38'!
+PASSED!
+
+!testRun: #PortfolioTest #test09PortfolioCantHaveRepeatedAccounts stamp: 'AS 5/17/2023 21:01:38'!
+PASSED!
+
+!testRun: #PortfolioTest #test10PortfolioCantHaveTheSameAccountsInChildPortfolio stamp: 'AS 5/17/2023 21:01:38'!
+FAILURE!
+
+!testRun: #PortfolioTest #test11PortfolioCantHaveTheSameAccountsInParentPortfolio stamp: 'AS 5/17/2023 21:01:38'!
+PASSED!
+
+!testRun: #PortfolioTest #test12PortfolioCanHaveTwoParents stamp: 'AS 5/17/2023 21:01:38'!
+FAILURE!
+
+!testRun: #PortfolioTest #test10PortfolioCantHaveTheSameAccountsInChildPortfolio stamp: 'AS 5/17/2023 21:01:49'!
+FAILURE!
+
+!testRun: #PortfolioTest #test10PortfolioCantHaveTheSameAccountsInChildPortfolio stamp: 'AS 5/17/2023 21:04:29'!
+FAILURE!
+
+!testRun: #PortfolioTest #test10PortfolioCantHaveTheSameAccountsInChildPortfolio stamp: 'AS 5/17/2023 21:05:26'!
+FAILURE!
+
+account := ReceptiveAccount new.	!
+
+parentPortfolio := Portfolio new.
+parentPortfolio addAccount: account.!
+
+childPortfolio := Portfolio new.
+parentPortfolio addPortfolio: childPortfolio.!
+!Portfolio methodsFor: 'accounts' stamp: 'AS 5/17/2023 21:07:37' prior: 50606615!
+addAccount: anAccount 
+	
+	(self roots anySatisfy: [ :root | root hasAccount: anAccount ])
+		ifTrue: [ self error: 'La cuenta ya pertenece al portfolio' ].
+		
+	accounts add: anAccount
+			! !
+
+!testRun: #PortfolioTest #test01PortfolioWithOneAccountShouldReturnAccountBalance stamp: 'AS 5/17/2023 21:07:43'!
+ERROR!
+
+!testRun: #PortfolioTest #test02PortfolioWithTwoAccountShouldReturnSumAccountsBalance stamp: 'AS 5/17/2023 21:07:43'!
+ERROR!
+
+!testRun: #PortfolioTest #test03PortfolioWithOnePortfolioShouldReturnPortfolioBalance stamp: 'AS 5/17/2023 21:07:43'!
+ERROR!
+
+!testRun: #PortfolioTest #test04PortfolioWithTwoPortfoliosShouldReturnSumPortfoliosBalance stamp: 'AS 5/17/2023 21:07:43'!
+ERROR!
+
+!testRun: #PortfolioTest #test05PortfolioHasRegisteredTransactionsInChildAccounts stamp: 'AS 5/17/2023 21:07:43'!
+ERROR!
+
+!testRun: #PortfolioTest #test06PortfolioHasRegisteredTransactionsInChildPortfolios stamp: 'AS 5/17/2023 21:07:44'!
+ERROR!
+
+!testRun: #PortfolioTest #test07PortfolioKnowsChildAccountsTransactions stamp: 'AS 5/17/2023 21:07:44'!
+ERROR!
+
+!testRun: #PortfolioTest #test08PortfolioKnowsChildPortfoliosTransactions stamp: 'AS 5/17/2023 21:07:44'!
+ERROR!
+
+!testRun: #PortfolioTest #test09PortfolioCantHaveRepeatedAccounts stamp: 'AS 5/17/2023 21:07:44'!
+ERROR!
+
+!testRun: #PortfolioTest #test10PortfolioCantHaveTheSameAccountsInChildPortfolio stamp: 'AS 5/17/2023 21:07:44'!
+ERROR!
+
+!testRun: #PortfolioTest #test11PortfolioCantHaveTheSameAccountsInParentPortfolio stamp: 'AS 5/17/2023 21:07:44'!
+ERROR!
+
+!testRun: #PortfolioTest #test12PortfolioCanHaveTwoParents stamp: 'AS 5/17/2023 21:07:44'!
+FAILURE!
+!Portfolio methodsFor: 'private' stamp: 'AS 5/17/2023 21:09:08' prior: 50606997!
+roots
+	
+	| roots |
+	
+	roots := OrderedCollection new.
+	
+	parent1 ifNotNil: [	parent1 addRootsTo: roots ].
+	parent2 ifNotNil: [	parent2 addRootsTo: roots ].
+	
+	^roots! !
+
+!testRun: #PortfolioTest #test01PortfolioWithOneAccountShouldReturnAccountBalance stamp: 'AS 5/17/2023 21:09:09'!
+PASSED!
+
+!testRun: #PortfolioTest #test02PortfolioWithTwoAccountShouldReturnSumAccountsBalance stamp: 'AS 5/17/2023 21:09:09'!
+PASSED!
+
+!testRun: #PortfolioTest #test03PortfolioWithOnePortfolioShouldReturnPortfolioBalance stamp: 'AS 5/17/2023 21:09:09'!
+PASSED!
+
+!testRun: #PortfolioTest #test04PortfolioWithTwoPortfoliosShouldReturnSumPortfoliosBalance stamp: 'AS 5/17/2023 21:09:09'!
+PASSED!
+
+!testRun: #PortfolioTest #test05PortfolioHasRegisteredTransactionsInChildAccounts stamp: 'AS 5/17/2023 21:09:09'!
+PASSED!
+
+!testRun: #PortfolioTest #test06PortfolioHasRegisteredTransactionsInChildPortfolios stamp: 'AS 5/17/2023 21:09:09'!
+PASSED!
+
+!testRun: #PortfolioTest #test07PortfolioKnowsChildAccountsTransactions stamp: 'AS 5/17/2023 21:09:09'!
+PASSED!
+
+!testRun: #PortfolioTest #test08PortfolioKnowsChildPortfoliosTransactions stamp: 'AS 5/17/2023 21:09:10'!
+PASSED!
+
+!testRun: #PortfolioTest #test09PortfolioCantHaveRepeatedAccounts stamp: 'AS 5/17/2023 21:09:10'!
+FAILURE!
+
+!testRun: #PortfolioTest #test10PortfolioCantHaveTheSameAccountsInChildPortfolio stamp: 'AS 5/17/2023 21:09:10'!
+PASSED!
+
+!testRun: #PortfolioTest #test11PortfolioCantHaveTheSameAccountsInParentPortfolio stamp: 'AS 5/17/2023 21:09:10'!
+FAILURE!
+
+!testRun: #PortfolioTest #test12PortfolioCanHaveTwoParents stamp: 'AS 5/17/2023 21:09:10'!
+FAILURE!
+
+!testRun: #PortfolioTest #test09PortfolioCantHaveRepeatedAccounts stamp: 'AS 5/17/2023 21:09:18'!
+FAILURE!
+
+account := ReceptiveAccount new.	
+		
+portfolio := Portfolio new.
+!
+
+portfolio addAccount: account.!
+
+roots size!
+
+root size!
+
+roots size!
+!Portfolio methodsFor: 'private' stamp: 'AS 5/17/2023 21:14:22' prior: 50607148!
+roots
+	
+	| roots |
+	
+	roots := OrderedCollection new.
+	
+	parent1 ifNotNil: [	parent1 addRootsTo: roots ].
+	parent2 ifNotNil: [	parent2 addRootsTo: roots ].
+	
+	roots ifEmpty: [ roots add: self ].
+	
+	^roots! !
+
+!testRun: #PortfolioTest #test01PortfolioWithOneAccountShouldReturnAccountBalance stamp: 'AS 5/17/2023 21:14:23'!
+PASSED!
+
+!testRun: #PortfolioTest #test02PortfolioWithTwoAccountShouldReturnSumAccountsBalance stamp: 'AS 5/17/2023 21:14:23'!
+PASSED!
+
+!testRun: #PortfolioTest #test03PortfolioWithOnePortfolioShouldReturnPortfolioBalance stamp: 'AS 5/17/2023 21:14:23'!
+PASSED!
+
+!testRun: #PortfolioTest #test04PortfolioWithTwoPortfoliosShouldReturnSumPortfoliosBalance stamp: 'AS 5/17/2023 21:14:23'!
+PASSED!
+
+!testRun: #PortfolioTest #test05PortfolioHasRegisteredTransactionsInChildAccounts stamp: 'AS 5/17/2023 21:14:23'!
+PASSED!
+
+!testRun: #PortfolioTest #test06PortfolioHasRegisteredTransactionsInChildPortfolios stamp: 'AS 5/17/2023 21:14:23'!
+PASSED!
+
+!testRun: #PortfolioTest #test07PortfolioKnowsChildAccountsTransactions stamp: 'AS 5/17/2023 21:14:23'!
+PASSED!
+
+!testRun: #PortfolioTest #test08PortfolioKnowsChildPortfoliosTransactions stamp: 'AS 5/17/2023 21:14:23'!
+PASSED!
+
+!testRun: #PortfolioTest #test09PortfolioCantHaveRepeatedAccounts stamp: 'AS 5/17/2023 21:14:23'!
+PASSED!
+
+!testRun: #PortfolioTest #test10PortfolioCantHaveTheSameAccountsInChildPortfolio stamp: 'AS 5/17/2023 21:14:23'!
+PASSED!
+
+!testRun: #PortfolioTest #test11PortfolioCantHaveTheSameAccountsInParentPortfolio stamp: 'AS 5/17/2023 21:14:23'!
+PASSED!
+
+!testRun: #PortfolioTest #test12PortfolioCanHaveTwoParents stamp: 'AS 5/17/2023 21:14:23'!
+FAILURE!
+
+!testRun: #PortfolioTest #test12PortfolioCanHaveTwoParents stamp: 'AS 5/17/2023 21:14:23'!
+FAILURE!
+!Portfolio methodsFor: 'private' stamp: 'AS 5/17/2023 21:15:18' prior: 50607209!
+roots
+	
+	| roots |
+	
+	roots := OrderedCollection new.
+	
+	parent1 ifNotNil: [	parent1 addRootsTo: roots ].
+	parent2 ifNotNil: [	parent2 addRootsTo: roots ].
+	
+	(roots size = 0) ifTrue: [ roots add: self ].
+	
+	^roots! !
+
+!testRun: #PortfolioTest #test01PortfolioWithOneAccountShouldReturnAccountBalance stamp: 'AS 5/17/2023 21:15:18'!
+PASSED!
+
+!testRun: #PortfolioTest #test02PortfolioWithTwoAccountShouldReturnSumAccountsBalance stamp: 'AS 5/17/2023 21:15:18'!
+PASSED!
+
+!testRun: #PortfolioTest #test03PortfolioWithOnePortfolioShouldReturnPortfolioBalance stamp: 'AS 5/17/2023 21:15:18'!
+PASSED!
+
+!testRun: #PortfolioTest #test04PortfolioWithTwoPortfoliosShouldReturnSumPortfoliosBalance stamp: 'AS 5/17/2023 21:15:18'!
+PASSED!
+
+!testRun: #PortfolioTest #test05PortfolioHasRegisteredTransactionsInChildAccounts stamp: 'AS 5/17/2023 21:15:18'!
+PASSED!
+
+!testRun: #PortfolioTest #test06PortfolioHasRegisteredTransactionsInChildPortfolios stamp: 'AS 5/17/2023 21:15:18'!
+PASSED!
+
+!testRun: #PortfolioTest #test07PortfolioKnowsChildAccountsTransactions stamp: 'AS 5/17/2023 21:15:18'!
+PASSED!
+
+!testRun: #PortfolioTest #test08PortfolioKnowsChildPortfoliosTransactions stamp: 'AS 5/17/2023 21:15:18'!
+PASSED!
+
+!testRun: #PortfolioTest #test09PortfolioCantHaveRepeatedAccounts stamp: 'AS 5/17/2023 21:15:18'!
+PASSED!
+
+!testRun: #PortfolioTest #test10PortfolioCantHaveTheSameAccountsInChildPortfolio stamp: 'AS 5/17/2023 21:15:19'!
+PASSED!
+
+!testRun: #PortfolioTest #test11PortfolioCantHaveTheSameAccountsInParentPortfolio stamp: 'AS 5/17/2023 21:15:19'!
+PASSED!
+
+!testRun: #PortfolioTest #test12PortfolioCanHaveTwoParents stamp: 'AS 5/17/2023 21:15:19'!
+FAILURE!
+
+!testRun: #PortfolioTest #test12PortfolioCanHaveTwoParents stamp: 'AS 5/17/2023 21:15:19'!
+FAILURE!
+
+!testRun: #PortfolioTest #test01PortfolioWithOneAccountShouldReturnAccountBalance stamp: 'AS 5/17/2023 21:15:36'!
+PASSED!
+
+!testRun: #PortfolioTest #test02PortfolioWithTwoAccountShouldReturnSumAccountsBalance stamp: 'AS 5/17/2023 21:15:36'!
+PASSED!
+
+!testRun: #PortfolioTest #test03PortfolioWithOnePortfolioShouldReturnPortfolioBalance stamp: 'AS 5/17/2023 21:15:36'!
+PASSED!
+
+!testRun: #PortfolioTest #test04PortfolioWithTwoPortfoliosShouldReturnSumPortfoliosBalance stamp: 'AS 5/17/2023 21:15:36'!
+PASSED!
+
+!testRun: #PortfolioTest #test05PortfolioHasRegisteredTransactionsInChildAccounts stamp: 'AS 5/17/2023 21:15:36'!
+PASSED!
+
+!testRun: #PortfolioTest #test06PortfolioHasRegisteredTransactionsInChildPortfolios stamp: 'AS 5/17/2023 21:15:36'!
+PASSED!
+
+!testRun: #PortfolioTest #test07PortfolioKnowsChildAccountsTransactions stamp: 'AS 5/17/2023 21:15:36'!
+PASSED!
+
+!testRun: #PortfolioTest #test08PortfolioKnowsChildPortfoliosTransactions stamp: 'AS 5/17/2023 21:15:36'!
+PASSED!
+
+!testRun: #PortfolioTest #test09PortfolioCantHaveRepeatedAccounts stamp: 'AS 5/17/2023 21:15:36'!
+PASSED!
+
+!testRun: #PortfolioTest #test10PortfolioCantHaveTheSameAccountsInChildPortfolio stamp: 'AS 5/17/2023 21:15:36'!
+PASSED!
+
+!testRun: #PortfolioTest #test11PortfolioCantHaveTheSameAccountsInParentPortfolio stamp: 'AS 5/17/2023 21:15:36'!
+PASSED!
+
+!testRun: #PortfolioTest #test12PortfolioCanHaveTwoParents stamp: 'AS 5/17/2023 21:15:36'!
+FAILURE!
+
+!testRun: #PortfolioTest #test12PortfolioCanHaveTwoParents stamp: 'AS 5/17/2023 21:15:36'!
+FAILURE!
+!PortfolioTest methodsFor: 'test' stamp: 'AS 5/17/2023 23:15:49' prior: 50606939!
+test12PortfolioCanHaveTwoParents
+
+	| parentPortfolio1 parentPortfolio2 childPortfolio |
+			
+	parentPortfolio1 := Portfolio new.
+	parentPortfolio2 := Portfolio new.
+	
+	childPortfolio := Portfolio new.
+	
+	parentPortfolio1 addPortfolio: childPortfolio.
+	
+	parentPortfolio2 addPortfolio: childPortfolio.
+			
+	self assert: 	childPortfolio parents includes: parentPortfolio1.
+	self assert: 	childPortfolio parents includes: parentPortfolio2.
+! !
+
+!testRun: #PortfolioTest #test12PortfolioCanHaveTwoParents stamp: 'AS 5/17/2023 23:15:49'!
+ERROR!
