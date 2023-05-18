@@ -1,0 +1,1002 @@
+
+
+----QUIT----(20 March 2023 11:15:29) CuisUniversity-5706.image priorSource: 4313282!
+
+----STARTUP---- (20 March 2023 11:15:29) as /Users/hernan/Documents/Cuis/5.0-64Bits/Cuis-University-Installer/CuisUniversity-5706.image!
+
+
+----QUIT----(20 March 2023 11:15:30) CuisUniversity-5706.image priorSource: 8712809!
+
+----STARTUP---- (15 May 2023 17:10:42) as /home/clinux01/Descargas/linux64/CuisUniversity-5706.image!
+
+
+----End fileIn of /home/clinux01/Descargas/Portfolio-Ejercicio.st----!
+
+!testRun: #ReceptiveAccountTest #test02DepositIncreasesBalanceOnTransactionValue stamp: 'WAL 5/15/2023 19:36:02'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test03WithdrawDecreasesBalanceOnTransactionValue stamp: 'WAL 5/15/2023 19:36:04'!
+FAILURE!
+
+!testRun: #ReceptiveAccountTest #test03WithdrawDecreasesBalanceOnTransactionValue stamp: 'WAL 5/15/2023 19:36:04'!
+FAILURE!
+
+!testRun: #ReceptiveAccountTest #test01ReceptiveAccountHaveZeroAsBalanceWhenCreated stamp: 'WAL 5/15/2023 19:36:09'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test02DepositIncreasesBalanceOnTransactionValue stamp: 'WAL 5/15/2023 19:36:09'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test03WithdrawDecreasesBalanceOnTransactionValue stamp: 'WAL 5/15/2023 19:36:09'!
+FAILURE!
+
+!testRun: #ReceptiveAccountTest #test04WithdrawValueMustBePositive stamp: 'WAL 5/15/2023 19:36:09'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test05ReceptiveAccountKnowsRegisteredTransactions stamp: 'WAL 5/15/2023 19:36:09'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test06ReceptiveAccountDoNotKnowNotRegisteredTransactions stamp: 'WAL 5/15/2023 19:36:09'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test07AccountKnowsItsTransactions stamp: 'WAL 5/15/2023 19:36:09'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test03WithdrawDecreasesBalanceOnTransactionValue stamp: 'WAL 5/15/2023 19:36:09'!
+FAILURE!
+
+!testRun: #ReceptiveAccountTest #test03WithdrawDecreasesBalanceOnTransactionValue stamp: 'WAL 5/15/2023 19:36:33'!
+FAILURE!
+
+!testRun: #ReceptiveAccountTest #test01ReceptiveAccountHaveZeroAsBalanceWhenCreated stamp: 'WAL 5/15/2023 19:36:40'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test02DepositIncreasesBalanceOnTransactionValue stamp: 'WAL 5/15/2023 19:36:40'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test03WithdrawDecreasesBalanceOnTransactionValue stamp: 'WAL 5/15/2023 19:36:40'!
+FAILURE!
+
+!testRun: #ReceptiveAccountTest #test04WithdrawValueMustBePositive stamp: 'WAL 5/15/2023 19:36:40'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test05ReceptiveAccountKnowsRegisteredTransactions stamp: 'WAL 5/15/2023 19:36:40'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test06ReceptiveAccountDoNotKnowNotRegisteredTransactions stamp: 'WAL 5/15/2023 19:36:40'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test07AccountKnowsItsTransactions stamp: 'WAL 5/15/2023 19:36:40'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test03WithdrawDecreasesBalanceOnTransactionValue stamp: 'WAL 5/15/2023 19:36:40'!
+FAILURE!
+!Withdraw methodsFor: 'value' stamp: 'WAL 5/15/2023 19:42:04'!
+balanceValue
+
+	^ value * (-1)! !
+!Deposit methodsFor: 'value' stamp: 'WAL 5/15/2023 19:42:15'!
+balanceValue
+
+	^ value! !
+!AccountTransaction methodsFor: 'value' stamp: 'WAL 5/15/2023 19:42:42'!
+balanceValue 
+
+	self subclassResponsibility ! !
+!ReceptiveAccount methodsFor: 'balance' stamp: 'WAL 5/15/2023 19:43:22' prior: 50604152!
+balance
+
+	^transactions sum: [ :aTransaction | aTransaction balanceValue ] ifEmpty: [ 0 ]! !
+
+!testRun: #ReceptiveAccountTest #test03WithdrawDecreasesBalanceOnTransactionValue stamp: 'WAL 5/15/2023 19:43:30'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test01ReceptiveAccountHaveZeroAsBalanceWhenCreated stamp: 'WAL 5/15/2023 19:43:30'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test02DepositIncreasesBalanceOnTransactionValue stamp: 'WAL 5/15/2023 19:43:30'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test03WithdrawDecreasesBalanceOnTransactionValue stamp: 'WAL 5/15/2023 19:43:30'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test04WithdrawValueMustBePositive stamp: 'WAL 5/15/2023 19:43:30'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test05ReceptiveAccountKnowsRegisteredTransactions stamp: 'WAL 5/15/2023 19:43:30'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test06ReceptiveAccountDoNotKnowNotRegisteredTransactions stamp: 'WAL 5/15/2023 19:43:30'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test07AccountKnowsItsTransactions stamp: 'WAL 5/15/2023 19:43:30'!
+PASSED!
+!ReceptiveAccount methodsFor: 'balance' stamp: 'WAL 5/15/2023 20:23:50' prior: 50604252!
+balance
+
+	| balance |
+	
+	balance:= 0.
+
+	^ "transactions 	sum: [ :aTransaction | aTransaction balanceValue ] ifEmpty: [ 0 ]."
+	
+		transactions do: [ :aTransaction | balance := balance + aTransaction balanceValue ] ! !
+
+!testRun: #ReceptiveAccountTest #test03WithdrawDecreasesBalanceOnTransactionValue stamp: 'WAL 5/15/2023 20:23:55'!
+FAILURE!
+
+!testRun: #ReceptiveAccountTest #test03WithdrawDecreasesBalanceOnTransactionValue stamp: 'WAL 5/15/2023 20:23:55'!
+FAILURE!
+!ReceptiveAccount methodsFor: 'balance' stamp: 'WAL 5/15/2023 20:24:36' prior: 50604289!
+balance
+
+	| balance |
+	
+	balance:= 0.
+
+	 "^transactions 	sum: [ :aTransaction | aTransaction balanceValue ] ifEmpty: [ 0 ]."
+	
+	transactions do: [ :aTransaction | balance := balance + aTransaction balanceValue ] .
+	^balance! !
+
+!testRun: #ReceptiveAccountTest #test01ReceptiveAccountHaveZeroAsBalanceWhenCreated stamp: 'WAL 5/15/2023 20:24:38'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test02DepositIncreasesBalanceOnTransactionValue stamp: 'WAL 5/15/2023 20:24:38'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test03WithdrawDecreasesBalanceOnTransactionValue stamp: 'WAL 5/15/2023 20:24:38'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test04WithdrawValueMustBePositive stamp: 'WAL 5/15/2023 20:24:38'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test05ReceptiveAccountKnowsRegisteredTransactions stamp: 'WAL 5/15/2023 20:24:38'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test06ReceptiveAccountDoNotKnowNotRegisteredTransactions stamp: 'WAL 5/15/2023 20:24:38'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test07AccountKnowsItsTransactions stamp: 'WAL 5/15/2023 20:24:38'!
+PASSED!
+!ReceptiveAccount methodsFor: 'balance' stamp: 'WAL 5/15/2023 20:27:12' prior: 50604307!
+balance
+
+	| balance |
+	
+	balance:= 0.
+
+	transactions do: [ :aTransaction |     
+		aTransaction addToBalalance: balance.
+	] .
+	^balance! !
+
+!testRun: #ReceptiveAccountTest #test04WithdrawValueMustBePositive stamp: 'WAL 5/15/2023 20:27:19'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test01ReceptiveAccountHaveZeroAsBalanceWhenCreated stamp: 'WAL 5/15/2023 20:27:19'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test02DepositIncreasesBalanceOnTransactionValue stamp: 'WAL 5/15/2023 20:27:19'!
+ERROR!
+
+!testRun: #ReceptiveAccountTest #test03WithdrawDecreasesBalanceOnTransactionValue stamp: 'WAL 5/15/2023 20:27:19'!
+ERROR!
+
+!testRun: #ReceptiveAccountTest #test04WithdrawValueMustBePositive stamp: 'WAL 5/15/2023 20:27:19'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test05ReceptiveAccountKnowsRegisteredTransactions stamp: 'WAL 5/15/2023 20:27:19'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test06ReceptiveAccountDoNotKnowNotRegisteredTransactions stamp: 'WAL 5/15/2023 20:27:19'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test07AccountKnowsItsTransactions stamp: 'WAL 5/15/2023 20:27:19'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test02DepositIncreasesBalanceOnTransactionValue stamp: 'WAL 5/15/2023 20:27:22'!
+ERROR!
+!Deposit methodsFor: 'value' stamp: 'WAL 5/15/2023 20:27:46'!
+addToBalalance: balance 
+	self shouldBeImplemented.! !
+!Deposit methodsFor: 'value' stamp: 'WAL 5/15/2023 20:28:28' prior: 50604384!
+addToBalalance: balance
+
+	^balance + value.! !
+
+!testRun: #ReceptiveAccountTest #test03WithdrawDecreasesBalanceOnTransactionValue stamp: 'WAL 5/15/2023 20:28:32'!
+ERROR!
+!Withdraw methodsFor: 'value' stamp: 'WAL 5/15/2023 20:28:38'!
+addToBalalance: balance 
+	self shouldBeImplemented.! !
+!Withdraw methodsFor: 'value' stamp: 'WAL 5/15/2023 20:29:03' prior: 50604397!
+addToBalalance: balance 
+	
+	 ^ balance - value! !
+
+!testRun: #ReceptiveAccountTest #test03WithdrawDecreasesBalanceOnTransactionValue stamp: 'WAL 5/15/2023 20:29:08'!
+FAILURE!
+
+!testRun: #ReceptiveAccountTest #test02DepositIncreasesBalanceOnTransactionValue stamp: 'WAL 5/15/2023 20:29:11'!
+FAILURE!
+!ReceptiveAccount methodsFor: 'balance' stamp: 'WAL 5/15/2023 20:30:15' prior: 50604344!
+balance
+
+	| balance |
+	
+	balance:= 0.
+
+	transactions do: [ :aTransaction |     
+		balance := aTransaction addToBalalance: balance.
+	] .
+	^balance! !
+
+!testRun: #ReceptiveAccountTest #test01ReceptiveAccountHaveZeroAsBalanceWhenCreated stamp: 'WAL 5/15/2023 20:30:26'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test02DepositIncreasesBalanceOnTransactionValue stamp: 'WAL 5/15/2023 20:30:26'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test03WithdrawDecreasesBalanceOnTransactionValue stamp: 'WAL 5/15/2023 20:30:26'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test04WithdrawValueMustBePositive stamp: 'WAL 5/15/2023 20:30:26'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test05ReceptiveAccountKnowsRegisteredTransactions stamp: 'WAL 5/15/2023 20:30:26'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test06ReceptiveAccountDoNotKnowNotRegisteredTransactions stamp: 'WAL 5/15/2023 20:30:26'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test07AccountKnowsItsTransactions stamp: 'WAL 5/15/2023 20:30:26'!
+PASSED!
+!Deposit methodsFor: 'value' stamp: 'WAL 5/15/2023 20:31:59'!
+addToBalance: balance
+
+	^balance + value.! !
+!Withdraw methodsFor: 'value' stamp: 'WAL 5/15/2023 20:31:59'!
+addToBalance: balance 
+	
+	 ^ balance - value! !
+!ReceptiveAccount methodsFor: 'as yet unclassified' stamp: 'WAL 5/15/2023 20:31:59' prior: 50604415!
+balance
+
+	| balance |
+	
+	balance:= 0.
+
+	transactions do: [ :aTransaction |     
+		balance := aTransaction addToBalance: balance.
+	] .
+	^balance! !
+
+!methodRemoval: Deposit #addToBalalance: stamp: 'WAL 5/15/2023 20:31:59'!
+addToBalalance: balance
+
+	^balance + value.!
+
+!methodRemoval: Withdraw #addToBalalance: stamp: 'WAL 5/15/2023 20:31:59'!
+addToBalalance: balance 
+	
+	 ^ balance - value!
+
+!testRun: #ReceptiveAccountTest #test04WithdrawValueMustBePositive stamp: 'WAL 5/15/2023 20:32:03'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test01ReceptiveAccountHaveZeroAsBalanceWhenCreated stamp: 'WAL 5/15/2023 20:54:36'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test02DepositIncreasesBalanceOnTransactionValue stamp: 'WAL 5/15/2023 20:54:36'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test03WithdrawDecreasesBalanceOnTransactionValue stamp: 'WAL 5/15/2023 20:54:36'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test04WithdrawValueMustBePositive stamp: 'WAL 5/15/2023 20:54:36'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test05ReceptiveAccountKnowsRegisteredTransactions stamp: 'WAL 5/15/2023 20:54:36'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test06ReceptiveAccountDoNotKnowNotRegisteredTransactions stamp: 'WAL 5/15/2023 20:54:36'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test07AccountKnowsItsTransactions stamp: 'WAL 5/15/2023 20:54:36'!
+PASSED!
+
+Object subclass: #Portfolio
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Ejercicio'!
+
+!classDefinition: #Portfolio category: 'Portfolio-Ejercicio' stamp: 'WAL 5/15/2023 20:55:37'!
+Object subclass: #Portfolio
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Ejercicio'!
+
+Object subclass: #Portfolio
+	instanceVariableNames: 'accounts'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Ejercicio'!
+
+!classDefinition: #Portfolio category: 'Portfolio-Ejercicio' stamp: 'WAL 5/15/2023 20:56:23'!
+Object subclass: #Portfolio
+	instanceVariableNames: 'accounts'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Ejercicio'!
+
+TestCase subclass: #PortfolioTest
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Ejercicio'!
+
+!classDefinition: #PortfolioTest category: 'Portfolio-Ejercicio' stamp: 'WAL 5/15/2023 20:56:45'!
+TestCase subclass: #PortfolioTest
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Ejercicio'!
+!PortfolioTest methodsFor: 'no messages' stamp: 'WAL 5/15/2023 20:58:57'!
+test01PortfolioWithOneAccountShoudReturnAccountBalance
+
+	! !
+!PortfolioTest methodsFor: 'as yet unclassified' stamp: 'WAL 5/15/2023 20:59:24' prior: 50604538!
+test01PortfolioWithOneAccountShoudReturnAccountBalance
+
+	| account |
+	
+	account := ReceptiveAccount new.! !
+!PortfolioTest methodsFor: 'as yet unclassified' stamp: 'WAL 5/15/2023 21:00:21' prior: 50604543!
+test01PortfolioWithOneAccountShoudReturnAccountBalance
+
+	| account portfolio |
+	
+	account := ReceptiveAccount new.
+	
+	Deposit register: 100 on: account.
+	
+	portfolio := Portfolio new.
+	
+	portfolio add: account.! !
+!PortfolioTest methodsFor: 'as yet unclassified' stamp: 'WAL 5/15/2023 21:01:09' prior: 50604550!
+test01PortfolioWithOneAccountShoudReturnAccountBalance
+
+	| account portfolio |
+	
+	account := ReceptiveAccount new.
+	
+	Deposit register: 100 on: account.
+	
+	portfolio := Portfolio new.
+	
+	portfolio add: account.
+	
+	self assert: account balance equals: portfolio balance.! !
+
+!testRun: #PortfolioTest #test01PortfolioWithOneAccountShoudReturnAccountBalance stamp: 'WAL 5/15/2023 21:01:12'!
+ERROR!
+!Portfolio methodsFor: 'no messages' stamp: 'WAL 5/15/2023 21:02:31'!
+addAccount: anAccount
+
+	accounts add: anAccount.! !
+!Portfolio methodsFor: 'as yet unclassified' stamp: 'WAL 5/15/2023 21:03:15' overrides: 16920235!
+initialize
+
+	accounts := OrderedCollection new.! !
+
+!testRun: #PortfolioTest #test01PortfolioWithOneAccountShoudReturnAccountBalance stamp: 'WAL 5/15/2023 21:03:20'!
+ERROR!
+!PortfolioTest methodsFor: 'as yet unclassified' stamp: 'WAL 5/15/2023 21:03:29' prior: 50604560!
+test01PortfolioWithOneAccountShoudReturnAccountBalance
+
+	| account portfolio |
+	
+	account := ReceptiveAccount new.
+	
+	Deposit register: 100 on: account.
+	
+	portfolio := Portfolio new.
+	
+	portfolio addAccount: account.
+	
+	self assert: account balance equals: portfolio balance.! !
+
+!testRun: #PortfolioTest #test01PortfolioWithOneAccountShoudReturnAccountBalance stamp: 'WAL 5/15/2023 21:03:30'!
+ERROR!
+!Portfolio methodsFor: 'as yet unclassified' stamp: 'WAL 5/15/2023 21:03:38'!
+balance
+	self shouldBeImplemented.! !
+!Portfolio methodsFor: 'as yet unclassified' stamp: 'WAL 5/15/2023 21:04:26' prior: 50604604!
+balance
+	
+	accounts sum: [ : account | account balance ].! !
+!Portfolio methodsFor: 'as yet unclassified' stamp: 'WAL 5/15/2023 21:04:33' prior: 50604609!
+balance
+	
+	^accounts sum: [ : account | account balance ].! !
+
+!testRun: #PortfolioTest #test01PortfolioWithOneAccountShoudReturnAccountBalance stamp: 'WAL 5/15/2023 21:04:45'!
+PASSED!
+
+!testRun: #PortfolioTest #test01PortfolioWithOneAccountShoudReturnAccountBalance stamp: 'WAL 5/15/2023 21:04:45'!
+PASSED!
+!PortfolioTest methodsFor: 'as yet unclassified' stamp: 'WAL 5/15/2023 21:12:56'!
+test02PortfolioWithOneAccountAndOnePortfolioShoudReturnSumOfAccountAndPortfolioBalances
+
+	| portfolio account childPortfolio childPortfolioAccount |
+	
+	account := ReceptiveAccount new.
+	Deposit register: 300 on: account.
+	
+	portfolio := Portfolio new.
+	portfolio addAccount: account.
+	
+	childPortfolioAccount := ReceptiveAccount new.
+	Withdraw register: 100 on: childPortfolioAccount.	
+	
+	childPortfolio := Portfolio new.
+	childPortfolio addAccount: childPortfolioAccount.	
+	
+	portfolio addPortfolio: childPortfolio.	
+	
+	self assert: account balance + childPortfolio balance equals: portfolio balance.! !
+
+!testRun: #PortfolioTest #test02PortfolioWithOneAccountAndOnePortfolioShoudReturnSumOfAccountAndPortfolioBalances stamp: 'WAL 5/15/2023 21:13:02'!
+ERROR!
+
+Object subclass: #Portfolio
+	instanceVariableNames: 'accounts portfolios'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Ejercicio'!
+
+!classDefinition: #Portfolio category: 'Portfolio-Ejercicio' stamp: 'WAL 5/15/2023 21:13:13'!
+Object subclass: #Portfolio
+	instanceVariableNames: 'accounts portfolios'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Ejercicio'!
+!Portfolio methodsFor: 'initialize' stamp: 'WAL 5/15/2023 21:13:56' prior: 50604580 overrides: 16920235!
+initialize
+
+	accounts := OrderedCollection new.
+	portfolios := OrderedCollection new.! !
+
+!testRun: #PortfolioTest #test01PortfolioWithOneAccountShoudReturnAccountBalance stamp: 'WAL 5/15/2023 21:14:00'!
+PASSED!
+
+!testRun: #PortfolioTest #test02PortfolioWithOneAccountAndOnePortfolioShoudReturnSumOfAccountAndPortfolioBalances stamp: 'WAL 5/15/2023 21:14:00'!
+ERROR!
+
+!testRun: #PortfolioTest #test02PortfolioWithOneAccountAndOnePortfolioShoudReturnSumOfAccountAndPortfolioBalances stamp: 'WAL 5/15/2023 21:14:00'!
+ERROR!
+!Portfolio methodsFor: 'as yet unclassified' stamp: 'WAL 5/15/2023 21:14:27'!
+addPortfolio: aPortfolio
+
+	portfolios add: aPortfolio.! !
+
+!testRun: #PortfolioTest #test01PortfolioWithOneAccountShoudReturnAccountBalance stamp: 'WAL 5/15/2023 21:14:29'!
+PASSED!
+
+!testRun: #PortfolioTest #test02PortfolioWithOneAccountAndOnePortfolioShoudReturnSumOfAccountAndPortfolioBalances stamp: 'WAL 5/15/2023 21:14:29'!
+FAILURE!
+
+!testRun: #PortfolioTest #test02PortfolioWithOneAccountAndOnePortfolioShoudReturnSumOfAccountAndPortfolioBalances stamp: 'WAL 5/15/2023 21:14:29'!
+FAILURE!
+!Portfolio methodsFor: 'as yet unclassified' stamp: 'WAL 5/15/2023 21:15:35' prior: 50604614!
+balance
+	
+	^ (accounts  sum: [ : account  | account balance ]) +
+	    (portfolios sum: [ : portfolio | portfolio balance ]) .! !
+
+!testRun: #PortfolioTest #test01PortfolioWithOneAccountShoudReturnAccountBalance stamp: 'WAL 5/15/2023 21:15:36'!
+ERROR!
+
+!testRun: #PortfolioTest #test02PortfolioWithOneAccountAndOnePortfolioShoudReturnSumOfAccountAndPortfolioBalances stamp: 'WAL 5/15/2023 21:15:36'!
+ERROR!
+!Portfolio methodsFor: 'as yet unclassified' stamp: 'WAL 5/15/2023 21:16:20' prior: 50604705!
+balance
+	
+	^ (accounts  sum: [ : account  | account balance ] ifEmpty: [ 0 ]) +
+	    (portfolios sum: [ : portfolio | portfolio balance ] ifEmpty: [ 0 ]) .! !
+
+!testRun: #PortfolioTest #test01PortfolioWithOneAccountShoudReturnAccountBalance stamp: 'WAL 5/15/2023 21:16:21'!
+PASSED!
+
+!testRun: #PortfolioTest #test02PortfolioWithOneAccountAndOnePortfolioShoudReturnSumOfAccountAndPortfolioBalances stamp: 'WAL 5/15/2023 21:16:21'!
+PASSED!
+!PortfolioTest methodsFor: 'as yet unclassified' stamp: 'WAL 5/15/2023 21:19:52'!
+test03PortfolioWithPortfolioTreeShoudReturnSumOfPortfoliosBalances
+
+	| portfolio account childPortfolio childPortfolioAccount grandchildPortfolio grandchildPortfolioAccount |
+	
+	account := ReceptiveAccount new.
+	Deposit register: 300 on: account.
+	
+	portfolio := Portfolio new.
+	portfolio addAccount: account.
+		
+		childPortfolioAccount := ReceptiveAccount new.
+		Withdraw register: 100 on: childPortfolioAccount.	
+		
+		childPortfolio := Portfolio new.
+		childPortfolio addAccount: childPortfolioAccount.	
+	
+		portfolio addPortfolio: childPortfolio.	
+	
+			grandchildPortfolioAccount := ReceptiveAccount new.
+			Withdraw register: 100 on: childPortfolioAccount.	
+			
+			childPortfolio := Portfolio new.
+			childPortfolio addAccount: childPortfolioAccount.	
+	
+	
+	
+	
+	self assert: account balance + childPortfolio balance equals: portfolio balance.! !
+
+----SNAPSHOT----(15 May 2023 21:20:31) CuisUniversity-5706.image priorSource: 8713034!
+!PortfolioTest methodsFor: 'as yet unclassified' stamp: 'WAL 5/15/2023 21:20:54' prior: 50604738!
+test03PortfolioWithPortfolioTreeShoudReturnSumOfPortfoliosBalances
+
+	| portfolio account portfolioChild childPortfolioAccount grandchildPortfolio grandchildPortfolioAccount |
+	
+	account := ReceptiveAccount new.
+	Deposit register: 300 on: account.
+	
+	portfolio := Portfolio new.
+	portfolio addAccount: account.
+		
+		childPortfolioAccount := ReceptiveAccount new.
+		Withdraw register: 100 on: childPortfolioAccount.	
+		
+		portfolioChild := Portfolio new.
+		portfolioChild addAccount: childPortfolioAccount.	
+	
+		portfolio addPortfolio: portfolioChild.	
+	
+			grandchildPortfolioAccount := ReceptiveAccount new.
+			Withdraw register: 100 on: childPortfolioAccount.	
+			
+			portfolioChild := Portfolio new.
+			portfolioChild addAccount: childPortfolioAccount.	
+	
+	
+	
+	
+	self assert: account balance + portfolioChild balance equals: portfolio balance.! !
+!PortfolioTest methodsFor: 'as yet unclassified' stamp: 'WAL 5/15/2023 21:21:16' prior: 50604771!
+test03PortfolioWithPortfolioTreeShoudReturnSumOfPortfoliosBalances
+
+	| portfolio account portfolioChild portfolioChildAccount grandchildPortfolio grandchildPortfolioAccount |
+	
+	account := ReceptiveAccount new.
+	Deposit register: 300 on: account.
+	
+	portfolio := Portfolio new.
+	portfolio addAccount: account.
+		
+		portfolioChildAccount := ReceptiveAccount new.
+		Withdraw register: 100 on: portfolioChildAccount.	
+		
+		portfolioChild := Portfolio new.
+		portfolioChild addAccount: portfolioChildAccount.	
+	
+		portfolio addPortfolio: portfolioChild.	
+	
+			grandchildPortfolioAccount := ReceptiveAccount new.
+			Withdraw register: 100 on: portfolioChildAccount.	
+			
+			portfolioChild := Portfolio new.
+			portfolioChild addAccount: portfolioChildAccount.	
+	
+	
+	
+	
+	self assert: account balance + portfolioChild balance equals: portfolio balance.! !
+!PortfolioTest methodsFor: 'as yet unclassified' stamp: 'WAL 5/15/2023 21:21:32' prior: 50604801!
+test03PortfolioWithPortfolioTreeShoudReturnSumOfPortfoliosBalances
+
+	| portfolio account portfolioChild portfolioChildAccount portfolioGrandchild grandchildPortfolioAccount |
+	
+	account := ReceptiveAccount new.
+	Deposit register: 300 on: account.
+	
+	portfolio := Portfolio new.
+	portfolio addAccount: account.
+		
+		portfolioChildAccount := ReceptiveAccount new.
+		Withdraw register: 100 on: portfolioChildAccount.	
+		
+		portfolioChild := Portfolio new.
+		portfolioChild addAccount: portfolioChildAccount.	
+	
+		portfolio addPortfolio: portfolioChild.	
+	
+			grandchildPortfolioAccount := ReceptiveAccount new.
+			Withdraw register: 100 on: portfolioChildAccount.	
+			
+			portfolioChild := Portfolio new.
+			portfolioChild addAccount: portfolioChildAccount.	
+	
+	
+	
+	
+	self assert: account balance + portfolioChild balance equals: portfolio balance.! !
+!PortfolioTest methodsFor: 'as yet unclassified' stamp: 'WAL 5/15/2023 21:21:46' prior: 50604831!
+test03PortfolioWithPortfolioTreeShoudReturnSumOfPortfoliosBalances
+
+	| portfolio account portfolioChild portfolioChildAccount portfolioGrandchild portfolioGrandchildAccount |
+	
+	account := ReceptiveAccount new.
+	Deposit register: 300 on: account.
+	
+	portfolio := Portfolio new.
+	portfolio addAccount: account.
+		
+		portfolioChildAccount := ReceptiveAccount new.
+		Withdraw register: 100 on: portfolioChildAccount.	
+		
+		portfolioChild := Portfolio new.
+		portfolioChild addAccount: portfolioChildAccount.	
+	
+		portfolio addPortfolio: portfolioChild.	
+	
+			portfolioGrandchildAccount := ReceptiveAccount new.
+			Withdraw register: 100 on: portfolioChildAccount.	
+			
+			portfolioChild := Portfolio new.
+			portfolioChild addAccount: portfolioChildAccount.	
+	
+	
+	
+	
+	self assert: account balance + portfolioChild balance equals: portfolio balance.! !
+!PortfolioTest methodsFor: 'as yet unclassified' stamp: 'WAL 5/15/2023 21:23:14' prior: 50604861!
+test03PortfolioWithPortfolioTreeShoudReturnSumOfPortfoliosBalances
+
+	| portfolio account portfolioChild portfolioChildAccount portfolioGrandchild portfolioGrandchildAccount |
+	
+	account := ReceptiveAccount new.
+	Deposit register: 300 on: account.
+	
+	portfolio := Portfolio new.
+	portfolio addAccount: account.
+		
+		portfolioChildAccount := ReceptiveAccount new.
+		Withdraw register: 100 on: portfolioChildAccount.	
+		
+		portfolioChild := Portfolio new.
+		portfolioChild addAccount: portfolioChildAccount.	
+	
+		portfolio addPortfolio: portfolioChild.	
+	
+			portfolioGrandchildAccount := ReceptiveAccount new.
+			Deposit register: 50 on: portfolioGrandchildAccount.	
+			
+			portfolioGrandchild := Portfolio new.
+			portfolioGrandchild addAccount: portfolioGrandchildAccount.	
+	
+	
+	
+	
+	self assert: account balance + portfolioChild balance equals: portfolio balance.! !
+
+!testRun: #PortfolioTest #test03PortfolioWithPortfolioTreeShoudReturnSumOfPortfoliosBalances stamp: 'WAL 5/15/2023 21:23:15'!
+PASSED!
+
+!testRun: #PortfolioTest #test01PortfolioWithOneAccountShoudReturnAccountBalance stamp: 'WAL 5/15/2023 21:23:15'!
+PASSED!
+
+!testRun: #PortfolioTest #test02PortfolioWithOneAccountAndOnePortfolioShoudReturnSumOfAccountAndPortfolioBalances stamp: 'WAL 5/15/2023 21:23:15'!
+PASSED!
+
+!testRun: #PortfolioTest #test03PortfolioWithPortfolioTreeShoudReturnSumOfPortfoliosBalances stamp: 'WAL 5/15/2023 21:23:15'!
+PASSED!
+!ReceptiveAccount methodsFor: 'balance' stamp: 'WAL 5/15/2023 21:24:22' prior: 50604458!
+balance
+
+	| balance |
+	
+	balance := 0.
+
+	transactions do: [ :aTransaction |     
+		balance := aTransaction addToBalance: balance.
+	] .
+	^balance! !
+!ReceptiveAccount methodsFor: 'balance' stamp: 'WAL 5/15/2023 21:24:33' prior: 50604939!
+balance
+
+	| balance |
+	
+	balance := 0.
+
+	transactions do: [ :aTransaction | 		balance := aTransaction addToBalance: balance 	] .
+	
+	^balance! !
+
+Object subclass: #MalNombre
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Ejercicio'!
+
+!classDefinition: #MalNombre category: 'Portfolio-Ejercicio' stamp: 'WAL 5/15/2023 21:26:58'!
+Object subclass: #MalNombre
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Ejercicio'!
+
+MalNombre subclass: #Portfolio
+	instanceVariableNames: 'accounts portfolios'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Ejercicio'!
+
+!classDefinition: #Portfolio category: 'Portfolio-Ejercicio' stamp: 'WAL 5/15/2023 21:27:21'!
+MalNombre subclass: #Portfolio
+	instanceVariableNames: 'accounts portfolios'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Ejercicio'!
+
+MalNombre subclass: #ReceptiveAccount
+	instanceVariableNames: 'transactions'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Ejercicio'!
+
+!classDefinition: #ReceptiveAccount category: 'Portfolio-Ejercicio' stamp: 'WAL 5/15/2023 21:27:37'!
+MalNombre subclass: #ReceptiveAccount
+	instanceVariableNames: 'transactions'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Ejercicio'!
+!MalNombre methodsFor: 'no messages' stamp: 'WAL 5/15/2023 21:28:10'!
+balance
+
+	self subclassResponsibility ! !
+
+MalNombre subclass: #Portfolio
+	instanceVariableNames: 'elements'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Ejercicio'!
+
+!classDefinition: #Portfolio category: 'Portfolio-Ejercicio' stamp: 'WAL 5/15/2023 21:30:26'!
+MalNombre subclass: #Portfolio
+	instanceVariableNames: 'elements'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Ejercicio'!
+!Portfolio methodsFor: 'as yet unclassified' stamp: 'WAL 5/15/2023 21:30:59'!
+add: anElement
+
+	elements add: anElement.! !
+
+!methodRemoval: Portfolio #addAccount: stamp: 'WAL 5/15/2023 21:31:04'!
+addAccount: anAccount
+
+	accounts add: anAccount.!
+
+!methodRemoval: Portfolio #addPortfolio: stamp: 'WAL 5/15/2023 21:31:06'!
+addPortfolio: aPortfolio
+
+	portfolios add: aPortfolio.!
+!Portfolio methodsFor: 'initialize' stamp: 'WAL 5/15/2023 21:31:16' prior: 50604667 overrides: 16920235!
+initialize
+
+	elements := OrderedCollection new.! !
+!Portfolio methodsFor: 'as yet unclassified' stamp: 'WAL 5/15/2023 21:31:29' prior: 50604721 overrides: 50604991!
+balance
+	
+	^ elements  sum: [ : account  | account balance ] ifEmpty: [ 0 ].! !
+!PortfolioTest methodsFor: 'as yet unclassified' stamp: 'WAL 5/15/2023 21:31:42' prior: 50604589!
+test01PortfolioWithOneAccountShoudReturnAccountBalance
+
+	| account portfolio |
+	
+	account := ReceptiveAccount new.
+	
+	Deposit register: 100 on: account.
+	
+	portfolio := Portfolio new.
+	
+	portfolio add: account.
+	
+	self assert: account balance equals: portfolio balance.! !
+!PortfolioTest methodsFor: 'as yet unclassified' stamp: 'WAL 5/15/2023 21:31:52' prior: 50604627!
+test02PortfolioWithOneAccountAndOnePortfolioShoudReturnSumOfAccountAndPortfolioBalances
+
+	| portfolio account childPortfolio childPortfolioAccount |
+	
+	account := ReceptiveAccount new.
+	Deposit register: 300 on: account.
+	
+	portfolio := Portfolio new.
+	portfolio add: account.
+	
+	childPortfolioAccount := ReceptiveAccount new.
+	Withdraw register: 100 on: childPortfolioAccount.	
+	
+	childPortfolio := Portfolio new.
+	childPortfolio add: childPortfolioAccount.	
+	
+	portfolio add: childPortfolio.	
+	
+	self assert: account balance + childPortfolio balance equals: portfolio balance.! !
+!PortfolioTest methodsFor: 'as yet unclassified' stamp: 'WAL 5/15/2023 21:32:09' prior: 50604891!
+test03PortfolioWithPortfolioTreeShoudReturnSumOfPortfoliosBalances
+
+	| portfolio account portfolioChild portfolioChildAccount portfolioGrandchild portfolioGrandchildAccount |
+	
+	account := ReceptiveAccount new.
+	Deposit register: 300 on: account.
+	
+	portfolio := Portfolio new.
+	portfolio add: account.
+		
+		portfolioChildAccount := ReceptiveAccount new.
+		Withdraw register: 100 on: portfolioChildAccount.	
+		
+		portfolioChild := Portfolio new.
+		portfolioChild add: portfolioChildAccount.	
+	
+		portfolio add: portfolioChild.	
+	
+			portfolioGrandchildAccount := ReceptiveAccount new.
+			Deposit register: 50 on: portfolioGrandchildAccount.	
+			
+			portfolioGrandchild := Portfolio new.
+			portfolioGrandchild add: portfolioGrandchildAccount.	
+	
+	
+	
+	
+	self assert: account balance + portfolioChild balance equals: portfolio balance.! !
+
+!testRun: #PortfolioTest #test03PortfolioWithPortfolioTreeShoudReturnSumOfPortfoliosBalances stamp: 'WAL 5/15/2023 21:32:10'!
+PASSED!
+
+!testRun: #PortfolioTest #test01PortfolioWithOneAccountShoudReturnAccountBalance stamp: 'WAL 5/15/2023 21:32:10'!
+PASSED!
+
+!testRun: #PortfolioTest #test02PortfolioWithOneAccountAndOnePortfolioShoudReturnSumOfAccountAndPortfolioBalances stamp: 'WAL 5/15/2023 21:32:10'!
+PASSED!
+
+!testRun: #PortfolioTest #test03PortfolioWithPortfolioTreeShoudReturnSumOfPortfoliosBalances stamp: 'WAL 5/15/2023 21:32:10'!
+PASSED!
+!PortfolioTest methodsFor: 'as yet unclassified' stamp: 'WAL 5/15/2023 21:37:20'!
+test04PortfolioHasRegisteredATransactionInItsAccounts
+
+	| account portfolio |
+	
+	account := ReceptiveAccount new.
+	
+	Deposit register: 100 on: account.
+	
+	portfolio := Portfolio new.
+	
+	portfolio add: account.
+	
+	self assert: account balance equals: portfolio balance.! !
+!PortfolioTest methodsFor: 'as yet unclassified' stamp: 'WAL 5/15/2023 21:38:09' prior: 50605112!
+test04PortfolioHasRegisteredATransactionInItsAccounts
+
+	| account portfolio transaction |
+	
+	account := ReceptiveAccount new.
+	transaction := Deposit register: 100 on: account.
+	
+	portfolio := Portfolio new.
+	portfolio add: account.
+	
+	self assert: account balance equals: portfolio balance.! !
+!PortfolioTest methodsFor: 'as yet unclassified' stamp: 'WAL 5/15/2023 21:39:01' prior: 50605124!
+test04PortfolioHasRegisteredATransactionInItsAccounts
+
+	| account portfolio transaction |
+	
+	account := ReceptiveAccount new.
+	transaction := Deposit register: 100 on: account.
+	
+	portfolio := Portfolio new.
+	portfolio add: account.
+	
+	self assert: (portfolio hasRegistered: transaction).! !
+
+!testRun: #PortfolioTest #test04PortfolioHasRegisteredATransactionInItsAccounts stamp: 'WAL 5/15/2023 21:39:04'!
+ERROR!
+
+!testRun: #PortfolioTest #test04PortfolioHasRegisteredATransactionInItsAccounts stamp: 'WAL 5/15/2023 21:39:13'!
+ERROR!
+!Portfolio methodsFor: 'transactions' stamp: 'WAL 5/15/2023 21:39:31'!
+hasRegistered: transaction 
+	self shouldBeImplemented.! !
+!Portfolio methodsFor: 'transactions' stamp: 'WAL 5/15/2023 21:47:56' prior: 50605156!
+hasRegistered: aTransaction 
+
+	elements anySatisfy: [ : element | element hasRegistered: aTransaction ].! !
+!Portfolio methodsFor: 'transactions' stamp: 'WAL 5/15/2023 21:48:03' prior: 50605161!
+hasRegistered: aTransaction 
+
+	^elements anySatisfy: [ : element | element hasRegistered: aTransaction ].! !
+
+!testRun: #PortfolioTest #test04PortfolioHasRegisteredATransactionInItsAccounts stamp: 'WAL 5/15/2023 21:48:31'!
+PASSED!
+
+!testRun: #PortfolioTest #test04PortfolioHasRegisteredATransactionInItsAccounts stamp: 'WAL 5/15/2023 21:48:34'!
+PASSED!
+
+!testRun: #PortfolioTest #test01PortfolioWithOneAccountShoudReturnAccountBalance stamp: 'WAL 5/15/2023 21:48:34'!
+PASSED!
+
+!testRun: #PortfolioTest #test02PortfolioWithOneAccountAndOnePortfolioShoudReturnSumOfAccountAndPortfolioBalances stamp: 'WAL 5/15/2023 21:48:34'!
+PASSED!
+
+!testRun: #PortfolioTest #test03PortfolioWithPortfolioTreeShoudReturnSumOfPortfoliosBalances stamp: 'WAL 5/15/2023 21:48:34'!
+PASSED!
+
+!testRun: #PortfolioTest #test04PortfolioHasRegisteredATransactionInItsAccounts stamp: 'WAL 5/15/2023 21:48:34'!
+PASSED!
+!PortfolioTest methodsFor: 'as yet unclassified' stamp: 'WAL 5/15/2023 21:54:38'!
+test05PortfolioHasRegisteredATransactionInItsChildPortfolio
+
+	| account portfolio portfolioChild transaction |
+	
+	portfolio := Portfolio new.
+	
+	account := ReceptiveAccount new.
+
+
+	portfolioChild := Portfolio new.
+	portfolioChild add: account.	
+	
+	portfolio add: portfolioChild.
+	
+	self assert: (portfolio hasRegistered: transaction).! !
+!PortfolioTest methodsFor: 'as yet unclassified' stamp: 'WAL 5/15/2023 21:55:02' prior: 50605199!
+test05PortfolioHasRegisteredATransactionInItsChildPortfolio
+
+	| account portfolio portfolioChild transaction |
+	
+	portfolio := Portfolio new.
+	
+	account := ReceptiveAccount new.
+	transaction := Deposit register: 100 on: account.
+
+	portfolioChild := Portfolio new.
+	portfolioChild add: account.	
+	
+	portfolio add: portfolioChild.
+	
+	self assert: (portfolio hasRegistered: transaction).! !
+
+!testRun: #PortfolioTest #test05PortfolioHasRegisteredATransactionInItsChildPortfolio stamp: 'WAL 5/15/2023 21:55:05'!
+PASSED!
+
+!testRun: #PortfolioTest #test01PortfolioWithOneAccountShoudReturnAccountBalance stamp: 'WAL 5/15/2023 21:55:05'!
+PASSED!
+
+!testRun: #PortfolioTest #test02PortfolioWithOneAccountAndOnePortfolioShoudReturnSumOfAccountAndPortfolioBalances stamp: 'WAL 5/15/2023 21:55:05'!
+PASSED!
+
+!testRun: #PortfolioTest #test03PortfolioWithPortfolioTreeShoudReturnSumOfPortfoliosBalances stamp: 'WAL 5/15/2023 21:55:05'!
+PASSED!
+
+!testRun: #PortfolioTest #test04PortfolioHasRegisteredATransactionInItsAccounts stamp: 'WAL 5/15/2023 21:55:05'!
+PASSED!
+
+!testRun: #PortfolioTest #test05PortfolioHasRegisteredATransactionInItsChildPortfolio stamp: 'WAL 5/15/2023 21:55:05'!
+PASSED!
+
+----SNAPSHOT----(15 May 2023 21:55:43) CuisUniversity-5706.image priorSource: 8739728!
