@@ -30,6 +30,12 @@ portfolioWithAccounts: anArrayOfAccounts
 	
 	^portfolio! !
 
+!PortfolioTest methodsFor: 'accounts' stamp: 'WAL 5/20/2023 17:04:24'!
+portfolioWithDepositOf: anAmount
+	
+	^ self portfolioWithAccounts: { self accountWithDepositOf: anAmount.	 }.
+	! !
+
 !PortfolioTest methodsFor: 'accounts' stamp: 'AS 5/17/2023 09:04:58'!
 portfolioWithPortfolios: anArrayOfPortfolios
 	
@@ -40,6 +46,36 @@ portfolioWithPortfolios: anArrayOfPortfolios
 	
 	^portfolio! !
 
+
+!PortfolioTest methodsFor: 'test' stamp: 'WAL 5/20/2023 17:36:28'!
+onPortfolioWithTransactionDo: aBlock
+
+	| portfolio account transaction |
+	
+	account := ReceptiveAccount new.	
+	transaction := self depositOf: 100 on: account.		
+	portfolio := self portfolioWithAccounts: { account }.
+	
+	aBlock value: transaction value: portfolio.
+	
+	
+! !
+
+!PortfolioTest methodsFor: 'test' stamp: 'WAL 5/20/2023 17:37:38'!
+onPortfolioWithTransactionInChildPortfolioDo: aBlock
+
+	| portfolio childPortfolio account transaction |
+	
+	account := ReceptiveAccount new.	
+	transaction := self depositOf: 100 on: account.	
+	childPortfolio := self portfolioWithAccounts: { account }.
+	
+	portfolio := self portfolioWithPortfolios: { childPortfolio }.
+	
+	aBlock value: transaction value: portfolio.
+	
+	
+! !
 
 !PortfolioTest methodsFor: 'test' stamp: 'AS 5/17/2023 09:02:27'!
 test01PortfolioWithOneAccountShouldReturnAccountBalance
@@ -76,16 +112,13 @@ test03PortfolioWithOnePortfolioShouldReturnPortfolioBalance
 	
 	self assert: childPortfolio balance equals: portfolio balance.! !
 
-!PortfolioTest methodsFor: 'test' stamp: 'AS 5/17/2023 09:07:07'!
+!PortfolioTest methodsFor: 'test' stamp: 'WAL 5/20/2023 17:05:13'!
 test04PortfolioWithTwoPortfoliosShouldReturnSumPortfoliosBalance
 
-	| portfolio accountPortfolio1 accountPortfolio2 childPortfolio1 childPortfolio2 |
+	| portfolio childPortfolio1 childPortfolio2 |
 	
-	accountPortfolio1 := self accountWithDepositOf: 100.	
-	childPortfolio1 := self portfolioWithAccounts: { accountPortfolio1 }.
-		
-	accountPortfolio2 := self accountWithDepositOf: 150.
-	childPortfolio2 := self portfolioWithAccounts: { accountPortfolio2 }.
+	childPortfolio1 := self portfolioWithDepositOf: 100.
+	childPortfolio2 := self portfolioWithDepositOf: 150.
 		
 	portfolio := self portfolioWithPortfolios: { childPortfolio1. childPortfolio2 }.
 	
@@ -93,55 +126,40 @@ test04PortfolioWithTwoPortfoliosShouldReturnSumPortfoliosBalance
 		assert: childPortfolio1 balance + childPortfolio2 balance
 		equals: portfolio balance.! !
 
-!PortfolioTest methodsFor: 'test' stamp: 'AS 5/17/2023 09:45:17'!
+!PortfolioTest methodsFor: 'test' stamp: 'WAL 5/20/2023 17:36:28'!
 test05PortfolioHasRegisteredTransactionsInChildAccounts
 
-	| portfolio account transaction |
-	
-	account := ReceptiveAccount new.	
-	transaction := self depositOf: 100 on: account.	
-	portfolio := self portfolioWithAccounts: { account }.
-	
-	self assert: (portfolio hasRegistered: transaction)! !
+	self onPortfolioWithTransactionDo:
+		[ : transaction : portfolio | 
+			self assert: (portfolio hasRegistered: transaction)
+	        ] .! !
 
-!PortfolioTest methodsFor: 'test' stamp: 'AS 5/17/2023 09:45:13'!
+!PortfolioTest methodsFor: 'test' stamp: 'WAL 5/20/2023 17:38:38'!
 test06PortfolioHasRegisteredTransactionsInChildPortfolios
 
-	| account transaction childPortfolio portfolio |
-	
-	account := ReceptiveAccount new.	
-	transaction := self depositOf: 100 on: account.	
-	childPortfolio := self portfolioWithAccounts: { account }.
-	
-	portfolio := self portfolioWithPortfolios: { childPortfolio }.
-	
-	self assert: (portfolio hasRegistered: transaction)! !
+	self onPortfolioWithTransactionInChildPortfolioDo:
+		[ : transaction : portfolio | 
+			self assert: (portfolio hasRegistered: transaction)
+	        ] .! !
 
-!PortfolioTest methodsFor: 'test' stamp: 'AS 5/17/2023 09:45:08'!
+!PortfolioTest methodsFor: 'test' stamp: 'WAL 5/20/2023 17:36:28'!
 test07PortfolioKnowsChildAccountsTransactions
 
-	| account transaction portfolio |
-	
-	account := ReceptiveAccount new.	
-	transaction := self depositOf: 100 on: account.		
-	portfolio := self portfolioWithAccounts: { account }.
-	
-	self assert: 1 equals: portfolio transactions size.
-	self assert: (portfolio transactions includes: transaction).! !
+	self onPortfolioWithTransactionDo:
+		[ : transaction : portfolio | 
+			self assert: 1 equals: portfolio transactions size.
+			self assert: (portfolio transactions includes: transaction).
+	        ] .
+! !
 
-!PortfolioTest methodsFor: 'test' stamp: 'AS 5/17/2023 09:45:02'!
+!PortfolioTest methodsFor: 'test' stamp: 'WAL 5/20/2023 17:39:09'!
 test08PortfolioKnowsChildPortfoliosTransactions
 
-	| account transaction childPortfolio portfolio |
-	
-	account := ReceptiveAccount new.	
-	transaction := self depositOf: 100 on: account.		
-	childPortfolio := self portfolioWithAccounts: { account }.
-	
-	portfolio := self portfolioWithPortfolios: { childPortfolio }.
-	
-	self assert: 1 equals: portfolio transactions size.
-	self assert: (portfolio transactions includes: transaction).! !
+	self onPortfolioWithTransactionInChildPortfolioDo:
+		[ : transaction : portfolio | 
+			self assert: 1 equals: portfolio transactions size.
+			self assert: (portfolio transactions includes: transaction).
+	        ] .! !
 
 !PortfolioTest methodsFor: 'test' stamp: 'AS 5/17/2023 20:03:10'!
 test09PortfolioCantHaveRepeatedAccounts
@@ -158,10 +176,10 @@ test09PortfolioCantHaveRepeatedAccounts
 		raise: Error
 ! !
 
-!PortfolioTest methodsFor: 'test' stamp: 'AS 5/17/2023 20:35:41'!
+!PortfolioTest methodsFor: 'test' stamp: 'WAL 5/20/2023 17:40:47'!
 test10PortfolioCantHaveTheSameAccountsInChildPortfolio
 
-	| account parentPortfolio childPortfolio|
+	| account parentPortfolio childPortfolio |
 	
 	account := ReceptiveAccount new.	
 		
@@ -194,7 +212,7 @@ test11PortfolioCantHaveTheSameAccountsInParentPortfolio
 		raise: Error
 ! !
 
-!PortfolioTest methodsFor: 'test' stamp: 'WAL 5/17/2023 23:01:25'!
+!PortfolioTest methodsFor: 'test' stamp: 'WAL 5/20/2023 16:51:45'!
 test12PortfolioCanHaveTwoParents
 
 	| parentPortfolio1 parentPortfolio2 childPortfolio |
@@ -205,9 +223,8 @@ test12PortfolioCanHaveTwoParents
 	childPortfolio := Portfolio new.
 	
 	parentPortfolio1 addPortfolio: childPortfolio.
-	
 	parentPortfolio2 addPortfolio: childPortfolio.
-			
+	
 	self assert: 	(childPortfolio parents includes: parentPortfolio1).
 	self assert: 	(childPortfolio parents includes: parentPortfolio2).
 ! !
@@ -384,10 +401,17 @@ Object subclass: #AccountTransaction
 	poolDictionaries: ''
 	category: 'Portfolio-Ejercicio'!
 
-!AccountTransaction methodsFor: 'value' stamp: 'AS 5/16/2023 16:06:26'!
+!AccountTransaction methodsFor: 'balance' stamp: 'AS 5/16/2023 16:06:26'!
 addToBalance: balance 
 
 	self subclassResponsibility ! !
+
+
+!AccountTransaction methodsFor: 'initialization' stamp: 'WAL 5/20/2023 18:02:06'!
+initializeFor: aValue
+
+	self subclassResponsibility ! !
+
 
 !AccountTransaction methodsFor: 'value' stamp: 'HernanWilkinson 9/12/2011 12:25'!
 value 
@@ -418,6 +442,12 @@ AccountTransaction subclass: #Deposit
 	poolDictionaries: ''
 	category: 'Portfolio-Ejercicio'!
 
+!Deposit methodsFor: 'balance' stamp: 'AS 5/16/2023 15:53:14'!
+addToBalance: balance 
+	
+	^balance + value! !
+
+
 !Deposit methodsFor: 'initialization' stamp: 'HernanWilkinson 7/13/2011 18:45'!
 initializeFor: aValue
 
@@ -428,12 +458,6 @@ initializeFor: aValue
 value
 
 	^ value! !
-
-
-!Deposit methodsFor: 'balance' stamp: 'AS 5/16/2023 15:53:14'!
-addToBalance: balance 
-	
-	^balance + value! !
 
 "-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- "!
 
@@ -454,6 +478,12 @@ AccountTransaction subclass: #Withdraw
 	poolDictionaries: ''
 	category: 'Portfolio-Ejercicio'!
 
+!Withdraw methodsFor: 'balance' stamp: 'AS 5/16/2023 16:05:21'!
+addToBalance: balance 
+	
+	^balance - value! !
+
+
 !Withdraw methodsFor: 'initialization' stamp: 'HernanWilkinson 7/13/2011 18:46'!
 initializeFor: aValue
 
@@ -464,12 +494,6 @@ initializeFor: aValue
 value
 
 	^ value! !
-
-
-!Withdraw methodsFor: 'balance' stamp: 'AS 5/16/2023 16:05:21'!
-addToBalance: balance 
-	
-	^balance - value! !
 
 "-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- "!
 
@@ -483,98 +507,118 @@ for: aValue
 	^ self new initializeFor: aValue ! !
 
 
-!classDefinition: #Portfolio category: 'Portfolio-Ejercicio'!
-Object subclass: #Portfolio
-	instanceVariableNames: 'accounts portfolios parents'
+!classDefinition: #PortfolioOrAccount category: 'Portfolio-Ejercicio'!
+Object subclass: #PortfolioOrAccount
+	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Portfolio-Ejercicio'!
 
-!Portfolio methodsFor: 'initialization' stamp: 'WAL 5/17/2023 23:23:37'!
+!PortfolioOrAccount methodsFor: 'transactions' stamp: 'WAL 5/20/2023 14:36:34'!
+hasRegistered: aTransaction
+
+	self subclassResponsibility ! !
+
+!PortfolioOrAccount methodsFor: 'transactions' stamp: 'WAL 5/20/2023 14:37:02'!
+transactions
+
+	self subclassResponsibility ! !
+
+
+!PortfolioOrAccount methodsFor: 'private' stamp: 'WAL 5/20/2023 15:30:51'!
+addMyselfTo: aCollection
+
+	self subclassResponsibility ! !
+
+!PortfolioOrAccount methodsFor: 'private' stamp: 'WAL 5/20/2023 17:56:47'!
+addTransactionsTo: aTransactionsCollection.
+	
+	self subclassResponsibility ! !
+
+
+!PortfolioOrAccount methodsFor: 'balance' stamp: 'WAL 5/20/2023 14:36:00'!
+balance
+
+	self subclassResponsibility ! !
+
+
+!classDefinition: #Portfolio category: 'Portfolio-Ejercicio'!
+PortfolioOrAccount subclass: #Portfolio
+	instanceVariableNames: 'elements parents'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Ejercicio'!
+
+!Portfolio methodsFor: 'assertions' stamp: 'WAL 5/20/2023 16:21:50'!
+assertDoesNotContainAccount: anAccount
+
+	^ (self allRootsElements includes: anAccount)
+		ifTrue: [ self error: 'La cuenta ya pertenece al portfolio' ]! !
+
+!Portfolio methodsFor: 'assertions' stamp: 'WAL 5/20/2023 16:21:03'!
+assertNoCommonElementsWith: aPortfolio
+
+	^ (self allRootsElements includesAnyOf: aPortfolio allElements)
+		ifTrue: [ 	self error: 'El portfolio no puede agregarse.' 	]! !
+
+
+!Portfolio methodsFor: 'balance' stamp: 'WAL 5/20/2023 16:11:23'!
+balance
+			
+	^ (elements sum: [ :element | element balance ] ifEmpty: [0])
+! !
+
+
+!Portfolio methodsFor: 'elements' stamp: 'WAL 5/20/2023 16:21:50'!
+addAccount: anAccount 
+	
+	self assertDoesNotContainAccount: anAccount.
+		
+	elements add: anAccount
+			! !
+
+!Portfolio methodsFor: 'elements' stamp: 'WAL 5/20/2023 16:21:03'!
+addPortfolio: aPortfolio 
+
+	self assertNoCommonElementsWith: aPortfolio.
+	
+	elements add: aPortfolio.
+	aPortfolio addParent: self.! !
+
+
+!Portfolio methodsFor: 'initialization' stamp: 'WAL 5/20/2023 16:25:11'!
 initialize
 	
-	accounts := OrderedCollection new.
-	portfolios := OrderedCollection new.
+	elements := OrderedCollection new.
 	parents := OrderedCollection new.
 	! !
 
 
-!Portfolio methodsFor: 'balance' stamp: 'AS 5/17/2023 19:17:18'!
-balance
-			
-	^ (accounts sum: [ :account | account balance ] ifEmpty: [0])
-		+ (portfolios sum: [ :portfolio | portfolio balance ] ifEmpty: [0])
-! !
-
-
-!Portfolio methodsFor: 'accounts' stamp: 'WAL 5/18/2023 00:07:46'!
-accounts
-
-	| allAccounts |
-
-	allAccounts := OrderedCollection new.
-	allAccounts addAll: accounts.
-	
-	portfolios do: [ : portfolio | allAccounts addAll: portfolio accounts ].
-
-	^allAccounts! !
-
-!Portfolio methodsFor: 'accounts' stamp: 'AS 5/17/2023 21:07:37'!
-addAccount: anAccount 
-	
-	(self roots anySatisfy: [ :root | root hasAccount: anAccount ])
-		ifTrue: [ self error: 'La cuenta ya pertenece al portfolio' ].
-		
-	accounts add: anAccount
-			! !
-
-!Portfolio methodsFor: 'accounts' stamp: 'WAL 5/17/2023 23:57:45'!
-addPortfolio: aPortfolio 
-
-	(self roots anySatisfy: [ :root | root hasPortfolio: aPortfolio ])
-		ifTrue: [ self error: 'El portfolio ya pertenece al portfolio' ].
-	
-	aPortfolio accounts do: [ : anAccount | 
-		(self roots anySatisfy: [ :root | root hasAccount: anAccount ])
-				ifTrue: [ self error: 'Alguna cuenta ya pertenece al portfolio' ].
-	].
-	
-	portfolios add: aPortfolio.
-	aPortfolio addParent: self.! !
-
-!Portfolio methodsFor: 'accounts' stamp: 'AS 5/17/2023 20:16:08'!
-hasAccount: anAccount 
-	
-	^(accounts includes: anAccount) or: 	(portfolios anySatisfy: [ :portfolio | portfolio hasAccount: anAccount ])
-			! !
-
-!Portfolio methodsFor: 'accounts' stamp: 'WAL 5/17/2023 23:40:34'!
-hasPortfolio: aPortfolio 
-	
-	^(portfolios includes: aPortfolio) or: 	(portfolios anySatisfy: [ :portfolio | portfolio hasPortfolio: aPortfolio ])
-			! !
-
-
-!Portfolio methodsFor: 'transactions' stamp: 'AS 5/17/2023 09:40:57'!
+!Portfolio methodsFor: 'transactions' stamp: 'WAL 5/20/2023 16:26:32'!
 hasRegistered: aTransaction 
 		
-	^(accounts anySatisfy: [ :account | account hasRegistered: aTransaction ]) or:
-	(portfolios anySatisfy: [ :portfolio | portfolio hasRegistered: aTransaction ]).
+	^elements anySatisfy: [ :element | element hasRegistered: aTransaction ]
 	! !
 
-!Portfolio methodsFor: 'transactions' stamp: 'AS 5/17/2023 19:24:49'!
+!Portfolio methodsFor: 'transactions' stamp: 'WAL 5/20/2023 16:54:57'!
 transactions
 	
 	| transactions |
 	
 	transactions := OrderedCollection new.
 	
-	transactions addAll: (accounts do: [ :account | ^account transactions ]).	
-	transactions addAll: (portfolios do: [ :portfolio | ^portfolio transactions ]).
+	self addTransactionsTo: transactions.
 		
 	^transactions.
 		! !
 
+
+!Portfolio methodsFor: 'private' stamp: 'WAL 5/20/2023 16:11:23'!
+addMyselfTo: aCollection
+
+	aCollection add: self.
+	
+	elements do: [ : element | element addMyselfTo: aCollection ].! !
 
 !Portfolio methodsFor: 'private' stamp: 'WAL 5/17/2023 23:25:29'!
 addParent: aPortfolio
@@ -588,6 +632,32 @@ addRootsTo: aRootCollection
 	
 	parents ifEmpty: [ aRootCollection add: self ].
 	! !
+
+!Portfolio methodsFor: 'private' stamp: 'WAL 5/20/2023 16:42:14'!
+addTransactionsTo: aTransactionsCollection.
+	
+	elements do: [ :element | element addTransactionsTo: aTransactionsCollection ].! !
+
+!Portfolio methodsFor: 'private' stamp: 'WAL 5/20/2023 16:12:58'!
+allElements
+
+	| allElements |
+
+	allElements := OrderedCollection with: self.
+	
+	elements do: [ : element | element addMyselfTo: allElements ].
+
+	^allElements! !
+
+!Portfolio methodsFor: 'private' stamp: 'WAL 5/20/2023 16:11:40'!
+allRootsElements
+
+	| allRootsElements |
+	
+	allRootsElements := OrderedCollection  new.
+	self roots do: [ : root | allRootsElements addAll: root allElements ].
+	
+	^allRootsElements! !
 
 !Portfolio methodsFor: 'private' stamp: 'WAL 5/17/2023 23:30:14'!
 parents
@@ -613,17 +683,34 @@ roots
 
 
 !classDefinition: #ReceptiveAccount category: 'Portfolio-Ejercicio'!
-Object subclass: #ReceptiveAccount
+PortfolioOrAccount subclass: #ReceptiveAccount
 	instanceVariableNames: 'transactions'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Portfolio-Ejercicio'!
+
+!ReceptiveAccount methodsFor: 'balance' stamp: 'AS 5/16/2023 15:56:36'!
+balance
+	| balance |
+	
+	balance := 0.
+	
+	transactions do: [ :aTransaction | balance := aTransaction addToBalance: balance ].
+	
+	^balance! !
+
 
 !ReceptiveAccount methodsFor: 'initialization' stamp: 'NR 10/17/2019 15:06:56'!
 initialize
 
 	transactions := OrderedCollection new.! !
 
+
+!ReceptiveAccount methodsFor: 'transactions' stamp: 'NR 10/17/2019 03:28:43'!
+hasRegistered: aTransaction
+
+	^ transactions includes: aTransaction 
+! !
 
 !ReceptiveAccount methodsFor: 'transactions' stamp: 'AS 5/16/2023 16:29:43'!
 register: aTransaction
@@ -637,19 +724,12 @@ transactions
 	^ transactions copy! !
 
 
-!ReceptiveAccount methodsFor: 'balance' stamp: 'AS 5/16/2023 15:56:36'!
-balance
-	| balance |
-	
-	balance := 0.
-	
-	transactions do: [ :aTransaction | balance := aTransaction addToBalance: balance ].
-	
-	^balance! !
+!ReceptiveAccount methodsFor: 'private' stamp: 'WAL 5/20/2023 15:30:33'!
+addMyselfTo: aCollection
 
+	aCollection add: self.! !
 
-!ReceptiveAccount methodsFor: 'testing' stamp: 'NR 10/17/2019 03:28:43'!
-hasRegistered: aTransaction
-
-	^ transactions includes: aTransaction 
-! !
+!ReceptiveAccount methodsFor: 'private' stamp: 'WAL 5/20/2023 16:47:02'!
+addTransactionsTo: aTransactionsCollection.
+	
+	aTransactionsCollection addAll: transactions copy! !
