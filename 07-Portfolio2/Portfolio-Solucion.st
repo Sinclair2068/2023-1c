@@ -443,6 +443,51 @@ test06AccountSummaryOnPortfolioShouldReturnAccountTransactions
 	self assert: 'Balance = -30' equals: (report lines at: 4)
 ! !
 
+!ReportTest methodsFor: 'test' stamp: 'WAL 5/25/2023 20:22:10'!
+test07TransferNetOnEmptyAccountShouldReturnOnlyBalanceLineWithZero
+
+	| account report |
+	
+	account := ReceptiveAccount  new.
+
+	report := TransferNet on: account.
+	
+	self assert: 1 equals: report lines size.	
+	self assert: 'Neto de transferencias = 0' equals: (report lines at: 1)! !
+
+!ReportTest methodsFor: 'test' stamp: 'WAL 5/25/2023 20:34:37'!
+test08TransferNetOnAccountWithTransferShouldReturnTransferLines
+
+	| account1 account2 account1Report account2Report |
+	
+	account1 := ReceptiveAccount  new.
+	account2 := ReceptiveAccount  new.
+
+	Transfer register: 100 from: account1 to: account2.
+	Transfer register: 70 from: account2 to: account1.
+		
+	account1Report := TransferNet on: account1.
+	account2Report := TransferNet on: account2.
+	
+	self assert: 'Neto de transferencias = -30' equals: (account1Report lines at: 1).
+	self assert: 'Neto de transferencias = 30' equals: (account2Report lines at: 1).	
+! !
+
+!ReportTest methodsFor: 'test' stamp: 'WAL 5/25/2023 20:49:04'!
+test09TransferNetOnAccountShouldNotBeAffectedByOrdinaryDepositsOrWithdraws
+
+	| account accountReport |
+	
+	account := ReceptiveAccount  new.
+
+	Deposit register: 100 on: account.
+	Withdraw register: 30 on: account.
+		
+	accountReport := TransferNet on: account.
+	
+	self assert: 'Neto de transferencias = 0' equals: (accountReport lines at: 1).
+! !
+
 
 !classDefinition: #Account category: 'Portfolio-Solucion'!
 Object subclass: #Account
@@ -802,7 +847,6 @@ withdraw
 TransferDeposit class
 	instanceVariableNames: ''!
 
-
 !TransferDeposit class methodsFor: 'instance creation' stamp: 'AS 5/25/2023 16:35:08'!
 transfer: aTransfer on: anAccount
 
@@ -846,7 +890,6 @@ reportOn: aReport
 !classDefinition: 'TransferWithdraw class' category: 'Portfolio-Solucion'!
 TransferWithdraw class
 	instanceVariableNames: ''!
-
 
 !TransferWithdraw class methodsFor: 'instance creation' stamp: 'AS 5/25/2023 16:34:20'!
 transfer: aTransfer on: anAccount
@@ -976,10 +1019,53 @@ on: anAccount
 
 !classDefinition: #TransferNet category: 'Portfolio-Solucion'!
 Report subclass: #TransferNet
-	instanceVariableNames: ''
+	instanceVariableNames: 'transferNet'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Portfolio-Solucion'!
+
+!TransferNet methodsFor: 'as yet unclassified' stamp: 'WAL 5/25/2023 20:49:52'!
+initializeOn: anAccount
+	
+	transferNet := 0.
+	
+	lines := OrderedCollection new.
+	
+	anAccount reportOn: self.
+	
+	lines add: 'Neto de transferencias = ', transferNet asString.
+	! !
+
+!TransferNet methodsFor: 'as yet unclassified' stamp: 'WAL 5/25/2023 20:44:07'!
+writeDeposit: aValue
+	! !
+
+!TransferNet methodsFor: 'as yet unclassified' stamp: 'WAL 5/25/2023 20:37:23'!
+writeTransferDeposit: aValue 
+	
+	transferNet := transferNet + aValue
+	! !
+
+!TransferNet methodsFor: 'as yet unclassified' stamp: 'WAL 5/25/2023 20:38:07'!
+writeTransferWithdraw: aValue 
+	
+	transferNet := transferNet - aValue
+	! !
+
+!TransferNet methodsFor: 'as yet unclassified' stamp: 'WAL 5/25/2023 20:44:15'!
+writeWithdraw: aValue
+	! !
+
+"-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- "!
+
+!classDefinition: 'TransferNet class' category: 'Portfolio-Solucion'!
+TransferNet class
+	instanceVariableNames: ''!
+
+!TransferNet class methodsFor: 'as yet unclassified' stamp: 'WAL 5/25/2023 20:25:30'!
+on: anAccount
+	
+	^self new initializeOn: anAccount! !
 
 
 !classDefinition: #Transfer category: 'Portfolio-Solucion'!
