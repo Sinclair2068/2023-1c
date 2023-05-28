@@ -11570,3 +11570,3284 @@ PASSED!
 
 !testRun: #ReportTest #test09TransferNetOnAccountShouldNotBeAffectedByOrdinaryDepositsOrWithdraws stamp: 'WAL 5/25/2023 20:50:00'!
 PASSED!
+
+----SNAPSHOT----(25 May 2023 21:49:12) CuisUniversity-5706.image priorSource: 9297731!
+
+----STARTUP---- (26 May 2023 11:28:20) as /home/a/s/sw/smalltalk2/CuisUniversity-5706.image!
+
+!ReceptiveAccountTest methodsFor: 'tests' stamp: 'WAL 5/26/2023 11:32:31'!
+test10ReceptiveAccountCanHaveName
+
+	| account |
+	
+	account := ReceptiveAccount named: 'Cuenta Mia'.
+
+	self assert: 'Cuenta Mia' equals: account name.
+! !
+
+ReceptiveAccount class
+	instanceVariableNames: 'name'!
+
+Account subclass: #ReceptiveAccount
+	instanceVariableNames: 'transactions name'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+!classDefinition: #ReceptiveAccount category: 'Portfolio-Solucion' stamp: 'WAL 5/26/2023 11:33:37'!
+Account subclass: #ReceptiveAccount
+	instanceVariableNames: 'transactions name'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+!ReceptiveAccount class methodsFor: 'no messages' stamp: 'WAL 5/26/2023 11:34:55'!
+named: aName
+
+	^ self new initializeWithName: aName.
+	
+	! !
+!ReceptiveAccount methodsFor: 'initialization' stamp: 'WAL 5/26/2023 11:35:52'!
+initializeWithName: aName.
+
+	name := aName! !
+
+!testRun: #ReceptiveAccountTest #test01ReceptiveAccountHaveZeroAsBalanceWhenCreated stamp: 'WAL 5/26/2023 11:35:55'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test02DepositIncreasesBalanceOnTransactionValue stamp: 'WAL 5/26/2023 11:35:55'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test03WithdrawDecreasesBalanceOnTransactionValue stamp: 'WAL 5/26/2023 11:35:55'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test04WithdrawValueMustBePositive stamp: 'WAL 5/26/2023 11:35:55'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test05ReceptiveAccountKnowsRegisteredTransactions stamp: 'WAL 5/26/2023 11:35:55'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test06ReceptiveAccountDoNotKnowNotRegisteredTransactions stamp: 'WAL 5/26/2023 11:35:55'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test07AccountKnowsItsTransactions stamp: 'WAL 5/26/2023 11:35:55'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test08TransferIncreasesBalanceOfDestinationAccountAndDecreasesBalanceOfSourceAccountOnTransactionValue stamp: 'WAL 5/26/2023 11:35:55'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test09TransferDepositKnowsTransferWithdrawAndViceversa stamp: 'WAL 5/26/2023 11:35:55'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test10ReceptiveAccountCanHaveName stamp: 'WAL 5/26/2023 11:35:55'!
+FAILURE!
+
+!testRun: #ReceptiveAccountTest #test10ReceptiveAccountCanHaveName stamp: 'WAL 5/26/2023 11:35:55'!
+FAILURE!
+!ReceptiveAccount methodsFor: 'reports' stamp: 'WAL 5/26/2023 11:37:19' overrides: 16903442!
+name
+
+	^name! !
+
+!testRun: #ReceptiveAccountTest #test01ReceptiveAccountHaveZeroAsBalanceWhenCreated stamp: 'WAL 5/26/2023 11:37:20'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test02DepositIncreasesBalanceOnTransactionValue stamp: 'WAL 5/26/2023 11:37:20'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test03WithdrawDecreasesBalanceOnTransactionValue stamp: 'WAL 5/26/2023 11:37:20'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test04WithdrawValueMustBePositive stamp: 'WAL 5/26/2023 11:37:20'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test05ReceptiveAccountKnowsRegisteredTransactions stamp: 'WAL 5/26/2023 11:37:20'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test06ReceptiveAccountDoNotKnowNotRegisteredTransactions stamp: 'WAL 5/26/2023 11:37:20'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test07AccountKnowsItsTransactions stamp: 'WAL 5/26/2023 11:37:20'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test08TransferIncreasesBalanceOfDestinationAccountAndDecreasesBalanceOfSourceAccountOnTransactionValue stamp: 'WAL 5/26/2023 11:37:20'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test09TransferDepositKnowsTransferWithdrawAndViceversa stamp: 'WAL 5/26/2023 11:37:20'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test10ReceptiveAccountCanHaveName stamp: 'WAL 5/26/2023 11:37:20'!
+PASSED!
+!PortfolioTest methodsFor: 'tests' stamp: 'WAL 5/26/2023 11:39:19'!
+test16PortfolioCanHaveAName
+
+	| portfolio |
+	
+	portfolio := Portfolio named: 'Portfolio de la familia'.
+	
+	self assert: 'Portfolio de la familia' equals: portfolio name! !
+
+!testRun: #PortfolioTest #test16PortfolioCanHaveAName stamp: 'WAL 5/26/2023 11:39:21'!
+ERROR!
+
+Account subclass: #ReceptiveAccount
+	instanceVariableNames: 'transactions'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+!classDefinition: #ReceptiveAccount category: 'Portfolio-Solucion' stamp: 'WAL 5/26/2023 11:39:40'!
+Account subclass: #ReceptiveAccount
+	instanceVariableNames: 'transactions'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+Object subclass: #Account
+	instanceVariableNames: 'name'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+!classDefinition: #Account category: 'Portfolio-Solucion' stamp: 'WAL 5/26/2023 11:39:48'!
+Object subclass: #Account
+	instanceVariableNames: 'name'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+!Account methodsFor: 'composition' stamp: 'WAL 5/26/2023 11:40:16' overrides: 16903442!
+name
+
+	^name! !
+
+!methodRemoval: ReceptiveAccount #name stamp: 'WAL 5/26/2023 11:41:14'!
+name
+
+	^name!
+!Portfolio class methodsFor: 'as yet unclassified' stamp: 'WAL 5/26/2023 11:42:32'!
+named: aName
+
+	^ self new initializeWithName: aName.! !
+!Portfolio class methodsFor: 'as yet unclassified' stamp: 'WAL 5/26/2023 11:44:30'!
+named: aName with: anAccount
+
+	^(self new initializeWithName: aName)
+		add: anAccount;
+		yourself! !
+!Portfolio class methodsFor: 'as yet unclassified' stamp: 'WAL 5/26/2023 11:44:58'!
+named: aName with: anAccount with: anotherAccount
+
+	^(self new initializeWithName: aName)
+		add: anAccount;
+		add: anotherAccount;
+		yourself! !
+!Account class methodsFor: 'as yet unclassified' stamp: 'WAL 5/26/2023 11:45:51'!
+named: aName
+
+	^ self new initializeWithName: aName.! !
+
+!methodRemoval: Portfolio class #named: stamp: 'WAL 5/26/2023 11:45:51'!
+named: aName
+
+	^ self new initializeWithName: aName.!
+
+!testRun: #PortfolioTest #test01BalanceOfPortfolioWithoutAccountsIsZero stamp: 'WAL 5/26/2023 11:47:42'!
+PASSED!
+
+!testRun: #PortfolioTest #test02BalanceOfPortfolioWithAccountsIsSumOfAccountsBalance stamp: 'WAL 5/26/2023 11:47:42'!
+PASSED!
+
+!testRun: #PortfolioTest #test03BalanceOfPortfolioIsCalculatedRecursivelyOnPortfolios stamp: 'WAL 5/26/2023 11:47:42'!
+PASSED!
+
+!testRun: #PortfolioTest #test04PortfolioWithoutAccountsHasNoRegisteredTransaction stamp: 'WAL 5/26/2023 11:47:42'!
+PASSED!
+
+!testRun: #PortfolioTest #test05PortfolioHasRegisteredItsAccountsTransactions stamp: 'WAL 5/26/2023 11:47:42'!
+PASSED!
+
+!testRun: #PortfolioTest #test06PortfolioLooksForRegisteredTransactionsRecursively stamp: 'WAL 5/26/2023 11:47:42'!
+PASSED!
+
+!testRun: #PortfolioTest #test07PortfolioHasNoTransactionWhenHasNoAccounts stamp: 'WAL 5/26/2023 11:47:42'!
+PASSED!
+
+!testRun: #PortfolioTest #test08PortfolioTransactionsIncludesAllItsAccountsTransactions stamp: 'WAL 5/26/2023 11:47:42'!
+PASSED!
+
+!testRun: #PortfolioTest #test09PortfolioTransactionsAreCalculatedRecursively stamp: 'WAL 5/26/2023 11:47:42'!
+PASSED!
+
+!testRun: #PortfolioTest #test10PortfolioCanNotIncludeTheSameAccountMoreThanOnce stamp: 'WAL 5/26/2023 11:47:42'!
+PASSED!
+
+!testRun: #PortfolioTest #test11PortfolioCanNotIncludeAccountOfItsPortfolios stamp: 'WAL 5/26/2023 11:47:42'!
+PASSED!
+
+!testRun: #PortfolioTest #test12PortfolioCanNotIncludeItself stamp: 'WAL 5/26/2023 11:47:42'!
+PASSED!
+
+!testRun: #PortfolioTest #test13ComposedPortfolioCanNotHaveParentPortfolioAccount stamp: 'WAL 5/26/2023 11:47:42'!
+PASSED!
+
+!testRun: #PortfolioTest #test14ComposedPortfolioCanNotHaveAccountOfAnyRootParentRecursively stamp: 'WAL 5/26/2023 11:47:42'!
+PASSED!
+
+!testRun: #PortfolioTest #test15PortfolioCanNotIncludeAnyOfTheComposedAccountOfPortfolioToAdd stamp: 'WAL 5/26/2023 11:47:42'!
+PASSED!
+
+!testRun: #PortfolioTest #test16PortfolioCanHaveAName stamp: 'WAL 5/26/2023 11:47:42'!
+ERROR!
+
+!testRun: #PortfolioTest #test16PortfolioCanHaveAName stamp: 'WAL 5/26/2023 11:47:42'!
+ERROR!
+!Portfolio methodsFor: 'initialization' stamp: 'WAL 5/26/2023 11:48:02'!
+initializeWithName: aName 
+	self shouldBeImplemented.
+	name := aName.! !
+!Portfolio methodsFor: 'initialization' stamp: 'WAL 5/26/2023 11:48:17' prior: 50622919!
+initializeWithName: aName 
+	
+	name := aName.! !
+
+!testRun: #PortfolioTest #test16PortfolioCanHaveAName stamp: 'WAL 5/26/2023 11:48:20'!
+PASSED!
+
+!testRun: #PortfolioTest #test01BalanceOfPortfolioWithoutAccountsIsZero stamp: 'WAL 5/26/2023 11:48:25'!
+PASSED!
+
+!testRun: #PortfolioTest #test02BalanceOfPortfolioWithAccountsIsSumOfAccountsBalance stamp: 'WAL 5/26/2023 11:48:25'!
+PASSED!
+
+!testRun: #PortfolioTest #test03BalanceOfPortfolioIsCalculatedRecursivelyOnPortfolios stamp: 'WAL 5/26/2023 11:48:25'!
+PASSED!
+
+!testRun: #PortfolioTest #test04PortfolioWithoutAccountsHasNoRegisteredTransaction stamp: 'WAL 5/26/2023 11:48:25'!
+PASSED!
+
+!testRun: #PortfolioTest #test05PortfolioHasRegisteredItsAccountsTransactions stamp: 'WAL 5/26/2023 11:48:25'!
+PASSED!
+
+!testRun: #PortfolioTest #test06PortfolioLooksForRegisteredTransactionsRecursively stamp: 'WAL 5/26/2023 11:48:25'!
+PASSED!
+
+!testRun: #PortfolioTest #test07PortfolioHasNoTransactionWhenHasNoAccounts stamp: 'WAL 5/26/2023 11:48:25'!
+PASSED!
+
+!testRun: #PortfolioTest #test08PortfolioTransactionsIncludesAllItsAccountsTransactions stamp: 'WAL 5/26/2023 11:48:25'!
+PASSED!
+
+!testRun: #PortfolioTest #test09PortfolioTransactionsAreCalculatedRecursively stamp: 'WAL 5/26/2023 11:48:25'!
+PASSED!
+
+!testRun: #PortfolioTest #test10PortfolioCanNotIncludeTheSameAccountMoreThanOnce stamp: 'WAL 5/26/2023 11:48:25'!
+PASSED!
+
+!testRun: #PortfolioTest #test11PortfolioCanNotIncludeAccountOfItsPortfolios stamp: 'WAL 5/26/2023 11:48:25'!
+PASSED!
+
+!testRun: #PortfolioTest #test12PortfolioCanNotIncludeItself stamp: 'WAL 5/26/2023 11:48:25'!
+PASSED!
+
+!testRun: #PortfolioTest #test13ComposedPortfolioCanNotHaveParentPortfolioAccount stamp: 'WAL 5/26/2023 11:48:25'!
+PASSED!
+
+!testRun: #PortfolioTest #test14ComposedPortfolioCanNotHaveAccountOfAnyRootParentRecursively stamp: 'WAL 5/26/2023 11:48:25'!
+PASSED!
+
+!testRun: #PortfolioTest #test15PortfolioCanNotIncludeAnyOfTheComposedAccountOfPortfolioToAdd stamp: 'WAL 5/26/2023 11:48:25'!
+PASSED!
+
+!testRun: #PortfolioTest #test16PortfolioCanHaveAName stamp: 'WAL 5/26/2023 11:48:25'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test01ReceptiveAccountHaveZeroAsBalanceWhenCreated stamp: 'WAL 5/26/2023 11:48:34'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test02DepositIncreasesBalanceOnTransactionValue stamp: 'WAL 5/26/2023 11:48:34'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test03WithdrawDecreasesBalanceOnTransactionValue stamp: 'WAL 5/26/2023 11:48:34'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test04WithdrawValueMustBePositive stamp: 'WAL 5/26/2023 11:48:34'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test05ReceptiveAccountKnowsRegisteredTransactions stamp: 'WAL 5/26/2023 11:48:34'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test06ReceptiveAccountDoNotKnowNotRegisteredTransactions stamp: 'WAL 5/26/2023 11:48:34'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test07AccountKnowsItsTransactions stamp: 'WAL 5/26/2023 11:48:34'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test08TransferIncreasesBalanceOfDestinationAccountAndDecreasesBalanceOfSourceAccountOnTransactionValue stamp: 'WAL 5/26/2023 11:48:34'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test09TransferDepositKnowsTransferWithdrawAndViceversa stamp: 'WAL 5/26/2023 11:48:34'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test10ReceptiveAccountCanHaveName stamp: 'WAL 5/26/2023 11:48:34'!
+PASSED!
+
+!testRun: #ReportTest #test01AccountSummaryOnEmptyAccountShouldReturnOnlyBalanceLineWithZero stamp: 'WAL 5/26/2023 11:48:38'!
+PASSED!
+
+!testRun: #ReportTest #test02AccountSummaryOnAccountWithDepositShouldReturnDepositLines stamp: 'WAL 5/26/2023 11:48:38'!
+PASSED!
+
+!testRun: #ReportTest #test03AccountSummaryOnAccountWithWithdrawShouldReturnWithdrawLines stamp: 'WAL 5/26/2023 11:48:38'!
+PASSED!
+
+!testRun: #ReportTest #test04AccountSummaryOnAccountWithTransferShouldReturnTransferLines stamp: 'WAL 5/26/2023 11:48:38'!
+PASSED!
+
+!testRun: #ReportTest #test05AccountSummaryOnEmptyPortfolioShouldReturnOnlyBalanceLineWithZero stamp: 'WAL 5/26/2023 11:48:38'!
+PASSED!
+
+!testRun: #ReportTest #test06AccountSummaryOnPortfolioShouldReturnAccountTransactions stamp: 'WAL 5/26/2023 11:48:38'!
+PASSED!
+
+!testRun: #ReportTest #test07TransferNetOnEmptyAccountShouldReturnOnlyBalanceLineWithZero stamp: 'WAL 5/26/2023 11:48:38'!
+PASSED!
+
+!testRun: #ReportTest #test08TransferNetOnAccountWithTransferShouldReturnTransferLines stamp: 'WAL 5/26/2023 11:48:38'!
+PASSED!
+
+!testRun: #ReportTest #test09TransferNetOnAccountShouldNotBeAffectedByOrdinaryDepositsOrWithdraws stamp: 'WAL 5/26/2023 11:48:38'!
+PASSED!
+!ReportTest methodsFor: 'test' stamp: 'WAL 5/26/2023 11:53:06'!
+test10
+
+	! !
+!ReportTest methodsFor: 'test' stamp: 'WAL 5/26/2023 11:53:23'!
+test11PortfolioStructureOnEmtyPortfolioShouldReturnPortfolioName
+
+	! !
+!ReportTest methodsFor: 'test' stamp: 'WAL 5/26/2023 11:57:54' prior: 50623073!
+test11PortfolioStructureOnEmtyPortfolioShouldReturnPortfolioName
+
+	| portfolio portfolioStructure |
+	
+	portfolio := Portfolio named: 'Portfolio de la familia'.
+	
+	portfolioStructure := TestFailure on: portfolio.
+	
+	self assert: 1 equals: portfolioStructure lines size.
+	self assert: 'Portfolio de la familia' equals: (portfolioStructure lines at: 1).! !
+
+!classDefinition: #PortfolioStructure category: 'Portfolio-Solucion' stamp: 'WAL 5/26/2023 11:58:36'!
+Report subclass: #PortfolioStructure
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+!ReportTest methodsFor: 'test' stamp: 'WAL 5/26/2023 11:58:03' prior: 50623078!
+test11PortfolioStructureOnEmtyPortfolioShouldReturnPortfolioName
+
+	| portfolio portfolioStructure |
+	
+	portfolio := Portfolio named: 'Portfolio de la familia'.
+	
+	portfolioStructure := PortfolioStructure on: portfolio.
+	
+	self assert: 1 equals: portfolioStructure lines size.
+	self assert: 'Portfolio de la familia' equals: (portfolioStructure lines at: 1).! !
+
+!testRun: #ReportTest #test11PortfolioStructureOnEmtyPortfolioShouldReturnPortfolioName stamp: 'WAL 5/26/2023 11:58:51'!
+ERROR!
+!PortfolioStructure class methodsFor: 'no messages' stamp: 'WAL 5/26/2023 11:59:43'!
+on: anAccount
+	
+	^self new initializeOn: anAccount! !
+!PortfolioStructure class methodsFor: 'instance creation' stamp: 'WAL 5/26/2023 12:00:07' prior: 50623118!
+on: aPortfolio
+	
+	^self new initializeOn: aPortfolio! !
+!PortfolioStructure methodsFor: 'no messages' stamp: 'WAL 5/26/2023 12:01:38'!
+initializeOn: aPortfolio
+	
+	lines := OrderedCollection new.
+	
+	aPortfolio reportOn: self.! !
+!Portfolio methodsFor: 'reports' stamp: 'WAL 5/26/2023 12:11:41' prior: 50621559!
+reportOn: aReport 
+	
+	aReport writeName: name.
+	
+	accounts do: [ :account | account reportOn: aReport ].
+! !
+!AccountSummary methodsFor: 'transactions' stamp: 'WAL 5/26/2023 12:12:17'!
+writeName: aName! !
+!Report methodsFor: 'accessing' stamp: 'WAL 5/26/2023 12:12:54'!
+writeName: aName! !
+
+!methodRemoval: AccountSummary #writeName: stamp: 'WAL 5/26/2023 12:13:21'!
+writeName: aName!
+!PortfolioStructure methodsFor: 'as yet unclassified' stamp: 'WAL 5/26/2023 12:13:49' overrides: 50623144!
+writeName: aName
+
+	lines add: aName! !
+
+!testRun: #ReportTest #test11PortfolioStructureOnEmtyPortfolioShouldReturnPortfolioName stamp: 'WAL 5/26/2023 12:13:56'!
+PASSED!
+
+!testRun: #ReportTest #test01AccountSummaryOnEmptyAccountShouldReturnOnlyBalanceLineWithZero stamp: 'WAL 5/26/2023 12:13:56'!
+PASSED!
+
+!testRun: #ReportTest #test02AccountSummaryOnAccountWithDepositShouldReturnDepositLines stamp: 'WAL 5/26/2023 12:13:56'!
+PASSED!
+
+!testRun: #ReportTest #test03AccountSummaryOnAccountWithWithdrawShouldReturnWithdrawLines stamp: 'WAL 5/26/2023 12:13:56'!
+PASSED!
+
+!testRun: #ReportTest #test04AccountSummaryOnAccountWithTransferShouldReturnTransferLines stamp: 'WAL 5/26/2023 12:13:56'!
+PASSED!
+
+!testRun: #ReportTest #test05AccountSummaryOnEmptyPortfolioShouldReturnOnlyBalanceLineWithZero stamp: 'WAL 5/26/2023 12:13:56'!
+PASSED!
+
+!testRun: #ReportTest #test06AccountSummaryOnPortfolioShouldReturnAccountTransactions stamp: 'WAL 5/26/2023 12:13:56'!
+PASSED!
+
+!testRun: #ReportTest #test07TransferNetOnEmptyAccountShouldReturnOnlyBalanceLineWithZero stamp: 'WAL 5/26/2023 12:13:56'!
+PASSED!
+
+!testRun: #ReportTest #test08TransferNetOnAccountWithTransferShouldReturnTransferLines stamp: 'WAL 5/26/2023 12:13:56'!
+PASSED!
+
+!testRun: #ReportTest #test09TransferNetOnAccountShouldNotBeAffectedByOrdinaryDepositsOrWithdraws stamp: 'WAL 5/26/2023 12:13:56'!
+PASSED!
+
+!testRun: #ReportTest #test10 stamp: 'WAL 5/26/2023 12:13:56'!
+PASSED!
+
+!testRun: #ReportTest #test11PortfolioStructureOnEmtyPortfolioShouldReturnPortfolioName stamp: 'WAL 5/26/2023 12:13:56'!
+PASSED!
+!ReportTest methodsFor: 'test' stamp: 'WAL 5/26/2023 12:15:21'!
+test12PortfolioStructureOnPortfolioShouldReturnPortfolioStructureReport
+
+	| portfolio portfolioStructure |
+	
+	portfolio := Portfolio named: 'Portfolio de la familia'.
+	
+	portfolioStructure := PortfolioStructure on: portfolio.
+	
+	self assert: 1 equals: portfolioStructure lines size.
+	self assert: 'Portfolio de la familia' equals: (portfolioStructure lines at: 1).! !
+!ReportTest methodsFor: 'test' stamp: 'WAL 5/26/2023 12:15:44' prior: 50623202!
+test12PortfolioStructureOnPortfolioShouldReturnPortfolioStructureReport
+
+	| portfolio portfolioStructure |
+	
+	
+	portfolio := Portfolio named: 'Portfolio de la familia'.
+	
+	portfolioStructure := PortfolioStructure on: portfolio.
+	
+	self assert: 1 equals: portfolioStructure lines size.
+	self assert: 'Portfolio de la familia' equals: (portfolioStructure lines at: 1).! !
+!ReportTest methodsFor: 'test' stamp: 'WAL 5/26/2023 12:20:39' prior: 50623216!
+test12PortfolioStructureOnPortfolioShouldReturnPortfolioStructureReport
+
+	| portfolio portfolioStructure |
+	
+	portfolio := Portfolio named: 'Portfolio de la familia'
+		with: (Account named: 'Cuenta Mia')
+		with: (Portfolio named: 'Portfolio de hijos'
+			with: (	Account named: 'Cuenta de Juan')
+			with: (Account named: 'Cuenta de Angeles')).
+	
+	portfolioStructure := PortfolioStructure on: portfolio.
+	
+	self assert: 5 equals: portfolioStructure lines size.
+	self assert: 'Portfolio de la familia' equals: (portfolioStructure lines at: 1).
+	self assert: '   Cuenta Mia' equals: (portfolioStructure lines at: 2).
+	self assert: '   Portfolio de hijos' equals: (portfolioStructure lines at: 3).
+	self assert: '      Cuenta de Juan' equals: (portfolioStructure lines at: 4).
+	self assert: '      Cuenta de Angeles' equals: (portfolioStructure lines at: 5).
+	! !
+
+!testRun: #ReportTest #test12PortfolioStructureOnPortfolioShouldReturnPortfolioStructureReport stamp: 'WAL 5/26/2023 12:20:43'!
+ERROR!
+
+!testRun: #ReportTest #test01AccountSummaryOnEmptyAccountShouldReturnOnlyBalanceLineWithZero stamp: 'WAL 5/26/2023 12:21:26'!
+PASSED!
+
+!testRun: #ReportTest #test02AccountSummaryOnAccountWithDepositShouldReturnDepositLines stamp: 'WAL 5/26/2023 12:21:26'!
+PASSED!
+
+!testRun: #ReportTest #test03AccountSummaryOnAccountWithWithdrawShouldReturnWithdrawLines stamp: 'WAL 5/26/2023 12:21:26'!
+PASSED!
+
+!testRun: #ReportTest #test04AccountSummaryOnAccountWithTransferShouldReturnTransferLines stamp: 'WAL 5/26/2023 12:21:26'!
+PASSED!
+
+!testRun: #ReportTest #test05AccountSummaryOnEmptyPortfolioShouldReturnOnlyBalanceLineWithZero stamp: 'WAL 5/26/2023 12:21:26'!
+PASSED!
+
+!testRun: #ReportTest #test06AccountSummaryOnPortfolioShouldReturnAccountTransactions stamp: 'WAL 5/26/2023 12:21:26'!
+PASSED!
+
+!testRun: #ReportTest #test07TransferNetOnEmptyAccountShouldReturnOnlyBalanceLineWithZero stamp: 'WAL 5/26/2023 12:21:26'!
+PASSED!
+
+!testRun: #ReportTest #test08TransferNetOnAccountWithTransferShouldReturnTransferLines stamp: 'WAL 5/26/2023 12:21:26'!
+PASSED!
+
+!testRun: #ReportTest #test09TransferNetOnAccountShouldNotBeAffectedByOrdinaryDepositsOrWithdraws stamp: 'WAL 5/26/2023 12:21:26'!
+PASSED!
+
+!testRun: #ReportTest #test10 stamp: 'WAL 5/26/2023 12:21:26'!
+PASSED!
+
+!testRun: #ReportTest #test11PortfolioStructureOnEmtyPortfolioShouldReturnPortfolioName stamp: 'WAL 5/26/2023 12:21:26'!
+PASSED!
+
+!testRun: #ReportTest #test12PortfolioStructureOnPortfolioShouldReturnPortfolioStructureReport stamp: 'WAL 5/26/2023 12:21:26'!
+ERROR!
+
+!testRun: #ReportTest #test12PortfolioStructureOnPortfolioShouldReturnPortfolioStructureReport stamp: 'WAL 5/26/2023 12:21:26'!
+ERROR!
+!ReceptiveAccount methodsFor: 'reports' stamp: 'WAL 5/26/2023 12:22:25' prior: 50621651!
+reportOn: aReport
+	
+	aReport writeName: name.
+	
+	transactions do: [ :transaction | transaction reportOn: aReport ].			
+	! !
+
+!testRun: #ReportTest #test01AccountSummaryOnEmptyAccountShouldReturnOnlyBalanceLineWithZero stamp: 'WAL 5/26/2023 12:22:33'!
+PASSED!
+
+!testRun: #ReportTest #test02AccountSummaryOnAccountWithDepositShouldReturnDepositLines stamp: 'WAL 5/26/2023 12:22:33'!
+PASSED!
+
+!testRun: #ReportTest #test03AccountSummaryOnAccountWithWithdrawShouldReturnWithdrawLines stamp: 'WAL 5/26/2023 12:22:33'!
+PASSED!
+
+!testRun: #ReportTest #test04AccountSummaryOnAccountWithTransferShouldReturnTransferLines stamp: 'WAL 5/26/2023 12:22:33'!
+PASSED!
+
+!testRun: #ReportTest #test05AccountSummaryOnEmptyPortfolioShouldReturnOnlyBalanceLineWithZero stamp: 'WAL 5/26/2023 12:22:33'!
+PASSED!
+
+!testRun: #ReportTest #test06AccountSummaryOnPortfolioShouldReturnAccountTransactions stamp: 'WAL 5/26/2023 12:22:33'!
+PASSED!
+
+!testRun: #ReportTest #test07TransferNetOnEmptyAccountShouldReturnOnlyBalanceLineWithZero stamp: 'WAL 5/26/2023 12:22:33'!
+PASSED!
+
+!testRun: #ReportTest #test08TransferNetOnAccountWithTransferShouldReturnTransferLines stamp: 'WAL 5/26/2023 12:22:33'!
+PASSED!
+
+!testRun: #ReportTest #test09TransferNetOnAccountShouldNotBeAffectedByOrdinaryDepositsOrWithdraws stamp: 'WAL 5/26/2023 12:22:33'!
+PASSED!
+
+!testRun: #ReportTest #test10 stamp: 'WAL 5/26/2023 12:22:33'!
+PASSED!
+
+!testRun: #ReportTest #test11PortfolioStructureOnEmtyPortfolioShouldReturnPortfolioName stamp: 'WAL 5/26/2023 12:22:33'!
+PASSED!
+
+!testRun: #ReportTest #test12PortfolioStructureOnPortfolioShouldReturnPortfolioStructureReport stamp: 'WAL 5/26/2023 12:22:33'!
+ERROR!
+
+!testRun: #ReportTest #test12PortfolioStructureOnPortfolioShouldReturnPortfolioStructureReport stamp: 'WAL 5/26/2023 12:22:33'!
+ERROR!
+!ReportTest methodsFor: 'test' stamp: 'WAL 5/26/2023 12:25:50' prior: 50623231!
+test12PortfolioStructureOnPortfolioShouldReturnPortfolioStructureReport
+
+	| portfolio portfolioStructure |
+	
+	portfolio := Portfolio named: 'Portfolio de la familia'
+		with: (ReceptiveAccount named: 'Cuenta Mia')
+		with: (Portfolio named: 'Portfolio de hijos'
+			with: (	ReceptiveAccount named: 'Cuenta de Juan')
+			with: (ReceptiveAccount named: 'Cuenta de Angeles')).
+	
+	portfolioStructure := PortfolioStructure on: portfolio.
+	
+	self assert: 5 equals: portfolioStructure lines size.
+	self assert: 'Portfolio de la familia' equals: (portfolioStructure lines at: 1).
+	self assert: '   Cuenta Mia' equals: (portfolioStructure lines at: 2).
+	self assert: '   Portfolio de hijos' equals: (portfolioStructure lines at: 3).
+	self assert: '      Cuenta de Juan' equals: (portfolioStructure lines at: 4).
+	self assert: '      Cuenta de Angeles' equals: (portfolioStructure lines at: 5).
+	! !
+
+!testRun: #ReportTest #test12PortfolioStructureOnPortfolioShouldReturnPortfolioStructureReport stamp: 'WAL 5/26/2023 12:25:52'!
+FAILURE!
+!Portfolio methodsFor: 'reports' stamp: 'WAL 5/26/2023 12:57:10' prior: 50623135!
+reportOn: aReport 
+	
+	aReport writeName: name.
+	
+	accounts do: [ :account | account reportOn: aReport ].! !
+
+----SNAPSHOT----(26 May 2023 13:04:29) CuisUniversity-5706.image priorSource: 9312329!
+
+----SNAPSHOT----(26 May 2023 13:32:54) CuisUniversity-5706.image priorSource: 9336555!
+!Portfolio methodsFor: 'reports' stamp: 'WAL 5/26/2023 13:34:41' prior: 50623412!
+reportOn: aReport 
+	
+	aReport writePortfolio: self.
+	
+	"aReport writeName: name.
+	
+	accounts do: [ :account | account reportOn: aReport ]."! !
+!AccountSummary methodsFor: 'initialization' stamp: 'WAL 5/26/2023 13:36:56'!
+writePortfolio: aPortfolio
+	
+	aPortfolio writeTo: self! !
+!Portfolio methodsFor: 'reports' stamp: 'WAL 5/26/2023 13:38:35'!
+writeTo: aReport 
+	
+	accounts do: [ :account | account reportOn: aReport ].! !
+!AccountSummary methodsFor: 'initialization' stamp: 'WAL 5/26/2023 13:39:49' prior: 50623431!
+writePortfolio: aReceptiveAccount
+	
+	aReceptiveAccount writeTo: self! !
+!AccountSummary methodsFor: 'initialization' stamp: 'WAL 5/26/2023 13:40:04'!
+writeAccount: aReceptiveAccount
+	
+	aReceptiveAccount writeTo: self! !
+!ReceptiveAccount methodsFor: 'reports' stamp: 'WAL 5/26/2023 13:41:10' prior: 50623318!
+reportOn: aReport
+	
+	aReport writeReceptiveAccount: self.
+	
+	"transactions do: [ :transaction | transaction reportOn: aReport ].			"
+	! !
+!AccountSummary methodsFor: 'initialization' stamp: 'WAL 5/26/2023 13:41:29'!
+writeReceptiveAccount: aReceptiveAccount
+	
+	aReceptiveAccount writeTo: self! !
+
+!methodRemoval: AccountSummary #writeAccount: stamp: 'WAL 5/26/2023 13:41:29'!
+writeAccount: aReceptiveAccount
+	
+	aReceptiveAccount writeTo: self!
+!ReceptiveAccount methodsFor: 'reports' stamp: 'WAL 5/26/2023 13:43:11'!
+writeReceptiveAccount: aReport
+	
+	transactions do: [ :transaction | transaction reportOn: aReport ].	
+	! !
+!ReceptiveAccount methodsFor: 'reports' stamp: 'WAL 5/26/2023 13:44:39'!
+writeTo: aReport
+	
+	transactions do: [ :transaction | transaction reportOn: aReport ].	
+	! !
+!AccountSummary methodsFor: 'initialization' stamp: 'WAL 5/26/2023 13:44:39'!
+writeTo: aReceptiveAccount
+	
+	aReceptiveAccount writeTo: self! !
+!ReceptiveAccount methodsFor: 'as yet unclassified' stamp: 'WAL 5/26/2023 13:44:39' prior: 50623451!
+reportOn: aReport
+	
+	aReport writeTo: self.
+	
+	"transactions do: [ :transaction | transaction reportOn: aReport ].			"
+	! !
+
+!methodRemoval: ReceptiveAccount #writeReceptiveAccount: stamp: 'WAL 5/26/2023 13:44:39'!
+writeReceptiveAccount: aReport
+	
+	transactions do: [ :transaction | transaction reportOn: aReport ].	
+	!
+
+!methodRemoval: AccountSummary #writeReceptiveAccount: stamp: 'WAL 5/26/2023 13:44:39'!
+writeReceptiveAccount: aReceptiveAccount
+	
+	aReceptiveAccount writeTo: self!
+!AccountSummary methodsFor: 'initialization' stamp: 'WAL 5/26/2023 13:45:13'!
+writeReceptiveAccount: aReceptiveAccount
+	
+	aReceptiveAccount writeTo: self! !
+
+!methodRemoval: AccountSummary #writeTo: stamp: 'WAL 5/26/2023 13:45:37'!
+writeTo: aReceptiveAccount
+	
+	aReceptiveAccount writeTo: self!
+
+!testRun: #ReportTest #test01AccountSummaryOnEmptyAccountShouldReturnOnlyBalanceLineWithZero stamp: 'WAL 5/26/2023 13:46:07'!
+ERROR!
+
+!testRun: #ReportTest #test01AccountSummaryOnEmptyAccountShouldReturnOnlyBalanceLineWithZero stamp: 'WAL 5/26/2023 13:46:07'!
+ERROR!
+!ReceptiveAccount methodsFor: 'reports' stamp: 'WAL 5/26/2023 13:46:43' prior: 50623486!
+reportOn: aReport
+	
+	aReport writeReceptiveAccount: self.
+	
+	"transactions do: [ :transaction | transaction reportOn: aReport ].			"
+	! !
+
+!testRun: #ReportTest #test01AccountSummaryOnEmptyAccountShouldReturnOnlyBalanceLineWithZero stamp: 'WAL 5/26/2023 13:46:46'!
+PASSED!
+
+!testRun: #ReportTest #test01AccountSummaryOnEmptyAccountShouldReturnOnlyBalanceLineWithZero stamp: 'WAL 5/26/2023 13:46:50'!
+PASSED!
+
+!testRun: #ReportTest #test01AccountSummaryOnEmptyAccountShouldReturnOnlyBalanceLineWithZero stamp: 'WAL 5/26/2023 13:46:50'!
+PASSED!
+
+!testRun: #ReportTest #test02AccountSummaryOnAccountWithDepositShouldReturnDepositLines stamp: 'WAL 5/26/2023 13:46:50'!
+PASSED!
+
+!testRun: #ReportTest #test03AccountSummaryOnAccountWithWithdrawShouldReturnWithdrawLines stamp: 'WAL 5/26/2023 13:46:50'!
+PASSED!
+
+!testRun: #ReportTest #test04AccountSummaryOnAccountWithTransferShouldReturnTransferLines stamp: 'WAL 5/26/2023 13:46:50'!
+PASSED!
+
+!testRun: #ReportTest #test05AccountSummaryOnEmptyPortfolioShouldReturnOnlyBalanceLineWithZero stamp: 'WAL 5/26/2023 13:46:50'!
+PASSED!
+
+!testRun: #ReportTest #test06AccountSummaryOnPortfolioShouldReturnAccountTransactions stamp: 'WAL 5/26/2023 13:46:50'!
+PASSED!
+
+!testRun: #ReportTest #test07TransferNetOnEmptyAccountShouldReturnOnlyBalanceLineWithZero stamp: 'WAL 5/26/2023 13:46:50'!
+ERROR!
+
+!testRun: #ReportTest #test08TransferNetOnAccountWithTransferShouldReturnTransferLines stamp: 'WAL 5/26/2023 13:46:50'!
+ERROR!
+
+!testRun: #ReportTest #test09TransferNetOnAccountShouldNotBeAffectedByOrdinaryDepositsOrWithdraws stamp: 'WAL 5/26/2023 13:46:50'!
+ERROR!
+
+!testRun: #ReportTest #test10 stamp: 'WAL 5/26/2023 13:46:50'!
+PASSED!
+
+!testRun: #ReportTest #test11PortfolioStructureOnEmtyPortfolioShouldReturnPortfolioName stamp: 'WAL 5/26/2023 13:46:50'!
+ERROR!
+
+!testRun: #ReportTest #test12PortfolioStructureOnPortfolioShouldReturnPortfolioStructureReport stamp: 'WAL 5/26/2023 13:46:50'!
+ERROR!
+!TransferNet methodsFor: 'as yet unclassified' stamp: 'WAL 5/26/2023 13:48:58'!
+writeReceptiveAccount: aReceptiveAccount
+	
+	aReceptiveAccount writeTo: self! !
+!TransferNet methodsFor: 'as yet unclassified' stamp: 'WAL 5/26/2023 13:49:08'!
+writePortfolio: aReceptiveAccount
+	
+	aReceptiveAccount writeTo: self! !
+
+!testRun: #ReportTest #test01AccountSummaryOnEmptyAccountShouldReturnOnlyBalanceLineWithZero stamp: 'WAL 5/26/2023 13:49:15'!
+PASSED!
+
+!testRun: #ReportTest #test02AccountSummaryOnAccountWithDepositShouldReturnDepositLines stamp: 'WAL 5/26/2023 13:49:15'!
+PASSED!
+
+!testRun: #ReportTest #test03AccountSummaryOnAccountWithWithdrawShouldReturnWithdrawLines stamp: 'WAL 5/26/2023 13:49:15'!
+PASSED!
+
+!testRun: #ReportTest #test04AccountSummaryOnAccountWithTransferShouldReturnTransferLines stamp: 'WAL 5/26/2023 13:49:15'!
+PASSED!
+
+!testRun: #ReportTest #test05AccountSummaryOnEmptyPortfolioShouldReturnOnlyBalanceLineWithZero stamp: 'WAL 5/26/2023 13:49:15'!
+PASSED!
+
+!testRun: #ReportTest #test06AccountSummaryOnPortfolioShouldReturnAccountTransactions stamp: 'WAL 5/26/2023 13:49:15'!
+PASSED!
+
+!testRun: #ReportTest #test07TransferNetOnEmptyAccountShouldReturnOnlyBalanceLineWithZero stamp: 'WAL 5/26/2023 13:49:15'!
+PASSED!
+
+!testRun: #ReportTest #test08TransferNetOnAccountWithTransferShouldReturnTransferLines stamp: 'WAL 5/26/2023 13:49:15'!
+PASSED!
+
+!testRun: #ReportTest #test09TransferNetOnAccountShouldNotBeAffectedByOrdinaryDepositsOrWithdraws stamp: 'WAL 5/26/2023 13:49:15'!
+PASSED!
+
+!testRun: #ReportTest #test10 stamp: 'WAL 5/26/2023 13:49:15'!
+PASSED!
+
+!testRun: #ReportTest #test11PortfolioStructureOnEmtyPortfolioShouldReturnPortfolioName stamp: 'WAL 5/26/2023 13:49:15'!
+ERROR!
+
+!testRun: #ReportTest #test12PortfolioStructureOnPortfolioShouldReturnPortfolioStructureReport stamp: 'WAL 5/26/2023 13:49:15'!
+ERROR!
+!PortfolioStructure methodsFor: 'as yet unclassified' stamp: 'WAL 5/26/2023 13:49:51'!
+writeReceptiveAccount: aReceptiveAccount
+	
+	aReceptiveAccount writeTo: self! !
+!PortfolioStructure methodsFor: 'as yet unclassified' stamp: 'WAL 5/26/2023 13:50:00'!
+writePortfolio: aReceptiveAccount
+	
+	aReceptiveAccount writeTo: self! !
+
+!testRun: #ReportTest #test01AccountSummaryOnEmptyAccountShouldReturnOnlyBalanceLineWithZero stamp: 'WAL 5/26/2023 13:50:03'!
+PASSED!
+
+!testRun: #ReportTest #test02AccountSummaryOnAccountWithDepositShouldReturnDepositLines stamp: 'WAL 5/26/2023 13:50:03'!
+PASSED!
+
+!testRun: #ReportTest #test03AccountSummaryOnAccountWithWithdrawShouldReturnWithdrawLines stamp: 'WAL 5/26/2023 13:50:03'!
+PASSED!
+
+!testRun: #ReportTest #test04AccountSummaryOnAccountWithTransferShouldReturnTransferLines stamp: 'WAL 5/26/2023 13:50:03'!
+PASSED!
+
+!testRun: #ReportTest #test05AccountSummaryOnEmptyPortfolioShouldReturnOnlyBalanceLineWithZero stamp: 'WAL 5/26/2023 13:50:03'!
+PASSED!
+
+!testRun: #ReportTest #test06AccountSummaryOnPortfolioShouldReturnAccountTransactions stamp: 'WAL 5/26/2023 13:50:03'!
+PASSED!
+
+!testRun: #ReportTest #test07TransferNetOnEmptyAccountShouldReturnOnlyBalanceLineWithZero stamp: 'WAL 5/26/2023 13:50:03'!
+PASSED!
+
+!testRun: #ReportTest #test08TransferNetOnAccountWithTransferShouldReturnTransferLines stamp: 'WAL 5/26/2023 13:50:03'!
+PASSED!
+
+!testRun: #ReportTest #test09TransferNetOnAccountShouldNotBeAffectedByOrdinaryDepositsOrWithdraws stamp: 'WAL 5/26/2023 13:50:03'!
+PASSED!
+
+!testRun: #ReportTest #test10 stamp: 'WAL 5/26/2023 13:50:03'!
+PASSED!
+
+!testRun: #ReportTest #test11PortfolioStructureOnEmtyPortfolioShouldReturnPortfolioName stamp: 'WAL 5/26/2023 13:50:03'!
+FAILURE!
+
+!testRun: #ReportTest #test12PortfolioStructureOnPortfolioShouldReturnPortfolioStructureReport stamp: 'WAL 5/26/2023 13:50:03'!
+FAILURE!
+!PortfolioStructure methodsFor: 'as yet unclassified' stamp: 'WAL 5/26/2023 13:50:59' prior: 50623650!
+writePortfolio: aPortfolio
+	
+	aPortfolio writeTo: self! !
+!TransferNet methodsFor: 'as yet unclassified' stamp: 'WAL 5/26/2023 13:51:09' prior: 50623591!
+writePortfolio: aPortfolio
+	
+	aPortfolio writeTo: self! !
+!AccountSummary methodsFor: 'initialization' stamp: 'WAL 5/26/2023 13:51:24' prior: 50623441!
+writePortfolio: aPortfolio
+	
+	aPortfolio writeTo: self! !
+!PortfolioStructure methodsFor: 'as yet unclassified' stamp: 'WAL 5/26/2023 13:53:53' prior: 50623704!
+writePortfolio: aPortfolio
+	
+	lines add: aPortfolio name.
+	
+	aPortfolio writeTo: self! !
+
+!testRun: #ReportTest #test01AccountSummaryOnEmptyAccountShouldReturnOnlyBalanceLineWithZero stamp: 'WAL 5/26/2023 13:53:55'!
+PASSED!
+
+!testRun: #ReportTest #test02AccountSummaryOnAccountWithDepositShouldReturnDepositLines stamp: 'WAL 5/26/2023 13:53:55'!
+PASSED!
+
+!testRun: #ReportTest #test03AccountSummaryOnAccountWithWithdrawShouldReturnWithdrawLines stamp: 'WAL 5/26/2023 13:53:55'!
+PASSED!
+
+!testRun: #ReportTest #test04AccountSummaryOnAccountWithTransferShouldReturnTransferLines stamp: 'WAL 5/26/2023 13:53:55'!
+PASSED!
+
+!testRun: #ReportTest #test05AccountSummaryOnEmptyPortfolioShouldReturnOnlyBalanceLineWithZero stamp: 'WAL 5/26/2023 13:53:55'!
+PASSED!
+
+!testRun: #ReportTest #test06AccountSummaryOnPortfolioShouldReturnAccountTransactions stamp: 'WAL 5/26/2023 13:53:55'!
+PASSED!
+
+!testRun: #ReportTest #test07TransferNetOnEmptyAccountShouldReturnOnlyBalanceLineWithZero stamp: 'WAL 5/26/2023 13:53:55'!
+PASSED!
+
+!testRun: #ReportTest #test08TransferNetOnAccountWithTransferShouldReturnTransferLines stamp: 'WAL 5/26/2023 13:53:55'!
+PASSED!
+
+!testRun: #ReportTest #test09TransferNetOnAccountShouldNotBeAffectedByOrdinaryDepositsOrWithdraws stamp: 'WAL 5/26/2023 13:53:55'!
+PASSED!
+
+!testRun: #ReportTest #test10 stamp: 'WAL 5/26/2023 13:53:55'!
+PASSED!
+
+!testRun: #ReportTest #test11PortfolioStructureOnEmtyPortfolioShouldReturnPortfolioName stamp: 'WAL 5/26/2023 13:53:55'!
+PASSED!
+
+!testRun: #ReportTest #test12PortfolioStructureOnPortfolioShouldReturnPortfolioStructureReport stamp: 'WAL 5/26/2023 13:53:55'!
+FAILURE!
+
+!testRun: #ReportTest #test12PortfolioStructureOnPortfolioShouldReturnPortfolioStructureReport stamp: 'WAL 5/26/2023 13:53:55'!
+FAILURE!
+!PortfolioStructure methodsFor: 'as yet unclassified' stamp: 'WAL 5/26/2023 13:54:28' prior: 50623644!
+writeReceptiveAccount: aReceptiveAccount
+	
+	lines add: aReceptiveAccount name.
+	
+	aReceptiveAccount writeTo: self! !
+
+Report subclass: #PortfolioStructure
+	instanceVariableNames: 'indentation'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+!classDefinition: #PortfolioStructure category: 'Portfolio-Solucion' stamp: 'WAL 5/26/2023 13:54:45'!
+Report subclass: #PortfolioStructure
+	instanceVariableNames: 'indentation'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+!PortfolioStructure methodsFor: 'as yet unclassified' stamp: 'WAL 5/26/2023 13:55:33' prior: 50623129!
+initializeOn: aPortfolio
+	
+	indentation := 0.
+	
+	lines := OrderedCollection new.
+	
+	aPortfolio reportOn: self.! !
+!PortfolioStructure methodsFor: 'as yet unclassified' stamp: 'WAL 5/26/2023 13:56:44' prior: 50623720!
+writePortfolio: aPortfolio
+	
+	lines add: aPortfolio name.
+	
+	indentation := indentation + 3.
+	
+	aPortfolio writeTo: self.
+	
+	indentation := indentation - 3.! !
+!PortfolioStructure methodsFor: 'as yet unclassified' stamp: 'WAL 5/26/2023 13:57:43' prior: 50623779!
+writeReceptiveAccount: aReceptiveAccount
+	
+	lines add: indentation , aReceptiveAccount name.
+	
+	aReceptiveAccount writeTo: self! !
+!PortfolioStructure methodsFor: 'as yet unclassified' stamp: 'WAL 5/26/2023 14:01:02' prior: 50623815!
+writeReceptiveAccount: aReceptiveAccount
+	
+	lines add: (String new: indentation withAll: $ ), aReceptiveAccount name.
+	
+	aReceptiveAccount writeTo: self! !
+
+!testRun: #ReportTest #test01AccountSummaryOnEmptyAccountShouldReturnOnlyBalanceLineWithZero stamp: 'WAL 5/26/2023 14:01:09'!
+PASSED!
+
+!testRun: #ReportTest #test02AccountSummaryOnAccountWithDepositShouldReturnDepositLines stamp: 'WAL 5/26/2023 14:01:09'!
+PASSED!
+
+!testRun: #ReportTest #test03AccountSummaryOnAccountWithWithdrawShouldReturnWithdrawLines stamp: 'WAL 5/26/2023 14:01:09'!
+PASSED!
+
+!testRun: #ReportTest #test04AccountSummaryOnAccountWithTransferShouldReturnTransferLines stamp: 'WAL 5/26/2023 14:01:09'!
+PASSED!
+
+!testRun: #ReportTest #test05AccountSummaryOnEmptyPortfolioShouldReturnOnlyBalanceLineWithZero stamp: 'WAL 5/26/2023 14:01:09'!
+PASSED!
+
+!testRun: #ReportTest #test06AccountSummaryOnPortfolioShouldReturnAccountTransactions stamp: 'WAL 5/26/2023 14:01:09'!
+PASSED!
+
+!testRun: #ReportTest #test07TransferNetOnEmptyAccountShouldReturnOnlyBalanceLineWithZero stamp: 'WAL 5/26/2023 14:01:09'!
+PASSED!
+
+!testRun: #ReportTest #test08TransferNetOnAccountWithTransferShouldReturnTransferLines stamp: 'WAL 5/26/2023 14:01:09'!
+PASSED!
+
+!testRun: #ReportTest #test09TransferNetOnAccountShouldNotBeAffectedByOrdinaryDepositsOrWithdraws stamp: 'WAL 5/26/2023 14:01:09'!
+PASSED!
+
+!testRun: #ReportTest #test10 stamp: 'WAL 5/26/2023 14:01:09'!
+PASSED!
+
+!testRun: #ReportTest #test11PortfolioStructureOnEmtyPortfolioShouldReturnPortfolioName stamp: 'WAL 5/26/2023 14:01:09'!
+PASSED!
+
+!testRun: #ReportTest #test12PortfolioStructureOnPortfolioShouldReturnPortfolioStructureReport stamp: 'WAL 5/26/2023 14:01:09'!
+FAILURE!
+
+!testRun: #ReportTest #test12PortfolioStructureOnPortfolioShouldReturnPortfolioStructureReport stamp: 'WAL 5/26/2023 14:01:09'!
+FAILURE!
+!PortfolioStructure methodsFor: 'as yet unclassified' stamp: 'WAL 5/26/2023 14:01:35' prior: 50623823!
+writeReceptiveAccount: aReceptiveAccount
+	
+	lines add: (String new: indentation withAll: ' ' ), aReceptiveAccount name.
+	
+	aReceptiveAccount writeTo: self! !
+
+!testRun: #ReportTest #test01AccountSummaryOnEmptyAccountShouldReturnOnlyBalanceLineWithZero stamp: 'WAL 5/26/2023 14:01:37'!
+PASSED!
+
+!testRun: #ReportTest #test02AccountSummaryOnAccountWithDepositShouldReturnDepositLines stamp: 'WAL 5/26/2023 14:01:37'!
+PASSED!
+
+!testRun: #ReportTest #test03AccountSummaryOnAccountWithWithdrawShouldReturnWithdrawLines stamp: 'WAL 5/26/2023 14:01:37'!
+PASSED!
+
+!testRun: #ReportTest #test04AccountSummaryOnAccountWithTransferShouldReturnTransferLines stamp: 'WAL 5/26/2023 14:01:37'!
+PASSED!
+
+!testRun: #ReportTest #test05AccountSummaryOnEmptyPortfolioShouldReturnOnlyBalanceLineWithZero stamp: 'WAL 5/26/2023 14:01:37'!
+PASSED!
+
+!testRun: #ReportTest #test06AccountSummaryOnPortfolioShouldReturnAccountTransactions stamp: 'WAL 5/26/2023 14:01:37'!
+PASSED!
+
+!testRun: #ReportTest #test07TransferNetOnEmptyAccountShouldReturnOnlyBalanceLineWithZero stamp: 'WAL 5/26/2023 14:01:37'!
+PASSED!
+
+!testRun: #ReportTest #test08TransferNetOnAccountWithTransferShouldReturnTransferLines stamp: 'WAL 5/26/2023 14:01:37'!
+PASSED!
+
+!testRun: #ReportTest #test09TransferNetOnAccountShouldNotBeAffectedByOrdinaryDepositsOrWithdraws stamp: 'WAL 5/26/2023 14:01:37'!
+PASSED!
+
+!testRun: #ReportTest #test10 stamp: 'WAL 5/26/2023 14:01:37'!
+PASSED!
+
+!testRun: #ReportTest #test11PortfolioStructureOnEmtyPortfolioShouldReturnPortfolioName stamp: 'WAL 5/26/2023 14:01:37'!
+PASSED!
+
+!testRun: #ReportTest #test12PortfolioStructureOnPortfolioShouldReturnPortfolioStructureReport stamp: 'WAL 5/26/2023 14:01:37'!
+ERROR!
+
+!testRun: #ReportTest #test12PortfolioStructureOnPortfolioShouldReturnPortfolioStructureReport stamp: 'WAL 5/26/2023 14:01:37'!
+ERROR!
+!PortfolioStructure methodsFor: 'as yet unclassified' stamp: 'WAL 5/26/2023 14:02:12' prior: 50623884!
+writeReceptiveAccount: aReceptiveAccount
+	
+	lines add: (String new: indentation withAll: (' ' at: 1) ), aReceptiveAccount name.
+	
+	aReceptiveAccount writeTo: self! !
+
+!testRun: #ReportTest #test01AccountSummaryOnEmptyAccountShouldReturnOnlyBalanceLineWithZero stamp: 'WAL 5/26/2023 14:02:14'!
+PASSED!
+
+!testRun: #ReportTest #test02AccountSummaryOnAccountWithDepositShouldReturnDepositLines stamp: 'WAL 5/26/2023 14:02:14'!
+PASSED!
+
+!testRun: #ReportTest #test03AccountSummaryOnAccountWithWithdrawShouldReturnWithdrawLines stamp: 'WAL 5/26/2023 14:02:14'!
+PASSED!
+
+!testRun: #ReportTest #test04AccountSummaryOnAccountWithTransferShouldReturnTransferLines stamp: 'WAL 5/26/2023 14:02:14'!
+PASSED!
+
+!testRun: #ReportTest #test05AccountSummaryOnEmptyPortfolioShouldReturnOnlyBalanceLineWithZero stamp: 'WAL 5/26/2023 14:02:14'!
+PASSED!
+
+!testRun: #ReportTest #test06AccountSummaryOnPortfolioShouldReturnAccountTransactions stamp: 'WAL 5/26/2023 14:02:14'!
+PASSED!
+
+!testRun: #ReportTest #test07TransferNetOnEmptyAccountShouldReturnOnlyBalanceLineWithZero stamp: 'WAL 5/26/2023 14:02:14'!
+PASSED!
+
+!testRun: #ReportTest #test08TransferNetOnAccountWithTransferShouldReturnTransferLines stamp: 'WAL 5/26/2023 14:02:14'!
+PASSED!
+
+!testRun: #ReportTest #test09TransferNetOnAccountShouldNotBeAffectedByOrdinaryDepositsOrWithdraws stamp: 'WAL 5/26/2023 14:02:14'!
+PASSED!
+
+!testRun: #ReportTest #test10 stamp: 'WAL 5/26/2023 14:02:14'!
+PASSED!
+
+!testRun: #ReportTest #test11PortfolioStructureOnEmtyPortfolioShouldReturnPortfolioName stamp: 'WAL 5/26/2023 14:02:14'!
+PASSED!
+
+!testRun: #ReportTest #test12PortfolioStructureOnPortfolioShouldReturnPortfolioStructureReport stamp: 'WAL 5/26/2023 14:02:14'!
+FAILURE!
+
+!testRun: #ReportTest #test12PortfolioStructureOnPortfolioShouldReturnPortfolioStructureReport stamp: 'WAL 5/26/2023 14:02:14'!
+FAILURE!
+!PortfolioStructure methodsFor: 'as yet unclassified' stamp: 'WAL 5/26/2023 14:03:11' prior: 50623945!
+writeReceptiveAccount: aReceptiveAccount
+	
+	lines add: (String new: indentation withAll: Character space ), aReceptiveAccount name.
+	
+	aReceptiveAccount writeTo: self! !
+
+!testRun: #ReportTest #test01AccountSummaryOnEmptyAccountShouldReturnOnlyBalanceLineWithZero stamp: 'WAL 5/26/2023 14:03:12'!
+PASSED!
+
+!testRun: #ReportTest #test02AccountSummaryOnAccountWithDepositShouldReturnDepositLines stamp: 'WAL 5/26/2023 14:03:12'!
+PASSED!
+
+!testRun: #ReportTest #test03AccountSummaryOnAccountWithWithdrawShouldReturnWithdrawLines stamp: 'WAL 5/26/2023 14:03:12'!
+PASSED!
+
+!testRun: #ReportTest #test04AccountSummaryOnAccountWithTransferShouldReturnTransferLines stamp: 'WAL 5/26/2023 14:03:12'!
+PASSED!
+
+!testRun: #ReportTest #test05AccountSummaryOnEmptyPortfolioShouldReturnOnlyBalanceLineWithZero stamp: 'WAL 5/26/2023 14:03:12'!
+PASSED!
+
+!testRun: #ReportTest #test06AccountSummaryOnPortfolioShouldReturnAccountTransactions stamp: 'WAL 5/26/2023 14:03:12'!
+PASSED!
+
+!testRun: #ReportTest #test07TransferNetOnEmptyAccountShouldReturnOnlyBalanceLineWithZero stamp: 'WAL 5/26/2023 14:03:12'!
+PASSED!
+
+!testRun: #ReportTest #test08TransferNetOnAccountWithTransferShouldReturnTransferLines stamp: 'WAL 5/26/2023 14:03:12'!
+PASSED!
+
+!testRun: #ReportTest #test09TransferNetOnAccountShouldNotBeAffectedByOrdinaryDepositsOrWithdraws stamp: 'WAL 5/26/2023 14:03:12'!
+PASSED!
+
+!testRun: #ReportTest #test10 stamp: 'WAL 5/26/2023 14:03:12'!
+PASSED!
+
+!testRun: #ReportTest #test11PortfolioStructureOnEmtyPortfolioShouldReturnPortfolioName stamp: 'WAL 5/26/2023 14:03:12'!
+PASSED!
+
+!testRun: #ReportTest #test12PortfolioStructureOnPortfolioShouldReturnPortfolioStructureReport stamp: 'WAL 5/26/2023 14:03:12'!
+FAILURE!
+
+!testRun: #ReportTest #test12PortfolioStructureOnPortfolioShouldReturnPortfolioStructureReport stamp: 'WAL 5/26/2023 14:03:12'!
+FAILURE!
+!PortfolioStructure methodsFor: 'as yet unclassified' stamp: 'WAL 5/26/2023 14:03:44' prior: 50624006!
+writeReceptiveAccount: aReceptiveAccount
+	
+	lines add: (String new: indentation withAll: Character new space ), aReceptiveAccount name.
+	
+	aReceptiveAccount writeTo: self! !
+
+!testRun: #ReportTest #test01AccountSummaryOnEmptyAccountShouldReturnOnlyBalanceLineWithZero stamp: 'WAL 5/26/2023 14:03:45'!
+PASSED!
+
+!testRun: #ReportTest #test02AccountSummaryOnAccountWithDepositShouldReturnDepositLines stamp: 'WAL 5/26/2023 14:03:45'!
+PASSED!
+
+!testRun: #ReportTest #test03AccountSummaryOnAccountWithWithdrawShouldReturnWithdrawLines stamp: 'WAL 5/26/2023 14:03:45'!
+PASSED!
+
+!testRun: #ReportTest #test04AccountSummaryOnAccountWithTransferShouldReturnTransferLines stamp: 'WAL 5/26/2023 14:03:45'!
+PASSED!
+
+!testRun: #ReportTest #test05AccountSummaryOnEmptyPortfolioShouldReturnOnlyBalanceLineWithZero stamp: 'WAL 5/26/2023 14:03:45'!
+PASSED!
+
+!testRun: #ReportTest #test06AccountSummaryOnPortfolioShouldReturnAccountTransactions stamp: 'WAL 5/26/2023 14:03:45'!
+PASSED!
+
+!testRun: #ReportTest #test07TransferNetOnEmptyAccountShouldReturnOnlyBalanceLineWithZero stamp: 'WAL 5/26/2023 14:03:45'!
+PASSED!
+
+!testRun: #ReportTest #test08TransferNetOnAccountWithTransferShouldReturnTransferLines stamp: 'WAL 5/26/2023 14:03:45'!
+PASSED!
+
+!testRun: #ReportTest #test09TransferNetOnAccountShouldNotBeAffectedByOrdinaryDepositsOrWithdraws stamp: 'WAL 5/26/2023 14:03:45'!
+PASSED!
+
+!testRun: #ReportTest #test10 stamp: 'WAL 5/26/2023 14:03:45'!
+PASSED!
+
+!testRun: #ReportTest #test11PortfolioStructureOnEmtyPortfolioShouldReturnPortfolioName stamp: 'WAL 5/26/2023 14:03:45'!
+PASSED!
+
+!testRun: #ReportTest #test12PortfolioStructureOnPortfolioShouldReturnPortfolioStructureReport stamp: 'WAL 5/26/2023 14:03:45'!
+ERROR!
+
+!testRun: #ReportTest #test12PortfolioStructureOnPortfolioShouldReturnPortfolioStructureReport stamp: 'WAL 5/26/2023 14:03:45'!
+ERROR!
+!PortfolioStructure methodsFor: 'as yet unclassified' stamp: 'WAL 5/26/2023 14:04:04' prior: 50624067!
+writeReceptiveAccount: aReceptiveAccount
+	
+	lines add: (String new: indentation withAll: (' ' at: 1) ), aReceptiveAccount name.
+	
+	aReceptiveAccount writeTo: self! !
+
+!testRun: #ReportTest #test01AccountSummaryOnEmptyAccountShouldReturnOnlyBalanceLineWithZero stamp: 'WAL 5/26/2023 14:04:05'!
+PASSED!
+
+!testRun: #ReportTest #test02AccountSummaryOnAccountWithDepositShouldReturnDepositLines stamp: 'WAL 5/26/2023 14:04:06'!
+PASSED!
+
+!testRun: #ReportTest #test03AccountSummaryOnAccountWithWithdrawShouldReturnWithdrawLines stamp: 'WAL 5/26/2023 14:04:06'!
+PASSED!
+
+!testRun: #ReportTest #test04AccountSummaryOnAccountWithTransferShouldReturnTransferLines stamp: 'WAL 5/26/2023 14:04:06'!
+PASSED!
+
+!testRun: #ReportTest #test05AccountSummaryOnEmptyPortfolioShouldReturnOnlyBalanceLineWithZero stamp: 'WAL 5/26/2023 14:04:06'!
+PASSED!
+
+!testRun: #ReportTest #test06AccountSummaryOnPortfolioShouldReturnAccountTransactions stamp: 'WAL 5/26/2023 14:04:06'!
+PASSED!
+
+!testRun: #ReportTest #test07TransferNetOnEmptyAccountShouldReturnOnlyBalanceLineWithZero stamp: 'WAL 5/26/2023 14:04:06'!
+PASSED!
+
+!testRun: #ReportTest #test08TransferNetOnAccountWithTransferShouldReturnTransferLines stamp: 'WAL 5/26/2023 14:04:06'!
+PASSED!
+
+!testRun: #ReportTest #test09TransferNetOnAccountShouldNotBeAffectedByOrdinaryDepositsOrWithdraws stamp: 'WAL 5/26/2023 14:04:06'!
+PASSED!
+
+!testRun: #ReportTest #test10 stamp: 'WAL 5/26/2023 14:04:06'!
+PASSED!
+
+!testRun: #ReportTest #test11PortfolioStructureOnEmtyPortfolioShouldReturnPortfolioName stamp: 'WAL 5/26/2023 14:04:06'!
+PASSED!
+
+!testRun: #ReportTest #test12PortfolioStructureOnPortfolioShouldReturnPortfolioStructureReport stamp: 'WAL 5/26/2023 14:04:06'!
+FAILURE!
+
+!testRun: #ReportTest #test12PortfolioStructureOnPortfolioShouldReturnPortfolioStructureReport stamp: 'WAL 5/26/2023 14:04:06'!
+FAILURE!
+!PortfolioStructure methodsFor: 'as yet unclassified' stamp: 'WAL 5/26/2023 14:06:16' prior: 50624128!
+writeReceptiveAccount: aReceptiveAccount
+	
+	lines add: (String new: indentation withAll: $ ), aReceptiveAccount name.
+	
+	aReceptiveAccount writeTo: self! !
+!PortfolioStructure methodsFor: 'as yet unclassified' stamp: 'WAL 5/26/2023 14:06:48' prior: 50623806!
+writePortfolio: aPortfolio
+	
+	lines add: (String new: indentation withAll: $ ), aPortfolio name.
+	
+	indentation := indentation + 3.
+	
+	aPortfolio writeTo: self.
+	
+	indentation := indentation - 3.! !
+
+!testRun: #ReportTest #test01AccountSummaryOnEmptyAccountShouldReturnOnlyBalanceLineWithZero stamp: 'WAL 5/26/2023 14:06:50'!
+PASSED!
+
+!testRun: #ReportTest #test02AccountSummaryOnAccountWithDepositShouldReturnDepositLines stamp: 'WAL 5/26/2023 14:06:50'!
+PASSED!
+
+!testRun: #ReportTest #test03AccountSummaryOnAccountWithWithdrawShouldReturnWithdrawLines stamp: 'WAL 5/26/2023 14:06:50'!
+PASSED!
+
+!testRun: #ReportTest #test04AccountSummaryOnAccountWithTransferShouldReturnTransferLines stamp: 'WAL 5/26/2023 14:06:50'!
+PASSED!
+
+!testRun: #ReportTest #test05AccountSummaryOnEmptyPortfolioShouldReturnOnlyBalanceLineWithZero stamp: 'WAL 5/26/2023 14:06:50'!
+PASSED!
+
+!testRun: #ReportTest #test06AccountSummaryOnPortfolioShouldReturnAccountTransactions stamp: 'WAL 5/26/2023 14:06:50'!
+PASSED!
+
+!testRun: #ReportTest #test07TransferNetOnEmptyAccountShouldReturnOnlyBalanceLineWithZero stamp: 'WAL 5/26/2023 14:06:50'!
+PASSED!
+
+!testRun: #ReportTest #test08TransferNetOnAccountWithTransferShouldReturnTransferLines stamp: 'WAL 5/26/2023 14:06:50'!
+PASSED!
+
+!testRun: #ReportTest #test09TransferNetOnAccountShouldNotBeAffectedByOrdinaryDepositsOrWithdraws stamp: 'WAL 5/26/2023 14:06:50'!
+PASSED!
+
+!testRun: #ReportTest #test10 stamp: 'WAL 5/26/2023 14:06:50'!
+PASSED!
+
+!testRun: #ReportTest #test11PortfolioStructureOnEmtyPortfolioShouldReturnPortfolioName stamp: 'WAL 5/26/2023 14:06:50'!
+PASSED!
+
+!testRun: #ReportTest #test12PortfolioStructureOnPortfolioShouldReturnPortfolioStructureReport stamp: 'WAL 5/26/2023 14:06:50'!
+PASSED!
+!ReportTest methodsFor: 'test' stamp: 'WAL 5/26/2023 14:12:32'!
+test13PortfolioStructureOnPortfolioShouldReturnPortfolioStructureReport
+
+	| portfolio portfolioStructure |
+	
+	portfolio := Portfolio named: 'Portfolio'
+		with: (Portfolio named: 'Portfolio1'
+			with: (	ReceptiveAccount named: 'Cuenta1')
+			with: (ReceptiveAccount named: 'Cuenta2'))
+		with: (Portfolio named: 'Portfolio2'
+			with: (	ReceptiveAccount named: 'Cuenta3')
+			with: (ReceptiveAccount named: 'Cuenta4')).
+	
+	portfolioStructure := PortfolioStructure on: portfolio.
+	
+	self assert: 7 equals: portfolioStructure lines size.
+	self assert: 'Portfolio' equals: (portfolioStructure lines at: 1).
+	self assert: '   Portfolio1' equals: (portfolioStructure lines at: 2).
+	self assert: '      Cuenta1' equals: (portfolioStructure lines at: 3).
+	self assert: '      Cuenta2' equals: (portfolioStructure lines at: 4).
+	self assert: '   Portfolio2' equals: (portfolioStructure lines at: 5).
+	self assert: '      Cuenta3' equals: (portfolioStructure lines at: 6).
+	self assert: '      Cuenta4' equals: (portfolioStructure lines at: 7).
+	! !
+
+!testRun: #ReportTest #test13PortfolioStructureOnPortfolioShouldReturnPortfolioStructureReport stamp: 'WAL 5/26/2023 14:12:33'!
+PASSED!
+
+!testRun: #ReportTest #test01AccountSummaryOnEmptyAccountShouldReturnOnlyBalanceLineWithZero stamp: 'WAL 5/26/2023 14:12:33'!
+PASSED!
+
+!testRun: #ReportTest #test02AccountSummaryOnAccountWithDepositShouldReturnDepositLines stamp: 'WAL 5/26/2023 14:12:33'!
+PASSED!
+
+!testRun: #ReportTest #test03AccountSummaryOnAccountWithWithdrawShouldReturnWithdrawLines stamp: 'WAL 5/26/2023 14:12:33'!
+PASSED!
+
+!testRun: #ReportTest #test04AccountSummaryOnAccountWithTransferShouldReturnTransferLines stamp: 'WAL 5/26/2023 14:12:33'!
+PASSED!
+
+!testRun: #ReportTest #test05AccountSummaryOnEmptyPortfolioShouldReturnOnlyBalanceLineWithZero stamp: 'WAL 5/26/2023 14:12:33'!
+PASSED!
+
+!testRun: #ReportTest #test06AccountSummaryOnPortfolioShouldReturnAccountTransactions stamp: 'WAL 5/26/2023 14:12:33'!
+PASSED!
+
+!testRun: #ReportTest #test07TransferNetOnEmptyAccountShouldReturnOnlyBalanceLineWithZero stamp: 'WAL 5/26/2023 14:12:33'!
+PASSED!
+
+!testRun: #ReportTest #test08TransferNetOnAccountWithTransferShouldReturnTransferLines stamp: 'WAL 5/26/2023 14:12:33'!
+PASSED!
+
+!testRun: #ReportTest #test09TransferNetOnAccountShouldNotBeAffectedByOrdinaryDepositsOrWithdraws stamp: 'WAL 5/26/2023 14:12:33'!
+PASSED!
+
+!testRun: #ReportTest #test10 stamp: 'WAL 5/26/2023 14:12:33'!
+PASSED!
+
+!testRun: #ReportTest #test11PortfolioStructureOnEmtyPortfolioShouldReturnPortfolioName stamp: 'WAL 5/26/2023 14:12:33'!
+PASSED!
+
+!testRun: #ReportTest #test12PortfolioStructureOnPortfolioShouldReturnPortfolioStructureReport stamp: 'WAL 5/26/2023 14:12:33'!
+PASSED!
+
+!testRun: #ReportTest #test13PortfolioStructureOnPortfolioShouldReturnPortfolioStructureReport stamp: 'WAL 5/26/2023 14:12:33'!
+PASSED!
+
+!methodRemoval: ReportTest #test13PortfolioStructureOnPortfolioShouldReturnPortfolioStructureReport stamp: 'WAL 5/26/2023 14:12:45'!
+test13PortfolioStructureOnPortfolioShouldReturnPortfolioStructureReport
+
+	| portfolio portfolioStructure |
+	
+	portfolio := Portfolio named: 'Portfolio'
+		with: (Portfolio named: 'Portfolio1'
+			with: (	ReceptiveAccount named: 'Cuenta1')
+			with: (ReceptiveAccount named: 'Cuenta2'))
+		with: (Portfolio named: 'Portfolio2'
+			with: (	ReceptiveAccount named: 'Cuenta3')
+			with: (ReceptiveAccount named: 'Cuenta4')).
+	
+	portfolioStructure := PortfolioStructure on: portfolio.
+	
+	self assert: 7 equals: portfolioStructure lines size.
+	self assert: 'Portfolio' equals: (portfolioStructure lines at: 1).
+	self assert: '   Portfolio1' equals: (portfolioStructure lines at: 2).
+	self assert: '      Cuenta1' equals: (portfolioStructure lines at: 3).
+	self assert: '      Cuenta2' equals: (portfolioStructure lines at: 4).
+	self assert: '   Portfolio2' equals: (portfolioStructure lines at: 5).
+	self assert: '      Cuenta3' equals: (portfolioStructure lines at: 6).
+	self assert: '      Cuenta4' equals: (portfolioStructure lines at: 7).
+	!
+
+----SNAPSHOT----(26 May 2023 14:17:48) CuisUniversity-5706.image priorSource: 9336643!
+
+----STARTUP---- (27 May 2023 19:13:48) as /home/a/s/sw/smalltalk2/CuisUniversity-5706.image!
+
+
+!testRun: #ReportTest #test01AccountSummaryOnEmptyAccountShouldReturnOnlyBalanceLineWithZero stamp: 'WAL 5/27/2023 19:13:54'!
+PASSED!
+
+!testRun: #ReportTest #test02AccountSummaryOnAccountWithDepositShouldReturnDepositLines stamp: 'WAL 5/27/2023 19:13:54'!
+PASSED!
+
+!testRun: #ReportTest #test03AccountSummaryOnAccountWithWithdrawShouldReturnWithdrawLines stamp: 'WAL 5/27/2023 19:13:54'!
+PASSED!
+
+!testRun: #ReportTest #test04AccountSummaryOnAccountWithTransferShouldReturnTransferLines stamp: 'WAL 5/27/2023 19:13:54'!
+PASSED!
+
+!testRun: #ReportTest #test05AccountSummaryOnEmptyPortfolioShouldReturnOnlyBalanceLineWithZero stamp: 'WAL 5/27/2023 19:13:54'!
+PASSED!
+
+!testRun: #ReportTest #test06AccountSummaryOnPortfolioShouldReturnAccountTransactions stamp: 'WAL 5/27/2023 19:13:54'!
+PASSED!
+
+!testRun: #ReportTest #test07TransferNetOnEmptyAccountShouldReturnOnlyBalanceLineWithZero stamp: 'WAL 5/27/2023 19:13:54'!
+PASSED!
+
+!testRun: #ReportTest #test08TransferNetOnAccountWithTransferShouldReturnTransferLines stamp: 'WAL 5/27/2023 19:13:54'!
+PASSED!
+
+!testRun: #ReportTest #test09TransferNetOnAccountShouldNotBeAffectedByOrdinaryDepositsOrWithdraws stamp: 'WAL 5/27/2023 19:13:54'!
+PASSED!
+
+!testRun: #ReportTest #test10 stamp: 'WAL 5/27/2023 19:13:54'!
+PASSED!
+
+!testRun: #ReportTest #test11PortfolioStructureOnEmtyPortfolioShouldReturnPortfolioName stamp: 'WAL 5/27/2023 19:13:54'!
+PASSED!
+
+!testRun: #ReportTest #test12PortfolioStructureOnPortfolioShouldReturnPortfolioStructureReport stamp: 'WAL 5/27/2023 19:13:54'!
+PASSED!
+!ReportTest methodsFor: 'test' stamp: 'WAL 5/27/2023 19:17:04'!
+test13PortfolioStructureOnReceptiveAccountShouldRiseError
+
+	| portfolioStructure |
+	
+	portfolioStructure := PortfolioStructure on: (ReceptiveAccount named: 'Mi cuenta').
+	
+	
+	! !
+!ReportTest methodsFor: 'test' stamp: 'WAL 5/27/2023 19:20:06' prior: 50624437!
+test13PortfolioStructureOnReceptiveAccountShouldRiseError
+
+	self 
+	should: [ PortfolioStructure on: (ReceptiveAccount named: 'Mi cuenta') ]
+	raise: Error
+	withExceptionDo: [ :anError |
+		self assert: anError messageText equals: PortfolioStructure portfolioStructureNotPossibleOnReceptiveAccountErrorDescription ]
+	! !
+!PortfolioStructure class methodsFor: 'error descriptions' stamp: 'WAL 5/27/2023 19:21:23'!
+portfolioStructureNotPossibleOnReceptiveAccountErrorDescription
+
+	^'PortfolioStructure report not possible on receptive account'! !
+
+!testRun: #ReportTest #test01AccountSummaryOnEmptyAccountShouldReturnOnlyBalanceLineWithZero stamp: 'WAL 5/27/2023 19:21:33'!
+PASSED!
+
+!testRun: #ReportTest #test02AccountSummaryOnAccountWithDepositShouldReturnDepositLines stamp: 'WAL 5/27/2023 19:21:33'!
+PASSED!
+
+!testRun: #ReportTest #test03AccountSummaryOnAccountWithWithdrawShouldReturnWithdrawLines stamp: 'WAL 5/27/2023 19:21:33'!
+PASSED!
+
+!testRun: #ReportTest #test04AccountSummaryOnAccountWithTransferShouldReturnTransferLines stamp: 'WAL 5/27/2023 19:21:33'!
+PASSED!
+
+!testRun: #ReportTest #test05AccountSummaryOnEmptyPortfolioShouldReturnOnlyBalanceLineWithZero stamp: 'WAL 5/27/2023 19:21:33'!
+PASSED!
+
+!testRun: #ReportTest #test06AccountSummaryOnPortfolioShouldReturnAccountTransactions stamp: 'WAL 5/27/2023 19:21:33'!
+PASSED!
+
+!testRun: #ReportTest #test07TransferNetOnEmptyAccountShouldReturnOnlyBalanceLineWithZero stamp: 'WAL 5/27/2023 19:21:33'!
+PASSED!
+
+!testRun: #ReportTest #test08TransferNetOnAccountWithTransferShouldReturnTransferLines stamp: 'WAL 5/27/2023 19:21:33'!
+PASSED!
+
+!testRun: #ReportTest #test09TransferNetOnAccountShouldNotBeAffectedByOrdinaryDepositsOrWithdraws stamp: 'WAL 5/27/2023 19:21:33'!
+PASSED!
+
+!testRun: #ReportTest #test10 stamp: 'WAL 5/27/2023 19:21:33'!
+PASSED!
+
+!testRun: #ReportTest #test11PortfolioStructureOnEmtyPortfolioShouldReturnPortfolioName stamp: 'WAL 5/27/2023 19:21:33'!
+PASSED!
+
+!testRun: #ReportTest #test12PortfolioStructureOnPortfolioShouldReturnPortfolioStructureReport stamp: 'WAL 5/27/2023 19:21:33'!
+PASSED!
+
+!testRun: #ReportTest #test13PortfolioStructureOnReceptiveAccountShouldRiseError stamp: 'WAL 5/27/2023 19:21:33'!
+FAILURE!
+
+!testRun: #ReportTest #test13PortfolioStructureOnReceptiveAccountShouldRiseError stamp: 'WAL 5/27/2023 19:21:33'!
+FAILURE!
+!PortfolioStructure class methodsFor: 'instance creation' stamp: 'WAL 5/27/2023 19:26:30' prior: 50623124!
+on: aPortfolio
+	
+	aPortfolio xxx: self.
+	
+	^self new initializeOn: aPortfolio! !
+!Portfolio methodsFor: 'reports' stamp: 'WAL 5/27/2023 19:28:06'!
+xxx: aReportClass
+
+	aReportClass xxxPortfolio: self! !
+!ReceptiveAccount methodsFor: 'reports' stamp: 'WAL 5/27/2023 19:28:47'!
+xxx: aReportClass
+
+	aReportClass xxxReceptiveAccount: self! !
+!PortfolioStructure class methodsFor: 'instance creation' stamp: 'WAL 5/27/2023 19:30:08'!
+xxxReceptiveAccount: aReceptiveAccount
+	
+	self error: self portfolioStructureNotPossibleOnReceptiveAccountErrorDescription ! !
+!PortfolioStructure class methodsFor: 'instance creation' stamp: 'WAL 5/27/2023 19:30:35'!
+xxxPortfolio: aPortfolio
+	
+	^self new initializeOn: aPortfolio! !
+
+!testRun: #ReportTest #test01AccountSummaryOnEmptyAccountShouldReturnOnlyBalanceLineWithZero stamp: 'WAL 5/27/2023 19:30:49'!
+PASSED!
+
+!testRun: #ReportTest #test02AccountSummaryOnAccountWithDepositShouldReturnDepositLines stamp: 'WAL 5/27/2023 19:30:49'!
+PASSED!
+
+!testRun: #ReportTest #test03AccountSummaryOnAccountWithWithdrawShouldReturnWithdrawLines stamp: 'WAL 5/27/2023 19:30:49'!
+PASSED!
+
+!testRun: #ReportTest #test04AccountSummaryOnAccountWithTransferShouldReturnTransferLines stamp: 'WAL 5/27/2023 19:30:49'!
+PASSED!
+
+!testRun: #ReportTest #test05AccountSummaryOnEmptyPortfolioShouldReturnOnlyBalanceLineWithZero stamp: 'WAL 5/27/2023 19:30:49'!
+PASSED!
+
+!testRun: #ReportTest #test06AccountSummaryOnPortfolioShouldReturnAccountTransactions stamp: 'WAL 5/27/2023 19:30:49'!
+PASSED!
+
+!testRun: #ReportTest #test07TransferNetOnEmptyAccountShouldReturnOnlyBalanceLineWithZero stamp: 'WAL 5/27/2023 19:30:49'!
+PASSED!
+
+!testRun: #ReportTest #test08TransferNetOnAccountWithTransferShouldReturnTransferLines stamp: 'WAL 5/27/2023 19:30:49'!
+PASSED!
+
+!testRun: #ReportTest #test09TransferNetOnAccountShouldNotBeAffectedByOrdinaryDepositsOrWithdraws stamp: 'WAL 5/27/2023 19:30:49'!
+PASSED!
+
+!testRun: #ReportTest #test10 stamp: 'WAL 5/27/2023 19:30:49'!
+PASSED!
+
+!testRun: #ReportTest #test11PortfolioStructureOnEmtyPortfolioShouldReturnPortfolioName stamp: 'WAL 5/27/2023 19:30:49'!
+PASSED!
+
+!testRun: #ReportTest #test12PortfolioStructureOnPortfolioShouldReturnPortfolioStructureReport stamp: 'WAL 5/27/2023 19:30:49'!
+PASSED!
+
+!testRun: #ReportTest #test13PortfolioStructureOnReceptiveAccountShouldRiseError stamp: 'WAL 5/27/2023 19:30:49'!
+PASSED!
+!PortfolioStructure class methodsFor: 'instance creation' stamp: 'WAL 5/27/2023 19:31:34'!
+createOnPortfolio: aPortfolio
+	
+	^self new initializeOn: aPortfolio! !
+!Portfolio methodsFor: 'as yet unclassified' stamp: 'WAL 5/27/2023 19:31:34' prior: 50624528!
+xxx: aReportClass
+
+	aReportClass createOnPortfolio: self! !
+
+!methodRemoval: PortfolioStructure class #xxxPortfolio: stamp: 'WAL 5/27/2023 19:31:34'!
+xxxPortfolio: aPortfolio
+	
+	^self new initializeOn: aPortfolio!
+!PortfolioStructure class methodsFor: 'instance creation' stamp: 'WAL 5/27/2023 19:31:50'!
+createOnReceptiveAccount: aReceptiveAccount
+	
+	self error: self portfolioStructureNotPossibleOnReceptiveAccountErrorDescription ! !
+!ReceptiveAccount methodsFor: 'as yet unclassified' stamp: 'WAL 5/27/2023 19:31:50' prior: 50624532!
+xxx: aReportClass
+
+	aReportClass createOnReceptiveAccount: self! !
+
+!methodRemoval: PortfolioStructure class #xxxReceptiveAccount: stamp: 'WAL 5/27/2023 19:31:50'!
+xxxReceptiveAccount: aReceptiveAccount
+	
+	self error: self portfolioStructureNotPossibleOnReceptiveAccountErrorDescription !
+!Portfolio methodsFor: 'reports' stamp: 'WAL 5/27/2023 19:37:25'!
+reportFor: aReportClass
+
+	aReportClass createOnPortfolio: self! !
+!ReceptiveAccount methodsFor: 'reports' stamp: 'WAL 5/27/2023 19:37:25'!
+reportFor: aReportClass
+
+	aReportClass createOnReceptiveAccount: self! !
+!PortfolioStructure class methodsFor: 'as yet unclassified' stamp: 'WAL 5/27/2023 19:37:25' prior: 50624523!
+on: aPortfolio
+	
+	aPortfolio reportFor: self.
+	
+	^self new initializeOn: aPortfolio! !
+
+!methodRemoval: Portfolio #xxx: stamp: 'WAL 5/27/2023 19:37:25'!
+xxx: aReportClass
+
+	aReportClass createOnPortfolio: self!
+
+!methodRemoval: ReceptiveAccount #xxx: stamp: 'WAL 5/27/2023 19:37:25'!
+xxx: aReportClass
+
+	aReportClass createOnReceptiveAccount: self!
+
+!testRun: #ReportTest #test01AccountSummaryOnEmptyAccountShouldReturnOnlyBalanceLineWithZero stamp: 'WAL 5/27/2023 19:37:31'!
+PASSED!
+
+!testRun: #ReportTest #test02AccountSummaryOnAccountWithDepositShouldReturnDepositLines stamp: 'WAL 5/27/2023 19:37:31'!
+PASSED!
+
+!testRun: #ReportTest #test03AccountSummaryOnAccountWithWithdrawShouldReturnWithdrawLines stamp: 'WAL 5/27/2023 19:37:31'!
+PASSED!
+
+!testRun: #ReportTest #test04AccountSummaryOnAccountWithTransferShouldReturnTransferLines stamp: 'WAL 5/27/2023 19:37:31'!
+PASSED!
+
+!testRun: #ReportTest #test05AccountSummaryOnEmptyPortfolioShouldReturnOnlyBalanceLineWithZero stamp: 'WAL 5/27/2023 19:37:31'!
+PASSED!
+
+!testRun: #ReportTest #test06AccountSummaryOnPortfolioShouldReturnAccountTransactions stamp: 'WAL 5/27/2023 19:37:31'!
+PASSED!
+
+!testRun: #ReportTest #test07TransferNetOnEmptyAccountShouldReturnOnlyBalanceLineWithZero stamp: 'WAL 5/27/2023 19:37:31'!
+PASSED!
+
+!testRun: #ReportTest #test08TransferNetOnAccountWithTransferShouldReturnTransferLines stamp: 'WAL 5/27/2023 19:37:31'!
+PASSED!
+
+!testRun: #ReportTest #test09TransferNetOnAccountShouldNotBeAffectedByOrdinaryDepositsOrWithdraws stamp: 'WAL 5/27/2023 19:37:31'!
+PASSED!
+
+!testRun: #ReportTest #test10 stamp: 'WAL 5/27/2023 19:37:31'!
+PASSED!
+
+!testRun: #ReportTest #test11PortfolioStructureOnEmtyPortfolioShouldReturnPortfolioName stamp: 'WAL 5/27/2023 19:37:31'!
+PASSED!
+
+!testRun: #ReportTest #test12PortfolioStructureOnPortfolioShouldReturnPortfolioStructureReport stamp: 'WAL 5/27/2023 19:37:31'!
+PASSED!
+
+!testRun: #ReportTest #test13PortfolioStructureOnReceptiveAccountShouldRiseError stamp: 'WAL 5/27/2023 19:37:31'!
+PASSED!
+
+!classDefinition: #StructuredAccountSummary category: 'Portfolio-Solucion' stamp: 'WAL 5/27/2023 19:53:38'!
+Report subclass: #StructuredAccountSummary
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+!ReportTest methodsFor: 'test' stamp: 'WAL 5/27/2023 19:54:30' prior: 50623377!
+test12PortfolioStructureOnPortfolioShouldReturnPortfolioStructureReport
+
+	| portfolio portfolioStructure cuentaMia cuentaDeJuan cuentaDeAngeles |
+	
+	cuentaMia := ReceptiveAccount named: 'Cuenta Mia'.
+	Deposit register: 100 on: cuentaMia.
+	Withdraw register: 70 on: cuentaMia.
+	
+	cuentaDeJuan := ReceptiveAccount named: 'Cuenta de Juan'.
+	cuentaDeAngeles := 	ReceptiveAccount named: 'Cuenta de Angeles'.
+	Transfer register: 200 from: cuentaDeJuan to: cuentaDeAngeles.
+	
+	portfolio := Portfolio named: 'Portfolio de la familia'
+		with: (cuentaMia)
+		with: (Portfolio named: 'Portfolio de hijos'
+			with: (	cuentaDeJuan)
+			with: (cuentaDeAngeles)).
+	
+	portfolioStructure := StructuredAccountSummary on: portfolio.
+	
+	self assert: 14 equals: portfolioStructure lines size.
+	self assert: 'Portfolio de la familia' equals: (portfolioStructure lines at: 1).
+	self assert: '   Cuenta Mia' equals: (portfolioStructure lines at: 2).
+	self assert: '      Depósito por 100' equals: (portfolioStructure lines at: 3).
+	self assert: '      Extracción por 70' equals: (portfolioStructure lines at: 4).
+	self assert: '      Balance = 30' equals: (portfolioStructure lines at: 5).
+	self assert: '   Portfolio de hijos' equals: (portfolioStructure lines at: 6).
+	self assert: '      Cuenta de Juan' equals: (portfolioStructure lines at: 7).
+	self assert: '         Salida por transferencia de 200' equals: (portfolioStructure lines at: 8).	
+	self assert: '         Balance = -200' equals: (portfolioStructure lines at: 9).	
+	self assert: '      Cuenta de Angeles' equals: (portfolioStructure lines at: 10).
+	self assert: '         Entrada por transferencia de 200' equals: (portfolioStructure lines at: 11).	
+	self assert: '         Balance = 200' equals: (portfolioStructure lines at: 12).	
+	self assert: '      Balance = 0' equals: (portfolioStructure lines at: 13).	
+	self assert: '   Balance = 30' equals: (portfolioStructure lines at: 14).	
+	! !
+!ReportTest methodsFor: 'test' stamp: 'WAL 5/27/2023 19:54:44' prior: 50624722!
+test12PortfolioStructureOnPortfolioShouldReturnPortfolioStructureReport
+
+	| portfolio structuredAccountSummary cuentaMia cuentaDeJuan cuentaDeAngeles |
+	
+	cuentaMia := ReceptiveAccount named: 'Cuenta Mia'.
+	Deposit register: 100 on: cuentaMia.
+	Withdraw register: 70 on: cuentaMia.
+	
+	cuentaDeJuan := ReceptiveAccount named: 'Cuenta de Juan'.
+	cuentaDeAngeles := 	ReceptiveAccount named: 'Cuenta de Angeles'.
+	Transfer register: 200 from: cuentaDeJuan to: cuentaDeAngeles.
+	
+	portfolio := Portfolio named: 'Portfolio de la familia'
+		with: (cuentaMia)
+		with: (Portfolio named: 'Portfolio de hijos'
+			with: (	cuentaDeJuan)
+			with: (cuentaDeAngeles)).
+	
+	structuredAccountSummary := StructuredAccountSummary on: portfolio.
+	
+	self assert: 14 equals: structuredAccountSummary lines size.
+	self assert: 'Portfolio de la familia' equals: (structuredAccountSummary lines at: 1).
+	self assert: '   Cuenta Mia' equals: (structuredAccountSummary lines at: 2).
+	self assert: '      Depósito por 100' equals: (structuredAccountSummary lines at: 3).
+	self assert: '      Extracción por 70' equals: (structuredAccountSummary lines at: 4).
+	self assert: '      Balance = 30' equals: (structuredAccountSummary lines at: 5).
+	self assert: '   Portfolio de hijos' equals: (structuredAccountSummary lines at: 6).
+	self assert: '      Cuenta de Juan' equals: (structuredAccountSummary lines at: 7).
+	self assert: '         Salida por transferencia de 200' equals: (structuredAccountSummary lines at: 8).	
+	self assert: '         Balance = -200' equals: (structuredAccountSummary lines at: 9).	
+	self assert: '      Cuenta de Angeles' equals: (structuredAccountSummary lines at: 10).
+	self assert: '         Entrada por transferencia de 200' equals: (structuredAccountSummary lines at: 11).	
+	self assert: '         Balance = 200' equals: (structuredAccountSummary lines at: 12).	
+	self assert: '      Balance = 0' equals: (structuredAccountSummary lines at: 13).	
+	self assert: '   Balance = 30' equals: (structuredAccountSummary lines at: 14).	
+	! !
+!ReportTest methodsFor: 'test' stamp: 'WAL 5/27/2023 19:54:53' prior: 50624786!
+test12PortfolioStructureOnPortfolioShouldReturnPortfolioStructureReport
+
+	| portfolio cuentaMia cuentaDeJuan cuentaDeAngeles structuredAccountSummary |
+	
+	cuentaMia := ReceptiveAccount named: 'Cuenta Mia'.
+	Deposit register: 100 on: cuentaMia.
+	Withdraw register: 70 on: cuentaMia.
+	
+	cuentaDeJuan := ReceptiveAccount named: 'Cuenta de Juan'.
+	cuentaDeAngeles := 	ReceptiveAccount named: 'Cuenta de Angeles'.
+	Transfer register: 200 from: cuentaDeJuan to: cuentaDeAngeles.
+	
+	portfolio := Portfolio named: 'Portfolio de la familia'
+		with: (cuentaMia)
+		with: (Portfolio named: 'Portfolio de hijos'
+			with: (	cuentaDeJuan)
+			with: (cuentaDeAngeles)).
+	
+	structuredAccountSummary := StructuredAccountSummary on: portfolio.
+	
+	self assert: 14 equals: structuredAccountSummary lines size.
+	self assert: 'Portfolio de la familia' equals: (structuredAccountSummary lines at: 1).
+	self assert: '   Cuenta Mia' equals: (structuredAccountSummary lines at: 2).
+	self assert: '      Depósito por 100' equals: (structuredAccountSummary lines at: 3).
+	self assert: '      Extracción por 70' equals: (structuredAccountSummary lines at: 4).
+	self assert: '      Balance = 30' equals: (structuredAccountSummary lines at: 5).
+	self assert: '   Portfolio de hijos' equals: (structuredAccountSummary lines at: 6).
+	self assert: '      Cuenta de Juan' equals: (structuredAccountSummary lines at: 7).
+	self assert: '         Salida por transferencia de 200' equals: (structuredAccountSummary lines at: 8).	
+	self assert: '         Balance = -200' equals: (structuredAccountSummary lines at: 9).	
+	self assert: '      Cuenta de Angeles' equals: (structuredAccountSummary lines at: 10).
+	self assert: '         Entrada por transferencia de 200' equals: (structuredAccountSummary lines at: 11).	
+	self assert: '         Balance = 200' equals: (structuredAccountSummary lines at: 12).	
+	self assert: '      Balance = 0' equals: (structuredAccountSummary lines at: 13).	
+	self assert: '   Balance = 30' equals: (structuredAccountSummary lines at: 14).	
+	! !
+
+!testRun: #ReportTest #test12PortfolioStructureOnPortfolioShouldReturnPortfolioStructureReport stamp: 'WAL 5/27/2023 19:54:55'!
+ERROR!
+!StructuredAccountSummary class methodsFor: 'no messages' stamp: 'WAL 5/27/2023 19:56:11'!
+on: anAccount
+
+	^self new initializeOn: anAccount! !
+!StructuredAccountSummary methodsFor: 'no messages' stamp: 'WAL 5/27/2023 19:57:16'!
+initializeOn: anAccount
+
+	! !
+!StructuredAccountSummary methodsFor: 'initialize' stamp: 'WAL 5/27/2023 20:01:15' prior: 50624929!
+initializeOn: anAccount
+
+	lines := OrderedCollection new.
+	
+	anAccount reportOn: self.
+	! !
+!Portfolio methodsFor: 'reports' stamp: 'WAL 5/27/2023 20:01:47' prior: 50623424!
+reportOn: aReport 
+	
+	aReport writePortfolio: self.! !
+
+!classDefinition: #StructuredAccountSummary category: 'Portfolio-Solucion' stamp: 'WAL 5/27/2023 20:05:02'!
+Report subclass: #StructuredAccountSummary
+	instanceVariableNames: 'indentation'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+!StructuredAccountSummary methodsFor: 'write' stamp: 'WAL 5/27/2023 20:04:58'!
+writePortfolio: aPortfolio
+
+	lines add: (String new: indentation withAll: $ ), aPortfolio name.
+	
+	indentation := indentation + 3.
+	
+	aPortfolio writeTo: self.
+	
+	lines add: 'Balance = ', aPortfolio balance asString.	
+	
+	indentation := indentation - 3.
+	
+! !
+
+!methodRemoval: PortfolioStructure #writeName: stamp: 'WAL 5/27/2023 20:08:14'!
+writeName: aName
+
+	lines add: aName!
+!StructuredAccountSummary methodsFor: 'write' stamp: 'WAL 5/27/2023 20:08:35'!
+writeReceptiveAccount: aReceptiveAccount
+	
+	lines add: (String new: indentation withAll: $ ), aReceptiveAccount name.
+	
+	aReceptiveAccount writeTo: self
+! !
+!StructuredAccountSummary methodsFor: 'write' stamp: 'WAL 5/27/2023 20:09:29' prior: 50624968!
+writeReceptiveAccount: aReceptiveAccount
+	
+	aReceptiveAccount writeTo: self! !
+!StructuredAccountSummary methodsFor: 'write' stamp: 'WAL 5/27/2023 20:10:10'!
+writeWithdraw: aValue 
+	
+	lines add: 'Extracción por ', aValue asString! !
+!StructuredAccountSummary methodsFor: 'write' stamp: 'WAL 5/27/2023 20:10:29'!
+writeDeposit: aValue
+
+	lines add: 'Depósito por ', aValue asString.! !
+!StructuredAccountSummary methodsFor: 'write' stamp: 'WAL 5/27/2023 20:10:42'!
+writeTransferDeposit: aValue 
+	
+	lines add: 'Entrada por transferencia de ', aValue asString! !
+!StructuredAccountSummary methodsFor: 'write' stamp: 'WAL 5/27/2023 20:10:50'!
+writeTransferWithdraw: aValue 
+	
+	lines add: 'Salida por transferencia de ', aValue asString! !
+!StructuredAccountSummary methodsFor: 'write' stamp: 'WAL 5/27/2023 20:12:09' prior: 50624976!
+writeReceptiveAccount: aReceptiveAccount
+	
+	aReceptiveAccount writeTo: self.
+	
+	lines add: 'Balance = ', aReceptiveAccount balance asString.	! !
+!ReceptiveAccount methodsFor: 'reports' stamp: 'WAL 5/27/2023 20:13:33' prior: 50623522!
+reportOn: aReport
+	
+	aReport writeReceptiveAccount: self.! !
+!ReportTest methodsFor: 'test' stamp: 'WAL 5/27/2023 20:15:35'!
+test14PortfolioStructureOnPortfolioShouldReturnPortfolioStructureReport
+
+	| portfolio cuentaMia cuentaDeJuan cuentaDeAngeles structuredAccountSummary |
+	
+	cuentaMia := ReceptiveAccount named: 'Cuenta Mia'.
+	Deposit register: 100 on: cuentaMia.
+	Withdraw register: 70 on: cuentaMia.
+	
+	cuentaDeJuan := ReceptiveAccount named: 'Cuenta de Juan'.
+	cuentaDeAngeles := 	ReceptiveAccount named: 'Cuenta de Angeles'.
+	Transfer register: 200 from: cuentaDeJuan to: cuentaDeAngeles.
+	
+	portfolio := Portfolio named: 'Portfolio de la familia'
+		with: (cuentaMia)
+		with: (Portfolio named: 'Portfolio de hijos'
+			with: (	cuentaDeJuan)
+			with: (cuentaDeAngeles)).
+	
+	structuredAccountSummary := StructuredAccountSummary on: portfolio.
+	
+	self assert: 14 equals: structuredAccountSummary lines size.
+	self assert: 'Portfolio de la familia' equals: (structuredAccountSummary lines at: 1).
+	self assert: '   Cuenta Mia' equals: (structuredAccountSummary lines at: 2).
+	self assert: '      Depósito por 100' equals: (structuredAccountSummary lines at: 3).
+	self assert: '      Extracción por 70' equals: (structuredAccountSummary lines at: 4).
+	self assert: '      Balance = 30' equals: (structuredAccountSummary lines at: 5).
+	self assert: '   Portfolio de hijos' equals: (structuredAccountSummary lines at: 6).
+	self assert: '      Cuenta de Juan' equals: (structuredAccountSummary lines at: 7).
+	self assert: '         Salida por transferencia de 200' equals: (structuredAccountSummary lines at: 8).	
+	self assert: '         Balance = -200' equals: (structuredAccountSummary lines at: 9).	
+	self assert: '      Cuenta de Angeles' equals: (structuredAccountSummary lines at: 10).
+	self assert: '         Entrada por transferencia de 200' equals: (structuredAccountSummary lines at: 11).	
+	self assert: '         Balance = 200' equals: (structuredAccountSummary lines at: 12).	
+	self assert: '      Balance = 0' equals: (structuredAccountSummary lines at: 13).	
+	self assert: '   Balance = 30' equals: (structuredAccountSummary lines at: 14).	
+	! !
+!ReportTest methodsFor: 'test' stamp: 'WAL 5/26/2023 12:25:50' prior: 50624853!
+test12PortfolioStructureOnPortfolioShouldReturnPortfolioStructureReport
+
+	| portfolio portfolioStructure |
+	
+	portfolio := Portfolio named: 'Portfolio de la familia'
+		with: (ReceptiveAccount named: 'Cuenta Mia')
+		with: (Portfolio named: 'Portfolio de hijos'
+			with: (	ReceptiveAccount named: 'Cuenta de Juan')
+			with: (ReceptiveAccount named: 'Cuenta de Angeles')).
+	
+	portfolioStructure := PortfolioStructure on: portfolio.
+	
+	self assert: 5 equals: portfolioStructure lines size.
+	self assert: 'Portfolio de la familia' equals: (portfolioStructure lines at: 1).
+	self assert: '   Cuenta Mia' equals: (portfolioStructure lines at: 2).
+	self assert: '   Portfolio de hijos' equals: (portfolioStructure lines at: 3).
+	self assert: '      Cuenta de Juan' equals: (portfolioStructure lines at: 4).
+	self assert: '      Cuenta de Angeles' equals: (portfolioStructure lines at: 5).
+	! !
+
+!testRun: #ReportTest #test12PortfolioStructureOnPortfolioShouldReturnPortfolioStructureReport stamp: 'WAL 5/27/2023 20:16:23'!
+PASSED!
+
+!testRun: #ReportTest #test01AccountSummaryOnEmptyAccountShouldReturnOnlyBalanceLineWithZero stamp: 'WAL 5/27/2023 20:16:23'!
+PASSED!
+
+!testRun: #ReportTest #test02AccountSummaryOnAccountWithDepositShouldReturnDepositLines stamp: 'WAL 5/27/2023 20:16:23'!
+PASSED!
+
+!testRun: #ReportTest #test03AccountSummaryOnAccountWithWithdrawShouldReturnWithdrawLines stamp: 'WAL 5/27/2023 20:16:23'!
+PASSED!
+
+!testRun: #ReportTest #test04AccountSummaryOnAccountWithTransferShouldReturnTransferLines stamp: 'WAL 5/27/2023 20:16:23'!
+PASSED!
+
+!testRun: #ReportTest #test05AccountSummaryOnEmptyPortfolioShouldReturnOnlyBalanceLineWithZero stamp: 'WAL 5/27/2023 20:16:23'!
+PASSED!
+
+!testRun: #ReportTest #test06AccountSummaryOnPortfolioShouldReturnAccountTransactions stamp: 'WAL 5/27/2023 20:16:23'!
+PASSED!
+
+!testRun: #ReportTest #test07TransferNetOnEmptyAccountShouldReturnOnlyBalanceLineWithZero stamp: 'WAL 5/27/2023 20:16:23'!
+PASSED!
+
+!testRun: #ReportTest #test08TransferNetOnAccountWithTransferShouldReturnTransferLines stamp: 'WAL 5/27/2023 20:16:23'!
+PASSED!
+
+!testRun: #ReportTest #test09TransferNetOnAccountShouldNotBeAffectedByOrdinaryDepositsOrWithdraws stamp: 'WAL 5/27/2023 20:16:23'!
+PASSED!
+
+!testRun: #ReportTest #test10 stamp: 'WAL 5/27/2023 20:16:23'!
+PASSED!
+
+!testRun: #ReportTest #test11PortfolioStructureOnEmtyPortfolioShouldReturnPortfolioName stamp: 'WAL 5/27/2023 20:16:23'!
+PASSED!
+
+!testRun: #ReportTest #test12PortfolioStructureOnPortfolioShouldReturnPortfolioStructureReport stamp: 'WAL 5/27/2023 20:16:23'!
+PASSED!
+
+!testRun: #ReportTest #test13PortfolioStructureOnReceptiveAccountShouldRiseError stamp: 'WAL 5/27/2023 20:16:23'!
+PASSED!
+
+!testRun: #ReportTest #test14PortfolioStructureOnPortfolioShouldReturnPortfolioStructureReport stamp: 'WAL 5/27/2023 20:16:23'!
+ERROR!
+
+!testRun: #ReportTest #test14PortfolioStructureOnPortfolioShouldReturnPortfolioStructureReport stamp: 'WAL 5/27/2023 20:16:23'!
+ERROR!
+!ReportTest methodsFor: 'test' stamp: 'WAL 5/27/2023 20:17:06'!
+test14StructuredAccountSummaryOnPortfolioShouldReturnPortfolioStructuredAccountSummary
+
+	| portfolio cuentaMia cuentaDeJuan cuentaDeAngeles structuredAccountSummary |
+	
+	cuentaMia := ReceptiveAccount named: 'Cuenta Mia'.
+	Deposit register: 100 on: cuentaMia.
+	Withdraw register: 70 on: cuentaMia.
+	
+	cuentaDeJuan := ReceptiveAccount named: 'Cuenta de Juan'.
+	cuentaDeAngeles := 	ReceptiveAccount named: 'Cuenta de Angeles'.
+	Transfer register: 200 from: cuentaDeJuan to: cuentaDeAngeles.
+	
+	portfolio := Portfolio named: 'Portfolio de la familia'
+		with: (cuentaMia)
+		with: (Portfolio named: 'Portfolio de hijos'
+			with: (	cuentaDeJuan)
+			with: (cuentaDeAngeles)).
+	
+	structuredAccountSummary := StructuredAccountSummary on: portfolio.
+	
+	self assert: 14 equals: structuredAccountSummary lines size.
+	self assert: 'Portfolio de la familia' equals: (structuredAccountSummary lines at: 1).
+	self assert: '   Cuenta Mia' equals: (structuredAccountSummary lines at: 2).
+	self assert: '      Depósito por 100' equals: (structuredAccountSummary lines at: 3).
+	self assert: '      Extracción por 70' equals: (structuredAccountSummary lines at: 4).
+	self assert: '      Balance = 30' equals: (structuredAccountSummary lines at: 5).
+	self assert: '   Portfolio de hijos' equals: (structuredAccountSummary lines at: 6).
+	self assert: '      Cuenta de Juan' equals: (structuredAccountSummary lines at: 7).
+	self assert: '         Salida por transferencia de 200' equals: (structuredAccountSummary lines at: 8).	
+	self assert: '         Balance = -200' equals: (structuredAccountSummary lines at: 9).	
+	self assert: '      Cuenta de Angeles' equals: (structuredAccountSummary lines at: 10).
+	self assert: '         Entrada por transferencia de 200' equals: (structuredAccountSummary lines at: 11).	
+	self assert: '         Balance = 200' equals: (structuredAccountSummary lines at: 12).	
+	self assert: '      Balance = 0' equals: (structuredAccountSummary lines at: 13).	
+	self assert: '   Balance = 30' equals: (structuredAccountSummary lines at: 14).	
+	! !
+
+!methodRemoval: ReportTest #test14PortfolioStructureOnPortfolioShouldReturnPortfolioStructureReport stamp: 'WAL 5/27/2023 20:17:11'!
+test14PortfolioStructureOnPortfolioShouldReturnPortfolioStructureReport
+
+	| portfolio cuentaMia cuentaDeJuan cuentaDeAngeles structuredAccountSummary |
+	
+	cuentaMia := ReceptiveAccount named: 'Cuenta Mia'.
+	Deposit register: 100 on: cuentaMia.
+	Withdraw register: 70 on: cuentaMia.
+	
+	cuentaDeJuan := ReceptiveAccount named: 'Cuenta de Juan'.
+	cuentaDeAngeles := 	ReceptiveAccount named: 'Cuenta de Angeles'.
+	Transfer register: 200 from: cuentaDeJuan to: cuentaDeAngeles.
+	
+	portfolio := Portfolio named: 'Portfolio de la familia'
+		with: (cuentaMia)
+		with: (Portfolio named: 'Portfolio de hijos'
+			with: (	cuentaDeJuan)
+			with: (cuentaDeAngeles)).
+	
+	structuredAccountSummary := StructuredAccountSummary on: portfolio.
+	
+	self assert: 14 equals: structuredAccountSummary lines size.
+	self assert: 'Portfolio de la familia' equals: (structuredAccountSummary lines at: 1).
+	self assert: '   Cuenta Mia' equals: (structuredAccountSummary lines at: 2).
+	self assert: '      Depósito por 100' equals: (structuredAccountSummary lines at: 3).
+	self assert: '      Extracción por 70' equals: (structuredAccountSummary lines at: 4).
+	self assert: '      Balance = 30' equals: (structuredAccountSummary lines at: 5).
+	self assert: '   Portfolio de hijos' equals: (structuredAccountSummary lines at: 6).
+	self assert: '      Cuenta de Juan' equals: (structuredAccountSummary lines at: 7).
+	self assert: '         Salida por transferencia de 200' equals: (structuredAccountSummary lines at: 8).	
+	self assert: '         Balance = -200' equals: (structuredAccountSummary lines at: 9).	
+	self assert: '      Cuenta de Angeles' equals: (structuredAccountSummary lines at: 10).
+	self assert: '         Entrada por transferencia de 200' equals: (structuredAccountSummary lines at: 11).	
+	self assert: '         Balance = 200' equals: (structuredAccountSummary lines at: 12).	
+	self assert: '      Balance = 0' equals: (structuredAccountSummary lines at: 13).	
+	self assert: '   Balance = 30' equals: (structuredAccountSummary lines at: 14).	
+	!
+
+!testRun: #ReportTest #test14StructuredAccountSummaryOnPortfolioShouldReturnPortfolioStructuredAccountSummary stamp: 'WAL 5/27/2023 20:17:15'!
+ERROR!
+
+!testRun: #ReportTest #test14StructuredAccountSummaryOnPortfolioShouldReturnPortfolioStructuredAccountSummary stamp: 'WAL 5/27/2023 20:17:47'!
+ERROR!
+!StructuredAccountSummary methodsFor: 'initialize' stamp: 'WAL 5/27/2023 20:18:31' prior: 50624934!
+initializeOn: anAccount
+	
+	indentation := 0.
+	
+	lines := OrderedCollection new.
+	
+	anAccount reportOn: self.
+	! !
+
+!testRun: #ReportTest #test01AccountSummaryOnEmptyAccountShouldReturnOnlyBalanceLineWithZero stamp: 'WAL 5/27/2023 20:18:34'!
+PASSED!
+
+!testRun: #ReportTest #test02AccountSummaryOnAccountWithDepositShouldReturnDepositLines stamp: 'WAL 5/27/2023 20:18:34'!
+PASSED!
+
+!testRun: #ReportTest #test03AccountSummaryOnAccountWithWithdrawShouldReturnWithdrawLines stamp: 'WAL 5/27/2023 20:18:34'!
+PASSED!
+
+!testRun: #ReportTest #test04AccountSummaryOnAccountWithTransferShouldReturnTransferLines stamp: 'WAL 5/27/2023 20:18:34'!
+PASSED!
+
+!testRun: #ReportTest #test05AccountSummaryOnEmptyPortfolioShouldReturnOnlyBalanceLineWithZero stamp: 'WAL 5/27/2023 20:18:34'!
+PASSED!
+
+!testRun: #ReportTest #test06AccountSummaryOnPortfolioShouldReturnAccountTransactions stamp: 'WAL 5/27/2023 20:18:34'!
+PASSED!
+
+!testRun: #ReportTest #test07TransferNetOnEmptyAccountShouldReturnOnlyBalanceLineWithZero stamp: 'WAL 5/27/2023 20:18:34'!
+PASSED!
+
+!testRun: #ReportTest #test08TransferNetOnAccountWithTransferShouldReturnTransferLines stamp: 'WAL 5/27/2023 20:18:34'!
+PASSED!
+
+!testRun: #ReportTest #test09TransferNetOnAccountShouldNotBeAffectedByOrdinaryDepositsOrWithdraws stamp: 'WAL 5/27/2023 20:18:34'!
+PASSED!
+
+!testRun: #ReportTest #test10 stamp: 'WAL 5/27/2023 20:18:34'!
+PASSED!
+
+!testRun: #ReportTest #test11PortfolioStructureOnEmtyPortfolioShouldReturnPortfolioName stamp: 'WAL 5/27/2023 20:18:34'!
+PASSED!
+
+!testRun: #ReportTest #test12PortfolioStructureOnPortfolioShouldReturnPortfolioStructureReport stamp: 'WAL 5/27/2023 20:18:34'!
+PASSED!
+
+!testRun: #ReportTest #test13PortfolioStructureOnReceptiveAccountShouldRiseError stamp: 'WAL 5/27/2023 20:18:34'!
+PASSED!
+
+!testRun: #ReportTest #test14StructuredAccountSummaryOnPortfolioShouldReturnPortfolioStructuredAccountSummary stamp: 'WAL 5/27/2023 20:18:34'!
+FAILURE!
+
+!testRun: #ReportTest #test14StructuredAccountSummaryOnPortfolioShouldReturnPortfolioStructuredAccountSummary stamp: 'WAL 5/27/2023 20:18:34'!
+FAILURE!
+!StructuredAccountSummary methodsFor: 'write' stamp: 'WAL 5/27/2023 20:19:36' prior: 50625003!
+writeReceptiveAccount: aReceptiveAccount
+
+	lines add: (String new: indentation withAll: $ ), aReceptiveAccount name.
+	
+	aReceptiveAccount writeTo: self.
+	
+	lines add: 'Balance = ', aReceptiveAccount balance asString.	! !
+!StructuredAccountSummary methodsFor: 'write' stamp: 'WAL 5/27/2023 20:20:39' overrides: 50623144!
+writeName: aReceptiveAccount
+
+	^ lines add: (String new: indentation withAll: $ ), aReceptiveAccount name! !
+!StructuredAccountSummary methodsFor: 'write' stamp: 'WAL 5/27/2023 20:20:39' prior: 50625390!
+writeReceptiveAccount: aReceptiveAccount
+
+	self writeName: aReceptiveAccount.
+	
+	aReceptiveAccount writeTo: self.
+	
+	lines add: 'Balance = ', aReceptiveAccount balance asString.	! !
+
+!methodRemoval: Report #writeName: stamp: 'WAL 5/27/2023 20:22:20'!
+writeName: aName!
+!StructuredAccountSummary methodsFor: 'write' stamp: 'WAL 5/27/2023 20:22:48' prior: 50625400!
+writeName: anAccount
+
+	^ lines add: (String new: indentation withAll: $ ), anAccount name! !
+
+!classDefinition: #StructuredAccountSummary category: 'Portfolio-Solucion' stamp: 'WAL 5/27/2023 20:23:54'!
+Report subclass: #StructuredAccountSummary
+	instanceVariableNames: 'indentationSize'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+!StructuredAccountSummary methodsFor: 'as yet unclassified' stamp: 'WAL 5/27/2023 20:23:54' prior: 50624953!
+writePortfolio: aPortfolio
+
+	lines add: (String new: indentationSize withAll: $ ), aPortfolio name.
+	
+	indentationSize := indentationSize + 3.
+	
+	aPortfolio writeTo: self.
+	
+	lines add: 'Balance = ', aPortfolio balance asString.	
+	
+	indentationSize := indentationSize - 3.
+	
+! !
+!StructuredAccountSummary methodsFor: 'as yet unclassified' stamp: 'WAL 5/27/2023 20:23:54' prior: 50625322!
+initializeOn: anAccount
+	
+	indentationSize := 0.
+	
+	lines := OrderedCollection new.
+	
+	anAccount reportOn: self.
+	! !
+!StructuredAccountSummary methodsFor: 'as yet unclassified' stamp: 'WAL 5/27/2023 20:23:54' prior: 50625419!
+writeName: anAccount
+
+	^ lines add: (String new: indentationSize withAll: $ ), anAccount name! !
+
+!classDefinition: #PortfolioStructure category: 'Portfolio-Solucion' stamp: 'WAL 5/27/2023 20:24:03'!
+Report subclass: #PortfolioStructure
+	instanceVariableNames: 'indentationSize'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+!PortfolioStructure methodsFor: 'as yet unclassified' stamp: 'WAL 5/27/2023 20:24:03' prior: 50624189!
+writeReceptiveAccount: aReceptiveAccount
+	
+	lines add: (String new: indentationSize withAll: $ ), aReceptiveAccount name.
+	
+	aReceptiveAccount writeTo: self! !
+!PortfolioStructure methodsFor: 'as yet unclassified' stamp: 'WAL 5/27/2023 20:24:03' prior: 50624198!
+writePortfolio: aPortfolio
+	
+	lines add: (String new: indentationSize withAll: $ ), aPortfolio name.
+	
+	indentationSize := indentationSize + 3.
+	
+	aPortfolio writeTo: self.
+	
+	indentationSize := indentationSize - 3.! !
+!PortfolioStructure methodsFor: 'as yet unclassified' stamp: 'WAL 5/27/2023 20:24:03' prior: 50623799!
+initializeOn: aPortfolio
+	
+	indentationSize := 0.
+	
+	lines := OrderedCollection new.
+	
+	aPortfolio reportOn: self.! !
+!StructuredAccountSummary methodsFor: 'write' stamp: 'WAL 5/27/2023 20:25:09'!
+indentation
+
+	^ String new: indentationSize withAll: $! !
+!StructuredAccountSummary methodsFor: 'write' stamp: 'WAL 5/27/2023 20:25:09' prior: 50625455!
+writeName: anAccount
+
+	^ lines add: (self indentation ), anAccount name! !
+!StructuredAccountSummary methodsFor: 'write' stamp: 'WAL 5/27/2023 20:25:09' prior: 50625434!
+writePortfolio: aPortfolio
+
+	lines add: (self indentation ), aPortfolio name.
+	
+	indentationSize := indentationSize + 3.
+	
+	aPortfolio writeTo: self.
+	
+	lines add: 'Balance = ', aPortfolio balance asString.	
+	
+	indentationSize := indentationSize - 3.
+	
+! !
+!StructuredAccountSummary methodsFor: 'write' stamp: 'WAL 5/27/2023 20:25:15' prior: 50625502!
+writeName: anAccount
+
+	^ lines add: (self indentation), anAccount name! !
+!StructuredAccountSummary methodsFor: 'write' stamp: 'WAL 5/27/2023 20:27:03' prior: 50625407!
+writeReceptiveAccount: aReceptiveAccount
+
+	self writeName: aReceptiveAccount.
+	
+	indentationSize := indentationSize + 3.
+	
+	aReceptiveAccount writeTo: self.
+	
+	indentationSize := indentationSize - 3.
+	
+	lines add: 'Balance = ', aReceptiveAccount balance asString.	! !
+!StructuredAccountSummary methodsFor: 'write' stamp: 'WAL 5/27/2023 20:27:24' prior: 50625525!
+writeReceptiveAccount: aReceptiveAccount
+
+	self writeName: aReceptiveAccount.
+	
+	indentationSize := indentationSize + 3.
+	
+	aReceptiveAccount writeTo: self.
+	
+	lines add: 'Balance = ', aReceptiveAccount balance asString.	
+	
+	indentationSize := indentationSize - 3.! !
+!StructuredAccountSummary methodsFor: 'write' stamp: 'WAL 5/27/2023 20:28:13'!
+writeAccount: aPortfolio
+
+	lines add: (self indentation ), aPortfolio name.
+	
+	indentationSize := indentationSize + 3.
+	
+	aPortfolio writeTo: self.
+	
+	lines add: 'Balance = ', aPortfolio balance asString.	
+	
+	indentationSize := indentationSize - 3.
+	
+! !
+!StructuredAccountSummary methodsFor: 'write' stamp: 'WAL 5/27/2023 20:28:21' prior: 50625548!
+writeAccount: anAccount
+
+	lines add: (self indentation ), anAccount name.
+	
+	indentationSize := indentationSize + 3.
+	
+	anAccount writeTo: self.
+	
+	lines add: 'Balance = ', anAccount balance asString.	
+	
+	indentationSize := indentationSize - 3.
+	
+! !
+!StructuredAccountSummary methodsFor: 'write' stamp: 'WAL 5/27/2023 20:29:00' prior: 50625508!
+writePortfolio: aPortfolio
+
+	self writeAccount: aPortfolio
+	
+! !
+!StructuredAccountSummary methodsFor: 'write' stamp: 'WAL 5/27/2023 20:29:19' prior: 50625537!
+writeReceptiveAccount: aReceptiveAccount
+
+	self writeAccount: aReceptiveAccount! !
+!StructuredAccountSummary methodsFor: 'write' stamp: 'WAL 5/27/2023 20:29:58' prior: 50625559!
+writeAccount: anAccount
+
+	self writeName: anAccount.
+	
+	indentationSize := indentationSize + 3.
+	
+	anAccount writeTo: self.
+	
+	lines add: 'Balance = ', anAccount balance asString.	
+	
+	indentationSize := indentationSize - 3.
+	
+! !
+!StructuredAccountSummary methodsFor: 'write' stamp: 'WAL 5/27/2023 20:31:31'!
+writeLine: aText
+
+	^ lines add: (self indentation), aText! !
+!StructuredAccountSummary methodsFor: 'write' stamp: 'WAL 5/27/2023 20:32:00' prior: 50625519!
+writeName: anAccount
+
+	^self writeLine: anAccount name! !
+!StructuredAccountSummary methodsFor: 'write' stamp: 'WAL 5/27/2023 20:32:33' prior: 50625591!
+writeLine: aText
+
+	lines add: (self indentation), aText! !
+!StructuredAccountSummary methodsFor: 'write' stamp: 'WAL 5/27/2023 20:32:50' prior: 50625596!
+writeName: anAccount
+
+	self writeLine: anAccount name! !
+!StructuredAccountSummary methodsFor: 'write' stamp: 'WAL 5/27/2023 20:33:35' prior: 50624991!
+writeTransferDeposit: aValue 
+	
+	self writeLine: 'Entrada por transferencia de ', aValue asString! !
+!StructuredAccountSummary methodsFor: 'write' stamp: 'WAL 5/27/2023 20:33:40' prior: 50624997!
+writeTransferWithdraw: aValue 
+	
+	self writeLine: 'Salida por transferencia de ', aValue asString! !
+!StructuredAccountSummary methodsFor: 'write' stamp: 'WAL 5/27/2023 20:33:47' prior: 50624981!
+writeWithdraw: aValue 
+	
+	self writeLine: 'Extracción por ', aValue asString! !
+!StructuredAccountSummary methodsFor: 'write' stamp: 'WAL 5/27/2023 20:34:22' prior: 50624986!
+writeDeposit: aValue
+
+	self writeLine: 'Depósito por ', aValue asString.! !
+!StructuredAccountSummary methodsFor: 'write' stamp: 'WAL 5/27/2023 20:35:19'!
+incrementIntentation
+
+	^ indentationSize := indentationSize + 3! !
+!StructuredAccountSummary methodsFor: 'write' stamp: 'WAL 5/27/2023 20:35:19' prior: 50625581!
+writeAccount: anAccount
+
+	self writeName: anAccount.
+	
+	self incrementIntentation.
+	
+	anAccount writeTo: self.
+	
+	lines add: 'Balance = ', anAccount balance asString.	
+	
+	indentationSize := indentationSize - 3.
+	
+! !
+!StructuredAccountSummary methodsFor: 'write' stamp: 'WAL 5/27/2023 20:35:36'!
+incrementIndentation
+
+	^ indentationSize := indentationSize + 3! !
+!StructuredAccountSummary methodsFor: 'as yet unclassified' stamp: 'WAL 5/27/2023 20:35:36' prior: 50625642!
+writeAccount: anAccount
+
+	self writeName: anAccount.
+	
+	self incrementIndentation.
+	
+	anAccount writeTo: self.
+	
+	lines add: 'Balance = ', anAccount balance asString.	
+	
+	indentationSize := indentationSize - 3.
+	
+! !
+
+!methodRemoval: StructuredAccountSummary #incrementIntentation stamp: 'WAL 5/27/2023 20:35:36'!
+incrementIntentation
+
+	^ indentationSize := indentationSize + 3!
+!StructuredAccountSummary methodsFor: 'write' stamp: 'WAL 5/27/2023 20:36:28'!
+writeBalance: anAccount
+
+	^ lines add: 'Balance = ', anAccount balance asString! !
+!StructuredAccountSummary methodsFor: 'write' stamp: 'WAL 5/27/2023 20:36:28' prior: 50625658!
+writeAccount: anAccount
+
+	self writeName: anAccount.
+	
+	self incrementIndentation.
+	
+	anAccount writeTo: self.
+	
+	self writeBalance: anAccount.	
+	
+	indentationSize := indentationSize - 3.
+	
+! !
+!StructuredAccountSummary methodsFor: 'write' stamp: 'WAL 5/27/2023 20:36:40'!
+decrementIndentation
+
+	^ indentationSize := indentationSize - 3! !
+!StructuredAccountSummary methodsFor: 'write' stamp: 'WAL 5/27/2023 20:36:40' prior: 50625679!
+writeAccount: anAccount
+
+	self writeName: anAccount.
+	
+	self incrementIndentation.
+	
+	anAccount writeTo: self.
+	
+	self writeBalance: anAccount.	
+	
+	self decrementIndentation.
+	
+! !
+!StructuredAccountSummary methodsFor: 'write' stamp: 'WAL 5/27/2023 20:37:38' prior: 50625673!
+writeBalance: anAccount
+
+	^self writeLine: 'Balance = ', anAccount balance asString! !
+!StructuredAccountSummary methodsFor: 'write' stamp: 'WAL 5/27/2023 20:37:55' prior: 50625703!
+writeBalance: anAccount
+
+	self writeLine: 'Balance = ', anAccount balance asString! !
+
+!testRun: #ReportTest #test14StructuredAccountSummaryOnPortfolioShouldReturnPortfolioStructuredAccountSummary stamp: 'WAL 5/27/2023 20:38:17'!
+FAILURE!
+
+!testRun: #ReportTest #test14StructuredAccountSummaryOnPortfolioShouldReturnPortfolioStructuredAccountSummary stamp: 'WAL 5/27/2023 20:38:17'!
+FAILURE!
+!StructuredAccountSummary methodsFor: 'indentation' stamp: 'WAL 5/27/2023 20:38:50' prior: 50625497!
+indentation
+
+	^ String new: indentationSize withAll: $ ! !
+!StructuredAccountSummary methodsFor: 'indentation' stamp: 'WAL 5/27/2023 20:38:59' prior: 50625725!
+indentation
+
+	^ String new: indentationSize withAll: $ .! !
+!StructuredAccountSummary methodsFor: 'indentation' stamp: 'WAL 5/27/2023 20:39:14' prior: 50625730!
+indentation
+
+	^ String new: indentationSize withAll: Character space.! !
+
+!testRun: #ReportTest #test01AccountSummaryOnEmptyAccountShouldReturnOnlyBalanceLineWithZero stamp: 'WAL 5/27/2023 20:39:16'!
+PASSED!
+
+!testRun: #ReportTest #test02AccountSummaryOnAccountWithDepositShouldReturnDepositLines stamp: 'WAL 5/27/2023 20:39:16'!
+PASSED!
+
+!testRun: #ReportTest #test03AccountSummaryOnAccountWithWithdrawShouldReturnWithdrawLines stamp: 'WAL 5/27/2023 20:39:16'!
+PASSED!
+
+!testRun: #ReportTest #test04AccountSummaryOnAccountWithTransferShouldReturnTransferLines stamp: 'WAL 5/27/2023 20:39:16'!
+PASSED!
+
+!testRun: #ReportTest #test05AccountSummaryOnEmptyPortfolioShouldReturnOnlyBalanceLineWithZero stamp: 'WAL 5/27/2023 20:39:16'!
+PASSED!
+
+!testRun: #ReportTest #test06AccountSummaryOnPortfolioShouldReturnAccountTransactions stamp: 'WAL 5/27/2023 20:39:16'!
+PASSED!
+
+!testRun: #ReportTest #test07TransferNetOnEmptyAccountShouldReturnOnlyBalanceLineWithZero stamp: 'WAL 5/27/2023 20:39:16'!
+PASSED!
+
+!testRun: #ReportTest #test08TransferNetOnAccountWithTransferShouldReturnTransferLines stamp: 'WAL 5/27/2023 20:39:16'!
+PASSED!
+
+!testRun: #ReportTest #test09TransferNetOnAccountShouldNotBeAffectedByOrdinaryDepositsOrWithdraws stamp: 'WAL 5/27/2023 20:39:16'!
+PASSED!
+
+!testRun: #ReportTest #test10 stamp: 'WAL 5/27/2023 20:39:16'!
+PASSED!
+
+!testRun: #ReportTest #test11PortfolioStructureOnEmtyPortfolioShouldReturnPortfolioName stamp: 'WAL 5/27/2023 20:39:16'!
+PASSED!
+
+!testRun: #ReportTest #test12PortfolioStructureOnPortfolioShouldReturnPortfolioStructureReport stamp: 'WAL 5/27/2023 20:39:16'!
+PASSED!
+
+!testRun: #ReportTest #test13PortfolioStructureOnReceptiveAccountShouldRiseError stamp: 'WAL 5/27/2023 20:39:16'!
+PASSED!
+
+!testRun: #ReportTest #test14StructuredAccountSummaryOnPortfolioShouldReturnPortfolioStructuredAccountSummary stamp: 'WAL 5/27/2023 20:39:16'!
+PASSED!
+
+Report subclass: #StructuredReport
+	instanceVariableNames: 'indentationSize tabSize tabCharacter'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+!classDefinition: #StructuredReport category: 'Portfolio-Solucion' stamp: 'WAL 5/27/2023 20:40:33'!
+Report subclass: #StructuredReport
+	instanceVariableNames: 'indentationSize tabSize tabCharacter'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+StructuredReport subclass: #StructuredAccountSummary
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+!classDefinition: #StructuredAccountSummary category: 'Portfolio-Solucion' stamp: 'WAL 5/27/2023 20:40:44'!
+StructuredReport subclass: #StructuredAccountSummary
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+Report subclass: #PortfolioStructure
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+!classDefinition: #PortfolioStructure category: 'Portfolio-Solucion' stamp: 'WAL 5/27/2023 20:41:10'!
+Report subclass: #PortfolioStructure
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+StructuredReport subclass: #PortfolioStructure
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+!classDefinition: #PortfolioStructure category: 'Portfolio-Solucion' stamp: 'WAL 5/27/2023 20:41:18'!
+StructuredReport subclass: #PortfolioStructure
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+!AccountSummary methodsFor: 'initialization' stamp: 'WAL 5/27/2023 20:42:30' prior: 50621912!
+initializeOn: anAccount
+	
+	anAccount reportOn: self.
+	
+	lines add: 'Balance = ', anAccount balance asString.
+	! !
+!Report methodsFor: 'initialization' stamp: 'WAL 5/27/2023 20:42:46' overrides: 16920235!
+initialize
+
+	lines := OrderedCollection new! !
+!PortfolioStructure methodsFor: 'initialization' stamp: 'WAL 5/27/2023 20:43:12' prior: 50625490!
+initializeOn: aPortfolio
+	
+	indentationSize := 0.
+	
+	aPortfolio reportOn: self.! !
+!StructuredAccountSummary methodsFor: 'initialize' stamp: 'WAL 5/27/2023 20:43:20' prior: 50625447!
+initializeOn: anAccount
+	
+	indentationSize := 0.
+	
+	anAccount reportOn: self.
+	! !
+!TransferNet methodsFor: 'initialization' stamp: 'WAL 5/27/2023 20:43:27' prior: 50622611!
+initializeOn: anAccount
+	
+	transferNet := 0.
+	
+	anAccount reportOn: self.
+	
+	lines add: 'Neto de transferencias = ', transferNet asString.
+	! !
+
+!testRun: #ReportTest #test01AccountSummaryOnEmptyAccountShouldReturnOnlyBalanceLineWithZero stamp: 'WAL 5/27/2023 20:44:03'!
+PASSED!
+
+!testRun: #ReportTest #test02AccountSummaryOnAccountWithDepositShouldReturnDepositLines stamp: 'WAL 5/27/2023 20:44:03'!
+PASSED!
+
+!testRun: #ReportTest #test03AccountSummaryOnAccountWithWithdrawShouldReturnWithdrawLines stamp: 'WAL 5/27/2023 20:44:03'!
+PASSED!
+
+!testRun: #ReportTest #test04AccountSummaryOnAccountWithTransferShouldReturnTransferLines stamp: 'WAL 5/27/2023 20:44:03'!
+PASSED!
+
+!testRun: #ReportTest #test05AccountSummaryOnEmptyPortfolioShouldReturnOnlyBalanceLineWithZero stamp: 'WAL 5/27/2023 20:44:03'!
+PASSED!
+
+!testRun: #ReportTest #test06AccountSummaryOnPortfolioShouldReturnAccountTransactions stamp: 'WAL 5/27/2023 20:44:03'!
+PASSED!
+
+!testRun: #ReportTest #test07TransferNetOnEmptyAccountShouldReturnOnlyBalanceLineWithZero stamp: 'WAL 5/27/2023 20:44:03'!
+PASSED!
+
+!testRun: #ReportTest #test08TransferNetOnAccountWithTransferShouldReturnTransferLines stamp: 'WAL 5/27/2023 20:44:03'!
+PASSED!
+
+!testRun: #ReportTest #test09TransferNetOnAccountShouldNotBeAffectedByOrdinaryDepositsOrWithdraws stamp: 'WAL 5/27/2023 20:44:03'!
+PASSED!
+
+!testRun: #ReportTest #test10 stamp: 'WAL 5/27/2023 20:44:03'!
+PASSED!
+
+!testRun: #ReportTest #test11PortfolioStructureOnEmtyPortfolioShouldReturnPortfolioName stamp: 'WAL 5/27/2023 20:44:03'!
+PASSED!
+
+!testRun: #ReportTest #test12PortfolioStructureOnPortfolioShouldReturnPortfolioStructureReport stamp: 'WAL 5/27/2023 20:44:03'!
+PASSED!
+
+!testRun: #ReportTest #test13PortfolioStructureOnReceptiveAccountShouldRiseError stamp: 'WAL 5/27/2023 20:44:03'!
+PASSED!
+
+!testRun: #ReportTest #test14StructuredAccountSummaryOnPortfolioShouldReturnPortfolioStructuredAccountSummary stamp: 'WAL 5/27/2023 20:44:03'!
+PASSED!
+!PortfolioStructure methodsFor: 'initialization' stamp: 'WAL 5/27/2023 20:45:41' prior: 50625863!
+initializeOn: aPortfolio
+	
+	aPortfolio reportOn: self.! !
+!StructuredAccountSummary methodsFor: 'initialize' stamp: 'WAL 5/27/2023 20:45:49' prior: 50625869!
+initializeOn: anAccount
+	
+	anAccount reportOn: self.
+	! !
+!StructuredReport methodsFor: 'no messages' stamp: 'WAL 5/27/2023 20:47:29' overrides: 50625858!
+initialize
+
+	indentationSize := 0.
+	
+	tabSize := 3! !
+
+!testRun: #ReportTest #test01AccountSummaryOnEmptyAccountShouldReturnOnlyBalanceLineWithZero stamp: 'WAL 5/27/2023 20:47:47'!
+PASSED!
+
+!testRun: #ReportTest #test02AccountSummaryOnAccountWithDepositShouldReturnDepositLines stamp: 'WAL 5/27/2023 20:47:47'!
+PASSED!
+
+!testRun: #ReportTest #test03AccountSummaryOnAccountWithWithdrawShouldReturnWithdrawLines stamp: 'WAL 5/27/2023 20:47:47'!
+PASSED!
+
+!testRun: #ReportTest #test04AccountSummaryOnAccountWithTransferShouldReturnTransferLines stamp: 'WAL 5/27/2023 20:47:47'!
+PASSED!
+
+!testRun: #ReportTest #test05AccountSummaryOnEmptyPortfolioShouldReturnOnlyBalanceLineWithZero stamp: 'WAL 5/27/2023 20:47:47'!
+PASSED!
+
+!testRun: #ReportTest #test06AccountSummaryOnPortfolioShouldReturnAccountTransactions stamp: 'WAL 5/27/2023 20:47:47'!
+PASSED!
+
+!testRun: #ReportTest #test07TransferNetOnEmptyAccountShouldReturnOnlyBalanceLineWithZero stamp: 'WAL 5/27/2023 20:47:47'!
+PASSED!
+
+!testRun: #ReportTest #test08TransferNetOnAccountWithTransferShouldReturnTransferLines stamp: 'WAL 5/27/2023 20:47:47'!
+PASSED!
+
+!testRun: #ReportTest #test09TransferNetOnAccountShouldNotBeAffectedByOrdinaryDepositsOrWithdraws stamp: 'WAL 5/27/2023 20:47:47'!
+PASSED!
+
+!testRun: #ReportTest #test10 stamp: 'WAL 5/27/2023 20:47:47'!
+PASSED!
+
+!testRun: #ReportTest #test11PortfolioStructureOnEmtyPortfolioShouldReturnPortfolioName stamp: 'WAL 5/27/2023 20:47:47'!
+ERROR!
+
+!testRun: #ReportTest #test12PortfolioStructureOnPortfolioShouldReturnPortfolioStructureReport stamp: 'WAL 5/27/2023 20:47:47'!
+ERROR!
+
+!testRun: #ReportTest #test13PortfolioStructureOnReceptiveAccountShouldRiseError stamp: 'WAL 5/27/2023 20:47:47'!
+PASSED!
+
+!testRun: #ReportTest #test14StructuredAccountSummaryOnPortfolioShouldReturnPortfolioStructuredAccountSummary stamp: 'WAL 5/27/2023 20:47:47'!
+ERROR!
+
+!testRun: #ReportTest #test14StructuredAccountSummaryOnPortfolioShouldReturnPortfolioStructuredAccountSummary stamp: 'WAL 5/27/2023 20:49:07'!
+ERROR!
+
+!testRun: #ReportTest #test14StructuredAccountSummaryOnPortfolioShouldReturnPortfolioStructuredAccountSummary stamp: 'WAL 5/27/2023 20:49:07'!
+ERROR!
+
+!testRun: #ReportTest #test01AccountSummaryOnEmptyAccountShouldReturnOnlyBalanceLineWithZero stamp: 'WAL 5/27/2023 20:49:12'!
+PASSED!
+
+!testRun: #ReportTest #test02AccountSummaryOnAccountWithDepositShouldReturnDepositLines stamp: 'WAL 5/27/2023 20:49:12'!
+PASSED!
+
+!testRun: #ReportTest #test03AccountSummaryOnAccountWithWithdrawShouldReturnWithdrawLines stamp: 'WAL 5/27/2023 20:49:12'!
+PASSED!
+
+!testRun: #ReportTest #test04AccountSummaryOnAccountWithTransferShouldReturnTransferLines stamp: 'WAL 5/27/2023 20:49:12'!
+PASSED!
+
+!testRun: #ReportTest #test05AccountSummaryOnEmptyPortfolioShouldReturnOnlyBalanceLineWithZero stamp: 'WAL 5/27/2023 20:49:12'!
+PASSED!
+
+!testRun: #ReportTest #test06AccountSummaryOnPortfolioShouldReturnAccountTransactions stamp: 'WAL 5/27/2023 20:49:12'!
+PASSED!
+
+!testRun: #ReportTest #test07TransferNetOnEmptyAccountShouldReturnOnlyBalanceLineWithZero stamp: 'WAL 5/27/2023 20:49:12'!
+PASSED!
+
+!testRun: #ReportTest #test08TransferNetOnAccountWithTransferShouldReturnTransferLines stamp: 'WAL 5/27/2023 20:49:12'!
+PASSED!
+
+!testRun: #ReportTest #test09TransferNetOnAccountShouldNotBeAffectedByOrdinaryDepositsOrWithdraws stamp: 'WAL 5/27/2023 20:49:12'!
+PASSED!
+
+!testRun: #ReportTest #test10 stamp: 'WAL 5/27/2023 20:49:12'!
+PASSED!
+
+!testRun: #ReportTest #test11PortfolioStructureOnEmtyPortfolioShouldReturnPortfolioName stamp: 'WAL 5/27/2023 20:49:12'!
+ERROR!
+
+!testRun: #ReportTest #test12PortfolioStructureOnPortfolioShouldReturnPortfolioStructureReport stamp: 'WAL 5/27/2023 20:49:12'!
+ERROR!
+
+!testRun: #ReportTest #test13PortfolioStructureOnReceptiveAccountShouldRiseError stamp: 'WAL 5/27/2023 20:49:12'!
+PASSED!
+
+!testRun: #ReportTest #test14StructuredAccountSummaryOnPortfolioShouldReturnPortfolioStructuredAccountSummary stamp: 'WAL 5/27/2023 20:49:12'!
+ERROR!
+
+!testRun: #ReportTest #test11PortfolioStructureOnEmtyPortfolioShouldReturnPortfolioName stamp: 'WAL 5/27/2023 20:49:16'!
+ERROR!
+!StructuredReport methodsFor: 'as yet unclassified' stamp: 'WAL 5/27/2023 20:51:32' prior: 50625950 overrides: 50625858!
+initialize
+
+	super initialize.
+
+	indentationSize := 0.
+	
+	tabSize := 3.
+	
+! !
+
+!testRun: #ReportTest #test01AccountSummaryOnEmptyAccountShouldReturnOnlyBalanceLineWithZero stamp: 'WAL 5/27/2023 20:51:37'!
+PASSED!
+
+!testRun: #ReportTest #test02AccountSummaryOnAccountWithDepositShouldReturnDepositLines stamp: 'WAL 5/27/2023 20:51:37'!
+PASSED!
+
+!testRun: #ReportTest #test03AccountSummaryOnAccountWithWithdrawShouldReturnWithdrawLines stamp: 'WAL 5/27/2023 20:51:37'!
+PASSED!
+
+!testRun: #ReportTest #test04AccountSummaryOnAccountWithTransferShouldReturnTransferLines stamp: 'WAL 5/27/2023 20:51:37'!
+PASSED!
+
+!testRun: #ReportTest #test05AccountSummaryOnEmptyPortfolioShouldReturnOnlyBalanceLineWithZero stamp: 'WAL 5/27/2023 20:51:37'!
+PASSED!
+
+!testRun: #ReportTest #test06AccountSummaryOnPortfolioShouldReturnAccountTransactions stamp: 'WAL 5/27/2023 20:51:37'!
+PASSED!
+
+!testRun: #ReportTest #test07TransferNetOnEmptyAccountShouldReturnOnlyBalanceLineWithZero stamp: 'WAL 5/27/2023 20:51:37'!
+PASSED!
+
+!testRun: #ReportTest #test08TransferNetOnAccountWithTransferShouldReturnTransferLines stamp: 'WAL 5/27/2023 20:51:37'!
+PASSED!
+
+!testRun: #ReportTest #test09TransferNetOnAccountShouldNotBeAffectedByOrdinaryDepositsOrWithdraws stamp: 'WAL 5/27/2023 20:51:37'!
+PASSED!
+
+!testRun: #ReportTest #test10 stamp: 'WAL 5/27/2023 20:51:37'!
+PASSED!
+
+!testRun: #ReportTest #test11PortfolioStructureOnEmtyPortfolioShouldReturnPortfolioName stamp: 'WAL 5/27/2023 20:51:37'!
+PASSED!
+
+!testRun: #ReportTest #test12PortfolioStructureOnPortfolioShouldReturnPortfolioStructureReport stamp: 'WAL 5/27/2023 20:51:37'!
+PASSED!
+
+!testRun: #ReportTest #test13PortfolioStructureOnReceptiveAccountShouldRiseError stamp: 'WAL 5/27/2023 20:51:37'!
+PASSED!
+
+!testRun: #ReportTest #test14StructuredAccountSummaryOnPortfolioShouldReturnPortfolioStructuredAccountSummary stamp: 'WAL 5/27/2023 20:51:37'!
+PASSED!
+
+!testRun: #ReportTest #test01AccountSummaryOnEmptyAccountShouldReturnOnlyBalanceLineWithZero stamp: 'WAL 5/27/2023 20:51:47'!
+PASSED!
+
+!testRun: #ReportTest #test02AccountSummaryOnAccountWithDepositShouldReturnDepositLines stamp: 'WAL 5/27/2023 20:51:47'!
+PASSED!
+
+!testRun: #ReportTest #test03AccountSummaryOnAccountWithWithdrawShouldReturnWithdrawLines stamp: 'WAL 5/27/2023 20:51:47'!
+PASSED!
+
+!testRun: #ReportTest #test04AccountSummaryOnAccountWithTransferShouldReturnTransferLines stamp: 'WAL 5/27/2023 20:51:47'!
+PASSED!
+
+!testRun: #ReportTest #test05AccountSummaryOnEmptyPortfolioShouldReturnOnlyBalanceLineWithZero stamp: 'WAL 5/27/2023 20:51:47'!
+PASSED!
+
+!testRun: #ReportTest #test06AccountSummaryOnPortfolioShouldReturnAccountTransactions stamp: 'WAL 5/27/2023 20:51:47'!
+PASSED!
+
+!testRun: #ReportTest #test07TransferNetOnEmptyAccountShouldReturnOnlyBalanceLineWithZero stamp: 'WAL 5/27/2023 20:51:47'!
+PASSED!
+
+!testRun: #ReportTest #test08TransferNetOnAccountWithTransferShouldReturnTransferLines stamp: 'WAL 5/27/2023 20:51:47'!
+PASSED!
+
+!testRun: #ReportTest #test09TransferNetOnAccountShouldNotBeAffectedByOrdinaryDepositsOrWithdraws stamp: 'WAL 5/27/2023 20:51:47'!
+PASSED!
+
+!testRun: #ReportTest #test10 stamp: 'WAL 5/27/2023 20:51:47'!
+PASSED!
+
+!testRun: #ReportTest #test11PortfolioStructureOnEmtyPortfolioShouldReturnPortfolioName stamp: 'WAL 5/27/2023 20:51:47'!
+PASSED!
+
+!testRun: #ReportTest #test12PortfolioStructureOnPortfolioShouldReturnPortfolioStructureReport stamp: 'WAL 5/27/2023 20:51:47'!
+PASSED!
+
+!testRun: #ReportTest #test13PortfolioStructureOnReceptiveAccountShouldRiseError stamp: 'WAL 5/27/2023 20:51:47'!
+PASSED!
+
+!testRun: #ReportTest #test14StructuredAccountSummaryOnPortfolioShouldReturnPortfolioStructuredAccountSummary stamp: 'WAL 5/27/2023 20:51:47'!
+PASSED!
+!StructuredReport methodsFor: 'as yet unclassified' stamp: 'WAL 5/27/2023 20:52:17' prior: 50626082 overrides: 50625858!
+initialize
+
+	super initialize.
+
+	indentationSize := 0.
+	tabSize := 3.
+	tabCharacter := Character space.
+! !
+!StructuredAccountSummary methodsFor: 'indentation' stamp: 'WAL 5/27/2023 20:52:52' prior: 50625736!
+indentation
+
+	^ String new: indentationSize withAll: tabCharacter.! !
+!StructuredAccountSummary methodsFor: 'indentation' stamp: 'WAL 5/27/2023 20:53:14' prior: 50625688!
+decrementIndentation
+
+	^ indentationSize := indentationSize - tabSize! !
+!StructuredAccountSummary methodsFor: 'indentation' stamp: 'WAL 5/27/2023 20:53:20' prior: 50625652!
+incrementIndentation
+
+	^ indentationSize := indentationSize + tabSize! !
+!StructuredReport methodsFor: 'indentation' stamp: 'WAL 5/27/2023 20:53:44'!
+indentation
+
+	^ String new: indentationSize withAll: tabCharacter.! !
+
+!methodRemoval: StructuredAccountSummary #indentation stamp: 'WAL 5/27/2023 20:53:44'!
+indentation
+
+	^ String new: indentationSize withAll: tabCharacter.!
+!StructuredReport methodsFor: 'indentation' stamp: 'WAL 5/27/2023 20:53:47'!
+incrementIndentation
+
+	^ indentationSize := indentationSize + tabSize! !
+
+!methodRemoval: StructuredAccountSummary #incrementIndentation stamp: 'WAL 5/27/2023 20:53:47'!
+incrementIndentation
+
+	^ indentationSize := indentationSize + tabSize!
+!StructuredReport methodsFor: 'indentation' stamp: 'WAL 5/27/2023 20:53:51'!
+decrementIndentation
+
+	^ indentationSize := indentationSize - tabSize! !
+
+!methodRemoval: StructuredAccountSummary #decrementIndentation stamp: 'WAL 5/27/2023 20:53:51'!
+decrementIndentation
+
+	^ indentationSize := indentationSize - tabSize!
+!StructuredReport methodsFor: 'write' stamp: 'WAL 5/27/2023 20:55:01'!
+writeLine: aText
+
+	lines add: (self indentation), aText! !
+
+!methodRemoval: StructuredAccountSummary #writeLine: stamp: 'WAL 5/27/2023 20:55:01'!
+writeLine: aText
+
+	lines add: (self indentation), aText!
+!StructuredReport methodsFor: 'write' stamp: 'WAL 5/27/2023 20:55:14'!
+writeName: anAccount
+
+	self writeLine: anAccount name! !
+
+!methodRemoval: StructuredAccountSummary #writeName: stamp: 'WAL 5/27/2023 20:55:14'!
+writeName: anAccount
+
+	self writeLine: anAccount name!
+!PortfolioStructure methodsFor: 'write' stamp: 'WAL 5/27/2023 20:56:11' prior: 50625479!
+writePortfolio: aPortfolio
+	
+	lines add: (String new: indentationSize withAll: $ ), aPortfolio name.
+	
+	self incrementIndentation.
+	
+	aPortfolio writeTo: self.
+	
+	self decrementIndentation.! !
+!PortfolioStructure methodsFor: 'write' stamp: 'WAL 5/27/2023 20:56:34' prior: 50626274!
+writePortfolio: aPortfolio
+	
+	self writeName: aPortfolio.
+	
+	self incrementIndentation.
+	
+	aPortfolio writeTo: self.
+	
+	self decrementIndentation.! !
+
+!testRun: #ReportTest #test01AccountSummaryOnEmptyAccountShouldReturnOnlyBalanceLineWithZero stamp: 'WAL 5/27/2023 20:56:37'!
+PASSED!
+
+!testRun: #ReportTest #test02AccountSummaryOnAccountWithDepositShouldReturnDepositLines stamp: 'WAL 5/27/2023 20:56:37'!
+PASSED!
+
+!testRun: #ReportTest #test03AccountSummaryOnAccountWithWithdrawShouldReturnWithdrawLines stamp: 'WAL 5/27/2023 20:56:37'!
+PASSED!
+
+!testRun: #ReportTest #test04AccountSummaryOnAccountWithTransferShouldReturnTransferLines stamp: 'WAL 5/27/2023 20:56:37'!
+PASSED!
+
+!testRun: #ReportTest #test05AccountSummaryOnEmptyPortfolioShouldReturnOnlyBalanceLineWithZero stamp: 'WAL 5/27/2023 20:56:37'!
+PASSED!
+
+!testRun: #ReportTest #test06AccountSummaryOnPortfolioShouldReturnAccountTransactions stamp: 'WAL 5/27/2023 20:56:37'!
+PASSED!
+
+!testRun: #ReportTest #test07TransferNetOnEmptyAccountShouldReturnOnlyBalanceLineWithZero stamp: 'WAL 5/27/2023 20:56:37'!
+PASSED!
+
+!testRun: #ReportTest #test08TransferNetOnAccountWithTransferShouldReturnTransferLines stamp: 'WAL 5/27/2023 20:56:37'!
+PASSED!
+
+!testRun: #ReportTest #test09TransferNetOnAccountShouldNotBeAffectedByOrdinaryDepositsOrWithdraws stamp: 'WAL 5/27/2023 20:56:37'!
+PASSED!
+
+!testRun: #ReportTest #test10 stamp: 'WAL 5/27/2023 20:56:37'!
+PASSED!
+
+!testRun: #ReportTest #test11PortfolioStructureOnEmtyPortfolioShouldReturnPortfolioName stamp: 'WAL 5/27/2023 20:56:37'!
+PASSED!
+
+!testRun: #ReportTest #test12PortfolioStructureOnPortfolioShouldReturnPortfolioStructureReport stamp: 'WAL 5/27/2023 20:56:37'!
+PASSED!
+
+!testRun: #ReportTest #test13PortfolioStructureOnReceptiveAccountShouldRiseError stamp: 'WAL 5/27/2023 20:56:37'!
+PASSED!
+
+!testRun: #ReportTest #test14StructuredAccountSummaryOnPortfolioShouldReturnPortfolioStructuredAccountSummary stamp: 'WAL 5/27/2023 20:56:37'!
+PASSED!
+!PortfolioStructure methodsFor: 'write' stamp: 'WAL 5/27/2023 20:56:57' prior: 50625470!
+writeReceptiveAccount: aReceptiveAccount
+	
+	self writeName: aReceptiveAccount name.
+	
+	aReceptiveAccount writeTo: self! !
+!PortfolioStructure methodsFor: 'write' stamp: 'WAL 5/27/2023 20:57:03' prior: 50626347!
+writeReceptiveAccount: aReceptiveAccount
+	
+	self writeName: aReceptiveAccount.
+	
+	aReceptiveAccount writeTo: self! !
+
+!testRun: #ReportTest #test01AccountSummaryOnEmptyAccountShouldReturnOnlyBalanceLineWithZero stamp: 'WAL 5/27/2023 20:57:05'!
+PASSED!
+
+!testRun: #ReportTest #test02AccountSummaryOnAccountWithDepositShouldReturnDepositLines stamp: 'WAL 5/27/2023 20:57:05'!
+PASSED!
+
+!testRun: #ReportTest #test03AccountSummaryOnAccountWithWithdrawShouldReturnWithdrawLines stamp: 'WAL 5/27/2023 20:57:05'!
+PASSED!
+
+!testRun: #ReportTest #test04AccountSummaryOnAccountWithTransferShouldReturnTransferLines stamp: 'WAL 5/27/2023 20:57:05'!
+PASSED!
+
+!testRun: #ReportTest #test05AccountSummaryOnEmptyPortfolioShouldReturnOnlyBalanceLineWithZero stamp: 'WAL 5/27/2023 20:57:05'!
+PASSED!
+
+!testRun: #ReportTest #test06AccountSummaryOnPortfolioShouldReturnAccountTransactions stamp: 'WAL 5/27/2023 20:57:05'!
+PASSED!
+
+!testRun: #ReportTest #test07TransferNetOnEmptyAccountShouldReturnOnlyBalanceLineWithZero stamp: 'WAL 5/27/2023 20:57:05'!
+PASSED!
+
+!testRun: #ReportTest #test08TransferNetOnAccountWithTransferShouldReturnTransferLines stamp: 'WAL 5/27/2023 20:57:05'!
+PASSED!
+
+!testRun: #ReportTest #test09TransferNetOnAccountShouldNotBeAffectedByOrdinaryDepositsOrWithdraws stamp: 'WAL 5/27/2023 20:57:05'!
+PASSED!
+
+!testRun: #ReportTest #test10 stamp: 'WAL 5/27/2023 20:57:05'!
+PASSED!
+
+!testRun: #ReportTest #test11PortfolioStructureOnEmtyPortfolioShouldReturnPortfolioName stamp: 'WAL 5/27/2023 20:57:05'!
+PASSED!
+
+!testRun: #ReportTest #test12PortfolioStructureOnPortfolioShouldReturnPortfolioStructureReport stamp: 'WAL 5/27/2023 20:57:05'!
+PASSED!
+
+!testRun: #ReportTest #test13PortfolioStructureOnReceptiveAccountShouldRiseError stamp: 'WAL 5/27/2023 20:57:05'!
+PASSED!
+
+!testRun: #ReportTest #test14StructuredAccountSummaryOnPortfolioShouldReturnPortfolioStructuredAccountSummary stamp: 'WAL 5/27/2023 20:57:05'!
+PASSED!
+!PortfolioStructure methodsFor: 'write' stamp: 'WAL 5/27/2023 20:59:38' prior: 50626354!
+writeReceptiveAccount: aReceptiveAccount
+	
+	self writeName: aReceptiveAccount.
+	
+	"aReceptiveAccount writeTo: self"! !
+
+!testRun: #ReportTest #test01AccountSummaryOnEmptyAccountShouldReturnOnlyBalanceLineWithZero stamp: 'WAL 5/27/2023 20:59:40'!
+PASSED!
+
+!testRun: #ReportTest #test02AccountSummaryOnAccountWithDepositShouldReturnDepositLines stamp: 'WAL 5/27/2023 20:59:40'!
+PASSED!
+
+!testRun: #ReportTest #test03AccountSummaryOnAccountWithWithdrawShouldReturnWithdrawLines stamp: 'WAL 5/27/2023 20:59:40'!
+PASSED!
+
+!testRun: #ReportTest #test04AccountSummaryOnAccountWithTransferShouldReturnTransferLines stamp: 'WAL 5/27/2023 20:59:40'!
+PASSED!
+
+!testRun: #ReportTest #test05AccountSummaryOnEmptyPortfolioShouldReturnOnlyBalanceLineWithZero stamp: 'WAL 5/27/2023 20:59:40'!
+PASSED!
+
+!testRun: #ReportTest #test06AccountSummaryOnPortfolioShouldReturnAccountTransactions stamp: 'WAL 5/27/2023 20:59:40'!
+PASSED!
+
+!testRun: #ReportTest #test07TransferNetOnEmptyAccountShouldReturnOnlyBalanceLineWithZero stamp: 'WAL 5/27/2023 20:59:40'!
+PASSED!
+
+!testRun: #ReportTest #test08TransferNetOnAccountWithTransferShouldReturnTransferLines stamp: 'WAL 5/27/2023 20:59:40'!
+PASSED!
+
+!testRun: #ReportTest #test09TransferNetOnAccountShouldNotBeAffectedByOrdinaryDepositsOrWithdraws stamp: 'WAL 5/27/2023 20:59:40'!
+PASSED!
+
+!testRun: #ReportTest #test10 stamp: 'WAL 5/27/2023 20:59:40'!
+PASSED!
+
+!testRun: #ReportTest #test11PortfolioStructureOnEmtyPortfolioShouldReturnPortfolioName stamp: 'WAL 5/27/2023 20:59:40'!
+PASSED!
+
+!testRun: #ReportTest #test12PortfolioStructureOnPortfolioShouldReturnPortfolioStructureReport stamp: 'WAL 5/27/2023 20:59:40'!
+PASSED!
+
+!testRun: #ReportTest #test13PortfolioStructureOnReceptiveAccountShouldRiseError stamp: 'WAL 5/27/2023 20:59:40'!
+PASSED!
+
+!testRun: #ReportTest #test14StructuredAccountSummaryOnPortfolioShouldReturnPortfolioStructuredAccountSummary stamp: 'WAL 5/27/2023 20:59:40'!
+PASSED!
+!PortfolioStructure methodsFor: 'write' stamp: 'WAL 5/27/2023 21:00:29' prior: 50626417!
+writeReceptiveAccount: aReceptiveAccount
+	
+	self writeName: aReceptiveAccount.! !
+
+!testRun: #ReportTest #test01AccountSummaryOnEmptyAccountShouldReturnOnlyBalanceLineWithZero stamp: 'WAL 5/27/2023 21:01:09'!
+PASSED!
+
+!testRun: #ReportTest #test02AccountSummaryOnAccountWithDepositShouldReturnDepositLines stamp: 'WAL 5/27/2023 21:01:10'!
+PASSED!
+
+!testRun: #ReportTest #test03AccountSummaryOnAccountWithWithdrawShouldReturnWithdrawLines stamp: 'WAL 5/27/2023 21:01:10'!
+PASSED!
+
+!testRun: #ReportTest #test04AccountSummaryOnAccountWithTransferShouldReturnTransferLines stamp: 'WAL 5/27/2023 21:01:10'!
+PASSED!
+
+!testRun: #ReportTest #test05AccountSummaryOnEmptyPortfolioShouldReturnOnlyBalanceLineWithZero stamp: 'WAL 5/27/2023 21:01:10'!
+PASSED!
+
+!testRun: #ReportTest #test06AccountSummaryOnPortfolioShouldReturnAccountTransactions stamp: 'WAL 5/27/2023 21:01:10'!
+PASSED!
+
+!testRun: #ReportTest #test07TransferNetOnEmptyAccountShouldReturnOnlyBalanceLineWithZero stamp: 'WAL 5/27/2023 21:01:10'!
+PASSED!
+
+!testRun: #ReportTest #test08TransferNetOnAccountWithTransferShouldReturnTransferLines stamp: 'WAL 5/27/2023 21:01:10'!
+PASSED!
+
+!testRun: #ReportTest #test09TransferNetOnAccountShouldNotBeAffectedByOrdinaryDepositsOrWithdraws stamp: 'WAL 5/27/2023 21:01:10'!
+PASSED!
+
+!testRun: #ReportTest #test10 stamp: 'WAL 5/27/2023 21:01:10'!
+PASSED!
+
+!testRun: #ReportTest #test11PortfolioStructureOnEmtyPortfolioShouldReturnPortfolioName stamp: 'WAL 5/27/2023 21:01:10'!
+PASSED!
+
+!testRun: #ReportTest #test12PortfolioStructureOnPortfolioShouldReturnPortfolioStructureReport stamp: 'WAL 5/27/2023 21:01:10'!
+PASSED!
+
+!testRun: #ReportTest #test13PortfolioStructureOnReceptiveAccountShouldRiseError stamp: 'WAL 5/27/2023 21:01:10'!
+PASSED!
+
+!testRun: #ReportTest #test14StructuredAccountSummaryOnPortfolioShouldReturnPortfolioStructuredAccountSummary stamp: 'WAL 5/27/2023 21:01:10'!
+PASSED!
+!AccountSummary methodsFor: 'write' stamp: 'WAL 5/27/2023 21:07:16' prior: 50621936!
+writeWithdraw: aValue 
+	
+	self writeLine: 'Extracción por ', aValue asString! !
+!AccountSummary methodsFor: 'write' stamp: 'WAL 5/27/2023 21:07:42'!
+writeLine: aText
+
+	lines add: aText! !
+!AccountSummary methodsFor: 'write' stamp: 'WAL 5/27/2023 21:07:59' prior: 50621919!
+writeDeposit: aValue
+
+	self writeLine: 'Depósito por ', aValue asString.! !
+
+!testRun: #ReportTest #test01AccountSummaryOnEmptyAccountShouldReturnOnlyBalanceLineWithZero stamp: 'WAL 5/27/2023 21:08:01'!
+PASSED!
+
+!testRun: #ReportTest #test02AccountSummaryOnAccountWithDepositShouldReturnDepositLines stamp: 'WAL 5/27/2023 21:08:01'!
+PASSED!
+
+!testRun: #ReportTest #test03AccountSummaryOnAccountWithWithdrawShouldReturnWithdrawLines stamp: 'WAL 5/27/2023 21:08:01'!
+PASSED!
+
+!testRun: #ReportTest #test04AccountSummaryOnAccountWithTransferShouldReturnTransferLines stamp: 'WAL 5/27/2023 21:08:01'!
+PASSED!
+
+!testRun: #ReportTest #test05AccountSummaryOnEmptyPortfolioShouldReturnOnlyBalanceLineWithZero stamp: 'WAL 5/27/2023 21:08:01'!
+PASSED!
+
+!testRun: #ReportTest #test06AccountSummaryOnPortfolioShouldReturnAccountTransactions stamp: 'WAL 5/27/2023 21:08:01'!
+PASSED!
+
+!testRun: #ReportTest #test07TransferNetOnEmptyAccountShouldReturnOnlyBalanceLineWithZero stamp: 'WAL 5/27/2023 21:08:01'!
+PASSED!
+
+!testRun: #ReportTest #test08TransferNetOnAccountWithTransferShouldReturnTransferLines stamp: 'WAL 5/27/2023 21:08:01'!
+PASSED!
+
+!testRun: #ReportTest #test09TransferNetOnAccountShouldNotBeAffectedByOrdinaryDepositsOrWithdraws stamp: 'WAL 5/27/2023 21:08:01'!
+PASSED!
+
+!testRun: #ReportTest #test10 stamp: 'WAL 5/27/2023 21:08:01'!
+PASSED!
+
+!testRun: #ReportTest #test11PortfolioStructureOnEmtyPortfolioShouldReturnPortfolioName stamp: 'WAL 5/27/2023 21:08:01'!
+PASSED!
+
+!testRun: #ReportTest #test12PortfolioStructureOnPortfolioShouldReturnPortfolioStructureReport stamp: 'WAL 5/27/2023 21:08:01'!
+PASSED!
+
+!testRun: #ReportTest #test13PortfolioStructureOnReceptiveAccountShouldRiseError stamp: 'WAL 5/27/2023 21:08:01'!
+PASSED!
+
+!testRun: #ReportTest #test14StructuredAccountSummaryOnPortfolioShouldReturnPortfolioStructuredAccountSummary stamp: 'WAL 5/27/2023 21:08:01'!
+PASSED!
+!AccountSummary methodsFor: 'write' stamp: 'WAL 5/27/2023 21:08:28' prior: 50621924!
+writeTransferDeposit: aValue 
+	
+	self writeLine: 'Entrada por transferencia de ', aValue asString! !
+!AccountSummary methodsFor: 'write' stamp: 'WAL 5/27/2023 21:08:32' prior: 50621930!
+writeTransferWithdraw: aValue 
+	
+	self writeLine: 'Salida por transferencia de ', aValue asString! !
+!AccountSummary methodsFor: 'initialization' stamp: 'WAL 5/27/2023 21:09:03' prior: 50625851!
+initializeOn: anAccount
+	
+	anAccount reportOn: self.
+	
+	self writeLine: 'Balance = ', anAccount balance asString.
+	! !
+!StructuredReport methodsFor: 'write' stamp: 'WAL 5/27/2023 21:14:16'!
+writeBalance: anAccount
+
+	self writeLine: 'Balance = ', anAccount balance asString! !
+
+!methodRemoval: StructuredAccountSummary #writeBalance: stamp: 'WAL 5/27/2023 21:14:16'!
+writeBalance: anAccount
+
+	self writeLine: 'Balance = ', anAccount balance asString!
+!Report methodsFor: 'write' stamp: 'WAL 5/27/2023 21:14:21'!
+writeBalance: anAccount
+
+	self writeLine: 'Balance = ', anAccount balance asString! !
+
+!methodRemoval: StructuredReport #writeBalance: stamp: 'WAL 5/27/2023 21:14:21'!
+writeBalance: anAccount
+
+	self writeLine: 'Balance = ', anAccount balance asString!
+!AccountSummary methodsFor: 'initialization' stamp: 'WAL 5/27/2023 21:14:47' prior: 50626627!
+initializeOn: anAccount
+	
+	anAccount reportOn: self.
+	
+	self writeBalance: anAccount
+	! !
+
+!testRun: #ReportTest #test01AccountSummaryOnEmptyAccountShouldReturnOnlyBalanceLineWithZero stamp: 'WAL 5/27/2023 21:14:48'!
+PASSED!
+
+!testRun: #ReportTest #test02AccountSummaryOnAccountWithDepositShouldReturnDepositLines stamp: 'WAL 5/27/2023 21:14:48'!
+PASSED!
+
+!testRun: #ReportTest #test03AccountSummaryOnAccountWithWithdrawShouldReturnWithdrawLines stamp: 'WAL 5/27/2023 21:14:48'!
+PASSED!
+
+!testRun: #ReportTest #test04AccountSummaryOnAccountWithTransferShouldReturnTransferLines stamp: 'WAL 5/27/2023 21:14:48'!
+PASSED!
+
+!testRun: #ReportTest #test05AccountSummaryOnEmptyPortfolioShouldReturnOnlyBalanceLineWithZero stamp: 'WAL 5/27/2023 21:14:48'!
+PASSED!
+
+!testRun: #ReportTest #test06AccountSummaryOnPortfolioShouldReturnAccountTransactions stamp: 'WAL 5/27/2023 21:14:48'!
+PASSED!
+
+!testRun: #ReportTest #test07TransferNetOnEmptyAccountShouldReturnOnlyBalanceLineWithZero stamp: 'WAL 5/27/2023 21:14:48'!
+PASSED!
+
+!testRun: #ReportTest #test08TransferNetOnAccountWithTransferShouldReturnTransferLines stamp: 'WAL 5/27/2023 21:14:48'!
+PASSED!
+
+!testRun: #ReportTest #test09TransferNetOnAccountShouldNotBeAffectedByOrdinaryDepositsOrWithdraws stamp: 'WAL 5/27/2023 21:14:48'!
+PASSED!
+
+!testRun: #ReportTest #test10 stamp: 'WAL 5/27/2023 21:14:48'!
+PASSED!
+
+!testRun: #ReportTest #test11PortfolioStructureOnEmtyPortfolioShouldReturnPortfolioName stamp: 'WAL 5/27/2023 21:14:48'!
+PASSED!
+
+!testRun: #ReportTest #test12PortfolioStructureOnPortfolioShouldReturnPortfolioStructureReport stamp: 'WAL 5/27/2023 21:14:48'!
+PASSED!
+
+!testRun: #ReportTest #test13PortfolioStructureOnReceptiveAccountShouldRiseError stamp: 'WAL 5/27/2023 21:14:48'!
+PASSED!
+
+!testRun: #ReportTest #test14StructuredAccountSummaryOnPortfolioShouldReturnPortfolioStructuredAccountSummary stamp: 'WAL 5/27/2023 21:14:48'!
+PASSED!
+!Report methodsFor: 'write' stamp: 'WAL 5/27/2023 21:16:44'!
+writeLine: aText
+
+	self subclassResponsibility! !
+!TransferNet methodsFor: 'write' stamp: 'WAL 5/27/2023 21:19:43' overrides: 50626717!
+writeLine: aText
+
+	lines add: aText! !
+
+!methodRemoval: Report #writeLine: stamp: 'WAL 5/27/2023 21:22:16'!
+writeLine: aText
+
+	self subclassResponsibility!
+!Report methodsFor: 'write' stamp: 'WAL 5/27/2023 21:22:26'!
+writeLine: aText
+
+	lines add: aText! !
+
+!methodRemoval: TransferNet #writeLine: stamp: 'WAL 5/27/2023 21:22:26'!
+writeLine: aText
+
+	lines add: aText!
+
+!methodRemoval: AccountSummary #writeLine: stamp: 'WAL 5/27/2023 21:22:37'!
+writeLine: aText
+
+	lines add: aText!
+
+!testRun: #ReportTest #test01AccountSummaryOnEmptyAccountShouldReturnOnlyBalanceLineWithZero stamp: 'WAL 5/27/2023 21:22:40'!
+PASSED!
+
+!testRun: #ReportTest #test02AccountSummaryOnAccountWithDepositShouldReturnDepositLines stamp: 'WAL 5/27/2023 21:22:40'!
+PASSED!
+
+!testRun: #ReportTest #test03AccountSummaryOnAccountWithWithdrawShouldReturnWithdrawLines stamp: 'WAL 5/27/2023 21:22:40'!
+PASSED!
+
+!testRun: #ReportTest #test04AccountSummaryOnAccountWithTransferShouldReturnTransferLines stamp: 'WAL 5/27/2023 21:22:40'!
+PASSED!
+
+!testRun: #ReportTest #test05AccountSummaryOnEmptyPortfolioShouldReturnOnlyBalanceLineWithZero stamp: 'WAL 5/27/2023 21:22:40'!
+PASSED!
+
+!testRun: #ReportTest #test06AccountSummaryOnPortfolioShouldReturnAccountTransactions stamp: 'WAL 5/27/2023 21:22:40'!
+PASSED!
+
+!testRun: #ReportTest #test07TransferNetOnEmptyAccountShouldReturnOnlyBalanceLineWithZero stamp: 'WAL 5/27/2023 21:22:40'!
+PASSED!
+
+!testRun: #ReportTest #test08TransferNetOnAccountWithTransferShouldReturnTransferLines stamp: 'WAL 5/27/2023 21:22:40'!
+PASSED!
+
+!testRun: #ReportTest #test09TransferNetOnAccountShouldNotBeAffectedByOrdinaryDepositsOrWithdraws stamp: 'WAL 5/27/2023 21:22:40'!
+PASSED!
+
+!testRun: #ReportTest #test10 stamp: 'WAL 5/27/2023 21:22:40'!
+PASSED!
+
+!testRun: #ReportTest #test11PortfolioStructureOnEmtyPortfolioShouldReturnPortfolioName stamp: 'WAL 5/27/2023 21:22:40'!
+PASSED!
+
+!testRun: #ReportTest #test12PortfolioStructureOnPortfolioShouldReturnPortfolioStructureReport stamp: 'WAL 5/27/2023 21:22:40'!
+PASSED!
+
+!testRun: #ReportTest #test13PortfolioStructureOnReceptiveAccountShouldRiseError stamp: 'WAL 5/27/2023 21:22:40'!
+PASSED!
+
+!testRun: #ReportTest #test14StructuredAccountSummaryOnPortfolioShouldReturnPortfolioStructuredAccountSummary stamp: 'WAL 5/27/2023 21:22:40'!
+PASSED!
+!TransferNet methodsFor: 'initialization' stamp: 'WAL 5/27/2023 21:23:06' prior: 50625875!
+initializeOn: anAccount
+	
+	transferNet := 0.
+	
+	anAccount reportOn: self.
+	
+	self writeLine: 'Neto de transferencias = ', transferNet asString.
+	! !
+!TransferNet methodsFor: 'initialization' stamp: 'WAL 5/27/2023 21:23:45'!
+writeTransferNet
+
+	^ self writeLine: 'Neto de transferencias = ', transferNet asString! !
+!TransferNet methodsFor: 'initialization' stamp: 'WAL 5/27/2023 21:23:45' prior: 50626797!
+initializeOn: anAccount
+	
+	transferNet := 0.
+	
+	anAccount reportOn: self.
+	
+	self writeTransferNet.
+	! !
+!ReportTest methodsFor: 'test' stamp: 'WAL 5/27/2023 21:24:46'!
+test11PortfolioStructureOnEmptyPortfolioShouldReturnPortfolioName
+
+	| portfolio portfolioStructure |
+	
+	portfolio := Portfolio named: 'Portfolio de la familia'.
+	
+	portfolioStructure := PortfolioStructure on: portfolio.
+	
+	self assert: 1 equals: portfolioStructure lines size.
+	self assert: 'Portfolio de la familia' equals: (portfolioStructure lines at: 1).! !
+
+!methodRemoval: ReportTest #test11PortfolioStructureOnEmtyPortfolioShouldReturnPortfolioName stamp: 'WAL 5/27/2023 21:24:46'!
+test11PortfolioStructureOnEmtyPortfolioShouldReturnPortfolioName
+
+	| portfolio portfolioStructure |
+	
+	portfolio := Portfolio named: 'Portfolio de la familia'.
+	
+	portfolioStructure := PortfolioStructure on: portfolio.
+	
+	self assert: 1 equals: portfolioStructure lines size.
+	self assert: 'Portfolio de la familia' equals: (portfolioStructure lines at: 1).!
+
+----SNAPSHOT----(27 May 2023 21:27:09) CuisUniversity-5706.image priorSource: 9367435!

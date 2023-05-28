@@ -213,6 +213,15 @@ test15PortfolioCanNotIncludeAnyOfTheComposedAccountOfPortfolioToAdd
 			self assert: Portfolio canNotAddAccountErrorMessage equals: anError messageText.
 			self assert: portfolioToModify accountsIsEmpty ]! !
 
+!PortfolioTest methodsFor: 'tests' stamp: 'WAL 5/26/2023 11:39:19'!
+test16PortfolioCanHaveAName
+
+	| portfolio |
+	
+	portfolio := Portfolio named: 'Portfolio de la familia'.
+	
+	self assert: 'Portfolio de la familia' equals: portfolio name! !
+
 
 !classDefinition: #ReceptiveAccountTest category: 'Portfolio-Solucion'!
 TestCase subclass: #ReceptiveAccountTest
@@ -333,6 +342,16 @@ test09TransferDepositKnowsTransferWithdrawAndViceversa
 		
 	self assert: transferDeposit equals: transferWithdraw deposit.
 	self assert: transferWithdraw equals: transferDeposit withdraw.
+! !
+
+!ReceptiveAccountTest methodsFor: 'tests' stamp: 'WAL 5/26/2023 11:32:31'!
+test10ReceptiveAccountCanHaveName
+
+	| account |
+	
+	account := ReceptiveAccount named: 'Cuenta Mia'.
+
+	self assert: 'Cuenta Mia' equals: account name.
 ! !
 
 
@@ -488,10 +507,96 @@ test09TransferNetOnAccountShouldNotBeAffectedByOrdinaryDepositsOrWithdraws
 	self assert: 'Neto de transferencias = 0' equals: (accountReport lines at: 1).
 ! !
 
+!ReportTest methodsFor: 'test' stamp: 'WAL 5/26/2023 11:53:06'!
+test10
+
+	! !
+
+!ReportTest methodsFor: 'test' stamp: 'WAL 5/27/2023 21:24:46'!
+test11PortfolioStructureOnEmptyPortfolioShouldReturnPortfolioName
+
+	| portfolio portfolioStructure |
+	
+	portfolio := Portfolio named: 'Portfolio de la familia'.
+	
+	portfolioStructure := PortfolioStructure on: portfolio.
+	
+	self assert: 1 equals: portfolioStructure lines size.
+	self assert: 'Portfolio de la familia' equals: (portfolioStructure lines at: 1).! !
+
+!ReportTest methodsFor: 'test' stamp: 'WAL 5/26/2023 12:25:50'!
+test12PortfolioStructureOnPortfolioShouldReturnPortfolioStructureReport
+
+	| portfolio portfolioStructure |
+	
+	portfolio := Portfolio named: 'Portfolio de la familia'
+		with: (ReceptiveAccount named: 'Cuenta Mia')
+		with: (Portfolio named: 'Portfolio de hijos'
+			with: (	ReceptiveAccount named: 'Cuenta de Juan')
+			with: (ReceptiveAccount named: 'Cuenta de Angeles')).
+	
+	portfolioStructure := PortfolioStructure on: portfolio.
+	
+	self assert: 5 equals: portfolioStructure lines size.
+	self assert: 'Portfolio de la familia' equals: (portfolioStructure lines at: 1).
+	self assert: '   Cuenta Mia' equals: (portfolioStructure lines at: 2).
+	self assert: '   Portfolio de hijos' equals: (portfolioStructure lines at: 3).
+	self assert: '      Cuenta de Juan' equals: (portfolioStructure lines at: 4).
+	self assert: '      Cuenta de Angeles' equals: (portfolioStructure lines at: 5).
+	! !
+
+!ReportTest methodsFor: 'test' stamp: 'WAL 5/27/2023 19:20:06'!
+test13PortfolioStructureOnReceptiveAccountShouldRiseError
+
+	self 
+	should: [ PortfolioStructure on: (ReceptiveAccount named: 'Mi cuenta') ]
+	raise: Error
+	withExceptionDo: [ :anError |
+		self assert: anError messageText equals: PortfolioStructure portfolioStructureNotPossibleOnReceptiveAccountErrorDescription ]
+	! !
+
+!ReportTest methodsFor: 'test' stamp: 'WAL 5/27/2023 20:17:06'!
+test14StructuredAccountSummaryOnPortfolioShouldReturnPortfolioStructuredAccountSummary
+
+	| portfolio cuentaMia cuentaDeJuan cuentaDeAngeles structuredAccountSummary |
+	
+	cuentaMia := ReceptiveAccount named: 'Cuenta Mia'.
+	Deposit register: 100 on: cuentaMia.
+	Withdraw register: 70 on: cuentaMia.
+	
+	cuentaDeJuan := ReceptiveAccount named: 'Cuenta de Juan'.
+	cuentaDeAngeles := 	ReceptiveAccount named: 'Cuenta de Angeles'.
+	Transfer register: 200 from: cuentaDeJuan to: cuentaDeAngeles.
+	
+	portfolio := Portfolio named: 'Portfolio de la familia'
+		with: (cuentaMia)
+		with: (Portfolio named: 'Portfolio de hijos'
+			with: (	cuentaDeJuan)
+			with: (cuentaDeAngeles)).
+	
+	structuredAccountSummary := StructuredAccountSummary on: portfolio.
+	
+	self assert: 14 equals: structuredAccountSummary lines size.
+	self assert: 'Portfolio de la familia' equals: (structuredAccountSummary lines at: 1).
+	self assert: '   Cuenta Mia' equals: (structuredAccountSummary lines at: 2).
+	self assert: '      Depósito por 100' equals: (structuredAccountSummary lines at: 3).
+	self assert: '      Extracción por 70' equals: (structuredAccountSummary lines at: 4).
+	self assert: '      Balance = 30' equals: (structuredAccountSummary lines at: 5).
+	self assert: '   Portfolio de hijos' equals: (structuredAccountSummary lines at: 6).
+	self assert: '      Cuenta de Juan' equals: (structuredAccountSummary lines at: 7).
+	self assert: '         Salida por transferencia de 200' equals: (structuredAccountSummary lines at: 8).	
+	self assert: '         Balance = -200' equals: (structuredAccountSummary lines at: 9).	
+	self assert: '      Cuenta de Angeles' equals: (structuredAccountSummary lines at: 10).
+	self assert: '         Entrada por transferencia de 200' equals: (structuredAccountSummary lines at: 11).	
+	self assert: '         Balance = 200' equals: (structuredAccountSummary lines at: 12).	
+	self assert: '      Balance = 0' equals: (structuredAccountSummary lines at: 13).	
+	self assert: '   Balance = 30' equals: (structuredAccountSummary lines at: 14).	
+	! !
+
 
 !classDefinition: #Account category: 'Portfolio-Solucion'!
 Object subclass: #Account
-	instanceVariableNames: ''
+	instanceVariableNames: 'name'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Portfolio-Solucion'!
@@ -524,10 +629,27 @@ transactions
 	self subclassResponsibility ! !
 
 
+!Account methodsFor: 'name' stamp: 'WAL 5/26/2023 11:40:16'!
+name
+
+	^name! !
+
+
 !Account methodsFor: 'composition' stamp: 'HAW 5/25/2019 12:24:04'!
 addedTo: aPortfolio
 
 	self subclassResponsibility ! !
+
+"-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- "!
+
+!classDefinition: 'Account class' category: 'Portfolio-Solucion'!
+Account class
+	instanceVariableNames: ''!
+
+!Account class methodsFor: 'instance creation' stamp: 'WAL 5/26/2023 11:45:51'!
+named: aName
+
+	^ self new initializeWithName: aName.! !
 
 
 !classDefinition: #Portfolio category: 'Portfolio-Solucion'!
@@ -577,6 +699,11 @@ initialize
 
 	accounts := OrderedCollection new.
 	parents := OrderedCollection new.! !
+
+!Portfolio methodsFor: 'initialization' stamp: 'WAL 5/26/2023 11:48:17'!
+initializeWithName: aName 
+	
+	name := aName.! !
 
 
 !Portfolio methodsFor: 'balance' stamp: 'HAW 5/25/2019 11:19:36'!
@@ -642,11 +769,20 @@ signalCanNotAddAccount
 	self error: self class canNotAddAccountErrorMessage! !
 
 
-!Portfolio methodsFor: 'reports' stamp: 'AS 5/25/2023 20:00:44'!
+!Portfolio methodsFor: 'reports' stamp: 'WAL 5/27/2023 19:37:25'!
+reportFor: aReportClass
+
+	aReportClass createOnPortfolio: self! !
+
+!Portfolio methodsFor: 'reports' stamp: 'WAL 5/27/2023 20:01:47'!
 reportOn: aReport 
-		
-	accounts do: [ :account | account reportOn: aReport ].
-	"transactions do: [ :transaction | transaction reportOn: aReport ].				"! !
+	
+	aReport writePortfolio: self.! !
+
+!Portfolio methodsFor: 'reports' stamp: 'WAL 5/26/2023 13:38:35'!
+writeTo: aReport 
+	
+	accounts do: [ :account | account reportOn: aReport ].! !
 
 "-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- "!
 
@@ -654,19 +790,35 @@ reportOn: aReport
 Portfolio class
 	instanceVariableNames: ''!
 
-!Portfolio class methodsFor: 'as yet unclassified' stamp: 'HAW 5/25/2019 11:48:55'!
+!Portfolio class methodsFor: 'error messages' stamp: 'HAW 5/25/2019 11:48:55'!
 canNotAddAccountErrorMessage
 	
 	^'Can not add repeated account to a portfolio'! !
 
-!Portfolio class methodsFor: 'as yet unclassified' stamp: 'HAW 5/25/2019 11:18:21'!
+
+!Portfolio class methodsFor: 'instance creation' stamp: 'WAL 5/26/2023 11:44:30'!
+named: aName with: anAccount
+
+	^(self new initializeWithName: aName)
+		add: anAccount;
+		yourself! !
+
+!Portfolio class methodsFor: 'instance creation' stamp: 'WAL 5/26/2023 11:44:58'!
+named: aName with: anAccount with: anotherAccount
+
+	^(self new initializeWithName: aName)
+		add: anAccount;
+		add: anotherAccount;
+		yourself! !
+
+!Portfolio class methodsFor: 'instance creation' stamp: 'HAW 5/25/2019 11:18:21'!
 with: anAccount
 
 	^self new 
 		add: anAccount;
 		yourself! !
 
-!Portfolio class methodsFor: 'as yet unclassified' stamp: 'HAW 5/25/2019 11:23:59'!
+!Portfolio class methodsFor: 'instance creation' stamp: 'HAW 5/25/2019 11:23:59'!
 with: anAccount with: anotherAccount
 
 	^self new 
@@ -687,6 +839,11 @@ initialize
 
 	super initialize.
 	transactions := OrderedCollection new.! !
+
+!ReceptiveAccount methodsFor: 'initialization' stamp: 'WAL 5/26/2023 11:35:52'!
+initializeWithName: aName.
+
+	name := aName! !
 
 
 !ReceptiveAccount methodsFor: 'transactions' stamp: 'HAW 5/25/2019 11:38:52'!
@@ -732,10 +889,33 @@ addedTo: aPortfolio
 	! !
 
 
-!ReceptiveAccount methodsFor: 'reports' stamp: 'AS 5/25/2023 17:36:32'!
+!ReceptiveAccount methodsFor: 'reports' stamp: 'WAL 5/27/2023 19:37:25'!
+reportFor: aReportClass
+
+	aReportClass createOnReceptiveAccount: self! !
+
+!ReceptiveAccount methodsFor: 'reports' stamp: 'WAL 5/27/2023 20:13:33'!
 reportOn: aReport
 	
-	transactions do: [ :transaction | transaction reportOn: aReport ].			
+	aReport writeReceptiveAccount: self.! !
+
+!ReceptiveAccount methodsFor: 'reports' stamp: 'WAL 5/26/2023 13:44:39'!
+writeTo: aReport
+	
+	transactions do: [ :transaction | transaction reportOn: aReport ].	
+	! !
+
+"-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- "!
+
+!classDefinition: 'ReceptiveAccount class' category: 'Portfolio-Solucion'!
+ReceptiveAccount class
+	instanceVariableNames: ''!
+
+!ReceptiveAccount class methodsFor: 'instance creation' stamp: 'WAL 5/26/2023 11:34:55'!
+named: aName
+
+	^ self new initializeWithName: aName.
+	
 	! !
 
 
@@ -961,10 +1141,27 @@ Object subclass: #Report
 	poolDictionaries: ''
 	category: 'Portfolio-Solucion'!
 
+!Report methodsFor: 'initialization' stamp: 'WAL 5/27/2023 20:42:46'!
+initialize
+
+	lines := OrderedCollection new! !
+
+
 !Report methodsFor: 'accessing' stamp: 'AS 5/25/2023 17:39:16'!
 lines
 
 	^lines! !
+
+
+!Report methodsFor: 'write' stamp: 'WAL 5/27/2023 21:14:21'!
+writeBalance: anAccount
+
+	self writeLine: 'Balance = ', anAccount balance asString! !
+
+!Report methodsFor: 'write' stamp: 'WAL 5/27/2023 21:22:26'!
+writeLine: aText
+
+	lines add: aText! !
 
 
 !classDefinition: #AccountSummary category: 'Portfolio-Solucion'!
@@ -974,36 +1171,44 @@ Report subclass: #AccountSummary
 	poolDictionaries: ''
 	category: 'Portfolio-Solucion'!
 
-!AccountSummary methodsFor: 'initialization' stamp: 'AS 5/25/2023 17:41:15'!
+!AccountSummary methodsFor: 'initialization' stamp: 'WAL 5/27/2023 21:14:47'!
 initializeOn: anAccount
-	
-	lines := OrderedCollection new.
 	
 	anAccount reportOn: self.
 	
-	lines add: 'Balance = ', anAccount balance asString.
+	self writeBalance: anAccount
 	! !
 
 
-!AccountSummary methodsFor: 'transactions' stamp: 'AS 5/25/2023 17:44:24'!
+!AccountSummary methodsFor: 'write' stamp: 'WAL 5/27/2023 21:07:59'!
 writeDeposit: aValue
 
-	lines add: 'Depósito por ', aValue asString.! !
+	self writeLine: 'Depósito por ', aValue asString.! !
 
-!AccountSummary methodsFor: 'transactions' stamp: 'AS 5/25/2023 19:48:12'!
+!AccountSummary methodsFor: 'write' stamp: 'WAL 5/26/2023 13:51:24'!
+writePortfolio: aPortfolio
+	
+	aPortfolio writeTo: self! !
+
+!AccountSummary methodsFor: 'write' stamp: 'WAL 5/26/2023 13:45:13'!
+writeReceptiveAccount: aReceptiveAccount
+	
+	aReceptiveAccount writeTo: self! !
+
+!AccountSummary methodsFor: 'write' stamp: 'WAL 5/27/2023 21:08:28'!
 writeTransferDeposit: aValue 
 	
-	lines add: 'Entrada por transferencia de ', aValue asString! !
+	self writeLine: 'Entrada por transferencia de ', aValue asString! !
 
-!AccountSummary methodsFor: 'transactions' stamp: 'AS 5/25/2023 19:47:51'!
+!AccountSummary methodsFor: 'write' stamp: 'WAL 5/27/2023 21:08:32'!
 writeTransferWithdraw: aValue 
 	
-	lines add: 'Salida por transferencia de ', aValue asString! !
+	self writeLine: 'Salida por transferencia de ', aValue asString! !
 
-!AccountSummary methodsFor: 'transactions' stamp: 'AS 5/25/2023 19:39:59'!
+!AccountSummary methodsFor: 'write' stamp: 'WAL 5/27/2023 21:07:16'!
 writeWithdraw: aValue 
 	
-	lines add: 'Extracción por ', aValue asString! !
+	self writeLine: 'Extracción por ', aValue asString! !
 
 "-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- "!
 
@@ -1011,9 +1216,186 @@ writeWithdraw: aValue
 AccountSummary class
 	instanceVariableNames: ''!
 
-!AccountSummary class methodsFor: 'as yet unclassified' stamp: 'AS 5/25/2023 17:28:39'!
+!AccountSummary class methodsFor: 'instance creation' stamp: 'AS 5/25/2023 17:28:39'!
 on: anAccount
 	
+	^self new initializeOn: anAccount! !
+
+
+!classDefinition: #StructuredReport category: 'Portfolio-Solucion'!
+Report subclass: #StructuredReport
+	instanceVariableNames: 'indentationSize tabSize tabCharacter'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+!StructuredReport methodsFor: 'indentation' stamp: 'WAL 5/27/2023 20:53:51'!
+decrementIndentation
+
+	^ indentationSize := indentationSize - tabSize! !
+
+!StructuredReport methodsFor: 'indentation' stamp: 'WAL 5/27/2023 20:53:47'!
+incrementIndentation
+
+	^ indentationSize := indentationSize + tabSize! !
+
+!StructuredReport methodsFor: 'indentation' stamp: 'WAL 5/27/2023 20:53:44'!
+indentation
+
+	^ String new: indentationSize withAll: tabCharacter.! !
+
+
+!StructuredReport methodsFor: 'initialization' stamp: 'WAL 5/27/2023 20:52:17'!
+initialize
+
+	super initialize.
+
+	indentationSize := 0.
+	tabSize := 3.
+	tabCharacter := Character space.
+! !
+
+
+!StructuredReport methodsFor: 'write' stamp: 'WAL 5/27/2023 20:55:01'!
+writeLine: aText
+
+	lines add: (self indentation), aText! !
+
+!StructuredReport methodsFor: 'write' stamp: 'WAL 5/27/2023 20:55:14'!
+writeName: anAccount
+
+	self writeLine: anAccount name! !
+
+
+!classDefinition: #PortfolioStructure category: 'Portfolio-Solucion'!
+StructuredReport subclass: #PortfolioStructure
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+!PortfolioStructure methodsFor: 'write' stamp: 'WAL 5/27/2023 20:56:34'!
+writePortfolio: aPortfolio
+	
+	self writeName: aPortfolio.
+	
+	self incrementIndentation.
+	
+	aPortfolio writeTo: self.
+	
+	self decrementIndentation.! !
+
+!PortfolioStructure methodsFor: 'write' stamp: 'WAL 5/27/2023 21:00:29'!
+writeReceptiveAccount: aReceptiveAccount
+	
+	self writeName: aReceptiveAccount.! !
+
+
+!PortfolioStructure methodsFor: 'initialization' stamp: 'WAL 5/27/2023 20:45:41'!
+initializeOn: aPortfolio
+	
+	aPortfolio reportOn: self.! !
+
+"-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- "!
+
+!classDefinition: 'PortfolioStructure class' category: 'Portfolio-Solucion'!
+PortfolioStructure class
+	instanceVariableNames: ''!
+
+!PortfolioStructure class methodsFor: 'error descriptions' stamp: 'WAL 5/27/2023 19:21:23'!
+portfolioStructureNotPossibleOnReceptiveAccountErrorDescription
+
+	^'PortfolioStructure report not possible on receptive account'! !
+
+
+!PortfolioStructure class methodsFor: 'instance creation' stamp: 'WAL 5/27/2023 19:31:34'!
+createOnPortfolio: aPortfolio
+	
+	^self new initializeOn: aPortfolio! !
+
+!PortfolioStructure class methodsFor: 'instance creation' stamp: 'WAL 5/27/2023 19:31:50'!
+createOnReceptiveAccount: aReceptiveAccount
+	
+	self error: self portfolioStructureNotPossibleOnReceptiveAccountErrorDescription ! !
+
+!PortfolioStructure class methodsFor: 'instance creation' stamp: 'WAL 5/27/2023 19:37:25'!
+on: aPortfolio
+	
+	aPortfolio reportFor: self.
+	
+	^self new initializeOn: aPortfolio! !
+
+
+!classDefinition: #StructuredAccountSummary category: 'Portfolio-Solucion'!
+StructuredReport subclass: #StructuredAccountSummary
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+!StructuredAccountSummary methodsFor: 'write' stamp: 'WAL 5/27/2023 20:36:40'!
+writeAccount: anAccount
+
+	self writeName: anAccount.
+	
+	self incrementIndentation.
+	
+	anAccount writeTo: self.
+	
+	self writeBalance: anAccount.	
+	
+	self decrementIndentation.
+	
+! !
+
+!StructuredAccountSummary methodsFor: 'write' stamp: 'WAL 5/27/2023 20:34:22'!
+writeDeposit: aValue
+
+	self writeLine: 'Depósito por ', aValue asString.! !
+
+!StructuredAccountSummary methodsFor: 'write' stamp: 'WAL 5/27/2023 20:29:00'!
+writePortfolio: aPortfolio
+
+	self writeAccount: aPortfolio
+	
+! !
+
+!StructuredAccountSummary methodsFor: 'write' stamp: 'WAL 5/27/2023 20:29:19'!
+writeReceptiveAccount: aReceptiveAccount
+
+	self writeAccount: aReceptiveAccount! !
+
+!StructuredAccountSummary methodsFor: 'write' stamp: 'WAL 5/27/2023 20:33:35'!
+writeTransferDeposit: aValue 
+	
+	self writeLine: 'Entrada por transferencia de ', aValue asString! !
+
+!StructuredAccountSummary methodsFor: 'write' stamp: 'WAL 5/27/2023 20:33:40'!
+writeTransferWithdraw: aValue 
+	
+	self writeLine: 'Salida por transferencia de ', aValue asString! !
+
+!StructuredAccountSummary methodsFor: 'write' stamp: 'WAL 5/27/2023 20:33:47'!
+writeWithdraw: aValue 
+	
+	self writeLine: 'Extracción por ', aValue asString! !
+
+
+!StructuredAccountSummary methodsFor: 'initialization' stamp: 'WAL 5/27/2023 20:45:49'!
+initializeOn: anAccount
+	
+	anAccount reportOn: self.
+	! !
+
+"-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- "!
+
+!classDefinition: 'StructuredAccountSummary class' category: 'Portfolio-Solucion'!
+StructuredAccountSummary class
+	instanceVariableNames: ''!
+
+!StructuredAccountSummary class methodsFor: 'instance creation' stamp: 'WAL 5/27/2023 19:56:11'!
+on: anAccount
+
 	^self new initializeOn: anAccount! !
 
 
@@ -1024,35 +1406,49 @@ Report subclass: #TransferNet
 	poolDictionaries: ''
 	category: 'Portfolio-Solucion'!
 
-!TransferNet methodsFor: 'as yet unclassified' stamp: 'WAL 5/25/2023 20:49:52'!
+!TransferNet methodsFor: 'initialization' stamp: 'WAL 5/27/2023 21:23:45'!
 initializeOn: anAccount
 	
 	transferNet := 0.
 	
-	lines := OrderedCollection new.
-	
 	anAccount reportOn: self.
 	
-	lines add: 'Neto de transferencias = ', transferNet asString.
+	self writeTransferNet.
 	! !
 
-!TransferNet methodsFor: 'as yet unclassified' stamp: 'WAL 5/25/2023 20:44:07'!
+
+!TransferNet methodsFor: 'write' stamp: 'WAL 5/25/2023 20:44:07'!
 writeDeposit: aValue
 	! !
 
-!TransferNet methodsFor: 'as yet unclassified' stamp: 'WAL 5/25/2023 20:37:23'!
+!TransferNet methodsFor: 'write' stamp: 'WAL 5/26/2023 13:51:09'!
+writePortfolio: aPortfolio
+	
+	aPortfolio writeTo: self! !
+
+!TransferNet methodsFor: 'write' stamp: 'WAL 5/26/2023 13:48:58'!
+writeReceptiveAccount: aReceptiveAccount
+	
+	aReceptiveAccount writeTo: self! !
+
+!TransferNet methodsFor: 'write' stamp: 'WAL 5/25/2023 20:37:23'!
 writeTransferDeposit: aValue 
 	
 	transferNet := transferNet + aValue
 	! !
 
-!TransferNet methodsFor: 'as yet unclassified' stamp: 'WAL 5/25/2023 20:38:07'!
+!TransferNet methodsFor: 'write' stamp: 'WAL 5/27/2023 21:23:45'!
+writeTransferNet
+
+	^ self writeLine: 'Neto de transferencias = ', transferNet asString! !
+
+!TransferNet methodsFor: 'write' stamp: 'WAL 5/25/2023 20:38:07'!
 writeTransferWithdraw: aValue 
 	
 	transferNet := transferNet - aValue
 	! !
 
-!TransferNet methodsFor: 'as yet unclassified' stamp: 'WAL 5/25/2023 20:44:15'!
+!TransferNet methodsFor: 'write' stamp: 'WAL 5/25/2023 20:44:15'!
 writeWithdraw: aValue
 	! !
 
@@ -1062,7 +1458,7 @@ writeWithdraw: aValue
 TransferNet class
 	instanceVariableNames: ''!
 
-!TransferNet class methodsFor: 'as yet unclassified' stamp: 'WAL 5/25/2023 20:25:30'!
+!TransferNet class methodsFor: 'instance creation' stamp: 'WAL 5/25/2023 20:25:30'!
 on: anAccount
 	
 	^self new initializeOn: anAccount! !
