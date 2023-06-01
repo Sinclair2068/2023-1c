@@ -1,0 +1,2878 @@
+
+
+----SNAPSHOT----(28 May 2023 19:04:12) CuisUniversity-5706.image priorSource: 9644972!
+
+----STARTUP---- (31 May 2023 19:26:16) as /home/a/s/sw/smalltalk2/CuisUniversity-5706.image!
+
+!ReceptiveAccountTest methodsFor: 'tests' stamp: 'WAL 5/31/2023 19:45:28'!
+test11TransferValueMustBeGreaterThanCero
+
+	| sourceAccount destinationAccount |
+	
+	sourceAccount := ReceptiveAccount  new.
+	destinationAccount := ReceptiveAccount  new.
+	
+	Transfer register: 0 from: sourceAccount to: destinationAccount.
+		
+	! !
+!ReceptiveAccountTest methodsFor: 'tests' stamp: 'WAL 5/31/2023 19:49:27' prior: 50633065!
+test11TransferValueMustBeGreaterThanCero
+
+	| sourceAccount destinationAccount |
+	
+	sourceAccount := ReceptiveAccount  new.
+	destinationAccount := ReceptiveAccount  new.
+	
+	
+		
+	self 
+		should: [ Transfer register: 0 from: sourceAccount to: destinationAccount. ]
+		raise: Error
+		withExceptionDo: [ :anError |
+			self assert: anError messageText equals: PortfolioStructure transferValueMustBeGreaterThanCeroErrorDescription ]
+	! !
+!ReceptiveAccountTest methodsFor: 'tests' stamp: 'WAL 5/31/2023 19:50:17' prior: 50633076!
+test11TransferValueMustBeGreaterThanCero
+
+	| sourceAccount destinationAccount |
+	
+	sourceAccount := ReceptiveAccount  new.
+	destinationAccount := ReceptiveAccount  new.
+			
+	self 
+		should: [ Transfer register: 0 from: sourceAccount to: destinationAccount. ]
+		raise: Error
+		withExceptionDo: [ :anError |
+			self assert: anError messageText equals: Transfer transferValueMustBeGreaterThanCeroErrorDescription ]
+	! !
+!Transfer class methodsFor: 'error descriptions' stamp: 'WAL 5/31/2023 19:52:17'!
+transferValueMustBeGreaterThanCeroErrorDescription
+
+	^'Transfer value must be greater than cero'! !
+
+!testRun: #ReceptiveAccountTest #test11TransferValueMustBeGreaterThanCero stamp: 'WAL 5/31/2023 19:53:09'!
+FAILURE!
+!Transfer class methodsFor: 'instance creation' stamp: 'WAL 5/31/2023 20:00:05' prior: 50622008!
+register: aValue from: sourceAccount to: destinationAccount
+
+	| transfer deposit withdraw |
+
+	aValue <= 0 ifTrue: (self error: self transferValueMustBeGreaterThanCeroErrorDescription).
+
+	transfer := self new.
+	
+	withdraw := TransferWithdraw transfer: transfer on: sourceAccount.
+	deposit := TransferDeposit transfer: transfer on: destinationAccount.
+	
+	transfer initializeFor: aValue from: withdraw to: deposit.
+	
+	^ transfer! !
+
+!testRun: #ReceptiveAccountTest #test01ReceptiveAccountHaveZeroAsBalanceWhenCreated stamp: 'WAL 5/31/2023 20:00:14'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test02DepositIncreasesBalanceOnTransactionValue stamp: 'WAL 5/31/2023 20:00:14'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test03WithdrawDecreasesBalanceOnTransactionValue stamp: 'WAL 5/31/2023 20:00:14'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test04WithdrawValueMustBePositive stamp: 'WAL 5/31/2023 20:00:14'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test05ReceptiveAccountKnowsRegisteredTransactions stamp: 'WAL 5/31/2023 20:00:14'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test06ReceptiveAccountDoNotKnowNotRegisteredTransactions stamp: 'WAL 5/31/2023 20:00:14'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test07AccountKnowsItsTransactions stamp: 'WAL 5/31/2023 20:00:14'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test08TransferIncreasesBalanceOfDestinationAccountAndDecreasesBalanceOfSourceAccountOnTransactionValue stamp: 'WAL 5/31/2023 20:00:14'!
+ERROR!
+
+!testRun: #ReceptiveAccountTest #test09TransferDepositKnowsTransferWithdrawAndViceversa stamp: 'WAL 5/31/2023 20:00:14'!
+ERROR!
+
+!testRun: #ReceptiveAccountTest #test10ReceptiveAccountCanHaveName stamp: 'WAL 5/31/2023 20:00:14'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test11TransferValueMustBeGreaterThanCero stamp: 'WAL 5/31/2023 20:00:14'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test08TransferIncreasesBalanceOfDestinationAccountAndDecreasesBalanceOfSourceAccountOnTransactionValue stamp: 'WAL 5/31/2023 20:00:28'!
+ERROR!
+!Transfer class methodsFor: 'instance creation' stamp: 'WAL 5/31/2023 20:01:03' prior: 50633119!
+register: aValue from: sourceAccount to: destinationAccount
+
+	| transfer deposit withdraw |
+
+	(aValue <= 0) ifTrue: (self error: self transferValueMustBeGreaterThanCeroErrorDescription).
+
+	transfer := self new.
+	
+	withdraw := TransferWithdraw transfer: transfer on: sourceAccount.
+	deposit := TransferDeposit transfer: transfer on: destinationAccount.
+	
+	transfer initializeFor: aValue from: withdraw to: deposit.
+	
+	^ transfer! !
+
+!testRun: #ReceptiveAccountTest #test01ReceptiveAccountHaveZeroAsBalanceWhenCreated stamp: 'WAL 5/31/2023 20:01:05'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test02DepositIncreasesBalanceOnTransactionValue stamp: 'WAL 5/31/2023 20:01:05'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test03WithdrawDecreasesBalanceOnTransactionValue stamp: 'WAL 5/31/2023 20:01:05'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test04WithdrawValueMustBePositive stamp: 'WAL 5/31/2023 20:01:05'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test05ReceptiveAccountKnowsRegisteredTransactions stamp: 'WAL 5/31/2023 20:01:05'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test06ReceptiveAccountDoNotKnowNotRegisteredTransactions stamp: 'WAL 5/31/2023 20:01:05'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test07AccountKnowsItsTransactions stamp: 'WAL 5/31/2023 20:01:05'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test08TransferIncreasesBalanceOfDestinationAccountAndDecreasesBalanceOfSourceAccountOnTransactionValue stamp: 'WAL 5/31/2023 20:01:05'!
+ERROR!
+
+!testRun: #ReceptiveAccountTest #test09TransferDepositKnowsTransferWithdrawAndViceversa stamp: 'WAL 5/31/2023 20:01:05'!
+ERROR!
+
+!testRun: #ReceptiveAccountTest #test10ReceptiveAccountCanHaveName stamp: 'WAL 5/31/2023 20:01:05'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test11TransferValueMustBeGreaterThanCero stamp: 'WAL 5/31/2023 20:01:05'!
+PASSED!
+
+!testRun: #ReportTest #test01AccountSummaryOnEmptyAccountShouldReturnOnlyBalanceLineWithZero stamp: 'WAL 5/31/2023 20:01:05'!
+PASSED!
+
+!testRun: #ReportTest #test02AccountSummaryOnAccountWithDepositShouldReturnDepositLines stamp: 'WAL 5/31/2023 20:01:05'!
+PASSED!
+
+!testRun: #ReportTest #test03AccountSummaryOnAccountWithWithdrawShouldReturnWithdrawLines stamp: 'WAL 5/31/2023 20:01:05'!
+PASSED!
+
+!testRun: #ReportTest #test04AccountSummaryOnAccountWithTransferShouldReturnTransferLines stamp: 'WAL 5/31/2023 20:01:05'!
+ERROR!
+
+!testRun: #ReportTest #test05AccountSummaryOnEmptyPortfolioShouldReturnOnlyBalanceLineWithZero stamp: 'WAL 5/31/2023 20:01:05'!
+PASSED!
+
+!testRun: #ReportTest #test06AccountSummaryOnPortfolioShouldReturnAccountTransactions stamp: 'WAL 5/31/2023 20:01:05'!
+ERROR!
+
+!testRun: #ReportTest #test07TransferNetOnEmptyAccountShouldReturnOnlyBalanceLineWithZero stamp: 'WAL 5/31/2023 20:01:05'!
+PASSED!
+
+!testRun: #ReportTest #test08TransferNetOnAccountWithTransferShouldReturnTransferLines stamp: 'WAL 5/31/2023 20:01:05'!
+ERROR!
+
+!testRun: #ReportTest #test09TransferNetOnAccountShouldNotBeAffectedByOrdinaryDepositsOrWithdraws stamp: 'WAL 5/31/2023 20:01:05'!
+PASSED!
+
+!testRun: #ReportTest #test10PortfolioStructureOnEmptyPortfolioShouldReturnPortfolioName stamp: 'WAL 5/31/2023 20:01:05'!
+PASSED!
+
+!testRun: #ReportTest #test11PortfolioStructureOnPortfolioShouldReturnPortfolioStructureReport stamp: 'WAL 5/31/2023 20:01:05'!
+PASSED!
+
+!testRun: #ReportTest #test12PortfolioStructureOnReceptiveAccountShouldRiseError stamp: 'WAL 5/31/2023 20:01:05'!
+PASSED!
+
+!testRun: #ReportTest #test13StructuredAccountSummaryOnPortfolioShouldReturnPortfolioStructuredAccountSummary stamp: 'WAL 5/31/2023 20:01:05'!
+ERROR!
+
+!testRun: #ReceptiveAccountTest #test01ReceptiveAccountHaveZeroAsBalanceWhenCreated stamp: 'WAL 5/31/2023 20:02:54'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test02DepositIncreasesBalanceOnTransactionValue stamp: 'WAL 5/31/2023 20:02:54'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test03WithdrawDecreasesBalanceOnTransactionValue stamp: 'WAL 5/31/2023 20:02:54'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test04WithdrawValueMustBePositive stamp: 'WAL 5/31/2023 20:02:54'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test05ReceptiveAccountKnowsRegisteredTransactions stamp: 'WAL 5/31/2023 20:02:54'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test06ReceptiveAccountDoNotKnowNotRegisteredTransactions stamp: 'WAL 5/31/2023 20:02:54'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test07AccountKnowsItsTransactions stamp: 'WAL 5/31/2023 20:02:54'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test08TransferIncreasesBalanceOfDestinationAccountAndDecreasesBalanceOfSourceAccountOnTransactionValue stamp: 'WAL 5/31/2023 20:02:54'!
+ERROR!
+
+!testRun: #ReceptiveAccountTest #test09TransferDepositKnowsTransferWithdrawAndViceversa stamp: 'WAL 5/31/2023 20:02:54'!
+ERROR!
+
+!testRun: #ReceptiveAccountTest #test10ReceptiveAccountCanHaveName stamp: 'WAL 5/31/2023 20:02:54'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test11TransferValueMustBeGreaterThanCero stamp: 'WAL 5/31/2023 20:02:54'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test08TransferIncreasesBalanceOfDestinationAccountAndDecreasesBalanceOfSourceAccountOnTransactionValue stamp: 'WAL 5/31/2023 20:02:57'!
+ERROR!
+
+100<=0.!
+
+100<=0.!
+
+!testRun: #ReceptiveAccountTest #test09TransferDepositKnowsTransferWithdrawAndViceversa stamp: 'WAL 5/31/2023 20:07:11'!
+ERROR!
+
+!testRun: #ReceptiveAccountTest #test01ReceptiveAccountHaveZeroAsBalanceWhenCreated stamp: 'WAL 5/31/2023 20:07:27'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test02DepositIncreasesBalanceOnTransactionValue stamp: 'WAL 5/31/2023 20:07:27'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test03WithdrawDecreasesBalanceOnTransactionValue stamp: 'WAL 5/31/2023 20:07:27'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test04WithdrawValueMustBePositive stamp: 'WAL 5/31/2023 20:07:27'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test05ReceptiveAccountKnowsRegisteredTransactions stamp: 'WAL 5/31/2023 20:07:27'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test06ReceptiveAccountDoNotKnowNotRegisteredTransactions stamp: 'WAL 5/31/2023 20:07:27'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test07AccountKnowsItsTransactions stamp: 'WAL 5/31/2023 20:07:27'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test08TransferIncreasesBalanceOfDestinationAccountAndDecreasesBalanceOfSourceAccountOnTransactionValue stamp: 'WAL 5/31/2023 20:07:27'!
+ERROR!
+
+!testRun: #ReceptiveAccountTest #test09TransferDepositKnowsTransferWithdrawAndViceversa stamp: 'WAL 5/31/2023 20:07:27'!
+ERROR!
+
+!testRun: #ReceptiveAccountTest #test10ReceptiveAccountCanHaveName stamp: 'WAL 5/31/2023 20:07:27'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test11TransferValueMustBeGreaterThanCero stamp: 'WAL 5/31/2023 20:07:27'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test08TransferIncreasesBalanceOfDestinationAccountAndDecreasesBalanceOfSourceAccountOnTransactionValue stamp: 'WAL 5/31/2023 20:07:52'!
+ERROR!
+
+aValue <= 0!
+!Transfer class methodsFor: 'instance creation' stamp: 'WAL 5/31/2023 20:08:47' prior: 50633185!
+register: aValue from: sourceAccount to: destinationAccount
+
+	| transfer deposit withdraw |
+
+	(aValue <= 0) ifTrue: [self error: self transferValueMustBeGreaterThanCeroErrorDescription].
+
+	transfer := self new.
+	
+	withdraw := TransferWithdraw transfer: transfer on: sourceAccount.
+	deposit := TransferDeposit transfer: transfer on: destinationAccount.
+	
+	transfer initializeFor: aValue from: withdraw to: deposit.
+	
+	^ transfer! !
+
+!testRun: #ReceptiveAccountTest #test08TransferIncreasesBalanceOfDestinationAccountAndDecreasesBalanceOfSourceAccountOnTransactionValue stamp: 'WAL 5/31/2023 20:08:51'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test09TransferDepositKnowsTransferWithdrawAndViceversa stamp: 'WAL 5/31/2023 20:08:52'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test01ReceptiveAccountHaveZeroAsBalanceWhenCreated stamp: 'WAL 5/31/2023 20:08:58'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test02DepositIncreasesBalanceOnTransactionValue stamp: 'WAL 5/31/2023 20:08:58'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test03WithdrawDecreasesBalanceOnTransactionValue stamp: 'WAL 5/31/2023 20:08:58'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test04WithdrawValueMustBePositive stamp: 'WAL 5/31/2023 20:08:58'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test05ReceptiveAccountKnowsRegisteredTransactions stamp: 'WAL 5/31/2023 20:08:58'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test06ReceptiveAccountDoNotKnowNotRegisteredTransactions stamp: 'WAL 5/31/2023 20:08:58'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test07AccountKnowsItsTransactions stamp: 'WAL 5/31/2023 20:08:58'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test08TransferIncreasesBalanceOfDestinationAccountAndDecreasesBalanceOfSourceAccountOnTransactionValue stamp: 'WAL 5/31/2023 20:08:58'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test09TransferDepositKnowsTransferWithdrawAndViceversa stamp: 'WAL 5/31/2023 20:08:58'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test10ReceptiveAccountCanHaveName stamp: 'WAL 5/31/2023 20:08:58'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test11TransferValueMustBeGreaterThanCero stamp: 'WAL 5/31/2023 20:08:58'!
+PASSED!
+!ReceptiveAccountTest methodsFor: 'tests' stamp: 'WAL 5/31/2023 20:09:44' prior: 50633093!
+test11TransferValueMustBeGreaterThanCero
+
+	| sourceAccount destinationAccount |
+	
+	sourceAccount := ReceptiveAccount  new.
+	destinationAccount := ReceptiveAccount  new.
+			
+	self 
+		should: [ Transfer register: 0 from: sourceAccount to: destinationAccount. ]
+		raise: Error
+		withExceptionDo: [ :anError |
+			self assert: anError messageText equals: Transfer transferValueMustBeGreaterThanCeroErrorDescription ].
+	
+	self 
+		should: [ Transfer register: -100 from: sourceAccount to: destinationAccount. ]
+		raise: Error
+		withExceptionDo: [ :anError |
+			self assert: anError messageText equals: Transfer transferValueMustBeGreaterThanCeroErrorDescription ]
+	! !
+
+!testRun: #ReceptiveAccountTest #test11TransferValueMustBeGreaterThanCero stamp: 'WAL 5/31/2023 20:09:46'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test01ReceptiveAccountHaveZeroAsBalanceWhenCreated stamp: 'WAL 5/31/2023 20:09:46'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test02DepositIncreasesBalanceOnTransactionValue stamp: 'WAL 5/31/2023 20:09:46'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test03WithdrawDecreasesBalanceOnTransactionValue stamp: 'WAL 5/31/2023 20:09:46'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test04WithdrawValueMustBePositive stamp: 'WAL 5/31/2023 20:09:46'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test05ReceptiveAccountKnowsRegisteredTransactions stamp: 'WAL 5/31/2023 20:09:46'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test06ReceptiveAccountDoNotKnowNotRegisteredTransactions stamp: 'WAL 5/31/2023 20:09:46'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test07AccountKnowsItsTransactions stamp: 'WAL 5/31/2023 20:09:46'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test08TransferIncreasesBalanceOfDestinationAccountAndDecreasesBalanceOfSourceAccountOnTransactionValue stamp: 'WAL 5/31/2023 20:09:46'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test09TransferDepositKnowsTransferWithdrawAndViceversa stamp: 'WAL 5/31/2023 20:09:46'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test10ReceptiveAccountCanHaveName stamp: 'WAL 5/31/2023 20:09:46'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test11TransferValueMustBeGreaterThanCero stamp: 'WAL 5/31/2023 20:09:46'!
+PASSED!
+!ReceptiveAccountTest methodsFor: 'tests' stamp: 'WAL 5/31/2023 20:11:22'!
+test11TransactionValueMustBeGreaterThanCero
+
+	| sourceAccount destinationAccount |
+	
+	sourceAccount := ReceptiveAccount  new.
+	destinationAccount := ReceptiveAccount  new.
+			
+	self 
+		should: [ Transfer register: 0 from: sourceAccount to: destinationAccount. ]
+		raise: Error
+		withExceptionDo: [ :anError |
+			self assert: anError messageText equals: Transfer transferValueMustBeGreaterThanCeroErrorDescription ].
+	
+	self 
+		should: [ Transfer register: -100 from: sourceAccount to: destinationAccount. ]
+		raise: Error
+		withExceptionDo: [ :anError |
+			self assert: anError messageText equals: Transfer transferValueMustBeGreaterThanCeroErrorDescription ]
+	! !
+
+!methodRemoval: ReceptiveAccountTest #test11TransferValueMustBeGreaterThanCero stamp: 'WAL 5/31/2023 20:11:22'!
+test11TransferValueMustBeGreaterThanCero
+
+	| sourceAccount destinationAccount |
+	
+	sourceAccount := ReceptiveAccount  new.
+	destinationAccount := ReceptiveAccount  new.
+			
+	self 
+		should: [ Transfer register: 0 from: sourceAccount to: destinationAccount. ]
+		raise: Error
+		withExceptionDo: [ :anError |
+			self assert: anError messageText equals: Transfer transferValueMustBeGreaterThanCeroErrorDescription ].
+	
+	self 
+		should: [ Transfer register: -100 from: sourceAccount to: destinationAccount. ]
+		raise: Error
+		withExceptionDo: [ :anError |
+			self assert: anError messageText equals: Transfer transferValueMustBeGreaterThanCeroErrorDescription ]
+	!
+!ReceptiveAccountTest methodsFor: 'tests' stamp: 'WAL 5/31/2023 20:11:47'!
+test11TransferValueMustBeGreaterThanCero
+
+	| sourceAccount destinationAccount |
+	
+	sourceAccount := ReceptiveAccount  new.
+	destinationAccount := ReceptiveAccount  new.
+			
+	self 
+		should: [ Transfer register: 0 from: sourceAccount to: destinationAccount. ]
+		raise: Error
+		withExceptionDo: [ :anError |
+			self assert: anError messageText equals: Transfer transferValueMustBeGreaterThanCeroErrorDescription ].
+	
+	self 
+		should: [ Transfer register: -100 from: sourceAccount to: destinationAccount. ]
+		raise: Error
+		withExceptionDo: [ :anError |
+			self assert: anError messageText equals: Transfer transferValueMustBeGreaterThanCeroErrorDescription ]
+	! !
+
+!methodRemoval: ReceptiveAccountTest #test11TransactionValueMustBeGreaterThanCero stamp: 'WAL 5/31/2023 20:11:47'!
+test11TransactionValueMustBeGreaterThanCero
+
+	| sourceAccount destinationAccount |
+	
+	sourceAccount := ReceptiveAccount  new.
+	destinationAccount := ReceptiveAccount  new.
+			
+	self 
+		should: [ Transfer register: 0 from: sourceAccount to: destinationAccount. ]
+		raise: Error
+		withExceptionDo: [ :anError |
+			self assert: anError messageText equals: Transfer transferValueMustBeGreaterThanCeroErrorDescription ].
+	
+	self 
+		should: [ Transfer register: -100 from: sourceAccount to: destinationAccount. ]
+		raise: Error
+		withExceptionDo: [ :anError |
+			self assert: anError messageText equals: Transfer transferValueMustBeGreaterThanCeroErrorDescription ]
+	!
+!ReceptiveAccountTest methodsFor: 'tests' stamp: 'WAL 5/31/2023 20:21:06'!
+test12DepositValueMustBeGreaterThanCero
+
+	| account |
+	
+	account := ReceptiveAccount  new.
+			
+	self 
+		should: [ Deposit register: 0 on: account. ]
+		raise: Error
+		withExceptionDo: [ :anError |
+			self assert: anError messageText equals: Transfer transferValueMustBeGreaterThanCeroErrorDescription ].
+	
+	self 
+		should: [ Deposit register: -100 on: account. ]
+		raise: Error
+		withExceptionDo: [ :anError |
+			self assert: anError messageText equals: Transfer transferValueMustBeGreaterThanCeroErrorDescription ]
+	! !
+
+!testRun: #ReceptiveAccountTest #test12DepositValueMustBeGreaterThanCero stamp: 'WAL 5/31/2023 20:21:08'!
+FAILURE!
+!ReceptiveAccountTest methodsFor: 'tests' stamp: 'WAL 5/31/2023 20:22:08' prior: 50633638!
+test12DepositValueMustBeGreaterThanCero
+
+	| account |
+	
+	account := ReceptiveAccount  new.
+			
+	self 
+		should: [ Deposit register: 0 on: account. ]
+		raise: Error
+		withExceptionDo: [ :anError |
+			self assert: anError messageText equals: Transfer transactionValueMustBeGreaterThanCeroErrorDescription ].
+	
+	self 
+		should: [ Deposit register: -100 on: account. ]
+		raise: Error
+		withExceptionDo: [ :anError |
+			self assert: anError messageText equals: Transfer transactionValueMustBeGreaterThanCeroErrorDescription ]
+	! !
+!AccountTransaction class methodsFor: 'no messages' stamp: 'WAL 5/31/2023 20:22:56'!
+transactionValueMustBeGreaterThanCeroErrorDescription
+
+	^'Transaction value must be greater than cero'! !
+!Deposit class methodsFor: 'instance creation' stamp: 'WAL 5/31/2023 20:24:48' prior: 50621727!
+register: aValue on: account
+
+	| transaction |
+	
+	(aValue <= 0) ifTrue: [self error: self transactionValueMustBeGreaterThanCeroErrorDescription].
+
+	
+	transaction := self for: aValue.
+	account register: transaction.
+		
+	^ transaction! !
+
+!testRun: #PortfolioTest #test01BalanceOfPortfolioWithoutAccountsIsZero stamp: 'WAL 5/31/2023 20:24:49'!
+PASSED!
+
+!testRun: #PortfolioTest #test02BalanceOfPortfolioWithAccountsIsSumOfAccountsBalance stamp: 'WAL 5/31/2023 20:24:49'!
+PASSED!
+
+!testRun: #PortfolioTest #test03BalanceOfPortfolioIsCalculatedRecursivelyOnPortfolios stamp: 'WAL 5/31/2023 20:24:49'!
+PASSED!
+
+!testRun: #PortfolioTest #test04PortfolioWithoutAccountsHasNoRegisteredTransaction stamp: 'WAL 5/31/2023 20:24:49'!
+PASSED!
+
+!testRun: #PortfolioTest #test05PortfolioHasRegisteredItsAccountsTransactions stamp: 'WAL 5/31/2023 20:24:49'!
+PASSED!
+
+!testRun: #PortfolioTest #test06PortfolioLooksForRegisteredTransactionsRecursively stamp: 'WAL 5/31/2023 20:24:49'!
+PASSED!
+
+!testRun: #PortfolioTest #test07PortfolioHasNoTransactionWhenHasNoAccounts stamp: 'WAL 5/31/2023 20:24:49'!
+PASSED!
+
+!testRun: #PortfolioTest #test08PortfolioTransactionsIncludesAllItsAccountsTransactions stamp: 'WAL 5/31/2023 20:24:49'!
+PASSED!
+
+!testRun: #PortfolioTest #test09PortfolioTransactionsAreCalculatedRecursively stamp: 'WAL 5/31/2023 20:24:49'!
+PASSED!
+
+!testRun: #PortfolioTest #test10PortfolioCanNotIncludeTheSameAccountMoreThanOnce stamp: 'WAL 5/31/2023 20:24:49'!
+PASSED!
+
+!testRun: #PortfolioTest #test11PortfolioCanNotIncludeAccountOfItsPortfolios stamp: 'WAL 5/31/2023 20:24:49'!
+PASSED!
+
+!testRun: #PortfolioTest #test12PortfolioCanNotIncludeItself stamp: 'WAL 5/31/2023 20:24:49'!
+PASSED!
+
+!testRun: #PortfolioTest #test13ComposedPortfolioCanNotHaveParentPortfolioAccount stamp: 'WAL 5/31/2023 20:24:49'!
+PASSED!
+
+!testRun: #PortfolioTest #test14ComposedPortfolioCanNotHaveAccountOfAnyRootParentRecursively stamp: 'WAL 5/31/2023 20:24:49'!
+PASSED!
+
+!testRun: #PortfolioTest #test15PortfolioCanNotIncludeAnyOfTheComposedAccountOfPortfolioToAdd stamp: 'WAL 5/31/2023 20:24:49'!
+PASSED!
+
+!testRun: #PortfolioTest #test16PortfolioCanHaveAName stamp: 'WAL 5/31/2023 20:24:49'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test01ReceptiveAccountHaveZeroAsBalanceWhenCreated stamp: 'WAL 5/31/2023 20:24:49'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test02DepositIncreasesBalanceOnTransactionValue stamp: 'WAL 5/31/2023 20:24:49'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test03WithdrawDecreasesBalanceOnTransactionValue stamp: 'WAL 5/31/2023 20:24:49'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test04WithdrawValueMustBePositive stamp: 'WAL 5/31/2023 20:24:49'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test05ReceptiveAccountKnowsRegisteredTransactions stamp: 'WAL 5/31/2023 20:24:49'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test06ReceptiveAccountDoNotKnowNotRegisteredTransactions stamp: 'WAL 5/31/2023 20:24:49'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test07AccountKnowsItsTransactions stamp: 'WAL 5/31/2023 20:24:49'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test08TransferIncreasesBalanceOfDestinationAccountAndDecreasesBalanceOfSourceAccountOnTransactionValue stamp: 'WAL 5/31/2023 20:24:49'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test09TransferDepositKnowsTransferWithdrawAndViceversa stamp: 'WAL 5/31/2023 20:24:49'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test10ReceptiveAccountCanHaveName stamp: 'WAL 5/31/2023 20:24:49'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test11TransferValueMustBeGreaterThanCero stamp: 'WAL 5/31/2023 20:24:49'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test12DepositValueMustBeGreaterThanCero stamp: 'WAL 5/31/2023 20:24:49'!
+ERROR!
+
+!testRun: #ReportTest #test01AccountSummaryOnEmptyAccountShouldReturnOnlyBalanceLineWithZero stamp: 'WAL 5/31/2023 20:24:49'!
+PASSED!
+
+!testRun: #ReportTest #test02AccountSummaryOnAccountWithDepositShouldReturnDepositLines stamp: 'WAL 5/31/2023 20:24:49'!
+PASSED!
+
+!testRun: #ReportTest #test03AccountSummaryOnAccountWithWithdrawShouldReturnWithdrawLines stamp: 'WAL 5/31/2023 20:24:49'!
+PASSED!
+
+!testRun: #ReportTest #test04AccountSummaryOnAccountWithTransferShouldReturnTransferLines stamp: 'WAL 5/31/2023 20:24:49'!
+PASSED!
+
+!testRun: #ReportTest #test05AccountSummaryOnEmptyPortfolioShouldReturnOnlyBalanceLineWithZero stamp: 'WAL 5/31/2023 20:24:49'!
+PASSED!
+
+!testRun: #ReportTest #test06AccountSummaryOnPortfolioShouldReturnAccountTransactions stamp: 'WAL 5/31/2023 20:24:49'!
+PASSED!
+
+!testRun: #ReportTest #test07TransferNetOnEmptyAccountShouldReturnOnlyBalanceLineWithZero stamp: 'WAL 5/31/2023 20:24:49'!
+PASSED!
+
+!testRun: #ReportTest #test08TransferNetOnAccountWithTransferShouldReturnTransferLines stamp: 'WAL 5/31/2023 20:24:49'!
+PASSED!
+
+!testRun: #ReportTest #test09TransferNetOnAccountShouldNotBeAffectedByOrdinaryDepositsOrWithdraws stamp: 'WAL 5/31/2023 20:24:49'!
+PASSED!
+
+!testRun: #ReportTest #test10PortfolioStructureOnEmptyPortfolioShouldReturnPortfolioName stamp: 'WAL 5/31/2023 20:24:49'!
+PASSED!
+
+!testRun: #ReportTest #test11PortfolioStructureOnPortfolioShouldReturnPortfolioStructureReport stamp: 'WAL 5/31/2023 20:24:49'!
+PASSED!
+
+!testRun: #ReportTest #test12PortfolioStructureOnReceptiveAccountShouldRiseError stamp: 'WAL 5/31/2023 20:24:49'!
+PASSED!
+
+!testRun: #ReportTest #test13StructuredAccountSummaryOnPortfolioShouldReturnPortfolioStructuredAccountSummary stamp: 'WAL 5/31/2023 20:24:49'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test12DepositValueMustBeGreaterThanCero stamp: 'WAL 5/31/2023 20:24:49'!
+ERROR!
+!Deposit class methodsFor: 'instance creation' stamp: 'WAL 5/31/2023 20:25:36' prior: 50633688!
+register: aValue on: account
+
+	| transaction |
+	
+	(aValue <= 0) ifTrue: [self error: AccountTransaction transactionValueMustBeGreaterThanCeroErrorDescription].
+
+	
+	transaction := self for: aValue.
+	account register: transaction.
+		
+	^ transaction! !
+
+!testRun: #PortfolioTest #test01BalanceOfPortfolioWithoutAccountsIsZero stamp: 'WAL 5/31/2023 20:25:38'!
+PASSED!
+
+!testRun: #PortfolioTest #test02BalanceOfPortfolioWithAccountsIsSumOfAccountsBalance stamp: 'WAL 5/31/2023 20:25:38'!
+PASSED!
+
+!testRun: #PortfolioTest #test03BalanceOfPortfolioIsCalculatedRecursivelyOnPortfolios stamp: 'WAL 5/31/2023 20:25:38'!
+PASSED!
+
+!testRun: #PortfolioTest #test04PortfolioWithoutAccountsHasNoRegisteredTransaction stamp: 'WAL 5/31/2023 20:25:38'!
+PASSED!
+
+!testRun: #PortfolioTest #test05PortfolioHasRegisteredItsAccountsTransactions stamp: 'WAL 5/31/2023 20:25:38'!
+PASSED!
+
+!testRun: #PortfolioTest #test06PortfolioLooksForRegisteredTransactionsRecursively stamp: 'WAL 5/31/2023 20:25:38'!
+PASSED!
+
+!testRun: #PortfolioTest #test07PortfolioHasNoTransactionWhenHasNoAccounts stamp: 'WAL 5/31/2023 20:25:38'!
+PASSED!
+
+!testRun: #PortfolioTest #test08PortfolioTransactionsIncludesAllItsAccountsTransactions stamp: 'WAL 5/31/2023 20:25:38'!
+PASSED!
+
+!testRun: #PortfolioTest #test09PortfolioTransactionsAreCalculatedRecursively stamp: 'WAL 5/31/2023 20:25:38'!
+PASSED!
+
+!testRun: #PortfolioTest #test10PortfolioCanNotIncludeTheSameAccountMoreThanOnce stamp: 'WAL 5/31/2023 20:25:38'!
+PASSED!
+
+!testRun: #PortfolioTest #test11PortfolioCanNotIncludeAccountOfItsPortfolios stamp: 'WAL 5/31/2023 20:25:38'!
+PASSED!
+
+!testRun: #PortfolioTest #test12PortfolioCanNotIncludeItself stamp: 'WAL 5/31/2023 20:25:38'!
+PASSED!
+
+!testRun: #PortfolioTest #test13ComposedPortfolioCanNotHaveParentPortfolioAccount stamp: 'WAL 5/31/2023 20:25:38'!
+PASSED!
+
+!testRun: #PortfolioTest #test14ComposedPortfolioCanNotHaveAccountOfAnyRootParentRecursively stamp: 'WAL 5/31/2023 20:25:38'!
+PASSED!
+
+!testRun: #PortfolioTest #test15PortfolioCanNotIncludeAnyOfTheComposedAccountOfPortfolioToAdd stamp: 'WAL 5/31/2023 20:25:38'!
+PASSED!
+
+!testRun: #PortfolioTest #test16PortfolioCanHaveAName stamp: 'WAL 5/31/2023 20:25:38'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test01ReceptiveAccountHaveZeroAsBalanceWhenCreated stamp: 'WAL 5/31/2023 20:25:38'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test02DepositIncreasesBalanceOnTransactionValue stamp: 'WAL 5/31/2023 20:25:38'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test03WithdrawDecreasesBalanceOnTransactionValue stamp: 'WAL 5/31/2023 20:25:38'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test04WithdrawValueMustBePositive stamp: 'WAL 5/31/2023 20:25:38'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test05ReceptiveAccountKnowsRegisteredTransactions stamp: 'WAL 5/31/2023 20:25:38'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test06ReceptiveAccountDoNotKnowNotRegisteredTransactions stamp: 'WAL 5/31/2023 20:25:38'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test07AccountKnowsItsTransactions stamp: 'WAL 5/31/2023 20:25:38'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test08TransferIncreasesBalanceOfDestinationAccountAndDecreasesBalanceOfSourceAccountOnTransactionValue stamp: 'WAL 5/31/2023 20:25:38'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test09TransferDepositKnowsTransferWithdrawAndViceversa stamp: 'WAL 5/31/2023 20:25:38'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test10ReceptiveAccountCanHaveName stamp: 'WAL 5/31/2023 20:25:38'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test11TransferValueMustBeGreaterThanCero stamp: 'WAL 5/31/2023 20:25:38'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test12DepositValueMustBeGreaterThanCero stamp: 'WAL 5/31/2023 20:25:38'!
+ERROR!
+
+!testRun: #ReportTest #test01AccountSummaryOnEmptyAccountShouldReturnOnlyBalanceLineWithZero stamp: 'WAL 5/31/2023 20:25:38'!
+PASSED!
+
+!testRun: #ReportTest #test02AccountSummaryOnAccountWithDepositShouldReturnDepositLines stamp: 'WAL 5/31/2023 20:25:38'!
+PASSED!
+
+!testRun: #ReportTest #test03AccountSummaryOnAccountWithWithdrawShouldReturnWithdrawLines stamp: 'WAL 5/31/2023 20:25:38'!
+PASSED!
+
+!testRun: #ReportTest #test04AccountSummaryOnAccountWithTransferShouldReturnTransferLines stamp: 'WAL 5/31/2023 20:25:38'!
+PASSED!
+
+!testRun: #ReportTest #test05AccountSummaryOnEmptyPortfolioShouldReturnOnlyBalanceLineWithZero stamp: 'WAL 5/31/2023 20:25:38'!
+PASSED!
+
+!testRun: #ReportTest #test06AccountSummaryOnPortfolioShouldReturnAccountTransactions stamp: 'WAL 5/31/2023 20:25:38'!
+PASSED!
+
+!testRun: #ReportTest #test07TransferNetOnEmptyAccountShouldReturnOnlyBalanceLineWithZero stamp: 'WAL 5/31/2023 20:25:38'!
+PASSED!
+
+!testRun: #ReportTest #test08TransferNetOnAccountWithTransferShouldReturnTransferLines stamp: 'WAL 5/31/2023 20:25:38'!
+PASSED!
+
+!testRun: #ReportTest #test09TransferNetOnAccountShouldNotBeAffectedByOrdinaryDepositsOrWithdraws stamp: 'WAL 5/31/2023 20:25:38'!
+PASSED!
+
+!testRun: #ReportTest #test10PortfolioStructureOnEmptyPortfolioShouldReturnPortfolioName stamp: 'WAL 5/31/2023 20:25:38'!
+PASSED!
+
+!testRun: #ReportTest #test11PortfolioStructureOnPortfolioShouldReturnPortfolioStructureReport stamp: 'WAL 5/31/2023 20:25:38'!
+PASSED!
+
+!testRun: #ReportTest #test12PortfolioStructureOnReceptiveAccountShouldRiseError stamp: 'WAL 5/31/2023 20:25:38'!
+PASSED!
+
+!testRun: #ReportTest #test13StructuredAccountSummaryOnPortfolioShouldReturnPortfolioStructuredAccountSummary stamp: 'WAL 5/31/2023 20:25:38'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test12DepositValueMustBeGreaterThanCero stamp: 'WAL 5/31/2023 20:25:38'!
+ERROR!
+
+!testRun: #PortfolioTest #test01BalanceOfPortfolioWithoutAccountsIsZero stamp: 'WAL 5/31/2023 20:26:25'!
+PASSED!
+
+!testRun: #PortfolioTest #test02BalanceOfPortfolioWithAccountsIsSumOfAccountsBalance stamp: 'WAL 5/31/2023 20:26:25'!
+PASSED!
+
+!testRun: #PortfolioTest #test03BalanceOfPortfolioIsCalculatedRecursivelyOnPortfolios stamp: 'WAL 5/31/2023 20:26:25'!
+PASSED!
+
+!testRun: #PortfolioTest #test04PortfolioWithoutAccountsHasNoRegisteredTransaction stamp: 'WAL 5/31/2023 20:26:25'!
+PASSED!
+
+!testRun: #PortfolioTest #test05PortfolioHasRegisteredItsAccountsTransactions stamp: 'WAL 5/31/2023 20:26:25'!
+PASSED!
+
+!testRun: #PortfolioTest #test06PortfolioLooksForRegisteredTransactionsRecursively stamp: 'WAL 5/31/2023 20:26:25'!
+PASSED!
+
+!testRun: #PortfolioTest #test07PortfolioHasNoTransactionWhenHasNoAccounts stamp: 'WAL 5/31/2023 20:26:25'!
+PASSED!
+
+!testRun: #PortfolioTest #test08PortfolioTransactionsIncludesAllItsAccountsTransactions stamp: 'WAL 5/31/2023 20:26:25'!
+PASSED!
+
+!testRun: #PortfolioTest #test09PortfolioTransactionsAreCalculatedRecursively stamp: 'WAL 5/31/2023 20:26:25'!
+PASSED!
+
+!testRun: #PortfolioTest #test10PortfolioCanNotIncludeTheSameAccountMoreThanOnce stamp: 'WAL 5/31/2023 20:26:25'!
+PASSED!
+
+!testRun: #PortfolioTest #test11PortfolioCanNotIncludeAccountOfItsPortfolios stamp: 'WAL 5/31/2023 20:26:25'!
+PASSED!
+
+!testRun: #PortfolioTest #test12PortfolioCanNotIncludeItself stamp: 'WAL 5/31/2023 20:26:25'!
+PASSED!
+
+!testRun: #PortfolioTest #test13ComposedPortfolioCanNotHaveParentPortfolioAccount stamp: 'WAL 5/31/2023 20:26:25'!
+PASSED!
+
+!testRun: #PortfolioTest #test14ComposedPortfolioCanNotHaveAccountOfAnyRootParentRecursively stamp: 'WAL 5/31/2023 20:26:25'!
+PASSED!
+
+!testRun: #PortfolioTest #test15PortfolioCanNotIncludeAnyOfTheComposedAccountOfPortfolioToAdd stamp: 'WAL 5/31/2023 20:26:25'!
+PASSED!
+
+!testRun: #PortfolioTest #test16PortfolioCanHaveAName stamp: 'WAL 5/31/2023 20:26:25'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test01ReceptiveAccountHaveZeroAsBalanceWhenCreated stamp: 'WAL 5/31/2023 20:26:25'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test02DepositIncreasesBalanceOnTransactionValue stamp: 'WAL 5/31/2023 20:26:25'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test03WithdrawDecreasesBalanceOnTransactionValue stamp: 'WAL 5/31/2023 20:26:25'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test04WithdrawValueMustBePositive stamp: 'WAL 5/31/2023 20:26:25'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test05ReceptiveAccountKnowsRegisteredTransactions stamp: 'WAL 5/31/2023 20:26:25'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test06ReceptiveAccountDoNotKnowNotRegisteredTransactions stamp: 'WAL 5/31/2023 20:26:25'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test07AccountKnowsItsTransactions stamp: 'WAL 5/31/2023 20:26:25'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test08TransferIncreasesBalanceOfDestinationAccountAndDecreasesBalanceOfSourceAccountOnTransactionValue stamp: 'WAL 5/31/2023 20:26:25'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test09TransferDepositKnowsTransferWithdrawAndViceversa stamp: 'WAL 5/31/2023 20:26:25'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test10ReceptiveAccountCanHaveName stamp: 'WAL 5/31/2023 20:26:25'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test11TransferValueMustBeGreaterThanCero stamp: 'WAL 5/31/2023 20:26:25'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test12DepositValueMustBeGreaterThanCero stamp: 'WAL 5/31/2023 20:26:25'!
+ERROR!
+
+!testRun: #ReportTest #test01AccountSummaryOnEmptyAccountShouldReturnOnlyBalanceLineWithZero stamp: 'WAL 5/31/2023 20:26:25'!
+PASSED!
+
+!testRun: #ReportTest #test02AccountSummaryOnAccountWithDepositShouldReturnDepositLines stamp: 'WAL 5/31/2023 20:26:25'!
+PASSED!
+
+!testRun: #ReportTest #test03AccountSummaryOnAccountWithWithdrawShouldReturnWithdrawLines stamp: 'WAL 5/31/2023 20:26:25'!
+PASSED!
+
+!testRun: #ReportTest #test04AccountSummaryOnAccountWithTransferShouldReturnTransferLines stamp: 'WAL 5/31/2023 20:26:25'!
+PASSED!
+
+!testRun: #ReportTest #test05AccountSummaryOnEmptyPortfolioShouldReturnOnlyBalanceLineWithZero stamp: 'WAL 5/31/2023 20:26:25'!
+PASSED!
+
+!testRun: #ReportTest #test06AccountSummaryOnPortfolioShouldReturnAccountTransactions stamp: 'WAL 5/31/2023 20:26:25'!
+PASSED!
+
+!testRun: #ReportTest #test07TransferNetOnEmptyAccountShouldReturnOnlyBalanceLineWithZero stamp: 'WAL 5/31/2023 20:26:25'!
+PASSED!
+
+!testRun: #ReportTest #test08TransferNetOnAccountWithTransferShouldReturnTransferLines stamp: 'WAL 5/31/2023 20:26:25'!
+PASSED!
+
+!testRun: #ReportTest #test09TransferNetOnAccountShouldNotBeAffectedByOrdinaryDepositsOrWithdraws stamp: 'WAL 5/31/2023 20:26:25'!
+PASSED!
+
+!testRun: #ReportTest #test10PortfolioStructureOnEmptyPortfolioShouldReturnPortfolioName stamp: 'WAL 5/31/2023 20:26:25'!
+PASSED!
+
+!testRun: #ReportTest #test11PortfolioStructureOnPortfolioShouldReturnPortfolioStructureReport stamp: 'WAL 5/31/2023 20:26:25'!
+PASSED!
+
+!testRun: #ReportTest #test12PortfolioStructureOnReceptiveAccountShouldRiseError stamp: 'WAL 5/31/2023 20:26:25'!
+PASSED!
+
+!testRun: #ReportTest #test13StructuredAccountSummaryOnPortfolioShouldReturnPortfolioStructuredAccountSummary stamp: 'WAL 5/31/2023 20:26:25'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test12DepositValueMustBeGreaterThanCero stamp: 'WAL 5/31/2023 20:26:25'!
+ERROR!
+
+!methodRemoval: Transfer class #transferValueMustBeGreaterThanCeroErrorDescription stamp: 'WAL 5/31/2023 20:27:06'!
+transferValueMustBeGreaterThanCeroErrorDescription
+
+	^'Transfer value must be greater than cero'!
+!Transfer class methodsFor: 'error descriptions' stamp: 'WAL 5/31/2023 20:28:19'!
+transferValueMustBeGreaterThanCeroErrorDescription
+	
+	^'Transfer Value Must be greater than cero'! !
+
+!testRun: #ReportTest #test01AccountSummaryOnEmptyAccountShouldReturnOnlyBalanceLineWithZero stamp: 'WAL 5/31/2023 20:28:20'!
+PASSED!
+
+!testRun: #ReportTest #test02AccountSummaryOnAccountWithDepositShouldReturnDepositLines stamp: 'WAL 5/31/2023 20:28:20'!
+PASSED!
+
+!testRun: #ReportTest #test03AccountSummaryOnAccountWithWithdrawShouldReturnWithdrawLines stamp: 'WAL 5/31/2023 20:28:20'!
+PASSED!
+
+!testRun: #ReportTest #test04AccountSummaryOnAccountWithTransferShouldReturnTransferLines stamp: 'WAL 5/31/2023 20:28:20'!
+PASSED!
+
+!testRun: #ReportTest #test05AccountSummaryOnEmptyPortfolioShouldReturnOnlyBalanceLineWithZero stamp: 'WAL 5/31/2023 20:28:20'!
+PASSED!
+
+!testRun: #ReportTest #test06AccountSummaryOnPortfolioShouldReturnAccountTransactions stamp: 'WAL 5/31/2023 20:28:20'!
+PASSED!
+
+!testRun: #ReportTest #test07TransferNetOnEmptyAccountShouldReturnOnlyBalanceLineWithZero stamp: 'WAL 5/31/2023 20:28:20'!
+PASSED!
+
+!testRun: #ReportTest #test08TransferNetOnAccountWithTransferShouldReturnTransferLines stamp: 'WAL 5/31/2023 20:28:20'!
+PASSED!
+
+!testRun: #ReportTest #test09TransferNetOnAccountShouldNotBeAffectedByOrdinaryDepositsOrWithdraws stamp: 'WAL 5/31/2023 20:28:20'!
+PASSED!
+
+!testRun: #ReportTest #test10PortfolioStructureOnEmptyPortfolioShouldReturnPortfolioName stamp: 'WAL 5/31/2023 20:28:20'!
+PASSED!
+
+!testRun: #ReportTest #test11PortfolioStructureOnPortfolioShouldReturnPortfolioStructureReport stamp: 'WAL 5/31/2023 20:28:20'!
+PASSED!
+
+!testRun: #ReportTest #test12PortfolioStructureOnReceptiveAccountShouldRiseError stamp: 'WAL 5/31/2023 20:28:20'!
+PASSED!
+
+!testRun: #ReportTest #test13StructuredAccountSummaryOnPortfolioShouldReturnPortfolioStructuredAccountSummary stamp: 'WAL 5/31/2023 20:28:20'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test01ReceptiveAccountHaveZeroAsBalanceWhenCreated stamp: 'WAL 5/31/2023 20:28:20'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test02DepositIncreasesBalanceOnTransactionValue stamp: 'WAL 5/31/2023 20:28:20'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test03WithdrawDecreasesBalanceOnTransactionValue stamp: 'WAL 5/31/2023 20:28:20'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test04WithdrawValueMustBePositive stamp: 'WAL 5/31/2023 20:28:20'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test05ReceptiveAccountKnowsRegisteredTransactions stamp: 'WAL 5/31/2023 20:28:20'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test06ReceptiveAccountDoNotKnowNotRegisteredTransactions stamp: 'WAL 5/31/2023 20:28:20'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test07AccountKnowsItsTransactions stamp: 'WAL 5/31/2023 20:28:20'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test08TransferIncreasesBalanceOfDestinationAccountAndDecreasesBalanceOfSourceAccountOnTransactionValue stamp: 'WAL 5/31/2023 20:28:20'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test09TransferDepositKnowsTransferWithdrawAndViceversa stamp: 'WAL 5/31/2023 20:28:20'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test10ReceptiveAccountCanHaveName stamp: 'WAL 5/31/2023 20:28:20'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test11TransferValueMustBeGreaterThanCero stamp: 'WAL 5/31/2023 20:28:20'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test12DepositValueMustBeGreaterThanCero stamp: 'WAL 5/31/2023 20:28:20'!
+ERROR!
+
+!testRun: #ReceptiveAccountTest #test12DepositValueMustBeGreaterThanCero stamp: 'WAL 5/31/2023 20:28:20'!
+ERROR!
+
+!testRun: #ReceptiveAccountTest #test11TransferValueMustBeGreaterThanCero stamp: 'WAL 5/31/2023 20:28:53'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test01ReceptiveAccountHaveZeroAsBalanceWhenCreated stamp: 'WAL 5/31/2023 20:28:53'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test02DepositIncreasesBalanceOnTransactionValue stamp: 'WAL 5/31/2023 20:28:53'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test03WithdrawDecreasesBalanceOnTransactionValue stamp: 'WAL 5/31/2023 20:28:53'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test04WithdrawValueMustBePositive stamp: 'WAL 5/31/2023 20:28:53'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test05ReceptiveAccountKnowsRegisteredTransactions stamp: 'WAL 5/31/2023 20:28:53'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test06ReceptiveAccountDoNotKnowNotRegisteredTransactions stamp: 'WAL 5/31/2023 20:28:53'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test07AccountKnowsItsTransactions stamp: 'WAL 5/31/2023 20:28:53'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test08TransferIncreasesBalanceOfDestinationAccountAndDecreasesBalanceOfSourceAccountOnTransactionValue stamp: 'WAL 5/31/2023 20:28:53'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test09TransferDepositKnowsTransferWithdrawAndViceversa stamp: 'WAL 5/31/2023 20:28:53'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test10ReceptiveAccountCanHaveName stamp: 'WAL 5/31/2023 20:28:53'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test11TransferValueMustBeGreaterThanCero stamp: 'WAL 5/31/2023 20:28:53'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test12DepositValueMustBeGreaterThanCero stamp: 'WAL 5/31/2023 20:28:53'!
+ERROR!
+
+!testRun: #ReceptiveAccountTest #test12DepositValueMustBeGreaterThanCero stamp: 'WAL 5/31/2023 20:28:53'!
+ERROR!
+!ReceptiveAccountTest methodsFor: 'tests' stamp: 'WAL 5/31/2023 20:29:12' prior: 50633661!
+test12DepositValueMustBeGreaterThanCero
+
+	| account |
+	
+	account := ReceptiveAccount  new.
+			
+	self 
+		should: [ Deposit register: 0 on: account. ]
+		raise: Error
+		withExceptionDo: [ :anError |
+			self assert: anError messageText equals: Deposit transactionValueMustBeGreaterThanCeroErrorDescription ].
+	
+	self 
+		should: [ Deposit register: -100 on: account. ]
+		raise: Error
+		withExceptionDo: [ :anError |
+			self assert: anError messageText equals: Deposit transactionValueMustBeGreaterThanCeroErrorDescription ]
+	! !
+
+!testRun: #ReceptiveAccountTest #test12DepositValueMustBeGreaterThanCero stamp: 'WAL 5/31/2023 20:29:13'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test01ReceptiveAccountHaveZeroAsBalanceWhenCreated stamp: 'WAL 5/31/2023 20:29:13'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test02DepositIncreasesBalanceOnTransactionValue stamp: 'WAL 5/31/2023 20:29:13'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test03WithdrawDecreasesBalanceOnTransactionValue stamp: 'WAL 5/31/2023 20:29:13'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test04WithdrawValueMustBePositive stamp: 'WAL 5/31/2023 20:29:13'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test05ReceptiveAccountKnowsRegisteredTransactions stamp: 'WAL 5/31/2023 20:29:13'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test06ReceptiveAccountDoNotKnowNotRegisteredTransactions stamp: 'WAL 5/31/2023 20:29:13'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test07AccountKnowsItsTransactions stamp: 'WAL 5/31/2023 20:29:13'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test08TransferIncreasesBalanceOfDestinationAccountAndDecreasesBalanceOfSourceAccountOnTransactionValue stamp: 'WAL 5/31/2023 20:29:13'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test09TransferDepositKnowsTransferWithdrawAndViceversa stamp: 'WAL 5/31/2023 20:29:13'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test10ReceptiveAccountCanHaveName stamp: 'WAL 5/31/2023 20:29:13'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test11TransferValueMustBeGreaterThanCero stamp: 'WAL 5/31/2023 20:29:13'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test12DepositValueMustBeGreaterThanCero stamp: 'WAL 5/31/2023 20:29:13'!
+PASSED!
+!ReceptiveAccountTest methodsFor: 'tests' stamp: 'WAL 5/31/2023 20:29:53' prior: 50634377!
+test12DepositValueMustBeGreaterThanCero
+
+	| account |
+	
+	account := ReceptiveAccount  new.
+			
+	self 
+		should: [ Deposit register: 0 on: account. ]
+		raise: Error
+		withExceptionDo: [ :anError |
+			self assert: anError messageText equals: AccountTransaction transactionValueMustBeGreaterThanCeroErrorDescription ].
+	
+	self 
+		should: [ Deposit register: -100 on: account. ]
+		raise: Error
+		withExceptionDo: [ :anError |
+			self assert: anError messageText equals: AccountTransaction transactionValueMustBeGreaterThanCeroErrorDescription ]
+	! !
+
+!testRun: #ReceptiveAccountTest #test12DepositValueMustBeGreaterThanCero stamp: 'WAL 5/31/2023 20:30:04'!
+PASSED!
+!ReceptiveAccountTest methodsFor: 'tests' stamp: 'WAL 5/31/2023 20:31:01'!
+test13WithdrawValueMustBeGreaterThanCero
+
+	| account |
+	
+	account := ReceptiveAccount  new.
+			
+	self 
+		should: [ Withdraw register: 0 on: account. ]
+		raise: Error
+		withExceptionDo: [ :anError |
+			self assert: anError messageText equals: AccountTransaction transactionValueMustBeGreaterThanCeroErrorDescription ].
+	
+	self 
+		should: [ Withdraw register: -100 on: account. ]
+		raise: Error
+		withExceptionDo: [ :anError |
+			self assert: anError messageText equals: AccountTransaction transactionValueMustBeGreaterThanCeroErrorDescription ]
+	! !
+
+!testRun: #ReceptiveAccountTest #test13WithdrawValueMustBeGreaterThanCero stamp: 'WAL 5/31/2023 20:31:02'!
+FAILURE!
+!Deposit class methodsFor: 'instance creation' stamp: 'WAL 5/31/2023 20:31:29' prior: 50633864!
+register: aValue on: account
+
+	| transaction |
+	
+	(aValue <= 0) ifTrue: [self error: AccountTransaction transactionValueMustBeGreaterThanCeroErrorDescription].
+	
+	transaction := self for: aValue.
+	account register: transaction.
+		
+	^ transaction! !
+!Withdraw class methodsFor: 'instance creation' stamp: 'WAL 5/31/2023 20:31:44' prior: 50621879!
+register: aValue on: account
+
+	| transaction |
+
+	(aValue <= 0) ifTrue: [self error: AccountTransaction transactionValueMustBeGreaterThanCeroErrorDescription].
+	
+	transaction := self for: aValue.
+	account register: transaction.
+		
+	^ transaction! !
+
+!testRun: #ReceptiveAccountTest #test01ReceptiveAccountHaveZeroAsBalanceWhenCreated stamp: 'WAL 5/31/2023 20:31:45'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test02DepositIncreasesBalanceOnTransactionValue stamp: 'WAL 5/31/2023 20:31:45'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test03WithdrawDecreasesBalanceOnTransactionValue stamp: 'WAL 5/31/2023 20:31:45'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test04WithdrawValueMustBePositive stamp: 'WAL 5/31/2023 20:31:45'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test05ReceptiveAccountKnowsRegisteredTransactions stamp: 'WAL 5/31/2023 20:31:45'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test06ReceptiveAccountDoNotKnowNotRegisteredTransactions stamp: 'WAL 5/31/2023 20:31:45'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test07AccountKnowsItsTransactions stamp: 'WAL 5/31/2023 20:31:45'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test08TransferIncreasesBalanceOfDestinationAccountAndDecreasesBalanceOfSourceAccountOnTransactionValue stamp: 'WAL 5/31/2023 20:31:45'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test09TransferDepositKnowsTransferWithdrawAndViceversa stamp: 'WAL 5/31/2023 20:31:45'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test10ReceptiveAccountCanHaveName stamp: 'WAL 5/31/2023 20:31:45'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test11TransferValueMustBeGreaterThanCero stamp: 'WAL 5/31/2023 20:31:45'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test12DepositValueMustBeGreaterThanCero stamp: 'WAL 5/31/2023 20:31:45'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test13WithdrawValueMustBeGreaterThanCero stamp: 'WAL 5/31/2023 20:31:45'!
+PASSED!
+
+!testRun: #ReportTest #test01AccountSummaryOnEmptyAccountShouldReturnOnlyBalanceLineWithZero stamp: 'WAL 5/31/2023 20:31:45'!
+PASSED!
+
+!testRun: #ReportTest #test02AccountSummaryOnAccountWithDepositShouldReturnDepositLines stamp: 'WAL 5/31/2023 20:31:45'!
+PASSED!
+
+!testRun: #ReportTest #test03AccountSummaryOnAccountWithWithdrawShouldReturnWithdrawLines stamp: 'WAL 5/31/2023 20:31:45'!
+PASSED!
+
+!testRun: #ReportTest #test04AccountSummaryOnAccountWithTransferShouldReturnTransferLines stamp: 'WAL 5/31/2023 20:31:45'!
+PASSED!
+
+!testRun: #ReportTest #test05AccountSummaryOnEmptyPortfolioShouldReturnOnlyBalanceLineWithZero stamp: 'WAL 5/31/2023 20:31:45'!
+PASSED!
+
+!testRun: #ReportTest #test06AccountSummaryOnPortfolioShouldReturnAccountTransactions stamp: 'WAL 5/31/2023 20:31:45'!
+PASSED!
+
+!testRun: #ReportTest #test07TransferNetOnEmptyAccountShouldReturnOnlyBalanceLineWithZero stamp: 'WAL 5/31/2023 20:31:45'!
+PASSED!
+
+!testRun: #ReportTest #test08TransferNetOnAccountWithTransferShouldReturnTransferLines stamp: 'WAL 5/31/2023 20:31:45'!
+PASSED!
+
+!testRun: #ReportTest #test09TransferNetOnAccountShouldNotBeAffectedByOrdinaryDepositsOrWithdraws stamp: 'WAL 5/31/2023 20:31:45'!
+PASSED!
+
+!testRun: #ReportTest #test10PortfolioStructureOnEmptyPortfolioShouldReturnPortfolioName stamp: 'WAL 5/31/2023 20:31:45'!
+PASSED!
+
+!testRun: #ReportTest #test11PortfolioStructureOnPortfolioShouldReturnPortfolioStructureReport stamp: 'WAL 5/31/2023 20:31:45'!
+PASSED!
+
+!testRun: #ReportTest #test12PortfolioStructureOnReceptiveAccountShouldRiseError stamp: 'WAL 5/31/2023 20:31:45'!
+PASSED!
+
+!testRun: #ReportTest #test13StructuredAccountSummaryOnPortfolioShouldReturnPortfolioStructuredAccountSummary stamp: 'WAL 5/31/2023 20:31:45'!
+PASSED!
+
+!testRun: #PortfolioTest #test01BalanceOfPortfolioWithoutAccountsIsZero stamp: 'WAL 5/31/2023 20:31:45'!
+PASSED!
+
+!testRun: #PortfolioTest #test02BalanceOfPortfolioWithAccountsIsSumOfAccountsBalance stamp: 'WAL 5/31/2023 20:31:45'!
+PASSED!
+
+!testRun: #PortfolioTest #test03BalanceOfPortfolioIsCalculatedRecursivelyOnPortfolios stamp: 'WAL 5/31/2023 20:31:45'!
+PASSED!
+
+!testRun: #PortfolioTest #test04PortfolioWithoutAccountsHasNoRegisteredTransaction stamp: 'WAL 5/31/2023 20:31:45'!
+PASSED!
+
+!testRun: #PortfolioTest #test05PortfolioHasRegisteredItsAccountsTransactions stamp: 'WAL 5/31/2023 20:31:45'!
+PASSED!
+
+!testRun: #PortfolioTest #test06PortfolioLooksForRegisteredTransactionsRecursively stamp: 'WAL 5/31/2023 20:31:45'!
+PASSED!
+
+!testRun: #PortfolioTest #test07PortfolioHasNoTransactionWhenHasNoAccounts stamp: 'WAL 5/31/2023 20:31:45'!
+PASSED!
+
+!testRun: #PortfolioTest #test08PortfolioTransactionsIncludesAllItsAccountsTransactions stamp: 'WAL 5/31/2023 20:31:45'!
+PASSED!
+
+!testRun: #PortfolioTest #test09PortfolioTransactionsAreCalculatedRecursively stamp: 'WAL 5/31/2023 20:31:45'!
+PASSED!
+
+!testRun: #PortfolioTest #test10PortfolioCanNotIncludeTheSameAccountMoreThanOnce stamp: 'WAL 5/31/2023 20:31:45'!
+PASSED!
+
+!testRun: #PortfolioTest #test11PortfolioCanNotIncludeAccountOfItsPortfolios stamp: 'WAL 5/31/2023 20:31:45'!
+PASSED!
+
+!testRun: #PortfolioTest #test12PortfolioCanNotIncludeItself stamp: 'WAL 5/31/2023 20:31:45'!
+PASSED!
+
+!testRun: #PortfolioTest #test13ComposedPortfolioCanNotHaveParentPortfolioAccount stamp: 'WAL 5/31/2023 20:31:45'!
+PASSED!
+
+!testRun: #PortfolioTest #test14ComposedPortfolioCanNotHaveAccountOfAnyRootParentRecursively stamp: 'WAL 5/31/2023 20:31:45'!
+PASSED!
+
+!testRun: #PortfolioTest #test15PortfolioCanNotIncludeAnyOfTheComposedAccountOfPortfolioToAdd stamp: 'WAL 5/31/2023 20:31:45'!
+PASSED!
+
+!testRun: #PortfolioTest #test16PortfolioCanHaveAName stamp: 'WAL 5/31/2023 20:31:45'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test01ReceptiveAccountHaveZeroAsBalanceWhenCreated stamp: 'WAL 5/31/2023 20:32:58'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test02DepositIncreasesBalanceOnTransactionValue stamp: 'WAL 5/31/2023 20:32:58'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test03WithdrawDecreasesBalanceOnTransactionValue stamp: 'WAL 5/31/2023 20:32:58'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test04WithdrawValueMustBePositive stamp: 'WAL 5/31/2023 20:32:58'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test05ReceptiveAccountKnowsRegisteredTransactions stamp: 'WAL 5/31/2023 20:32:58'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test06ReceptiveAccountDoNotKnowNotRegisteredTransactions stamp: 'WAL 5/31/2023 20:32:58'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test07AccountKnowsItsTransactions stamp: 'WAL 5/31/2023 20:32:58'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test08TransferIncreasesBalanceOfDestinationAccountAndDecreasesBalanceOfSourceAccountOnTransactionValue stamp: 'WAL 5/31/2023 20:32:58'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test09TransferDepositKnowsTransferWithdrawAndViceversa stamp: 'WAL 5/31/2023 20:32:58'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test10ReceptiveAccountCanHaveName stamp: 'WAL 5/31/2023 20:32:58'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test11TransferValueMustBeGreaterThanCero stamp: 'WAL 5/31/2023 20:32:58'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test12DepositValueMustBeGreaterThanCero stamp: 'WAL 5/31/2023 20:32:58'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test13WithdrawValueMustBeGreaterThanCero stamp: 'WAL 5/31/2023 20:32:58'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test01ReceptiveAccountHaveZeroAsBalanceWhenCreated stamp: 'WAL 5/31/2023 20:33:08'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test02DepositIncreasesBalanceOnTransactionValue stamp: 'WAL 5/31/2023 20:33:08'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test03WithdrawDecreasesBalanceOnTransactionValue stamp: 'WAL 5/31/2023 20:33:08'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test04WithdrawValueMustBePositive stamp: 'WAL 5/31/2023 20:33:08'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test05ReceptiveAccountKnowsRegisteredTransactions stamp: 'WAL 5/31/2023 20:33:08'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test06ReceptiveAccountDoNotKnowNotRegisteredTransactions stamp: 'WAL 5/31/2023 20:33:08'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test07AccountKnowsItsTransactions stamp: 'WAL 5/31/2023 20:33:08'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test08TransferIncreasesBalanceOfDestinationAccountAndDecreasesBalanceOfSourceAccountOnTransactionValue stamp: 'WAL 5/31/2023 20:33:08'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test09TransferDepositKnowsTransferWithdrawAndViceversa stamp: 'WAL 5/31/2023 20:33:08'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test10ReceptiveAccountCanHaveName stamp: 'WAL 5/31/2023 20:33:08'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test11TransferValueMustBeGreaterThanCero stamp: 'WAL 5/31/2023 20:33:08'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test12DepositValueMustBeGreaterThanCero stamp: 'WAL 5/31/2023 20:33:08'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test13WithdrawValueMustBeGreaterThanCero stamp: 'WAL 5/31/2023 20:33:08'!
+PASSED!
+!PortfolioStructure methodsFor: 'initialization' stamp: 'WAL 5/31/2023 20:51:35'!
+writeAccount: anAccount! !
+!PortfolioStructure methodsFor: 'write' stamp: 'WAL 5/31/2023 20:51:52'!
+writeDeposit: aValue! !
+
+!methodRemoval: PortfolioStructure #writeAccount: stamp: 'WAL 5/31/2023 20:51:58'!
+writeAccount: anAccount!
+!PortfolioStructure methodsFor: 'write' stamp: 'WAL 5/31/2023 20:52:25'!
+writeTransferDeposit: aValue! !
+!PortfolioStructure methodsFor: 'write' stamp: 'WAL 5/31/2023 20:52:50'!
+writeTransferWithdraw: aValue ! !
+!PortfolioStructure methodsFor: 'write' stamp: 'WAL 5/31/2023 20:53:13'!
+writeWithdraw: aValue ! !
+!StructuredReport methodsFor: 'write' stamp: 'WAL 5/31/2023 20:54:35'!
+writeDeposit: aValue
+
+	self subclassResponsibility ! !
+!StructuredReport methodsFor: 'write' stamp: 'WAL 5/31/2023 20:55:02'!
+writePortfolio: aPortfolio
+
+	self subclassResponsibility ! !
+!StructuredReport methodsFor: 'write' stamp: 'WAL 5/31/2023 20:55:19'!
+writeWithdraw: aValue 
+
+	self subclassResponsibility ! !
+!StructuredReport methodsFor: 'write' stamp: 'WAL 5/31/2023 20:55:32'!
+writeTransferWithdraw: aValue 
+
+	self subclassResponsibility ! !
+!StructuredReport methodsFor: 'write' stamp: 'WAL 5/31/2023 20:55:44'!
+writeTransferDeposit: aValue 
+
+	self subclassResponsibility ! !
+!StructuredReport methodsFor: 'write' stamp: 'WAL 5/31/2023 20:56:08'!
+writeReceptiveAccount: aReceptiveAccount
+
+	self subclassResponsibility ! !
+!Report methodsFor: 'write' stamp: 'WAL 5/31/2023 20:56:38'!
+writeDeposit: aValue
+
+	self subclassResponsibility ! !
+!Report methodsFor: 'write' stamp: 'WAL 5/31/2023 20:56:46'!
+writeWithdraw: aValue
+
+	self subclassResponsibility ! !
+!Report methodsFor: 'write' stamp: 'WAL 5/31/2023 20:57:03'!
+writeTransferWithdraw: aValue
+
+	self subclassResponsibility ! !
+!Report methodsFor: 'write' stamp: 'WAL 5/31/2023 20:57:08'!
+writeTransferDeposit: aValue
+
+	self subclassResponsibility ! !
+!Report methodsFor: 'write' stamp: 'WAL 5/31/2023 20:57:47'!
+writePortfolio: aPortfolio
+	
+	self subclassResponsibility ! !
+!Report methodsFor: 'write' stamp: 'WAL 5/31/2023 20:58:05'!
+writeReceptiveAccount: aReceptiveAccount
+
+	self subclassResponsibility ! !
+
+!testRun: #ReportTest #test01AccountSummaryOnEmptyAccountShouldReturnOnlyBalanceLineWithZero stamp: 'WAL 5/31/2023 21:05:45'!
+PASSED!
+
+!testRun: #ReportTest #test02AccountSummaryOnAccountWithDepositShouldReturnDepositLines stamp: 'WAL 5/31/2023 21:05:45'!
+PASSED!
+
+!testRun: #ReportTest #test03AccountSummaryOnAccountWithWithdrawShouldReturnWithdrawLines stamp: 'WAL 5/31/2023 21:05:45'!
+PASSED!
+
+!testRun: #ReportTest #test04AccountSummaryOnAccountWithTransferShouldReturnTransferLines stamp: 'WAL 5/31/2023 21:05:45'!
+PASSED!
+
+!testRun: #ReportTest #test05AccountSummaryOnEmptyPortfolioShouldReturnOnlyBalanceLineWithZero stamp: 'WAL 5/31/2023 21:05:45'!
+PASSED!
+
+!testRun: #ReportTest #test06AccountSummaryOnPortfolioShouldReturnAccountTransactions stamp: 'WAL 5/31/2023 21:05:45'!
+PASSED!
+
+!testRun: #ReportTest #test07TransferNetOnEmptyAccountShouldReturnOnlyBalanceLineWithZero stamp: 'WAL 5/31/2023 21:05:45'!
+PASSED!
+
+!testRun: #ReportTest #test08TransferNetOnAccountWithTransferShouldReturnTransferLines stamp: 'WAL 5/31/2023 21:05:45'!
+PASSED!
+
+!testRun: #ReportTest #test09TransferNetOnAccountShouldNotBeAffectedByOrdinaryDepositsOrWithdraws stamp: 'WAL 5/31/2023 21:05:45'!
+PASSED!
+
+!testRun: #ReportTest #test10PortfolioStructureOnEmptyPortfolioShouldReturnPortfolioName stamp: 'WAL 5/31/2023 21:05:45'!
+PASSED!
+
+!testRun: #ReportTest #test11PortfolioStructureOnPortfolioShouldReturnPortfolioStructureReport stamp: 'WAL 5/31/2023 21:05:45'!
+PASSED!
+
+!testRun: #ReportTest #test12PortfolioStructureOnReceptiveAccountShouldRiseError stamp: 'WAL 5/31/2023 21:05:45'!
+PASSED!
+
+!testRun: #ReportTest #test13StructuredAccountSummaryOnPortfolioShouldReturnPortfolioStructuredAccountSummary stamp: 'WAL 5/31/2023 21:05:45'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test01ReceptiveAccountHaveZeroAsBalanceWhenCreated stamp: 'WAL 5/31/2023 21:05:48'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test02DepositIncreasesBalanceOnTransactionValue stamp: 'WAL 5/31/2023 21:05:48'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test03WithdrawDecreasesBalanceOnTransactionValue stamp: 'WAL 5/31/2023 21:05:48'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test04WithdrawValueMustBePositive stamp: 'WAL 5/31/2023 21:05:48'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test05ReceptiveAccountKnowsRegisteredTransactions stamp: 'WAL 5/31/2023 21:05:48'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test06ReceptiveAccountDoNotKnowNotRegisteredTransactions stamp: 'WAL 5/31/2023 21:05:48'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test07AccountKnowsItsTransactions stamp: 'WAL 5/31/2023 21:05:48'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test08TransferIncreasesBalanceOfDestinationAccountAndDecreasesBalanceOfSourceAccountOnTransactionValue stamp: 'WAL 5/31/2023 21:05:48'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test09TransferDepositKnowsTransferWithdrawAndViceversa stamp: 'WAL 5/31/2023 21:05:48'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test10ReceptiveAccountCanHaveName stamp: 'WAL 5/31/2023 21:05:48'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test11TransferValueMustBeGreaterThanCero stamp: 'WAL 5/31/2023 21:05:48'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test12DepositValueMustBeGreaterThanCero stamp: 'WAL 5/31/2023 21:05:48'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test13WithdrawValueMustBeGreaterThanCero stamp: 'WAL 5/31/2023 21:05:48'!
+PASSED!
+
+!testRun: #ReportTest #test01AccountSummaryOnEmptyAccountShouldReturnOnlyBalanceLineWithZero stamp: 'WAL 5/31/2023 21:05:51'!
+PASSED!
+
+!testRun: #ReportTest #test02AccountSummaryOnAccountWithDepositShouldReturnDepositLines stamp: 'WAL 5/31/2023 21:05:51'!
+PASSED!
+
+!testRun: #ReportTest #test03AccountSummaryOnAccountWithWithdrawShouldReturnWithdrawLines stamp: 'WAL 5/31/2023 21:05:51'!
+PASSED!
+
+!testRun: #ReportTest #test04AccountSummaryOnAccountWithTransferShouldReturnTransferLines stamp: 'WAL 5/31/2023 21:05:51'!
+PASSED!
+
+!testRun: #ReportTest #test05AccountSummaryOnEmptyPortfolioShouldReturnOnlyBalanceLineWithZero stamp: 'WAL 5/31/2023 21:05:51'!
+PASSED!
+
+!testRun: #ReportTest #test06AccountSummaryOnPortfolioShouldReturnAccountTransactions stamp: 'WAL 5/31/2023 21:05:51'!
+PASSED!
+
+!testRun: #ReportTest #test07TransferNetOnEmptyAccountShouldReturnOnlyBalanceLineWithZero stamp: 'WAL 5/31/2023 21:05:51'!
+PASSED!
+
+!testRun: #ReportTest #test08TransferNetOnAccountWithTransferShouldReturnTransferLines stamp: 'WAL 5/31/2023 21:05:51'!
+PASSED!
+
+!testRun: #ReportTest #test09TransferNetOnAccountShouldNotBeAffectedByOrdinaryDepositsOrWithdraws stamp: 'WAL 5/31/2023 21:05:51'!
+PASSED!
+
+!testRun: #ReportTest #test10PortfolioStructureOnEmptyPortfolioShouldReturnPortfolioName stamp: 'WAL 5/31/2023 21:05:51'!
+PASSED!
+
+!testRun: #ReportTest #test11PortfolioStructureOnPortfolioShouldReturnPortfolioStructureReport stamp: 'WAL 5/31/2023 21:05:51'!
+PASSED!
+
+!testRun: #ReportTest #test12PortfolioStructureOnReceptiveAccountShouldRiseError stamp: 'WAL 5/31/2023 21:05:51'!
+PASSED!
+
+!testRun: #ReportTest #test13StructuredAccountSummaryOnPortfolioShouldReturnPortfolioStructuredAccountSummary stamp: 'WAL 5/31/2023 21:05:51'!
+PASSED!
+
+!testRun: #PortfolioTest #test01BalanceOfPortfolioWithoutAccountsIsZero stamp: 'WAL 5/31/2023 21:05:57'!
+PASSED!
+
+!testRun: #PortfolioTest #test02BalanceOfPortfolioWithAccountsIsSumOfAccountsBalance stamp: 'WAL 5/31/2023 21:05:57'!
+PASSED!
+
+!testRun: #PortfolioTest #test03BalanceOfPortfolioIsCalculatedRecursivelyOnPortfolios stamp: 'WAL 5/31/2023 21:05:57'!
+PASSED!
+
+!testRun: #PortfolioTest #test04PortfolioWithoutAccountsHasNoRegisteredTransaction stamp: 'WAL 5/31/2023 21:05:57'!
+PASSED!
+
+!testRun: #PortfolioTest #test05PortfolioHasRegisteredItsAccountsTransactions stamp: 'WAL 5/31/2023 21:05:57'!
+PASSED!
+
+!testRun: #PortfolioTest #test06PortfolioLooksForRegisteredTransactionsRecursively stamp: 'WAL 5/31/2023 21:05:57'!
+PASSED!
+
+!testRun: #PortfolioTest #test07PortfolioHasNoTransactionWhenHasNoAccounts stamp: 'WAL 5/31/2023 21:05:57'!
+PASSED!
+
+!testRun: #PortfolioTest #test08PortfolioTransactionsIncludesAllItsAccountsTransactions stamp: 'WAL 5/31/2023 21:05:57'!
+PASSED!
+
+!testRun: #PortfolioTest #test09PortfolioTransactionsAreCalculatedRecursively stamp: 'WAL 5/31/2023 21:05:57'!
+PASSED!
+
+!testRun: #PortfolioTest #test10PortfolioCanNotIncludeTheSameAccountMoreThanOnce stamp: 'WAL 5/31/2023 21:05:57'!
+PASSED!
+
+!testRun: #PortfolioTest #test11PortfolioCanNotIncludeAccountOfItsPortfolios stamp: 'WAL 5/31/2023 21:05:57'!
+PASSED!
+
+!testRun: #PortfolioTest #test12PortfolioCanNotIncludeItself stamp: 'WAL 5/31/2023 21:05:57'!
+PASSED!
+
+!testRun: #PortfolioTest #test13ComposedPortfolioCanNotHaveParentPortfolioAccount stamp: 'WAL 5/31/2023 21:05:57'!
+PASSED!
+
+!testRun: #PortfolioTest #test14ComposedPortfolioCanNotHaveAccountOfAnyRootParentRecursively stamp: 'WAL 5/31/2023 21:05:57'!
+PASSED!
+
+!testRun: #PortfolioTest #test15PortfolioCanNotIncludeAnyOfTheComposedAccountOfPortfolioToAdd stamp: 'WAL 5/31/2023 21:05:57'!
+PASSED!
+
+!testRun: #PortfolioTest #test16PortfolioCanHaveAName stamp: 'WAL 5/31/2023 21:05:57'!
+PASSED!
+
+TestCase subclass: #TransferTest
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+!classDefinition: #TransferTest category: 'Portfolio-Solucion' stamp: 'WAL 5/31/2023 21:13:56'!
+TestCase subclass: #TransferTest
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+!TransferTest methodsFor: 'no messages' stamp: 'WAL 5/31/2023 21:14:26'!
+test11TransferValueMustBeGreaterThanCero
+
+	| sourceAccount destinationAccount |
+	
+	sourceAccount := ReceptiveAccount  new.
+	destinationAccount := ReceptiveAccount  new.
+			
+	self 
+		should: [ Transfer register: 0 from: sourceAccount to: destinationAccount. ]
+		raise: Error
+		withExceptionDo: [ :anError |
+			self assert: anError messageText equals: Transfer transferValueMustBeGreaterThanCeroErrorDescription ].
+	
+	self 
+		should: [ Transfer register: -100 from: sourceAccount to: destinationAccount. ]
+		raise: Error
+		withExceptionDo: [ :anError |
+			self assert: anError messageText equals: Transfer transferValueMustBeGreaterThanCeroErrorDescription ]! !
+
+!methodRemoval: ReceptiveAccountTest #test11TransferValueMustBeGreaterThanCero stamp: 'WAL 5/31/2023 21:14:37'!
+test11TransferValueMustBeGreaterThanCero
+
+	| sourceAccount destinationAccount |
+	
+	sourceAccount := ReceptiveAccount  new.
+	destinationAccount := ReceptiveAccount  new.
+			
+	self 
+		should: [ Transfer register: 0 from: sourceAccount to: destinationAccount. ]
+		raise: Error
+		withExceptionDo: [ :anError |
+			self assert: anError messageText equals: Transfer transferValueMustBeGreaterThanCeroErrorDescription ].
+	
+	self 
+		should: [ Transfer register: -100 from: sourceAccount to: destinationAccount. ]
+		raise: Error
+		withExceptionDo: [ :anError |
+			self assert: anError messageText equals: Transfer transferValueMustBeGreaterThanCeroErrorDescription ]
+	!
+!TransferTest methodsFor: 'as yet unclassified' stamp: 'WAL 5/31/2023 21:14:51'!
+test09TransferDepositKnowsTransferWithdrawAndViceversa
+
+	| sourceAccount destinationAccount transfer transferDeposit transferWithdraw |
+	
+	sourceAccount := ReceptiveAccount  new.
+	destinationAccount := ReceptiveAccount  new.
+	
+	transfer := Transfer register: 100 from: sourceAccount to: destinationAccount.
+	
+	transferDeposit := transfer deposit.
+	transferWithdraw := transfer withdraw.
+		
+	self assert: transferDeposit equals: transferWithdraw deposit.
+	self assert: transferWithdraw equals: transferDeposit withdraw.! !
+
+!methodRemoval: ReceptiveAccountTest #test09TransferDepositKnowsTransferWithdrawAndViceversa stamp: 'WAL 5/31/2023 21:14:56'!
+test09TransferDepositKnowsTransferWithdrawAndViceversa
+
+	| sourceAccount destinationAccount transfer transferDeposit transferWithdraw |
+	
+	sourceAccount := ReceptiveAccount  new.
+	destinationAccount := ReceptiveAccount  new.
+	
+	transfer := Transfer register: 100 from: sourceAccount to: destinationAccount.
+	
+	transferDeposit := transfer deposit.
+	transferWithdraw := transfer withdraw.
+		
+	self assert: transferDeposit equals: transferWithdraw deposit.
+	self assert: transferWithdraw equals: transferDeposit withdraw.
+!
+!TransferTest methodsFor: 'as yet unclassified' stamp: 'WAL 5/31/2023 21:15:07'!
+test08TransferIncreasesBalanceOfDestinationAccountAndDecreasesBalanceOfSourceAccountOnTransactionValue 
+
+	| sourceAccount destinationAccount |
+	
+	sourceAccount := ReceptiveAccount  new.
+	destinationAccount := ReceptiveAccount  new.
+	
+	Transfer register: 100 from: sourceAccount to: destinationAccount.
+		
+	self assert: 100 equals: destinationAccount balance .
+	self assert: 100 * -1 equals: sourceAccount balance .
+! !
+
+!methodRemoval: ReceptiveAccountTest #test08TransferIncreasesBalanceOfDestinationAccountAndDecreasesBalanceOfSourceAccountOnTransactionValue stamp: 'WAL 5/31/2023 21:15:13'!
+test08TransferIncreasesBalanceOfDestinationAccountAndDecreasesBalanceOfSourceAccountOnTransactionValue 
+
+	| sourceAccount destinationAccount |
+	
+	sourceAccount := ReceptiveAccount  new.
+	destinationAccount := ReceptiveAccount  new.
+	
+	Transfer register: 100 from: sourceAccount to: destinationAccount.
+		
+	self assert: 100 equals: destinationAccount balance .
+	self assert: 100 * -1 equals: sourceAccount balance .
+!
+!ReceptiveAccountTest methodsFor: 'tests' stamp: 'WAL 5/31/2023 21:15:25'!
+test08ReceptiveAccountCanHaveName
+
+	| account |
+	
+	account := ReceptiveAccount named: 'Cuenta Mia'.
+
+	self assert: 'Cuenta Mia' equals: account name.
+! !
+
+!methodRemoval: ReceptiveAccountTest #test10ReceptiveAccountCanHaveName stamp: 'WAL 5/31/2023 21:15:25'!
+test10ReceptiveAccountCanHaveName
+
+	| account |
+	
+	account := ReceptiveAccount named: 'Cuenta Mia'.
+
+	self assert: 'Cuenta Mia' equals: account name.
+!
+!ReceptiveAccountTest methodsFor: 'tests' stamp: 'WAL 5/31/2023 21:15:32'!
+test09DepositValueMustBeGreaterThanCero
+
+	| account |
+	
+	account := ReceptiveAccount  new.
+			
+	self 
+		should: [ Deposit register: 0 on: account. ]
+		raise: Error
+		withExceptionDo: [ :anError |
+			self assert: anError messageText equals: AccountTransaction transactionValueMustBeGreaterThanCeroErrorDescription ].
+	
+	self 
+		should: [ Deposit register: -100 on: account. ]
+		raise: Error
+		withExceptionDo: [ :anError |
+			self assert: anError messageText equals: AccountTransaction transactionValueMustBeGreaterThanCeroErrorDescription ]
+	! !
+
+!methodRemoval: ReceptiveAccountTest #test12DepositValueMustBeGreaterThanCero stamp: 'WAL 5/31/2023 21:15:32'!
+test12DepositValueMustBeGreaterThanCero
+
+	| account |
+	
+	account := ReceptiveAccount  new.
+			
+	self 
+		should: [ Deposit register: 0 on: account. ]
+		raise: Error
+		withExceptionDo: [ :anError |
+			self assert: anError messageText equals: AccountTransaction transactionValueMustBeGreaterThanCeroErrorDescription ].
+	
+	self 
+		should: [ Deposit register: -100 on: account. ]
+		raise: Error
+		withExceptionDo: [ :anError |
+			self assert: anError messageText equals: AccountTransaction transactionValueMustBeGreaterThanCeroErrorDescription ]
+	!
+!ReceptiveAccountTest methodsFor: 'tests' stamp: 'WAL 5/31/2023 21:15:37'!
+test10WithdrawValueMustBeGreaterThanCero
+
+	| account |
+	
+	account := ReceptiveAccount  new.
+			
+	self 
+		should: [ Withdraw register: 0 on: account. ]
+		raise: Error
+		withExceptionDo: [ :anError |
+			self assert: anError messageText equals: AccountTransaction transactionValueMustBeGreaterThanCeroErrorDescription ].
+	
+	self 
+		should: [ Withdraw register: -100 on: account. ]
+		raise: Error
+		withExceptionDo: [ :anError |
+			self assert: anError messageText equals: AccountTransaction transactionValueMustBeGreaterThanCeroErrorDescription ]
+	! !
+
+!methodRemoval: ReceptiveAccountTest #test13WithdrawValueMustBeGreaterThanCero stamp: 'WAL 5/31/2023 21:15:37'!
+test13WithdrawValueMustBeGreaterThanCero
+
+	| account |
+	
+	account := ReceptiveAccount  new.
+			
+	self 
+		should: [ Withdraw register: 0 on: account. ]
+		raise: Error
+		withExceptionDo: [ :anError |
+			self assert: anError messageText equals: AccountTransaction transactionValueMustBeGreaterThanCeroErrorDescription ].
+	
+	self 
+		should: [ Withdraw register: -100 on: account. ]
+		raise: Error
+		withExceptionDo: [ :anError |
+			self assert: anError messageText equals: AccountTransaction transactionValueMustBeGreaterThanCeroErrorDescription ]
+	!
+!TransferTest methodsFor: 'as yet unclassified' stamp: 'WAL 5/31/2023 21:17:31'!
+test01TransferIncreasesBalanceOfDestinationAccountAndDecreasesBalanceOfSourceAccountOnTransactionValue 
+
+	| sourceAccount destinationAccount |
+	
+	sourceAccount := ReceptiveAccount  new.
+	destinationAccount := ReceptiveAccount  new.
+	
+	Transfer register: 100 from: sourceAccount to: destinationAccount.
+		
+	self assert: 100 equals: destinationAccount balance .
+	self assert: 100 * -1 equals: sourceAccount balance .
+! !
+
+!methodRemoval: TransferTest #test08TransferIncreasesBalanceOfDestinationAccountAndDecreasesBalanceOfSourceAccountOnTransactionValue stamp: 'WAL 5/31/2023 21:17:31'!
+test08TransferIncreasesBalanceOfDestinationAccountAndDecreasesBalanceOfSourceAccountOnTransactionValue 
+
+	| sourceAccount destinationAccount |
+	
+	sourceAccount := ReceptiveAccount  new.
+	destinationAccount := ReceptiveAccount  new.
+	
+	Transfer register: 100 from: sourceAccount to: destinationAccount.
+		
+	self assert: 100 equals: destinationAccount balance .
+	self assert: 100 * -1 equals: sourceAccount balance .
+!
+!TransferTest methodsFor: 'as yet unclassified' stamp: 'WAL 5/31/2023 21:17:37'!
+test02TransferDepositKnowsTransferWithdrawAndViceversa
+
+	| sourceAccount destinationAccount transfer transferDeposit transferWithdraw |
+	
+	sourceAccount := ReceptiveAccount  new.
+	destinationAccount := ReceptiveAccount  new.
+	
+	transfer := Transfer register: 100 from: sourceAccount to: destinationAccount.
+	
+	transferDeposit := transfer deposit.
+	transferWithdraw := transfer withdraw.
+		
+	self assert: transferDeposit equals: transferWithdraw deposit.
+	self assert: transferWithdraw equals: transferDeposit withdraw.! !
+
+!methodRemoval: TransferTest #test09TransferDepositKnowsTransferWithdrawAndViceversa stamp: 'WAL 5/31/2023 21:17:37'!
+test09TransferDepositKnowsTransferWithdrawAndViceversa
+
+	| sourceAccount destinationAccount transfer transferDeposit transferWithdraw |
+	
+	sourceAccount := ReceptiveAccount  new.
+	destinationAccount := ReceptiveAccount  new.
+	
+	transfer := Transfer register: 100 from: sourceAccount to: destinationAccount.
+	
+	transferDeposit := transfer deposit.
+	transferWithdraw := transfer withdraw.
+		
+	self assert: transferDeposit equals: transferWithdraw deposit.
+	self assert: transferWithdraw equals: transferDeposit withdraw.!
+!TransferTest methodsFor: 'as yet unclassified' stamp: 'WAL 5/31/2023 21:17:47'!
+test03TransferValueMustBeGreaterThanCero
+
+	| sourceAccount destinationAccount |
+	
+	sourceAccount := ReceptiveAccount  new.
+	destinationAccount := ReceptiveAccount  new.
+			
+	self 
+		should: [ Transfer register: 0 from: sourceAccount to: destinationAccount. ]
+		raise: Error
+		withExceptionDo: [ :anError |
+			self assert: anError messageText equals: Transfer transferValueMustBeGreaterThanCeroErrorDescription ].
+	
+	self 
+		should: [ Transfer register: -100 from: sourceAccount to: destinationAccount. ]
+		raise: Error
+		withExceptionDo: [ :anError |
+			self assert: anError messageText equals: Transfer transferValueMustBeGreaterThanCeroErrorDescription ]! !
+
+!methodRemoval: TransferTest #test11TransferValueMustBeGreaterThanCero stamp: 'WAL 5/31/2023 21:17:47'!
+test11TransferValueMustBeGreaterThanCero
+
+	| sourceAccount destinationAccount |
+	
+	sourceAccount := ReceptiveAccount  new.
+	destinationAccount := ReceptiveAccount  new.
+			
+	self 
+		should: [ Transfer register: 0 from: sourceAccount to: destinationAccount. ]
+		raise: Error
+		withExceptionDo: [ :anError |
+			self assert: anError messageText equals: Transfer transferValueMustBeGreaterThanCeroErrorDescription ].
+	
+	self 
+		should: [ Transfer register: -100 from: sourceAccount to: destinationAccount. ]
+		raise: Error
+		withExceptionDo: [ :anError |
+			self assert: anError messageText equals: Transfer transferValueMustBeGreaterThanCeroErrorDescription ]!
+!TransferTest methodsFor: 'as yet unclassified' stamp: 'WAL 5/31/2023 21:19:36'!
+test04TransferDestinationCanNotBeSameAsSource
+
+	| sourceAccount destinationAccount |
+	
+	sourceAccount := ReceptiveAccount  new.
+			
+	self 
+		should: [ Transfer register: 0 from: sourceAccount to: destinationAccount. ]
+		raise: Error
+		withExceptionDo: [ :anError |
+			self assert: anError messageText equals: Transfer transferValueMustBeGreaterThanCeroErrorDescription ].
+	
+	self 
+		should: [ Transfer register: -100 from: sourceAccount to: destinationAccount. ]
+		raise: Error
+		withExceptionDo: [ :anError |
+			self assert: anError messageText equals: Transfer transferValueMustBeGreaterThanCeroErrorDescription ]! !
+!TransferTest methodsFor: 'as yet unclassified' stamp: 'WAL 5/31/2023 21:19:58' prior: 50635429!
+test04TransferDestinationCanNotBeSameAsSource
+
+	| account destinationAccount |
+	
+	account := ReceptiveAccount  new.
+			
+	self 
+		should: [ Transfer register: 0 from: account to: destinationAccount. ]
+		raise: Error
+		withExceptionDo: [ :anError |
+			self assert: anError messageText equals: Transfer transferValueMustBeGreaterThanCeroErrorDescription ].
+	
+	self 
+		should: [ Transfer register: -100 from: account to: destinationAccount. ]
+		raise: Error
+		withExceptionDo: [ :anError |
+			self assert: anError messageText equals: Transfer transferValueMustBeGreaterThanCeroErrorDescription ]! !
+!TransferTest methodsFor: 'as yet unclassified' stamp: 'WAL 5/31/2023 21:20:37' prior: 50635452!
+test04TransferDestinationCanNotBeSameAsSource
+
+	| account |
+	
+	account := ReceptiveAccount  new.
+			
+	self 
+		should: [ Transfer register: 100 from: account to: account. ]
+		raise: Error
+		withExceptionDo: [ :anError |
+			self assert: anError messageText equals: Transfer transferDestinationCanNotBeSameAsSourceErrorDescription ].
+	
+	! !
+
+!testRun: #TransferTest #test04TransferDestinationCanNotBeSameAsSource stamp: 'WAL 5/31/2023 21:20:39'!
+FAILURE!
+!Transfer class methodsFor: 'error descriptions' stamp: 'WAL 5/31/2023 21:21:43'!
+transferDestinationCanNotBeSameAsSourceErrorDescription
+	
+	^'Transfer destination can not be same as source'! !
+
+!testRun: #TransferTest #test01TransferIncreasesBalanceOfDestinationAccountAndDecreasesBalanceOfSourceAccountOnTransactionValue stamp: 'WAL 5/31/2023 21:21:46'!
+PASSED!
+
+!testRun: #TransferTest #test02TransferDepositKnowsTransferWithdrawAndViceversa stamp: 'WAL 5/31/2023 21:21:46'!
+PASSED!
+
+!testRun: #TransferTest #test03TransferValueMustBeGreaterThanCero stamp: 'WAL 5/31/2023 21:21:46'!
+PASSED!
+
+!testRun: #TransferTest #test04TransferDestinationCanNotBeSameAsSource stamp: 'WAL 5/31/2023 21:21:46'!
+FAILURE!
+
+!testRun: #TransferTest #test04TransferDestinationCanNotBeSameAsSource stamp: 'WAL 5/31/2023 21:21:46'!
+FAILURE!
+!Transfer class methodsFor: 'instance creation' stamp: 'WAL 5/31/2023 21:22:33' prior: 50633402!
+register: aValue from: sourceAccount to: destinationAccount
+
+	| transfer deposit withdraw |
+
+	(aValue <= 0) ifTrue: [self error: self transferValueMustBeGreaterThanCeroErrorDescription].
+	
+	(sourceAccount = destinationAccount) ifTrue: [self error: self transferValueMustBeGreaterThanCeroErrorDescription].
+
+	transfer := self new.
+	
+	withdraw := TransferWithdraw transfer: transfer on: sourceAccount.
+	deposit := TransferDeposit transfer: transfer on: destinationAccount.
+	
+	transfer initializeFor: aValue from: withdraw to: deposit.
+	
+	^ transfer! !
+
+!testRun: #TransferTest #test01TransferIncreasesBalanceOfDestinationAccountAndDecreasesBalanceOfSourceAccountOnTransactionValue stamp: 'WAL 5/31/2023 21:22:35'!
+PASSED!
+
+!testRun: #TransferTest #test02TransferDepositKnowsTransferWithdrawAndViceversa stamp: 'WAL 5/31/2023 21:22:35'!
+PASSED!
+
+!testRun: #TransferTest #test03TransferValueMustBeGreaterThanCero stamp: 'WAL 5/31/2023 21:22:35'!
+PASSED!
+
+!testRun: #TransferTest #test04TransferDestinationCanNotBeSameAsSource stamp: 'WAL 5/31/2023 21:22:35'!
+FAILURE!
+
+!testRun: #TransferTest #test04TransferDestinationCanNotBeSameAsSource stamp: 'WAL 5/31/2023 21:22:35'!
+FAILURE!
+!Transfer class methodsFor: 'instance creation' stamp: 'WAL 5/31/2023 21:22:52' prior: 50635518!
+register: aValue from: sourceAccount to: destinationAccount
+
+	| transfer deposit withdraw |
+
+	(aValue <= 0) ifTrue: [self error: self transferValueMustBeGreaterThanCeroErrorDescription].
+	
+	(sourceAccount = destinationAccount) ifTrue: [self error: self transferDestinationCanNotBeSameAsSourceErrorDescription].
+
+	transfer := self new.
+	
+	withdraw := TransferWithdraw transfer: transfer on: sourceAccount.
+	deposit := TransferDeposit transfer: transfer on: destinationAccount.
+	
+	transfer initializeFor: aValue from: withdraw to: deposit.
+	
+	^ transfer! !
+
+!testRun: #TransferTest #test01TransferIncreasesBalanceOfDestinationAccountAndDecreasesBalanceOfSourceAccountOnTransactionValue stamp: 'WAL 5/31/2023 21:22:53'!
+PASSED!
+
+!testRun: #TransferTest #test02TransferDepositKnowsTransferWithdrawAndViceversa stamp: 'WAL 5/31/2023 21:22:53'!
+PASSED!
+
+!testRun: #TransferTest #test03TransferValueMustBeGreaterThanCero stamp: 'WAL 5/31/2023 21:22:53'!
+PASSED!
+
+!testRun: #TransferTest #test04TransferDestinationCanNotBeSameAsSource stamp: 'WAL 5/31/2023 21:22:53'!
+PASSED!
+
+!methodRemoval: Portfolio class #with: stamp: 'WAL 5/31/2023 21:32:32'!
+with: anAccount
+
+	^self new 
+		add: anAccount;
+		yourself!
+
+!methodRemoval: Portfolio class #with:with: stamp: 'WAL 5/31/2023 21:32:36'!
+with: anAccount with: anotherAccount
+
+	^self new 
+		add: anAccount;
+		add: anotherAccount;
+		yourself!
+
+!testRun: #ReceptiveAccountTest #test01ReceptiveAccountHaveZeroAsBalanceWhenCreated stamp: 'WAL 5/31/2023 21:32:42'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test02DepositIncreasesBalanceOnTransactionValue stamp: 'WAL 5/31/2023 21:32:42'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test03WithdrawDecreasesBalanceOnTransactionValue stamp: 'WAL 5/31/2023 21:32:42'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test04WithdrawValueMustBePositive stamp: 'WAL 5/31/2023 21:32:42'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test05ReceptiveAccountKnowsRegisteredTransactions stamp: 'WAL 5/31/2023 21:32:42'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test06ReceptiveAccountDoNotKnowNotRegisteredTransactions stamp: 'WAL 5/31/2023 21:32:42'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test07AccountKnowsItsTransactions stamp: 'WAL 5/31/2023 21:32:42'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test08ReceptiveAccountCanHaveName stamp: 'WAL 5/31/2023 21:32:42'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test09DepositValueMustBeGreaterThanCero stamp: 'WAL 5/31/2023 21:32:42'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test10WithdrawValueMustBeGreaterThanCero stamp: 'WAL 5/31/2023 21:32:42'!
+PASSED!
+
+!testRun: #PortfolioTest #test01BalanceOfPortfolioWithoutAccountsIsZero stamp: 'WAL 5/31/2023 21:32:45'!
+PASSED!
+
+!testRun: #PortfolioTest #test02BalanceOfPortfolioWithAccountsIsSumOfAccountsBalance stamp: 'WAL 5/31/2023 21:32:45'!
+ERROR!
+
+!testRun: #PortfolioTest #test03BalanceOfPortfolioIsCalculatedRecursivelyOnPortfolios stamp: 'WAL 5/31/2023 21:32:45'!
+ERROR!
+
+!testRun: #PortfolioTest #test04PortfolioWithoutAccountsHasNoRegisteredTransaction stamp: 'WAL 5/31/2023 21:32:45'!
+PASSED!
+
+!testRun: #PortfolioTest #test05PortfolioHasRegisteredItsAccountsTransactions stamp: 'WAL 5/31/2023 21:32:45'!
+ERROR!
+
+!testRun: #PortfolioTest #test06PortfolioLooksForRegisteredTransactionsRecursively stamp: 'WAL 5/31/2023 21:32:45'!
+ERROR!
+
+!testRun: #PortfolioTest #test07PortfolioHasNoTransactionWhenHasNoAccounts stamp: 'WAL 5/31/2023 21:32:45'!
+PASSED!
+
+!testRun: #PortfolioTest #test08PortfolioTransactionsIncludesAllItsAccountsTransactions stamp: 'WAL 5/31/2023 21:32:45'!
+ERROR!
+
+!testRun: #PortfolioTest #test09PortfolioTransactionsAreCalculatedRecursively stamp: 'WAL 5/31/2023 21:32:45'!
+ERROR!
+
+!testRun: #PortfolioTest #test10PortfolioCanNotIncludeTheSameAccountMoreThanOnce stamp: 'WAL 5/31/2023 21:32:45'!
+ERROR!
+
+!testRun: #PortfolioTest #test11PortfolioCanNotIncludeAccountOfItsPortfolios stamp: 'WAL 5/31/2023 21:32:45'!
+ERROR!
+
+!testRun: #PortfolioTest #test12PortfolioCanNotIncludeItself stamp: 'WAL 5/31/2023 21:32:45'!
+ERROR!
+
+!testRun: #PortfolioTest #test13ComposedPortfolioCanNotHaveParentPortfolioAccount stamp: 'WAL 5/31/2023 21:32:45'!
+ERROR!
+
+!testRun: #PortfolioTest #test14ComposedPortfolioCanNotHaveAccountOfAnyRootParentRecursively stamp: 'WAL 5/31/2023 21:32:45'!
+ERROR!
+
+!testRun: #PortfolioTest #test15PortfolioCanNotIncludeAnyOfTheComposedAccountOfPortfolioToAdd stamp: 'WAL 5/31/2023 21:32:45'!
+ERROR!
+
+!testRun: #PortfolioTest #test16PortfolioCanHaveAName stamp: 'WAL 5/31/2023 21:32:45'!
+PASSED!
+!PortfolioTest methodsFor: 'tests' stamp: 'WAL 5/31/2023 21:33:29' prior: 50620908!
+test02BalanceOfPortfolioWithAccountsIsSumOfAccountsBalance
+
+	| account portfolio |
+	
+	account := ReceptiveAccount named: 'Mi cuenta'.
+	Deposit register: 100 on: account.
+	portfolio := Portfolio named: 'Mi portfolio' with: account.
+	
+	self assert: account balance equals: portfolio balance! !
+!PortfolioTest methodsFor: 'tests' stamp: 'WAL 5/31/2023 21:35:40' prior: 50620919!
+test03BalanceOfPortfolioIsCalculatedRecursivelyOnPortfolios
+
+	| simplePortfolioAccount simplePortfolio composedPortfolioAccount composedPortofolio |
+	
+	simplePortfolioAccount := ReceptiveAccount named: 'Mi cuenta 1'.
+	Deposit register: 100 on: simplePortfolioAccount.
+	simplePortfolio := Portfolio named: 'Mi portfolio simple' with: simplePortfolioAccount.
+	
+	composedPortfolioAccount := ReceptiveAccount named: 'Mi cuenta 2'.
+	Withdraw register: 50 on: composedPortfolioAccount.
+	composedPortofolio := Portfolio named: 'Mi portfolio compuesto' with: simplePortfolio with: composedPortfolioAccount.
+	
+	self assert: (composedPortfolioAccount balance + simplePortfolio balance) equals: composedPortofolio balance! !
+
+!testRun: #PortfolioTest #test03BalanceOfPortfolioIsCalculatedRecursivelyOnPortfolios stamp: 'WAL 5/31/2023 21:35:40'!
+PASSED!
+
+!testRun: #PortfolioTest #test02BalanceOfPortfolioWithAccountsIsSumOfAccountsBalance stamp: 'WAL 5/31/2023 21:35:42'!
+PASSED!
+!PortfolioTest methodsFor: 'tests' stamp: 'WAL 5/31/2023 21:36:01' prior: 50620947!
+test05PortfolioHasRegisteredItsAccountsTransactions
+
+	| account portfolio deposit |
+	
+	account := ReceptiveAccount named: 'Mi cuenta'.
+	deposit := Deposit register: 100 on: account.
+	portfolio := Portfolio with: account.
+	
+	self assert: (portfolio hasRegistered: deposit)! !
+!PortfolioTest methodsFor: 'tests' stamp: 'WAL 5/31/2023 21:36:08' prior: 50635747!
+test05PortfolioHasRegisteredItsAccountsTransactions
+
+	| account portfolio deposit |
+	
+	account := ReceptiveAccount named: 'Mi cuenta'.
+	deposit := Deposit register: 100 on: account.
+	portfolio := Portfolio named: 'Mi portfolio' with: account.
+	
+	self assert: (portfolio hasRegistered: deposit)! !
+
+!testRun: #PortfolioTest #test05PortfolioHasRegisteredItsAccountsTransactions stamp: 'WAL 5/31/2023 21:36:09'!
+PASSED!
+!PortfolioTest methodsFor: 'tests' stamp: 'WAL 5/31/2023 21:37:09' prior: 50620958!
+test06PortfolioLooksForRegisteredTransactionsRecursively
+
+	| simplePortfolioAccount simplePortfolio composedPortfolioAccount composedPortfolio composedPortfolioAccountWithdraw simplePortfolioAccountDeposit |
+	
+	simplePortfolioAccount := ReceptiveAccount named: 'Mi cuenta 1'.
+	simplePortfolioAccountDeposit := Deposit register: 100 on: simplePortfolioAccount.
+	simplePortfolio := Portfolio named: 'Mi portfolio hijo' with: simplePortfolioAccount.
+	
+	composedPortfolioAccount := ReceptiveAccount named: 'Mi cuenta 2'.
+	composedPortfolioAccountWithdraw := Withdraw register: 50 on: composedPortfolioAccount.
+	composedPortfolio := Portfolio named: 'Mi portfolio padre' with: simplePortfolio with: composedPortfolioAccount.
+	
+	self assert: (composedPortfolio hasRegistered: simplePortfolioAccountDeposit).
+	self assert: (composedPortfolio hasRegistered: composedPortfolioAccountWithdraw)! !
+
+!testRun: #PortfolioTest #test06PortfolioLooksForRegisteredTransactionsRecursively stamp: 'WAL 5/31/2023 21:37:14'!
+PASSED!
+!PortfolioTest methodsFor: 'tests' stamp: 'WAL 5/31/2023 21:37:52' prior: 50620992!
+test08PortfolioTransactionsIncludesAllItsAccountsTransactions
+
+	| account portfolio accountDeposit anotherAccount portfolioTransactions anotherAccountWithdraw |
+	
+	account := ReceptiveAccount named: 'Mi cuenta'.
+	accountDeposit := Deposit register: 100 on: account.
+	anotherAccount := ReceptiveAccount named: 'Mi otra cuenta'.
+	anotherAccountWithdraw := Withdraw register: 100 on: account.
+	portfolio := Portfolio named: 'Mi portfolio' with: account.
+	
+	portfolioTransactions := portfolio transactions.
+	
+	self assert: 2 equals: portfolioTransactions size.
+	self assert: (portfolioTransactions includes: accountDeposit).
+	self assert: (portfolioTransactions includes: anotherAccountWithdraw)! !
+!PortfolioTest methodsFor: 'tests' stamp: 'WAL 5/31/2023 21:38:07' prior: 50635810!
+test08PortfolioTransactionsIncludesAllItsAccountsTransactions
+
+	| account portfolio accountDeposit anotherAccount portfolioTransactions anotherAccountWithdraw |
+	
+	account := ReceptiveAccount named: 'Mi cuenta'.
+	accountDeposit := Deposit register: 100 on: account.
+	anotherAccount := ReceptiveAccount named: 'Mi otra cuenta'.
+	anotherAccountWithdraw := Withdraw register: 100 on: account.
+	portfolio := Portfolio named: 'Mi portfolio' with: account. 
+	
+	portfolioTransactions := portfolio transactions.
+	
+	self assert: 2 equals: portfolioTransactions size.
+	self assert: (portfolioTransactions includes: accountDeposit).
+	self assert: (portfolioTransactions includes: anotherAccountWithdraw)! !
+!PortfolioTest methodsFor: 'tests' stamp: 'WAL 5/31/2023 21:38:17' prior: 50635835!
+test08PortfolioTransactionsIncludesAllItsAccountsTransactions
+
+	| account portfolio accountDeposit anotherAccount portfolioTransactions anotherAccountWithdraw |
+	
+	account := ReceptiveAccount named: 'Mi cuenta'.
+	accountDeposit := Deposit register: 100 on: account.
+	anotherAccount := ReceptiveAccount named: 'Mi otra cuenta'.
+	anotherAccountWithdraw := Withdraw register: 100 on: account.
+	portfolio := Portfolio named: 'Mi portfolio' with: account.  
+	
+	portfolioTransactions := portfolio transactions.
+	
+	self assert: 2 equals: portfolioTransactions size.
+	self assert: (portfolioTransactions includes: accountDeposit).
+	self assert: (portfolioTransactions includes: anotherAccountWithdraw)! !
+!PortfolioTest methodsFor: 'tests' stamp: 'WAL 5/31/2023 21:38:29' prior: 50635860!
+test08PortfolioTransactionsIncludesAllItsAccountsTransactions
+
+	| account portfolio accountDeposit anotherAccount portfolioTransactions anotherAccountWithdraw |
+	
+	account := ReceptiveAccount named: 'Mi cuenta'.
+	accountDeposit := Deposit register: 100 on: account.
+	anotherAccount := ReceptiveAccount named: 'Mi otra cuenta'.
+	anotherAccountWithdraw := Withdraw register: 100 on: account.
+	portfolio := Portfolio named: 'Mi portfolio' with: account.   
+	
+	portfolioTransactions := portfolio transactions.
+	
+	self assert: 2 equals: portfolioTransactions size.
+	self assert: (portfolioTransactions includes: accountDeposit).
+	self assert: (portfolioTransactions includes: anotherAccountWithdraw)! !
+
+	| account portfolio accountDeposit anotherAccount portfolioTransactions anotherAccountWithdraw |!
+!PortfolioTest methodsFor: 'tests' stamp: 'WAL 5/31/2023 21:38:54'!
+test08PortfolioTransactionsAtions
+
+	| account portfolio accountDeposit anotherAccount portfolioTransactions anotherAccountWithdraw |
+	
+	account := ReceptiveAccount named: 'Mi cuenta'.
+	accountDeposit := Deposit register: 100 on: account.
+	anotherAccount := ReceptiveAccount named: 'Mi otra cuenta'.
+	anotherAccountWithdraw := Withdraw register: 100 on: account.
+	portfolio := Portfolio named: 'Mi portfolio' with: account.   
+	
+	portfolioTransactions := portfolio transactions.
+	
+	self assert: 2 equals: portfolioTransactions size.
+	self assert: (portfolioTransactions includes: accountDeposit).
+	self assert: (portfolioTransactions includes: anotherAccountWithdraw)! !
+
+!testRun: #PortfolioTest #test08PortfolioTransactionsIncludesAllItsAccountsTransactions stamp: 'WAL 5/31/2023 21:39:04'!
+PASSED!
+!PortfolioTest methodsFor: 'tests' stamp: 'WAL 5/31/2023 21:39:50' prior: 50621015!
+test09PortfolioTransactionsAreCalculatedRecursively
+
+	| simplePortfolioAccount simplePortfolio composedPortfolioAccount composedPortfolio composedPortfolioAccountWithdraw simplePortfolioAccountDeposit composedPortfolioTransactions |
+	
+	simplePortfolioAccount := ReceptiveAccount named: 'Mi cuenta 1'.
+	simplePortfolioAccountDeposit := Deposit register: 100 on: simplePortfolioAccount.
+	simplePortfolio := Portfolio named: 'Mi portfolio hijo' with: simplePortfolioAccount.
+	
+	composedPortfolioAccount := ReceptiveAccount named: 'Mi cuenta 2'.
+	composedPortfolioAccountWithdraw := Withdraw register: 50 on: composedPortfolioAccount.
+	composedPortfolio := Portfolio named: 'Mi portfolio padre' with: simplePortfolio with: composedPortfolioAccount.
+	
+	composedPortfolioTransactions := composedPortfolio transactions.
+	self assert: 2 equals: composedPortfolioTransactions size.
+	self assert: (composedPortfolioTransactions includes: simplePortfolioAccountDeposit).
+	self assert: (composedPortfolioTransactions includes: composedPortfolioAccountWithdraw)! !
+
+!testRun: #PortfolioTest #test09PortfolioTransactionsAreCalculatedRecursively stamp: 'WAL 5/31/2023 21:39:50'!
+PASSED!
+!PortfolioTest methodsFor: 'tests' stamp: 'WAL 5/31/2023 21:40:07' prior: 50621048!
+test10PortfolioCanNotIncludeTheSameAccountMoreThanOnce
+
+	| account portfolio |
+	
+	account := ReceptiveAccount named: 'Mi cuenta'.
+	portfolio := Portfolio named: 'Mi portfolio' with: account.
+	
+	self 
+		should: [ portfolio add: account ]
+		raise: Error - MessageNotUnderstood 
+		withExceptionDo: [ :anError |
+			self assert: Portfolio canNotAddAccountErrorMessage equals: anError messageText.
+			self assert: 1 equals: portfolio accountsSize.
+			self assert: (portfolio accountsIncludes: account) ]! !
+
+!testRun: #PortfolioTest #test10PortfolioCanNotIncludeTheSameAccountMoreThanOnce stamp: 'WAL 5/31/2023 21:40:08'!
+PASSED!
+!PortfolioTest methodsFor: 'tests' stamp: 'WAL 5/31/2023 21:40:34' prior: 50621065!
+test11PortfolioCanNotIncludeAccountOfItsPortfolios
+
+	| account simplePortfolio composedPortfolio |
+	
+	account := ReceptiveAccount named: 'Mi cuenta'..
+	simplePortfolio := Portfolio named: 'Mi portfolio hijo' with: account.
+	composedPortfolio := Portfolio named: 'Mi portfolio padre' with: simplePortfolio.
+	
+	self 
+		should: [ composedPortfolio add: account ]
+		raise: Error - MessageNotUnderstood 
+		withExceptionDo: [ :anError |
+			self assert: Portfolio canNotAddAccountErrorMessage equals: anError messageText.
+			self assert: 1 equals: composedPortfolio accountsSize.
+			self assert: (composedPortfolio accountsIncludes: simplePortfolio) ]! !
+
+!testRun: #PortfolioTest #test11PortfolioCanNotIncludeAccountOfItsPortfolios stamp: 'WAL 5/31/2023 21:40:35'!
+PASSED!
+
+!testRun: #PortfolioTest #test01BalanceOfPortfolioWithoutAccountsIsZero stamp: 'WAL 5/31/2023 21:40:35'!
+PASSED!
+
+!testRun: #PortfolioTest #test02BalanceOfPortfolioWithAccountsIsSumOfAccountsBalance stamp: 'WAL 5/31/2023 21:40:35'!
+PASSED!
+
+!testRun: #PortfolioTest #test03BalanceOfPortfolioIsCalculatedRecursivelyOnPortfolios stamp: 'WAL 5/31/2023 21:40:35'!
+PASSED!
+
+!testRun: #PortfolioTest #test04PortfolioWithoutAccountsHasNoRegisteredTransaction stamp: 'WAL 5/31/2023 21:40:35'!
+PASSED!
+
+!testRun: #PortfolioTest #test05PortfolioHasRegisteredItsAccountsTransactions stamp: 'WAL 5/31/2023 21:40:35'!
+PASSED!
+
+!testRun: #PortfolioTest #test06PortfolioLooksForRegisteredTransactionsRecursively stamp: 'WAL 5/31/2023 21:40:35'!
+PASSED!
+
+!testRun: #PortfolioTest #test07PortfolioHasNoTransactionWhenHasNoAccounts stamp: 'WAL 5/31/2023 21:40:35'!
+PASSED!
+
+!testRun: #PortfolioTest #test08PortfolioTransactionsAtions stamp: 'WAL 5/31/2023 21:40:35'!
+PASSED!
+
+!testRun: #PortfolioTest #test08PortfolioTransactionsIncludesAllItsAccountsTransactions stamp: 'WAL 5/31/2023 21:40:35'!
+PASSED!
+
+!testRun: #PortfolioTest #test09PortfolioTransactionsAreCalculatedRecursively stamp: 'WAL 5/31/2023 21:40:35'!
+PASSED!
+
+!testRun: #PortfolioTest #test10PortfolioCanNotIncludeTheSameAccountMoreThanOnce stamp: 'WAL 5/31/2023 21:40:35'!
+PASSED!
+
+!testRun: #PortfolioTest #test11PortfolioCanNotIncludeAccountOfItsPortfolios stamp: 'WAL 5/31/2023 21:40:35'!
+PASSED!
+
+!testRun: #PortfolioTest #test12PortfolioCanNotIncludeItself stamp: 'WAL 5/31/2023 21:40:35'!
+ERROR!
+
+!testRun: #PortfolioTest #test13ComposedPortfolioCanNotHaveParentPortfolioAccount stamp: 'WAL 5/31/2023 21:40:35'!
+ERROR!
+
+!testRun: #PortfolioTest #test14ComposedPortfolioCanNotHaveAccountOfAnyRootParentRecursively stamp: 'WAL 5/31/2023 21:40:35'!
+ERROR!
+
+!testRun: #PortfolioTest #test15PortfolioCanNotIncludeAnyOfTheComposedAccountOfPortfolioToAdd stamp: 'WAL 5/31/2023 21:40:35'!
+ERROR!
+
+!testRun: #PortfolioTest #test16PortfolioCanHaveAName stamp: 'WAL 5/31/2023 21:40:35'!
+PASSED!
+
+!testRun: #PortfolioTest #test11PortfolioCanNotIncludeAccountOfItsPortfolios stamp: 'WAL 5/31/2023 21:40:39'!
+PASSED!
+!PortfolioTest methodsFor: 'tests' stamp: 'WAL 5/31/2023 21:41:01' prior: 50621086!
+test12PortfolioCanNotIncludeItself
+
+	| account simplePortfolio |
+	
+	account := ReceptiveAccount named: 'Mi cuenta'.
+	simplePortfolio := Portfolio named: 'Mi portfolio' with: account.
+	
+	self 
+		should: [ simplePortfolio add: simplePortfolio ]
+		raise: Error - MessageNotUnderstood 
+		withExceptionDo: [ :anError |
+			self assert: Portfolio canNotAddAccountErrorMessage equals: anError messageText.
+			self assert: 1 equals: simplePortfolio accountsSize.
+			self assert: (simplePortfolio accountsIncludes: account) ]! !
+
+!testRun: #PortfolioTest #test12PortfolioCanNotIncludeItself stamp: 'WAL 5/31/2023 21:41:04'!
+PASSED!
+!PortfolioTest methodsFor: 'tests' stamp: 'WAL 5/31/2023 21:41:16' prior: 50621104!
+test13ComposedPortfolioCanNotHaveParentPortfolioAccount
+
+	| account simplePortfolio composedPortfolio |
+	
+	account := ReceptiveAccount named: 'Mi cuenta'.
+	simplePortfolio := Portfolio new.
+	composedPortfolio := Portfolio with: simplePortfolio.
+	composedPortfolio add: account.
+	
+	self 
+		should: [ simplePortfolio add: account ]
+		raise: Error - MessageNotUnderstood 
+		withExceptionDo: [ :anError |
+			self assert: Portfolio canNotAddAccountErrorMessage equals: anError messageText.
+			self assert: simplePortfolio accountsIsEmpty ]! !
+!PortfolioTest methodsFor: 'tests' stamp: 'WAL 5/31/2023 21:41:32' prior: 50636122!
+test13ComposedPortfolioCanNotHaveParentPortfolioAccount
+
+	| account simplePortfolio composedPortfolio |
+	
+	account := ReceptiveAccount named: 'Mi cuenta'.
+	simplePortfolio := Portfolio named: 'Mi portfolio hijo'.
+	composedPortfolio := Portfolio named: 'Mi portfolio padre' with: simplePortfolio.
+	composedPortfolio add: account.
+	
+	self 
+		should: [ simplePortfolio add: account ]
+		raise: Error - MessageNotUnderstood 
+		withExceptionDo: [ :anError |
+			self assert: Portfolio canNotAddAccountErrorMessage equals: anError messageText.
+			self assert: simplePortfolio accountsIsEmpty ]! !
+
+!testRun: #PortfolioTest #test13ComposedPortfolioCanNotHaveParentPortfolioAccount stamp: 'WAL 5/31/2023 21:41:33'!
+PASSED!
+!PortfolioTest methodsFor: 'tests' stamp: 'WAL 5/31/2023 21:43:19' prior: 50621123!
+test14ComposedPortfolioCanNotHaveAccountOfAnyRootParentRecursively
+
+	| account leftParentPortfolio leftRootParentPortfolio portfolio rightParentPortfolio rightRootParentPortfolio |
+	
+	account := ReceptiveAccount  named: 'Mi cuenta'.
+	portfolio := Portfolio named: 'Mi portfolio'.
+	leftParentPortfolio := Portfolio named: 'Mi portfolio padre izquierdo' with: portfolio .
+	leftRootParentPortfolio := Portfolio named: 'Mi portfolio padre raíz izquierdo' with: leftParentPortfolio.
+	leftRootParentPortfolio add: account.
+	
+	rightParentPortfolio := Portfolio named: 'Mi portfolio padre derecho' with: portfolio .
+	rightRootParentPortfolio := Portfolio named: 'Mi portfolio padre raíz derecho' with: rightParentPortfolio.
+	rightRootParentPortfolio add: account.
+
+	self 
+		should: [ portfolio add: account ]
+		raise: Error - MessageNotUnderstood 
+		withExceptionDo: [ :anError |
+			self assert: Portfolio canNotAddAccountErrorMessage equals: anError messageText.
+			self assert: portfolio accountsIsEmpty ]! !
+
+!testRun: #PortfolioTest #test14ComposedPortfolioCanNotHaveAccountOfAnyRootParentRecursively stamp: 'WAL 5/31/2023 21:43:20'!
+PASSED!
+!PortfolioTest methodsFor: 'tests' stamp: 'WAL 5/31/2023 21:44:34' prior: 50621151!
+test15PortfolioCanNotIncludeAnyOfTheComposedAccountOfPortfolioToAdd
+
+	| portfolioToAdd portfolioToModify rootPortfolio sharedAccount |
+	
+	sharedAccount := ReceptiveAccount named: 'Cuenta compartido'.
+	portfolioToModify := Portfolio named: 'Portfolio a modificar'.
+	rootPortfolio := Portfolio named: 'Portfolio raíz' with: sharedAccount with: portfolioToModify.
+	portfolioToAdd := Portfolio named: 'Portfolio para agregar' with: sharedAccount.
+	
+	self 
+		should: [ portfolioToModify add: portfolioToAdd ]
+		raise: Error - MessageNotUnderstood 
+		withExceptionDo: [ :anError | 
+			self assert: Portfolio canNotAddAccountErrorMessage equals: anError messageText.
+			self assert: portfolioToModify accountsIsEmpty ]! !
+
+!testRun: #PortfolioTest #test15PortfolioCanNotIncludeAnyOfTheComposedAccountOfPortfolioToAdd stamp: 'WAL 5/31/2023 21:44:37'!
+PASSED!
+
+!testRun: #PortfolioTest #test01BalanceOfPortfolioWithoutAccountsIsZero stamp: 'WAL 5/31/2023 21:44:42'!
+PASSED!
+
+!testRun: #PortfolioTest #test02BalanceOfPortfolioWithAccountsIsSumOfAccountsBalance stamp: 'WAL 5/31/2023 21:44:42'!
+PASSED!
+
+!testRun: #PortfolioTest #test03BalanceOfPortfolioIsCalculatedRecursivelyOnPortfolios stamp: 'WAL 5/31/2023 21:44:42'!
+PASSED!
+
+!testRun: #PortfolioTest #test04PortfolioWithoutAccountsHasNoRegisteredTransaction stamp: 'WAL 5/31/2023 21:44:42'!
+PASSED!
+
+!testRun: #PortfolioTest #test05PortfolioHasRegisteredItsAccountsTransactions stamp: 'WAL 5/31/2023 21:44:42'!
+PASSED!
+
+!testRun: #PortfolioTest #test06PortfolioLooksForRegisteredTransactionsRecursively stamp: 'WAL 5/31/2023 21:44:42'!
+PASSED!
+
+!testRun: #PortfolioTest #test07PortfolioHasNoTransactionWhenHasNoAccounts stamp: 'WAL 5/31/2023 21:44:42'!
+PASSED!
+
+!testRun: #PortfolioTest #test08PortfolioTransactionsAtions stamp: 'WAL 5/31/2023 21:44:42'!
+PASSED!
+
+!testRun: #PortfolioTest #test08PortfolioTransactionsIncludesAllItsAccountsTransactions stamp: 'WAL 5/31/2023 21:44:42'!
+PASSED!
+
+!testRun: #PortfolioTest #test09PortfolioTransactionsAreCalculatedRecursively stamp: 'WAL 5/31/2023 21:44:42'!
+PASSED!
+
+!testRun: #PortfolioTest #test10PortfolioCanNotIncludeTheSameAccountMoreThanOnce stamp: 'WAL 5/31/2023 21:44:42'!
+PASSED!
+
+!testRun: #PortfolioTest #test11PortfolioCanNotIncludeAccountOfItsPortfolios stamp: 'WAL 5/31/2023 21:44:42'!
+PASSED!
+
+!testRun: #PortfolioTest #test12PortfolioCanNotIncludeItself stamp: 'WAL 5/31/2023 21:44:42'!
+PASSED!
+
+!testRun: #PortfolioTest #test13ComposedPortfolioCanNotHaveParentPortfolioAccount stamp: 'WAL 5/31/2023 21:44:42'!
+PASSED!
+
+!testRun: #PortfolioTest #test14ComposedPortfolioCanNotHaveAccountOfAnyRootParentRecursively stamp: 'WAL 5/31/2023 21:44:42'!
+PASSED!
+
+!testRun: #PortfolioTest #test15PortfolioCanNotIncludeAnyOfTheComposedAccountOfPortfolioToAdd stamp: 'WAL 5/31/2023 21:44:42'!
+PASSED!
+
+!testRun: #PortfolioTest #test16PortfolioCanHaveAName stamp: 'WAL 5/31/2023 21:44:42'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test01ReceptiveAccountHaveZeroAsBalanceWhenCreated stamp: 'WAL 5/31/2023 21:44:44'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test02DepositIncreasesBalanceOnTransactionValue stamp: 'WAL 5/31/2023 21:44:44'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test03WithdrawDecreasesBalanceOnTransactionValue stamp: 'WAL 5/31/2023 21:44:44'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test04WithdrawValueMustBePositive stamp: 'WAL 5/31/2023 21:44:44'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test05ReceptiveAccountKnowsRegisteredTransactions stamp: 'WAL 5/31/2023 21:44:44'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test06ReceptiveAccountDoNotKnowNotRegisteredTransactions stamp: 'WAL 5/31/2023 21:44:44'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test07AccountKnowsItsTransactions stamp: 'WAL 5/31/2023 21:44:44'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test08ReceptiveAccountCanHaveName stamp: 'WAL 5/31/2023 21:44:44'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test09DepositValueMustBeGreaterThanCero stamp: 'WAL 5/31/2023 21:44:44'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test10WithdrawValueMustBeGreaterThanCero stamp: 'WAL 5/31/2023 21:44:44'!
+PASSED!
+!ReceptiveAccountTest methodsFor: 'tests' stamp: 'WAL 5/31/2023 21:45:26' prior: 50621185!
+test01ReceptiveAccountHaveZeroAsBalanceWhenCreated 
+
+	| account |
+	
+	account := ReceptiveAccount named: 'cuenta'.
+
+	self assert: 0 equals: account balance .
+! !
+!ReceptiveAccountTest methodsFor: 'tests' stamp: 'WAL 5/31/2023 21:45:29' prior: 50636337!
+test01ReceptiveAccountHaveZeroAsBalanceWhenCreated 
+
+	| account |
+	
+	account := ReceptiveAccount named: 'Mi cuenta'.
+
+	self assert: 0 equals: account balance .
+! !
+!ReceptiveAccountTest methodsFor: 'tests' stamp: 'WAL 5/31/2023 21:45:41' prior: 50621192!
+test02DepositIncreasesBalanceOnTransactionValue 
+
+	| account |
+	
+	account := ReceptiveAccount named: 'Mi cuenta'.
+	Deposit register: 100 on: account.
+		
+	self assert: 100 equals: account balance .
+! !
+!ReceptiveAccountTest methodsFor: 'tests' stamp: 'WAL 5/31/2023 21:45:46' prior: 50621201!
+test03WithdrawDecreasesBalanceOnTransactionValue 
+
+	| account |
+	
+	account := ReceptiveAccount named: 'Mi cuenta'.
+	Deposit register: 100 on: account.
+	Withdraw register: 50 on: account.
+		
+	self assert: 50 equals: account balance .
+! !
+!ReceptiveAccountTest methodsFor: 'tests' stamp: 'WAL 5/31/2023 21:45:50' prior: 50621211!
+test04WithdrawValueMustBePositive 
+
+	| account withdrawValue |
+	
+	account := ReceptiveAccount  named: 'Mi cuenta'.
+	withdrawValue := 50.
+	
+	self assert: withdrawValue equals: (Withdraw register: withdrawValue on: account) value
+! !
+!ReceptiveAccountTest methodsFor: 'tests' stamp: 'WAL 5/31/2023 21:45:53' prior: 50636374!
+test04WithdrawValueMustBePositive 
+
+	| account withdrawValue |
+	
+	account := ReceptiveAccount named: 'Mi cuenta'.
+	withdrawValue := 50.
+	
+	self assert: withdrawValue equals: (Withdraw register: withdrawValue on: account) value
+! !
+!ReceptiveAccountTest methodsFor: 'tests' stamp: 'WAL 5/31/2023 21:45:57' prior: 50621221!
+test05ReceptiveAccountKnowsRegisteredTransactions 
+
+	| account deposit withdraw |
+	
+	account := ReceptiveAccount named: 'Mi cuenta'.
+	deposit := Deposit register: 100 on: account.
+	withdraw := Withdraw register: 50 on: account.
+		
+	self assert: (account hasRegistered: deposit).
+	self assert: (account hasRegistered: withdraw).
+! !
+!ReceptiveAccountTest methodsFor: 'tests' stamp: 'WAL 5/31/2023 21:46:01' prior: 50621234!
+test06ReceptiveAccountDoNotKnowNotRegisteredTransactions
+
+	| account deposit withdraw |
+	
+	account := ReceptiveAccount named: 'Mi cuenta'.
+	deposit :=  Deposit for: 100.
+	withdraw := Withdraw for: 50.
+		
+	self deny: (account hasRegistered: deposit).
+	self deny: (account hasRegistered:withdraw).
+! !
+!ReceptiveAccountTest methodsFor: 'tests' stamp: 'WAL 5/31/2023 21:46:04' prior: 50621246!
+test07AccountKnowsItsTransactions 
+
+	| account1 deposit1 |
+	
+	account1 := ReceptiveAccount named: 'Mi cuenta'.
+	
+	deposit1 := Deposit register: 100 on: account1.
+		
+	self assert: 1 equals: account1 transactions size .
+	self assert: (account1 transactions includes: deposit1).
+! !
+!ReceptiveAccountTest methodsFor: 'tests' stamp: 'WAL 5/31/2023 21:46:14' prior: 50635228!
+test09DepositValueMustBeGreaterThanCero
+
+	| account |
+	
+	account := ReceptiveAccount named: 'Mi cuenta'.
+			
+	self 
+		should: [ Deposit register: 0 on: account. ]
+		raise: Error
+		withExceptionDo: [ :anError |
+			self assert: anError messageText equals: AccountTransaction transactionValueMustBeGreaterThanCeroErrorDescription ].
+	
+	self 
+		should: [ Deposit register: -100 on: account. ]
+		raise: Error
+		withExceptionDo: [ :anError |
+			self assert: anError messageText equals: AccountTransaction transactionValueMustBeGreaterThanCeroErrorDescription ]
+	! !
+!ReceptiveAccountTest methodsFor: 'tests' stamp: 'WAL 5/31/2023 21:46:18' prior: 50635268!
+test10WithdrawValueMustBeGreaterThanCero
+
+	| account |
+	
+	account := ReceptiveAccount named: 'Mi cuenta'.
+			
+	self 
+		should: [ Withdraw register: 0 on: account. ]
+		raise: Error
+		withExceptionDo: [ :anError |
+			self assert: anError messageText equals: AccountTransaction transactionValueMustBeGreaterThanCeroErrorDescription ].
+	
+	self 
+		should: [ Withdraw register: -100 on: account. ]
+		raise: Error
+		withExceptionDo: [ :anError |
+			self assert: anError messageText equals: AccountTransaction transactionValueMustBeGreaterThanCeroErrorDescription ]
+	! !
+!PortfolioTest methodsFor: 'tests' stamp: 'WAL 5/31/2023 21:46:41' prior: 50620902!
+test01BalanceOfPortfolioWithoutAccountsIsZero
+
+	self assert: 0 equals: (Portfolio named: 'Mi portfolio') balance! !
+!PortfolioTest methodsFor: 'tests' stamp: 'WAL 5/31/2023 21:47:13' prior: 50620941!
+test04PortfolioWithoutAccountsHasNoRegisteredTransaction
+
+	self deny: ((Portfolio named: 'Mi portfolio') hasRegistered: (Deposit for: 100))! !
+!PortfolioTest methodsFor: 'tests' stamp: 'WAL 5/31/2023 21:47:32' prior: 50620986!
+test07PortfolioHasNoTransactionWhenHasNoAccounts
+
+	self assert: (Portfolio named: 'Mi portfolio') transactions isEmpty! !
+!ReportTest methodsFor: 'test' stamp: 'WAL 5/31/2023 21:49:02' prior: 50629411!
+test02AccountSummaryOnAccountWithDepositShouldReturnDepositLines
+
+	| account report |
+	
+	account := ReceptiveAccount named: 'Mi cuenta'.
+
+	Deposit register: 100 on: account.
+	Deposit register: 150 on: account.
+	
+	report := AccountSummary on: account.
+	
+	self assert: report sameAs: {
+		self textDepositoPor: 100 .
+		self textDepositoPor: 150 .
+		self textBalanceIgual: 250 }
+! !
+!ReportTest methodsFor: 'test' stamp: 'WAL 5/31/2023 21:49:22' prior: 50629493!
+test03AccountSummaryOnAccountWithWithdrawShouldReturnWithdrawLines
+
+	| account report |
+	
+	account := ReceptiveAccount named: 'Mi cuenta'.
+
+	Withdraw register: 100 on: account.
+	Withdraw register: 150 on: account.
+	
+	report := AccountSummary on: account.
+	
+	self assert: report sameAs: {
+		self textExtraccionPor: 100. 
+		self textExtraccionPor: 150.
+		self textBalanceIgual: (-250) }
+! !
+!ReportTest methodsFor: 'test' stamp: 'WAL 5/31/2023 21:49:43' prior: 50631454!
+test04AccountSummaryOnAccountWithTransferShouldReturnTransferLines
+
+	| sourceAccount destinationAccount sourceAccountReport destinationAccountReport |
+	
+	sourceAccount := ReceptiveAccount named: 'Mi cuenta 1'.
+	destinationAccount := ReceptiveAccount named: 'Mi cuenta 2'.
+
+	Transfer register: 100 from: sourceAccount to: destinationAccount.
+		
+	sourceAccountReport := AccountSummary on: sourceAccount.
+	destinationAccountReport := AccountSummary on: destinationAccount.
+	
+	self assert: sourceAccountReport sameAs: {
+		self textSalidaPorTransferenciaDe: 100.
+		self textBalanceIgual: (-100) }.
+
+	self assert: destinationAccountReport sameAs: {
+		self textEntradaPorTransferenciaDe: 100.
+		self textBalanceIgual: 100 }.
+! !
+!ReportTest methodsFor: 'test' stamp: 'WAL 5/31/2023 21:50:02' prior: 50629298!
+test05AccountSummaryOnEmptyPortfolioShouldReturnOnlyBalanceLineWithZero
+
+	| portfolio report |
+	
+	portfolio := Portfolio named: 'Mi portfolio'.
+
+	report := AccountSummary on: portfolio.
+	
+	self assert: report sameAs: { self textBalanceIgual: 0 }.! !
+!ReportTest methodsFor: 'test' stamp: 'WAL 5/31/2023 21:50:43' prior: 50629663!
+test06AccountSummaryOnPortfolioShouldReturnAccountTransactions
+
+	| portfolio account1 account2 report |
+	
+	account1 := ReceptiveAccount named: 'Mi cuenta 1'.
+	account2 := ReceptiveAccount named: 'Mi cuenta 2'.
+
+	Deposit register: 100 on: account1.
+	Withdraw register: 70 on: account1.
+	Transfer register: 60 from: account1 to: account2.
+	
+	portfolio := Portfolio named: 'Mi portfolio'.
+	portfolio add: account1.
+
+	report := AccountSummary on: portfolio.
+	
+	self assert: report sameAs: {
+		self textDepositoPor: 100.
+		self textExtraccionPor: 70.
+		self textSalidaPorTransferenciaDe: 60.
+		self textBalanceIgual: ( -30 ) }
+! !
+!ReportTest methodsFor: 'test' stamp: 'WAL 5/31/2023 21:51:02' prior: 50629545!
+test07TransferNetOnEmptyAccountShouldReturnOnlyBalanceLineWithZero
+
+	| account report |
+	
+	account := ReceptiveAccount named: 'Mi cuenta 1'.
+
+	report := TransferNet on: account.
+	
+	self assert: report sameAs: { self textNetoDeTransferenciasIgual: 0 }! !
+!ReportTest methodsFor: 'test' stamp: 'WAL 5/31/2023 21:51:12' prior: 50629518!
+test08TransferNetOnAccountWithTransferShouldReturnTransferLines
+
+	| account1 account2 account1Report account2Report portfolio portfolioReport |
+	
+	account1 := ReceptiveAccount named: 'Mi cuenta 1'.
+	account2 := ReceptiveAccount named: 'Mi cuenta 2'.
+
+	Transfer register: 100 from: account1 to: account2.
+	Transfer register: 70 from: account2 to: account1.
+	
+	portfolio := Portfolio with: account1.
+	
+	account1Report := TransferNet on: account1.
+	account2Report := TransferNet on: account2.	
+	portfolioReport := TransferNet on: portfolio.
+	
+	self assert: portfolioReport sameAs: { self textNetoDeTransferenciasIgual: -30 }.
+	self assert: account1Report sameAs: { self textNetoDeTransferenciasIgual: -30 }.
+	self assert: account2Report sameAs: { self textNetoDeTransferenciasIgual: 30 }
+
+		
+! !
+
+!testRun: #ReportTest #test08TransferNetOnAccountWithTransferShouldReturnTransferLines stamp: 'WAL 5/31/2023 21:51:20'!
+ERROR!
+!ReportTest methodsFor: 'test' stamp: 'WAL 5/31/2023 21:51:40' prior: 50636600!
+test08TransferNetOnAccountWithTransferShouldReturnTransferLines
+
+	| account1 account2 account1Report account2Report portfolio portfolioReport |
+	
+	account1 := ReceptiveAccount named: 'Mi cuenta 1'.
+	account2 := ReceptiveAccount named: 'Mi cuenta 2'.
+
+	Transfer register: 100 from: account1 to: account2.
+	Transfer register: 70 from: account2 to: account1.
+	
+	portfolio := Portfolio named: 'Mi portfolio' with: account1.
+	
+	account1Report := TransferNet on: account1.
+	account2Report := TransferNet on: account2.	
+	portfolioReport := TransferNet on: portfolio.
+	
+	self assert: portfolioReport sameAs: { self textNetoDeTransferenciasIgual: -30 }.
+	self assert: account1Report sameAs: { self textNetoDeTransferenciasIgual: -30 }.
+	self assert: account2Report sameAs: { self textNetoDeTransferenciasIgual: 30 }
+
+		
+! !
+!ReportTest methodsFor: 'test' stamp: 'WAL 5/31/2023 21:52:05' prior: 50629556!
+test09TransferNetOnAccountShouldNotBeAffectedByOrdinaryDepositsOrWithdraws
+
+	| account report |
+	
+	account := ReceptiveAccount named: 'Mi cuenta'.
+
+	Deposit register: 100 on: account.
+	Withdraw register: 30 on: account.
+		
+	report := TransferNet on: account.
+	
+	self assert: report sameAs: { self textNetoDeTransferenciasIgual: 0 }! !
+
+----SNAPSHOT----(31 May 2023 21:52:43) CuisUniversity-5706.image priorSource: 9645060!

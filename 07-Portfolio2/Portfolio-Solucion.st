@@ -5,84 +5,84 @@ TestCase subclass: #PortfolioTest
 	poolDictionaries: ''
 	category: 'Portfolio-Solucion'!
 
-!PortfolioTest methodsFor: 'tests' stamp: 'HAW 5/25/2019 11:16:26'!
+!PortfolioTest methodsFor: 'tests' stamp: 'WAL 5/31/2023 21:46:41'!
 test01BalanceOfPortfolioWithoutAccountsIsZero
 
-	self assert: 0 equals: Portfolio new balance! !
+	self assert: 0 equals: (Portfolio named: 'Mi portfolio') balance! !
 
-!PortfolioTest methodsFor: 'tests' stamp: 'NR 5/27/2021 17:36:04'!
+!PortfolioTest methodsFor: 'tests' stamp: 'WAL 5/31/2023 21:33:29'!
 test02BalanceOfPortfolioWithAccountsIsSumOfAccountsBalance
 
 	| account portfolio |
 	
-	account := ReceptiveAccount new.
+	account := ReceptiveAccount named: 'Mi cuenta'.
 	Deposit register: 100 on: account.
-	portfolio := Portfolio with: account.
+	portfolio := Portfolio named: 'Mi portfolio' with: account.
 	
 	self assert: account balance equals: portfolio balance! !
 
-!PortfolioTest methodsFor: 'tests' stamp: 'HAW 5/25/2019 11:23:25'!
+!PortfolioTest methodsFor: 'tests' stamp: 'WAL 5/31/2023 21:35:40'!
 test03BalanceOfPortfolioIsCalculatedRecursivelyOnPortfolios
 
 	| simplePortfolioAccount simplePortfolio composedPortfolioAccount composedPortofolio |
 	
-	simplePortfolioAccount := ReceptiveAccount new.
+	simplePortfolioAccount := ReceptiveAccount named: 'Mi cuenta 1'.
 	Deposit register: 100 on: simplePortfolioAccount.
-	simplePortfolio := Portfolio with: simplePortfolioAccount.
+	simplePortfolio := Portfolio named: 'Mi portfolio simple' with: simplePortfolioAccount.
 	
-	composedPortfolioAccount := ReceptiveAccount new.
+	composedPortfolioAccount := ReceptiveAccount named: 'Mi cuenta 2'.
 	Withdraw register: 50 on: composedPortfolioAccount.
-	composedPortofolio := Portfolio with: simplePortfolio with: composedPortfolioAccount.
+	composedPortofolio := Portfolio named: 'Mi portfolio compuesto' with: simplePortfolio with: composedPortfolioAccount.
 	
 	self assert: (composedPortfolioAccount balance + simplePortfolio balance) equals: composedPortofolio balance! !
 
-!PortfolioTest methodsFor: 'tests' stamp: 'HAW 5/25/2019 11:43:15'!
+!PortfolioTest methodsFor: 'tests' stamp: 'WAL 5/31/2023 21:47:13'!
 test04PortfolioWithoutAccountsHasNoRegisteredTransaction
 
-	self deny: (Portfolio new hasRegistered: (Deposit for: 100))! !
+	self deny: ((Portfolio named: 'Mi portfolio') hasRegistered: (Deposit for: 100))! !
 
-!PortfolioTest methodsFor: 'tests' stamp: 'HAW 5/25/2019 11:43:11'!
+!PortfolioTest methodsFor: 'tests' stamp: 'WAL 5/31/2023 21:36:08'!
 test05PortfolioHasRegisteredItsAccountsTransactions
 
 	| account portfolio deposit |
 	
-	account := ReceptiveAccount new.
+	account := ReceptiveAccount named: 'Mi cuenta'.
 	deposit := Deposit register: 100 on: account.
-	portfolio := Portfolio with: account.
+	portfolio := Portfolio named: 'Mi portfolio' with: account.
 	
 	self assert: (portfolio hasRegistered: deposit)! !
 
-!PortfolioTest methodsFor: 'tests' stamp: 'HAW 5/25/2019 11:58:06'!
+!PortfolioTest methodsFor: 'tests' stamp: 'WAL 5/31/2023 21:37:09'!
 test06PortfolioLooksForRegisteredTransactionsRecursively
 
 	| simplePortfolioAccount simplePortfolio composedPortfolioAccount composedPortfolio composedPortfolioAccountWithdraw simplePortfolioAccountDeposit |
 	
-	simplePortfolioAccount := ReceptiveAccount new.
+	simplePortfolioAccount := ReceptiveAccount named: 'Mi cuenta 1'.
 	simplePortfolioAccountDeposit := Deposit register: 100 on: simplePortfolioAccount.
-	simplePortfolio := Portfolio with: simplePortfolioAccount.
+	simplePortfolio := Portfolio named: 'Mi portfolio hijo' with: simplePortfolioAccount.
 	
-	composedPortfolioAccount := ReceptiveAccount new.
+	composedPortfolioAccount := ReceptiveAccount named: 'Mi cuenta 2'.
 	composedPortfolioAccountWithdraw := Withdraw register: 50 on: composedPortfolioAccount.
-	composedPortfolio := Portfolio with: simplePortfolio with: composedPortfolioAccount.
+	composedPortfolio := Portfolio named: 'Mi portfolio padre' with: simplePortfolio with: composedPortfolioAccount.
 	
 	self assert: (composedPortfolio hasRegistered: simplePortfolioAccountDeposit).
 	self assert: (composedPortfolio hasRegistered: composedPortfolioAccountWithdraw)! !
 
-!PortfolioTest methodsFor: 'tests' stamp: 'HAW 5/25/2019 11:58:10'!
+!PortfolioTest methodsFor: 'tests' stamp: 'WAL 5/31/2023 21:47:32'!
 test07PortfolioHasNoTransactionWhenHasNoAccounts
 
-	self assert: Portfolio new transactions isEmpty! !
+	self assert: (Portfolio named: 'Mi portfolio') transactions isEmpty! !
 
-!PortfolioTest methodsFor: 'tests' stamp: 'NR 6/22/2020 07:31:19'!
-test08PortfolioTransactionsIncludesAllItsAccountsTransactions
+!PortfolioTest methodsFor: 'tests' stamp: 'WAL 5/31/2023 21:38:54'!
+test08PortfolioTransactionsAtions
 
 	| account portfolio accountDeposit anotherAccount portfolioTransactions anotherAccountWithdraw |
 	
-	account := ReceptiveAccount new.
+	account := ReceptiveAccount named: 'Mi cuenta'.
 	accountDeposit := Deposit register: 100 on: account.
-	anotherAccount := ReceptiveAccount new.
+	anotherAccount := ReceptiveAccount named: 'Mi otra cuenta'.
 	anotherAccountWithdraw := Withdraw register: 100 on: account.
-	portfolio := Portfolio with: account.
+	portfolio := Portfolio named: 'Mi portfolio' with: account.   
 	
 	portfolioTransactions := portfolio transactions.
 	
@@ -90,31 +90,48 @@ test08PortfolioTransactionsIncludesAllItsAccountsTransactions
 	self assert: (portfolioTransactions includes: accountDeposit).
 	self assert: (portfolioTransactions includes: anotherAccountWithdraw)! !
 
-!PortfolioTest methodsFor: 'tests' stamp: 'HAW 5/25/2019 11:58:20'!
+!PortfolioTest methodsFor: 'tests' stamp: 'WAL 5/31/2023 21:38:29'!
+test08PortfolioTransactionsIncludesAllItsAccountsTransactions
+
+	| account portfolio accountDeposit anotherAccount portfolioTransactions anotherAccountWithdraw |
+	
+	account := ReceptiveAccount named: 'Mi cuenta'.
+	accountDeposit := Deposit register: 100 on: account.
+	anotherAccount := ReceptiveAccount named: 'Mi otra cuenta'.
+	anotherAccountWithdraw := Withdraw register: 100 on: account.
+	portfolio := Portfolio named: 'Mi portfolio' with: account.   
+	
+	portfolioTransactions := portfolio transactions.
+	
+	self assert: 2 equals: portfolioTransactions size.
+	self assert: (portfolioTransactions includes: accountDeposit).
+	self assert: (portfolioTransactions includes: anotherAccountWithdraw)! !
+
+!PortfolioTest methodsFor: 'tests' stamp: 'WAL 5/31/2023 21:39:50'!
 test09PortfolioTransactionsAreCalculatedRecursively
 
 	| simplePortfolioAccount simplePortfolio composedPortfolioAccount composedPortfolio composedPortfolioAccountWithdraw simplePortfolioAccountDeposit composedPortfolioTransactions |
 	
-	simplePortfolioAccount := ReceptiveAccount new.
+	simplePortfolioAccount := ReceptiveAccount named: 'Mi cuenta 1'.
 	simplePortfolioAccountDeposit := Deposit register: 100 on: simplePortfolioAccount.
-	simplePortfolio := Portfolio with: simplePortfolioAccount.
+	simplePortfolio := Portfolio named: 'Mi portfolio hijo' with: simplePortfolioAccount.
 	
-	composedPortfolioAccount := ReceptiveAccount new.
+	composedPortfolioAccount := ReceptiveAccount named: 'Mi cuenta 2'.
 	composedPortfolioAccountWithdraw := Withdraw register: 50 on: composedPortfolioAccount.
-	composedPortfolio := Portfolio with: simplePortfolio with: composedPortfolioAccount.
+	composedPortfolio := Portfolio named: 'Mi portfolio padre' with: simplePortfolio with: composedPortfolioAccount.
 	
 	composedPortfolioTransactions := composedPortfolio transactions.
 	self assert: 2 equals: composedPortfolioTransactions size.
 	self assert: (composedPortfolioTransactions includes: simplePortfolioAccountDeposit).
 	self assert: (composedPortfolioTransactions includes: composedPortfolioAccountWithdraw)! !
 
-!PortfolioTest methodsFor: 'tests' stamp: 'HAW 5/25/2019 11:58:24'!
+!PortfolioTest methodsFor: 'tests' stamp: 'WAL 5/31/2023 21:40:07'!
 test10PortfolioCanNotIncludeTheSameAccountMoreThanOnce
 
 	| account portfolio |
 	
-	account := ReceptiveAccount new.
-	portfolio := Portfolio with: account.
+	account := ReceptiveAccount named: 'Mi cuenta'.
+	portfolio := Portfolio named: 'Mi portfolio' with: account.
 	
 	self 
 		should: [ portfolio add: account ]
@@ -124,14 +141,14 @@ test10PortfolioCanNotIncludeTheSameAccountMoreThanOnce
 			self assert: 1 equals: portfolio accountsSize.
 			self assert: (portfolio accountsIncludes: account) ]! !
 
-!PortfolioTest methodsFor: 'tests' stamp: 'HAW 5/25/2019 11:58:28'!
+!PortfolioTest methodsFor: 'tests' stamp: 'WAL 5/31/2023 21:40:34'!
 test11PortfolioCanNotIncludeAccountOfItsPortfolios
 
 	| account simplePortfolio composedPortfolio |
 	
-	account := ReceptiveAccount new.
-	simplePortfolio := Portfolio with: account.
-	composedPortfolio := Portfolio with: simplePortfolio.
+	account := ReceptiveAccount named: 'Mi cuenta'..
+	simplePortfolio := Portfolio named: 'Mi portfolio hijo' with: account.
+	composedPortfolio := Portfolio named: 'Mi portfolio padre' with: simplePortfolio.
 	
 	self 
 		should: [ composedPortfolio add: account ]
@@ -141,13 +158,13 @@ test11PortfolioCanNotIncludeAccountOfItsPortfolios
 			self assert: 1 equals: composedPortfolio accountsSize.
 			self assert: (composedPortfolio accountsIncludes: simplePortfolio) ]! !
 
-!PortfolioTest methodsFor: 'tests' stamp: 'HAW 5/25/2019 11:58:32'!
+!PortfolioTest methodsFor: 'tests' stamp: 'WAL 5/31/2023 21:41:01'!
 test12PortfolioCanNotIncludeItself
 
 	| account simplePortfolio |
 	
-	account := ReceptiveAccount new.
-	simplePortfolio := Portfolio with: account.
+	account := ReceptiveAccount named: 'Mi cuenta'.
+	simplePortfolio := Portfolio named: 'Mi portfolio' with: account.
 	
 	self 
 		should: [ simplePortfolio add: simplePortfolio ]
@@ -157,14 +174,14 @@ test12PortfolioCanNotIncludeItself
 			self assert: 1 equals: simplePortfolio accountsSize.
 			self assert: (simplePortfolio accountsIncludes: account) ]! !
 
-!PortfolioTest methodsFor: 'tests' stamp: 'HAW 5/25/2019 12:01:51'!
+!PortfolioTest methodsFor: 'tests' stamp: 'WAL 5/31/2023 21:41:32'!
 test13ComposedPortfolioCanNotHaveParentPortfolioAccount
 
 	| account simplePortfolio composedPortfolio |
 	
-	account := ReceptiveAccount new.
-	simplePortfolio := Portfolio new.
-	composedPortfolio := Portfolio with: simplePortfolio.
+	account := ReceptiveAccount named: 'Mi cuenta'.
+	simplePortfolio := Portfolio named: 'Mi portfolio hijo'.
+	composedPortfolio := Portfolio named: 'Mi portfolio padre' with: simplePortfolio.
 	composedPortfolio add: account.
 	
 	self 
@@ -174,19 +191,19 @@ test13ComposedPortfolioCanNotHaveParentPortfolioAccount
 			self assert: Portfolio canNotAddAccountErrorMessage equals: anError messageText.
 			self assert: simplePortfolio accountsIsEmpty ]! !
 
-!PortfolioTest methodsFor: 'tests' stamp: 'HAW 5/25/2019 12:12:16'!
+!PortfolioTest methodsFor: 'tests' stamp: 'WAL 5/31/2023 21:43:19'!
 test14ComposedPortfolioCanNotHaveAccountOfAnyRootParentRecursively
 
 	| account leftParentPortfolio leftRootParentPortfolio portfolio rightParentPortfolio rightRootParentPortfolio |
 	
-	account := ReceptiveAccount new.
-	portfolio := Portfolio new.
-	leftParentPortfolio := Portfolio with: portfolio .
-	leftRootParentPortfolio := Portfolio with: leftParentPortfolio.
+	account := ReceptiveAccount  named: 'Mi cuenta'.
+	portfolio := Portfolio named: 'Mi portfolio'.
+	leftParentPortfolio := Portfolio named: 'Mi portfolio padre izquierdo' with: portfolio .
+	leftRootParentPortfolio := Portfolio named: 'Mi portfolio padre raíz izquierdo' with: leftParentPortfolio.
 	leftRootParentPortfolio add: account.
 	
-	rightParentPortfolio := Portfolio with: portfolio .
-	rightRootParentPortfolio := Portfolio with: rightParentPortfolio.
+	rightParentPortfolio := Portfolio named: 'Mi portfolio padre derecho' with: portfolio .
+	rightRootParentPortfolio := Portfolio named: 'Mi portfolio padre raíz derecho' with: rightParentPortfolio.
 	rightRootParentPortfolio add: account.
 
 	self 
@@ -196,15 +213,15 @@ test14ComposedPortfolioCanNotHaveAccountOfAnyRootParentRecursively
 			self assert: Portfolio canNotAddAccountErrorMessage equals: anError messageText.
 			self assert: portfolio accountsIsEmpty ]! !
 
-!PortfolioTest methodsFor: 'tests' stamp: 'HAW 5/29/2019 16:31:18'!
+!PortfolioTest methodsFor: 'tests' stamp: 'WAL 5/31/2023 21:44:34'!
 test15PortfolioCanNotIncludeAnyOfTheComposedAccountOfPortfolioToAdd
 
 	| portfolioToAdd portfolioToModify rootPortfolio sharedAccount |
 	
-	sharedAccount := ReceptiveAccount new.
-	portfolioToModify := Portfolio new.
-	rootPortfolio := Portfolio with: sharedAccount with: portfolioToModify.
-	portfolioToAdd := Portfolio with: sharedAccount.
+	sharedAccount := ReceptiveAccount named: 'Cuenta compartido'.
+	portfolioToModify := Portfolio named: 'Portfolio a modificar'.
+	rootPortfolio := Portfolio named: 'Portfolio raíz' with: sharedAccount with: portfolioToModify.
+	portfolioToAdd := Portfolio named: 'Portfolio para agregar' with: sharedAccount.
 	
 	self 
 		should: [ portfolioToModify add: portfolioToAdd ]
@@ -230,56 +247,56 @@ TestCase subclass: #ReceptiveAccountTest
 	poolDictionaries: ''
 	category: 'Portfolio-Solucion'!
 
-!ReceptiveAccountTest methodsFor: 'tests' stamp: 'HAW 5/23/2019 15:19:48'!
+!ReceptiveAccountTest methodsFor: 'tests' stamp: 'WAL 5/31/2023 21:45:29'!
 test01ReceptiveAccountHaveZeroAsBalanceWhenCreated 
 
 	| account |
 	
-	account := ReceptiveAccount new.
+	account := ReceptiveAccount named: 'Mi cuenta'.
 
 	self assert: 0 equals: account balance .
 ! !
 
-!ReceptiveAccountTest methodsFor: 'tests' stamp: 'HAW 5/23/2019 15:19:54'!
+!ReceptiveAccountTest methodsFor: 'tests' stamp: 'WAL 5/31/2023 21:45:41'!
 test02DepositIncreasesBalanceOnTransactionValue 
 
 	| account |
 	
-	account := ReceptiveAccount  new.
+	account := ReceptiveAccount named: 'Mi cuenta'.
 	Deposit register: 100 on: account.
 		
 	self assert: 100 equals: account balance .
 ! !
 
-!ReceptiveAccountTest methodsFor: 'tests' stamp: 'HAW 5/23/2019 15:20:02'!
+!ReceptiveAccountTest methodsFor: 'tests' stamp: 'WAL 5/31/2023 21:45:46'!
 test03WithdrawDecreasesBalanceOnTransactionValue 
 
 	| account |
 	
-	account := ReceptiveAccount new.
+	account := ReceptiveAccount named: 'Mi cuenta'.
 	Deposit register: 100 on: account.
 	Withdraw register: 50 on: account.
 		
 	self assert: 50 equals: account balance .
 ! !
 
-!ReceptiveAccountTest methodsFor: 'tests' stamp: 'HAW 5/23/2019 15:20:32'!
+!ReceptiveAccountTest methodsFor: 'tests' stamp: 'WAL 5/31/2023 21:45:53'!
 test04WithdrawValueMustBePositive 
 
 	| account withdrawValue |
 	
-	account := ReceptiveAccount new.
+	account := ReceptiveAccount named: 'Mi cuenta'.
 	withdrawValue := 50.
 	
 	self assert: withdrawValue equals: (Withdraw register: withdrawValue on: account) value
 ! !
 
-!ReceptiveAccountTest methodsFor: 'tests' stamp: 'HAW 5/23/2019 15:20:46'!
+!ReceptiveAccountTest methodsFor: 'tests' stamp: 'WAL 5/31/2023 21:45:57'!
 test05ReceptiveAccountKnowsRegisteredTransactions 
 
 	| account deposit withdraw |
 	
-	account := ReceptiveAccount new.
+	account := ReceptiveAccount named: 'Mi cuenta'.
 	deposit := Deposit register: 100 on: account.
 	withdraw := Withdraw register: 50 on: account.
 		
@@ -287,12 +304,12 @@ test05ReceptiveAccountKnowsRegisteredTransactions
 	self assert: (account hasRegistered: withdraw).
 ! !
 
-!ReceptiveAccountTest methodsFor: 'tests' stamp: 'HAW 5/23/2019 15:20:54'!
+!ReceptiveAccountTest methodsFor: 'tests' stamp: 'WAL 5/31/2023 21:46:01'!
 test06ReceptiveAccountDoNotKnowNotRegisteredTransactions
 
 	| account deposit withdraw |
 	
-	account := ReceptiveAccount new.
+	account := ReceptiveAccount named: 'Mi cuenta'.
 	deposit :=  Deposit for: 100.
 	withdraw := Withdraw for: 50.
 		
@@ -300,12 +317,12 @@ test06ReceptiveAccountDoNotKnowNotRegisteredTransactions
 	self deny: (account hasRegistered:withdraw).
 ! !
 
-!ReceptiveAccountTest methodsFor: 'tests' stamp: 'HAW 5/23/2019 15:21:24'!
+!ReceptiveAccountTest methodsFor: 'tests' stamp: 'WAL 5/31/2023 21:46:04'!
 test07AccountKnowsItsTransactions 
 
 	| account1 deposit1 |
 	
-	account1 := ReceptiveAccount new.
+	account1 := ReceptiveAccount named: 'Mi cuenta'.
 	
 	deposit1 := Deposit register: 100 on: account1.
 		
@@ -313,39 +330,8 @@ test07AccountKnowsItsTransactions
 	self assert: (account1 transactions includes: deposit1).
 ! !
 
-!ReceptiveAccountTest methodsFor: 'tests' stamp: 'AS 5/25/2023 15:00:20'!
-test08TransferIncreasesBalanceOfDestinationAccountAndDecreasesBalanceOfSourceAccountOnTransactionValue 
-
-	| sourceAccount destinationAccount |
-	
-	sourceAccount := ReceptiveAccount  new.
-	destinationAccount := ReceptiveAccount  new.
-	
-	Transfer register: 100 from: sourceAccount to: destinationAccount.
-		
-	self assert: 100 equals: destinationAccount balance .
-	self assert: 100 * -1 equals: sourceAccount balance .
-! !
-
-!ReceptiveAccountTest methodsFor: 'tests' stamp: 'AS 5/25/2023 15:38:59'!
-test09TransferDepositKnowsTransferWithdrawAndViceversa
-
-	| sourceAccount destinationAccount transfer transferDeposit transferWithdraw |
-	
-	sourceAccount := ReceptiveAccount  new.
-	destinationAccount := ReceptiveAccount  new.
-	
-	transfer := Transfer register: 100 from: sourceAccount to: destinationAccount.
-	
-	transferDeposit := transfer deposit.
-	transferWithdraw := transfer withdraw.
-		
-	self assert: transferDeposit equals: transferWithdraw deposit.
-	self assert: transferWithdraw equals: transferDeposit withdraw.
-! !
-
-!ReceptiveAccountTest methodsFor: 'tests' stamp: 'WAL 5/26/2023 11:32:31'!
-test10ReceptiveAccountCanHaveName
+!ReceptiveAccountTest methodsFor: 'tests' stamp: 'WAL 5/31/2023 21:15:25'!
+test08ReceptiveAccountCanHaveName
 
 	| account |
 	
@@ -353,6 +339,46 @@ test10ReceptiveAccountCanHaveName
 
 	self assert: 'Cuenta Mia' equals: account name.
 ! !
+
+!ReceptiveAccountTest methodsFor: 'tests' stamp: 'WAL 5/31/2023 21:46:14'!
+test09DepositValueMustBeGreaterThanCero
+
+	| account |
+	
+	account := ReceptiveAccount named: 'Mi cuenta'.
+			
+	self 
+		should: [ Deposit register: 0 on: account. ]
+		raise: Error
+		withExceptionDo: [ :anError |
+			self assert: anError messageText equals: AccountTransaction transactionValueMustBeGreaterThanCeroErrorDescription ].
+	
+	self 
+		should: [ Deposit register: -100 on: account. ]
+		raise: Error
+		withExceptionDo: [ :anError |
+			self assert: anError messageText equals: AccountTransaction transactionValueMustBeGreaterThanCeroErrorDescription ]
+	! !
+
+!ReceptiveAccountTest methodsFor: 'tests' stamp: 'WAL 5/31/2023 21:46:18'!
+test10WithdrawValueMustBeGreaterThanCero
+
+	| account |
+	
+	account := ReceptiveAccount named: 'Mi cuenta'.
+			
+	self 
+		should: [ Withdraw register: 0 on: account. ]
+		raise: Error
+		withExceptionDo: [ :anError |
+			self assert: anError messageText equals: AccountTransaction transactionValueMustBeGreaterThanCeroErrorDescription ].
+	
+	self 
+		should: [ Withdraw register: -100 on: account. ]
+		raise: Error
+		withExceptionDo: [ :anError |
+			self assert: anError messageText equals: AccountTransaction transactionValueMustBeGreaterThanCeroErrorDescription ]
+	! !
 
 
 !classDefinition: #ReportTest category: 'Portfolio-Solucion'!
@@ -451,12 +477,12 @@ test01AccountSummaryOnEmptyAccountShouldReturnOnlyBalanceLineWithZero
 	
 	self assert: report sameAs: { self textBalanceIgual: 0 } .! !
 
-!ReportTest methodsFor: 'test' stamp: 'WAL 5/28/2023 17:28:54'!
+!ReportTest methodsFor: 'test' stamp: 'WAL 5/31/2023 21:49:02'!
 test02AccountSummaryOnAccountWithDepositShouldReturnDepositLines
 
 	| account report |
 	
-	account := ReceptiveAccount new.
+	account := ReceptiveAccount named: 'Mi cuenta'.
 
 	Deposit register: 100 on: account.
 	Deposit register: 150 on: account.
@@ -469,12 +495,12 @@ test02AccountSummaryOnAccountWithDepositShouldReturnDepositLines
 		self textBalanceIgual: 250 }
 ! !
 
-!ReportTest methodsFor: 'test' stamp: 'WAL 5/28/2023 17:29:16'!
+!ReportTest methodsFor: 'test' stamp: 'WAL 5/31/2023 21:49:22'!
 test03AccountSummaryOnAccountWithWithdrawShouldReturnWithdrawLines
 
 	| account report |
 	
-	account := ReceptiveAccount  new.
+	account := ReceptiveAccount named: 'Mi cuenta'.
 
 	Withdraw register: 100 on: account.
 	Withdraw register: 150 on: account.
@@ -487,13 +513,13 @@ test03AccountSummaryOnAccountWithWithdrawShouldReturnWithdrawLines
 		self textBalanceIgual: (-250) }
 ! !
 
-!ReportTest methodsFor: 'test' stamp: 'WAL 5/28/2023 18:11:59'!
+!ReportTest methodsFor: 'test' stamp: 'WAL 5/31/2023 21:49:43'!
 test04AccountSummaryOnAccountWithTransferShouldReturnTransferLines
 
 	| sourceAccount destinationAccount sourceAccountReport destinationAccountReport |
 	
-	sourceAccount := ReceptiveAccount  new.
-	destinationAccount := ReceptiveAccount  new.
+	sourceAccount := ReceptiveAccount named: 'Mi cuenta 1'.
+	destinationAccount := ReceptiveAccount named: 'Mi cuenta 2'.
 
 	Transfer register: 100 from: sourceAccount to: destinationAccount.
 		
@@ -509,30 +535,30 @@ test04AccountSummaryOnAccountWithTransferShouldReturnTransferLines
 		self textBalanceIgual: 100 }.
 ! !
 
-!ReportTest methodsFor: 'test' stamp: 'WAL 5/28/2023 17:28:38'!
+!ReportTest methodsFor: 'test' stamp: 'WAL 5/31/2023 21:50:02'!
 test05AccountSummaryOnEmptyPortfolioShouldReturnOnlyBalanceLineWithZero
 
 	| portfolio report |
 	
-	portfolio := Portfolio  new.
+	portfolio := Portfolio named: 'Mi portfolio'.
 
 	report := AccountSummary on: portfolio.
 	
 	self assert: report sameAs: { self textBalanceIgual: 0 }.! !
 
-!ReportTest methodsFor: 'test' stamp: 'WAL 5/28/2023 17:29:40'!
+!ReportTest methodsFor: 'test' stamp: 'WAL 5/31/2023 21:50:43'!
 test06AccountSummaryOnPortfolioShouldReturnAccountTransactions
 
 	| portfolio account1 account2 report |
 	
-	account1 := ReceptiveAccount  new.
-	account2 := ReceptiveAccount  new.
+	account1 := ReceptiveAccount named: 'Mi cuenta 1'.
+	account2 := ReceptiveAccount named: 'Mi cuenta 2'.
 
 	Deposit register: 100 on: account1.
 	Withdraw register: 70 on: account1.
 	Transfer register: 60 from: account1 to: account2.
 	
-	portfolio := Portfolio new.
+	portfolio := Portfolio named: 'Mi portfolio'.
 	portfolio add: account1.
 
 	report := AccountSummary on: portfolio.
@@ -544,29 +570,29 @@ test06AccountSummaryOnPortfolioShouldReturnAccountTransactions
 		self textBalanceIgual: ( -30 ) }
 ! !
 
-!ReportTest methodsFor: 'test' stamp: 'WAL 5/28/2023 17:29:23'!
+!ReportTest methodsFor: 'test' stamp: 'WAL 5/31/2023 21:51:02'!
 test07TransferNetOnEmptyAccountShouldReturnOnlyBalanceLineWithZero
 
 	| account report |
 	
-	account := ReceptiveAccount  new.
+	account := ReceptiveAccount named: 'Mi cuenta 1'.
 
 	report := TransferNet on: account.
 	
 	self assert: report sameAs: { self textNetoDeTransferenciasIgual: 0 }! !
 
-!ReportTest methodsFor: 'test' stamp: 'WAL 5/28/2023 17:29:23'!
+!ReportTest methodsFor: 'test' stamp: 'WAL 5/31/2023 21:51:40'!
 test08TransferNetOnAccountWithTransferShouldReturnTransferLines
 
 	| account1 account2 account1Report account2Report portfolio portfolioReport |
 	
-	account1 := ReceptiveAccount  new.
-	account2 := ReceptiveAccount  new.
+	account1 := ReceptiveAccount named: 'Mi cuenta 1'.
+	account2 := ReceptiveAccount named: 'Mi cuenta 2'.
 
 	Transfer register: 100 from: account1 to: account2.
 	Transfer register: 70 from: account2 to: account1.
 	
-	portfolio := Portfolio with: account1.
+	portfolio := Portfolio named: 'Mi portfolio' with: account1.
 	
 	account1Report := TransferNet on: account1.
 	account2Report := TransferNet on: account2.	
@@ -579,12 +605,12 @@ test08TransferNetOnAccountWithTransferShouldReturnTransferLines
 		
 ! !
 
-!ReportTest methodsFor: 'test' stamp: 'WAL 5/28/2023 17:29:23'!
+!ReportTest methodsFor: 'test' stamp: 'WAL 5/31/2023 21:52:05'!
 test09TransferNetOnAccountShouldNotBeAffectedByOrdinaryDepositsOrWithdraws
 
 	| account report |
 	
-	account := ReceptiveAccount  new.
+	account := ReceptiveAccount named: 'Mi cuenta'.
 
 	Deposit register: 100 on: account.
 	Withdraw register: 30 on: account.
@@ -670,6 +696,79 @@ test13StructuredAccountSummaryOnPortfolioShouldReturnPortfolioStructuredAccountS
 		self line: (self textBalanceIgual: 200) withTabs: 3.
 		self line: (self textBalanceIgual: 0) withTabs: 2.
 		self line: (self textBalanceIgual: 30) withTabs: 1. }.! !
+
+
+!classDefinition: #TransferTest category: 'Portfolio-Solucion'!
+TestCase subclass: #TransferTest
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+!TransferTest methodsFor: 'test' stamp: 'WAL 5/31/2023 21:17:31'!
+test01TransferIncreasesBalanceOfDestinationAccountAndDecreasesBalanceOfSourceAccountOnTransactionValue 
+
+	| sourceAccount destinationAccount |
+	
+	sourceAccount := ReceptiveAccount  new.
+	destinationAccount := ReceptiveAccount  new.
+	
+	Transfer register: 100 from: sourceAccount to: destinationAccount.
+		
+	self assert: 100 equals: destinationAccount balance .
+	self assert: 100 * -1 equals: sourceAccount balance .
+! !
+
+!TransferTest methodsFor: 'test' stamp: 'WAL 5/31/2023 21:17:37'!
+test02TransferDepositKnowsTransferWithdrawAndViceversa
+
+	| sourceAccount destinationAccount transfer transferDeposit transferWithdraw |
+	
+	sourceAccount := ReceptiveAccount  new.
+	destinationAccount := ReceptiveAccount  new.
+	
+	transfer := Transfer register: 100 from: sourceAccount to: destinationAccount.
+	
+	transferDeposit := transfer deposit.
+	transferWithdraw := transfer withdraw.
+		
+	self assert: transferDeposit equals: transferWithdraw deposit.
+	self assert: transferWithdraw equals: transferDeposit withdraw.! !
+
+!TransferTest methodsFor: 'test' stamp: 'WAL 5/31/2023 21:17:47'!
+test03TransferValueMustBeGreaterThanCero
+
+	| sourceAccount destinationAccount |
+	
+	sourceAccount := ReceptiveAccount  new.
+	destinationAccount := ReceptiveAccount  new.
+			
+	self 
+		should: [ Transfer register: 0 from: sourceAccount to: destinationAccount. ]
+		raise: Error
+		withExceptionDo: [ :anError |
+			self assert: anError messageText equals: Transfer transferValueMustBeGreaterThanCeroErrorDescription ].
+	
+	self 
+		should: [ Transfer register: -100 from: sourceAccount to: destinationAccount. ]
+		raise: Error
+		withExceptionDo: [ :anError |
+			self assert: anError messageText equals: Transfer transferValueMustBeGreaterThanCeroErrorDescription ]! !
+
+!TransferTest methodsFor: 'test' stamp: 'WAL 5/31/2023 21:20:37'!
+test04TransferDestinationCanNotBeSameAsSource
+
+	| account |
+	
+	account := ReceptiveAccount  new.
+			
+	self 
+		should: [ Transfer register: 100 from: account to: account. ]
+		raise: Error
+		withExceptionDo: [ :anError |
+			self assert: anError messageText equals: Transfer transferDestinationCanNotBeSameAsSourceErrorDescription ].
+	
+	! !
 
 
 !classDefinition: #Account category: 'Portfolio-Solucion'!
@@ -890,7 +989,7 @@ transactions
 Portfolio class
 	instanceVariableNames: ''!
 
-!Portfolio class methodsFor: 'error messages' stamp: 'HAW 5/25/2019 11:48:55'!
+!Portfolio class methodsFor: 'error descriptions' stamp: 'HAW 5/25/2019 11:48:55'!
 canNotAddAccountErrorMessage
 	
 	^'Can not add repeated account to a portfolio'! !
@@ -907,21 +1006,6 @@ named: aName with: anAccount
 named: aName with: anAccount with: anotherAccount
 
 	^(self new initializeWithName: aName)
-		add: anAccount;
-		add: anotherAccount;
-		yourself! !
-
-!Portfolio class methodsFor: 'instance creation' stamp: 'HAW 5/25/2019 11:18:21'!
-with: anAccount
-
-	^self new 
-		add: anAccount;
-		yourself! !
-
-!Portfolio class methodsFor: 'instance creation' stamp: 'HAW 5/25/2019 11:23:59'!
-with: anAccount with: anotherAccount
-
-	^self new 
 		add: anAccount;
 		add: anotherAccount;
 		yourself! !
@@ -1043,6 +1127,17 @@ value
 
 	self subclassResponsibility ! !
 
+"-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- "!
+
+!classDefinition: 'AccountTransaction class' category: 'Portfolio-Solucion'!
+AccountTransaction class
+	instanceVariableNames: ''!
+
+!AccountTransaction class methodsFor: 'error descriptions' stamp: 'WAL 5/31/2023 20:22:56'!
+transactionValueMustBeGreaterThanCeroErrorDescription
+
+	^'Transaction value must be greater than cero'! !
+
 
 !classDefinition: #Deposit category: 'Portfolio-Solucion'!
 AccountTransaction subclass: #Deposit
@@ -1085,10 +1180,12 @@ for: aValue
 
 	^ self new initializeFor: aValue ! !
 
-!Deposit class methodsFor: 'instance creation' stamp: 'AS 5/25/2023 16:08:55'!
+!Deposit class methodsFor: 'instance creation' stamp: 'WAL 5/31/2023 20:31:29'!
 register: aValue on: account
 
 	| transaction |
+	
+	(aValue <= 0) ifTrue: [self error: AccountTransaction transactionValueMustBeGreaterThanCeroErrorDescription].
 	
 	transaction := self for: aValue.
 	account register: transaction.
@@ -1243,10 +1340,12 @@ for: aValue
 
 	^ self new initializeFor: aValue ! !
 
-!Withdraw class methodsFor: 'instance creation' stamp: 'AS 5/25/2023 16:08:55'!
+!Withdraw class methodsFor: 'instance creation' stamp: 'WAL 5/31/2023 20:31:44'!
 register: aValue on: account
 
 	| transaction |
+
+	(aValue <= 0) ifTrue: [self error: AccountTransaction transactionValueMustBeGreaterThanCeroErrorDescription].
 	
 	transaction := self for: aValue.
 	account register: transaction.
@@ -1273,15 +1372,46 @@ lines
 	^lines! !
 
 
-!Report methodsFor: 'write' stamp: 'WAL 5/27/2023 21:14:21'!
+!Report methodsFor: 'private' stamp: 'WAL 5/27/2023 21:14:21'!
 writeBalance: anAccount
 
 	self writeLine: 'Balance = ', anAccount balance asString! !
 
-!Report methodsFor: 'write' stamp: 'WAL 5/27/2023 21:22:26'!
+!Report methodsFor: 'private' stamp: 'WAL 5/27/2023 21:22:26'!
 writeLine: aText
 
 	lines add: aText! !
+
+
+!Report methodsFor: 'write' stamp: 'WAL 5/31/2023 20:56:38'!
+writeDeposit: aValue
+
+	self subclassResponsibility ! !
+
+!Report methodsFor: 'write' stamp: 'WAL 5/31/2023 20:57:47'!
+writePortfolio: aPortfolio
+	
+	self subclassResponsibility ! !
+
+!Report methodsFor: 'write' stamp: 'WAL 5/31/2023 20:58:05'!
+writeReceptiveAccount: aReceptiveAccount
+
+	self subclassResponsibility ! !
+
+!Report methodsFor: 'write' stamp: 'WAL 5/31/2023 20:57:08'!
+writeTransferDeposit: aValue
+
+	self subclassResponsibility ! !
+
+!Report methodsFor: 'write' stamp: 'WAL 5/31/2023 20:57:03'!
+writeTransferWithdraw: aValue
+
+	self subclassResponsibility ! !
+
+!Report methodsFor: 'write' stamp: 'WAL 5/31/2023 20:56:46'!
+writeWithdraw: aValue
+
+	self subclassResponsibility ! !
 
 
 !classDefinition: #AccountSummary category: 'Portfolio-Solucion'!
@@ -1376,15 +1506,46 @@ initialize
 ! !
 
 
-!StructuredReport methodsFor: 'write' stamp: 'WAL 5/27/2023 20:55:01'!
+!StructuredReport methodsFor: 'private' stamp: 'WAL 5/27/2023 20:55:01'!
 writeLine: aText
 
 	lines add: (self indentation), aText! !
 
-!StructuredReport methodsFor: 'write' stamp: 'WAL 5/27/2023 20:55:14'!
+!StructuredReport methodsFor: 'private' stamp: 'WAL 5/27/2023 20:55:14'!
 writeName: anAccount
 
 	self writeLine: anAccount name! !
+
+
+!StructuredReport methodsFor: 'write' stamp: 'WAL 5/31/2023 20:54:35'!
+writeDeposit: aValue
+
+	self subclassResponsibility ! !
+
+!StructuredReport methodsFor: 'write' stamp: 'WAL 5/31/2023 20:55:02'!
+writePortfolio: aPortfolio
+
+	self subclassResponsibility ! !
+
+!StructuredReport methodsFor: 'write' stamp: 'WAL 5/31/2023 20:56:08'!
+writeReceptiveAccount: aReceptiveAccount
+
+	self subclassResponsibility ! !
+
+!StructuredReport methodsFor: 'write' stamp: 'WAL 5/31/2023 20:55:44'!
+writeTransferDeposit: aValue 
+
+	self subclassResponsibility ! !
+
+!StructuredReport methodsFor: 'write' stamp: 'WAL 5/31/2023 20:55:32'!
+writeTransferWithdraw: aValue 
+
+	self subclassResponsibility ! !
+
+!StructuredReport methodsFor: 'write' stamp: 'WAL 5/31/2023 20:55:19'!
+writeWithdraw: aValue 
+
+	self subclassResponsibility ! !
 
 
 !classDefinition: #PortfolioStructure category: 'Portfolio-Solucion'!
@@ -1393,6 +1554,9 @@ StructuredReport subclass: #PortfolioStructure
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Portfolio-Solucion'!
+
+!PortfolioStructure methodsFor: 'write' stamp: 'WAL 5/31/2023 20:51:52'!
+writeDeposit: aValue! !
 
 !PortfolioStructure methodsFor: 'write' stamp: 'WAL 5/27/2023 20:56:34'!
 writePortfolio: aPortfolio
@@ -1409,6 +1573,15 @@ writePortfolio: aPortfolio
 writeReceptiveAccount: aReceptiveAccount
 	
 	self writeName: aReceptiveAccount.! !
+
+!PortfolioStructure methodsFor: 'write' stamp: 'WAL 5/31/2023 20:52:25'!
+writeTransferDeposit: aValue! !
+
+!PortfolioStructure methodsFor: 'write' stamp: 'WAL 5/31/2023 20:52:50'!
+writeTransferWithdraw: aValue ! !
+
+!PortfolioStructure methodsFor: 'write' stamp: 'WAL 5/31/2023 20:53:13'!
+writeWithdraw: aValue ! !
 
 
 !PortfolioStructure methodsFor: 'initialization' stamp: 'WAL 5/27/2023 20:45:41'!
@@ -1453,7 +1626,14 @@ StructuredReport subclass: #StructuredAccountSummary
 	poolDictionaries: ''
 	category: 'Portfolio-Solucion'!
 
-!StructuredAccountSummary methodsFor: 'write' stamp: 'WAL 5/27/2023 20:36:40'!
+!StructuredAccountSummary methodsFor: 'initialization' stamp: 'WAL 5/27/2023 20:45:49'!
+initializeOn: anAccount
+	
+	anAccount reportOn: self.
+	! !
+
+
+!StructuredAccountSummary methodsFor: 'private' stamp: 'WAL 5/27/2023 20:36:40'!
 writeAccount: anAccount
 
 	self writeName: anAccount.
@@ -1467,6 +1647,7 @@ writeAccount: anAccount
 	self decrementIndentation.
 	
 ! !
+
 
 !StructuredAccountSummary methodsFor: 'write' stamp: 'WAL 5/27/2023 20:34:22'!
 writeDeposit: aValue
@@ -1500,13 +1681,6 @@ writeWithdraw: aValue
 	
 	self writeLine: 'Extracción por ', aValue asString! !
 
-
-!StructuredAccountSummary methodsFor: 'initialization' stamp: 'WAL 5/27/2023 20:45:49'!
-initializeOn: anAccount
-	
-	anAccount reportOn: self.
-	! !
-
 "-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- "!
 
 !classDefinition: 'StructuredAccountSummary class' category: 'Portfolio-Solucion'!
@@ -1537,6 +1711,12 @@ initializeOn: anAccount
 	! !
 
 
+!TransferNet methodsFor: 'private' stamp: 'WAL 5/27/2023 21:23:45'!
+writeTransferNet
+
+	^ self writeLine: 'Neto de transferencias = ', transferNet asString! !
+
+
 !TransferNet methodsFor: 'write' stamp: 'WAL 5/25/2023 20:44:07'!
 writeDeposit: aValue
 	! !
@@ -1556,11 +1736,6 @@ writeTransferDeposit: aValue
 	
 	transferNet := transferNet + aValue
 	! !
-
-!TransferNet methodsFor: 'write' stamp: 'WAL 5/27/2023 21:23:45'!
-writeTransferNet
-
-	^ self writeLine: 'Neto de transferencias = ', transferNet asString! !
 
 !TransferNet methodsFor: 'write' stamp: 'WAL 5/25/2023 20:38:07'!
 writeTransferWithdraw: aValue 
@@ -1624,10 +1799,25 @@ withdraw
 Transfer class
 	instanceVariableNames: ''!
 
-!Transfer class methodsFor: 'instance creation' stamp: 'AS 5/25/2023 16:45:09'!
+!Transfer class methodsFor: 'error descriptions' stamp: 'WAL 5/31/2023 21:21:43'!
+transferDestinationCanNotBeSameAsSourceErrorDescription
+	
+	^'Transfer destination can not be same as source'! !
+
+!Transfer class methodsFor: 'error descriptions' stamp: 'WAL 5/31/2023 20:28:19'!
+transferValueMustBeGreaterThanCeroErrorDescription
+	
+	^'Transfer Value Must be greater than cero'! !
+
+
+!Transfer class methodsFor: 'instance creation' stamp: 'WAL 5/31/2023 21:22:52'!
 register: aValue from: sourceAccount to: destinationAccount
 
 	| transfer deposit withdraw |
+
+	(aValue <= 0) ifTrue: [self error: self transferValueMustBeGreaterThanCeroErrorDescription].
+	
+	(sourceAccount = destinationAccount) ifTrue: [self error: self transferDestinationCanNotBeSameAsSourceErrorDescription].
 
 	transfer := self new.
 	
