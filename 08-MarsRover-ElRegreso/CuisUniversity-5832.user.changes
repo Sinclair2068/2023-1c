@@ -2960,3 +2960,3868 @@ PASSED!
 
 !testRun: #WindowTest #test04RoverForwardRightForwardRegisterLastPositionsAndHeading stamp: 'AS 6/3/2023 15:05:12'!
 PASSED!
+
+----STARTUP---- (4 June 2023 16:00:58) as F:\CUIS Univeristy Repaso\CuisUniversity-5832.image!
+
+
+----End fileIn of F:\CUIS Univeristy Repaso\MarsRover-WithHeading.st----!
+!ObserversTest methodsFor: 'test' stamp: 'As 6/4/2023 16:21:02' prior: 50629655!
+test07ObserverCanAttachToAllChanges
+
+	| rover log |
+	
+	rover := MarsRover at: 1@1 heading: MarsRoverHeadingNorth.
+	
+	log := Log for: rover.
+	rover attachForAll: log.
+		
+	rover process: 'fr'.
+	
+	self assert: 2 equals: log lines size.
+	self assert: 1@2 equals: log lines first.
+	self assert: 'East' equals: log lines second.
+! !
+!ObserversTest methodsFor: 'test' stamp: 'As 6/4/2023 16:22:05'!
+test00RoverForwardLogRegisterLastPosition
+
+	| rover log |
+	
+	rover := MarsRover at: 1@1 heading: MarsRoverHeadingNorth.
+	log := Log for: rover.
+	
+	rover attachForAll: log.
+	
+	rover process: 'f'.
+	
+	self assert: 1 equals: log lines size.
+	self assert: 1@2 equals: log lines first! !
+!ObserversTest methodsFor: 'test' stamp: 'As 6/4/2023 16:22:32' prior: 50630238!
+test00RoverForwardLogRegisterLastPosition
+
+	| rover log |
+	
+	rover := MarsRover at: 1@1 heading: MarsRoverHeadingNorth.
+	log := Log for: rover.
+	
+	rover attachForAll: log.
+	
+	rover process: 'f'.
+	
+	self assert: 1 equals: log lines size.
+	self assert: 1@2 equals: log lines first! !
+!ObserversTest methodsFor: 'test' stamp: 'As 6/4/2023 16:23:34'!
+test00RoverForwardTwoStepsLogRegisterTwoLastPosition
+
+	| rover log |
+	
+	rover := MarsRover at: 1@1 heading: MarsRoverHeadingNorth.
+	log := Log for: rover.
+
+	rover attachForAll: log.
+	 	
+	rover process: 'ff'.
+	
+	self assert: 2 equals: log lines size.
+	self assert: 1@2 equals: log lines first.
+	self assert: 1@3 equals: log lines second! !
+!ObserversTest methodsFor: 'test' stamp: 'As 6/4/2023 16:23:47'!
+test07RoverMoveForwardReportsToManyObservers
+
+	| rover log window |
+	
+	rover := MarsRover at: 1@1 heading: MarsRoverHeadingNorth.
+	
+	log := Log for: rover.
+	window := Window for: rover.
+	
+	rover attachForPositionChanges: log.
+	rover attachForPositionChanges: window.
+	
+	rover process: 'f'.
+	
+	self assert: 1 equals: log lines size.
+	self assert: 1@2 equals: log lines first.
+	
+	self assert: '1@2' equals: window showPosition.! !
+
+!methodRemoval: ObserversTest #test01RoverMoveForwardReportsToManyObservers stamp: 'As 6/4/2023 16:23:47'!
+test01RoverMoveForwardReportsToManyObservers
+
+	| rover log window |
+	
+	rover := MarsRover at: 1@1 heading: MarsRoverHeadingNorth.
+	
+	log := Log for: rover.
+	window := Window for: rover.
+	
+	rover attachForPositionChanges: log.
+	rover attachForPositionChanges: window.
+	
+	rover process: 'f'.
+	
+	self assert: 1 equals: log lines size.
+	self assert: 1@2 equals: log lines first.
+	
+	self assert: '1@2' equals: window showPosition.!
+!ObserversTest methodsFor: 'test' stamp: 'As 6/4/2023 16:23:55'!
+test08RoverMoveBackwardsReportsToManyObservers
+
+	| rover log window |
+	
+	rover := MarsRover at: 1@1 heading: MarsRoverHeadingNorth.
+	
+	log := Log for: rover.
+	window := Window for: rover.
+	
+	rover attachForPositionChanges: log.
+	rover attachForPositionChanges: window.
+	
+	rover process: 'b'.
+	
+	self assert: 1 equals: log lines size.
+	self assert: 1@0 equals: log lines first.
+	
+	self assert: '1@0' equals: window showPosition.! !
+
+!methodRemoval: ObserversTest #test02RoverMoveBackwardsReportsToManyObservers stamp: 'As 6/4/2023 16:23:55'!
+test02RoverMoveBackwardsReportsToManyObservers
+
+	| rover log window |
+	
+	rover := MarsRover at: 1@1 heading: MarsRoverHeadingNorth.
+	
+	log := Log for: rover.
+	window := Window for: rover.
+	
+	rover attachForPositionChanges: log.
+	rover attachForPositionChanges: window.
+	
+	rover process: 'b'.
+	
+	self assert: 1 equals: log lines size.
+	self assert: 1@0 equals: log lines first.
+	
+	self assert: '1@0' equals: window showPosition.!
+!ObserversTest methodsFor: 'test' stamp: 'As 6/4/2023 16:24:04'!
+test09RoverRotateRightReportsToManyObservers
+
+	| rover log window |
+	
+	rover := MarsRover at: 1@1 heading: MarsRoverHeadingNorth.
+	
+	log := Log for: rover.
+	window := Window for: rover.
+	
+	rover attachForHeadingChanges: log.
+	rover attachForHeadingChanges: window.
+	
+	rover process: 'r'.
+	
+	self assert: 1 equals: log lines size.
+	self assert: 'East' equals: log lines first.
+	
+	self assert: 'Apuntando al este' equals: window showHeading.! !
+
+!methodRemoval: ObserversTest #test03RoverRotateRightReportsToManyObservers stamp: 'As 6/4/2023 16:24:04'!
+test03RoverRotateRightReportsToManyObservers
+
+	| rover log window |
+	
+	rover := MarsRover at: 1@1 heading: MarsRoverHeadingNorth.
+	
+	log := Log for: rover.
+	window := Window for: rover.
+	
+	rover attachForHeadingChanges: log.
+	rover attachForHeadingChanges: window.
+	
+	rover process: 'r'.
+	
+	self assert: 1 equals: log lines size.
+	self assert: 'East' equals: log lines first.
+	
+	self assert: 'Apuntando al este' equals: window showHeading.!
+!ObserversTest methodsFor: 'test' stamp: 'As 6/4/2023 16:24:13'!
+test10RoverRotateLeftReportsToManyObservers
+
+	| rover log window |
+	
+	rover := MarsRover at: 1@1 heading: MarsRoverHeadingNorth.
+	
+	log := Log for: rover.
+	window := Window for: rover.
+	
+	rover attachForHeadingChanges: log.
+	rover attachForHeadingChanges: window.
+	
+	rover process: 'l'.
+	
+	self assert: 1 equals: log lines size.
+	self assert: 'West' equals: log lines first.
+	
+	self assert: 'Apuntando al oeste' equals: window showHeading.! !
+
+!methodRemoval: ObserversTest #test04RoverRotateLeftReportsToManyObservers stamp: 'As 6/4/2023 16:24:13'!
+test04RoverRotateLeftReportsToManyObservers
+
+	| rover log window |
+	
+	rover := MarsRover at: 1@1 heading: MarsRoverHeadingNorth.
+	
+	log := Log for: rover.
+	window := Window for: rover.
+	
+	rover attachForHeadingChanges: log.
+	rover attachForHeadingChanges: window.
+	
+	rover process: 'l'.
+	
+	self assert: 1 equals: log lines size.
+	self assert: 'West' equals: log lines first.
+	
+	self assert: 'Apuntando al oeste' equals: window showHeading.!
+!ObserversTest methodsFor: 'test' stamp: 'As 6/4/2023 16:24:21'!
+test11ObserverShouldOnlyShowPositionRequestedChanges
+
+	| rover log |
+	
+	rover := MarsRover at: 1@1 heading: MarsRoverHeadingNorth.
+	
+	log := Log for: rover.
+	rover attachForPositionChanges: log.
+		
+	rover process: 'fr'.
+	
+	self assert: 1 equals: log lines size.
+	self assert: 1@2 equals: log lines first.
+! !
+
+!methodRemoval: ObserversTest #test05ObserverShouldOnlyShowPositionRequestedChanges stamp: 'As 6/4/2023 16:24:21'!
+test05ObserverShouldOnlyShowPositionRequestedChanges
+
+	| rover log |
+	
+	rover := MarsRover at: 1@1 heading: MarsRoverHeadingNorth.
+	
+	log := Log for: rover.
+	rover attachForPositionChanges: log.
+		
+	rover process: 'fr'.
+	
+	self assert: 1 equals: log lines size.
+	self assert: 1@2 equals: log lines first.
+!
+!ObserversTest methodsFor: 'test' stamp: 'As 6/4/2023 16:24:29'!
+test12ObserverShouldOnlyShowHeadingRequestedChanges
+
+	| rover log |
+	
+	rover := MarsRover at: 1@1 heading: MarsRoverHeadingNorth.
+	
+	log := Log for: rover.
+	rover attachForHeadingChanges: log.
+		
+	rover process: 'fr'.
+	
+	self assert: 1 equals: log lines size.
+	self assert: 'East' equals: log lines first.
+! !
+
+!methodRemoval: ObserversTest #test06ObserverShouldOnlyShowHeadingRequestedChanges stamp: 'As 6/4/2023 16:24:29'!
+test06ObserverShouldOnlyShowHeadingRequestedChanges
+
+	| rover log |
+	
+	rover := MarsRover at: 1@1 heading: MarsRoverHeadingNorth.
+	
+	log := Log for: rover.
+	rover attachForHeadingChanges: log.
+		
+	rover process: 'fr'.
+	
+	self assert: 1 equals: log lines size.
+	self assert: 'East' equals: log lines first.
+!
+!ObserversTest methodsFor: 'test' stamp: 'As 6/4/2023 16:24:41'!
+test13ObserverCanAttachToAllChanges
+
+	| rover log |
+	
+	rover := MarsRover at: 1@1 heading: MarsRoverHeadingNorth.
+	
+	log := Log for: rover.
+	rover attachForAll: log.
+		
+	rover process: 'fr'.
+	
+	self assert: 2 equals: log lines size.
+	self assert: 1@2 equals: log lines first.
+	self assert: 'East' equals: log lines second.
+! !
+
+!methodRemoval: ObserversTest #test07ObserverCanAttachToAllChanges stamp: 'As 6/4/2023 16:24:41'!
+test07ObserverCanAttachToAllChanges
+
+	| rover log |
+	
+	rover := MarsRover at: 1@1 heading: MarsRoverHeadingNorth.
+	
+	log := Log for: rover.
+	rover attachForAll: log.
+		
+	rover process: 'fr'.
+	
+	self assert: 2 equals: log lines size.
+	self assert: 1@2 equals: log lines first.
+	self assert: 'East' equals: log lines second.
+!
+!ObserversTest methodsFor: 'test' stamp: 'As 6/4/2023 16:24:49'!
+test01RoverForwardLogRegisterLastPosition
+
+	| rover log |
+	
+	rover := MarsRover at: 1@1 heading: MarsRoverHeadingNorth.
+	log := Log for: rover.
+	
+	rover attachForAll: log.
+	
+	rover process: 'f'.
+	
+	self assert: 1 equals: log lines size.
+	self assert: 1@2 equals: log lines first! !
+
+!methodRemoval: ObserversTest #test00RoverForwardLogRegisterLastPosition stamp: 'As 6/4/2023 16:24:49'!
+test00RoverForwardLogRegisterLastPosition
+
+	| rover log |
+	
+	rover := MarsRover at: 1@1 heading: MarsRoverHeadingNorth.
+	log := Log for: rover.
+	
+	rover attachForAll: log.
+	
+	rover process: 'f'.
+	
+	self assert: 1 equals: log lines size.
+	self assert: 1@2 equals: log lines first!
+!ObserversTest methodsFor: 'test' stamp: 'As 6/4/2023 16:24:56'!
+test02RoverForwardTwoStepsLogRegisterTwoLastPosition
+
+	| rover log |
+	
+	rover := MarsRover at: 1@1 heading: MarsRoverHeadingNorth.
+	log := Log for: rover.
+
+	rover attachForAll: log.
+	 	
+	rover process: 'ff'.
+	
+	self assert: 2 equals: log lines size.
+	self assert: 1@2 equals: log lines first.
+	self assert: 1@3 equals: log lines second! !
+
+!methodRemoval: ObserversTest #test00RoverForwardTwoStepsLogRegisterTwoLastPosition stamp: 'As 6/4/2023 16:24:56'!
+test00RoverForwardTwoStepsLogRegisterTwoLastPosition
+
+	| rover log |
+	
+	rover := MarsRover at: 1@1 heading: MarsRoverHeadingNorth.
+	log := Log for: rover.
+
+	rover attachForAll: log.
+	 	
+	rover process: 'ff'.
+	
+	self assert: 2 equals: log lines size.
+	self assert: 1@2 equals: log lines first.
+	self assert: 1@3 equals: log lines second!
+!ObserversTest methodsFor: 'test' stamp: 'As 6/4/2023 16:25:13'!
+test03RoverForwardTwoStepsLogRegisterTwoLastPosition
+
+	| rover log |
+	
+	rover := MarsRover at: 1@1 heading: MarsRoverHeadingNorth.
+	log := Log for: rover.
+
+	rover attachForAll: log.
+	 	
+	rover process: 'ff'.
+	
+	self assert: 2 equals: log lines size.
+	self assert: 1@2 equals: log lines first.
+	self assert: 1@3 equals: log lines second! !
+!ObserversTest methodsFor: 'test' stamp: 'As 6/4/2023 16:25:29'!
+test04RoverForwardTwoStepsWindowRegisterPositionsOneAfterAnother
+
+	| rover window |
+	
+	rover := MarsRover at: 1@1 heading: MarsRoverHeadingNorth.
+	window := Window for: rover.
+
+	rover attachForAll: window.
+	 	
+	rover process: 'ff'.
+	
+	self assert: '1@3' equals: window showPosition! !
+!ObserversTest methodsFor: 'test' stamp: 'As 6/4/2023 16:25:43'!
+test05RoverForwardAndRightRegisterPositionsAndHeading
+
+	| rover window |
+	
+	rover := MarsRover at: 1@1 heading: MarsRoverHeadingNorth.
+	window := Window for: rover.
+
+	rover attachForAll: window.
+	 	
+	rover process: 'fr'.
+	
+	self assert: '1@2' equals: window showPosition.
+	self assert: 'Apuntando al este' equals: window showHeading.! !
+!ObserversTest methodsFor: 'test' stamp: 'As 6/4/2023 16:25:57'!
+test06RoverForwardRightForwardRegisterLastPositionsAndHeading
+
+	| rover window |
+	
+	rover := MarsRover at: 1@1 heading: MarsRoverHeadingNorth.
+	window := Window for: rover.
+
+	rover attachForAll: window.
+	 	
+	rover process: 'frf'.
+	
+	self assert: '2@2' equals: window showPosition.
+	self assert: 'Apuntando al este' equals: window showHeading.! !
+
+!classRemoval: #LogTest stamp: 'As 6/4/2023 16:26:03'!
+TestCase subclass: #LogTest
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRover-WithHeading'!
+
+!classRemoval: #WindowTest stamp: 'As 6/4/2023 16:26:08'!
+TestCase subclass: #WindowTest
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRover-WithHeading'!
+!ObserversTest methodsFor: 'test' stamp: 'As 6/4/2023 16:27:12'!
+roverAt
+
+	^ MarsRover at: 1@1 heading: MarsRoverHeadingNorth! !
+!ObserversTest methodsFor: 'test' stamp: 'As 6/4/2023 16:27:12' prior: 50630483!
+test01RoverForwardLogRegisterLastPosition
+
+	| rover log |
+	
+	rover := self roverAt.
+	log := Log for: rover.
+	
+	rover attachForAll: log.
+	
+	rover process: 'f'.
+	
+	self assert: 1 equals: log lines size.
+	self assert: 1@2 equals: log lines first! !
+!ObserversTest methodsFor: 'test' stamp: 'As 6/4/2023 16:27:12' prior: 50630432!
+test12ObserverShouldOnlyShowHeadingRequestedChanges
+
+	| rover log |
+	
+	rover := self roverAt.
+	
+	log := Log for: rover.
+	rover attachForHeadingChanges: log.
+		
+	rover process: 'fr'.
+	
+	self assert: 1 equals: log lines size.
+	self assert: 'East' equals: log lines first.
+! !
+!ObserversTest methodsFor: 'test' stamp: 'As 6/4/2023 16:27:12' prior: 50630340!
+test09RoverRotateRightReportsToManyObservers
+
+	| rover log window |
+	
+	rover := self roverAt.
+	
+	log := Log for: rover.
+	window := Window for: rover.
+	
+	rover attachForHeadingChanges: log.
+	rover attachForHeadingChanges: window.
+	
+	rover process: 'r'.
+	
+	self assert: 1 equals: log lines size.
+	self assert: 'East' equals: log lines first.
+	
+	self assert: 'Apuntando al este' equals: window showHeading.! !
+!ObserversTest methodsFor: 'test' stamp: 'As 6/4/2023 16:27:12' prior: 50630533!
+test03RoverForwardTwoStepsLogRegisterTwoLastPosition
+
+	| rover log |
+	
+	rover := self roverAt.
+	log := Log for: rover.
+
+	rover attachForAll: log.
+	 	
+	rover process: 'ff'.
+	
+	self assert: 2 equals: log lines size.
+	self assert: 1@2 equals: log lines first.
+	self assert: 1@3 equals: log lines second! !
+!ObserversTest methodsFor: 'test' stamp: 'As 6/4/2023 16:27:12' prior: 50630457!
+test13ObserverCanAttachToAllChanges
+
+	| rover log |
+	
+	rover := self roverAt.
+	
+	log := Log for: rover.
+	rover attachForAll: log.
+		
+	rover process: 'fr'.
+	
+	self assert: 2 equals: log lines size.
+	self assert: 1@2 equals: log lines first.
+	self assert: 'East' equals: log lines second.
+! !
+!ObserversTest methodsFor: 'test' stamp: 'As 6/4/2023 16:27:12' prior: 50630506!
+test02RoverForwardTwoStepsLogRegisterTwoLastPosition
+
+	| rover log |
+	
+	rover := self roverAt.
+	log := Log for: rover.
+
+	rover attachForAll: log.
+	 	
+	rover process: 'ff'.
+	
+	self assert: 2 equals: log lines size.
+	self assert: 1@2 equals: log lines first.
+	self assert: 1@3 equals: log lines second! !
+!ObserversTest methodsFor: 'test' stamp: 'As 6/4/2023 16:27:12' prior: 50630274!
+test07RoverMoveForwardReportsToManyObservers
+
+	| rover log window |
+	
+	rover := self roverAt.
+	
+	log := Log for: rover.
+	window := Window for: rover.
+	
+	rover attachForPositionChanges: log.
+	rover attachForPositionChanges: window.
+	
+	rover process: 'f'.
+	
+	self assert: 1 equals: log lines size.
+	self assert: 1@2 equals: log lines first.
+	
+	self assert: '1@2' equals: window showPosition.! !
+!ObserversTest methodsFor: 'test' stamp: 'As 6/4/2023 16:27:12' prior: 50630374!
+test10RoverRotateLeftReportsToManyObservers
+
+	| rover log window |
+	
+	rover := self roverAt.
+	
+	log := Log for: rover.
+	window := Window for: rover.
+	
+	rover attachForHeadingChanges: log.
+	rover attachForHeadingChanges: window.
+	
+	rover process: 'l'.
+	
+	self assert: 1 equals: log lines size.
+	self assert: 'West' equals: log lines first.
+	
+	self assert: 'Apuntando al oeste' equals: window showHeading.! !
+!ObserversTest methodsFor: 'test' stamp: 'As 6/4/2023 16:27:12' prior: 50630407!
+test11ObserverShouldOnlyShowPositionRequestedChanges
+
+	| rover log |
+	
+	rover := self roverAt.
+	
+	log := Log for: rover.
+	rover attachForPositionChanges: log.
+		
+	rover process: 'fr'.
+	
+	self assert: 1 equals: log lines size.
+	self assert: 1@2 equals: log lines first.
+! !
+!ObserversTest methodsFor: 'test' stamp: 'As 6/4/2023 16:27:12' prior: 50630307!
+test08RoverMoveBackwardsReportsToManyObservers
+
+	| rover log window |
+	
+	rover := self roverAt.
+	
+	log := Log for: rover.
+	window := Window for: rover.
+	
+	rover attachForPositionChanges: log.
+	rover attachForPositionChanges: window.
+	
+	rover process: 'b'.
+	
+	self assert: 1 equals: log lines size.
+	self assert: 1@0 equals: log lines first.
+	
+	self assert: '1@0' equals: window showPosition.! !
+!ObserversTest methodsFor: 'test' stamp: 'As 6/4/2023 16:27:12' prior: 50630570!
+test06RoverForwardRightForwardRegisterLastPositionsAndHeading
+
+	| rover window |
+	
+	rover := self roverAt.
+	window := Window for: rover.
+
+	rover attachForAll: window.
+	 	
+	rover process: 'frf'.
+	
+	self assert: '2@2' equals: window showPosition.
+	self assert: 'Apuntando al este' equals: window showHeading.! !
+!ObserversTest methodsFor: 'test' stamp: 'As 6/4/2023 16:27:12' prior: 50630557!
+test05RoverForwardAndRightRegisterPositionsAndHeading
+
+	| rover window |
+	
+	rover := self roverAt.
+	window := Window for: rover.
+
+	rover attachForAll: window.
+	 	
+	rover process: 'fr'.
+	
+	self assert: '1@2' equals: window showPosition.
+	self assert: 'Apuntando al este' equals: window showHeading.! !
+!ObserversTest methodsFor: 'test' stamp: 'As 6/4/2023 16:27:12' prior: 50630546!
+test04RoverForwardTwoStepsWindowRegisterPositionsOneAfterAnother
+
+	| rover window |
+	
+	rover := self roverAt.
+	window := Window for: rover.
+
+	rover attachForAll: window.
+	 	
+	rover process: 'ff'.
+	
+	self assert: '1@3' equals: window showPosition! !
+!ObserversTest methodsFor: 'test' stamp: 'As 6/4/2023 16:27:47'!
+roverAt: aPosition
+
+	^ MarsRover at: 1@1 heading: MarsRoverHeadingNorth! !
+!ObserversTest methodsFor: 'as yet unclassified' stamp: 'As 6/4/2023 16:27:47' prior: 50630719!
+test08RoverMoveBackwardsReportsToManyObservers
+
+	| rover log window |
+	
+	rover := self roverAt: 1@1.
+	
+	log := Log for: rover.
+	window := Window for: rover.
+	
+	rover attachForPositionChanges: log.
+	rover attachForPositionChanges: window.
+	
+	rover process: 'b'.
+	
+	self assert: 1 equals: log lines size.
+	self assert: 1@0 equals: log lines first.
+	
+	self assert: '1@0' equals: window showPosition.! !
+!ObserversTest methodsFor: 'as yet unclassified' stamp: 'As 6/4/2023 16:27:47' prior: 50630612!
+test12ObserverShouldOnlyShowHeadingRequestedChanges
+
+	| rover log |
+	
+	rover := self roverAt: 1@1.
+	
+	log := Log for: rover.
+	rover attachForHeadingChanges: log.
+		
+	rover process: 'fr'.
+	
+	self assert: 1 equals: log lines size.
+	self assert: 'East' equals: log lines first.
+! !
+!ObserversTest methodsFor: 'as yet unclassified' stamp: 'As 6/4/2023 16:27:47' prior: 50630601!
+test01RoverForwardLogRegisterLastPosition
+
+	| rover log |
+	
+	rover := self roverAt: 1@1.
+	log := Log for: rover.
+	
+	rover attachForAll: log.
+	
+	rover process: 'f'.
+	
+	self assert: 1 equals: log lines size.
+	self assert: 1@2 equals: log lines first! !
+!ObserversTest methodsFor: 'as yet unclassified' stamp: 'As 6/4/2023 16:27:47' prior: 50630759!
+test04RoverForwardTwoStepsWindowRegisterPositionsOneAfterAnother
+
+	| rover window |
+	
+	rover := self roverAt: 1@1.
+	window := Window for: rover.
+
+	rover attachForAll: window.
+	 	
+	rover process: 'ff'.
+	
+	self assert: '1@3' equals: window showPosition! !
+!ObserversTest methodsFor: 'as yet unclassified' stamp: 'As 6/4/2023 16:27:47' prior: 50630640!
+test03RoverForwardTwoStepsLogRegisterTwoLastPosition
+
+	| rover log |
+	
+	rover := self roverAt: 1@1.
+	log := Log for: rover.
+
+	rover attachForAll: log.
+	 	
+	rover process: 'ff'.
+	
+	self assert: 2 equals: log lines size.
+	self assert: 1@2 equals: log lines first.
+	self assert: 1@3 equals: log lines second! !
+!ObserversTest methodsFor: 'as yet unclassified' stamp: 'As 6/4/2023 16:27:47' prior: 50630624!
+test09RoverRotateRightReportsToManyObservers
+
+	| rover log window |
+	
+	rover := self roverAt: 1@1.
+	
+	log := Log for: rover.
+	window := Window for: rover.
+	
+	rover attachForHeadingChanges: log.
+	rover attachForHeadingChanges: window.
+	
+	rover process: 'r'.
+	
+	self assert: 1 equals: log lines size.
+	self assert: 'East' equals: log lines first.
+	
+	self assert: 'Apuntando al este' equals: window showHeading.! !
+!ObserversTest methodsFor: 'as yet unclassified' stamp: 'As 6/4/2023 16:27:47' prior: 50630652!
+test13ObserverCanAttachToAllChanges
+
+	| rover log |
+	
+	rover := self roverAt: 1@1.
+	
+	log := Log for: rover.
+	rover attachForAll: log.
+		
+	rover process: 'fr'.
+	
+	self assert: 2 equals: log lines size.
+	self assert: 1@2 equals: log lines first.
+	self assert: 'East' equals: log lines second.
+! !
+!ObserversTest methodsFor: 'as yet unclassified' stamp: 'As 6/4/2023 16:27:47' prior: 50630734!
+test06RoverForwardRightForwardRegisterLastPositionsAndHeading
+
+	| rover window |
+	
+	rover := self roverAt: 1@1.
+	window := Window for: rover.
+
+	rover attachForAll: window.
+	 	
+	rover process: 'frf'.
+	
+	self assert: '2@2' equals: window showPosition.
+	self assert: 'Apuntando al este' equals: window showHeading.! !
+!ObserversTest methodsFor: 'as yet unclassified' stamp: 'As 6/4/2023 16:27:47' prior: 50630676!
+test07RoverMoveForwardReportsToManyObservers
+
+	| rover log window |
+	
+	rover := self roverAt: 1@1.
+	
+	log := Log for: rover.
+	window := Window for: rover.
+	
+	rover attachForPositionChanges: log.
+	rover attachForPositionChanges: window.
+	
+	rover process: 'f'.
+	
+	self assert: 1 equals: log lines size.
+	self assert: 1@2 equals: log lines first.
+	
+	self assert: '1@2' equals: window showPosition.! !
+!ObserversTest methodsFor: 'as yet unclassified' stamp: 'As 6/4/2023 16:27:47' prior: 50630707!
+test11ObserverShouldOnlyShowPositionRequestedChanges
+
+	| rover log |
+	
+	rover := self roverAt: 1@1.
+	
+	log := Log for: rover.
+	rover attachForPositionChanges: log.
+		
+	rover process: 'fr'.
+	
+	self assert: 1 equals: log lines size.
+	self assert: 1@2 equals: log lines first.
+! !
+!ObserversTest methodsFor: 'as yet unclassified' stamp: 'As 6/4/2023 16:27:47' prior: 50630664!
+test02RoverForwardTwoStepsLogRegisterTwoLastPosition
+
+	| rover log |
+	
+	rover := self roverAt: 1@1.
+	log := Log for: rover.
+
+	rover attachForAll: log.
+	 	
+	rover process: 'ff'.
+	
+	self assert: 2 equals: log lines size.
+	self assert: 1@2 equals: log lines first.
+	self assert: 1@3 equals: log lines second! !
+!ObserversTest methodsFor: 'as yet unclassified' stamp: 'As 6/4/2023 16:27:47' prior: 50630747!
+test05RoverForwardAndRightRegisterPositionsAndHeading
+
+	| rover window |
+	
+	rover := self roverAt: 1@1.
+	window := Window for: rover.
+
+	rover attachForAll: window.
+	 	
+	rover process: 'fr'.
+	
+	self assert: '1@2' equals: window showPosition.
+	self assert: 'Apuntando al este' equals: window showHeading.! !
+!ObserversTest methodsFor: 'as yet unclassified' stamp: 'As 6/4/2023 16:27:47' prior: 50630691!
+test10RoverRotateLeftReportsToManyObservers
+
+	| rover log window |
+	
+	rover := self roverAt: 1@1.
+	
+	log := Log for: rover.
+	window := Window for: rover.
+	
+	rover attachForHeadingChanges: log.
+	rover attachForHeadingChanges: window.
+	
+	rover process: 'l'.
+	
+	self assert: 1 equals: log lines size.
+	self assert: 'West' equals: log lines first.
+	
+	self assert: 'Apuntando al oeste' equals: window showHeading.! !
+
+!methodRemoval: ObserversTest #roverAt stamp: 'As 6/4/2023 16:27:47'!
+roverAt
+
+	^ MarsRover at: 1@1 heading: MarsRoverHeadingNorth!
+!ObserversTest methodsFor: 'as yet unclassified' stamp: 'As 6/4/2023 16:27:47' prior: 50630769!
+roverAt: aPosition
+
+	^ MarsRover at: aPosition heading: MarsRoverHeadingNorth! !
+!ObserversTest methodsFor: 'test' stamp: 'As 6/4/2023 16:29:46'!
+roverAt: aPosition heading: aHeadingType 
+
+	^ MarsRover at: aPosition heading: MarsRoverHeadingNorth! !
+!ObserversTest methodsFor: 'as yet unclassified' stamp: 'As 6/4/2023 16:29:46' prior: 50630934!
+test10RoverRotateLeftReportsToManyObservers
+
+	| rover log window |
+	
+	rover := self roverAt: 1@1 heading: MarsRoverHeadingNorth.
+	
+	log := Log for: rover.
+	window := Window for: rover.
+	
+	rover attachForHeadingChanges: log.
+	rover attachForHeadingChanges: window.
+	
+	rover process: 'l'.
+	
+	self assert: 1 equals: log lines size.
+	self assert: 'West' equals: log lines first.
+	
+	self assert: 'Apuntando al oeste' equals: window showHeading.! !
+!ObserversTest methodsFor: 'as yet unclassified' stamp: 'As 6/4/2023 16:29:46' prior: 50630921!
+test05RoverForwardAndRightRegisterPositionsAndHeading
+
+	| rover window |
+	
+	rover := self roverAt: 1@1 heading: MarsRoverHeadingNorth.
+	window := Window for: rover.
+
+	rover attachForAll: window.
+	 	
+	rover process: 'fr'.
+	
+	self assert: '1@2' equals: window showPosition.
+	self assert: 'Apuntando al este' equals: window showHeading.! !
+!ObserversTest methodsFor: 'as yet unclassified' stamp: 'As 6/4/2023 16:29:46' prior: 50630775!
+test08RoverMoveBackwardsReportsToManyObservers
+
+	| rover log window |
+	
+	rover := self roverAt: 1@1 heading: MarsRoverHeadingNorth.
+	
+	log := Log for: rover.
+	window := Window for: rover.
+	
+	rover attachForPositionChanges: log.
+	rover attachForPositionChanges: window.
+	
+	rover process: 'b'.
+	
+	self assert: 1 equals: log lines size.
+	self assert: 1@0 equals: log lines first.
+	
+	self assert: '1@0' equals: window showPosition.! !
+!ObserversTest methodsFor: 'as yet unclassified' stamp: 'As 6/4/2023 16:29:46' prior: 50630814!
+test04RoverForwardTwoStepsWindowRegisterPositionsOneAfterAnother
+
+	| rover window |
+	
+	rover := self roverAt: 1@1 heading: MarsRoverHeadingNorth.
+	window := Window for: rover.
+
+	rover attachForAll: window.
+	 	
+	rover process: 'ff'.
+	
+	self assert: '1@3' equals: window showPosition! !
+!ObserversTest methodsFor: 'as yet unclassified' stamp: 'As 6/4/2023 16:29:46' prior: 50630791!
+test12ObserverShouldOnlyShowHeadingRequestedChanges
+
+	| rover log |
+	
+	rover := self roverAt: 1@1 heading: MarsRoverHeadingNorth.
+	
+	log := Log for: rover.
+	rover attachForHeadingChanges: log.
+		
+	rover process: 'fr'.
+	
+	self assert: 1 equals: log lines size.
+	self assert: 'East' equals: log lines first.
+! !
+!ObserversTest methodsFor: 'as yet unclassified' stamp: 'As 6/4/2023 16:29:46' prior: 50630803!
+test01RoverForwardLogRegisterLastPosition
+
+	| rover log |
+	
+	rover := self roverAt: 1@1 heading: MarsRoverHeadingNorth.
+	log := Log for: rover.
+	
+	rover attachForAll: log.
+	
+	rover process: 'f'.
+	
+	self assert: 1 equals: log lines size.
+	self assert: 1@2 equals: log lines first! !
+!ObserversTest methodsFor: 'as yet unclassified' stamp: 'As 6/4/2023 16:29:46' prior: 50630908!
+test02RoverForwardTwoStepsLogRegisterTwoLastPosition
+
+	| rover log |
+	
+	rover := self roverAt: 1@1 heading: MarsRoverHeadingNorth.
+	log := Log for: rover.
+
+	rover attachForAll: log.
+	 	
+	rover process: 'ff'.
+	
+	self assert: 2 equals: log lines size.
+	self assert: 1@2 equals: log lines first.
+	self assert: 1@3 equals: log lines second! !
+!ObserversTest methodsFor: 'as yet unclassified' stamp: 'As 6/4/2023 16:29:46' prior: 50630880!
+test07RoverMoveForwardReportsToManyObservers
+
+	| rover log window |
+	
+	rover := self roverAt: 1@1 heading: MarsRoverHeadingNorth.
+	
+	log := Log for: rover.
+	window := Window for: rover.
+	
+	rover attachForPositionChanges: log.
+	rover attachForPositionChanges: window.
+	
+	rover process: 'f'.
+	
+	self assert: 1 equals: log lines size.
+	self assert: 1@2 equals: log lines first.
+	
+	self assert: '1@2' equals: window showPosition.! !
+!ObserversTest methodsFor: 'as yet unclassified' stamp: 'As 6/4/2023 16:29:46' prior: 50630838!
+test09RoverRotateRightReportsToManyObservers
+
+	| rover log window |
+	
+	rover := self roverAt: 1@1 heading: MarsRoverHeadingNorth.
+	
+	log := Log for: rover.
+	window := Window for: rover.
+	
+	rover attachForHeadingChanges: log.
+	rover attachForHeadingChanges: window.
+	
+	rover process: 'r'.
+	
+	self assert: 1 equals: log lines size.
+	self assert: 'East' equals: log lines first.
+	
+	self assert: 'Apuntando al este' equals: window showHeading.! !
+!ObserversTest methodsFor: 'as yet unclassified' stamp: 'As 6/4/2023 16:29:46' prior: 50630896!
+test11ObserverShouldOnlyShowPositionRequestedChanges
+
+	| rover log |
+	
+	rover := self roverAt: 1@1 heading: MarsRoverHeadingNorth.
+	
+	log := Log for: rover.
+	rover attachForPositionChanges: log.
+		
+	rover process: 'fr'.
+	
+	self assert: 1 equals: log lines size.
+	self assert: 1@2 equals: log lines first.
+! !
+!ObserversTest methodsFor: 'as yet unclassified' stamp: 'As 6/4/2023 16:29:46' prior: 50630854!
+test13ObserverCanAttachToAllChanges
+
+	| rover log |
+	
+	rover := self roverAt: 1@1 heading: MarsRoverHeadingNorth.
+	
+	log := Log for: rover.
+	rover attachForAll: log.
+		
+	rover process: 'fr'.
+	
+	self assert: 2 equals: log lines size.
+	self assert: 1@2 equals: log lines first.
+	self assert: 'East' equals: log lines second.
+! !
+!ObserversTest methodsFor: 'as yet unclassified' stamp: 'As 6/4/2023 16:29:46' prior: 50630867!
+test06RoverForwardRightForwardRegisterLastPositionsAndHeading
+
+	| rover window |
+	
+	rover := self roverAt: 1@1 heading: MarsRoverHeadingNorth.
+	window := Window for: rover.
+
+	rover attachForAll: window.
+	 	
+	rover process: 'frf'.
+	
+	self assert: '2@2' equals: window showPosition.
+	self assert: 'Apuntando al este' equals: window showHeading.! !
+!ObserversTest methodsFor: 'as yet unclassified' stamp: 'As 6/4/2023 16:29:46' prior: 50630825!
+test03RoverForwardTwoStepsLogRegisterTwoLastPosition
+
+	| rover log |
+	
+	rover := self roverAt: 1@1 heading: MarsRoverHeadingNorth.
+	log := Log for: rover.
+
+	rover attachForAll: log.
+	 	
+	rover process: 'ff'.
+	
+	self assert: 2 equals: log lines size.
+	self assert: 1@2 equals: log lines first.
+	self assert: 1@3 equals: log lines second! !
+
+!methodRemoval: ObserversTest #roverAt: stamp: 'As 6/4/2023 16:29:46'!
+roverAt: aPosition
+
+	^ MarsRover at: aPosition heading: MarsRoverHeadingNorth!
+!ObserversTest methodsFor: 'as yet unclassified' stamp: 'As 6/4/2023 16:29:46' prior: 50630960!
+roverAt: aPosition heading: aHeadingType 
+
+	^ MarsRover at: aPosition heading: aHeadingType! !
+
+!methodRemoval: Log class #for: stamp: 'As 6/4/2023 16:31:43'!
+for: aMarsRover
+		
+	^self new for: aMarsRover!
+
+!methodRemoval: Window class #for: stamp: 'As 6/4/2023 16:31:48'!
+for: aMarsRover 
+	
+	^self new for: aMarsRover
+!
+!Log methodsFor: 'accessing' stamp: 'As 6/4/2023 16:32:04' overrides: 16920235!
+initialize
+
+	lines := OrderedCollection new.
+! !
+
+!methodRemoval: Log #for: stamp: 'As 6/4/2023 16:32:10'!
+for: aMarsRover
+	
+	super for: aMarsRover.
+	lines := OrderedCollection new.
+!
+
+!methodRemoval: Window #for: stamp: 'As 6/4/2023 16:32:19'!
+for: aMarsRover
+	
+	super for: aMarsRover.!
+
+!methodRemoval: RoverObserver #for: stamp: 'As 6/4/2023 16:32:26'!
+for: aMarsRover
+	
+	marsRover := aMarsRover.!
+
+Object subclass: #RoverObserver
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRover-WithHeading'!
+
+!classDefinition: #RoverObserver category: 'MarsRover-WithHeading' stamp: 'As 6/4/2023 16:32:30'!
+Object subclass: #RoverObserver
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRover-WithHeading'!
+
+!testRun: #ObserversTest #test01RoverForwardLogRegisterLastPosition stamp: 'As 6/4/2023 16:32:52'!
+ERROR!
+
+!testRun: #ObserversTest #test02RoverForwardTwoStepsLogRegisterTwoLastPosition stamp: 'As 6/4/2023 16:32:52'!
+ERROR!
+
+!testRun: #ObserversTest #test03RoverForwardTwoStepsLogRegisterTwoLastPosition stamp: 'As 6/4/2023 16:32:52'!
+ERROR!
+
+!testRun: #ObserversTest #test04RoverForwardTwoStepsWindowRegisterPositionsOneAfterAnother stamp: 'As 6/4/2023 16:32:52'!
+ERROR!
+
+!testRun: #ObserversTest #test05RoverForwardAndRightRegisterPositionsAndHeading stamp: 'As 6/4/2023 16:32:52'!
+ERROR!
+
+!testRun: #ObserversTest #test06RoverForwardRightForwardRegisterLastPositionsAndHeading stamp: 'As 6/4/2023 16:32:52'!
+ERROR!
+
+!testRun: #ObserversTest #test07RoverMoveForwardReportsToManyObservers stamp: 'As 6/4/2023 16:32:52'!
+ERROR!
+
+!testRun: #ObserversTest #test08RoverMoveBackwardsReportsToManyObservers stamp: 'As 6/4/2023 16:32:52'!
+ERROR!
+
+!testRun: #ObserversTest #test09RoverRotateRightReportsToManyObservers stamp: 'As 6/4/2023 16:32:52'!
+ERROR!
+
+!testRun: #ObserversTest #test10RoverRotateLeftReportsToManyObservers stamp: 'As 6/4/2023 16:32:52'!
+ERROR!
+
+!testRun: #ObserversTest #test11ObserverShouldOnlyShowPositionRequestedChanges stamp: 'As 6/4/2023 16:32:52'!
+ERROR!
+
+!testRun: #ObserversTest #test12ObserverShouldOnlyShowHeadingRequestedChanges stamp: 'As 6/4/2023 16:32:52'!
+ERROR!
+
+!testRun: #ObserversTest #test13ObserverCanAttachToAllChanges stamp: 'As 6/4/2023 16:32:52'!
+ERROR!
+
+!testRun: #ObserversTest #test01RoverForwardLogRegisterLastPosition stamp: 'As 6/4/2023 16:32:56'!
+ERROR!
+!ObserversTest methodsFor: 'test' stamp: 'As 6/4/2023 16:34:31'!
+newLog: rover
+
+	^ Log for: rover! !
+!ObserversTest methodsFor: 'test' stamp: 'As 6/4/2023 16:34:31' prior: 50631040!
+test01RoverForwardLogRegisterLastPosition
+
+	| rover log |
+	
+	rover := self roverAt: 1@1 heading: MarsRoverHeadingNorth.
+	log := self newLog: rover.
+	
+	rover attachForAll: log.
+	
+	rover process: 'f'.
+	
+	self assert: 1 equals: log lines size.
+	self assert: 1@2 equals: log lines first! !
+!ObserversTest methodsFor: 'test' stamp: 'As 6/4/2023 16:34:31' prior: 50631027!
+test12ObserverShouldOnlyShowHeadingRequestedChanges
+
+	| rover log |
+	
+	rover := self roverAt: 1@1 heading: MarsRoverHeadingNorth.
+	
+	log := self newLog: rover.
+	rover attachForHeadingChanges: log.
+		
+	rover process: 'fr'.
+	
+	self assert: 1 equals: log lines size.
+	self assert: 'East' equals: log lines first.
+! !
+!ObserversTest methodsFor: 'test' stamp: 'As 6/4/2023 16:34:31' prior: 50631083!
+test09RoverRotateRightReportsToManyObservers
+
+	| rover log window |
+	
+	rover := self roverAt: 1@1 heading: MarsRoverHeadingNorth.
+	
+	log := self newLog: rover.
+	window := Window for: rover.
+	
+	rover attachForHeadingChanges: log.
+	rover attachForHeadingChanges: window.
+	
+	rover process: 'r'.
+	
+	self assert: 1 equals: log lines size.
+	self assert: 'East' equals: log lines first.
+	
+	self assert: 'Apuntando al este' equals: window showHeading.! !
+!ObserversTest methodsFor: 'test' stamp: 'As 6/4/2023 16:34:31' prior: 50631141!
+test03RoverForwardTwoStepsLogRegisterTwoLastPosition
+
+	| rover log |
+	
+	rover := self roverAt: 1@1 heading: MarsRoverHeadingNorth.
+	log := self newLog: rover.
+
+	rover attachForAll: log.
+	 	
+	rover process: 'ff'.
+	
+	self assert: 2 equals: log lines size.
+	self assert: 1@2 equals: log lines first.
+	self assert: 1@3 equals: log lines second! !
+!ObserversTest methodsFor: 'test' stamp: 'As 6/4/2023 16:34:31' prior: 50631113!
+test13ObserverCanAttachToAllChanges
+
+	| rover log |
+	
+	rover := self roverAt: 1@1 heading: MarsRoverHeadingNorth.
+	
+	log := self newLog: rover.
+	rover attachForAll: log.
+		
+	rover process: 'fr'.
+	
+	self assert: 2 equals: log lines size.
+	self assert: 1@2 equals: log lines first.
+	self assert: 'East' equals: log lines second.
+! !
+!ObserversTest methodsFor: 'test' stamp: 'As 6/4/2023 16:34:31' prior: 50631052!
+test02RoverForwardTwoStepsLogRegisterTwoLastPosition
+
+	| rover log |
+	
+	rover := self roverAt: 1@1 heading: MarsRoverHeadingNorth.
+	log := self newLog: rover.
+
+	rover attachForAll: log.
+	 	
+	rover process: 'ff'.
+	
+	self assert: 2 equals: log lines size.
+	self assert: 1@2 equals: log lines first.
+	self assert: 1@3 equals: log lines second! !
+!ObserversTest methodsFor: 'test' stamp: 'As 6/4/2023 16:34:31' prior: 50631066!
+test07RoverMoveForwardReportsToManyObservers
+
+	| rover log window |
+	
+	rover := self roverAt: 1@1 heading: MarsRoverHeadingNorth.
+	
+	log := self newLog: rover.
+	window := Window for: rover.
+	
+	rover attachForPositionChanges: log.
+	rover attachForPositionChanges: window.
+	
+	rover process: 'f'.
+	
+	self assert: 1 equals: log lines size.
+	self assert: 1@2 equals: log lines first.
+	
+	self assert: '1@2' equals: window showPosition.! !
+!ObserversTest methodsFor: 'test' stamp: 'As 6/4/2023 16:34:31' prior: 50630967!
+test10RoverRotateLeftReportsToManyObservers
+
+	| rover log window |
+	
+	rover := self roverAt: 1@1 heading: MarsRoverHeadingNorth.
+	
+	log := self newLog: rover.
+	window := Window for: rover.
+	
+	rover attachForHeadingChanges: log.
+	rover attachForHeadingChanges: window.
+	
+	rover process: 'l'.
+	
+	self assert: 1 equals: log lines size.
+	self assert: 'West' equals: log lines first.
+	
+	self assert: 'Apuntando al oeste' equals: window showHeading.! !
+!ObserversTest methodsFor: 'test' stamp: 'As 6/4/2023 16:34:31' prior: 50631100!
+test11ObserverShouldOnlyShowPositionRequestedChanges
+
+	| rover log |
+	
+	rover := self roverAt: 1@1 heading: MarsRoverHeadingNorth.
+	
+	log := self newLog: rover.
+	rover attachForPositionChanges: log.
+		
+	rover process: 'fr'.
+	
+	self assert: 1 equals: log lines size.
+	self assert: 1@2 equals: log lines first.
+! !
+!ObserversTest methodsFor: 'test' stamp: 'As 6/4/2023 16:34:31' prior: 50630998!
+test08RoverMoveBackwardsReportsToManyObservers
+
+	| rover log window |
+	
+	rover := self roverAt: 1@1 heading: MarsRoverHeadingNorth.
+	
+	log := self newLog: rover.
+	window := Window for: rover.
+	
+	rover attachForPositionChanges: log.
+	rover attachForPositionChanges: window.
+	
+	rover process: 'b'.
+	
+	self assert: 1 equals: log lines size.
+	self assert: 1@0 equals: log lines first.
+	
+	self assert: '1@0' equals: window showPosition.! !
+!ObserversTest methodsFor: 'test' stamp: 'As 6/4/2023 16:35:06' prior: 50631250!
+newLog: rover
+
+	^ Log new! !
+!ObserversTest methodsFor: 'test' stamp: 'As 6/4/2023 16:35:46' prior: 50631401!
+newLog: rover
+
+	rover.
+	^ Log new! !
+!ObserversTest methodsFor: 'test' stamp: 'As 6/4/2023 16:36:06' prior: 50631405!
+newLog: rover
+	
+	^ Log for: rover! !
+!ObserversTest methodsFor: 'test' stamp: 'As 6/4/2023 16:36:39' prior: 50631409!
+newLog: rover
+	
+	^ Log for: MarsRover new.! !
+
+!methodRemoval: ObserversTest #newLog: stamp: 'As 6/4/2023 16:36:55'!
+newLog: rover
+	
+	^ Log for: MarsRover new.!
+!ObserversTest methodsFor: 'test' stamp: 'As 6/4/2023 16:37:14' prior: 50631254!
+test01RoverForwardLogRegisterLastPosition
+
+	| rover log |
+	
+	rover := self roverAt: 1@1 heading: MarsRoverHeadingNorth.
+	log := Log new.
+	
+	rover attachForAll: log.
+	
+	rover process: 'f'.
+	
+	self assert: 1 equals: log lines size.
+	self assert: 1@2 equals: log lines first! !
+!ObserversTest methodsFor: 'test' stamp: 'As 6/4/2023 16:37:19' prior: 50631323!
+test02RoverForwardTwoStepsLogRegisterTwoLastPosition
+
+	| rover log |
+	
+	rover := self roverAt: 1@1 heading: MarsRoverHeadingNorth.
+	log := Log new.
+
+	rover attachForAll: log.
+	 	
+	rover process: 'ff'.
+	
+	self assert: 2 equals: log lines size.
+	self assert: 1@2 equals: log lines first.
+	self assert: 1@3 equals: log lines second! !
+!ObserversTest methodsFor: 'test' stamp: 'As 6/4/2023 16:37:26' prior: 50631296!
+test03RoverForwardTwoStepsLogRegisterTwoLastPosition
+
+	| rover log |
+	
+	rover := self roverAt: 1@1 heading: MarsRoverHeadingNorth.
+	log := Log new.
+
+	rover attachForAll: log.
+	 	
+	rover process: 'ff'.
+	
+	self assert: 2 equals: log lines size.
+	self assert: 1@2 equals: log lines first.
+	self assert: 1@3 equals: log lines second! !
+!ObserversTest methodsFor: 'test' stamp: 'As 6/4/2023 16:37:35' prior: 50631015!
+test04RoverForwardTwoStepsWindowRegisterPositionsOneAfterAnother
+
+	| rover window |
+	
+	rover := self roverAt: 1@1 heading: MarsRoverHeadingNorth.
+	window := Window new.
+
+	rover attachForAll: window.
+	 	
+	rover process: 'ff'.
+	
+	self assert: '1@3' equals: window showPosition! !
+!ObserversTest methodsFor: 'test' stamp: 'As 6/4/2023 16:37:42' prior: 50630984!
+test05RoverForwardAndRightRegisterPositionsAndHeading
+
+	| rover window |
+	
+	rover := self roverAt: 1@1 heading: MarsRoverHeadingNorth.
+	window := Window new.
+
+	rover attachForAll: window.
+	 	
+	rover process: 'fr'.
+	
+	self assert: '1@2' equals: window showPosition.
+	self assert: 'Apuntando al este' equals: window showHeading.! !
+!ObserversTest methodsFor: 'test' stamp: 'As 6/4/2023 16:37:48' prior: 50631127!
+test06RoverForwardRightForwardRegisterLastPositionsAndHeading
+
+	| rover window |
+	
+	rover := self roverAt: 1@1 heading: MarsRoverHeadingNorth.
+	window := Window new.
+
+	rover attachForAll: window.
+	 	
+	rover process: 'frf'.
+	
+	self assert: '2@2' equals: window showPosition.
+	self assert: 'Apuntando al este' equals: window showHeading.! !
+!ObserversTest methodsFor: 'test' stamp: 'As 6/4/2023 16:37:58' prior: 50631337!
+test07RoverMoveForwardReportsToManyObservers
+
+	| rover log window |
+	
+	rover := self roverAt: 1@1 heading: MarsRoverHeadingNorth.
+	
+	log := Log new.
+	window := Window new.
+	
+	rover attachForPositionChanges: log.
+	rover attachForPositionChanges: window.
+	
+	rover process: 'f'.
+	
+	self assert: 1 equals: log lines size.
+	self assert: 1@2 equals: log lines first.
+	
+	self assert: '1@2' equals: window showPosition.! !
+!ObserversTest methodsFor: 'test' stamp: 'As 6/4/2023 16:38:13' prior: 50631384!
+test08RoverMoveBackwardsReportsToManyObservers
+
+	| rover log window |
+	
+	rover := self roverAt: 1@1 heading: MarsRoverHeadingNorth.
+	
+	log := Log new.
+	window := Window new.
+	
+	rover attachForPositionChanges: log.
+	rover attachForPositionChanges: window.
+	
+	rover process: 'b'.
+	
+	self assert: 1 equals: log lines size.
+	self assert: 1@0 equals: log lines first.
+	
+	self assert: '1@0' equals: window showPosition.! !
+!ObserversTest methodsFor: 'test' stamp: 'As 6/4/2023 16:38:18' prior: 50631279!
+test09RoverRotateRightReportsToManyObservers
+
+	| rover log window |
+	
+	rover := self roverAt: 1@1 heading: MarsRoverHeadingNorth.
+	
+	log := Log new.
+	window := Window new.
+	
+	rover attachForHeadingChanges: log.
+	rover attachForHeadingChanges: window.
+	
+	rover process: 'r'.
+	
+	self assert: 1 equals: log lines size.
+	self assert: 'East' equals: log lines first.
+	
+	self assert: 'Apuntando al este' equals: window showHeading.! !
+!ObserversTest methodsFor: 'test' stamp: 'As 6/4/2023 16:38:23' prior: 50631354!
+test10RoverRotateLeftReportsToManyObservers
+
+	| rover log window |
+	
+	rover := self roverAt: 1@1 heading: MarsRoverHeadingNorth.
+	
+	log := Log new.
+	window := Window new.
+	
+	rover attachForHeadingChanges: log.
+	rover attachForHeadingChanges: window.
+	
+	rover process: 'l'.
+	
+	self assert: 1 equals: log lines size.
+	self assert: 'West' equals: log lines first.
+	
+	self assert: 'Apuntando al oeste' equals: window showHeading.! !
+!ObserversTest methodsFor: 'test' stamp: 'As 6/4/2023 16:38:40' prior: 50631371!
+test11ObserverShouldOnlyShowPositionRequestedChanges
+
+	| rover log |
+	
+	rover := self roverAt: 1@1 heading: MarsRoverHeadingNorth.
+	
+	log := Log new.
+	rover attachForPositionChanges: log.
+		
+	rover process: 'fr'.
+	
+	self assert: 1 equals: log lines size.
+	self assert: 1@2 equals: log lines first.
+! !
+!ObserversTest methodsFor: 'test' stamp: 'As 6/4/2023 16:38:49' prior: 50631266!
+test12ObserverShouldOnlyShowHeadingRequestedChanges
+
+	| rover log |
+	
+	rover := self roverAt: 1@1 heading: MarsRoverHeadingNorth.
+	
+	log := Log new.
+	rover attachForHeadingChanges: log.
+		
+	rover process: 'fr'.
+	
+	self assert: 1 equals: log lines size.
+	self assert: 'East' equals: log lines first.
+! !
+!ObserversTest methodsFor: 'test' stamp: 'As 6/4/2023 16:38:56' prior: 50631310!
+test13ObserverCanAttachToAllChanges
+
+	| rover log |
+	
+	rover := self roverAt: 1@1 heading: MarsRoverHeadingNorth.
+	
+	log := Log new.
+	rover attachForAll: log.
+		
+	rover process: 'fr'.
+	
+	self assert: 2 equals: log lines size.
+	self assert: 1@2 equals: log lines first.
+	self assert: 'East' equals: log lines second.
+! !
+
+!testRun: #ObserversTest #test01RoverForwardLogRegisterLastPosition stamp: 'As 6/4/2023 16:39:07'!
+PASSED!
+
+!testRun: #ObserversTest #test02RoverForwardTwoStepsLogRegisterTwoLastPosition stamp: 'As 6/4/2023 16:39:07'!
+PASSED!
+
+!testRun: #ObserversTest #test03RoverForwardTwoStepsLogRegisterTwoLastPosition stamp: 'As 6/4/2023 16:39:07'!
+PASSED!
+
+!testRun: #ObserversTest #test04RoverForwardTwoStepsWindowRegisterPositionsOneAfterAnother stamp: 'As 6/4/2023 16:39:07'!
+PASSED!
+
+!testRun: #ObserversTest #test05RoverForwardAndRightRegisterPositionsAndHeading stamp: 'As 6/4/2023 16:39:07'!
+PASSED!
+
+!testRun: #ObserversTest #test06RoverForwardRightForwardRegisterLastPositionsAndHeading stamp: 'As 6/4/2023 16:39:07'!
+PASSED!
+
+!testRun: #ObserversTest #test07RoverMoveForwardReportsToManyObservers stamp: 'As 6/4/2023 16:39:07'!
+PASSED!
+
+!testRun: #ObserversTest #test08RoverMoveBackwardsReportsToManyObservers stamp: 'As 6/4/2023 16:39:07'!
+PASSED!
+
+!testRun: #ObserversTest #test09RoverRotateRightReportsToManyObservers stamp: 'As 6/4/2023 16:39:07'!
+PASSED!
+
+!testRun: #ObserversTest #test10RoverRotateLeftReportsToManyObservers stamp: 'As 6/4/2023 16:39:07'!
+PASSED!
+
+!testRun: #ObserversTest #test11ObserverShouldOnlyShowPositionRequestedChanges stamp: 'As 6/4/2023 16:39:07'!
+PASSED!
+
+!testRun: #ObserversTest #test12ObserverShouldOnlyShowHeadingRequestedChanges stamp: 'As 6/4/2023 16:39:07'!
+PASSED!
+
+!testRun: #ObserversTest #test13ObserverCanAttachToAllChanges stamp: 'As 6/4/2023 16:39:07'!
+PASSED!
+!MarsRover methodsFor: 'observers' stamp: 'As 6/4/2023 16:40:26' prior: 50629849!
+notifyHeading
+
+	observersForHeadingChanges do: [ :anObserver | anObserver updateHeading: head ]! !
+!ObserversTest methodsFor: 'test' stamp: 'As 6/4/2023 16:41:26'!
+test14ObserverCanAttachToAllChanges
+
+	| rover log |
+	
+	rover := self roverAt: 1@1 heading: MarsRoverHeadingNorth.
+	
+	log := Log new.
+	rover attachForAll: log.
+		
+	rover process: 'fr'.
+	
+	self assert: 2 equals: log lines size.
+	self assert: 1@2 equals: log lines first.
+	self assert: 'East' equals: log lines second.
+! !
+!MarsRover methodsFor: 'observers' stamp: 'As 6/4/2023 16:41:45' prior: 50631646!
+notifyHeading
+
+	observersForHeadingChanges do: [ :anObserver | anObserver updateHeading: head for: self ]! !
+!MarsRover methodsFor: 'observers' stamp: 'As 6/4/2023 16:41:57' prior: 50629855!
+notifyPosition
+
+	observersForPositionChanges do: [ :observer | observer updatePosition: position for: self ]! !
+!RoverObserver methodsFor: 'as yet unclassified' stamp: 'As 6/4/2023 16:42:16' prior: 50630097!
+updateHeading: aHeadingType
+	
+	self subclassResponsibility ! !
+!RoverObserver methodsFor: 'as yet unclassified' stamp: 'As 6/4/2023 16:42:31' prior: 50631678!
+updateHeading: aHeadingType 
+	
+	self subclassResponsibility ! !
+!RoverObserver methodsFor: 'as yet unclassified' stamp: 'As 6/4/2023 16:42:46'!
+updateHeading: aHeadingType for: aMarsRover
+	
+	self subclassResponsibility ! !
+!RoverObserver methodsFor: 'as yet unclassified' stamp: 'As 6/4/2023 16:42:55'!
+updatePosition: aPosition for: aMarsRover
+	
+	self subclassResponsibility ! !
+
+!methodRemoval: RoverObserver #updatePosition: stamp: 'As 6/4/2023 16:42:58'!
+updatePosition: aPosition
+	
+	self subclassResponsibility !
+
+!methodRemoval: RoverObserver #updateHeading: stamp: 'As 6/4/2023 16:43:01'!
+updateHeading: aHeadingType 
+	
+	self subclassResponsibility !
+!Log methodsFor: 'accessing' stamp: 'As 6/4/2023 16:43:11' overrides: 50631688!
+updateHeading: aHeadingType for: aMarsRover
+	
+	| direction |
+	
+	(aHeadingType isKindOf: MarsRoverHeadingEast) ifTrue: [ direction := 'East' ].
+	(aHeadingType isKindOf: MarsRoverHeadingNorth) ifTrue: [ direction := 'North' ].
+	(aHeadingType isKindOf: MarsRoverHeadingSouth) ifTrue: [ direction := 'South' ].
+	(aHeadingType isKindOf: MarsRoverHeadingWest) ifTrue: [ direction := 'West' ].
+	
+	lines add: direction.! !
+
+!methodRemoval: Log #updateHeading: stamp: 'As 6/4/2023 16:43:15'!
+updateHeading: aHeadingType
+	
+	| direction |
+	
+	(aHeadingType isKindOf: MarsRoverHeadingEast) ifTrue: [ direction := 'East' ].
+	(aHeadingType isKindOf: MarsRoverHeadingNorth) ifTrue: [ direction := 'North' ].
+	(aHeadingType isKindOf: MarsRoverHeadingSouth) ifTrue: [ direction := 'South' ].
+	(aHeadingType isKindOf: MarsRoverHeadingWest) ifTrue: [ direction := 'West' ].
+	
+	lines add: direction.!
+!Log methodsFor: 'accessing' stamp: 'As 6/4/2023 16:43:21' overrides: 50631693!
+updatePosition: aPosition for: aMarsRover
+	
+	lines add: aPosition.! !
+
+!methodRemoval: Log #updatePosition: stamp: 'As 6/4/2023 16:43:24'!
+updatePosition: aPosition
+	
+	lines add: aPosition.!
+!Window methodsFor: 'as yet unclassified' stamp: 'As 6/4/2023 16:44:05' overrides: 50631688!
+updateHeading: aHeadingType for: aMarsRover
+	
+	| direction |
+	
+	(aHeadingType isKindOf: MarsRoverHeadingEast) ifTrue: [ direction := 'este' ].
+	(aHeadingType isKindOf: MarsRoverHeadingNorth) ifTrue: [ direction := 'norte' ].
+	(aHeadingType isKindOf: MarsRoverHeadingSouth) ifTrue: [ direction := 'sur' ].
+	(aHeadingType isKindOf: MarsRoverHeadingWest) ifTrue: [ direction := 'oeste' ].
+		
+	heading := 'Apuntando al ', direction.! !
+
+!methodRemoval: Window #updateHeading: stamp: 'As 6/4/2023 16:44:08'!
+updateHeading: aHeadingType
+	
+	| direction |
+	
+	(aHeadingType isKindOf: MarsRoverHeadingEast) ifTrue: [ direction := 'este' ].
+	(aHeadingType isKindOf: MarsRoverHeadingNorth) ifTrue: [ direction := 'norte' ].
+	(aHeadingType isKindOf: MarsRoverHeadingSouth) ifTrue: [ direction := 'sur' ].
+	(aHeadingType isKindOf: MarsRoverHeadingWest) ifTrue: [ direction := 'oeste' ].
+		
+	heading := 'Apuntando al ', direction.!
+!Window methodsFor: 'as yet unclassified' stamp: 'As 6/4/2023 16:44:15' overrides: 50631693!
+updatePosition: aPosition for: aMarsRover
+	
+	position := aPosition asString. 
+	! !
+
+!methodRemoval: Window #updatePosition: stamp: 'As 6/4/2023 16:44:18'!
+updatePosition: aPosition
+	
+	position := aPosition asString. 
+	!
+
+!testRun: #ObserversTest #test01RoverForwardLogRegisterLastPosition stamp: 'As 6/4/2023 16:45:17'!
+PASSED!
+
+!testRun: #ObserversTest #test02RoverForwardTwoStepsLogRegisterTwoLastPosition stamp: 'As 6/4/2023 16:45:17'!
+PASSED!
+
+!testRun: #ObserversTest #test03RoverForwardTwoStepsLogRegisterTwoLastPosition stamp: 'As 6/4/2023 16:45:17'!
+PASSED!
+
+!testRun: #ObserversTest #test04RoverForwardTwoStepsWindowRegisterPositionsOneAfterAnother stamp: 'As 6/4/2023 16:45:17'!
+PASSED!
+
+!testRun: #ObserversTest #test05RoverForwardAndRightRegisterPositionsAndHeading stamp: 'As 6/4/2023 16:45:17'!
+PASSED!
+
+!testRun: #ObserversTest #test06RoverForwardRightForwardRegisterLastPositionsAndHeading stamp: 'As 6/4/2023 16:45:17'!
+PASSED!
+
+!testRun: #ObserversTest #test07RoverMoveForwardReportsToManyObservers stamp: 'As 6/4/2023 16:45:17'!
+PASSED!
+
+!testRun: #ObserversTest #test08RoverMoveBackwardsReportsToManyObservers stamp: 'As 6/4/2023 16:45:17'!
+PASSED!
+
+!testRun: #ObserversTest #test09RoverRotateRightReportsToManyObservers stamp: 'As 6/4/2023 16:45:17'!
+PASSED!
+
+!testRun: #ObserversTest #test10RoverRotateLeftReportsToManyObservers stamp: 'As 6/4/2023 16:45:17'!
+PASSED!
+
+!testRun: #ObserversTest #test11ObserverShouldOnlyShowPositionRequestedChanges stamp: 'As 6/4/2023 16:45:17'!
+PASSED!
+
+!testRun: #ObserversTest #test12ObserverShouldOnlyShowHeadingRequestedChanges stamp: 'As 6/4/2023 16:45:17'!
+PASSED!
+
+!testRun: #ObserversTest #test13ObserverCanAttachToAllChanges stamp: 'As 6/4/2023 16:45:17'!
+PASSED!
+
+!testRun: #ObserversTest #test14ObserverCanAttachToAllChanges stamp: 'As 6/4/2023 16:45:17'!
+PASSED!
+!MarsRover methodsFor: 'observers' stamp: 'As 6/4/2023 16:47:59'!
+attach: anObserver 
+	
+	observersForPositionChanges add: anObserver.
+	observersForHeadingChanges add: anObserver.! !
+!ObserversTest methodsFor: 'as yet unclassified' stamp: 'As 6/4/2023 16:47:59' prior: 50631421!
+test01RoverForwardLogRegisterLastPosition
+
+	| rover log |
+	
+	rover := self roverAt: 1@1 heading: MarsRoverHeadingNorth.
+	log := Log new.
+	
+	rover attach: log.
+	
+	rover process: 'f'.
+	
+	self assert: 1 equals: log lines size.
+	self assert: 1@2 equals: log lines first! !
+!ObserversTest methodsFor: 'as yet unclassified' stamp: 'As 6/4/2023 16:47:59' prior: 50631446!
+test03RoverForwardTwoStepsLogRegisterTwoLastPosition
+
+	| rover log |
+	
+	rover := self roverAt: 1@1 heading: MarsRoverHeadingNorth.
+	log := Log new.
+
+	rover attach: log.
+	 	
+	rover process: 'ff'.
+	
+	self assert: 2 equals: log lines size.
+	self assert: 1@2 equals: log lines first.
+	self assert: 1@3 equals: log lines second! !
+!ObserversTest methodsFor: 'as yet unclassified' stamp: 'As 6/4/2023 16:47:59' prior: 50631471!
+test05RoverForwardAndRightRegisterPositionsAndHeading
+
+	| rover window |
+	
+	rover := self roverAt: 1@1 heading: MarsRoverHeadingNorth.
+	window := Window new.
+
+	rover attach: window.
+	 	
+	rover process: 'fr'.
+	
+	self assert: '1@2' equals: window showPosition.
+	self assert: 'Apuntando al este' equals: window showHeading.! !
+!ObserversTest methodsFor: 'as yet unclassified' stamp: 'As 6/4/2023 16:47:59' prior: 50631459!
+test04RoverForwardTwoStepsWindowRegisterPositionsOneAfterAnother
+
+	| rover window |
+	
+	rover := self roverAt: 1@1 heading: MarsRoverHeadingNorth.
+	window := Window new.
+
+	rover attach: window.
+	 	
+	rover process: 'ff'.
+	
+	self assert: '1@3' equals: window showPosition! !
+!ObserversTest methodsFor: 'as yet unclassified' stamp: 'As 6/4/2023 16:47:59' prior: 50631652!
+test14ObserverCanAttachToAllChanges
+
+	| rover log |
+	
+	rover := self roverAt: 1@1 heading: MarsRoverHeadingNorth.
+	
+	log := Log new.
+	rover attach: log.
+		
+	rover process: 'fr'.
+	
+	self assert: 2 equals: log lines size.
+	self assert: 1@2 equals: log lines first.
+	self assert: 'East' equals: log lines second.
+! !
+!ObserversTest methodsFor: 'as yet unclassified' stamp: 'As 6/4/2023 16:47:59' prior: 50631484!
+test06RoverForwardRightForwardRegisterLastPositionsAndHeading
+
+	| rover window |
+	
+	rover := self roverAt: 1@1 heading: MarsRoverHeadingNorth.
+	window := Window new.
+
+	rover attach: window.
+	 	
+	rover process: 'frf'.
+	
+	self assert: '2@2' equals: window showPosition.
+	self assert: 'Apuntando al este' equals: window showHeading.! !
+!ObserversTest methodsFor: 'as yet unclassified' stamp: 'As 6/4/2023 16:47:59' prior: 50631586!
+test13ObserverCanAttachToAllChanges
+
+	| rover log |
+	
+	rover := self roverAt: 1@1 heading: MarsRoverHeadingNorth.
+	
+	log := Log new.
+	rover attach: log.
+		
+	rover process: 'fr'.
+	
+	self assert: 2 equals: log lines size.
+	self assert: 1@2 equals: log lines first.
+	self assert: 'East' equals: log lines second.
+! !
+!ObserversTest methodsFor: 'as yet unclassified' stamp: 'As 6/4/2023 16:47:59' prior: 50631433!
+test02RoverForwardTwoStepsLogRegisterTwoLastPosition
+
+	| rover log |
+	
+	rover := self roverAt: 1@1 heading: MarsRoverHeadingNorth.
+	log := Log new.
+
+	rover attach: log.
+	 	
+	rover process: 'ff'.
+	
+	self assert: 2 equals: log lines size.
+	self assert: 1@2 equals: log lines first.
+	self assert: 1@3 equals: log lines second! !
+
+!methodRemoval: MarsRover #attachForAll: stamp: 'As 6/4/2023 16:47:59'!
+attachForAll: anObserver 
+	
+	observersForPositionChanges add: anObserver.
+	observersForHeadingChanges add: anObserver.!
+!MarsRover methodsFor: 'observers' stamp: 'As 6/4/2023 16:50:05'!
+attach: anObserver for: anArrayOfAspects
+	
+	(anArrayOfAspects includes: #Position) ifTrue: [ observersForPositionChanges add: anObserver ].
+	(anArrayOfAspects includes: #Heading) ifTrue: [ observersForHeadingChanges add: anObserver ].
+! !
+
+!methodRemoval: MarsRover #attach: stamp: 'As 6/4/2023 16:50:20'!
+attach: anObserver 
+	
+	observersForPositionChanges add: anObserver.
+	observersForHeadingChanges add: anObserver.!
+
+!methodRemoval: MarsRover #attachForHeadingChanges: stamp: 'As 6/4/2023 16:50:31'!
+attachForHeadingChanges: anObserver 
+	
+	observersForHeadingChanges add: anObserver!
+
+!methodRemoval: MarsRover #attachForPositionChanges: stamp: 'As 6/4/2023 16:50:34'!
+attachForPositionChanges: anObserver 
+	
+	observersForPositionChanges add: anObserver!
+
+!testRun: #ObserversTest #test01RoverForwardLogRegisterLastPosition stamp: 'As 6/4/2023 16:50:38'!
+ERROR!
+
+!testRun: #ObserversTest #test02RoverForwardTwoStepsLogRegisterTwoLastPosition stamp: 'As 6/4/2023 16:50:38'!
+ERROR!
+
+!testRun: #ObserversTest #test03RoverForwardTwoStepsLogRegisterTwoLastPosition stamp: 'As 6/4/2023 16:50:38'!
+ERROR!
+
+!testRun: #ObserversTest #test04RoverForwardTwoStepsWindowRegisterPositionsOneAfterAnother stamp: 'As 6/4/2023 16:50:38'!
+ERROR!
+
+!testRun: #ObserversTest #test05RoverForwardAndRightRegisterPositionsAndHeading stamp: 'As 6/4/2023 16:50:38'!
+ERROR!
+
+!testRun: #ObserversTest #test06RoverForwardRightForwardRegisterLastPositionsAndHeading stamp: 'As 6/4/2023 16:50:38'!
+ERROR!
+
+!testRun: #ObserversTest #test07RoverMoveForwardReportsToManyObservers stamp: 'As 6/4/2023 16:50:38'!
+ERROR!
+
+!testRun: #ObserversTest #test08RoverMoveBackwardsReportsToManyObservers stamp: 'As 6/4/2023 16:50:38'!
+ERROR!
+
+!testRun: #ObserversTest #test09RoverRotateRightReportsToManyObservers stamp: 'As 6/4/2023 16:50:38'!
+ERROR!
+
+!testRun: #ObserversTest #test10RoverRotateLeftReportsToManyObservers stamp: 'As 6/4/2023 16:50:38'!
+ERROR!
+
+!testRun: #ObserversTest #test11ObserverShouldOnlyShowPositionRequestedChanges stamp: 'As 6/4/2023 16:50:38'!
+ERROR!
+
+!testRun: #ObserversTest #test12ObserverShouldOnlyShowHeadingRequestedChanges stamp: 'As 6/4/2023 16:50:39'!
+ERROR!
+
+!testRun: #ObserversTest #test13ObserverCanAttachToAllChanges stamp: 'As 6/4/2023 16:50:39'!
+ERROR!
+
+!testRun: #ObserversTest #test14ObserverCanAttachToAllChanges stamp: 'As 6/4/2023 16:50:39'!
+ERROR!
+!ObserversTest methodsFor: 'aspects' stamp: 'As 6/4/2023 16:51:16'!
+position
+	
+	^{ #Position }! !
+!ObserversTest methodsFor: 'aspects' stamp: 'As 6/4/2023 16:51:25'!
+heading
+	
+	^{ #Heading }! !
+!ObserversTest methodsFor: 'aspects' stamp: 'As 6/4/2023 16:51:43'!
+positionAndHeading
+	
+	^{ #Position. #Heading. }! !
+!ObserversTest methodsFor: 'test' stamp: 'As 6/4/2023 16:52:09' prior: 50631845!
+test01RoverForwardLogRegisterLastPosition
+
+	| rover log |
+	
+	rover := self roverAt: 1@1 heading: MarsRoverHeadingNorth.
+	log := Log new.
+	
+	rover attach: log for: self position.
+	
+	rover process: 'f'.
+	
+	self assert: 1 equals: log lines size.
+	self assert: 1@2 equals: log lines first! !
+
+!testRun: #ObserversTest #test01RoverForwardLogRegisterLastPosition stamp: 'As 6/4/2023 16:52:12'!
+PASSED!
+!ObserversTest methodsFor: 'test' stamp: 'As 6/4/2023 16:52:20' prior: 50631937!
+test02RoverForwardTwoStepsLogRegisterTwoLastPosition
+
+	| rover log |
+	
+	rover := self roverAt: 1@1 heading: MarsRoverHeadingNorth.
+	log := Log new.
+
+	rover attach: log for: self position.
+	 	
+	rover process: 'ff'.
+	
+	self assert: 2 equals: log lines size.
+	self assert: 1@2 equals: log lines first.
+	self assert: 1@3 equals: log lines second! !
+!ObserversTest methodsFor: 'test' stamp: 'As 6/4/2023 16:52:26' prior: 50631857!
+test03RoverForwardTwoStepsLogRegisterTwoLastPosition
+
+	| rover log |
+	
+	rover := self roverAt: 1@1 heading: MarsRoverHeadingNorth.
+	log := Log new.
+
+	rover attach: log for: self position.
+	 	
+	rover process: 'ff'.
+	
+	self assert: 2 equals: log lines size.
+	self assert: 1@2 equals: log lines first.
+	self assert: 1@3 equals: log lines second! !
+!ObserversTest methodsFor: 'test' stamp: 'As 6/4/2023 16:52:39' prior: 50631885!
+test04RoverForwardTwoStepsWindowRegisterPositionsOneAfterAnother
+
+	| rover window |
+	
+	rover := self roverAt: 1@1 heading: MarsRoverHeadingNorth.
+	window := Window new.
+
+	rover attach: window for: self position.
+	 	
+	rover process: 'ff'.
+	
+	self assert: '1@3' equals: window showPosition! !
+!ObserversTest methodsFor: 'test' stamp: 'As 6/4/2023 16:52:59' prior: 50631871!
+test05RoverForwardAndRightRegisterPositionsAndHeading
+
+	| rover window |
+	
+	rover := self roverAt: 1@1 heading: MarsRoverHeadingNorth.
+	window := Window new.
+
+	rover attach: window for: self positionAndHeading.
+	 	
+	rover process: 'fr'.
+	
+	self assert: '1@2' equals: window showPosition.
+	self assert: 'Apuntando al este' equals: window showHeading.! !
+!ObserversTest methodsFor: 'test' stamp: 'As 6/4/2023 16:53:06' prior: 50631910!
+test06RoverForwardRightForwardRegisterLastPositionsAndHeading
+
+	| rover window |
+	
+	rover := self roverAt: 1@1 heading: MarsRoverHeadingNorth.
+	window := Window new.
+
+	rover attach: window for: self positionAndHeading.
+	 	
+	rover process: 'frf'.
+	
+	self assert: '2@2' equals: window showPosition.
+	self assert: 'Apuntando al este' equals: window showHeading.! !
+!ObserversTest methodsFor: 'test' stamp: 'As 6/4/2023 16:53:40' prior: 50631498!
+test07RoverMoveForwardReportsToManyObservers
+
+	| rover log window |
+	
+	rover := self roverAt: 1@1 heading: MarsRoverHeadingNorth.
+	
+	log := Log new.
+	window := Window new.
+	
+	rover attach: log for: self position.
+	rover attach: window for: self position.
+	
+	rover process: 'f'.
+	
+	self assert: 1 equals: log lines size.
+	self assert: 1@2 equals: log lines first.
+	
+	self assert: '1@2' equals: window showPosition.! !
+!ObserversTest methodsFor: 'test' stamp: 'As 6/4/2023 16:53:52' prior: 50631514!
+test08RoverMoveBackwardsReportsToManyObservers
+
+	| rover log window |
+	
+	rover := self roverAt: 1@1 heading: MarsRoverHeadingNorth.
+	
+	log := Log new.
+	window := Window new.
+	
+	rover attach: log for: self position.
+	rover attach: window for: self position.
+	
+	rover process: 'b'.
+	
+	self assert: 1 equals: log lines size.
+	self assert: 1@0 equals: log lines first.
+	
+	self assert: '1@0' equals: window showPosition.! !
+!ObserversTest methodsFor: 'test' stamp: 'As 6/4/2023 16:54:07' prior: 50631530!
+test09RoverRotateRightReportsToManyObservers
+
+	| rover log window |
+	
+	rover := self roverAt: 1@1 heading: MarsRoverHeadingNorth.
+	
+	log := Log new.
+	window := Window new.
+	
+	rover attach: log for: self heading.
+	rover attach: window for: self heading.
+	
+	rover process: 'r'.
+	
+	self assert: 1 equals: log lines size.
+	self assert: 'East' equals: log lines first.
+	
+	self assert: 'Apuntando al este' equals: window showHeading.! !
+!ObserversTest methodsFor: 'test' stamp: 'As 6/4/2023 16:54:13' prior: 50631546!
+test10RoverRotateLeftReportsToManyObservers
+
+	| rover log window |
+	
+	rover := self roverAt: 1@1 heading: MarsRoverHeadingNorth.
+	
+	log := Log new.
+	window := Window new.
+	
+	rover attach: log for: self heading.
+	rover attach: window for: self heading.
+	
+	rover process: 'l'.
+	
+	self assert: 1 equals: log lines size.
+	self assert: 'West' equals: log lines first.
+	
+	self assert: 'Apuntando al oeste' equals: window showHeading.! !
+!ObserversTest methodsFor: 'test' stamp: 'As 6/4/2023 16:54:35' prior: 50631562!
+test11ObserverShouldOnlyShowPositionRequestedChanges
+
+	| rover log |
+	
+	rover := self roverAt: 1@1 heading: MarsRoverHeadingNorth.
+	
+	log := Log new.
+	rover attach: log for: self position.
+		
+	rover process: 'fr'.
+	
+	self assert: 1 equals: log lines size.
+	self assert: 1@2 equals: log lines first.
+! !
+!ObserversTest methodsFor: 'test' stamp: 'As 6/4/2023 16:54:51' prior: 50631574!
+test12ObserverShouldOnlyShowHeadingRequestedChanges
+
+	| rover log |
+	
+	rover := self roverAt: 1@1 heading: MarsRoverHeadingNorth.
+	
+	log := Log new.
+	rover attach: log for: self heading.
+		
+	rover process: 'fr'.
+	
+	self assert: 1 equals: log lines size.
+	self assert: 'East' equals: log lines first.
+! !
+!ObserversTest methodsFor: 'test' stamp: 'As 6/4/2023 16:55:10' prior: 50631924!
+test13ObserverCanAttachToAllChanges
+
+	| rover log |
+	
+	rover := self roverAt: 1@1 heading: MarsRoverHeadingNorth.
+	
+	log := Log new.
+	rover attach: log for: self positionAndHeading.
+		
+	rover process: 'fr'.
+	
+	self assert: 2 equals: log lines size.
+	self assert: 1@2 equals: log lines first.
+	self assert: 'East' equals: log lines second.
+! !
+!ObserversTest methodsFor: 'test' stamp: 'As 6/4/2023 16:55:24' prior: 50631897!
+test14ObserverCanAttachToAllChanges
+
+	| rover log |
+	
+	rover := self roverAt: 1@1 heading: MarsRoverHeadingNorth.
+	
+	log := Log new.
+	rover attach: log for: self positionAndHeading.
+		
+	rover process: 'fr'.
+	
+	self assert: 2 equals: log lines size.
+	self assert: 1@2 equals: log lines first.
+	self assert: 'East' equals: log lines second.
+! !
+
+!methodRemoval: ObserversTest #test14ObserverCanAttachToAllChanges stamp: 'As 6/4/2023 16:55:37'!
+test14ObserverCanAttachToAllChanges
+
+	| rover log |
+	
+	rover := self roverAt: 1@1 heading: MarsRoverHeadingNorth.
+	
+	log := Log new.
+	rover attach: log for: self positionAndHeading.
+		
+	rover process: 'fr'.
+	
+	self assert: 2 equals: log lines size.
+	self assert: 1@2 equals: log lines first.
+	self assert: 'East' equals: log lines second.
+!
+
+!testRun: #ObserversTest #test01RoverForwardLogRegisterLastPosition stamp: 'As 6/4/2023 16:55:45'!
+PASSED!
+
+!testRun: #ObserversTest #test02RoverForwardTwoStepsLogRegisterTwoLastPosition stamp: 'As 6/4/2023 16:55:45'!
+PASSED!
+
+!testRun: #ObserversTest #test03RoverForwardTwoStepsLogRegisterTwoLastPosition stamp: 'As 6/4/2023 16:55:45'!
+PASSED!
+
+!testRun: #ObserversTest #test04RoverForwardTwoStepsWindowRegisterPositionsOneAfterAnother stamp: 'As 6/4/2023 16:55:45'!
+PASSED!
+
+!testRun: #ObserversTest #test05RoverForwardAndRightRegisterPositionsAndHeading stamp: 'As 6/4/2023 16:55:45'!
+PASSED!
+
+!testRun: #ObserversTest #test06RoverForwardRightForwardRegisterLastPositionsAndHeading stamp: 'As 6/4/2023 16:55:45'!
+PASSED!
+
+!testRun: #ObserversTest #test07RoverMoveForwardReportsToManyObservers stamp: 'As 6/4/2023 16:55:45'!
+PASSED!
+
+!testRun: #ObserversTest #test08RoverMoveBackwardsReportsToManyObservers stamp: 'As 6/4/2023 16:55:45'!
+PASSED!
+
+!testRun: #ObserversTest #test09RoverRotateRightReportsToManyObservers stamp: 'As 6/4/2023 16:55:45'!
+PASSED!
+
+!testRun: #ObserversTest #test10RoverRotateLeftReportsToManyObservers stamp: 'As 6/4/2023 16:55:45'!
+PASSED!
+
+!testRun: #ObserversTest #test11ObserverShouldOnlyShowPositionRequestedChanges stamp: 'As 6/4/2023 16:55:45'!
+PASSED!
+
+!testRun: #ObserversTest #test12ObserverShouldOnlyShowHeadingRequestedChanges stamp: 'As 6/4/2023 16:55:45'!
+PASSED!
+
+!testRun: #ObserversTest #test13ObserverCanAttachToAllChanges stamp: 'As 6/4/2023 16:55:45'!
+PASSED!
+!MarsRover methodsFor: 'initialization' stamp: 'As 6/4/2023 16:57:53' prior: 50629754!
+initializeAt: aPosition heading: aHeadingType
+
+	position := aPosition.
+	head := aHeadingType for: self.
+
+	observers := Dictionary new.
+	observersForPositionChanges := OrderedCollection new.
+	observersForHeadingChanges := OrderedCollection new.! !
+!MarsRover methodsFor: 'observers' stamp: 'As 6/4/2023 17:00:28' prior: 50631956!
+attach: anObserver for: anArrayOfAspects
+	
+	anArrayOfAspects do: [ :anAspect | 	self add: anObserver to: anAspect ].
+	! !
+!MarsRover methodsFor: 'observers' stamp: 'As 6/4/2023 17:00:52'!
+add: anObserver to: anAspect
+
+	^ (self getObserversFor: anAspect) add: anObserver! !
+!MarsRover methodsFor: 'observers' stamp: 'As 6/4/2023 17:01:35'!
+getObserversFor: anAspect 
+	
+	^observers 
+		at: anAspect
+		ifAbsent: [ self createObserversCollectionFor: anAspect ].! !
+!MarsRover methodsFor: 'observers' stamp: 'As 6/4/2023 17:01:55'!
+createObserversCollectionFor: anAspect
+
+	^observers 
+		at: anAspect
+		put: OrderedCollection new.
+! !
+
+!testRun: #ObserversTest #test01RoverForwardLogRegisterLastPosition stamp: 'As 6/4/2023 17:03:26'!
+FAILURE!
+
+!testRun: #ObserversTest #test02RoverForwardTwoStepsLogRegisterTwoLastPosition stamp: 'As 6/4/2023 17:03:26'!
+FAILURE!
+
+!testRun: #ObserversTest #test03RoverForwardTwoStepsLogRegisterTwoLastPosition stamp: 'As 6/4/2023 17:03:26'!
+FAILURE!
+
+!testRun: #ObserversTest #test04RoverForwardTwoStepsWindowRegisterPositionsOneAfterAnother stamp: 'As 6/4/2023 17:03:26'!
+FAILURE!
+
+!testRun: #ObserversTest #test05RoverForwardAndRightRegisterPositionsAndHeading stamp: 'As 6/4/2023 17:03:26'!
+FAILURE!
+
+!testRun: #ObserversTest #test06RoverForwardRightForwardRegisterLastPositionsAndHeading stamp: 'As 6/4/2023 17:03:26'!
+FAILURE!
+
+!testRun: #ObserversTest #test07RoverMoveForwardReportsToManyObservers stamp: 'As 6/4/2023 17:03:26'!
+FAILURE!
+
+!testRun: #ObserversTest #test08RoverMoveBackwardsReportsToManyObservers stamp: 'As 6/4/2023 17:03:26'!
+FAILURE!
+
+!testRun: #ObserversTest #test09RoverRotateRightReportsToManyObservers stamp: 'As 6/4/2023 17:03:26'!
+FAILURE!
+
+!testRun: #ObserversTest #test10RoverRotateLeftReportsToManyObservers stamp: 'As 6/4/2023 17:03:26'!
+FAILURE!
+
+!testRun: #ObserversTest #test11ObserverShouldOnlyShowPositionRequestedChanges stamp: 'As 6/4/2023 17:03:26'!
+FAILURE!
+
+!testRun: #ObserversTest #test12ObserverShouldOnlyShowHeadingRequestedChanges stamp: 'As 6/4/2023 17:03:26'!
+FAILURE!
+
+!testRun: #ObserversTest #test13ObserverCanAttachToAllChanges stamp: 'As 6/4/2023 17:03:26'!
+FAILURE!
+
+!testRun: #ObserversTest #test01RoverForwardLogRegisterLastPosition stamp: 'As 6/4/2023 17:03:30'!
+FAILURE!
+!MarsRover methodsFor: 'observers' stamp: 'As 6/4/2023 17:04:39' prior: 50631671!
+notifyPosition
+
+	(observers at: #Position) do: [ :observer | observer updatePosition: position for: self ].! !
+!MarsRover methodsFor: 'observers' stamp: 'As 6/4/2023 17:04:58' prior: 50631665!
+notifyHeading
+
+	(observers at: #Heading) do: [ :observer | observer updateHeading: position for: self ].! !
+
+!testRun: #ObserversTest #test01RoverForwardLogRegisterLastPosition stamp: 'As 6/4/2023 17:05:01'!
+PASSED!
+
+!testRun: #ObserversTest #test02RoverForwardTwoStepsLogRegisterTwoLastPosition stamp: 'As 6/4/2023 17:05:01'!
+PASSED!
+
+!testRun: #ObserversTest #test03RoverForwardTwoStepsLogRegisterTwoLastPosition stamp: 'As 6/4/2023 17:05:01'!
+PASSED!
+
+!testRun: #ObserversTest #test04RoverForwardTwoStepsWindowRegisterPositionsOneAfterAnother stamp: 'As 6/4/2023 17:05:01'!
+PASSED!
+
+!testRun: #ObserversTest #test05RoverForwardAndRightRegisterPositionsAndHeading stamp: 'As 6/4/2023 17:05:01'!
+ERROR!
+
+!testRun: #ObserversTest #test06RoverForwardRightForwardRegisterLastPositionsAndHeading stamp: 'As 6/4/2023 17:05:01'!
+ERROR!
+
+!testRun: #ObserversTest #test07RoverMoveForwardReportsToManyObservers stamp: 'As 6/4/2023 17:05:01'!
+PASSED!
+
+!testRun: #ObserversTest #test08RoverMoveBackwardsReportsToManyObservers stamp: 'As 6/4/2023 17:05:01'!
+PASSED!
+
+!testRun: #ObserversTest #test09RoverRotateRightReportsToManyObservers stamp: 'As 6/4/2023 17:05:01'!
+ERROR!
+
+!testRun: #ObserversTest #test10RoverRotateLeftReportsToManyObservers stamp: 'As 6/4/2023 17:05:01'!
+ERROR!
+
+!testRun: #ObserversTest #test11ObserverShouldOnlyShowPositionRequestedChanges stamp: 'As 6/4/2023 17:05:01'!
+ERROR!
+
+!testRun: #ObserversTest #test12ObserverShouldOnlyShowHeadingRequestedChanges stamp: 'As 6/4/2023 17:05:01'!
+ERROR!
+
+!testRun: #ObserversTest #test13ObserverCanAttachToAllChanges stamp: 'As 6/4/2023 17:05:01'!
+FAILURE!
+
+!testRun: #ObserversTest #test05RoverForwardAndRightRegisterPositionsAndHeading stamp: 'As 6/4/2023 17:05:13'!
+ERROR!
+!MarsRover methodsFor: 'observers' stamp: 'As 6/4/2023 17:05:43' prior: 50632397!
+notifyHeading
+
+	(observers at: #Heading) do: [ :observer | observer updateHeading: head for: self ].! !
+
+!testRun: #ObserversTest #test01RoverForwardLogRegisterLastPosition stamp: 'As 6/4/2023 17:05:52'!
+PASSED!
+
+!testRun: #ObserversTest #test02RoverForwardTwoStepsLogRegisterTwoLastPosition stamp: 'As 6/4/2023 17:05:52'!
+PASSED!
+
+!testRun: #ObserversTest #test03RoverForwardTwoStepsLogRegisterTwoLastPosition stamp: 'As 6/4/2023 17:05:52'!
+PASSED!
+
+!testRun: #ObserversTest #test04RoverForwardTwoStepsWindowRegisterPositionsOneAfterAnother stamp: 'As 6/4/2023 17:05:52'!
+PASSED!
+
+!testRun: #ObserversTest #test05RoverForwardAndRightRegisterPositionsAndHeading stamp: 'As 6/4/2023 17:05:52'!
+PASSED!
+
+!testRun: #ObserversTest #test06RoverForwardRightForwardRegisterLastPositionsAndHeading stamp: 'As 6/4/2023 17:05:52'!
+PASSED!
+
+!testRun: #ObserversTest #test07RoverMoveForwardReportsToManyObservers stamp: 'As 6/4/2023 17:05:52'!
+PASSED!
+
+!testRun: #ObserversTest #test08RoverMoveBackwardsReportsToManyObservers stamp: 'As 6/4/2023 17:05:52'!
+PASSED!
+
+!testRun: #ObserversTest #test09RoverRotateRightReportsToManyObservers stamp: 'As 6/4/2023 17:05:52'!
+PASSED!
+
+!testRun: #ObserversTest #test10RoverRotateLeftReportsToManyObservers stamp: 'As 6/4/2023 17:05:52'!
+PASSED!
+
+!testRun: #ObserversTest #test11ObserverShouldOnlyShowPositionRequestedChanges stamp: 'As 6/4/2023 17:05:52'!
+ERROR!
+
+!testRun: #ObserversTest #test12ObserverShouldOnlyShowHeadingRequestedChanges stamp: 'As 6/4/2023 17:05:52'!
+ERROR!
+
+!testRun: #ObserversTest #test13ObserverCanAttachToAllChanges stamp: 'As 6/4/2023 17:05:52'!
+PASSED!
+
+!testRun: #ObserversTest #test11ObserverShouldOnlyShowPositionRequestedChanges stamp: 'As 6/4/2023 17:05:56'!
+ERROR!
+
+!testRun: #ObserversTest #test11ObserverShouldOnlyShowPositionRequestedChanges stamp: 'As 6/4/2023 17:06:11'!
+ERROR!
+
+!testRun: #ObserversTest #test01RoverForwardLogRegisterLastPosition stamp: 'As 6/4/2023 17:07:07'!
+PASSED!
+
+!testRun: #ObserversTest #test02RoverForwardTwoStepsLogRegisterTwoLastPosition stamp: 'As 6/4/2023 17:07:07'!
+PASSED!
+
+!testRun: #ObserversTest #test03RoverForwardTwoStepsLogRegisterTwoLastPosition stamp: 'As 6/4/2023 17:07:07'!
+PASSED!
+
+!testRun: #ObserversTest #test04RoverForwardTwoStepsWindowRegisterPositionsOneAfterAnother stamp: 'As 6/4/2023 17:07:07'!
+PASSED!
+
+!testRun: #ObserversTest #test05RoverForwardAndRightRegisterPositionsAndHeading stamp: 'As 6/4/2023 17:07:07'!
+PASSED!
+
+!testRun: #ObserversTest #test06RoverForwardRightForwardRegisterLastPositionsAndHeading stamp: 'As 6/4/2023 17:07:07'!
+PASSED!
+
+!testRun: #ObserversTest #test07RoverMoveForwardReportsToManyObservers stamp: 'As 6/4/2023 17:07:07'!
+PASSED!
+
+!testRun: #ObserversTest #test08RoverMoveBackwardsReportsToManyObservers stamp: 'As 6/4/2023 17:07:07'!
+PASSED!
+
+!testRun: #ObserversTest #test09RoverRotateRightReportsToManyObservers stamp: 'As 6/4/2023 17:07:07'!
+PASSED!
+
+!testRun: #ObserversTest #test10RoverRotateLeftReportsToManyObservers stamp: 'As 6/4/2023 17:07:07'!
+PASSED!
+
+!testRun: #ObserversTest #test11ObserverShouldOnlyShowPositionRequestedChanges stamp: 'As 6/4/2023 17:07:07'!
+ERROR!
+
+!testRun: #ObserversTest #test12ObserverShouldOnlyShowHeadingRequestedChanges stamp: 'As 6/4/2023 17:07:07'!
+ERROR!
+
+!testRun: #ObserversTest #test13ObserverCanAttachToAllChanges stamp: 'As 6/4/2023 17:07:07'!
+PASSED!
+!MarsRover methodsFor: 'observers' stamp: 'As 6/4/2023 17:08:41' prior: 50632454!
+notifyHeading
+
+	(self getObserversFor: #Heading) do: [ :observer | observer updateHeading: head for: self ].! !
+!MarsRover methodsFor: 'observers' stamp: 'As 6/4/2023 17:08:50' prior: 50632390!
+notifyPosition
+
+	(self getObserversFor: #Position) do: [ :observer | observer updatePosition: position for: self ].! !
+
+!testRun: #ObserversTest #test01RoverForwardLogRegisterLastPosition stamp: 'As 6/4/2023 17:08:55'!
+PASSED!
+
+!testRun: #ObserversTest #test02RoverForwardTwoStepsLogRegisterTwoLastPosition stamp: 'As 6/4/2023 17:08:55'!
+PASSED!
+
+!testRun: #ObserversTest #test03RoverForwardTwoStepsLogRegisterTwoLastPosition stamp: 'As 6/4/2023 17:08:55'!
+PASSED!
+
+!testRun: #ObserversTest #test04RoverForwardTwoStepsWindowRegisterPositionsOneAfterAnother stamp: 'As 6/4/2023 17:08:55'!
+PASSED!
+
+!testRun: #ObserversTest #test05RoverForwardAndRightRegisterPositionsAndHeading stamp: 'As 6/4/2023 17:08:55'!
+PASSED!
+
+!testRun: #ObserversTest #test06RoverForwardRightForwardRegisterLastPositionsAndHeading stamp: 'As 6/4/2023 17:08:55'!
+PASSED!
+
+!testRun: #ObserversTest #test07RoverMoveForwardReportsToManyObservers stamp: 'As 6/4/2023 17:08:55'!
+PASSED!
+
+!testRun: #ObserversTest #test08RoverMoveBackwardsReportsToManyObservers stamp: 'As 6/4/2023 17:08:55'!
+PASSED!
+
+!testRun: #ObserversTest #test09RoverRotateRightReportsToManyObservers stamp: 'As 6/4/2023 17:08:55'!
+PASSED!
+
+!testRun: #ObserversTest #test10RoverRotateLeftReportsToManyObservers stamp: 'As 6/4/2023 17:08:55'!
+PASSED!
+
+!testRun: #ObserversTest #test11ObserverShouldOnlyShowPositionRequestedChanges stamp: 'As 6/4/2023 17:08:55'!
+PASSED!
+
+!testRun: #ObserversTest #test12ObserverShouldOnlyShowHeadingRequestedChanges stamp: 'As 6/4/2023 17:08:55'!
+PASSED!
+
+!testRun: #ObserversTest #test13ObserverCanAttachToAllChanges stamp: 'As 6/4/2023 17:08:55'!
+PASSED!
+!MarsRover methodsFor: 'observers' stamp: 'As 6/4/2023 17:10:23' overrides: 16902144!
+notify: anAspect
+
+	(self getObserversFor: anAspect) do: [ :observer | observer update: anAspect withValue: head for: self ].! !
+!MarsRover methodsFor: 'moving' stamp: 'As 6/4/2023 17:11:07' prior: 50629817!
+moveForward
+	
+	head moveForward.
+	self notify: #Position withValue: position.
+! !
+!MarsRover methodsFor: 'moving' stamp: 'As 6/4/2023 17:11:22' prior: 50629809!
+moveBackward
+	
+	head moveBackward.
+	self notify: #Position withValue: position.! !
+!MarsRover methodsFor: 'heading' stamp: 'As 6/4/2023 17:11:39' prior: 50629779!
+rotateLeft
+	
+	head rotateLeft.	
+	self notify: #Heading withValue: head.
+	
+	! !
+!MarsRover methodsFor: 'heading' stamp: 'As 6/4/2023 17:11:49' prior: 50629783!
+rotateRight
+	
+	head rotateRight.	
+	self notify: #Heading withValue: head.! !
+!MarsRover methodsFor: 'observers' stamp: 'As 6/4/2023 17:12:01'!
+notify: anAspect withValue: aValue
+
+	(self getObserversFor: anAspect) do: [ :observer | observer update: anAspect withValue: head for: self ].! !
+!MarsRover methodsFor: 'observers' stamp: 'As 6/4/2023 17:12:05' prior: 50632652!
+notify: anAspect withValue: aValue
+
+	(self getObserversFor: anAspect) do: [ :observer | observer update: anAspect withValue: aValue for: self ].! !
+
+!methodRemoval: MarsRover #notify: stamp: 'As 6/4/2023 17:12:12'!
+notify: anAspect
+
+	(self getObserversFor: anAspect) do: [ :observer | observer update: anAspect withValue: head for: self ].!
+
+!methodRemoval: MarsRover #notifyHeading stamp: 'As 6/4/2023 17:12:15'!
+notifyHeading
+
+	(self getObserversFor: #Heading) do: [ :observer | observer updateHeading: head for: self ].!
+
+!methodRemoval: MarsRover #notifyPosition stamp: 'As 6/4/2023 17:12:17'!
+notifyPosition
+
+	(self getObserversFor: #Position) do: [ :observer | observer updatePosition: position for: self ].!
+!RoverObserver methodsFor: 'update' stamp: 'As 6/4/2023 17:13:00'!
+update: anAspect withValue: aValue for: aMarsRover
+	
+	self subclassResponsibility ! !
+
+!methodRemoval: RoverObserver #updateHeading:for: stamp: 'As 6/4/2023 17:13:05'!
+updateHeading: aHeadingType for: aMarsRover
+	
+	self subclassResponsibility !
+
+!methodRemoval: RoverObserver #updatePosition:for: stamp: 'As 6/4/2023 17:13:07'!
+updatePosition: aPosition for: aMarsRover
+	
+	self subclassResponsibility !
+!Log methodsFor: 'update' stamp: 'As 6/4/2023 17:15:23' overrides: 50632685!
+update: anAspect withValue: aValue for: aMarsRover
+	
+	(anAspect = #Heading)
+		ifTrue: [ self updateHeading: aValue for: aMarsRover]
+		ifFalse: [	(anAspect = #Position)
+			ifTrue: [ self updatePosition: aValue  for: aMarsRover]
+			ifFalse: 	[ self signalInvalidAspect. ] ]
+! !
+!RoverObserver methodsFor: 'update' stamp: 'As 6/4/2023 17:16:05' prior: 50632685!
+update: anAspect withValue: aValue for: aMarsRover
+	
+	(anAspect = #Heading)
+		ifTrue: [ self updateHeading: aValue for: aMarsRover]
+		ifFalse: [	(anAspect = #Position)
+			ifTrue: [ self updatePosition: aValue  for: aMarsRover]
+			ifFalse: 	[ self signalInvalidAspect. ] ]! !
+!RoverObserver methodsFor: 'update' stamp: 'As 6/4/2023 17:16:23'!
+updateHeading: aHeadingType from: aMarsRover
+	
+	self subclassResponsibility ! !
+!RoverObserver methodsFor: 'update' stamp: 'As 6/4/2023 17:16:35'!
+updatePosition: aPosition from: aMarsRover
+	
+	self subclassResponsibility ! !
+
+!methodRemoval: Log #update:withValue:for: stamp: 'As 6/4/2023 17:16:41'!
+update: anAspect withValue: aValue for: aMarsRover
+	
+	(anAspect = #Heading)
+		ifTrue: [ self updateHeading: aValue for: aMarsRover]
+		ifFalse: [	(anAspect = #Position)
+			ifTrue: [ self updatePosition: aValue  for: aMarsRover]
+			ifFalse: 	[ self signalInvalidAspect. ] ]
+!
+!RoverObserver methodsFor: 'assertions' stamp: 'As 6/4/2023 17:17:41'!
+signalInvalidAspect
+	
+	self error: self invalidAspectErrorDescription ! !
+!RoverObserver methodsFor: 'assertions' stamp: 'As 6/4/2023 17:17:53'!
+invalidAspectErrorDescription
+	
+	^'Invalid aspect'! !
+
+!testRun: #ObserversTest #test01RoverForwardLogRegisterLastPosition stamp: 'As 6/4/2023 17:18:36'!
+PASSED!
+
+!testRun: #ObserversTest #test02RoverForwardTwoStepsLogRegisterTwoLastPosition stamp: 'As 6/4/2023 17:18:36'!
+PASSED!
+
+!testRun: #ObserversTest #test03RoverForwardTwoStepsLogRegisterTwoLastPosition stamp: 'As 6/4/2023 17:18:36'!
+PASSED!
+
+!testRun: #ObserversTest #test04RoverForwardTwoStepsWindowRegisterPositionsOneAfterAnother stamp: 'As 6/4/2023 17:18:36'!
+PASSED!
+
+!testRun: #ObserversTest #test05RoverForwardAndRightRegisterPositionsAndHeading stamp: 'As 6/4/2023 17:18:36'!
+PASSED!
+
+!testRun: #ObserversTest #test06RoverForwardRightForwardRegisterLastPositionsAndHeading stamp: 'As 6/4/2023 17:18:36'!
+PASSED!
+
+!testRun: #ObserversTest #test07RoverMoveForwardReportsToManyObservers stamp: 'As 6/4/2023 17:18:36'!
+PASSED!
+
+!testRun: #ObserversTest #test08RoverMoveBackwardsReportsToManyObservers stamp: 'As 6/4/2023 17:18:36'!
+PASSED!
+
+!testRun: #ObserversTest #test09RoverRotateRightReportsToManyObservers stamp: 'As 6/4/2023 17:18:36'!
+PASSED!
+
+!testRun: #ObserversTest #test10RoverRotateLeftReportsToManyObservers stamp: 'As 6/4/2023 17:18:36'!
+PASSED!
+
+!testRun: #ObserversTest #test11ObserverShouldOnlyShowPositionRequestedChanges stamp: 'As 6/4/2023 17:18:36'!
+PASSED!
+
+!testRun: #ObserversTest #test12ObserverShouldOnlyShowHeadingRequestedChanges stamp: 'As 6/4/2023 17:18:36'!
+PASSED!
+
+!testRun: #ObserversTest #test13ObserverCanAttachToAllChanges stamp: 'As 6/4/2023 17:18:36'!
+PASSED!
+
+Object subclass: #Aspect
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRover-WithHeading'!
+
+!classDefinition: #Aspect category: 'MarsRover-WithHeading' stamp: 'As 6/4/2023 17:19:14'!
+Object subclass: #Aspect
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRover-WithHeading'!
+
+Aspect subclass: #Position
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRover-WithHeading'!
+
+!classDefinition: #Position category: 'MarsRover-WithHeading' stamp: 'As 6/4/2023 17:19:23'!
+Aspect subclass: #Position
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRover-WithHeading'!
+
+Aspect subclass: #Heading
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRover-WithHeading'!
+
+!classDefinition: #Heading category: 'MarsRover-WithHeading' stamp: 'As 6/4/2023 17:19:31'!
+Aspect subclass: #Heading
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRover-WithHeading'!
+!RoverObserver methodsFor: 'update' stamp: 'As 6/4/2023 17:20:53' prior: 50632712!
+update: anAspect withValue: aValue for: aMarsRover
+	
+	(anAspect isKindOf: Heading)
+		ifTrue: [ self updateHeading: aValue for: aMarsRover]
+		ifFalse: [	(anAspect isKindOf: Position)
+			ifTrue: [ self updatePosition: aValue  for: aMarsRover]
+			ifFalse: 	[ self signalInvalidAspect. ] ]! !
+!MarsRover methodsFor: 'observers' stamp: 'As 6/4/2023 17:21:34' prior: 50632333!
+createObserversCollectionFor: anAspect
+
+	^observers 
+		at: anAspect class name
+		put: OrderedCollection new.
+! !
+!MarsRover methodsFor: 'observers' stamp: 'As 6/4/2023 17:21:41' prior: 50632327!
+getObserversFor: anAspect 
+	
+	^observers 
+		at: anAspect class name
+		ifAbsent: [ self createObserversCollectionFor: anAspect ].! !
+!ObserversTest methodsFor: 'aspects' stamp: 'As 6/4/2023 17:22:03' prior: 50632036!
+heading
+	
+	^{ Heading new. }! !
+!ObserversTest methodsFor: 'aspects' stamp: 'As 6/4/2023 17:22:11' prior: 50632032!
+position
+	
+	^{ Position new. }! !
+!ObserversTest methodsFor: 'aspects' stamp: 'As 6/4/2023 17:22:21' prior: 50632039!
+positionAndHeading
+	
+	^{ Position new. Heading new. }! !
+
+!testRun: #ObserversTest #test01RoverForwardLogRegisterLastPosition stamp: 'As 6/4/2023 17:22:28'!
+FAILURE!
+
+!testRun: #ObserversTest #test02RoverForwardTwoStepsLogRegisterTwoLastPosition stamp: 'As 6/4/2023 17:22:28'!
+FAILURE!
+
+!testRun: #ObserversTest #test03RoverForwardTwoStepsLogRegisterTwoLastPosition stamp: 'As 6/4/2023 17:22:28'!
+FAILURE!
+
+!testRun: #ObserversTest #test04RoverForwardTwoStepsWindowRegisterPositionsOneAfterAnother stamp: 'As 6/4/2023 17:22:28'!
+FAILURE!
+
+!testRun: #ObserversTest #test05RoverForwardAndRightRegisterPositionsAndHeading stamp: 'As 6/4/2023 17:22:28'!
+FAILURE!
+
+!testRun: #ObserversTest #test06RoverForwardRightForwardRegisterLastPositionsAndHeading stamp: 'As 6/4/2023 17:22:28'!
+FAILURE!
+
+!testRun: #ObserversTest #test07RoverMoveForwardReportsToManyObservers stamp: 'As 6/4/2023 17:22:28'!
+FAILURE!
+
+!testRun: #ObserversTest #test08RoverMoveBackwardsReportsToManyObservers stamp: 'As 6/4/2023 17:22:28'!
+FAILURE!
+
+!testRun: #ObserversTest #test09RoverRotateRightReportsToManyObservers stamp: 'As 6/4/2023 17:22:28'!
+FAILURE!
+
+!testRun: #ObserversTest #test10RoverRotateLeftReportsToManyObservers stamp: 'As 6/4/2023 17:22:28'!
+FAILURE!
+
+!testRun: #ObserversTest #test11ObserverShouldOnlyShowPositionRequestedChanges stamp: 'As 6/4/2023 17:22:28'!
+FAILURE!
+
+!testRun: #ObserversTest #test12ObserverShouldOnlyShowHeadingRequestedChanges stamp: 'As 6/4/2023 17:22:28'!
+FAILURE!
+
+!testRun: #ObserversTest #test13ObserverCanAttachToAllChanges stamp: 'As 6/4/2023 17:22:28'!
+FAILURE!
+!MarsRover methodsFor: 'moving' stamp: 'As 6/4/2023 17:22:45' prior: 50632630!
+moveForward
+	
+	head moveForward.
+	self notify: Position new withValue: position.
+! !
+!MarsRover methodsFor: 'moving' stamp: 'As 6/4/2023 17:22:55' prior: 50632636!
+moveBackward
+	
+	head moveBackward.
+	self notify: Position new withValue: position.! !
+!MarsRover methodsFor: 'heading' stamp: 'As 6/4/2023 17:23:08' prior: 50632642!
+rotateLeft
+	
+	head rotateLeft.	
+	self notify: Heading new withValue: head.
+	
+	! !
+!MarsRover methodsFor: 'heading' stamp: 'As 6/4/2023 17:23:16' prior: 50632647!
+rotateRight
+	
+	head rotateRight.	
+	self notify: Heading new withValue: head.! !
+
+!testRun: #ObserversTest #test01RoverForwardLogRegisterLastPosition stamp: 'As 6/4/2023 17:23:19'!
+PASSED!
+
+!testRun: #ObserversTest #test02RoverForwardTwoStepsLogRegisterTwoLastPosition stamp: 'As 6/4/2023 17:23:19'!
+PASSED!
+
+!testRun: #ObserversTest #test03RoverForwardTwoStepsLogRegisterTwoLastPosition stamp: 'As 6/4/2023 17:23:19'!
+PASSED!
+
+!testRun: #ObserversTest #test04RoverForwardTwoStepsWindowRegisterPositionsOneAfterAnother stamp: 'As 6/4/2023 17:23:19'!
+PASSED!
+
+!testRun: #ObserversTest #test05RoverForwardAndRightRegisterPositionsAndHeading stamp: 'As 6/4/2023 17:23:19'!
+PASSED!
+
+!testRun: #ObserversTest #test06RoverForwardRightForwardRegisterLastPositionsAndHeading stamp: 'As 6/4/2023 17:23:19'!
+PASSED!
+
+!testRun: #ObserversTest #test07RoverMoveForwardReportsToManyObservers stamp: 'As 6/4/2023 17:23:19'!
+PASSED!
+
+!testRun: #ObserversTest #test08RoverMoveBackwardsReportsToManyObservers stamp: 'As 6/4/2023 17:23:19'!
+PASSED!
+
+!testRun: #ObserversTest #test09RoverRotateRightReportsToManyObservers stamp: 'As 6/4/2023 17:23:19'!
+PASSED!
+
+!testRun: #ObserversTest #test10RoverRotateLeftReportsToManyObservers stamp: 'As 6/4/2023 17:23:19'!
+PASSED!
+
+!testRun: #ObserversTest #test11ObserverShouldOnlyShowPositionRequestedChanges stamp: 'As 6/4/2023 17:23:19'!
+PASSED!
+
+!testRun: #ObserversTest #test12ObserverShouldOnlyShowHeadingRequestedChanges stamp: 'As 6/4/2023 17:23:19'!
+PASSED!
+
+!testRun: #ObserversTest #test13ObserverCanAttachToAllChanges stamp: 'As 6/4/2023 17:23:19'!
+PASSED!
+!RoverObserver methodsFor: 'update' stamp: 'As 6/4/2023 17:26:38' prior: 50632835!
+update: anAspect withValue: aValue for: aMarsRover
+	
+	anAspect update: self withValue: aValue for: aMarsRover.
+	
+	"
+	(anAspect isKindOf: Heading)
+		ifTrue: [ self updateHeading: aValue for: aMarsRover]
+		ifFalse: [	(anAspect isKindOf: Position)
+			ifTrue: [ self updatePosition: aValue  for: aMarsRover]
+			ifFalse: 	[ self signalInvalidAspect. ] ]
+		"! !
+!Aspect methodsFor: 'update' stamp: 'As 6/4/2023 17:27:20'!
+update: anObserver withValue: aValue for: aMarsRover
+
+	self subclassResponsibility.! !
+!Heading methodsFor: 'update' stamp: 'As 6/4/2023 17:28:07' overrides: 50633005!
+update: anObserver withValue: aValue for: aMarsRover
+
+	anObserver updateHeading: aValue for: aMarsRover! !
+!Position methodsFor: 'update' stamp: 'As 6/4/2023 17:28:52' overrides: 50633005!
+update: anObserver withValue: aValue for: aMarsRover
+
+	anObserver updatePosition: aValue for: aMarsRover! !
+
+!testRun: #ObserversTest #test01RoverForwardLogRegisterLastPosition stamp: 'As 6/4/2023 17:29:22'!
+PASSED!
+
+!testRun: #ObserversTest #test02RoverForwardTwoStepsLogRegisterTwoLastPosition stamp: 'As 6/4/2023 17:29:22'!
+PASSED!
+
+!testRun: #ObserversTest #test03RoverForwardTwoStepsLogRegisterTwoLastPosition stamp: 'As 6/4/2023 17:29:22'!
+PASSED!
+
+!testRun: #ObserversTest #test04RoverForwardTwoStepsWindowRegisterPositionsOneAfterAnother stamp: 'As 6/4/2023 17:29:22'!
+PASSED!
+
+!testRun: #ObserversTest #test05RoverForwardAndRightRegisterPositionsAndHeading stamp: 'As 6/4/2023 17:29:22'!
+PASSED!
+
+!testRun: #ObserversTest #test06RoverForwardRightForwardRegisterLastPositionsAndHeading stamp: 'As 6/4/2023 17:29:22'!
+PASSED!
+
+!testRun: #ObserversTest #test07RoverMoveForwardReportsToManyObservers stamp: 'As 6/4/2023 17:29:22'!
+PASSED!
+
+!testRun: #ObserversTest #test08RoverMoveBackwardsReportsToManyObservers stamp: 'As 6/4/2023 17:29:22'!
+PASSED!
+
+!testRun: #ObserversTest #test09RoverRotateRightReportsToManyObservers stamp: 'As 6/4/2023 17:29:22'!
+PASSED!
+
+!testRun: #ObserversTest #test10RoverRotateLeftReportsToManyObservers stamp: 'As 6/4/2023 17:29:22'!
+PASSED!
+
+!testRun: #ObserversTest #test11ObserverShouldOnlyShowPositionRequestedChanges stamp: 'As 6/4/2023 17:29:22'!
+PASSED!
+
+!testRun: #ObserversTest #test12ObserverShouldOnlyShowHeadingRequestedChanges stamp: 'As 6/4/2023 17:29:22'!
+PASSED!
+
+!testRun: #ObserversTest #test13ObserverCanAttachToAllChanges stamp: 'As 6/4/2023 17:29:22'!
+PASSED!
+!ObserversTest methodsFor: 'test' stamp: 'As 6/4/2023 17:33:11'!
+test14ObserverShouldNotBeUpdatedIfDetachedForAnAspect
+
+	| rover log |
+	
+	rover := self roverAt: 1@1 heading: MarsRoverHeadingNorth.
+	
+	log := Log new.
+	rover attach: log for: self positionAndHeading.
+		
+	rover process: 'fr'.
+	
+	rover detach: log for: self position.
+	
+	rover process: 'fr'.
+	
+	self assert: 3 equals: log lines size.
+	self assert: 1@2 equals: log lines first.
+	self assert: 'East' equals: log lines second.
+	self assert: 'South' equals: log lines third.
+! !
+
+!testRun: #ObserversTest #test14ObserverShouldNotBeUpdatedIfDetachedForAnAspect stamp: 'As 6/4/2023 17:33:15'!
+ERROR!
+!MarsRover methodsFor: 'observers' stamp: 'As 6/4/2023 17:34:22'!
+detach: anObserver for: anArrayOfAspect
+	
+	anArrayOfAspect do: [ :anAspect | 	self remove: anObserver from: anAspect ].! !
+!MarsRover methodsFor: 'observers' stamp: 'As 6/4/2023 17:34:59'!
+remove: anObserver from: anAspect
+
+	^ (self getObserversFor: anAspect) remove: anObserver! !
+
+!testRun: #ObserversTest #test01RoverForwardLogRegisterLastPosition stamp: 'As 6/4/2023 17:35:07'!
+PASSED!
+
+!testRun: #ObserversTest #test02RoverForwardTwoStepsLogRegisterTwoLastPosition stamp: 'As 6/4/2023 17:35:07'!
+PASSED!
+
+!testRun: #ObserversTest #test03RoverForwardTwoStepsLogRegisterTwoLastPosition stamp: 'As 6/4/2023 17:35:07'!
+PASSED!
+
+!testRun: #ObserversTest #test04RoverForwardTwoStepsWindowRegisterPositionsOneAfterAnother stamp: 'As 6/4/2023 17:35:07'!
+PASSED!
+
+!testRun: #ObserversTest #test05RoverForwardAndRightRegisterPositionsAndHeading stamp: 'As 6/4/2023 17:35:07'!
+PASSED!
+
+!testRun: #ObserversTest #test06RoverForwardRightForwardRegisterLastPositionsAndHeading stamp: 'As 6/4/2023 17:35:07'!
+PASSED!
+
+!testRun: #ObserversTest #test07RoverMoveForwardReportsToManyObservers stamp: 'As 6/4/2023 17:35:07'!
+PASSED!
+
+!testRun: #ObserversTest #test08RoverMoveBackwardsReportsToManyObservers stamp: 'As 6/4/2023 17:35:07'!
+PASSED!
+
+!testRun: #ObserversTest #test09RoverRotateRightReportsToManyObservers stamp: 'As 6/4/2023 17:35:07'!
+PASSED!
+
+!testRun: #ObserversTest #test10RoverRotateLeftReportsToManyObservers stamp: 'As 6/4/2023 17:35:07'!
+PASSED!
+
+!testRun: #ObserversTest #test11ObserverShouldOnlyShowPositionRequestedChanges stamp: 'As 6/4/2023 17:35:07'!
+PASSED!
+
+!testRun: #ObserversTest #test12ObserverShouldOnlyShowHeadingRequestedChanges stamp: 'As 6/4/2023 17:35:07'!
+PASSED!
+
+!testRun: #ObserversTest #test13ObserverCanAttachToAllChanges stamp: 'As 6/4/2023 17:35:07'!
+PASSED!
+
+!testRun: #ObserversTest #test14ObserverShouldNotBeUpdatedIfDetachedForAnAspect stamp: 'As 6/4/2023 17:35:07'!
+PASSED!
+
+!testRun: #ObserversTest #test14ObserverShouldNotBeUpdatedIfDetachedForAnAspect stamp: 'As 6/4/2023 17:35:40'!
+PASSED!
+!ObserversTest methodsFor: 'test' stamp: 'As 6/4/2023 17:36:41'!
+test15ObserverCanDetachForAllAspects
+
+	| rover log |
+	
+	rover := self roverAt: 1@1 heading: MarsRoverHeadingNorth.
+	
+	log := Log new.
+	rover attach: log for: self positionAndHeading.
+		
+	rover process: 'fr'.
+	
+	rover detach: log.
+	
+	rover process: 'fr'.
+	
+	self assert: 2 equals: log lines size.
+	self assert: 1@2 equals: log lines first.
+	self assert: 'East' equals: log lines second.
+
+
+! !
+
+!testRun: #ObserversTest #test15ObserverCanDetachForAllAspects stamp: 'As 6/4/2023 17:36:44'!
+ERROR!
+!MarsRover methodsFor: 'observers' stamp: 'As 6/4/2023 17:38:17'!
+detach: anObserver 
+	
+	(observers values) do: [ :collection | collection remove: anObserver ifAbsent: [] ].! !
+
+!testRun: #ObserversTest #test01RoverForwardLogRegisterLastPosition stamp: 'As 6/4/2023 17:38:50'!
+PASSED!
+
+!testRun: #ObserversTest #test02RoverForwardTwoStepsLogRegisterTwoLastPosition stamp: 'As 6/4/2023 17:38:50'!
+PASSED!
+
+!testRun: #ObserversTest #test03RoverForwardTwoStepsLogRegisterTwoLastPosition stamp: 'As 6/4/2023 17:38:50'!
+PASSED!
+
+!testRun: #ObserversTest #test04RoverForwardTwoStepsWindowRegisterPositionsOneAfterAnother stamp: 'As 6/4/2023 17:38:50'!
+PASSED!
+
+!testRun: #ObserversTest #test05RoverForwardAndRightRegisterPositionsAndHeading stamp: 'As 6/4/2023 17:38:50'!
+PASSED!
+
+!testRun: #ObserversTest #test06RoverForwardRightForwardRegisterLastPositionsAndHeading stamp: 'As 6/4/2023 17:38:50'!
+PASSED!
+
+!testRun: #ObserversTest #test07RoverMoveForwardReportsToManyObservers stamp: 'As 6/4/2023 17:38:50'!
+PASSED!
+
+!testRun: #ObserversTest #test08RoverMoveBackwardsReportsToManyObservers stamp: 'As 6/4/2023 17:38:50'!
+PASSED!
+
+!testRun: #ObserversTest #test09RoverRotateRightReportsToManyObservers stamp: 'As 6/4/2023 17:38:50'!
+PASSED!
+
+!testRun: #ObserversTest #test10RoverRotateLeftReportsToManyObservers stamp: 'As 6/4/2023 17:38:50'!
+PASSED!
+
+!testRun: #ObserversTest #test11ObserverShouldOnlyShowPositionRequestedChanges stamp: 'As 6/4/2023 17:38:50'!
+PASSED!
+
+!testRun: #ObserversTest #test12ObserverShouldOnlyShowHeadingRequestedChanges stamp: 'As 6/4/2023 17:38:50'!
+PASSED!
+
+!testRun: #ObserversTest #test13ObserverCanAttachToAllChanges stamp: 'As 6/4/2023 17:38:50'!
+PASSED!
+
+!testRun: #ObserversTest #test14ObserverShouldNotBeUpdatedIfDetachedForAnAspect stamp: 'As 6/4/2023 17:38:50'!
+PASSED!
+
+!testRun: #ObserversTest #test15ObserverCanDetachForAllAspects stamp: 'As 6/4/2023 17:38:50'!
+PASSED!
+
+----SNAPSHOT----(4 June 2023 17:40:33) CuisUniversity-5832.image priorSource: 9366758!
+
+Object subclass: #MarsRover
+	instanceVariableNames: 'position head observers'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRover-WithHeading'!
+
+!classDefinition: #MarsRover category: 'MarsRover-WithHeading' stamp: 'As 6/4/2023 17:44:45'!
+Object subclass: #MarsRover
+	instanceVariableNames: 'position head observers'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRover-WithHeading'!
+!MarsRover class methodsFor: 'instance creation' stamp: 'As 6/4/2023 17:46:18'!
+at: aPosition heading: aHeadingType named: aName
+	
+	^self new initializeAt: aPosition heading: aHeadingType named: aName! !
+
+!methodRemoval: MarsRover class #at:heading:named: stamp: 'As 6/4/2023 17:46:50'!
+at: aPosition heading: aHeadingType named: aName
+	
+	^self new initializeAt: aPosition heading: aHeadingType named: aName!
+!MarsRover methodsFor: 'initialization' stamp: 'As 6/4/2023 17:47:03' prior: 50632305!
+initializeAt: aPosition heading: aHeadingType
+
+	position := aPosition.
+	head := aHeadingType for: self.
+	observers := Dictionary new.
+! !
+!MarsRover class methodsFor: 'instance creation' stamp: 'As 6/4/2023 17:47:35'!
+at: aPosition heading: aHeadingType named: aName
+	
+	^self new initializeAt: aPosition heading: aHeadingType named: aName! !
+
+!classDefinition: #MarsRover category: 'MarsRover-WithHeading' stamp: 'As 6/4/2023 17:47:58'!
+Object subclass: #MarsRover
+	instanceVariableNames: 'position head observers name'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRover-WithHeading'!
+!MarsRover methodsFor: 'initialization' stamp: 'As 6/4/2023 17:47:56'!
+initializeAt: aPosition heading: aHeadingType named: aName
+
+	name := aName.
+	position := aPosition.
+	head := aHeadingType for: self.
+	observers := Dictionary new.
+! !
+!MarsRover methodsFor: 'initialization' stamp: 'As 6/4/2023 17:48:14' prior: 50633264!
+initializeAt: aPosition heading: aHeadingType
+
+	name := ''.
+	position := aPosition.
+	head := aHeadingType for: self.
+	observers := Dictionary new.
+! !
+
+!testRun: #MarsRoverTest #test01DoesNotMoveWhenNoCommand stamp: 'As 6/4/2023 17:48:27'!
+PASSED!
+
+!testRun: #MarsRoverTest #test02IsAtFailsForDifferentPosition stamp: 'As 6/4/2023 17:48:27'!
+PASSED!
+
+!testRun: #MarsRoverTest #test03IsAtFailsForDifferentHeading stamp: 'As 6/4/2023 17:48:27'!
+PASSED!
+
+!testRun: #MarsRoverTest #test04IncrementsYAfterMovingForwardWhenHeadingNorth stamp: 'As 6/4/2023 17:48:27'!
+PASSED!
+
+!testRun: #MarsRoverTest #test06DecrementsYAfterMovingBackwardsWhenHeadingNorth stamp: 'As 6/4/2023 17:48:27'!
+PASSED!
+
+!testRun: #MarsRoverTest #test07PointToEashAfterRotatingRightWhenHeadingNorth stamp: 'As 6/4/2023 17:48:27'!
+PASSED!
+
+!testRun: #MarsRoverTest #test08PointsToWestAfterRotatingLeftWhenPointingNorth stamp: 'As 6/4/2023 17:48:27'!
+PASSED!
+
+!testRun: #MarsRoverTest #test09DoesNotProcessInvalidCommand stamp: 'As 6/4/2023 17:48:27'!
+PASSED!
+
+!testRun: #MarsRoverTest #test10CanProcessMoreThanOneCommand stamp: 'As 6/4/2023 17:48:27'!
+PASSED!
+
+!testRun: #MarsRoverTest #test11IncrementsXAfterMovingForwareWhenHeadingEast stamp: 'As 6/4/2023 17:48:27'!
+PASSED!
+
+!testRun: #MarsRoverTest #test12DecrementsXAfterMovingBackwardWhenHeadingEast stamp: 'As 6/4/2023 17:48:27'!
+PASSED!
+
+!testRun: #MarsRoverTest #test13PointsToSouthAfterRotatingRightWhenHeadingEast stamp: 'As 6/4/2023 17:48:27'!
+PASSED!
+
+!testRun: #MarsRoverTest #test14PointsToNorthAfterRotatingLeftWhenPointingEast stamp: 'As 6/4/2023 17:48:27'!
+PASSED!
+
+!testRun: #MarsRoverTest #test15ForwardBackwardsAndRotateRightWorkAsExpectedWhenPointingSouth stamp: 'As 6/4/2023 17:48:27'!
+PASSED!
+
+!testRun: #MarsRoverTest #test16ForwardBackwardsAndRotateRightWorkAsExpectedWhenPointingWest stamp: 'As 6/4/2023 17:48:27'!
+PASSED!
+!MarsRover methodsFor: 'accesing' stamp: 'As 6/4/2023 17:49:12' overrides: 16903442!
+name
+	
+	^name.! !
+!ObserversTest methodsFor: 'rovers' stamp: 'As 6/4/2023 17:49:59'!
+curiosityName
+
+	^ 'Curiosity'! !
+!ObserversTest methodsFor: 'rovers' stamp: 'As 6/4/2023 17:50:17'!
+opportunityName
+
+	^ 'Opportunity'! !
+!ObserversTest methodsFor: 'rovers' stamp: 'As 6/4/2023 17:50:39'!
+curiosityAt: aPosition heading: aHeadingType
+
+	^ MarsRover at: aPosition heading: aHeadingType named: self curiosityName ! !
+!ObserversTest methodsFor: 'rovers' stamp: 'As 6/4/2023 17:50:50'!
+opportunityAt: aPosition heading: aHeadingType
+
+	^ MarsRover at: aPosition heading: aHeadingType named: self opportunityName ! !
+
+!testRun: #ObserversTest #test01RoverForwardLogRegisterLastPosition stamp: 'As 6/4/2023 17:51:01'!
+PASSED!
+
+!testRun: #ObserversTest #test02RoverForwardTwoStepsLogRegisterTwoLastPosition stamp: 'As 6/4/2023 17:51:01'!
+PASSED!
+
+!testRun: #ObserversTest #test03RoverForwardTwoStepsLogRegisterTwoLastPosition stamp: 'As 6/4/2023 17:51:01'!
+PASSED!
+
+!testRun: #ObserversTest #test04RoverForwardTwoStepsWindowRegisterPositionsOneAfterAnother stamp: 'As 6/4/2023 17:51:01'!
+PASSED!
+
+!testRun: #ObserversTest #test05RoverForwardAndRightRegisterPositionsAndHeading stamp: 'As 6/4/2023 17:51:01'!
+PASSED!
+
+!testRun: #ObserversTest #test06RoverForwardRightForwardRegisterLastPositionsAndHeading stamp: 'As 6/4/2023 17:51:01'!
+PASSED!
+
+!testRun: #ObserversTest #test07RoverMoveForwardReportsToManyObservers stamp: 'As 6/4/2023 17:51:01'!
+PASSED!
+
+!testRun: #ObserversTest #test08RoverMoveBackwardsReportsToManyObservers stamp: 'As 6/4/2023 17:51:01'!
+PASSED!
+
+!testRun: #ObserversTest #test09RoverRotateRightReportsToManyObservers stamp: 'As 6/4/2023 17:51:01'!
+PASSED!
+
+!testRun: #ObserversTest #test10RoverRotateLeftReportsToManyObservers stamp: 'As 6/4/2023 17:51:01'!
+PASSED!
+
+!testRun: #ObserversTest #test11ObserverShouldOnlyShowPositionRequestedChanges stamp: 'As 6/4/2023 17:51:01'!
+PASSED!
+
+!testRun: #ObserversTest #test12ObserverShouldOnlyShowHeadingRequestedChanges stamp: 'As 6/4/2023 17:51:01'!
+PASSED!
+
+!testRun: #ObserversTest #test13ObserverCanAttachToAllChanges stamp: 'As 6/4/2023 17:51:01'!
+PASSED!
+
+!testRun: #ObserversTest #test14ObserverShouldNotBeUpdatedIfDetachedForAnAspect stamp: 'As 6/4/2023 17:51:01'!
+PASSED!
+
+!testRun: #ObserversTest #test15ObserverCanDetachForAllAspects stamp: 'As 6/4/2023 17:51:01'!
+PASSED!
+!ObserversTest methodsFor: 'test' stamp: 'As 6/4/2023 17:53:25'!
+test16LogRegisterPositionForMoreThanOneRoverActivity
+
+	| curiosity opportunity log |
+	
+	curiosity := self curiosityAt: 1@1 heading: MarsRoverHeadingNorth.
+	opportunity := self opportunityAt: 4@3 heading: MarsRoverHeadingEast.
+	
+	log := Log new.
+
+	curiosity attach: log for: self positionAndHeading.
+	opportunity attach: log for: self positionAndHeading.
+	 	
+	curiosity process: 'ff'.
+	opportunity process: 'br'.
+	
+	self assert: 4 equals: log lines size.
+	self assertLine: 1 on: log is: curiosity name withPosition: 1@2. 
+	self assertLine: 2 on: log is: curiosity name withPosition: 1@3. 	
+	self assertLine: 3 on: log is: opportunity name withPosition: 3@3. 
+	self assertLine: 4 on: log is: opportunity name headingTo: MarsRoverHeadingSouth.
+
+
+! !
+!ObserversTest methodsFor: 'assertions' stamp: 'As 6/4/2023 17:54:13'!
+assertLine: aNumberOfLine on: aLog is: aRoverName withPosition: aPosition
+
+	self assert: aRoverName, ': ', aPosition asString equals: (aLog lines at: aNumberOfLine)! !
+!ObserversTest methodsFor: 'assertions' stamp: 'As 6/4/2023 17:54:34'!
+assertLine: aNumberOfLine on: aLog is: aRoverName headingTo: aHeadingType
+
+	self 
+		assert: aRoverName, ': ', (self directionFrom: aHeadingType)
+		equals: (aLog lines at: aNumberOfLine)! !
+!ObserversTest methodsFor: 'heading' stamp: 'As 6/4/2023 17:55:16'!
+directionFrom: aHeadingType
+	
+	(aHeadingType = MarsRoverHeadingEast) ifTrue: [^'East'].
+	(aHeadingType = MarsRoverHeadingWest) ifTrue: [^'West'].
+	(aHeadingType = MarsRoverHeadingNorth) ifTrue: [^'North'].
+	(aHeadingType = MarsRoverHeadingSouth) ifTrue: [^'South'].
+		! !
+
+!testRun: #ObserversTest #test16LogRegisterPositionForMoreThanOneRoverActivity stamp: 'As 6/4/2023 17:55:32'!
+FAILURE!
+!Log methodsFor: 'update' stamp: 'As 6/4/2023 17:57:12' prior: 50631737!
+updatePosition: aPosition for: aMarsRover
+	
+	lines add: aPosition.! !
+!Log methodsFor: 'update' stamp: 'As 6/4/2023 17:59:38' prior: 50633492!
+updatePosition: aPosition for: aMarsRover
+	
+	(aMarsRover name isEmpty) ifTrue: [ lines add: aPosition ]
+	ifFalse: [ lines add: aMarsRover name, ': ', aPosition asString]! !
+!Log methodsFor: 'update' stamp: 'As 6/4/2023 17:59:54' prior: 50633497!
+updatePosition: aPosition for: aMarsRover
+	
+	(aMarsRover name isEmpty)
+		ifTrue: [ lines add: aPosition ]
+		ifFalse: [ lines add: aMarsRover name, ': ', aPosition asString]! !
+!Log methodsFor: 'update' stamp: 'As 6/4/2023 18:00:52' prior: 50631707!
+updateHeading: aHeadingType for: aMarsRover
+	
+	| direction |
+	
+	(aHeadingType isKindOf: MarsRoverHeadingEast) ifTrue: [ direction := 'East' ].
+	(aHeadingType isKindOf: MarsRoverHeadingNorth) ifTrue: [ direction := 'North' ].
+	(aHeadingType isKindOf: MarsRoverHeadingSouth) ifTrue: [ direction := 'South' ].
+	(aHeadingType isKindOf: MarsRoverHeadingWest) ifTrue: [ direction := 'West' ].
+	
+	(aMarsRover name isEmpty)
+		ifTrue: [ lines add: direction ]
+		ifFalse: [ lines add: aMarsRover name, ': ', direction]			! !
+
+!testRun: #ObserversTest #test01RoverForwardLogRegisterLastPosition stamp: 'As 6/4/2023 18:00:56'!
+PASSED!
+
+!testRun: #ObserversTest #test02RoverForwardTwoStepsLogRegisterTwoLastPosition stamp: 'As 6/4/2023 18:00:56'!
+PASSED!
+
+!testRun: #ObserversTest #test03RoverForwardTwoStepsLogRegisterTwoLastPosition stamp: 'As 6/4/2023 18:00:56'!
+PASSED!
+
+!testRun: #ObserversTest #test04RoverForwardTwoStepsWindowRegisterPositionsOneAfterAnother stamp: 'As 6/4/2023 18:00:56'!
+PASSED!
+
+!testRun: #ObserversTest #test05RoverForwardAndRightRegisterPositionsAndHeading stamp: 'As 6/4/2023 18:00:56'!
+PASSED!
+
+!testRun: #ObserversTest #test06RoverForwardRightForwardRegisterLastPositionsAndHeading stamp: 'As 6/4/2023 18:00:56'!
+PASSED!
+
+!testRun: #ObserversTest #test07RoverMoveForwardReportsToManyObservers stamp: 'As 6/4/2023 18:00:56'!
+PASSED!
+
+!testRun: #ObserversTest #test08RoverMoveBackwardsReportsToManyObservers stamp: 'As 6/4/2023 18:00:56'!
+PASSED!
+
+!testRun: #ObserversTest #test09RoverRotateRightReportsToManyObservers stamp: 'As 6/4/2023 18:00:56'!
+PASSED!
+
+!testRun: #ObserversTest #test10RoverRotateLeftReportsToManyObservers stamp: 'As 6/4/2023 18:00:56'!
+PASSED!
+
+!testRun: #ObserversTest #test11ObserverShouldOnlyShowPositionRequestedChanges stamp: 'As 6/4/2023 18:00:56'!
+PASSED!
+
+!testRun: #ObserversTest #test12ObserverShouldOnlyShowHeadingRequestedChanges stamp: 'As 6/4/2023 18:00:56'!
+PASSED!
+
+!testRun: #ObserversTest #test13ObserverCanAttachToAllChanges stamp: 'As 6/4/2023 18:00:56'!
+PASSED!
+
+!testRun: #ObserversTest #test14ObserverShouldNotBeUpdatedIfDetachedForAnAspect stamp: 'As 6/4/2023 18:00:56'!
+PASSED!
+
+!testRun: #ObserversTest #test15ObserverCanDetachForAllAspects stamp: 'As 6/4/2023 18:00:56'!
+PASSED!
+
+!testRun: #ObserversTest #test16LogRegisterPositionForMoreThanOneRoverActivity stamp: 'As 6/4/2023 18:00:56'!
+PASSED!
+
+RoverObserver subclass: #Window
+	instanceVariableNames: 'positions headings'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRover-WithHeading'!
+
+!classDefinition: #Window category: 'MarsRover-WithHeading' stamp: 'As 6/4/2023 18:03:22'!
+RoverObserver subclass: #Window
+	instanceVariableNames: 'positions headings'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRover-WithHeading'!
+!Window methodsFor: 'initialization' stamp: 'As 6/4/2023 18:03:39' prior: 50630206 overrides: 16920235!
+initialize
+
+	positions := Dictionary new.
+	headings := Dictionary new.! !
+!Window methodsFor: 'update' stamp: 'As 6/4/2023 18:04:26' prior: 50631746!
+updateHeading: aHeadingType for: aMarsRover
+	
+	| direction |
+	
+	(aHeadingType isKindOf: MarsRoverHeadingEast) ifTrue: [ direction := 'este' ].
+	(aHeadingType isKindOf: MarsRoverHeadingNorth) ifTrue: [ direction := 'norte' ].
+	(aHeadingType isKindOf: MarsRoverHeadingSouth) ifTrue: [ direction := 'sur' ].
+	(aHeadingType isKindOf: MarsRoverHeadingWest) ifTrue: [ direction := 'oeste' ].
+		
+	headings at: aMarsRover name put: 'Apuntando al ', direction.
+! !
+!Window methodsFor: 'update' stamp: 'As 6/4/2023 18:04:51' prior: 50631778!
+updatePosition: aPosition for: aMarsRover
+	
+	positions at: aMarsRover name put: aPosition asString. 
+	! !
+!Window methodsFor: 'update' stamp: 'As 6/4/2023 18:12:02' prior: 50633609!
+updateHeading: aHeadingType for: aMarsRover
+	
+	| marsRoverName direction |
+	
+	(aHeadingType isKindOf: MarsRoverHeadingEast) ifTrue: [ direction := 'este' ].
+	(aHeadingType isKindOf: MarsRoverHeadingNorth) ifTrue: [ direction := 'norte' ].
+	(aHeadingType isKindOf: MarsRoverHeadingSouth) ifTrue: [ direction := 'sur' ].
+	(aHeadingType isKindOf: MarsRoverHeadingWest) ifTrue: [ direction := 'oeste' ].
+		
+	(aMarsRover name isEmpty)
+		ifTrue: [ marsRoverName := '' ]
+		ifFalse: [ marsRoverName := aMarsRover name, ': '].
+		
+	headings at: aMarsRover name put: marsRoverName, 'Apuntando al ', direction.
+
+
+! !
+!Window methodsFor: 'show' stamp: 'As 6/4/2023 18:12:21' prior: 50630177!
+showHeading
+
+	^headings values! !
+!Window methodsFor: 'update' stamp: 'As 6/4/2023 18:14:05' prior: 50633626!
+updatePosition: aPosition for: aMarsRover
+	
+	| marsRoverName |
+	
+	(aMarsRover name isEmpty)
+		ifTrue: [ marsRoverName := '' ]
+		ifFalse: [ marsRoverName := aMarsRover name, ': '].
+		
+	headings at: aMarsRover name put: marsRoverName, aPosition asString
+	! !
+!Window methodsFor: 'update' stamp: 'As 6/4/2023 18:14:17' prior: 50633658!
+updatePosition: aPosition for: aMarsRover
+	
+	| prefix |
+	
+	(aMarsRover name isEmpty)
+		ifTrue: [ prefix := '' ]
+		ifFalse: [ prefix := aMarsRover name, ': '].
+		
+	headings at: aMarsRover name put: prefix, aPosition asString
+	! !
+!Window methodsFor: 'update' stamp: 'As 6/4/2023 18:14:28' prior: 50633632!
+updateHeading: aHeadingType for: aMarsRover
+	
+	| prefix direction |
+	
+	(aHeadingType isKindOf: MarsRoverHeadingEast) ifTrue: [ direction := 'este' ].
+	(aHeadingType isKindOf: MarsRoverHeadingNorth) ifTrue: [ direction := 'norte' ].
+	(aHeadingType isKindOf: MarsRoverHeadingSouth) ifTrue: [ direction := 'sur' ].
+	(aHeadingType isKindOf: MarsRoverHeadingWest) ifTrue: [ direction := 'oeste' ].
+		
+	(aMarsRover name isEmpty)
+		ifTrue: [ prefix := '' ]
+		ifFalse: [ prefix := aMarsRover name, ': '].
+		
+	headings at: aMarsRover name put: prefix, 'Apuntando al ', direction.
+
+
+! !
+!Window methodsFor: 'show' stamp: 'As 6/4/2023 18:14:39' prior: 50630181!
+showPosition
+
+	^positions values! !
+!ObserversTest methodsFor: 'test' stamp: 'As 6/4/2023 18:17:31'!
+test17WindowRegisterPositionForMoreThanOneRoverActivity
+
+	| curiosity opportunity window |
+	
+	curiosity := self curiosityAt: 1@1 heading: MarsRoverHeadingNorth.
+	opportunity := self opportunityAt: 4@3 heading: MarsRoverHeadingEast.
+	
+	window := Window new.
+
+	curiosity attach: window for: self positionAndHeading.
+	opportunity attach: window for: self positionAndHeading.
+	 	
+	curiosity process: 'ff'.
+	opportunity process: 'br'.
+	
+	self assert: 4 equals: window lines size.
+	self assertLine: 1 on: window is: curiosity name withPosition: 1@2. 
+	self assertLine: 2 on: window is: curiosity name withPosition: 1@3. 	
+	self assertLine: 3 on: window is: opportunity name withPosition: 3@3. 
+	self assertLine: 4 on: window is: opportunity name headingTo: MarsRoverHeadingSouth.
+
+
+! !
+!Window methodsFor: 'show' stamp: 'As 6/4/2023 18:17:55' prior: 50633654!
+showHeading
+
+	^OrderedCollection with: headings values! !
+!Window methodsFor: 'show' stamp: 'As 6/4/2023 18:18:23' prior: 50633731!
+showHeading
+
+	^OrderedCollection withAll: headings values! !
+!Window methodsFor: 'show' stamp: 'As 6/4/2023 18:18:37' prior: 50633700!
+showPosition
+
+	^OrderedCollection withAll: positions values! !
+
+!testRun: #ObserversTest #test17WindowRegisterPositionForMoreThanOneRoverActivity stamp: 'As 6/4/2023 18:19:27'!
+ERROR!
+
+!testRun: #ObserversTest #test17WindowRegisterPositionForMoreThanOneRoverActivity stamp: 'As 6/4/2023 18:19:27'!
+ERROR!
+!ObserversTest methodsFor: 'test' stamp: 'As 6/4/2023 18:19:52' prior: 50633704!
+test17WindowRegisterPositionForMoreThanOneRoverActivity
+
+	| curiosity opportunity window |
+	
+	curiosity := self curiosityAt: 1@1 heading: MarsRoverHeadingNorth.
+	opportunity := self opportunityAt: 4@3 heading: MarsRoverHeadingEast.
+	
+	window := Window new.
+
+	curiosity attach: window for: self positionAndHeading.
+	opportunity attach: window for: self positionAndHeading.
+	 	
+	curiosity process: 'ff'.
+	opportunity process: 'br'.
+	
+	self assert: 4 equals: window show size.
+	self assertLine: 1 on: window is: curiosity name withPosition: 1@2. 
+	self assertLine: 2 on: window is: curiosity name withPosition: 1@3. 	
+	self assertLine: 3 on: window is: opportunity name withPosition: 3@3. 
+	self assertLine: 4 on: window is: opportunity name headingTo: MarsRoverHeadingSouth.
+
+
+! !
+!ObserversTest methodsFor: 'test' stamp: 'As 6/4/2023 18:25:51' prior: 50633754!
+test17WindowRegisterPositionForMoreThanOneRoverActivity
+
+	| curiosity opportunity window positionsCollection headingsCollection |
+	
+	curiosity := self curiosityAt: 1@1 heading: MarsRoverHeadingNorth.
+	opportunity := self opportunityAt: 4@3 heading: MarsRoverHeadingEast.
+	
+	window := Window new.
+
+	curiosity attach: window for: self positionAndHeading.
+	opportunity attach: window for: self positionAndHeading.
+	 	
+	curiosity process: 'ff'.
+	opportunity process: 'br'.
+	
+	positionsCollection := window showPosition.
+	headingsCollection := window showHeading.
+	
+	self assert: positionsCollection includes: 'Curiosity: 1@3'.
+	self assert: positionsCollection includes: 'Opportunity: 3@3'.		
+	self assert: headingsCollection includes: 'Opportunity: Apuntando al sur'.
+
+! !
+
+!testRun: #ObserversTest #test17WindowRegisterPositionForMoreThanOneRoverActivity stamp: 'As 6/4/2023 18:25:54'!
+FAILURE!
+
+!testRun: #ObserversTest #test17WindowRegisterPositionForMoreThanOneRoverActivity stamp: 'As 6/4/2023 18:25:54'!
+FAILURE!
+
+!testRun: #ObserversTest #test17WindowRegisterPositionForMoreThanOneRoverActivity stamp: 'As 6/4/2023 18:27:00'!
+FAILURE!
+
+positionsCollection!
+
+positionsCollection size!
+
+headingsCollection size!
+
+headingsCollection first!
+!Window methodsFor: 'update' stamp: 'As 6/4/2023 18:28:11' prior: 50633669!
+updatePosition: aPosition for: aMarsRover
+	
+	| prefix |
+	
+	(aMarsRover name isEmpty)
+		ifTrue: [ prefix := '' ]
+		ifFalse: [ prefix := aMarsRover name, ': '].
+		
+	positions at: aMarsRover name put: prefix, aPosition asString
+	! !
+
+!testRun: #ObserversTest #test17WindowRegisterPositionForMoreThanOneRoverActivity stamp: 'As 6/4/2023 18:28:18'!
+PASSED!
+
+!testRun: #ObserversTest #test01RoverForwardLogRegisterLastPosition stamp: 'As 6/4/2023 18:28:26'!
+PASSED!
+
+!testRun: #ObserversTest #test02RoverForwardTwoStepsLogRegisterTwoLastPosition stamp: 'As 6/4/2023 18:28:26'!
+PASSED!
+
+!testRun: #ObserversTest #test03RoverForwardTwoStepsLogRegisterTwoLastPosition stamp: 'As 6/4/2023 18:28:26'!
+PASSED!
+
+!testRun: #ObserversTest #test04RoverForwardTwoStepsWindowRegisterPositionsOneAfterAnother stamp: 'As 6/4/2023 18:28:26'!
+FAILURE!
+
+!testRun: #ObserversTest #test05RoverForwardAndRightRegisterPositionsAndHeading stamp: 'As 6/4/2023 18:28:26'!
+FAILURE!
+
+!testRun: #ObserversTest #test06RoverForwardRightForwardRegisterLastPositionsAndHeading stamp: 'As 6/4/2023 18:28:26'!
+FAILURE!
+
+!testRun: #ObserversTest #test07RoverMoveForwardReportsToManyObservers stamp: 'As 6/4/2023 18:28:26'!
+FAILURE!
+
+!testRun: #ObserversTest #test08RoverMoveBackwardsReportsToManyObservers stamp: 'As 6/4/2023 18:28:27'!
+FAILURE!
+
+!testRun: #ObserversTest #test09RoverRotateRightReportsToManyObservers stamp: 'As 6/4/2023 18:28:27'!
+FAILURE!
+
+!testRun: #ObserversTest #test10RoverRotateLeftReportsToManyObservers stamp: 'As 6/4/2023 18:28:27'!
+FAILURE!
+
+!testRun: #ObserversTest #test11ObserverShouldOnlyShowPositionRequestedChanges stamp: 'As 6/4/2023 18:28:27'!
+PASSED!
+
+!testRun: #ObserversTest #test12ObserverShouldOnlyShowHeadingRequestedChanges stamp: 'As 6/4/2023 18:28:27'!
+PASSED!
+
+!testRun: #ObserversTest #test13ObserverCanAttachToAllChanges stamp: 'As 6/4/2023 18:28:27'!
+PASSED!
+
+!testRun: #ObserversTest #test14ObserverShouldNotBeUpdatedIfDetachedForAnAspect stamp: 'As 6/4/2023 18:28:27'!
+PASSED!
+
+!testRun: #ObserversTest #test15ObserverCanDetachForAllAspects stamp: 'As 6/4/2023 18:28:27'!
+PASSED!
+
+!testRun: #ObserversTest #test16LogRegisterPositionForMoreThanOneRoverActivity stamp: 'As 6/4/2023 18:28:27'!
+PASSED!
+
+!testRun: #ObserversTest #test17WindowRegisterPositionForMoreThanOneRoverActivity stamp: 'As 6/4/2023 18:28:27'!
+PASSED!
+
+!testRun: #ObserversTest #test04RoverForwardTwoStepsWindowRegisterPositionsOneAfterAnother stamp: 'As 6/4/2023 18:28:40'!
+FAILURE!
+!ObserversTest methodsFor: 'test' stamp: 'As 6/4/2023 18:28:59' prior: 50632087!
+test04RoverForwardTwoStepsWindowRegisterPositionsOneAfterAnother
+
+	| rover window |
+	
+	rover := self roverAt: 1@1 heading: MarsRoverHeadingNorth.
+	window := Window new.
+
+	rover attach: window for: self position.
+	 	
+	rover process: 'ff'.
+	
+	self assert: '1@3' equals: window showPosition first! !
+
+!testRun: #ObserversTest #test04RoverForwardTwoStepsWindowRegisterPositionsOneAfterAnother stamp: 'As 6/4/2023 18:29:02'!
+PASSED!
+
+!testRun: #ObserversTest #test04RoverForwardTwoStepsWindowRegisterPositionsOneAfterAnother stamp: 'As 6/4/2023 18:29:09'!
+PASSED!
+
+!testRun: #ObserversTest #test01RoverForwardLogRegisterLastPosition stamp: 'As 6/4/2023 18:29:14'!
+PASSED!
+
+!testRun: #ObserversTest #test02RoverForwardTwoStepsLogRegisterTwoLastPosition stamp: 'As 6/4/2023 18:29:14'!
+PASSED!
+
+!testRun: #ObserversTest #test03RoverForwardTwoStepsLogRegisterTwoLastPosition stamp: 'As 6/4/2023 18:29:14'!
+PASSED!
+
+!testRun: #ObserversTest #test04RoverForwardTwoStepsWindowRegisterPositionsOneAfterAnother stamp: 'As 6/4/2023 18:29:14'!
+PASSED!
+
+!testRun: #ObserversTest #test05RoverForwardAndRightRegisterPositionsAndHeading stamp: 'As 6/4/2023 18:29:14'!
+FAILURE!
+
+!testRun: #ObserversTest #test06RoverForwardRightForwardRegisterLastPositionsAndHeading stamp: 'As 6/4/2023 18:29:14'!
+FAILURE!
+
+!testRun: #ObserversTest #test07RoverMoveForwardReportsToManyObservers stamp: 'As 6/4/2023 18:29:14'!
+FAILURE!
+
+!testRun: #ObserversTest #test08RoverMoveBackwardsReportsToManyObservers stamp: 'As 6/4/2023 18:29:14'!
+FAILURE!
+
+!testRun: #ObserversTest #test09RoverRotateRightReportsToManyObservers stamp: 'As 6/4/2023 18:29:14'!
+FAILURE!
+
+!testRun: #ObserversTest #test10RoverRotateLeftReportsToManyObservers stamp: 'As 6/4/2023 18:29:14'!
+FAILURE!
+
+!testRun: #ObserversTest #test11ObserverShouldOnlyShowPositionRequestedChanges stamp: 'As 6/4/2023 18:29:14'!
+PASSED!
+
+!testRun: #ObserversTest #test12ObserverShouldOnlyShowHeadingRequestedChanges stamp: 'As 6/4/2023 18:29:14'!
+PASSED!
+
+!testRun: #ObserversTest #test13ObserverCanAttachToAllChanges stamp: 'As 6/4/2023 18:29:14'!
+PASSED!
+
+!testRun: #ObserversTest #test14ObserverShouldNotBeUpdatedIfDetachedForAnAspect stamp: 'As 6/4/2023 18:29:14'!
+PASSED!
+
+!testRun: #ObserversTest #test15ObserverCanDetachForAllAspects stamp: 'As 6/4/2023 18:29:14'!
+PASSED!
+
+!testRun: #ObserversTest #test16LogRegisterPositionForMoreThanOneRoverActivity stamp: 'As 6/4/2023 18:29:14'!
+PASSED!
+
+!testRun: #ObserversTest #test17WindowRegisterPositionForMoreThanOneRoverActivity stamp: 'As 6/4/2023 18:29:14'!
+PASSED!
+!ObserversTest methodsFor: 'test' stamp: 'As 6/4/2023 18:29:28' prior: 50632099!
+test05RoverForwardAndRightRegisterPositionsAndHeading
+
+	| rover window |
+	
+	rover := self roverAt: 1@1 heading: MarsRoverHeadingNorth.
+	window := Window new.
+
+	rover attach: window for: self positionAndHeading.
+	 	
+	rover process: 'fr'.
+	
+	self assert: '1@2' equals: window showPosition first.
+	self assert: 'Apuntando al este' equals: window showHeading first.! !
+!ObserversTest methodsFor: 'test' stamp: 'As 6/4/2023 18:29:34' prior: 50632113!
+test06RoverForwardRightForwardRegisterLastPositionsAndHeading
+
+	| rover window |
+	
+	rover := self roverAt: 1@1 heading: MarsRoverHeadingNorth.
+	window := Window new.
+
+	rover attach: window for: self positionAndHeading.
+	 	
+	rover process: 'frf'.
+	
+	self assert: '2@2' equals: window showPosition first.
+	self assert: 'Apuntando al este' equals: window showHeading.! !
+!ObserversTest methodsFor: 'test' stamp: 'As 6/4/2023 18:29:39' prior: 50633999!
+test06RoverForwardRightForwardRegisterLastPositionsAndHeading
+
+	| rover window |
+	
+	rover := self roverAt: 1@1 heading: MarsRoverHeadingNorth.
+	window := Window new.
+
+	rover attach: window for: self positionAndHeading.
+	 	
+	rover process: 'frf'.
+	
+	self assert: '2@2' equals: window showPosition first.
+	self assert: 'Apuntando al este' equals: window showHeading first.! !
+!ObserversTest methodsFor: 'test' stamp: 'As 6/4/2023 18:29:46' prior: 50632127!
+test07RoverMoveForwardReportsToManyObservers
+
+	| rover log window |
+	
+	rover := self roverAt: 1@1 heading: MarsRoverHeadingNorth.
+	
+	log := Log new.
+	window := Window new.
+	
+	rover attach: log for: self position.
+	rover attach: window for: self position.
+	
+	rover process: 'f'.
+	
+	self assert: 1 equals: log lines size.
+	self assert: 1@2 equals: log lines first.
+	
+	self assert: '1@2' equals: window showPosition first.! !
+!ObserversTest methodsFor: 'test' stamp: 'As 6/4/2023 18:29:52' prior: 50632143!
+test08RoverMoveBackwardsReportsToManyObservers
+
+	| rover log window |
+	
+	rover := self roverAt: 1@1 heading: MarsRoverHeadingNorth.
+	
+	log := Log new.
+	window := Window new.
+	
+	rover attach: log for: self position.
+	rover attach: window for: self position.
+	
+	rover process: 'b'.
+	
+	self assert: 1 equals: log lines size.
+	self assert: 1@0 equals: log lines first.
+	
+	self assert: '1@0' equals: window showPosition first.! !
+!ObserversTest methodsFor: 'test' stamp: 'As 6/4/2023 18:30:00' prior: 50632159!
+test09RoverRotateRightReportsToManyObservers
+
+	| rover log window |
+	
+	rover := self roverAt: 1@1 heading: MarsRoverHeadingNorth.
+	
+	log := Log new.
+	window := Window new.
+	
+	rover attach: log for: self heading.
+	rover attach: window for: self heading.
+	
+	rover process: 'r'.
+	
+	self assert: 1 equals: log lines size.
+	self assert: 'East' equals: log lines first.
+	
+	self assert: 'Apuntando al este' equals: window showHeading first.! !
+!ObserversTest methodsFor: 'test' stamp: 'As 6/4/2023 18:30:05' prior: 50632175!
+test10RoverRotateLeftReportsToManyObservers
+
+	| rover log window |
+	
+	rover := self roverAt: 1@1 heading: MarsRoverHeadingNorth.
+	
+	log := Log new.
+	window := Window new.
+	
+	rover attach: log for: self heading.
+	rover attach: window for: self heading.
+	
+	rover process: 'l'.
+	
+	self assert: 1 equals: log lines size.
+	self assert: 'West' equals: log lines first.
+	
+	self assert: 'Apuntando al oeste' equals: window showHeading first.! !
+
+!testRun: #ObserversTest #test01RoverForwardLogRegisterLastPosition stamp: 'As 6/4/2023 18:30:10'!
+PASSED!
+
+!testRun: #ObserversTest #test02RoverForwardTwoStepsLogRegisterTwoLastPosition stamp: 'As 6/4/2023 18:30:10'!
+PASSED!
+
+!testRun: #ObserversTest #test03RoverForwardTwoStepsLogRegisterTwoLastPosition stamp: 'As 6/4/2023 18:30:10'!
+PASSED!
+
+!testRun: #ObserversTest #test04RoverForwardTwoStepsWindowRegisterPositionsOneAfterAnother stamp: 'As 6/4/2023 18:30:10'!
+PASSED!
+
+!testRun: #ObserversTest #test05RoverForwardAndRightRegisterPositionsAndHeading stamp: 'As 6/4/2023 18:30:10'!
+PASSED!
+
+!testRun: #ObserversTest #test06RoverForwardRightForwardRegisterLastPositionsAndHeading stamp: 'As 6/4/2023 18:30:10'!
+PASSED!
+
+!testRun: #ObserversTest #test07RoverMoveForwardReportsToManyObservers stamp: 'As 6/4/2023 18:30:10'!
+PASSED!
+
+!testRun: #ObserversTest #test08RoverMoveBackwardsReportsToManyObservers stamp: 'As 6/4/2023 18:30:10'!
+PASSED!
+
+!testRun: #ObserversTest #test09RoverRotateRightReportsToManyObservers stamp: 'As 6/4/2023 18:30:10'!
+PASSED!
+
+!testRun: #ObserversTest #test10RoverRotateLeftReportsToManyObservers stamp: 'As 6/4/2023 18:30:10'!
+PASSED!
+
+!testRun: #ObserversTest #test11ObserverShouldOnlyShowPositionRequestedChanges stamp: 'As 6/4/2023 18:30:10'!
+PASSED!
+
+!testRun: #ObserversTest #test12ObserverShouldOnlyShowHeadingRequestedChanges stamp: 'As 6/4/2023 18:30:10'!
+PASSED!
+
+!testRun: #ObserversTest #test13ObserverCanAttachToAllChanges stamp: 'As 6/4/2023 18:30:10'!
+PASSED!
+
+!testRun: #ObserversTest #test14ObserverShouldNotBeUpdatedIfDetachedForAnAspect stamp: 'As 6/4/2023 18:30:10'!
+PASSED!
+
+!testRun: #ObserversTest #test15ObserverCanDetachForAllAspects stamp: 'As 6/4/2023 18:30:10'!
+PASSED!
+
+!testRun: #ObserversTest #test16LogRegisterPositionForMoreThanOneRoverActivity stamp: 'As 6/4/2023 18:30:10'!
+PASSED!
+
+!testRun: #ObserversTest #test17WindowRegisterPositionForMoreThanOneRoverActivity stamp: 'As 6/4/2023 18:30:10'!
+PASSED!
