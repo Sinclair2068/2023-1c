@@ -591,45 +591,6 @@ positionAndHeading
 	^{ Position new. Heading new. }! !
 
 
-!classDefinition: #Aspect category: 'MarsRover-WithHeading'!
-Object subclass: #Aspect
-	instanceVariableNames: ''
-	classVariableNames: ''
-	poolDictionaries: ''
-	category: 'MarsRover-WithHeading'!
-
-!Aspect methodsFor: 'update' stamp: 'As 6/4/2023 17:27:20'!
-update: anObserver withValue: aValue for: aMarsRover
-
-	self subclassResponsibility.! !
-
-
-!classDefinition: #Heading category: 'MarsRover-WithHeading'!
-Aspect subclass: #Heading
-	instanceVariableNames: ''
-	classVariableNames: ''
-	poolDictionaries: ''
-	category: 'MarsRover-WithHeading'!
-
-!Heading methodsFor: 'update' stamp: 'As 6/4/2023 17:28:07'!
-update: anObserver withValue: aValue for: aMarsRover
-
-	anObserver updateHeading: aValue for: aMarsRover! !
-
-
-!classDefinition: #Position category: 'MarsRover-WithHeading'!
-Aspect subclass: #Position
-	instanceVariableNames: ''
-	classVariableNames: ''
-	poolDictionaries: ''
-	category: 'MarsRover-WithHeading'!
-
-!Position methodsFor: 'update' stamp: 'As 6/4/2023 17:28:52'!
-update: anObserver withValue: aValue for: aMarsRover
-
-	anObserver updatePosition: aValue for: aMarsRover! !
-
-
 !classDefinition: #MarsRover category: 'MarsRover-WithHeading'!
 Object subclass: #MarsRover
 	instanceVariableNames: 'position head observers name'
@@ -648,23 +609,38 @@ signalInvalidCommand
 	self error: self invalidCommandErrorDescription ! !
 
 
-!MarsRover methodsFor: 'initialization' stamp: 'As 6/4/2023 17:48:14'!
+!MarsRover methodsFor: 'initialization' stamp: 'WAL 6/4/2023 20:34:15'!
+createObserversCollectionFor: anAspectClass
+
+	^observers 
+		at: anAspectClass name
+		put: OrderedCollection new.
+! !
+
+!MarsRover methodsFor: 'initialization' stamp: 'WAL 6/4/2023 20:34:52'!
 initializeAt: aPosition heading: aHeadingType
 
 	name := ''.
 	position := aPosition.
 	head := aHeadingType for: self.
-	observers := Dictionary new.
+	self initializeObservers.
 ! !
 
-!MarsRover methodsFor: 'initialization' stamp: 'As 6/4/2023 17:47:56'!
+!MarsRover methodsFor: 'initialization' stamp: 'WAL 6/4/2023 20:34:52'!
 initializeAt: aPosition heading: aHeadingType named: aName
 
 	name := aName.
 	position := aPosition.
 	head := aHeadingType for: self.
-	observers := Dictionary new.
+	self initializeObservers.
 ! !
+
+!MarsRover methodsFor: 'initialization' stamp: 'WAL 6/4/2023 20:36:26'!
+initializeObservers
+
+	observers := Dictionary new.
+	
+	RoverAspect subclasses do: [ : aRoverAspectClass | self createObserversCollectionFor: aRoverAspectClass ]! !
 
 
 !MarsRover methodsFor: 'heading' stamp: 'HAW 10/7/2021 20:17:02'!
@@ -773,14 +749,6 @@ attach: anObserver for: anArrayOfAspects
 	anArrayOfAspects do: [ :anAspect | 	self add: anObserver to: anAspect ].
 	! !
 
-!MarsRover methodsFor: 'observers' stamp: 'As 6/4/2023 17:21:34'!
-createObserversCollectionFor: anAspect
-
-	^observers 
-		at: anAspect class name
-		put: OrderedCollection new.
-! !
-
 !MarsRover methodsFor: 'observers' stamp: 'As 6/4/2023 17:38:17'!
 detach: anObserver 
 	
@@ -791,12 +759,10 @@ detach: anObserver for: anArrayOfAspect
 	
 	anArrayOfAspect do: [ :anAspect | 	self remove: anObserver from: anAspect ].! !
 
-!MarsRover methodsFor: 'observers' stamp: 'As 6/4/2023 17:21:41'!
+!MarsRover methodsFor: 'observers' stamp: 'WAL 6/4/2023 20:37:05'!
 getObserversFor: anAspect 
 	
-	^observers 
-		at: anAspect class name
-		ifAbsent: [ self createObserversCollectionFor: anAspect ].! !
+	^observers at: anAspect class name! !
 
 !MarsRover methodsFor: 'observers' stamp: 'As 6/4/2023 17:12:05'!
 notify: anAspect withValue: aValue
@@ -1015,6 +981,45 @@ rotateLeft
 rotateRight
 	
 	^marsRover headNorth! !
+
+
+!classDefinition: #RoverAspect category: 'MarsRover-WithHeading'!
+Object subclass: #RoverAspect
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRover-WithHeading'!
+
+!RoverAspect methodsFor: 'update' stamp: 'As 6/4/2023 17:27:20'!
+update: anObserver withValue: aValue for: aMarsRover
+
+	self subclassResponsibility.! !
+
+
+!classDefinition: #Heading category: 'MarsRover-WithHeading'!
+RoverAspect subclass: #Heading
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRover-WithHeading'!
+
+!Heading methodsFor: 'update' stamp: 'As 6/4/2023 17:28:07'!
+update: anObserver withValue: aValue for: aMarsRover
+
+	anObserver updateHeading: aValue for: aMarsRover! !
+
+
+!classDefinition: #Position category: 'MarsRover-WithHeading'!
+RoverAspect subclass: #Position
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRover-WithHeading'!
+
+!Position methodsFor: 'update' stamp: 'As 6/4/2023 17:28:52'!
+update: anObserver withValue: aValue for: aMarsRover
+
+	anObserver updatePosition: aValue for: aMarsRover! !
 
 
 !classDefinition: #RoverObserver category: 'MarsRover-WithHeading'!
