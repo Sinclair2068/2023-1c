@@ -475,6 +475,21 @@ test15ObserverCanDetachForAllAspects
 
 ! !
 
+!ObserversTest methodsFor: 'test' stamp: 'WAL 6/4/2023 23:15:02'!
+test16ObserverCanNotObserveUnsupportedAspect
+
+	| rover log |
+	
+	rover := self roverAt: 1@1 heading: MarsRoverHeadingNorth.
+	
+	log := Log new.
+	
+	self
+		should: [ 	rover attach: log for: self unsupportedAspect ]
+		raise: Error
+		withExceptionDo: [ :anError |
+			self assert: anError messageText equals: rover invalidAspectErrorDescription ]! !
+
 
 !ObserversTest methodsFor: 'rovers' stamp: 'As 6/4/2023 16:29:46'!
 roverAt: aPosition heading: aHeadingType 
@@ -497,6 +512,11 @@ positionAndHeading
 	
 	^{ Position new. Heading new. }! !
 
+!ObserversTest methodsFor: 'aspects' stamp: 'WAL 6/4/2023 23:17:00'!
+unsupportedAspect
+	
+	^{ Object new. }! !
+
 
 !classDefinition: #MarsRover category: 'MarsRover-WithHeading'!
 Object subclass: #MarsRover
@@ -505,10 +525,20 @@ Object subclass: #MarsRover
 	poolDictionaries: ''
 	category: 'MarsRover-WithHeading'!
 
+!MarsRover methodsFor: 'exceptions' stamp: 'WAL 6/4/2023 23:15:30'!
+invalidAspectErrorDescription
+	
+	^'Invalid aspect'! !
+
 !MarsRover methodsFor: 'exceptions' stamp: 'HAW 6/30/2018 19:48:45'!
 invalidCommandErrorDescription
 	
 	^'Invalid command'! !
+
+!MarsRover methodsFor: 'exceptions' stamp: 'WAL 6/4/2023 23:15:40'!
+signalInvalidAspect
+	
+	self error: self invalidAspectErrorDescription ! !
 
 !MarsRover methodsFor: 'exceptions' stamp: 'HAW 6/30/2018 19:50:26'!
 signalInvalidCommand
@@ -656,10 +686,10 @@ detach: anObserver for: anArrayOfAspects
 	
 	anArrayOfAspects do: [ :anAspect | 	self remove: anObserver from: anAspect ].! !
 
-!MarsRover methodsFor: 'observers' stamp: 'WAL 6/4/2023 20:27:02'!
+!MarsRover methodsFor: 'observers' stamp: 'WAL 6/4/2023 23:16:10'!
 getObserversFor: anAspect 
 	
-	^observers at: anAspect class name.! !
+	^observers at: anAspect class name ifAbsent: [ self signalInvalidAspect ].! !
 
 !MarsRover methodsFor: 'observers' stamp: 'As 6/4/2023 17:12:05'!
 notify: anAspect withValue: aValue
@@ -914,16 +944,6 @@ Object subclass: #RoverObserver
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'MarsRover-WithHeading'!
-
-!RoverObserver methodsFor: 'assertions' stamp: 'As 6/4/2023 17:17:53'!
-invalidAspectErrorDescription
-	
-	^'Invalid aspect'! !
-
-!RoverObserver methodsFor: 'assertions' stamp: 'As 6/4/2023 17:17:41'!
-signalInvalidAspect
-	
-	self error: self invalidAspectErrorDescription ! !
 
 
 !RoverObserver methodsFor: 'update' stamp: 'As 6/4/2023 17:26:38'!
