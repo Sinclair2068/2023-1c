@@ -1,0 +1,3396 @@
+
+
+----QUIT----(30 May 2023 00:05:32) CuisUniversity-5832.image priorSource: 4928100!
+
+----STARTUP---- (30 May 2023 00:05:33) as /Users/hernan/Documents/Cuis/5.0-64Bits/Cuis-University-Installer/CuisUniversity-5832.image!
+
+
+----QUIT----(30 May 2023 00:05:33) CuisUniversity-5832.image priorSource: 9366537!
+
+----STARTUP---- (4 June 2023 20:06:06) as /home/a/s/sw/smalltalk3/CuisUniversity-5832.image!
+
+
+----End fileIn of /home/a/s/e/c/is1/git/2023-1c/08-MarsRover-ElRegreso/MarsRover-WithHeading-OneRover.st----!
+
+!classRenamed: #Aspect as: #RoverAspect stamp: 'WAL 6/4/2023 20:12:09'!
+Smalltalk renameClassNamed: #Aspect as: #RoverAspect!
+!MarsRover methodsFor: 'initialization' stamp: 'WAL 6/4/2023 20:12:57' prior: 50624851!
+initializeAt: aPosition heading: aHeadingType
+
+	position := aPosition.
+	head := aHeadingType for: self.
+	observers := Dictionary new.
+! !
+!MarsRover methodsFor: 'initialization' stamp: 'WAL 6/4/2023 20:13:43'!
+initializeObservers
+
+	^ observers := Dictionary new! !
+!MarsRover methodsFor: 'initialization' stamp: 'WAL 6/4/2023 20:13:43' prior: 50625337!
+initializeAt: aPosition heading: aHeadingType
+
+	position := aPosition.
+	head := aHeadingType for: self.
+	self initializeObservers.
+! !
+!MarsRover methodsFor: 'initialization' stamp: 'WAL 6/4/2023 20:13:54' prior: 50625349!
+initializeAt: aPosition heading: aHeadingType
+
+	position := aPosition.
+	head := aHeadingType for: self.
+	observers := Dictionary new.
+! !
+!MarsRover methodsFor: 'initialization' stamp: 'WAL 6/4/2023 20:14:11' prior: 50625356!
+initializeAt: aPosition heading: aHeadingType
+
+	position := aPosition.
+	head := aHeadingType for: self.
+	self initializeObservers
+! !
+!MarsRover methodsFor: 'initialization' stamp: 'WAL 6/4/2023 20:14:21' prior: 50625344!
+initializeObservers
+
+	observers := Dictionary new! !
+!MarsRover methodsFor: 'initialization' stamp: 'WAL 6/4/2023 20:15:55' prior: 50625371!
+initializeObservers
+
+	observers := Dictionary new.
+	
+	RoverAspect subclasses do: [ :subclass | subclass ]! !
+!MarsRover methodsFor: 'initialization' stamp: 'WAL 6/4/2023 20:16:49' prior: 50625376!
+initializeObservers
+
+	observers := Dictionary new.
+	
+	RoverAspect subclasses do: [ :subclass | observers put: OrderedCollection new at: subclass name ]! !
+!MarsRover methodsFor: 'initialization' stamp: 'WAL 6/4/2023 20:17:34' prior: 50625383!
+initializeObservers
+
+	observers := Dictionary new.
+	
+	RoverAspect subclasses do: [ :subclass | observers at: subclass name put: OrderedCollection new ]! !
+!MarsRover methodsFor: 'observers' stamp: 'WAL 6/4/2023 20:23:47' prior: 50624961!
+getObserversFor: anAspect 
+	
+	^observers 
+		at: anAspect class name.! !
+
+!testRun: #ObserversTest #test01RoverForwardLogRegisterLastPosition stamp: 'WAL 6/4/2023 20:24:09'!
+PASSED!
+
+!testRun: #ObserversTest #test02RoverForwardTwoStepsLogRegisterTwoLastPosition stamp: 'WAL 6/4/2023 20:24:09'!
+PASSED!
+
+!testRun: #ObserversTest #test03RoverForwardTwoStepsLogRegisterTwoLastPosition stamp: 'WAL 6/4/2023 20:24:09'!
+PASSED!
+
+!testRun: #ObserversTest #test04RoverForwardTwoStepsWindowRegisterPositionsOneAfterAnother stamp: 'WAL 6/4/2023 20:24:09'!
+PASSED!
+
+!testRun: #ObserversTest #test05RoverForwardAndRightRegisterPositionsAndHeading stamp: 'WAL 6/4/2023 20:24:09'!
+PASSED!
+
+!testRun: #ObserversTest #test06RoverForwardRightForwardRegisterLastPositionsAndHeading stamp: 'WAL 6/4/2023 20:24:09'!
+PASSED!
+
+!testRun: #ObserversTest #test07RoverMoveForwardReportsToManyObservers stamp: 'WAL 6/4/2023 20:24:09'!
+PASSED!
+
+!testRun: #ObserversTest #test08RoverMoveBackwardsReportsToManyObservers stamp: 'WAL 6/4/2023 20:24:09'!
+PASSED!
+
+!testRun: #ObserversTest #test09RoverRotateRightReportsToManyObservers stamp: 'WAL 6/4/2023 20:24:09'!
+PASSED!
+
+!testRun: #ObserversTest #test10RoverRotateLeftReportsToManyObservers stamp: 'WAL 6/4/2023 20:24:09'!
+PASSED!
+
+!testRun: #ObserversTest #test11ObserverShouldOnlyShowPositionRequestedChanges stamp: 'WAL 6/4/2023 20:24:09'!
+PASSED!
+
+!testRun: #ObserversTest #test12ObserverShouldOnlyShowHeadingRequestedChanges stamp: 'WAL 6/4/2023 20:24:09'!
+PASSED!
+
+!testRun: #ObserversTest #test13ObserverCanAttachToAllChanges stamp: 'WAL 6/4/2023 20:24:09'!
+PASSED!
+
+!testRun: #ObserversTest #test14ObserverShouldNotBeUpdatedIfDetachedForAnAspect stamp: 'WAL 6/4/2023 20:24:09'!
+PASSED!
+
+!testRun: #ObserversTest #test15ObserverCanDetachForAllAspects stamp: 'WAL 6/4/2023 20:24:09'!
+PASSED!
+!MarsRover methodsFor: 'observers' stamp: 'WAL 6/4/2023 20:27:02' prior: 50625399!
+getObserversFor: anAspect 
+	
+	^observers at: anAspect class name.! !
+!MarsRover methodsFor: 'observers' stamp: 'WAL 6/4/2023 20:27:19' prior: 50624955!
+detach: anObserver for: anArrayOfAspects
+	
+	anArrayOfAspects do: [ :anAspect | 	self remove: anObserver from: anAspect ].! !
+!MarsRover methodsFor: 'initialization' stamp: 'WAL 6/4/2023 20:30:02' prior: 50625391!
+initializeObservers
+
+	observers := Dictionary new.
+	
+	RoverAspect subclasses do: [ :anAspectClass | self createObserversCollectionFor: anAspectClass ]! !
+!MarsRover methodsFor: 'initialization' stamp: 'WAL 6/4/2023 20:30:34' prior: 50624943!
+createObserversCollectionFor: anAspectClass
+
+	^observers 
+		at: anAspectClass name
+		put: OrderedCollection new.
+! !
+
+!testRun: #ObserversTest #test01RoverForwardLogRegisterLastPosition stamp: 'WAL 6/4/2023 20:30:56'!
+PASSED!
+
+!testRun: #ObserversTest #test02RoverForwardTwoStepsLogRegisterTwoLastPosition stamp: 'WAL 6/4/2023 20:30:56'!
+PASSED!
+
+!testRun: #ObserversTest #test03RoverForwardTwoStepsLogRegisterTwoLastPosition stamp: 'WAL 6/4/2023 20:30:56'!
+PASSED!
+
+!testRun: #ObserversTest #test04RoverForwardTwoStepsWindowRegisterPositionsOneAfterAnother stamp: 'WAL 6/4/2023 20:30:56'!
+PASSED!
+
+!testRun: #ObserversTest #test05RoverForwardAndRightRegisterPositionsAndHeading stamp: 'WAL 6/4/2023 20:30:56'!
+PASSED!
+
+!testRun: #ObserversTest #test06RoverForwardRightForwardRegisterLastPositionsAndHeading stamp: 'WAL 6/4/2023 20:30:56'!
+PASSED!
+
+!testRun: #ObserversTest #test07RoverMoveForwardReportsToManyObservers stamp: 'WAL 6/4/2023 20:30:56'!
+PASSED!
+
+!testRun: #ObserversTest #test08RoverMoveBackwardsReportsToManyObservers stamp: 'WAL 6/4/2023 20:30:56'!
+PASSED!
+
+!testRun: #ObserversTest #test09RoverRotateRightReportsToManyObservers stamp: 'WAL 6/4/2023 20:30:56'!
+PASSED!
+
+!testRun: #ObserversTest #test10RoverRotateLeftReportsToManyObservers stamp: 'WAL 6/4/2023 20:30:56'!
+PASSED!
+
+!testRun: #ObserversTest #test11ObserverShouldOnlyShowPositionRequestedChanges stamp: 'WAL 6/4/2023 20:30:56'!
+PASSED!
+
+!testRun: #ObserversTest #test12ObserverShouldOnlyShowHeadingRequestedChanges stamp: 'WAL 6/4/2023 20:30:56'!
+PASSED!
+
+!testRun: #ObserversTest #test13ObserverCanAttachToAllChanges stamp: 'WAL 6/4/2023 20:30:56'!
+PASSED!
+
+!testRun: #ObserversTest #test14ObserverShouldNotBeUpdatedIfDetachedForAnAspect stamp: 'WAL 6/4/2023 20:30:56'!
+PASSED!
+
+!testRun: #ObserversTest #test15ObserverCanDetachForAllAspects stamp: 'WAL 6/4/2023 20:30:56'!
+PASSED!
+
+----SNAPSHOT----(4 June 2023 20:31:01) CuisUniversity-5832.image priorSource: 9366758!
+
+----SNAPSHOT----(4 June 2023 20:31:28) CuisUniversity-5832.image priorSource: 9404455!
+
+!classRemoval: #Window stamp: 'WAL 6/4/2023 20:32:23'!
+RoverObserver subclass: #Window
+	instanceVariableNames: 'position heading'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRover-WithHeading'!
+
+!classRemoval: #Log stamp: 'WAL 6/4/2023 20:32:23'!
+RoverObserver subclass: #Log
+	instanceVariableNames: 'lines'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRover-WithHeading'!
+
+!classRemoval: #RoverObserver stamp: 'WAL 6/4/2023 20:32:23'!
+Object subclass: #RoverObserver
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRover-WithHeading'!
+
+!classRemoval: #Position stamp: 'WAL 6/4/2023 20:32:23'!
+RoverAspect subclass: #Position
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRover-WithHeading'!
+
+!classRemoval: #Heading stamp: 'WAL 6/4/2023 20:32:23'!
+RoverAspect subclass: #Heading
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRover-WithHeading'!
+
+!classRemoval: #RoverAspect stamp: 'WAL 6/4/2023 20:32:23'!
+Object subclass: #RoverAspect
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRover-WithHeading'!
+
+!classRemoval: #MarsRoverHeadingWest stamp: 'WAL 6/4/2023 20:32:23'!
+MarsRoverHeading subclass: #MarsRoverHeadingWest
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRover-WithHeading'!
+
+!classRemoval: #MarsRoverHeadingSouth stamp: 'WAL 6/4/2023 20:32:24'!
+MarsRoverHeading subclass: #MarsRoverHeadingSouth
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRover-WithHeading'!
+
+!classRemoval: #MarsRoverHeadingNorth stamp: 'WAL 6/4/2023 20:32:24'!
+MarsRoverHeading subclass: #MarsRoverHeadingNorth
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRover-WithHeading'!
+
+!classRemoval: #MarsRoverHeadingEast stamp: 'WAL 6/4/2023 20:32:24'!
+MarsRoverHeading subclass: #MarsRoverHeadingEast
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRover-WithHeading'!
+
+!classRemoval: #MarsRoverHeading stamp: 'WAL 6/4/2023 20:32:24'!
+Object subclass: #MarsRoverHeading
+	instanceVariableNames: 'marsRover'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRover-WithHeading'!
+
+!classRemoval: #MarsRover stamp: 'WAL 6/4/2023 20:32:24'!
+Object subclass: #MarsRover
+	instanceVariableNames: 'position head observers'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRover-WithHeading'!
+
+!classRemoval: #ObserversTest stamp: 'WAL 6/4/2023 20:32:24'!
+TestCase subclass: #ObserversTest
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRover-WithHeading'!
+
+!classRemoval: #MarsRoverTest stamp: 'WAL 6/4/2023 20:32:25'!
+TestCase subclass: #MarsRoverTest
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRover-WithHeading'!
+
+----End fileIn of /home/a/s/e/c/is1/git/2023-1c/08-MarsRover-ElRegreso/MarsRover-WithHeading-ManyRovers.st----!
+
+!classRenamed: #Aspect as: #RoverAspect stamp: 'WAL 6/4/2023 20:33:09'!
+Smalltalk renameClassNamed: #Aspect as: #RoverAspect!
+!MarsRover methodsFor: 'initialization' stamp: 'WAL 6/4/2023 20:34:15' prior: 50626323!
+createObserversCollectionFor: anAspectClass
+
+	^observers 
+		at: anAspectClass name
+		put: OrderedCollection new.
+! !
+!MarsRover methodsFor: 'initialization' stamp: 'WAL 6/4/2023 20:34:52'!
+initializeObservers
+
+	^ observers := Dictionary new! !
+!MarsRover methodsFor: 'initialization' stamp: 'WAL 6/4/2023 20:34:52' prior: 50626223!
+initializeAt: aPosition heading: aHeadingType
+
+	name := ''.
+	position := aPosition.
+	head := aHeadingType for: self.
+	self initializeObservers.
+! !
+!MarsRover methodsFor: 'initialization' stamp: 'WAL 6/4/2023 20:34:52' prior: 50626230!
+initializeAt: aPosition heading: aHeadingType named: aName
+
+	name := aName.
+	position := aPosition.
+	head := aHeadingType for: self.
+	self initializeObservers.
+! !
+!MarsRover methodsFor: 'initialization' stamp: 'WAL 6/4/2023 20:35:00' prior: 50626750!
+initializeObservers
+
+	observers := Dictionary new! !
+!MarsRover methodsFor: 'initialization' stamp: 'WAL 6/4/2023 20:36:26' prior: 50626771!
+initializeObservers
+
+	observers := Dictionary new.
+	
+	RoverAspect subclasses do: [ : aRoverAspectClass | self createObserversCollectionFor: aRoverAspectClass ]! !
+!MarsRover methodsFor: 'observers' stamp: 'WAL 6/4/2023 20:37:05' prior: 50626341!
+getObserversFor: anAspect 
+	
+	^observers at: anAspect class name! !
+
+!testRun: #ObserversTest #test01RoverForwardLogRegisterLastPosition stamp: 'WAL 6/4/2023 20:38:24'!
+PASSED!
+
+!testRun: #ObserversTest #test02RoverForwardTwoStepsLogRegisterTwoLastPosition stamp: 'WAL 6/4/2023 20:38:24'!
+PASSED!
+
+!testRun: #ObserversTest #test03RoverForwardTwoStepsLogRegisterTwoLastPosition stamp: 'WAL 6/4/2023 20:38:24'!
+PASSED!
+
+!testRun: #ObserversTest #test04RoverForwardTwoStepsWindowRegisterPositionsOneAfterAnother stamp: 'WAL 6/4/2023 20:38:24'!
+PASSED!
+
+!testRun: #ObserversTest #test05RoverForwardAndRightRegisterPositionsAndHeading stamp: 'WAL 6/4/2023 20:38:24'!
+PASSED!
+
+!testRun: #ObserversTest #test06RoverForwardRightForwardRegisterLastPositionsAndHeading stamp: 'WAL 6/4/2023 20:38:24'!
+PASSED!
+
+!testRun: #ObserversTest #test07RoverMoveForwardReportsToManyObservers stamp: 'WAL 6/4/2023 20:38:24'!
+PASSED!
+
+!testRun: #ObserversTest #test08RoverMoveBackwardsReportsToManyObservers stamp: 'WAL 6/4/2023 20:38:24'!
+PASSED!
+
+!testRun: #ObserversTest #test09RoverRotateRightReportsToManyObservers stamp: 'WAL 6/4/2023 20:38:24'!
+PASSED!
+
+!testRun: #ObserversTest #test10RoverRotateLeftReportsToManyObservers stamp: 'WAL 6/4/2023 20:38:24'!
+PASSED!
+
+!testRun: #ObserversTest #test11ObserverShouldOnlyShowPositionRequestedChanges stamp: 'WAL 6/4/2023 20:38:24'!
+PASSED!
+
+!testRun: #ObserversTest #test12ObserverShouldOnlyShowHeadingRequestedChanges stamp: 'WAL 6/4/2023 20:38:24'!
+PASSED!
+
+!testRun: #ObserversTest #test13ObserverCanAttachToAllChanges stamp: 'WAL 6/4/2023 20:38:24'!
+PASSED!
+
+!testRun: #ObserversTest #test14ObserverShouldNotBeUpdatedIfDetachedForAnAspect stamp: 'WAL 6/4/2023 20:38:24'!
+PASSED!
+
+!testRun: #ObserversTest #test15ObserverCanDetachForAllAspects stamp: 'WAL 6/4/2023 20:38:24'!
+PASSED!
+
+!testRun: #ObserversTest #test16LogRegisterPositionForMoreThanOneRoverActivity stamp: 'WAL 6/4/2023 20:38:24'!
+PASSED!
+
+!testRun: #ObserversTest #test17WindowRegisterPositionForMoreThanOneRoverActivity stamp: 'WAL 6/4/2023 20:38:24'!
+PASSED!
+
+----SNAPSHOT----(4 June 2023 21:45:03) CuisUniversity-5832.image priorSource: 9404543!
+
+----STARTUP---- (4 June 2023 22:41:47) as /home/a/s/sw/smalltalk3/CuisUniversity-5832.image!
+
+!ObserversTest methodsFor: 'test' stamp: 'WAL 6/4/2023 22:44:15'!
+test17LogRegisterPositionForMoreThanOneRoverActivity
+
+	| curiosity opportunity log |
+	
+	curiosity := self curiosityAt: 1@1 heading: MarsRoverHeadingNorth.
+	opportunity := self opportunityAt: 4@3 heading: MarsRoverHeadingEast.
+	
+	log := Log new.
+
+	curiosity attach: log for: self positionAndHeading.
+	opportunity attach: log for: self positionAndHeading.
+	 	
+	curiosity process: 'ff'.
+	opportunity process: 'br'.
+	
+	self assert: 4 equals: log lines size.
+	self assertLine: 1 on: log is: curiosity name withPosition: 1@2. 
+	self assertLine: 2 on: log is: curiosity name withPosition: 1@3. 	
+	self assertLine: 3 on: log is: opportunity name withPosition: 3@3. 
+	self assertLine: 4 on: log is: opportunity name headingTo: MarsRoverHeadingSouth.
+
+
+! !
+
+!methodRemoval: ObserversTest #test16LogRegisterPositionForMoreThanOneRoverActivity stamp: 'WAL 6/4/2023 22:44:15'!
+test16LogRegisterPositionForMoreThanOneRoverActivity
+
+	| curiosity opportunity log |
+	
+	curiosity := self curiosityAt: 1@1 heading: MarsRoverHeadingNorth.
+	opportunity := self opportunityAt: 4@3 heading: MarsRoverHeadingEast.
+	
+	log := Log new.
+
+	curiosity attach: log for: self positionAndHeading.
+	opportunity attach: log for: self positionAndHeading.
+	 	
+	curiosity process: 'ff'.
+	opportunity process: 'br'.
+	
+	self assert: 4 equals: log lines size.
+	self assertLine: 1 on: log is: curiosity name withPosition: 1@2. 
+	self assertLine: 2 on: log is: curiosity name withPosition: 1@3. 	
+	self assertLine: 3 on: log is: opportunity name withPosition: 3@3. 
+	self assertLine: 4 on: log is: opportunity name headingTo: MarsRoverHeadingSouth.
+
+
+!
+!ObserversTest methodsFor: 'test' stamp: 'WAL 6/4/2023 22:44:22'!
+test18WindowRegisterPositionForMoreThanOneRoverActivity
+
+	| curiosity opportunity window positionsCollection headingsCollection |
+	
+	curiosity := self curiosityAt: 1@1 heading: MarsRoverHeadingNorth.
+	opportunity := self opportunityAt: 4@3 heading: MarsRoverHeadingEast.
+	
+	window := Window new.
+
+	curiosity attach: window for: self positionAndHeading.
+	opportunity attach: window for: self positionAndHeading.
+	 	
+	curiosity process: 'ff'.
+	opportunity process: 'br'.
+	
+	positionsCollection := window showPosition.
+	headingsCollection := window showHeading.
+	
+	self assert: positionsCollection includes: 'Curiosity: 1@3'.
+	self assert: positionsCollection includes: 'Opportunity: 3@3'.		
+	self assert: headingsCollection includes: 'Opportunity: Apuntando al sur'.
+
+! !
+
+!methodRemoval: ObserversTest #test17WindowRegisterPositionForMoreThanOneRoverActivity stamp: 'WAL 6/4/2023 22:44:22'!
+test17WindowRegisterPositionForMoreThanOneRoverActivity
+
+	| curiosity opportunity window positionsCollection headingsCollection |
+	
+	curiosity := self curiosityAt: 1@1 heading: MarsRoverHeadingNorth.
+	opportunity := self opportunityAt: 4@3 heading: MarsRoverHeadingEast.
+	
+	window := Window new.
+
+	curiosity attach: window for: self positionAndHeading.
+	opportunity attach: window for: self positionAndHeading.
+	 	
+	curiosity process: 'ff'.
+	opportunity process: 'br'.
+	
+	positionsCollection := window showPosition.
+	headingsCollection := window showHeading.
+	
+	self assert: positionsCollection includes: 'Curiosity: 1@3'.
+	self assert: positionsCollection includes: 'Opportunity: 3@3'.		
+	self assert: headingsCollection includes: 'Opportunity: Apuntando al sur'.
+
+!
+!ObserversTest methodsFor: 'aspects' stamp: 'WAL 6/4/2023 22:45:39'!
+unsupportedAspect
+	
+	^{ Object new }! !
+!ObserversTest methodsFor: 'test' stamp: 'WAL 6/4/2023 22:46:55'!
+test16ObserverCanNotObserveUnsupportedAspect
+
+	| rover log |
+	
+	rover := self roverAt: 1@1 heading: MarsRoverHeadingNorth.
+	
+	log := Log new.
+	rover attach: log for: self unsupportedAspect .
+
+
+! !
+
+!testRun: #ObserversTest #test16ObserverCanNotObserveUnsupportedAspect stamp: 'WAL 6/4/2023 22:46:57'!
+ERROR!
+!ObserversTest methodsFor: 'test' stamp: 'WAL 6/4/2023 22:48:09' prior: 50626968!
+test16ObserverCanNotObserveUnsupportedAspect
+
+	| rover log |
+	
+	rover := self roverAt: 1@1 heading: MarsRoverHeadingNorth.
+	
+	log := Log new.
+	
+	self
+		should: [ 	rover attach: log for: self unsupportedAspect ]
+		raise: Error.
+
+
+! !
+
+!testRun: #ObserversTest #test16ObserverCanNotObserveUnsupportedAspect stamp: 'WAL 6/4/2023 22:48:10'!
+PASSED!
+
+!testRun: #ObserversTest #test01RoverForwardLogRegisterLastPosition stamp: 'WAL 6/4/2023 22:48:10'!
+PASSED!
+
+!testRun: #ObserversTest #test02RoverForwardTwoStepsLogRegisterTwoLastPosition stamp: 'WAL 6/4/2023 22:48:10'!
+PASSED!
+
+!testRun: #ObserversTest #test03RoverForwardTwoStepsLogRegisterTwoLastPosition stamp: 'WAL 6/4/2023 22:48:10'!
+PASSED!
+
+!testRun: #ObserversTest #test04RoverForwardTwoStepsWindowRegisterPositionsOneAfterAnother stamp: 'WAL 6/4/2023 22:48:10'!
+PASSED!
+
+!testRun: #ObserversTest #test05RoverForwardAndRightRegisterPositionsAndHeading stamp: 'WAL 6/4/2023 22:48:10'!
+PASSED!
+
+!testRun: #ObserversTest #test06RoverForwardRightForwardRegisterLastPositionsAndHeading stamp: 'WAL 6/4/2023 22:48:10'!
+PASSED!
+
+!testRun: #ObserversTest #test07RoverMoveForwardReportsToManyObservers stamp: 'WAL 6/4/2023 22:48:10'!
+PASSED!
+
+!testRun: #ObserversTest #test08RoverMoveBackwardsReportsToManyObservers stamp: 'WAL 6/4/2023 22:48:10'!
+PASSED!
+
+!testRun: #ObserversTest #test09RoverRotateRightReportsToManyObservers stamp: 'WAL 6/4/2023 22:48:10'!
+PASSED!
+
+!testRun: #ObserversTest #test10RoverRotateLeftReportsToManyObservers stamp: 'WAL 6/4/2023 22:48:10'!
+PASSED!
+
+!testRun: #ObserversTest #test11ObserverShouldOnlyShowPositionRequestedChanges stamp: 'WAL 6/4/2023 22:48:10'!
+PASSED!
+
+!testRun: #ObserversTest #test12ObserverShouldOnlyShowHeadingRequestedChanges stamp: 'WAL 6/4/2023 22:48:10'!
+PASSED!
+
+!testRun: #ObserversTest #test13ObserverCanAttachToAllChanges stamp: 'WAL 6/4/2023 22:48:10'!
+PASSED!
+
+!testRun: #ObserversTest #test14ObserverShouldNotBeUpdatedIfDetachedForAnAspect stamp: 'WAL 6/4/2023 22:48:10'!
+PASSED!
+
+!testRun: #ObserversTest #test15ObserverCanDetachForAllAspects stamp: 'WAL 6/4/2023 22:48:10'!
+PASSED!
+
+!testRun: #ObserversTest #test16ObserverCanNotObserveUnsupportedAspect stamp: 'WAL 6/4/2023 22:48:10'!
+PASSED!
+
+!testRun: #ObserversTest #test17LogRegisterPositionForMoreThanOneRoverActivity stamp: 'WAL 6/4/2023 22:48:10'!
+PASSED!
+
+!testRun: #ObserversTest #test18WindowRegisterPositionForMoreThanOneRoverActivity stamp: 'WAL 6/4/2023 22:48:10'!
+PASSED!
+!ObserversTest methodsFor: 'test' stamp: 'WAL 6/4/2023 22:50:17' prior: 50626981!
+test16ObserverCanNotObserveUnsupportedAspect
+
+	| rover log |
+	
+	rover := self roverAt: 1@1 heading: MarsRoverHeadingNorth.
+	
+	log := Log new.
+	
+	self
+		should: [ 	rover attach: log for: self unsupportedAspect ]
+		raise: Error
+		withExceptionDo: [ :anError |
+			self assert: anError messageText equals: rover invalidCommandErrorDescription ]
+! !
+!MarsRover methodsFor: 'exceptions' stamp: 'WAL 6/4/2023 22:51:18'!
+invalidAspectErrorDescription
+	
+	^'Invalid aspect'! !
+!MarsRover methodsFor: 'exceptions' stamp: 'WAL 6/4/2023 22:53:03'!
+signalInvalidAspect
+	
+	self error: self invalidAspectErrorDescription ! !
+!MarsRover methodsFor: 'observers' stamp: 'WAL 6/4/2023 23:00:04' prior: 50626784!
+getObserversFor: anAspect 
+	
+	^observers at: anAspect class name ifAbsent: [ self  ]! !
+!MarsRover methodsFor: 'observers' stamp: 'WAL 6/4/2023 23:00:36' prior: 50627083!
+getObserversFor: anAspect 
+	
+	^observers at: anAspect class name ifAbsent: [ self invalidAspectErrorDescription ]! !
+
+!methodRemoval: RoverObserver #invalidAspectErrorDescription stamp: 'WAL 6/4/2023 23:00:50'!
+invalidAspectErrorDescription
+	
+	^'Invalid aspect'!
+
+!methodRemoval: RoverObserver #signalInvalidAspect stamp: 'WAL 6/4/2023 23:00:53'!
+signalInvalidAspect
+	
+	self error: self invalidAspectErrorDescription !
+
+!testRun: #ObserversTest #test05RoverForwardAndRightRegisterPositionsAndHeading stamp: 'WAL 6/4/2023 23:01:00'!
+PASSED!
+
+!testRun: #ObserversTest #test05RoverForwardAndRightRegisterPositionsAndHeading stamp: 'WAL 6/4/2023 23:01:03'!
+PASSED!
+
+!testRun: #ObserversTest #test01RoverForwardLogRegisterLastPosition stamp: 'WAL 6/4/2023 23:01:03'!
+PASSED!
+
+!testRun: #ObserversTest #test02RoverForwardTwoStepsLogRegisterTwoLastPosition stamp: 'WAL 6/4/2023 23:01:03'!
+PASSED!
+
+!testRun: #ObserversTest #test03RoverForwardTwoStepsLogRegisterTwoLastPosition stamp: 'WAL 6/4/2023 23:01:03'!
+PASSED!
+
+!testRun: #ObserversTest #test04RoverForwardTwoStepsWindowRegisterPositionsOneAfterAnother stamp: 'WAL 6/4/2023 23:01:03'!
+PASSED!
+
+!testRun: #ObserversTest #test05RoverForwardAndRightRegisterPositionsAndHeading stamp: 'WAL 6/4/2023 23:01:03'!
+PASSED!
+
+!testRun: #ObserversTest #test06RoverForwardRightForwardRegisterLastPositionsAndHeading stamp: 'WAL 6/4/2023 23:01:03'!
+PASSED!
+
+!testRun: #ObserversTest #test07RoverMoveForwardReportsToManyObservers stamp: 'WAL 6/4/2023 23:01:03'!
+PASSED!
+
+!testRun: #ObserversTest #test08RoverMoveBackwardsReportsToManyObservers stamp: 'WAL 6/4/2023 23:01:03'!
+PASSED!
+
+!testRun: #ObserversTest #test09RoverRotateRightReportsToManyObservers stamp: 'WAL 6/4/2023 23:01:03'!
+PASSED!
+
+!testRun: #ObserversTest #test10RoverRotateLeftReportsToManyObservers stamp: 'WAL 6/4/2023 23:01:03'!
+PASSED!
+
+!testRun: #ObserversTest #test11ObserverShouldOnlyShowPositionRequestedChanges stamp: 'WAL 6/4/2023 23:01:03'!
+PASSED!
+
+!testRun: #ObserversTest #test12ObserverShouldOnlyShowHeadingRequestedChanges stamp: 'WAL 6/4/2023 23:01:03'!
+PASSED!
+
+!testRun: #ObserversTest #test13ObserverCanAttachToAllChanges stamp: 'WAL 6/4/2023 23:01:03'!
+PASSED!
+
+!testRun: #ObserversTest #test14ObserverShouldNotBeUpdatedIfDetachedForAnAspect stamp: 'WAL 6/4/2023 23:01:03'!
+PASSED!
+
+!testRun: #ObserversTest #test15ObserverCanDetachForAllAspects stamp: 'WAL 6/4/2023 23:01:03'!
+PASSED!
+
+!testRun: #ObserversTest #test16ObserverCanNotObserveUnsupportedAspect stamp: 'WAL 6/4/2023 23:01:03'!
+FAILURE!
+
+!testRun: #ObserversTest #test17LogRegisterPositionForMoreThanOneRoverActivity stamp: 'WAL 6/4/2023 23:01:03'!
+PASSED!
+
+!testRun: #ObserversTest #test18WindowRegisterPositionForMoreThanOneRoverActivity stamp: 'WAL 6/4/2023 23:01:03'!
+PASSED!
+
+!testRun: #ObserversTest #test16ObserverCanNotObserveUnsupportedAspect stamp: 'WAL 6/4/2023 23:01:03'!
+FAILURE!
+!ObserversTest methodsFor: 'test' stamp: 'WAL 6/4/2023 23:01:38' prior: 50627061!
+test16ObserverCanNotObserveUnsupportedAspect
+
+	| rover log |
+	
+	rover := self roverAt: 1@1 heading: MarsRoverHeadingNorth.
+	
+	log := Log new.
+	
+	self
+		should: [ 	rover attach: log for: self unsupportedAspect ]
+		raise: Error
+		withExceptionDo: [ :anError |
+			self assert: anError messageText equals: rover invalidAspectErrorDescription ]
+! !
+
+!testRun: #ObserversTest #test16ObserverCanNotObserveUnsupportedAspect stamp: 'WAL 6/4/2023 23:01:43'!
+FAILURE!
+
+!testRun: #ObserversTest #test05RoverForwardAndRightRegisterPositionsAndHeading stamp: 'WAL 6/4/2023 23:01:49'!
+PASSED!
+
+!testRun: #ObserversTest #test01RoverForwardLogRegisterLastPosition stamp: 'WAL 6/4/2023 23:01:49'!
+PASSED!
+
+!testRun: #ObserversTest #test02RoverForwardTwoStepsLogRegisterTwoLastPosition stamp: 'WAL 6/4/2023 23:01:49'!
+PASSED!
+
+!testRun: #ObserversTest #test03RoverForwardTwoStepsLogRegisterTwoLastPosition stamp: 'WAL 6/4/2023 23:01:49'!
+PASSED!
+
+!testRun: #ObserversTest #test04RoverForwardTwoStepsWindowRegisterPositionsOneAfterAnother stamp: 'WAL 6/4/2023 23:01:49'!
+PASSED!
+
+!testRun: #ObserversTest #test05RoverForwardAndRightRegisterPositionsAndHeading stamp: 'WAL 6/4/2023 23:01:49'!
+PASSED!
+
+!testRun: #ObserversTest #test06RoverForwardRightForwardRegisterLastPositionsAndHeading stamp: 'WAL 6/4/2023 23:01:49'!
+PASSED!
+
+!testRun: #ObserversTest #test07RoverMoveForwardReportsToManyObservers stamp: 'WAL 6/4/2023 23:01:49'!
+PASSED!
+
+!testRun: #ObserversTest #test08RoverMoveBackwardsReportsToManyObservers stamp: 'WAL 6/4/2023 23:01:49'!
+PASSED!
+
+!testRun: #ObserversTest #test09RoverRotateRightReportsToManyObservers stamp: 'WAL 6/4/2023 23:01:49'!
+PASSED!
+
+!testRun: #ObserversTest #test10RoverRotateLeftReportsToManyObservers stamp: 'WAL 6/4/2023 23:01:49'!
+PASSED!
+
+!testRun: #ObserversTest #test11ObserverShouldOnlyShowPositionRequestedChanges stamp: 'WAL 6/4/2023 23:01:49'!
+PASSED!
+
+!testRun: #ObserversTest #test12ObserverShouldOnlyShowHeadingRequestedChanges stamp: 'WAL 6/4/2023 23:01:49'!
+PASSED!
+
+!testRun: #ObserversTest #test13ObserverCanAttachToAllChanges stamp: 'WAL 6/4/2023 23:01:49'!
+PASSED!
+
+!testRun: #ObserversTest #test14ObserverShouldNotBeUpdatedIfDetachedForAnAspect stamp: 'WAL 6/4/2023 23:01:49'!
+PASSED!
+
+!testRun: #ObserversTest #test15ObserverCanDetachForAllAspects stamp: 'WAL 6/4/2023 23:01:49'!
+PASSED!
+
+!testRun: #ObserversTest #test16ObserverCanNotObserveUnsupportedAspect stamp: 'WAL 6/4/2023 23:01:49'!
+FAILURE!
+
+!testRun: #ObserversTest #test17LogRegisterPositionForMoreThanOneRoverActivity stamp: 'WAL 6/4/2023 23:01:49'!
+PASSED!
+
+!testRun: #ObserversTest #test18WindowRegisterPositionForMoreThanOneRoverActivity stamp: 'WAL 6/4/2023 23:01:49'!
+PASSED!
+
+!testRun: #ObserversTest #test16ObserverCanNotObserveUnsupportedAspect stamp: 'WAL 6/4/2023 23:01:49'!
+FAILURE!
+
+!testRun: #ObserversTest #test16ObserverCanNotObserveUnsupportedAspect stamp: 'WAL 6/4/2023 23:02:37'!
+FAILURE!
+
+!testRun: #ObserversTest #test16ObserverCanNotObserveUnsupportedAspect stamp: 'WAL 6/4/2023 23:03:15'!
+FAILURE!
+
+!testRun: #MarsRoverTest #test09DoesNotProcessInvalidCommand stamp: 'WAL 6/4/2023 23:04:19'!
+PASSED!
+!ObserversTest methodsFor: 'aspects' stamp: 'WAL 6/4/2023 23:04:57' prior: 50626964!
+unsupportedAspect
+	
+	^{ ProtoObject new }! !
+
+!testRun: #ObserversTest #test01RoverForwardLogRegisterLastPosition stamp: 'WAL 6/4/2023 23:05:04'!
+PASSED!
+
+!testRun: #ObserversTest #test02RoverForwardTwoStepsLogRegisterTwoLastPosition stamp: 'WAL 6/4/2023 23:05:04'!
+PASSED!
+
+!testRun: #ObserversTest #test03RoverForwardTwoStepsLogRegisterTwoLastPosition stamp: 'WAL 6/4/2023 23:05:04'!
+PASSED!
+
+!testRun: #ObserversTest #test04RoverForwardTwoStepsWindowRegisterPositionsOneAfterAnother stamp: 'WAL 6/4/2023 23:05:04'!
+PASSED!
+
+!testRun: #ObserversTest #test05RoverForwardAndRightRegisterPositionsAndHeading stamp: 'WAL 6/4/2023 23:05:04'!
+PASSED!
+
+!testRun: #ObserversTest #test06RoverForwardRightForwardRegisterLastPositionsAndHeading stamp: 'WAL 6/4/2023 23:05:04'!
+PASSED!
+
+!testRun: #ObserversTest #test07RoverMoveForwardReportsToManyObservers stamp: 'WAL 6/4/2023 23:05:04'!
+PASSED!
+
+!testRun: #ObserversTest #test08RoverMoveBackwardsReportsToManyObservers stamp: 'WAL 6/4/2023 23:05:04'!
+PASSED!
+
+!testRun: #ObserversTest #test09RoverRotateRightReportsToManyObservers stamp: 'WAL 6/4/2023 23:05:04'!
+PASSED!
+
+!testRun: #ObserversTest #test10RoverRotateLeftReportsToManyObservers stamp: 'WAL 6/4/2023 23:05:04'!
+PASSED!
+
+!testRun: #ObserversTest #test11ObserverShouldOnlyShowPositionRequestedChanges stamp: 'WAL 6/4/2023 23:05:04'!
+PASSED!
+
+!testRun: #ObserversTest #test12ObserverShouldOnlyShowHeadingRequestedChanges stamp: 'WAL 6/4/2023 23:05:04'!
+PASSED!
+
+!testRun: #ObserversTest #test13ObserverCanAttachToAllChanges stamp: 'WAL 6/4/2023 23:05:04'!
+PASSED!
+
+!testRun: #ObserversTest #test14ObserverShouldNotBeUpdatedIfDetachedForAnAspect stamp: 'WAL 6/4/2023 23:05:04'!
+PASSED!
+
+!testRun: #ObserversTest #test15ObserverCanDetachForAllAspects stamp: 'WAL 6/4/2023 23:05:04'!
+PASSED!
+
+!testRun: #ObserversTest #test16ObserverCanNotObserveUnsupportedAspect stamp: 'WAL 6/4/2023 23:05:04'!
+FAILURE!
+
+!testRun: #ObserversTest #test17LogRegisterPositionForMoreThanOneRoverActivity stamp: 'WAL 6/4/2023 23:05:04'!
+PASSED!
+
+!testRun: #ObserversTest #test18WindowRegisterPositionForMoreThanOneRoverActivity stamp: 'WAL 6/4/2023 23:05:04'!
+PASSED!
+
+!testRun: #ObserversTest #test16ObserverCanNotObserveUnsupportedAspect stamp: 'WAL 6/4/2023 23:05:04'!
+FAILURE!
+!ObserversTest methodsFor: 'aspects' stamp: 'WAL 6/4/2023 23:05:37' prior: 50627283!
+unsupportedAspect
+	
+	^{ Collection new }! !
+
+!testRun: #ObserversTest #test01RoverForwardLogRegisterLastPosition stamp: 'WAL 6/4/2023 23:05:39'!
+PASSED!
+
+!testRun: #ObserversTest #test02RoverForwardTwoStepsLogRegisterTwoLastPosition stamp: 'WAL 6/4/2023 23:05:39'!
+PASSED!
+
+!testRun: #ObserversTest #test03RoverForwardTwoStepsLogRegisterTwoLastPosition stamp: 'WAL 6/4/2023 23:05:39'!
+PASSED!
+
+!testRun: #ObserversTest #test04RoverForwardTwoStepsWindowRegisterPositionsOneAfterAnother stamp: 'WAL 6/4/2023 23:05:39'!
+PASSED!
+
+!testRun: #ObserversTest #test05RoverForwardAndRightRegisterPositionsAndHeading stamp: 'WAL 6/4/2023 23:05:39'!
+PASSED!
+
+!testRun: #ObserversTest #test06RoverForwardRightForwardRegisterLastPositionsAndHeading stamp: 'WAL 6/4/2023 23:05:39'!
+PASSED!
+
+!testRun: #ObserversTest #test07RoverMoveForwardReportsToManyObservers stamp: 'WAL 6/4/2023 23:05:39'!
+PASSED!
+
+!testRun: #ObserversTest #test08RoverMoveBackwardsReportsToManyObservers stamp: 'WAL 6/4/2023 23:05:39'!
+PASSED!
+
+!testRun: #ObserversTest #test09RoverRotateRightReportsToManyObservers stamp: 'WAL 6/4/2023 23:05:39'!
+PASSED!
+
+!testRun: #ObserversTest #test10RoverRotateLeftReportsToManyObservers stamp: 'WAL 6/4/2023 23:05:39'!
+PASSED!
+
+!testRun: #ObserversTest #test11ObserverShouldOnlyShowPositionRequestedChanges stamp: 'WAL 6/4/2023 23:05:39'!
+PASSED!
+
+!testRun: #ObserversTest #test12ObserverShouldOnlyShowHeadingRequestedChanges stamp: 'WAL 6/4/2023 23:05:39'!
+PASSED!
+
+!testRun: #ObserversTest #test13ObserverCanAttachToAllChanges stamp: 'WAL 6/4/2023 23:05:39'!
+PASSED!
+
+!testRun: #ObserversTest #test14ObserverShouldNotBeUpdatedIfDetachedForAnAspect stamp: 'WAL 6/4/2023 23:05:39'!
+PASSED!
+
+!testRun: #ObserversTest #test15ObserverCanDetachForAllAspects stamp: 'WAL 6/4/2023 23:05:39'!
+PASSED!
+
+!testRun: #ObserversTest #test16ObserverCanNotObserveUnsupportedAspect stamp: 'WAL 6/4/2023 23:05:39'!
+FAILURE!
+
+!testRun: #ObserversTest #test17LogRegisterPositionForMoreThanOneRoverActivity stamp: 'WAL 6/4/2023 23:05:39'!
+PASSED!
+
+!testRun: #ObserversTest #test18WindowRegisterPositionForMoreThanOneRoverActivity stamp: 'WAL 6/4/2023 23:05:39'!
+PASSED!
+
+!testRun: #ObserversTest #test16ObserverCanNotObserveUnsupportedAspect stamp: 'WAL 6/4/2023 23:05:39'!
+FAILURE!
+
+!testRun: #ObserversTest #test16ObserverCanNotObserveUnsupportedAspect stamp: 'WAL 6/4/2023 23:06:40'!
+FAILURE!
+!MarsRover methodsFor: 'observers' stamp: 'WAL 6/4/2023 23:09:08' prior: 50627089!
+getObserversFor: anAspect 
+	
+	^observers at: anAspect class name ifAbsent: [ self signalInvalidAspect ]! !
+
+!testRun: #ObserversTest #test16ObserverCanNotObserveUnsupportedAspect stamp: 'WAL 6/4/2023 23:09:27'!
+PASSED!
+
+!testRun: #ObserversTest #test01RoverForwardLogRegisterLastPosition stamp: 'WAL 6/4/2023 23:09:27'!
+PASSED!
+
+!testRun: #ObserversTest #test02RoverForwardTwoStepsLogRegisterTwoLastPosition stamp: 'WAL 6/4/2023 23:09:27'!
+PASSED!
+
+!testRun: #ObserversTest #test03RoverForwardTwoStepsLogRegisterTwoLastPosition stamp: 'WAL 6/4/2023 23:09:27'!
+PASSED!
+
+!testRun: #ObserversTest #test04RoverForwardTwoStepsWindowRegisterPositionsOneAfterAnother stamp: 'WAL 6/4/2023 23:09:27'!
+PASSED!
+
+!testRun: #ObserversTest #test05RoverForwardAndRightRegisterPositionsAndHeading stamp: 'WAL 6/4/2023 23:09:27'!
+PASSED!
+
+!testRun: #ObserversTest #test06RoverForwardRightForwardRegisterLastPositionsAndHeading stamp: 'WAL 6/4/2023 23:09:27'!
+PASSED!
+
+!testRun: #ObserversTest #test07RoverMoveForwardReportsToManyObservers stamp: 'WAL 6/4/2023 23:09:27'!
+PASSED!
+
+!testRun: #ObserversTest #test08RoverMoveBackwardsReportsToManyObservers stamp: 'WAL 6/4/2023 23:09:27'!
+PASSED!
+
+!testRun: #ObserversTest #test09RoverRotateRightReportsToManyObservers stamp: 'WAL 6/4/2023 23:09:27'!
+PASSED!
+
+!testRun: #ObserversTest #test10RoverRotateLeftReportsToManyObservers stamp: 'WAL 6/4/2023 23:09:27'!
+PASSED!
+
+!testRun: #ObserversTest #test11ObserverShouldOnlyShowPositionRequestedChanges stamp: 'WAL 6/4/2023 23:09:27'!
+PASSED!
+
+!testRun: #ObserversTest #test12ObserverShouldOnlyShowHeadingRequestedChanges stamp: 'WAL 6/4/2023 23:09:27'!
+PASSED!
+
+!testRun: #ObserversTest #test13ObserverCanAttachToAllChanges stamp: 'WAL 6/4/2023 23:09:27'!
+PASSED!
+
+!testRun: #ObserversTest #test14ObserverShouldNotBeUpdatedIfDetachedForAnAspect stamp: 'WAL 6/4/2023 23:09:27'!
+PASSED!
+
+!testRun: #ObserversTest #test15ObserverCanDetachForAllAspects stamp: 'WAL 6/4/2023 23:09:27'!
+PASSED!
+
+!testRun: #ObserversTest #test16ObserverCanNotObserveUnsupportedAspect stamp: 'WAL 6/4/2023 23:09:27'!
+PASSED!
+
+!testRun: #ObserversTest #test17LogRegisterPositionForMoreThanOneRoverActivity stamp: 'WAL 6/4/2023 23:09:27'!
+PASSED!
+
+!testRun: #ObserversTest #test18WindowRegisterPositionForMoreThanOneRoverActivity stamp: 'WAL 6/4/2023 23:09:27'!
+PASSED!
+
+----SNAPSHOT----(4 June 2023 23:10:13) CuisUniversity-5832.image priorSource: 9446409!
+
+!classRemoval: #Window stamp: 'WAL 6/4/2023 23:14:35'!
+RoverObserver subclass: #Window
+	instanceVariableNames: 'positions headings'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRover-WithHeading'!
+
+!classRemoval: #Log stamp: 'WAL 6/4/2023 23:14:35'!
+RoverObserver subclass: #Log
+	instanceVariableNames: 'lines'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRover-WithHeading'!
+
+!classRemoval: #RoverObserver stamp: 'WAL 6/4/2023 23:14:35'!
+Object subclass: #RoverObserver
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRover-WithHeading'!
+
+!classRemoval: #Position stamp: 'WAL 6/4/2023 23:14:36'!
+RoverAspect subclass: #Position
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRover-WithHeading'!
+
+!classRemoval: #Heading stamp: 'WAL 6/4/2023 23:14:36'!
+RoverAspect subclass: #Heading
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRover-WithHeading'!
+
+!classRemoval: #RoverAspect stamp: 'WAL 6/4/2023 23:14:36'!
+Object subclass: #RoverAspect
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRover-WithHeading'!
+
+!classRemoval: #MarsRoverHeadingWest stamp: 'WAL 6/4/2023 23:14:36'!
+MarsRoverHeading subclass: #MarsRoverHeadingWest
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRover-WithHeading'!
+
+!classRemoval: #MarsRoverHeadingSouth stamp: 'WAL 6/4/2023 23:14:36'!
+MarsRoverHeading subclass: #MarsRoverHeadingSouth
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRover-WithHeading'!
+
+!classRemoval: #MarsRoverHeadingNorth stamp: 'WAL 6/4/2023 23:14:36'!
+MarsRoverHeading subclass: #MarsRoverHeadingNorth
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRover-WithHeading'!
+
+!classRemoval: #MarsRoverHeadingEast stamp: 'WAL 6/4/2023 23:14:37'!
+MarsRoverHeading subclass: #MarsRoverHeadingEast
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRover-WithHeading'!
+
+!classRemoval: #MarsRoverHeading stamp: 'WAL 6/4/2023 23:14:37'!
+Object subclass: #MarsRoverHeading
+	instanceVariableNames: 'marsRover'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRover-WithHeading'!
+
+!classRemoval: #MarsRover stamp: 'WAL 6/4/2023 23:14:37'!
+Object subclass: #MarsRover
+	instanceVariableNames: 'position head observers name'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRover-WithHeading'!
+
+!classRemoval: #ObserversTest stamp: 'WAL 6/4/2023 23:14:37'!
+TestCase subclass: #ObserversTest
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRover-WithHeading'!
+
+!classRemoval: #MarsRoverTest stamp: 'WAL 6/4/2023 23:14:37'!
+TestCase subclass: #MarsRoverTest
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRover-WithHeading'!
+
+----End fileIn of /home/a/s/sw/smalltalk3/MarsRover-WithHeading-OneRover.st----!
+!ObserversTest methodsFor: 'test' stamp: 'WAL 6/4/2023 23:15:02'!
+test16ObserverCanNotObserveUnsupportedAspect
+
+	| rover log |
+	
+	rover := self roverAt: 1@1 heading: MarsRoverHeadingNorth.
+	
+	log := Log new.
+	
+	self
+		should: [ 	rover attach: log for: self unsupportedAspect ]
+		raise: Error
+		withExceptionDo: [ :anError |
+			self assert: anError messageText equals: rover invalidAspectErrorDescription ]! !
+
+!testRun: #ObserversTest #test16ObserverCanNotObserveUnsupportedAspect stamp: 'WAL 6/4/2023 23:15:10'!
+ERROR!
+!MarsRover methodsFor: 'exceptions' stamp: 'WAL 6/4/2023 23:15:30'!
+invalidAspectErrorDescription
+	
+	^'Invalid aspect'! !
+!MarsRover methodsFor: 'exceptions' stamp: 'WAL 6/4/2023 23:15:40'!
+signalInvalidAspect
+	
+	self error: self invalidAspectErrorDescription ! !
+!MarsRover methodsFor: 'observers' stamp: 'WAL 6/4/2023 23:16:10' prior: 50628153!
+getObserversFor: anAspect 
+	
+	^observers at: anAspect class name ifAbsent: [ self signalInvalidAspect ].! !
+
+!methodRemoval: RoverObserver #signalInvalidAspect stamp: 'WAL 6/4/2023 23:16:16'!
+signalInvalidAspect
+	
+	self error: self invalidAspectErrorDescription !
+
+!methodRemoval: RoverObserver #invalidAspectErrorDescription stamp: 'WAL 6/4/2023 23:16:18'!
+invalidAspectErrorDescription
+	
+	^'Invalid aspect'!
+
+!testRun: #ObserversTest #test01RoverForwardLogRegisterLastPosition stamp: 'WAL 6/4/2023 23:16:21'!
+PASSED!
+
+!testRun: #ObserversTest #test02RoverForwardTwoStepsLogRegisterTwoLastPosition stamp: 'WAL 6/4/2023 23:16:21'!
+PASSED!
+
+!testRun: #ObserversTest #test03RoverForwardTwoStepsLogRegisterTwoLastPosition stamp: 'WAL 6/4/2023 23:16:21'!
+PASSED!
+
+!testRun: #ObserversTest #test04RoverForwardTwoStepsWindowRegisterPositionsOneAfterAnother stamp: 'WAL 6/4/2023 23:16:21'!
+PASSED!
+
+!testRun: #ObserversTest #test05RoverForwardAndRightRegisterPositionsAndHeading stamp: 'WAL 6/4/2023 23:16:21'!
+PASSED!
+
+!testRun: #ObserversTest #test06RoverForwardRightForwardRegisterLastPositionsAndHeading stamp: 'WAL 6/4/2023 23:16:21'!
+PASSED!
+
+!testRun: #ObserversTest #test07RoverMoveForwardReportsToManyObservers stamp: 'WAL 6/4/2023 23:16:21'!
+PASSED!
+
+!testRun: #ObserversTest #test08RoverMoveBackwardsReportsToManyObservers stamp: 'WAL 6/4/2023 23:16:21'!
+PASSED!
+
+!testRun: #ObserversTest #test09RoverRotateRightReportsToManyObservers stamp: 'WAL 6/4/2023 23:16:21'!
+PASSED!
+
+!testRun: #ObserversTest #test10RoverRotateLeftReportsToManyObservers stamp: 'WAL 6/4/2023 23:16:21'!
+PASSED!
+
+!testRun: #ObserversTest #test11ObserverShouldOnlyShowPositionRequestedChanges stamp: 'WAL 6/4/2023 23:16:21'!
+PASSED!
+
+!testRun: #ObserversTest #test12ObserverShouldOnlyShowHeadingRequestedChanges stamp: 'WAL 6/4/2023 23:16:21'!
+PASSED!
+
+!testRun: #ObserversTest #test13ObserverCanAttachToAllChanges stamp: 'WAL 6/4/2023 23:16:21'!
+PASSED!
+
+!testRun: #ObserversTest #test14ObserverShouldNotBeUpdatedIfDetachedForAnAspect stamp: 'WAL 6/4/2023 23:16:21'!
+PASSED!
+
+!testRun: #ObserversTest #test15ObserverCanDetachForAllAspects stamp: 'WAL 6/4/2023 23:16:21'!
+PASSED!
+
+!testRun: #ObserversTest #test16ObserverCanNotObserveUnsupportedAspect stamp: 'WAL 6/4/2023 23:16:21'!
+FAILURE!
+
+!testRun: #ObserversTest #test16ObserverCanNotObserveUnsupportedAspect stamp: 'WAL 6/4/2023 23:16:21'!
+FAILURE!
+!ObserversTest methodsFor: 'aspects' stamp: 'WAL 6/4/2023 23:17:00'!
+unsupportedAspect
+	
+	^{ Object new. }! !
+
+!testRun: #ObserversTest #test01RoverForwardLogRegisterLastPosition stamp: 'WAL 6/4/2023 23:17:02'!
+PASSED!
+
+!testRun: #ObserversTest #test02RoverForwardTwoStepsLogRegisterTwoLastPosition stamp: 'WAL 6/4/2023 23:17:02'!
+PASSED!
+
+!testRun: #ObserversTest #test03RoverForwardTwoStepsLogRegisterTwoLastPosition stamp: 'WAL 6/4/2023 23:17:02'!
+PASSED!
+
+!testRun: #ObserversTest #test04RoverForwardTwoStepsWindowRegisterPositionsOneAfterAnother stamp: 'WAL 6/4/2023 23:17:02'!
+PASSED!
+
+!testRun: #ObserversTest #test05RoverForwardAndRightRegisterPositionsAndHeading stamp: 'WAL 6/4/2023 23:17:02'!
+PASSED!
+
+!testRun: #ObserversTest #test06RoverForwardRightForwardRegisterLastPositionsAndHeading stamp: 'WAL 6/4/2023 23:17:02'!
+PASSED!
+
+!testRun: #ObserversTest #test07RoverMoveForwardReportsToManyObservers stamp: 'WAL 6/4/2023 23:17:02'!
+PASSED!
+
+!testRun: #ObserversTest #test08RoverMoveBackwardsReportsToManyObservers stamp: 'WAL 6/4/2023 23:17:02'!
+PASSED!
+
+!testRun: #ObserversTest #test09RoverRotateRightReportsToManyObservers stamp: 'WAL 6/4/2023 23:17:02'!
+PASSED!
+
+!testRun: #ObserversTest #test10RoverRotateLeftReportsToManyObservers stamp: 'WAL 6/4/2023 23:17:02'!
+PASSED!
+
+!testRun: #ObserversTest #test11ObserverShouldOnlyShowPositionRequestedChanges stamp: 'WAL 6/4/2023 23:17:02'!
+PASSED!
+
+!testRun: #ObserversTest #test12ObserverShouldOnlyShowHeadingRequestedChanges stamp: 'WAL 6/4/2023 23:17:02'!
+PASSED!
+
+!testRun: #ObserversTest #test13ObserverCanAttachToAllChanges stamp: 'WAL 6/4/2023 23:17:02'!
+PASSED!
+
+!testRun: #ObserversTest #test14ObserverShouldNotBeUpdatedIfDetachedForAnAspect stamp: 'WAL 6/4/2023 23:17:02'!
+PASSED!
+
+!testRun: #ObserversTest #test15ObserverCanDetachForAllAspects stamp: 'WAL 6/4/2023 23:17:02'!
+PASSED!
+
+!testRun: #ObserversTest #test16ObserverCanNotObserveUnsupportedAspect stamp: 'WAL 6/4/2023 23:17:02'!
+PASSED!
+
+----SNAPSHOT----(4 June 2023 23:17:19) CuisUniversity-5832.image priorSource: 9467472!
+
+!classRemoval: #Window stamp: 'WAL 6/4/2023 23:17:39'!
+RoverObserver subclass: #Window
+	instanceVariableNames: 'position heading'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRover-WithHeading'!
+
+!classRemoval: #Log stamp: 'WAL 6/4/2023 23:17:39'!
+RoverObserver subclass: #Log
+	instanceVariableNames: 'lines'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRover-WithHeading'!
+
+!classRemoval: #RoverObserver stamp: 'WAL 6/4/2023 23:17:39'!
+Object subclass: #RoverObserver
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRover-WithHeading'!
+
+!classRemoval: #Position stamp: 'WAL 6/4/2023 23:17:39'!
+RoverAspect subclass: #Position
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRover-WithHeading'!
+
+!classRemoval: #Heading stamp: 'WAL 6/4/2023 23:17:39'!
+RoverAspect subclass: #Heading
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRover-WithHeading'!
+
+!classRemoval: #RoverAspect stamp: 'WAL 6/4/2023 23:17:39'!
+Object subclass: #RoverAspect
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRover-WithHeading'!
+
+!classRemoval: #MarsRoverHeadingWest stamp: 'WAL 6/4/2023 23:17:39'!
+MarsRoverHeading subclass: #MarsRoverHeadingWest
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRover-WithHeading'!
+
+!classRemoval: #MarsRoverHeadingSouth stamp: 'WAL 6/4/2023 23:17:40'!
+MarsRoverHeading subclass: #MarsRoverHeadingSouth
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRover-WithHeading'!
+
+!classRemoval: #MarsRoverHeadingNorth stamp: 'WAL 6/4/2023 23:17:40'!
+MarsRoverHeading subclass: #MarsRoverHeadingNorth
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRover-WithHeading'!
+
+!classRemoval: #MarsRoverHeadingEast stamp: 'WAL 6/4/2023 23:17:40'!
+MarsRoverHeading subclass: #MarsRoverHeadingEast
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRover-WithHeading'!
+
+!classRemoval: #MarsRoverHeading stamp: 'WAL 6/4/2023 23:17:40'!
+Object subclass: #MarsRoverHeading
+	instanceVariableNames: 'marsRover'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRover-WithHeading'!
+
+!classRemoval: #MarsRover stamp: 'WAL 6/4/2023 23:17:40'!
+Object subclass: #MarsRover
+	instanceVariableNames: 'position head observers'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRover-WithHeading'!
+
+!classRemoval: #ObserversTest stamp: 'WAL 6/4/2023 23:17:41'!
+TestCase subclass: #ObserversTest
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRover-WithHeading'!
+
+!classRemoval: #MarsRoverTest stamp: 'WAL 6/4/2023 23:17:41'!
+TestCase subclass: #MarsRoverTest
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRover-WithHeading'!
+
+----End fileIn of /home/a/s/sw/smalltalk3/MarsRover-WithHeading-ManyRovers.st----!
+!ObserversTest methodsFor: 'aspects' stamp: 'WAL 6/4/2023 23:18:08' prior: 50629360!
+unsupportedAspect
+	
+	^{ Object new }! !
+
+!testRun: #ObserversTest #test01RoverForwardLogRegisterLastPosition stamp: 'WAL 6/4/2023 23:18:09'!
+PASSED!
+
+!testRun: #ObserversTest #test02RoverForwardTwoStepsLogRegisterTwoLastPosition stamp: 'WAL 6/4/2023 23:18:09'!
+PASSED!
+
+!testRun: #ObserversTest #test03RoverForwardTwoStepsLogRegisterTwoLastPosition stamp: 'WAL 6/4/2023 23:18:09'!
+PASSED!
+
+!testRun: #ObserversTest #test04RoverForwardTwoStepsWindowRegisterPositionsOneAfterAnother stamp: 'WAL 6/4/2023 23:18:09'!
+PASSED!
+
+!testRun: #ObserversTest #test05RoverForwardAndRightRegisterPositionsAndHeading stamp: 'WAL 6/4/2023 23:18:09'!
+PASSED!
+
+!testRun: #ObserversTest #test06RoverForwardRightForwardRegisterLastPositionsAndHeading stamp: 'WAL 6/4/2023 23:18:09'!
+PASSED!
+
+!testRun: #ObserversTest #test07RoverMoveForwardReportsToManyObservers stamp: 'WAL 6/4/2023 23:18:09'!
+PASSED!
+
+!testRun: #ObserversTest #test08RoverMoveBackwardsReportsToManyObservers stamp: 'WAL 6/4/2023 23:18:09'!
+PASSED!
+
+!testRun: #ObserversTest #test09RoverRotateRightReportsToManyObservers stamp: 'WAL 6/4/2023 23:18:09'!
+PASSED!
+
+!testRun: #ObserversTest #test10RoverRotateLeftReportsToManyObservers stamp: 'WAL 6/4/2023 23:18:09'!
+PASSED!
+
+!testRun: #ObserversTest #test11ObserverShouldOnlyShowPositionRequestedChanges stamp: 'WAL 6/4/2023 23:18:09'!
+PASSED!
+
+!testRun: #ObserversTest #test12ObserverShouldOnlyShowHeadingRequestedChanges stamp: 'WAL 6/4/2023 23:18:09'!
+PASSED!
+
+!testRun: #ObserversTest #test13ObserverCanAttachToAllChanges stamp: 'WAL 6/4/2023 23:18:09'!
+PASSED!
+
+!testRun: #ObserversTest #test14ObserverShouldNotBeUpdatedIfDetachedForAnAspect stamp: 'WAL 6/4/2023 23:18:09'!
+PASSED!
+
+!testRun: #ObserversTest #test15ObserverCanDetachForAllAspects stamp: 'WAL 6/4/2023 23:18:09'!
+PASSED!
+
+!testRun: #ObserversTest #test16ObserverCanNotObserveUnsupportedAspect stamp: 'WAL 6/4/2023 23:18:09'!
+PASSED!
+
+!testRun: #ObserversTest #test17LogRegisterPositionForMoreThanOneRoverActivity stamp: 'WAL 6/4/2023 23:18:09'!
+PASSED!
+
+!testRun: #ObserversTest #test18WindowRegisterPositionForMoreThanOneRoverActivity stamp: 'WAL 6/4/2023 23:18:09'!
+PASSED!
+
+----SNAPSHOT----(4 June 2023 23:20:48) CuisUniversity-5832.image priorSource: 9506859!
+
+----STARTUP---- (6 June 2023 19:53:15) as /home/a/s/sw/smalltalk3/CuisUniversity-5832.image!
+
+
+Object subclass: #TusLibros
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros'!
+
+!classDefinition: #TusLibros category: 'TusLibros' stamp: 'WAL 6/6/2023 20:04:17'!
+Object subclass: #TusLibros
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros'!
+
+TestCase subclass: #CarritoTest
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros'!
+
+!classDefinition: #CarritoTest category: 'TusLibros' stamp: 'WAL 6/6/2023 20:24:29'!
+TestCase subclass: #CarritoTest
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros'!
+
+!classRenamed: #TusLibros as: #Carrito stamp: 'WAL 6/6/2023 20:24:59'!
+Smalltalk renameClassNamed: #TusLibros as: #Carrito!
+!CarritoTest methodsFor: 'no messages' stamp: 'WAL 6/6/2023 20:31:44'!
+Test01NewChartIsEmpty
+	
+	| carrito | 
+	
+	carrito := Carrito new.
+	
+	self assert: carrito isEmpty.! !
+!CarritoTest methodsFor: 'as yet unclassified' stamp: 'WAL 6/6/2023 20:31:56'!
+test01NewChartIsEmpty
+	
+	| carrito | 
+	
+	carrito := Carrito new.
+	
+	self assert: carrito isEmpty.! !
+
+!methodRemoval: CarritoTest #Test01NewChartIsEmpty stamp: 'WAL 6/6/2023 20:31:56'!
+Test01NewChartIsEmpty
+	
+	| carrito | 
+	
+	carrito := Carrito new.
+	
+	self assert: carrito isEmpty.!
+
+!testRun: #CarritoTest #test01NewChartIsEmpty stamp: 'WAL 6/6/2023 20:31:58'!
+ERROR!
+!Carrito methodsFor: 'no messages' stamp: 'WAL 6/6/2023 20:33:00'!
+isEmpty
+
+	^true! !
+
+!testRun: #CarritoTest #test01NewChartIsEmpty stamp: 'WAL 6/6/2023 20:33:02'!
+PASSED!
+
+!classDefinition: #Book category: 'TusLibros' stamp: 'WAL 6/6/2023 20:38:12'!
+Object subclass: #Book
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros'!
+!CarritoTest methodsFor: 'as yet unclassified' stamp: 'WAL 6/6/2023 20:37:55'!
+test02BooksCanBePutIntoChart
+	
+	| carrito book | 
+	
+	carrito := Carrito new.
+	
+	book := Book new.
+	
+	carrito add book.
+	
+	self assert: 1 equals: carrito size.
+	self assert: carrito includes: book.! !
+!CarritoTest methodsFor: 'as yet unclassified' stamp: 'WAL 6/6/2023 20:38:26' prior: 50630095!
+test02BooksCanBePutIntoChart
+	
+	| carrito book | 
+	
+	carrito := Carrito new.
+	
+	book := Book new.
+	
+	carrito add: book.
+	
+	self assert: 1 equals: carrito size.
+	self assert: carrito includes: book.! !
+
+!testRun: #CarritoTest #test02BooksCanBePutIntoChart stamp: 'WAL 6/6/2023 20:38:28'!
+ERROR!
+
+Object subclass: #Carrito
+	instanceVariableNames: 'contents'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros'!
+
+!classDefinition: #Carrito category: 'TusLibros' stamp: 'WAL 6/6/2023 20:38:56'!
+Object subclass: #Carrito
+	instanceVariableNames: 'contents'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros'!
+
+!testRun: #CarritoTest #test02BooksCanBePutIntoChart stamp: 'WAL 6/6/2023 20:39:03'!
+ERROR!
+!CarritoTest methodsFor: 'as yet unclassified' stamp: 'WAL 6/6/2023 20:39:59' prior: 50630105!
+test02BooksCanBePutIntoChart
+	
+	| carrito book | 
+	
+	carrito := Carrito new.
+	
+	book := Book new.
+	
+	carrito add: book.
+	
+	self assert: 1 equals: carrito size.
+	self assert: carrito includes: book.
+	self deny: carrito isEmpty.! !
+!Carrito methodsFor: 'as yet unclassified' stamp: 'WAL 6/6/2023 20:40:15' prior: 50630083!
+isEmpty
+
+	^contents isEmpty! !
+!CarritoTest methodsFor: 'as yet unclassified' stamp: 'WAL 6/6/2023 20:40:28' prior: 50630131!
+test02BooksCanBePutIntoChart
+	
+	| carrito book | 
+	
+	carrito := Carrito new.
+	book := Book new.
+	carrito add: book.
+	
+	self assert: 1 equals: carrito size.
+	self assert: carrito includes: book.
+	self deny: carrito isEmpty.! !
+
+!testRun: #CarritoTest #test02BooksCanBePutIntoChart stamp: 'WAL 6/6/2023 20:41:27'!
+ERROR!
+!Carrito methodsFor: 'as yet unclassified' stamp: 'WAL 6/6/2023 20:41:42'!
+add: aBook
+
+	^contents add: aBook! !
+
+!testRun: #CarritoTest #test01NewChartIsEmpty stamp: 'WAL 6/6/2023 20:41:43'!
+ERROR!
+
+!testRun: #CarritoTest #test02BooksCanBePutIntoChart stamp: 'WAL 6/6/2023 20:41:43'!
+ERROR!
+
+!testRun: #CarritoTest #test01NewChartIsEmpty stamp: 'WAL 6/6/2023 20:41:49'!
+ERROR!
+!Carrito methodsFor: 'initialize' stamp: 'WAL 6/6/2023 20:42:58' overrides: 16920235!
+initialize
+	
+	contents := OrderedCollection new! !
+
+!testRun: #CarritoTest #test02BooksCanBePutIntoChart stamp: 'WAL 6/6/2023 20:44:28'!
+ERROR!
+
+!testRun: #CarritoTest #test02BooksCanBePutIntoChart stamp: 'WAL 6/6/2023 20:44:28'!
+ERROR!
+!Carrito methodsFor: 'accessing' stamp: 'WAL 6/6/2023 20:44:54' overrides: 16901663!
+size
+
+	^contents size! !
+
+!testRun: #CarritoTest #test01NewChartIsEmpty stamp: 'WAL 6/6/2023 20:44:55'!
+PASSED!
+
+!testRun: #CarritoTest #test02BooksCanBePutIntoChart stamp: 'WAL 6/6/2023 20:44:55'!
+ERROR!
+
+!testRun: #CarritoTest #test02BooksCanBePutIntoChart stamp: 'WAL 6/6/2023 20:44:55'!
+ERROR!
+!CarritoTest methodsFor: 'as yet unclassified' stamp: 'WAL 6/6/2023 20:45:24' prior: 50630146!
+test02BooksCanBePutIntoChart
+	
+	| carrito book | 
+	
+	carrito := Carrito new.
+	book := Book new.
+	carrito add: book.
+	
+	self assert: 1 equals: carrito size.
+	self deny: carrito isEmpty.! !
+
+!testRun: #CarritoTest #test02BooksCanBePutIntoChart stamp: 'WAL 6/6/2023 20:45:26'!
+PASSED!
+
+!testRun: #CarritoTest #test01NewChartIsEmpty stamp: 'WAL 6/6/2023 20:45:26'!
+PASSED!
+
+!testRun: #CarritoTest #test02BooksCanBePutIntoChart stamp: 'WAL 6/6/2023 20:45:26'!
+PASSED!
+
+!testRun: #CarritoTest #test02BooksCanBePutIntoChart stamp: 'WAL 6/6/2023 20:56:19'!
+PASSED!
+
+!testRun: #CarritoTest #test01NewChartIsEmpty stamp: 'WAL 6/6/2023 20:56:19'!
+PASSED!
+
+!testRun: #CarritoTest #test02BooksCanBePutIntoChart stamp: 'WAL 6/6/2023 20:56:19'!
+PASSED!
+
+TestCase subclass: #MarketTest
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros'!
+
+!classDefinition: #MarketTest category: 'TusLibros' stamp: 'WAL 6/6/2023 22:13:57'!
+TestCase subclass: #MarketTest
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros'!
+
+!classRemoval: #MarketTest stamp: 'WAL 6/6/2023 22:14:10'!
+TestCase subclass: #MarketTest
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros'!
+
+!classRenamed: #CarritoTest as: #MarketTest stamp: 'WAL 6/6/2023 22:14:18'!
+Smalltalk renameClassNamed: #CarritoTest as: #MarketTest!
+
+Object subclass: #Inventory
+	instanceVariableNames: 'books'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros'!
+
+!classDefinition: #Inventory category: 'TusLibros' stamp: 'WAL 6/6/2023 22:15:48'!
+Object subclass: #Inventory
+	instanceVariableNames: 'books'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros'!
+
+!classDefinition: #Carrito category: 'TusLibros' stamp: 'WAL 6/6/2023 22:16:19'!
+Object subclass: #Carrito
+	instanceVariableNames: 'books'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros'!
+!Carrito methodsFor: 'as yet unclassified' stamp: 'WAL 6/6/2023 22:16:19' prior: 50630142!
+isEmpty
+
+	^books isEmpty! !
+!Carrito methodsFor: 'as yet unclassified' stamp: 'WAL 6/6/2023 22:16:19' prior: 50630172 overrides: 16920235!
+initialize
+	
+	books := OrderedCollection new! !
+!Carrito methodsFor: 'as yet unclassified' stamp: 'WAL 6/6/2023 22:16:19' prior: 50630159!
+add: aBook
+
+	^books add: aBook! !
+!Carrito methodsFor: 'as yet unclassified' stamp: 'WAL 6/6/2023 22:16:19' prior: 50630183 overrides: 16901663!
+size
+
+	^books size! !
+!MarketTest methodsFor: 'as yet unclassified' stamp: 'WAL 6/6/2023 22:33:55' prior: 50630069!
+test01NewChartIsEmpty
+	
+	| carrito | 
+	
+	carrito := OrderedCollection new.
+	
+	self assert: carrito isEmpty.! !
+
+!testRun: #MarketTest #test01NewChartIsEmpty stamp: 'WAL 6/6/2023 22:33:56'!
+PASSED!
+
+!testRun: #MarketTest #test01NewChartIsEmpty stamp: 'WAL 6/6/2023 22:33:56'!
+PASSED!
+
+!testRun: #MarketTest #test02BooksCanBePutIntoChart stamp: 'WAL 6/6/2023 22:33:56'!
+PASSED!
+
+!testRun: #MarketTest #test01NewChartIsEmpty stamp: 'WAL 6/6/2023 22:34:02'!
+PASSED!
+
+!testRun: #MarketTest #test01NewChartIsEmpty stamp: 'WAL 6/6/2023 22:34:02'!
+PASSED!
+
+!testRun: #MarketTest #test02BooksCanBePutIntoChart stamp: 'WAL 6/6/2023 22:34:02'!
+PASSED!
+!MarketTest methodsFor: 'as yet unclassified' stamp: 'WAL 6/6/2023 22:34:22' prior: 50630196!
+test02BooksCanBePutIntoChart
+	
+	| carrito book | 
+	
+	carrito := OrderedCollection new.
+	book := Book new.
+	carrito add: book.
+	
+	self assert: 1 equals: carrito size.
+	self deny: carrito isEmpty.! !
+
+!testRun: #MarketTest #test02BooksCanBePutIntoChart stamp: 'WAL 6/6/2023 22:34:23'!
+PASSED!
+
+!testRun: #MarketTest #test01NewChartIsEmpty stamp: 'WAL 6/6/2023 22:34:23'!
+PASSED!
+
+!testRun: #MarketTest #test02BooksCanBePutIntoChart stamp: 'WAL 6/6/2023 22:34:23'!
+PASSED!
+
+!classRenamed: #Carrito as: #Chart stamp: 'WAL 6/6/2023 22:36:32'!
+Smalltalk renameClassNamed: #Carrito as: #Chart!
+!MarketTest methodsFor: 'as yet unclassified' stamp: 'WAL 6/6/2023 22:36:48' prior: 50630280!
+test01NewChartIsEmpty
+	
+	| carrito | 
+	
+	carrito := Chart new.
+	
+	self assert: carrito isEmpty.! !
+!MarketTest methodsFor: 'as yet unclassified' stamp: 'WAL 6/6/2023 22:36:54' prior: 50630325!
+test01NewChartIsEmpty
+	
+	| chart | 
+	
+	chart := Chart new.
+	
+	self assert: chart isEmpty.! !
+!MarketTest methodsFor: 'as yet unclassified' stamp: 'WAL 6/6/2023 22:37:00' prior: 50630303!
+test02BooksCanBePutIntoChart
+	
+	| chart book | 
+	
+	chart := OrderedCollection new.
+	book := Book new.
+	chart add: book.
+	
+	self assert: 1 equals: chart size.
+	self deny: chart isEmpty.! !
+!MarketTest methodsFor: 'as yet unclassified' stamp: 'WAL 6/6/2023 22:37:04' prior: 50630338!
+test02BooksCanBePutIntoChart
+	
+	| chart book | 
+	
+	chart := Chart new.
+	book := Book new.
+	chart add: book.
+	
+	self assert: 1 equals: chart size.
+	self deny: chart isEmpty.! !
+
+Inventory!
+
+Inventory new!
+!MarketTest methodsFor: 'as yet unclassified' stamp: 'WAL 6/6/2023 23:19:41'!
+test03NewInventoryIsEmpty
+	
+	| inventory | 
+	
+	inventory := Inventory new.
+		
+	self assert: inventory isEmpty.! !
+
+!testRun: #MarketTest #test03NewInventoryIsEmpty stamp: 'WAL 6/6/2023 23:19:44'!
+ERROR!
+!Inventory methodsFor: 'no messages' stamp: 'WAL 6/6/2023 23:20:07'!
+isEmpty
+
+	^true! !
+
+!testRun: #MarketTest #test01NewChartIsEmpty stamp: 'WAL 6/6/2023 23:20:09'!
+PASSED!
+
+!testRun: #MarketTest #test02BooksCanBePutIntoChart stamp: 'WAL 6/6/2023 23:20:09'!
+PASSED!
+
+!testRun: #MarketTest #test03NewInventoryIsEmpty stamp: 'WAL 6/6/2023 23:20:09'!
+PASSED!
+!MarketTest methodsFor: 'as yet unclassified' stamp: 'WAL 6/6/2023 23:20:36'!
+test02BooksCanBeAddedToChart
+	
+	| chart book | 
+	
+	chart := Chart new.
+	book := Book new.
+	chart add: book.
+	
+	self assert: 1 equals: chart size.
+	self deny: chart isEmpty.! !
+
+!methodRemoval: MarketTest #test02BooksCanBePutIntoChart stamp: 'WAL 6/6/2023 23:20:36'!
+test02BooksCanBePutIntoChart
+	
+	| chart book | 
+	
+	chart := Chart new.
+	book := Book new.
+	chart add: book.
+	
+	self assert: 1 equals: chart size.
+	self deny: chart isEmpty.!
+!MarketTest methodsFor: 'as yet unclassified' stamp: 'WAL 6/6/2023 23:20:50'!
+test02BooksCanBeAddedToInventory
+	
+	| chart book | 
+	
+	chart := Chart new.
+	book := Book new.
+	chart add: book.
+	
+	self assert: 1 equals: chart size.
+	self deny: chart isEmpty.! !
+!MarketTest methodsFor: 'as yet unclassified' stamp: 'WAL 6/6/2023 23:20:56'!
+test04BooksCanBeAddedToInventory
+	
+	| chart book | 
+	
+	chart := Chart new.
+	book := Book new.
+	chart add: book.
+	
+	self assert: 1 equals: chart size.
+	self deny: chart isEmpty.! !
+
+!methodRemoval: MarketTest #test02BooksCanBeAddedToInventory stamp: 'WAL 6/6/2023 23:20:56'!
+test02BooksCanBeAddedToInventory
+	
+	| chart book | 
+	
+	chart := Chart new.
+	book := Book new.
+	chart add: book.
+	
+	self assert: 1 equals: chart size.
+	self deny: chart isEmpty.!
+!MarketTest methodsFor: 'as yet unclassified' stamp: 'WAL 6/6/2023 23:22:03' prior: 50630403!
+test04BooksCanBeAddedToInventory
+	
+	| inventory book | 
+	
+	inventory := Inventory new.
+	book := Book new.
+	inventory add: book.
+	
+	self assert: 1 equals: inventory size.
+	self deny: inventory isEmpty.! !
+
+!testRun: #MarketTest #test04BooksCanBeAddedToInventory stamp: 'WAL 6/6/2023 23:22:04'!
+ERROR!
+
+a := OrderedCollection new.!
+
+a add: 1!
+
+a size!
+
+a add: 1!
+
+a size!
+!MarketTest methodsFor: 'as yet unclassified' stamp: 'WAL 6/7/2023 00:10:42' prior: 50630377!
+test02BooksCanBeAddedToChart
+	
+	| chart | 
+	
+	chart := Chart new.
+	chart add: '0000'.
+	
+	self assert: 1 equals: chart size.
+	self deny: chart isEmpty.! !
+!MarketTest methodsFor: 'as yet unclassified' stamp: 'WAL 6/7/2023 00:11:16' prior: 50630421!
+test04BooksCanBeAddedToInventory
+	
+	| inventory | 
+	
+	inventory := Inventory new.
+	inventory add: '0000'.
+	
+	self assert: 1 equals: inventory size.
+	self deny: inventory isEmpty.! !
+!MarketTest methodsFor: 'as yet unclassified' stamp: 'WAL 6/7/2023 00:12:07' prior: 50630436!
+test02BooksCanBeAddedToChart
+	
+	| chart | 
+	
+	chart := Chart new.
+	chart add: '0000' quantity: 10.
+	
+	self assert: 1 equals: chart size.
+	self deny: chart isEmpty.! !
+!MarketTest methodsFor: 'as yet unclassified' stamp: 'WAL 6/7/2023 00:13:07' prior: 50630453!
+test02BooksCanBeAddedToChart
+	
+	| chart | 
+	
+	chart := Chart new.
+	chart add: '1234567890123' quantity: 10.
+	
+	self assert: 1 equals: chart size.
+	self deny: chart isEmpty.! !
+!MarketTest methodsFor: 'as yet unclassified' stamp: 'WAL 6/7/2023 00:13:41' prior: 50630462!
+test02BooksCanBeAddedToChart
+	
+	| chart book | 
+	
+	book := '1234567890123'.
+	chart := Chart new.
+	chart add: '1234567890123' quantity: 10.
+	
+	self assert: 1 equals: chart size.
+	self deny: chart isEmpty.! !
+!MarketTest methodsFor: 'as yet unclassified' stamp: 'WAL 6/7/2023 00:16:33' prior: 50630471!
+test02BooksCanBeAddedToChart
+	
+	| chart book | 
+	
+	book := '1234567890123'.
+	
+	chart := Chart new.
+	chart add: book quantity: 10.
+	
+	self deny: chart isEmpty.
+	self assert: 1 equals: chart size.
+	self assert: 10 equals: (chart at: book)
+	! !
+
+!methodRemoval: MarketTest #test04BooksCanBeAddedToInventory stamp: 'WAL 6/7/2023 00:16:43'!
+test04BooksCanBeAddedToInventory
+	
+	| inventory | 
+	
+	inventory := Inventory new.
+	inventory add: '0000'.
+	
+	self assert: 1 equals: inventory size.
+	self deny: inventory isEmpty.!
+
+!methodRemoval: MarketTest #test03NewInventoryIsEmpty stamp: 'WAL 6/7/2023 00:17:15'!
+test03NewInventoryIsEmpty
+	
+	| inventory | 
+	
+	inventory := Inventory new.
+		
+	self assert: inventory isEmpty.!
+
+!classRemoval: #Inventory stamp: 'WAL 6/7/2023 00:17:18'!
+Object subclass: #Inventory
+	instanceVariableNames: 'books'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros'!
+!Chart methodsFor: 'accessing' stamp: 'WAL 6/7/2023 00:19:07'!
+add: aBookIdentifier quantity: aQuantity
+
+	^books at: aBookIdentifier put: aQuantity! !
+
+!methodRemoval: Chart #add: stamp: 'WAL 6/7/2023 00:19:13'!
+add: aBook
+
+	^books add: aBook!
+!Chart methodsFor: 'initialization' stamp: 'WAL 6/7/2023 00:19:52' prior: 50630266 overrides: 16920235!
+initialize
+	
+	books := Dictionary new! !
+
+!testRun: #MarketTest #test01NewChartIsEmpty stamp: 'WAL 6/7/2023 00:20:04'!
+PASSED!
+
+!testRun: #MarketTest #test02BooksCanBeAddedToChart stamp: 'WAL 6/7/2023 00:20:06'!
+ERROR!
+
+!testRun: #MarketTest #test02BooksCanBeAddedToChart stamp: 'WAL 6/7/2023 00:20:06'!
+ERROR!
+
+----End fileIn of /home/a/s/e/c/is1/tp/03_OOStack/Solucion/Stack-Solution-2.st----!
+
+!classRemoval: #OOStackBase stamp: 'WAL 6/7/2023 00:24:19'!
+OOStackTop subclass: #OOStackBase
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Stack-Solution-2'!
+
+!classRemoval: #OOPushedObjectCell stamp: 'WAL 6/7/2023 00:24:19'!
+OOStackTop subclass: #OOPushedObjectCell
+	instanceVariableNames: 'previous content'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Stack-Solution-2'!
+
+!classRemoval: #OOStackTop stamp: 'WAL 6/7/2023 00:24:19'!
+Object subclass: #OOStackTop
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Stack-Solution-2'!
+
+!classRemoval: #OOStack stamp: 'WAL 6/7/2023 00:24:19'!
+Object subclass: #OOStack
+	instanceVariableNames: 'top'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Stack-Solution-2'!
+
+!classRemoval: #OOStackTest stamp: 'WAL 6/7/2023 00:24:20'!
+TestCase subclass: #OOStackTest
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Stack-Solution-2'!
+!MarketTest methodsFor: 'as yet unclassified' stamp: 'WAL 6/7/2023 00:24:54' prior: 50630481!
+test02BooksCanBeAddedToChart
+	
+	| chart book | 
+	
+	book := 1234567890123.
+	
+	chart := Chart new.
+	chart add: book quantity: 10.
+	
+	self deny: chart isEmpty.
+	self assert: 1 equals: chart size.
+	self assert: 10 equals: (chart at: book)
+	! !
+
+!testRun: #MarketTest #test02BooksCanBeAddedToChart stamp: 'WAL 6/7/2023 00:24:56'!
+ERROR!
+
+!testRun: #MarketTest #test02BooksCanBeAddedToChart stamp: 'WAL 6/7/2023 00:25:27'!
+ERROR!
+!MarketTest methodsFor: 'as yet unclassified' stamp: 'WAL 6/7/2023 00:26:52' prior: 50630828!
+test02BooksCanBeAddedToChart
+	
+	| chart book | 
+	
+	book := 1234567890123.
+	
+	chart := Chart new.
+	chart add: book quantity: 10.
+	
+	self deny: chart isEmpty.
+	self assert: 1 equals: chart size.
+	self assert: 10 equals: (chart quantityOf: book)
+	! !
+
+!testRun: #MarketTest #test01NewChartIsEmpty stamp: 'WAL 6/7/2023 00:27:08'!
+PASSED!
+
+!testRun: #MarketTest #test02BooksCanBeAddedToChart stamp: 'WAL 6/7/2023 00:27:08'!
+ERROR!
+
+!testRun: #MarketTest #test02BooksCanBeAddedToChart stamp: 'WAL 6/7/2023 00:27:08'!
+ERROR!
+!Chart methodsFor: 'accessing' stamp: 'WAL 6/7/2023 00:27:53'!
+quantityOf: aBookIdentifier
+
+	^books at: aBookIdentifier! !
+
+!testRun: #MarketTest #test01NewChartIsEmpty stamp: 'WAL 6/7/2023 00:27:55'!
+PASSED!
+
+!testRun: #MarketTest #test02BooksCanBeAddedToChart stamp: 'WAL 6/7/2023 00:27:56'!
+PASSED!
+!MarketTest methodsFor: 'as yet unclassified' stamp: 'WAL 6/7/2023 00:28:05' prior: 50630845!
+test02BooksCanBeAddedToChart
+	
+	| chart book | 
+	
+	book := '1234567890123'.
+	
+	chart := Chart new.
+	chart add: book quantity: 10.
+	
+	self deny: chart isEmpty.
+	self assert: 1 equals: chart size.
+	self assert: 10 equals: (chart quantityOf: book)
+	! !
+
+!testRun: #MarketTest #test02BooksCanBeAddedToChart stamp: 'WAL 6/7/2023 00:28:06'!
+PASSED!
+
+!testRun: #MarketTest #test01NewChartIsEmpty stamp: 'WAL 6/7/2023 00:28:06'!
+PASSED!
+
+!testRun: #MarketTest #test02BooksCanBeAddedToChart stamp: 'WAL 6/7/2023 00:28:06'!
+PASSED!
+!MarketTest methodsFor: 'as yet unclassified' stamp: 'WAL 6/7/2023 00:30:20'!
+test02ABookOnSomeQuantityCanBeAddedToChart
+	
+	| chart book | 
+	
+	book := '1234567890123'.
+	
+	chart := Chart new.
+	chart add: book quantity: 10.
+	
+	self deny: chart isEmpty.
+	self assert: 1 equals: chart size.
+	self assert: 10 equals: (chart quantityOf: book)
+	! !
+
+!methodRemoval: MarketTest #test02BooksCanBeAddedToChart stamp: 'WAL 6/7/2023 00:30:20'!
+test02BooksCanBeAddedToChart
+	
+	| chart book | 
+	
+	book := '1234567890123'.
+	
+	chart := Chart new.
+	chart add: book quantity: 10.
+	
+	self deny: chart isEmpty.
+	self assert: 1 equals: chart size.
+	self assert: 10 equals: (chart quantityOf: book)
+	!
+!MarketTest methodsFor: 'as yet unclassified' stamp: 'WAL 6/7/2023 00:30:57'!
+test02AQuantityOfASameBookOnCanBeAddedToChart
+	
+	| chart book | 
+	
+	book := '1234567890123'.
+	
+	chart := Chart new.
+	chart add: book quantity: 10.
+	
+	self deny: chart isEmpty.
+	self assert: 1 equals: chart size.
+	self assert: 10 equals: (chart quantityOf: book)
+	! !
+
+!methodRemoval: MarketTest #test02ABookOnSomeQuantityCanBeAddedToChart stamp: 'WAL 6/7/2023 00:30:57'!
+test02ABookOnSomeQuantityCanBeAddedToChart
+	
+	| chart book | 
+	
+	book := '1234567890123'.
+	
+	chart := Chart new.
+	chart add: book quantity: 10.
+	
+	self deny: chart isEmpty.
+	self assert: 1 equals: chart size.
+	self assert: 10 equals: (chart quantityOf: book)
+	!
+!MarketTest methodsFor: 'as yet unclassified' stamp: 'WAL 6/7/2023 00:33:13'!
+test03QuantitiesOfASameBookCanBeAddedRepeadetlyToChart
+	
+	| chart book | 
+	
+	book := '1234567890123'.
+	
+	chart := Chart new.
+	chart add: book quantity: 10.
+	chart add: book quantity: 5.
+	
+	self deny: chart isEmpty.
+	self assert: 1 equals: chart size.
+	self assert: 15 equals: (chart quantityOf: book)
+	! !
+
+!testRun: #MarketTest #test03QuantitiesOfASameBookCanBeAddedRepeadetlyToChart stamp: 'WAL 6/7/2023 00:33:15'!
+FAILURE!
+
+!classRemoval: #Book stamp: 'WAL 6/7/2023 00:34:59'!
+Object subclass: #Book
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros'!
+
+!classRenamed: #MarketTest as: #ChartTest stamp: 'WAL 6/7/2023 00:35:09'!
+Smalltalk renameClassNamed: #MarketTest as: #ChartTest!
+!Chart methodsFor: 'accessing' stamp: 'WAL 6/7/2023 00:37:38' prior: 50630512!
+add: aBookIdentifier quantity: aQuantity
+
+	
+	
+	books at: aBookIdentifier
+		ifPresent: [
+			books at: aBookIdentifier put: (books at: aBookIdentifier) + aQuantity ]
+		ifAbsent: [
+			books at: aBookIdentifier put: aQuantity ]! !
+!Chart methodsFor: 'accessing' stamp: 'WAL 6/7/2023 00:37:42' prior: 50630965!
+add: aBookIdentifier quantity: aQuantity
+
+	books at: aBookIdentifier
+		ifPresent: [
+			books at: aBookIdentifier put: (books at: aBookIdentifier) + aQuantity ]
+		ifAbsent: [
+			books at: aBookIdentifier put: aQuantity ]! !
+
+!testRun: #ChartTest #test01NewChartIsEmpty stamp: 'WAL 6/7/2023 00:37:44'!
+PASSED!
+
+!testRun: #ChartTest #test02AQuantityOfASameBookOnCanBeAddedToChart stamp: 'WAL 6/7/2023 00:37:44'!
+PASSED!
+
+!testRun: #ChartTest #test03QuantitiesOfASameBookCanBeAddedRepeadetlyToChart stamp: 'WAL 6/7/2023 00:37:44'!
+ERROR!
+
+!testRun: #ChartTest #test03QuantitiesOfASameBookCanBeAddedRepeadetlyToChart stamp: 'WAL 6/7/2023 00:37:44'!
+ERROR!
+
+!testRun: #ChartTest #test02AQuantityOfASameBookOnCanBeAddedToChart stamp: 'WAL 6/7/2023 00:38:38'!
+PASSED!
+
+!testRun: #ChartTest #test03QuantitiesOfASameBookCanBeAddedRepeadetlyToChart stamp: 'WAL 6/7/2023 00:38:38'!
+ERROR!
+
+!testRun: #ChartTest #test03QuantitiesOfASameBookCanBeAddedRepeadetlyToChart stamp: 'WAL 6/7/2023 00:38:38'!
+ERROR!
+!Chart methodsFor: 'accessing' stamp: 'WAL 6/7/2023 00:46:14' prior: 50630975!
+add: aBookIdentifier quantity: aQuantity
+
+	books at: aBookIdentifier
+		ifPresent: [
+			: previousQuantity | books at: aBookIdentifier put: previousQuantity + aQuantity ]
+		ifAbsent: [
+			books at: aBookIdentifier put: aQuantity ]! !
+
+!testRun: #ChartTest #test03QuantitiesOfASameBookCanBeAddedRepeadetlyToChart stamp: 'WAL 6/7/2023 00:46:18'!
+PASSED!
+
+!testRun: #ChartTest #test03QuantitiesOfASameBookCanBeAddedRepeadetlyToChart stamp: 'WAL 6/7/2023 00:46:21'!
+PASSED!
+
+!testRun: #ChartTest #test01NewChartIsEmpty stamp: 'WAL 6/7/2023 00:46:21'!
+PASSED!
+
+!testRun: #ChartTest #test02AQuantityOfASameBookOnCanBeAddedToChart stamp: 'WAL 6/7/2023 00:46:21'!
+PASSED!
+
+!testRun: #ChartTest #test03QuantitiesOfASameBookCanBeAddedRepeadetlyToChart stamp: 'WAL 6/7/2023 00:46:21'!
+PASSED!
+
+!testRun: #ChartTest #test03QuantitiesOfASameBookCanBeAddedRepeadetlyToChart stamp: 'WAL 6/7/2023 00:46:58'!
+PASSED!
+
+!testRun: #ChartTest #test03QuantitiesOfASameBookCanBeAddedRepeadetlyToChart stamp: 'WAL 6/7/2023 00:47:01'!
+PASSED!
+
+!testRun: #ChartTest #test01NewChartIsEmpty stamp: 'WAL 6/7/2023 00:47:01'!
+PASSED!
+
+!testRun: #ChartTest #test02AQuantityOfASameBookOnCanBeAddedToChart stamp: 'WAL 6/7/2023 00:47:01'!
+PASSED!
+
+!testRun: #ChartTest #test03QuantitiesOfASameBookCanBeAddedRepeadetlyToChart stamp: 'WAL 6/7/2023 00:47:01'!
+PASSED!
+
+!methodRemoval: Chart #size stamp: 'WAL 6/7/2023 00:54:23'!
+size
+
+	^books size!
+!ChartTest methodsFor: 'as yet unclassified' stamp: 'WAL 6/7/2023 00:54:36' prior: 50630939!
+test03QuantitiesOfASameBookCanBeAddedRepeadetlyToChart
+	
+	| chart book | 
+	
+	book := '1234567890123'.
+	
+	chart := Chart new.
+	chart add: book quantity: 10.
+	chart add: book quantity: 5.
+	
+	self deny: chart isEmpty.
+	self assert: 15 equals: (chart quantityOf: book)
+	! !
+!ChartTest methodsFor: 'as yet unclassified' stamp: 'WAL 6/7/2023 00:54:41' prior: 50630916!
+test02AQuantityOfASameBookOnCanBeAddedToChart
+	
+	| chart book | 
+	
+	book := '1234567890123'.
+	
+	chart := Chart new.
+	chart add: book quantity: 10.
+	
+	self deny: chart isEmpty.
+	self assert: 10 equals: (chart quantityOf: book)
+	! !
+
+!testRun: #ChartTest #test02AQuantityOfASameBookOnCanBeAddedToChart stamp: 'WAL 6/7/2023 00:54:42'!
+PASSED!
+
+!testRun: #ChartTest #test01NewChartIsEmpty stamp: 'WAL 6/7/2023 00:54:42'!
+PASSED!
+
+!testRun: #ChartTest #test02AQuantityOfASameBookOnCanBeAddedToChart stamp: 'WAL 6/7/2023 00:54:42'!
+PASSED!
+
+!testRun: #ChartTest #test03QuantitiesOfASameBookCanBeAddedRepeadetlyToChart stamp: 'WAL 6/7/2023 00:54:42'!
+PASSED!
+!ChartTest methodsFor: 'as yet unclassified' stamp: 'WAL 6/7/2023 00:56:18'!
+test02AQuantityOfASameBookCanBeAddedToChart
+	
+	| chart book | 
+	
+	book := '1234567890123'.
+	
+	chart := Chart new.
+	chart add: book quantity: 10.
+	
+	self deny: chart isEmpty.
+	self assert: 10 equals: (chart quantityOf: book)
+	! !
+
+!methodRemoval: ChartTest #test02AQuantityOfASameBookOnCanBeAddedToChart stamp: 'WAL 6/7/2023 00:56:18'!
+test02AQuantityOfASameBookOnCanBeAddedToChart
+	
+	| chart book | 
+	
+	book := '1234567890123'.
+	
+	chart := Chart new.
+	chart add: book quantity: 10.
+	
+	self deny: chart isEmpty.
+	self assert: 10 equals: (chart quantityOf: book)
+	!
+!ChartTest methodsFor: 'as yet unclassified' stamp: 'WAL 6/7/2023 00:58:29'!
+test03QuantitiesOfASameBookCanBeAddedRepeatedlyToChart
+	
+	| chart book | 
+	
+	book := '1234567890123'.
+	
+	chart := Chart new.
+	chart add: book quantity: 10.
+	chart add: book quantity: 5.
+	
+	self deny: chart isEmpty.
+	self assert: 15 equals: (chart quantityOf: book)
+	! !
+
+!methodRemoval: ChartTest #test03QuantitiesOfASameBookCanBeAddedRepeadetlyToChart stamp: 'WAL 6/7/2023 00:58:29'!
+test03QuantitiesOfASameBookCanBeAddedRepeadetlyToChart
+	
+	| chart book | 
+	
+	book := '1234567890123'.
+	
+	chart := Chart new.
+	chart add: book quantity: 10.
+	chart add: book quantity: 5.
+	
+	self deny: chart isEmpty.
+	self assert: 15 equals: (chart quantityOf: book)
+	!
+
+!classDefinition: #Inventory category: 'TusLibros' stamp: 'WAL 6/7/2023 00:59:53'!
+Object subclass: #Inventory
+	instanceVariableNames: 'contents'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros'!
+!ChartTest methodsFor: 'as yet unclassified' stamp: 'WAL 6/7/2023 00:59:38'!
+test01NewInventoryIsEmpty
+	
+	self assert: Inventory new isEmpty.! !
+
+TestCase subclass: #InventoryTest
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros'!
+
+!classDefinition: #InventoryTest category: 'TusLibros' stamp: 'WAL 6/7/2023 01:01:23'!
+TestCase subclass: #InventoryTest
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros'!
+!InventoryTest methodsFor: 'no messages' stamp: 'WAL 6/7/2023 01:01:29'!
+test01NewInventoryIsEmpty
+	
+	self assert: Inventory new isEmpty.! !
+
+!methodRemoval: ChartTest #test01NewInventoryIsEmpty stamp: 'WAL 6/7/2023 01:01:34'!
+test01NewInventoryIsEmpty
+	
+	self assert: Inventory new isEmpty.!
+!ChartTest methodsFor: 'as yet unclassified' stamp: 'WAL 6/7/2023 01:01:43' prior: 50630332!
+test01NewChartIsEmpty
+	
+	self assert: Chart new isEmpty.! !
+
+!testRun: #ChartTest #test01NewChartIsEmpty stamp: 'WAL 6/7/2023 01:01:45'!
+PASSED!
+
+!testRun: #ChartTest #test01NewChartIsEmpty stamp: 'WAL 6/7/2023 01:01:45'!
+PASSED!
+
+!testRun: #ChartTest #test02AQuantityOfASameBookCanBeAddedToChart stamp: 'WAL 6/7/2023 01:01:45'!
+PASSED!
+
+!testRun: #ChartTest #test03QuantitiesOfASameBookCanBeAddedRepeatedlyToChart stamp: 'WAL 6/7/2023 01:01:45'!
+PASSED!
+
+!testRun: #InventoryTest #test01NewInventoryIsEmpty stamp: 'WAL 6/7/2023 01:01:54'!
+ERROR!
+!Inventory methodsFor: 'no messages' stamp: 'WAL 6/7/2023 01:02:47' overrides: 16920235!
+initialize
+	
+	contents := Dictionary new! !
+!Inventory methodsFor: 'accessing' stamp: 'WAL 6/7/2023 01:04:17'!
+isEmpty
+
+	^true! !
+
+!testRun: #InventoryTest #test01NewInventoryIsEmpty stamp: 'WAL 6/7/2023 01:04:18'!
+PASSED!
+!InventoryTest methodsFor: 'test' stamp: 'WAL 6/7/2023 01:05:55'!
+test02AQuantityOfASameBookCanBeAddedToInventory
+	
+	| chart book | 
+	
+	book := '1234567890123'.
+	
+	chart := Inventory new.
+	chart add: book quantity: 10.
+	
+	self deny: chart isEmpty.
+	self assert: 10 equals: (chart quantityOf: book)
+	! !
+
+!testRun: #InventoryTest #test02AQuantityOfASameBookCanBeAddedToInventory stamp: 'WAL 6/7/2023 01:05:57'!
+ERROR!
+!InventoryTest methodsFor: 'test' stamp: 'WAL 6/7/2023 01:06:06' prior: 50631198!
+test02AQuantityOfASameBookCanBeAddedToInventory
+	
+	| inventory book | 
+	
+	book := '1234567890123'.
+	
+	inventory := Inventory new.
+	inventory add: book quantity: 10.
+	
+	self deny: inventory isEmpty.
+	self assert: 10 equals: (inventory quantityOf: book)
+	! !
+!InventoryTest methodsFor: 'test' stamp: 'WAL 6/7/2023 01:06:19' prior: 50631212!
+test02AQuantityOfASameBookCanBeAddedToInventory
+	
+	| inventory book | 
+	
+	book := '1234567890123'.
+	
+	inventory := Inventory new.
+	inventory add: book quantity: 50.
+	
+	self deny: inventory isEmpty.
+	self assert: 50 equals: (inventory quantityOf: book)
+	! !
+
+!testRun: #InventoryTest #test02AQuantityOfASameBookCanBeAddedToInventory stamp: 'WAL 6/7/2023 01:06:20'!
+ERROR!
+!Inventory methodsFor: 'as yet unclassified' stamp: 'WAL 6/7/2023 01:07:03'!
+add: aBookIdentifier quantity: aQuantity
+
+	contents at: aBookIdentifier
+		ifPresent: [
+			: previousQuantity | contents at: aBookIdentifier put: previousQuantity + aQuantity ]
+		ifAbsent: [
+			contents at: aBookIdentifier put: aQuantity ]! !
+
+!testRun: #InventoryTest #test01NewInventoryIsEmpty stamp: 'WAL 6/7/2023 01:07:05'!
+PASSED!
+
+!testRun: #InventoryTest #test02AQuantityOfASameBookCanBeAddedToInventory stamp: 'WAL 6/7/2023 01:07:05'!
+FAILURE!
+
+!testRun: #InventoryTest #test02AQuantityOfASameBookCanBeAddedToInventory stamp: 'WAL 6/7/2023 01:07:05'!
+FAILURE!
+!Inventory methodsFor: 'accessing' stamp: 'WAL 6/7/2023 01:07:35' prior: 50631192!
+isEmpty
+
+	^contents isEmpty! !
+
+!testRun: #InventoryTest #test01NewInventoryIsEmpty stamp: 'WAL 6/7/2023 01:07:38'!
+PASSED!
+
+!testRun: #InventoryTest #test02AQuantityOfASameBookCanBeAddedToInventory stamp: 'WAL 6/7/2023 01:07:38'!
+ERROR!
+
+!testRun: #InventoryTest #test02AQuantityOfASameBookCanBeAddedToInventory stamp: 'WAL 6/7/2023 01:07:38'!
+ERROR!
+!InventoryTest methodsFor: 'test' stamp: 'WAL 6/7/2023 01:08:24'!
+test02AQuantityOfABookCanBeAddedToInventory
+	
+	| inventory book | 
+	
+	book := '1234567890123'.
+	
+	inventory := Inventory new.
+	inventory add: book quantity: 50.
+	
+	self deny: inventory isEmpty.
+	self assert: 50 equals: (inventory quantityOf: book)
+	! !
+
+!methodRemoval: InventoryTest #test02AQuantityOfASameBookCanBeAddedToInventory stamp: 'WAL 6/7/2023 01:08:24'!
+test02AQuantityOfASameBookCanBeAddedToInventory
+	
+	| inventory book | 
+	
+	book := '1234567890123'.
+	
+	inventory := Inventory new.
+	inventory add: book quantity: 50.
+	
+	self deny: inventory isEmpty.
+	self assert: 50 equals: (inventory quantityOf: book)
+	!
+!ChartTest methodsFor: 'test' stamp: 'WAL 6/7/2023 01:08:33'!
+test02AQuantityOfABookCanBeAddedToChart
+	
+	| chart book | 
+	
+	book := '1234567890123'.
+	
+	chart := Chart new.
+	chart add: book quantity: 10.
+	
+	self deny: chart isEmpty.
+	self assert: 10 equals: (chart quantityOf: book)
+	! !
+
+!methodRemoval: ChartTest #test02AQuantityOfASameBookCanBeAddedToChart stamp: 'WAL 6/7/2023 01:08:34'!
+test02AQuantityOfASameBookCanBeAddedToChart
+	
+	| chart book | 
+	
+	book := '1234567890123'.
+	
+	chart := Chart new.
+	chart add: book quantity: 10.
+	
+	self deny: chart isEmpty.
+	self assert: 10 equals: (chart quantityOf: book)
+	!
+
+!testRun: #ChartTest #test03QuantitiesOfASameBookCanBeAddedRepeatedlyToChart stamp: 'WAL 6/7/2023 01:09:11'!
+PASSED!
+
+!testRun: #ChartTest #test01NewChartIsEmpty stamp: 'WAL 6/7/2023 01:09:14'!
+PASSED!
+
+!testRun: #ChartTest #test02AQuantityOfABookCanBeAddedToChart stamp: 'WAL 6/7/2023 01:09:14'!
+PASSED!
+
+!testRun: #ChartTest #test03QuantitiesOfASameBookCanBeAddedRepeatedlyToChart stamp: 'WAL 6/7/2023 01:09:14'!
+PASSED!
+
+!testRun: #InventoryTest #test01NewInventoryIsEmpty stamp: 'WAL 6/7/2023 01:09:17'!
+PASSED!
+
+!testRun: #InventoryTest #test02AQuantityOfABookCanBeAddedToInventory stamp: 'WAL 6/7/2023 01:09:17'!
+ERROR!
+
+!testRun: #InventoryTest #test02AQuantityOfABookCanBeAddedToInventory stamp: 'WAL 6/7/2023 01:09:17'!
+ERROR!
+!Inventory methodsFor: 'accessing' stamp: 'WAL 6/7/2023 01:09:38'!
+quantityOf: aBookIdentifier
+
+	^contents at: aBookIdentifier! !
+
+!testRun: #InventoryTest #test01NewInventoryIsEmpty stamp: 'WAL 6/7/2023 01:09:41'!
+PASSED!
+
+!testRun: #InventoryTest #test02AQuantityOfABookCanBeAddedToInventory stamp: 'WAL 6/7/2023 01:09:41'!
+PASSED!
+!InventoryTest methodsFor: 'test' stamp: 'WAL 6/7/2023 01:10:01'!
+test03QuantitiesOfASameBookCanBeAddedRepeatedlyToInventory
+	
+	| chart book | 
+	
+	book := '1234567890123'.
+	
+	chart := Chart new.
+	chart add: book quantity: 10.
+	chart add: book quantity: 5.
+	
+	self deny: chart isEmpty.
+	self assert: 15 equals: (chart quantityOf: book)! !
+!InventoryTest methodsFor: 'test' stamp: 'WAL 6/7/2023 01:10:20' prior: 50631348!
+test03QuantitiesOfASameBookCanBeAddedRepeatedlyToInventory
+	
+	| inventory book | 
+	
+	book := '1234567890123'.
+	
+	inventory := Chart new.
+	inventory add: book quantity: 10.
+	inventory add: book quantity: 5.
+	
+	self deny: inventory isEmpty.
+	self assert: 15 equals: (inventory quantityOf: book)! !
+!InventoryTest methodsFor: 'test' stamp: 'WAL 6/7/2023 01:10:28' prior: 50631360!
+test03QuantitiesOfASameBookCanBeAddedRepeatedlyToInventory
+	
+	| inventory book | 
+	
+	book := '1234567890123'.
+	
+	inventory := Inventory new.
+	inventory add: book quantity: 10.
+	inventory add: book quantity: 5.
+	
+	self deny: inventory isEmpty.
+	self assert: 15 equals: (inventory quantityOf: book)! !
+!InventoryTest methodsFor: 'test' stamp: 'WAL 6/7/2023 01:10:43' prior: 50631372!
+test03QuantitiesOfASameBookCanBeAddedRepeatedlyToInventory
+	
+	| inventory book | 
+	
+	book := '1234567890123'.
+	
+	inventory := Inventory new.
+	inventory add: book quantity: 50.
+	inventory add: book quantity: 20.
+	
+	self deny: inventory isEmpty.
+	self assert: 70 equals: (inventory quantityOf: book)! !
+
+!testRun: #InventoryTest #test03QuantitiesOfASameBookCanBeAddedRepeatedlyToInventory stamp: 'WAL 6/7/2023 01:10:44'!
+PASSED!
+
+!testRun: #InventoryTest #test01NewInventoryIsEmpty stamp: 'WAL 6/7/2023 01:10:44'!
+PASSED!
+
+!testRun: #InventoryTest #test02AQuantityOfABookCanBeAddedToInventory stamp: 'WAL 6/7/2023 01:10:44'!
+PASSED!
+
+!testRun: #InventoryTest #test03QuantitiesOfASameBookCanBeAddedRepeatedlyToInventory stamp: 'WAL 6/7/2023 01:10:44'!
+PASSED!
+!InventoryTest methodsFor: 'test' stamp: 'WAL 6/7/2023 01:14:11'!
+test03QuantitiesOfASameBookCanBeAddedSequentiallyToInventory
+	
+	| inventory book | 
+	
+	book := '1234567890123'.
+	
+	inventory := Inventory new.
+	inventory add: book quantity: 50.
+	inventory add: book quantity: 20.
+	
+	self deny: inventory isEmpty.
+	self assert: 70 equals: (inventory quantityOf: book)! !
+
+!methodRemoval: InventoryTest #test03QuantitiesOfASameBookCanBeAddedRepeatedlyToInventory stamp: 'WAL 6/7/2023 01:14:11'!
+test03QuantitiesOfASameBookCanBeAddedRepeatedlyToInventory
+	
+	| inventory book | 
+	
+	book := '1234567890123'.
+	
+	inventory := Inventory new.
+	inventory add: book quantity: 50.
+	inventory add: book quantity: 20.
+	
+	self deny: inventory isEmpty.
+	self assert: 70 equals: (inventory quantityOf: book)!
+!ChartTest methodsFor: 'test' stamp: 'WAL 6/7/2023 01:14:26'!
+test03QuantitiesOfASameBookCanBeAddedSequentiallyToChart
+	
+	| chart book | 
+	
+	book := '1234567890123'.
+	
+	chart := Chart new.
+	chart add: book quantity: 10.
+	chart add: book quantity: 5.
+	
+	self deny: chart isEmpty.
+	self assert: 15 equals: (chart quantityOf: book)
+	! !
+
+!methodRemoval: ChartTest #test03QuantitiesOfASameBookCanBeAddedRepeatedlyToChart stamp: 'WAL 6/7/2023 01:14:26'!
+test03QuantitiesOfASameBookCanBeAddedRepeatedlyToChart
+	
+	| chart book | 
+	
+	book := '1234567890123'.
+	
+	chart := Chart new.
+	chart add: book quantity: 10.
+	chart add: book quantity: 5.
+	
+	self deny: chart isEmpty.
+	self assert: 15 equals: (chart quantityOf: book)
+	!
+
+Object subclass: #Bookstore
+	instanceVariableNames: 'inventory charts'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros'!
+
+!classDefinition: #Bookstore category: 'TusLibros' stamp: 'WAL 6/7/2023 01:16:42'!
+Object subclass: #Bookstore
+	instanceVariableNames: 'inventory charts'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros'!
+
+TestCase subclass: #BookstoreTest
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros'!
+
+!classDefinition: #BookstoreTest category: 'TusLibros' stamp: 'WAL 6/7/2023 01:17:45'!
+TestCase subclass: #BookstoreTest
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros'!
+
+!classRenamed: #Bookstore as: #Storekeeper stamp: 'WAL 6/7/2023 01:23:38'!
+Smalltalk renameClassNamed: #Bookstore as: #Storekeeper!
+
+!classRenamed: #BookstoreTest as: #StorekeeperTest stamp: 'WAL 6/7/2023 01:23:48'!
+Smalltalk renameClassNamed: #BookstoreTest as: #StorekeeperTest!
+!StorekeeperTest methodsFor: 'no messages' stamp: 'WAL 6/7/2023 01:40:28'!
+test01StorekeeperAddsRequestedBookQuantityToChartIfAvailableOnStock
+	
+	| book chart inventory storekeeper | 
+	
+	book := '1234567890123'.
+	
+	chart := Chart new.
+
+	inventory := Inventory new.
+	inventory add: book quantity: 20.
+	
+	storekeeper := Storekeeper new.
+	
+	storekeeper get
+		
+	self deny: chart isEmpty.
+	self assert: 10 equals: (chart quantityOf: book)! !
+!StorekeeperTest methodsFor: 'as yet unclassified' stamp: 'WAL 6/7/2023 01:40:34'!
+test01StoreAddsRequestedBookQuantityToChartIfAvailableOnStock
+	
+	| book chart inventory storekeeper | 
+	
+	book := '1234567890123'.
+	
+	chart := Chart new.
+
+	inventory := Inventory new.
+	inventory add: book quantity: 20.
+	
+	storekeeper := Storekeeper new.
+	
+	storekeeper get
+		
+	self deny: chart isEmpty.
+	self assert: 10 equals: (chart quantityOf: book)! !
+
+!methodRemoval: StorekeeperTest #test01StorekeeperAddsRequestedBookQuantityToChartIfAvailableOnStock stamp: 'WAL 6/7/2023 01:40:34'!
+test01StorekeeperAddsRequestedBookQuantityToChartIfAvailableOnStock
+	
+	| book chart inventory storekeeper | 
+	
+	book := '1234567890123'.
+	
+	chart := Chart new.
+
+	inventory := Inventory new.
+	inventory add: book quantity: 20.
+	
+	storekeeper := Storekeeper new.
+	
+	storekeeper get
+		
+	self deny: chart isEmpty.
+	self assert: 10 equals: (chart quantityOf: book)!
+
+!classRenamed: #StorekeeperTest as: #StoreTest stamp: 'WAL 6/7/2023 01:40:45'!
+Smalltalk renameClassNamed: #StorekeeperTest as: #StoreTest!
+
+!classRenamed: #Storekeeper as: #Store stamp: 'WAL 6/7/2023 01:40:51'!
+Smalltalk renameClassNamed: #Storekeeper as: #Store!
+!StoreTest methodsFor: 'as yet unclassified' stamp: 'WAL 6/7/2023 01:40:51' prior: 50631504!
+test01StoreAddsRequestedBookQuantityToChartIfAvailableOnStock
+	
+	| book chart inventory storekeeper | 
+	
+	book := '1234567890123'.
+	
+	chart := Chart new.
+
+	inventory := Inventory new.
+	inventory add: book quantity: 20.
+	
+	storekeeper := Store new.
+	
+	storekeeper get
+		
+	self deny: chart isEmpty.
+	self assert: 10 equals: (chart quantityOf: book)! !
+!StoreTest methodsFor: 'as yet unclassified' stamp: 'WAL 6/7/2023 01:41:16' prior: 50631542!
+test01StoreAddsRequestedBookQuantityToChartIfAvailableOnStock
+	
+	| book chart inventory store | 
+	
+	book := '1234567890123'.
+	
+	chart := Chart new.
+
+	inventory := Inventory new.
+	inventory add: book quantity: 20.
+	
+	store := Store new.
+	
+	store get
+		
+	self deny: chart isEmpty.
+	self assert: 10 equals: (chart quantityOf: book)! !
+!StoreTest methodsFor: 'as yet unclassified' stamp: 'WAL 6/7/2023 01:56:33' prior: 50631556!
+test01StoreAddsRequestedBookQuantityToChartIfAvailableOnStock
+	
+	| book clientID chartID  store | 
+	
+	book := '1234567890123'.
+	
+	store := Store new.
+	store addToInventory: book quantity: 50.
+	
+	chartID := store newChartForClient: clientID.
+	
+	store add: book quantity: 10 to: chartID.
+	
+	self assert: 10 equals: ((store listCart: chartID) at: book).! !
+!StoreTest methodsFor: 'as yet unclassified' stamp: 'WAL 6/7/2023 01:58:07' prior: 50631570!
+test01StoreAddsRequestedBookQuantityToChartIfAvailableOnStock
+	
+	| book clientID chartID  store | 
+	
+	clientID := 57.
+	
+	book := '1234567890123'.
+	
+	store := Store new.
+	store addToInventory: book quantity: 50.
+	
+	chartID := store newChartForClient: clientID.
+	
+	store put: book quantity: 10 on: chartID.
+	
+	self assert: 10 equals: ((store listCart: chartID) at: book).! !
+
+!classRenamed: #Chart as: #Cart stamp: 'WAL 6/7/2023 01:58:56'!
+Smalltalk renameClassNamed: #Chart as: #Cart!
+!ChartTest methodsFor: 'as yet unclassified' stamp: 'WAL 6/7/2023 01:58:56' prior: 50631435!
+test03QuantitiesOfASameBookCanBeAddedSequentiallyToChart
+	
+	| chart book | 
+	
+	book := '1234567890123'.
+	
+	chart := Cart new.
+	chart add: book quantity: 10.
+	chart add: book quantity: 5.
+	
+	self deny: chart isEmpty.
+	self assert: 15 equals: (chart quantityOf: book)
+	! !
+!ChartTest methodsFor: 'as yet unclassified' stamp: 'WAL 6/7/2023 01:58:56' prior: 50631168!
+test01NewChartIsEmpty
+	
+	self assert: Cart new isEmpty.! !
+!ChartTest methodsFor: 'as yet unclassified' stamp: 'WAL 6/7/2023 01:58:56' prior: 50631294!
+test02AQuantityOfABookCanBeAddedToChart
+	
+	| chart book | 
+	
+	book := '1234567890123'.
+	
+	chart := Cart new.
+	chart add: book quantity: 10.
+	
+	self deny: chart isEmpty.
+	self assert: 10 equals: (chart quantityOf: book)
+	! !
+
+!classRenamed: #ChartTest as: #CartTest stamp: 'WAL 6/7/2023 01:59:12'!
+Smalltalk renameClassNamed: #ChartTest as: #CartTest!
+!CartTest methodsFor: 'test' stamp: 'WAL 6/7/2023 01:59:17'!
+test01NewCartIsEmpty
+	
+	self assert: Cart new isEmpty.! !
+
+!methodRemoval: CartTest #test01NewChartIsEmpty stamp: 'WAL 6/7/2023 01:59:18'!
+test01NewChartIsEmpty
+	
+	self assert: Cart new isEmpty.!
+!CartTest methodsFor: 'test' stamp: 'WAL 6/7/2023 01:59:24'!
+test02AQuantityOfABookCanBeAddedToCart
+	
+	| chart book | 
+	
+	book := '1234567890123'.
+	
+	chart := Cart new.
+	chart add: book quantity: 10.
+	
+	self deny: chart isEmpty.
+	self assert: 10 equals: (chart quantityOf: book)
+	! !
+
+!methodRemoval: CartTest #test02AQuantityOfABookCanBeAddedToChart stamp: 'WAL 6/7/2023 01:59:24'!
+test02AQuantityOfABookCanBeAddedToChart
+	
+	| chart book | 
+	
+	book := '1234567890123'.
+	
+	chart := Cart new.
+	chart add: book quantity: 10.
+	
+	self deny: chart isEmpty.
+	self assert: 10 equals: (chart quantityOf: book)
+	!
+!CartTest methodsFor: 'test' stamp: 'WAL 6/7/2023 01:59:28'!
+test03QuantitiesOfASameBookCanBeAddedSequentiallyToCart
+	
+	| chart book | 
+	
+	book := '1234567890123'.
+	
+	chart := Cart new.
+	chart add: book quantity: 10.
+	chart add: book quantity: 5.
+	
+	self deny: chart isEmpty.
+	self assert: 15 equals: (chart quantityOf: book)
+	! !
+
+!methodRemoval: CartTest #test03QuantitiesOfASameBookCanBeAddedSequentiallyToChart stamp: 'WAL 6/7/2023 01:59:28'!
+test03QuantitiesOfASameBookCanBeAddedSequentiallyToChart
+	
+	| chart book | 
+	
+	book := '1234567890123'.
+	
+	chart := Cart new.
+	chart add: book quantity: 10.
+	chart add: book quantity: 5.
+	
+	self deny: chart isEmpty.
+	self assert: 15 equals: (chart quantityOf: book)
+	!
+!StoreTest methodsFor: 'as yet unclassified' stamp: 'WAL 6/7/2023 02:01:29' prior: 50631584!
+test01StoreAddsRequestedBookQuantityToChartIfAvailableOnStock
+	
+	| book clientID chartID  store | 
+	
+	clientID := 57.
+	
+	book := '1234567890123'.
+	
+	store := Store new.
+	store addToInventory: book quantity: 50.
+	
+	chartID := store newChartForClient: clientID.
+	
+	store put: book quantity: 10 on: chartID.
+	
+	self assert: 10 equals: ((store listCart: chartID) at: book).! !
+!StoreTest methodsFor: 'as yet unclassified' stamp: 'WAL 6/7/2023 02:01:36'!
+test01OpcionBStoreAddsRequestedBookQuantityToChartIfAvailableOnStock
+	
+	| book clientID chartID  store | 
+	
+	clientID := 57.
+	
+	book := '1234567890123'.
+	
+	store := Store new.
+	store addToInventory: book quantity: 50.
+	
+	chartID := store newChartForClient: clientID.
+	
+	store put: book quantity: 10 on: chartID.
+	
+	self assert: 10 equals: ((store listCart: chartID) at: book).! !
+
+!methodRemoval: StoreTest #test01StoreAddsRequestedBookQuantityToChartIfAvailableOnStock stamp: 'WAL 6/7/2023 02:01:36'!
+test01StoreAddsRequestedBookQuantityToChartIfAvailableOnStock
+	
+	| book clientID chartID  store | 
+	
+	clientID := 57.
+	
+	book := '1234567890123'.
+	
+	store := Store new.
+	store addToInventory: book quantity: 50.
+	
+	chartID := store newChartForClient: clientID.
+	
+	store put: book quantity: 10 on: chartID.
+	
+	self assert: 10 equals: ((store listCart: chartID) at: book).!
+!StoreTest methodsFor: 'as yet unclassified' stamp: 'WAL 6/7/2023 02:03:48'!
+test01OpcionAStoreAddsRequestedBookQuantityToChartIfAvailableOnStock
+	
+	| book clientID chartID  store | 
+	
+	clientID := 57.
+	
+	book := '1234567890123'.
+	
+	store := Store new.
+	store addToInventory: book quantity: 50.
+	
+	chartID := store newChartForClient: clientID.
+	
+	store put: book quantity: 10 on: chartID.
+	
+	self assert: 10 equals: ((store listCart: chartID) at: book).! !
+!StoreTest methodsFor: 'as yet unclassified' stamp: 'WAL 6/7/2023 02:08:17'!
+test02OpcionBStoreAddsRequestedBookQuantityToChartIfAvailableOnStock
+	
+	| book clientID chartID  store | 
+	
+	clientID := 57.
+	
+	book := '1234567890123'.
+	
+	store := Store new.
+	store addToInventory: book quantity: 50.
+	
+	chartID := store newChartForClient: clientID.
+	
+	store put: book quantity: 10 on: chartID.
+	
+	self assert: 10 equals: ((store listCart: chartID) at: book).! !
+
+!methodRemoval: StoreTest #test01OpcionBStoreAddsRequestedBookQuantityToChartIfAvailableOnStock stamp: 'WAL 6/7/2023 02:08:17'!
+test01OpcionBStoreAddsRequestedBookQuantityToChartIfAvailableOnStock
+	
+	| book clientID chartID  store | 
+	
+	clientID := 57.
+	
+	book := '1234567890123'.
+	
+	store := Store new.
+	store addToInventory: book quantity: 50.
+	
+	chartID := store newChartForClient: clientID.
+	
+	store put: book quantity: 10 on: chartID.
+	
+	self assert: 10 equals: ((store listCart: chartID) at: book).!
+!StoreTest methodsFor: 'as yet unclassified' stamp: 'WAL 6/7/2023 02:09:58' prior: 50631730!
+test01OpcionAStoreAddsRequestedBookQuantityToChartIfAvailableOnStock
+	
+	| book clientID chartID  store | 
+	
+	clientID := 57.
+	
+	book := '1234567890123'.
+	
+	store := Store new.
+	
+	chartID := store newChartForClient: clientID.
+	
+	self assert: 10 equals: ((store listCart: chartID) at: book).! !
+!StoreTest methodsFor: 'as yet unclassified' stamp: 'WAL 6/7/2023 02:10:44'!
+test01RegisteredClientCanCreateNewChart
+	
+	| book clientID chartID  store | 
+	
+	clientID := 57.
+	
+	book := '1234567890123'.
+	
+	store := Store new.
+	
+	chartID := store newChartForClient: clientID.
+	
+	self assert: 10 equals: ((store listCart: chartID) at: book).! !
+
+!methodRemoval: StoreTest #test01OpcionAStoreAddsRequestedBookQuantityToChartIfAvailableOnStock stamp: 'WAL 6/7/2023 02:10:44'!
+test01OpcionAStoreAddsRequestedBookQuantityToChartIfAvailableOnStock
+	
+	| book clientID chartID  store | 
+	
+	clientID := 57.
+	
+	book := '1234567890123'.
+	
+	store := Store new.
+	
+	chartID := store newChartForClient: clientID.
+	
+	self assert: 10 equals: ((store listCart: chartID) at: book).!
+!StoreTest methodsFor: 'as yet unclassified' stamp: 'WAL 6/7/2023 02:10:56'!
+test02StoreAddsRequestedBookQuantityToChartIfAvailableOnStock
+	
+	| book clientID chartID  store | 
+	
+	clientID := 57.
+	
+	book := '1234567890123'.
+	
+	store := Store new.
+	store addToInventory: book quantity: 50.
+	
+	chartID := store newChartForClient: clientID.
+	
+	store put: book quantity: 10 on: chartID.
+	
+	self assert: 10 equals: ((store listCart: chartID) at: book).! !
+
+!methodRemoval: StoreTest #test02OpcionBStoreAddsRequestedBookQuantityToChartIfAvailableOnStock stamp: 'WAL 6/7/2023 02:10:56'!
+test02OpcionBStoreAddsRequestedBookQuantityToChartIfAvailableOnStock
+	
+	| book clientID chartID  store | 
+	
+	clientID := 57.
+	
+	book := '1234567890123'.
+	
+	store := Store new.
+	store addToInventory: book quantity: 50.
+	
+	chartID := store newChartForClient: clientID.
+	
+	store put: book quantity: 10 on: chartID.
+	
+	self assert: 10 equals: ((store listCart: chartID) at: book).!
+!StoreTest methodsFor: 'as yet unclassified' stamp: 'WAL 6/7/2023 02:18:47' prior: 50631788!
+test01RegisteredClientCanCreateNewChart
+	
+	| book clientID chartID  store | 
+	
+	clientID := 57.
+	
+	store := Store new.
+	
+	chartID := store newChartForClient: clientID.
+	
+	self assert: 10 equals: ((store listCart: chartID) at: book).! !
+!StoreTest methodsFor: 'as yet unclassified' stamp: 'WAL 6/7/2023 02:20:42' prior: 50631843!
+test01RegisteredClientCanCreateNewChart
+	
+	| book clientID chartID  store | 
+	
+	clientID := 57.
+	
+	store := Store new.
+	
+	chartID := store newChartForClient: clientID.
+	
+	self ! !
+!StoreTest methodsFor: 'as yet unclassified' stamp: 'WAL 6/7/2023 02:20:55' prior: 50631854!
+test01RegisteredClientCanCreateNewChart
+	
+	| clientID chartID  store | 
+	
+	clientID := 57.
+	
+	store := Store new.
+	
+	chartID := store newChartForClient: clientID.
+	
+	self ! !
+!StoreTest methodsFor: 'as yet unclassified' stamp: 'WAL 6/7/2023 02:21:33'!
+test01UnegisteredClientCanCreateNewChart
+	
+	| clientID chartID  store | 
+	
+	clientID := 57.
+	
+	store := Store new.
+	
+	chartID := store newChartForClient: clientID.
+	
+	self ! !
+
+!methodRemoval: StoreTest #test01RegisteredClientCanCreateNewChart stamp: 'WAL 6/7/2023 02:21:33'!
+test01RegisteredClientCanCreateNewChart
+	
+	| clientID chartID  store | 
+	
+	clientID := 57.
+	
+	store := Store new.
+	
+	chartID := store newChartForClient: clientID.
+	
+	self !
+!StoreTest methodsFor: 'as yet unclassified' stamp: 'WAL 6/7/2023 02:21:41'!
+test01UnegisteredClientCanCreateNewCart
+	
+	| clientID chartID  store | 
+	
+	clientID := 57.
+	
+	store := Store new.
+	
+	chartID := store newChartForClient: clientID.
+	
+	self ! !
+
+!methodRemoval: StoreTest #test01UnegisteredClientCanCreateNewChart stamp: 'WAL 6/7/2023 02:21:41'!
+test01UnegisteredClientCanCreateNewChart
+	
+	| clientID chartID  store | 
+	
+	clientID := 57.
+	
+	store := Store new.
+	
+	chartID := store newChartForClient: clientID.
+	
+	self !
+!StoreTest methodsFor: 'as yet unclassified' stamp: 'WAL 6/7/2023 02:21:50'!
+test02StoreAddsRequestedBookQuantityToCartIfAvailableOnStock
+	
+	| book clientID chartID  store | 
+	
+	clientID := 57.
+	
+	book := '1234567890123'.
+	
+	store := Store new.
+	store addToInventory: book quantity: 50.
+	
+	chartID := store newChartForClient: clientID.
+	
+	store put: book quantity: 10 on: chartID.
+	
+	self assert: 10 equals: ((store listCart: chartID) at: book).! !
+
+!methodRemoval: StoreTest #test02StoreAddsRequestedBookQuantityToChartIfAvailableOnStock stamp: 'WAL 6/7/2023 02:21:50'!
+test02StoreAddsRequestedBookQuantityToChartIfAvailableOnStock
+	
+	| book clientID chartID  store | 
+	
+	clientID := 57.
+	
+	book := '1234567890123'.
+	
+	store := Store new.
+	store addToInventory: book quantity: 50.
+	
+	chartID := store newChartForClient: clientID.
+	
+	store put: book quantity: 10 on: chartID.
+	
+	self assert: 10 equals: ((store listCart: chartID) at: book).!
+!StoreTest methodsFor: 'as yet unclassified' stamp: 'WAL 6/7/2023 02:21:58' prior: 50631905!
+test02StoreAddsRequestedBookQuantityToCartIfAvailableOnStock
+	
+	| book clientID cartID  store | 
+	
+	clientID := 57.
+	
+	book := '1234567890123'.
+	
+	store := Store new.
+	store addToInventory: book quantity: 50.
+	
+	cartID := store newChartForClient: clientID.
+	
+	store put: book quantity: 10 on: cartID.
+	
+	self assert: 10 equals: ((store listCart: cartID) at: book).! !
+!StoreTest methodsFor: 'as yet unclassified' stamp: 'WAL 6/7/2023 02:22:14' prior: 50631888!
+test01UnegisteredClientCanCreateNewCart
+	
+	| clientID cartID  store | 
+	
+	clientID := 57.
+	
+	store := Store new.
+	
+	cartID := store newChartForClient: clientID.
+	
+	self ! !
+!StoreTest methodsFor: 'as yet unclassified' stamp: 'WAL 6/7/2023 02:23:20' prior: 50631950!
+test01UnegisteredClientCanCreateNewCart
+	
+	| clientID cartID  store | 
+	
+	clientID := 57.
+	
+	store := Store new.
+	
+	self
+		should: [ cartID := store newChartForClient: clientID. ]
+		raise: Error! !
+!StoreTest methodsFor: 'as yet unclassified' stamp: 'WAL 6/7/2023 02:24:57' prior: 50631959!
+test01UnegisteredClientCanCreateNewCart
+	
+	| clientID cartID  store | 
+	
+	clientID := 57.
+	
+	store := Store new.
+	
+	self
+		should: [ cartID := store newChartForClient: clientID. ]
+		raise: Error
+		withExceptionDo: [ :anError |
+			self assert: anError messageText equals: Store invalidClientIDErrorDescription ]! !
+!StoreTest methodsFor: 'as yet unclassified' stamp: 'WAL 6/7/2023 02:25:11' prior: 50631969!
+test01UnegisteredClientCanCreateNewCart
+	
+	| clientID cartID  store | 
+	
+	clientID := 57.
+	
+	store := Store new.
+	
+	self
+		should: [ cartID := store newChartForClient: clientID. ]
+		raise: Error
+		withExceptionDo: [ :anError |
+			self assert: anError messageText equals: Store invalidClientIDErrorDescription ]! !
+!StoreTest methodsFor: 'as yet unclassified' stamp: 'WAL 6/7/2023 02:25:17'!
+test01UnregisteredClientCanCreateNewCart
+	
+	| clientID cartID  store | 
+	
+	clientID := 57.
+	
+	store := Store new.
+	
+	self
+		should: [ cartID := store newChartForClient: clientID. ]
+		raise: Error
+		withExceptionDo: [ :anError |
+			self assert: anError messageText equals: Store invalidClientIDErrorDescription ]! !
+
+!methodRemoval: StoreTest #test01UnegisteredClientCanCreateNewCart stamp: 'WAL 6/7/2023 02:25:17'!
+test01UnegisteredClientCanCreateNewCart
+	
+	| clientID cartID  store | 
+	
+	clientID := 57.
+	
+	store := Store new.
+	
+	self
+		should: [ cartID := store newChartForClient: clientID. ]
+		raise: Error
+		withExceptionDo: [ :anError |
+			self assert: anError messageText equals: Store invalidClientIDErrorDescription ]!
+!StoreTest methodsFor: 'as yet unclassified' stamp: 'WAL 6/7/2023 02:25:28'!
+test01UnregisteredClientCanNotCreateNewCart
+	
+	| clientID cartID  store | 
+	
+	clientID := 57.
+	
+	store := Store new.
+	
+	self
+		should: [ cartID := store newChartForClient: clientID. ]
+		raise: Error
+		withExceptionDo: [ :anError |
+			self assert: anError messageText equals: Store invalidClientIDErrorDescription ]! !
+
+!methodRemoval: StoreTest #test01UnregisteredClientCanCreateNewCart stamp: 'WAL 6/7/2023 02:25:28'!
+test01UnregisteredClientCanCreateNewCart
+	
+	| clientID cartID  store | 
+	
+	clientID := 57.
+	
+	store := Store new.
+	
+	self
+		should: [ cartID := store newChartForClient: clientID. ]
+		raise: Error
+		withExceptionDo: [ :anError |
+			self assert: anError messageText equals: Store invalidClientIDErrorDescription ]!
+!StoreTest methodsFor: 'as yet unclassified' stamp: 'WAL 6/7/2023 02:27:22' prior: 50631935!
+test02StoreAddsRequestedBookQuantityToCartIfAvailableOnStock
+	
+	| book clientID cartID  store | 
+	
+	clientID := 57.
+	
+	book := '1234567890123'.
+	
+	store := Store new.
+	store addToInventory: book quantity: 50.
+	
+	cartID := store newChartForClient: clientID.
+	
+	store put: book quantity: 10 on: cartID.    "<-- esto es lo que queremos testear, pero nos implica implementar antes todos los métodos de arriba"
+	
+	self assert: 10 equals: ((store listCart: cartID) at: book).! !
+!StoreTest methodsFor: 'as yet unclassified' stamp: 'WAL 6/7/2023 02:28:18' prior: 50632047!
+test02StoreAddsRequestedBookQuantityToCartIfAvailableOnStock
+	
+	| book clientID cartID  store | 
+	
+	clientID := 57.
+	
+	book := '1234567890123'.
+	
+	store := Store new.
+	store addToInventory: book quantity: 50.
+	
+	cartID := store newChartForClient: clientID.
+	
+	store put: book quantity: 10 on: cartID.    "<< esto es lo que queremos testear, pero nos implica implementar antes todos los métodos de arriba"
+	
+	self assert: 10 equals: ((store listCart: cartID) at: book).! !
+
+----SNAPSHOT----(7 June 2023 02:39:10) CuisUniversity-5832.image priorSource: 9548189!
