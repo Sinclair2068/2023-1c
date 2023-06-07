@@ -5,192 +5,143 @@ TestCase subclass: #CartTest
 	poolDictionaries: ''
 	category: 'TusLibros'!
 
-!CartTest methodsFor: 'test' stamp: 'WAL 6/7/2023 01:59:17'!
+!CartTest methodsFor: 'test' stamp: 'WAL 6/7/2023 19:02:15'!
 test01NewCartIsEmpty
 	
 	self assert: Cart new isEmpty.! !
 
-!CartTest methodsFor: 'test' stamp: 'WAL 6/7/2023 01:59:24'!
-test02AQuantityOfABookCanBeAddedToCart
+!CartTest methodsFor: 'test' stamp: 'WAL 6/7/2023 19:13:19'!
+test02ABookCanBeAdded
 	
-	| chart book | 
-	
-	book := '1234567890123'.
-	
-	chart := Cart new.
-	chart add: book quantity: 10.
-	
-	self deny: chart isEmpty.
-	self assert: 10 equals: (chart quantityOf: book)
-	! !
-
-!CartTest methodsFor: 'test' stamp: 'WAL 6/7/2023 01:59:28'!
-test03QuantitiesOfASameBookCanBeAddedSequentiallyToCart
-	
-	| chart book | 
+	| cart book | 
 	
 	book := '1234567890123'.
 	
-	chart := Cart new.
-	chart add: book quantity: 10.
-	chart add: book quantity: 5.
+	cart := Cart new.
+	cart add: book.
 	
-	self deny: chart isEmpty.
-	self assert: 15 equals: (chart quantityOf: book)
-	! !
+	self deny: cart isEmpty.
+	self assert: cart includes: book! !
 
-
-!classDefinition: #InventoryTest category: 'TusLibros'!
-TestCase subclass: #InventoryTest
-	instanceVariableNames: ''
-	classVariableNames: ''
-	poolDictionaries: ''
-	category: 'TusLibros'!
-
-!InventoryTest methodsFor: 'test' stamp: 'WAL 6/7/2023 01:01:29'!
-test01NewInventoryIsEmpty
+!CartTest methodsFor: 'test' stamp: 'WAL 6/7/2023 19:30:15'!
+test03AnNotAvailableBookCanNotBeAdded
 	
-	self assert: Inventory new isEmpty.! !
-
-!InventoryTest methodsFor: 'test' stamp: 'WAL 6/7/2023 01:08:24'!
-test02AQuantityOfABookCanBeAddedToInventory
+	| cart book | 
 	
-	| inventory book | 
+	book := '0123123456789'.
 	
-	book := '1234567890123'.
-	
-	inventory := Inventory new.
-	inventory add: book quantity: 50.
-	
-	self deny: inventory isEmpty.
-	self assert: 50 equals: (inventory quantityOf: book)
-	! !
-
-!InventoryTest methodsFor: 'test' stamp: 'WAL 6/7/2023 01:14:11'!
-test03QuantitiesOfASameBookCanBeAddedSequentiallyToInventory
-	
-	| inventory book | 
-	
-	book := '1234567890123'.
-	
-	inventory := Inventory new.
-	inventory add: book quantity: 50.
-	inventory add: book quantity: 20.
-	
-	self deny: inventory isEmpty.
-	self assert: 70 equals: (inventory quantityOf: book)! !
-
-
-!classDefinition: #StoreTest category: 'TusLibros'!
-TestCase subclass: #StoreTest
-	instanceVariableNames: ''
-	classVariableNames: ''
-	poolDictionaries: ''
-	category: 'TusLibros'!
-
-!StoreTest methodsFor: 'as yet unclassified' stamp: 'WAL 6/7/2023 02:25:28'!
-test01UnregisteredClientCanNotCreateNewCart
-	
-	| clientID cartID  store | 
-	
-	clientID := 57.
-	
-	store := Store new.
+	cart := Cart new.
 	
 	self
-		should: [ cartID := store newChartForClient: clientID. ]
+		should: [ cart add: book. ]
 		raise: Error
-		withExceptionDo: [ :anError |
-			self assert: anError messageText equals: Store invalidClientIDErrorDescription ]! !
+		withExceptionDo: [ :anError | cart isEmpty ]! !
 
-!StoreTest methodsFor: 'as yet unclassified' stamp: 'WAL 6/7/2023 02:28:18'!
-test02StoreAddsRequestedBookQuantityToCartIfAvailableOnStock
+!CartTest methodsFor: 'test' stamp: 'WAL 6/7/2023 19:23:31'!
+test04AQuantityOfABookCanBeAdded
 	
-	| book clientID cartID  store | 
-	
-	clientID := 57.
+	| cart book | 
 	
 	book := '1234567890123'.
 	
-	store := Store new.
-	store addToInventory: book quantity: 50.
+	cart := Cart new.
+	cart add: book quantity: 10.
 	
-	cartID := store newChartForClient: clientID.
+	self deny: cart isEmpty.
+	self assert: 10 equals: (cart quantityOf: book)! !
+
+!CartTest methodsFor: 'test' stamp: 'WAL 6/7/2023 19:31:41'!
+test05ANotAvailableQuantityOfABookCanNotBeAdded
 	
-	store put: book quantity: 10 on: cartID.    "<< esto es lo que queremos testear, pero nos implica implementar antes todos los métodos de arriba"
+	| cart book | 
 	
-	self assert: 10 equals: ((store listCart: cartID) at: book).! !
+	book := '1234567890123'.
+	
+	cart := Cart new.
+	
+	self
+		should: [ cart add: book quantity: 50. ]
+		raise: Error
+		withExceptionDo: [ :anError | cart isEmpty ]! !
+
+!CartTest methodsFor: 'test' stamp: 'WAL 6/7/2023 19:41:40'!
+test06QuantitiesOfASameBookCanBeAddedSequentially
+	
+	| cart book | 
+	
+	book := '1234567890123'.
+	
+	cart := Cart new.
+	cart add: book quantity: 10.
+	cart add: book quantity: 5.
+	
+	self deny: cart isEmpty.
+	self assert: 15 equals: (cart quantityOf: book)! !
+
+!CartTest methodsFor: 'test' stamp: 'WAL 6/7/2023 19:51:58'!
+test07QuantitiesOfASameBookCanNotBeAddedSequentiallyIfNotAvailable
+	
+	| cart book | 
+	
+	book := '1234567890123'.
+	
+	cart := Cart new.
+	cart add: book quantity: 20.
+	
+	self
+		should: [ cart add: book quantity: 20. ]
+		raise: Error
+		withExceptionDo: [ : anError |
+			self assert: 20 equals: (cart quantityOf: book)
+		]! !
 
 
 !classDefinition: #Cart category: 'TusLibros'!
 Object subclass: #Cart
-	instanceVariableNames: 'books'
+	instanceVariableNames: 'contents inventory'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'TusLibros'!
 
-!Cart methodsFor: 'initialization' stamp: 'WAL 6/7/2023 00:19:52'!
-initialize
+!Cart methodsFor: 'accessing' stamp: 'WAL 6/7/2023 19:27:52'!
+add: aBook
+
+	self add: aBook quantity: 1! !
+
+!Cart methodsFor: 'accessing' stamp: 'WAL 6/7/2023 19:51:27'!
+add: aBook quantity: aQuantity
+
+	| availableQuantity totalRequestedQuantity |
 	
-	books := Dictionary new! !
+	availableQuantity := inventory at: aBook ifAbsent: [
+		self error: 'Book not available'
+	].
 
+	totalRequestedQuantity := aQuantity + (self quantityOf: aBook).
 
-!Cart methodsFor: 'accessing' stamp: 'WAL 6/7/2023 00:46:14'!
-add: aBookIdentifier quantity: aQuantity
+	(availableQuantity > totalRequestedQuantity) ifTrue: [
+		contents at: aBook put: totalRequestedQuantity
+	] ifFalse: [
+		self error: 'Book quantity not available'
+	]! !
 
-	books at: aBookIdentifier
-		ifPresent: [
-			: previousQuantity | books at: aBookIdentifier put: previousQuantity + aQuantity ]
-		ifAbsent: [
-			books at: aBookIdentifier put: aQuantity ]! !
+!Cart methodsFor: 'accessing' stamp: 'WAL 6/7/2023 19:28:48'!
+includes: aBook
 
-!Cart methodsFor: 'accessing' stamp: 'WAL 6/6/2023 22:16:19'!
-isEmpty
+	^contents keys includes: aBook! !
 
-	^books isEmpty! !
+!Cart methodsFor: 'accessing' stamp: 'WAL 6/7/2023 19:40:15'!
+initialize
 
-!Cart methodsFor: 'accessing' stamp: 'WAL 6/7/2023 00:27:53'!
-quantityOf: aBookIdentifier
+	inventory := Dictionary newFromPairs: {'1234567890123' . 30}.
+	contents := Dictionary new.! !
 
-	^books at: aBookIdentifier! !
-
-
-!classDefinition: #Inventory category: 'TusLibros'!
-Object subclass: #Inventory
-	instanceVariableNames: 'contents'
-	classVariableNames: ''
-	poolDictionaries: ''
-	category: 'TusLibros'!
-
-!Inventory methodsFor: 'accessing' stamp: 'WAL 6/7/2023 01:07:35'!
+!Cart methodsFor: 'accessing' stamp: 'WAL 6/7/2023 19:09:41'!
 isEmpty
 
 	^contents isEmpty! !
 
-!Inventory methodsFor: 'accessing' stamp: 'WAL 6/7/2023 01:09:38'!
-quantityOf: aBookIdentifier
+!Cart methodsFor: 'accessing' stamp: 'WAL 6/7/2023 19:44:04'!
+quantityOf: aBook
 
-	^contents at: aBookIdentifier! !
-
-
-!Inventory methodsFor: 'as yet unclassified' stamp: 'WAL 6/7/2023 01:07:03'!
-add: aBookIdentifier quantity: aQuantity
-
-	contents at: aBookIdentifier
-		ifPresent: [
-			: previousQuantity | contents at: aBookIdentifier put: previousQuantity + aQuantity ]
-		ifAbsent: [
-			contents at: aBookIdentifier put: aQuantity ]! !
-
-!Inventory methodsFor: 'as yet unclassified' stamp: 'WAL 6/7/2023 01:02:47'!
-initialize
-	
-	contents := Dictionary new! !
-
-
-!classDefinition: #Store category: 'TusLibros'!
-Object subclass: #Store
-	instanceVariableNames: 'inventory charts'
-	classVariableNames: ''
-	poolDictionaries: ''
-	category: 'TusLibros'!
+	^contents at: aBook ifAbsent: 0! !
