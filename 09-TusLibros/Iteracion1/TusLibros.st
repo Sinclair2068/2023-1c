@@ -95,6 +95,36 @@ test07QuantitiesOfASameBookCanNotBeAddedSequentiallyIfNotAvailable
 			self assert: 20 equals: (cart quantityOf: book)
 		]! !
 
+!CartTest methodsFor: 'test' stamp: 'AS 6/8/2023 15:21:43'!
+test08CannotAddZeroQuantity
+	
+	| cart book | 
+	
+	book := '1234567890123'.
+	cart := Cart new.
+	
+	self
+		should: [ cart add: book quantity: 0. ]
+		raise: Error
+		withExceptionDo: [ : anError |
+			self assert: cart isEmpty.
+		]! !
+
+!CartTest methodsFor: 'test' stamp: 'AS 6/8/2023 15:21:50'!
+test09CannotAddNegativeQuantity
+	
+	| cart book | 
+	
+	book := '1234567890123'.
+	cart := Cart new.
+	
+	self
+		should: [ cart add: book quantity: -1. ]
+		raise: Error
+		withExceptionDo: [ : anError |
+			self assert: cart isEmpty.
+		]! !
+
 
 !classDefinition: #Cart category: 'TusLibros'!
 Object subclass: #Cart
@@ -108,10 +138,12 @@ add: aBook
 
 	self add: aBook quantity: 1! !
 
-!Cart methodsFor: 'accessing' stamp: 'WAL 6/7/2023 19:51:27'!
+!Cart methodsFor: 'accessing' stamp: 'AS 6/8/2023 15:21:06'!
 add: aBook quantity: aQuantity
 
 	| availableQuantity totalRequestedQuantity |
+	
+	(aQuantity <= 0) ifTrue: [self error: 'Book quantity must have above zero'. ].
 	
 	availableQuantity := inventory at: aBook ifAbsent: [
 		self error: 'Book not available'
