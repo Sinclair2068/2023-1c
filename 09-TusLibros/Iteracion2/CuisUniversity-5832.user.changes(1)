@@ -1,0 +1,965 @@
+
+
+----QUIT----(30 May 2023 00:05:32) CuisUniversity-5832.image priorSource: 4928100!
+
+----STARTUP---- (30 May 2023 00:05:33) as /Users/hernan/Documents/Cuis/5.0-64Bits/Cuis-University-Installer/CuisUniversity-5832.image!
+
+
+----QUIT----(30 May 2023 00:05:33) CuisUniversity-5832.image priorSource: 9366537!
+
+----STARTUP---- (8 June 2023 19:47:22) as /home/clinux01/Descargas/linux64(2)/linux64/CuisUniversity-5832.image!
+
+
+----End fileIn of /home/clinux01/Descargas/linux64(2)/linux64/TusLibros-18.st----!
+
+!testRun: #CartTest #test01NewCartsAreCreatedEmpty stamp: 'WAL 6/8/2023 19:48:13'!
+PASSED!
+
+!testRun: #CartTest #test02CanNotAddItemsThatDoNotBelongToStore stamp: 'WAL 6/8/2023 19:48:13'!
+PASSED!
+
+!testRun: #CartTest #test03AfterAddingAnItemTheCartIsNotEmptyAnymore stamp: 'WAL 6/8/2023 19:48:13'!
+PASSED!
+
+!testRun: #CartTest #test04CanNotAddNonPositiveNumberOfItems stamp: 'WAL 6/8/2023 19:48:13'!
+PASSED!
+
+!testRun: #CartTest #test05CanNotAddMoreThanOneItemNotSellByTheStore stamp: 'WAL 6/8/2023 19:48:13'!
+PASSED!
+
+!testRun: #CartTest #test06CartRemembersAddedItems stamp: 'WAL 6/8/2023 19:48:13'!
+PASSED!
+
+!testRun: #CartTest #test07CartDoesNotHoldNotAddedItems stamp: 'WAL 6/8/2023 19:48:13'!
+PASSED!
+
+!testRun: #CartTest #test08CartRemembersTheNumberOfAddedItems stamp: 'WAL 6/8/2023 19:48:13'!
+PASSED!
+
+TestCase subclass: #CashierTest
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros'!
+
+!classDefinition: #CashierTest category: 'TusLibros' stamp: 'WAL 6/8/2023 19:49:39'!
+TestCase subclass: #CashierTest
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros'!
+!CashierTest methodsFor: 'no messages' stamp: 'WAL 6/8/2023 19:51:20'!
+test01EmptyCartCanNotBeCharged
+! !
+!CashierTest methodsFor: 'as yet unclassified' stamp: 'WAL 6/8/2023 19:52:11' prior: 50624589!
+test01EmptyCartCanNotBeCharged
+
+	self createCart! !
+
+Object subclass: #TestSupport
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros'!
+
+!classDefinition: #TestSupport category: 'TusLibros' stamp: 'WAL 6/8/2023 19:52:40'!
+Object subclass: #TestSupport
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros'!
+!TestSupport methodsFor: 'no messages' stamp: 'WAL 6/8/2023 19:54:02'!
+createCart
+	
+	^Cart acceptingItemsOf: self defaultCatalog! !
+!TestSupport methodsFor: 'as yet unclassified' stamp: 'WAL 6/8/2023 19:54:13'!
+defaultCatalog
+	
+	^ Array with: self itemSellByTheStore! !
+!TestSupport methodsFor: 'as yet unclassified' stamp: 'WAL 6/8/2023 19:54:21'!
+itemNotSellByTheStore
+	
+	^'invalidBook'! !
+
+!methodRemoval: CartTest #createCart stamp: 'WAL 6/8/2023 19:54:28'!
+createCart
+	
+	^Cart acceptingItemsOf: self defaultCatalog!
+
+!methodRemoval: CartTest #defaultCatalog stamp: 'WAL 6/8/2023 19:54:31'!
+defaultCatalog
+	
+	^ Array with: self itemSellByTheStore!
+
+!methodRemoval: CartTest #itemNotSellByTheStore stamp: 'WAL 6/8/2023 19:54:33'!
+itemNotSellByTheStore
+	
+	^'invalidBook'!
+!TestSupport methodsFor: 'as yet unclassified' stamp: 'WAL 6/8/2023 19:54:44'!
+itemSellByTheStore
+	
+	^ 'validBook'! !
+
+!methodRemoval: CartTest #itemSellByTheStore stamp: 'WAL 6/8/2023 19:54:50'!
+itemSellByTheStore
+	
+	^ 'validBook'!
+!CartTest methodsFor: 'tests' stamp: 'WAL 6/8/2023 19:55:01'!
+setup! !
+
+!classDefinition: #CartTest category: 'TusLibros' stamp: 'WAL 6/8/2023 19:55:25'!
+TestCase subclass: #CartTest
+	instanceVariableNames: 'testSupport'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros'!
+!CartTest methodsFor: 'tests' stamp: 'WAL 6/8/2023 19:55:23' prior: 50624642!
+setup
+
+	testSupport :=TestSupport new! !
+
+!classDefinition: #CashierTest category: 'TusLibros' stamp: 'WAL 6/8/2023 19:55:50'!
+TestCase subclass: #CashierTest
+	instanceVariableNames: 'testSupport'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros'!
+!CashierTest methodsFor: 'as yet unclassified' stamp: 'WAL 6/8/2023 19:55:48'!
+setup
+
+	testSupport :=TestSupport new! !
+!CartTest methodsFor: 'tests' stamp: 'WAL 6/8/2023 19:56:12' prior: 50624491!
+test01NewCartsAreCreatedEmpty
+
+	self assert: testSupport createCart isEmpty! !
+!CartTest methodsFor: 'tests' stamp: 'WAL 6/8/2023 19:56:16' prior: 50624469!
+test02CanNotAddItemsThatDoNotBelongToStore
+
+	| cart |
+	
+	cart := testSupport createCart.
+	
+	self 
+		should: [ cart add: testSupport itemNotSellByTheStore ]
+		raise: Error - MessageNotUnderstood
+		withExceptionDo: [ :anError |
+			self assert: anError messageText = cart invalidItemErrorMessage.
+			self assert: cart isEmpty ]! !
+!CartTest methodsFor: 'tests' stamp: 'WAL 6/8/2023 19:56:20' prior: 50624496!
+test03AfterAddingAnItemTheCartIsNotEmptyAnymore
+
+	| cart |
+	
+	cart := testSupport createCart.
+	
+	cart add: testSupport itemSellByTheStore.
+	self deny: cart isEmpty ! !
+!CartTest methodsFor: 'tests' stamp: 'WAL 6/8/2023 19:56:24' prior: 50624456!
+test04CanNotAddNonPositiveNumberOfItems
+
+	| cart |
+	
+	cart := testSupport createCart.
+	
+	self 
+		should: [cart add: 0 of: testSupport itemSellByTheStore ]
+		raise: Error - MessageNotUnderstood
+		withExceptionDo: [ :anError |
+			self assert: anError messageText = cart invalidQuantityErrorMessage.
+			self assert: cart isEmpty ]! !
+!CartTest methodsFor: 'tests' stamp: 'WAL 6/8/2023 19:56:35' prior: 50624511!
+test05CanNotAddMoreThanOneItemNotSellByTheStore
+
+	| cart |
+	
+	cart := testSupport createCart.
+	
+	self 
+		should: [cart add: 2 of: testSupport itemNotSellByTheStore  ]
+		raise: Error - MessageNotUnderstood
+		withExceptionDo: [ :anError |
+			self assert: anError messageText = cart invalidItemErrorMessage.
+			self assert: cart isEmpty ]! !
+!CartTest methodsFor: 'tests' stamp: 'WAL 6/8/2023 19:56:41' prior: 50624524!
+test06CartRemembersAddedItems
+
+	| cart |
+	
+	cart := testSupport createCart.
+	
+	cart add: testSupport itemSellByTheStore.
+	self assert: (cart includes: testSupport itemSellByTheStore)! !
+!CartTest methodsFor: 'tests' stamp: 'WAL 6/8/2023 19:56:45' prior: 50624504!
+test07CartDoesNotHoldNotAddedItems
+
+	| cart |
+	
+	cart := testSupport createCart.
+	
+	self deny: (cart includes: testSupport itemSellByTheStore)! !
+!CartTest methodsFor: 'tests' stamp: 'WAL 6/8/2023 19:56:50' prior: 50624482!
+test08CartRemembersTheNumberOfAddedItems
+
+	| cart |
+	
+	cart := testSupport createCart.
+	
+	cart add: 2 of: testSupport itemSellByTheStore.
+	self assert: (cart occurrencesOf: testSupport itemSellByTheStore) = 2! !
+
+!testRun: #CartTest #test08CartRemembersTheNumberOfAddedItems stamp: 'WAL 6/8/2023 19:56:51'!
+ERROR!
+!CartTest methodsFor: 'tests' stamp: 'WAL 6/8/2023 19:57:29' overrides: 16961394!
+setUp
+
+	testSupport :=TestSupport new! !
+
+!methodRemoval: CartTest #setup stamp: 'WAL 6/8/2023 19:57:29'!
+setup
+
+	testSupport :=TestSupport new!
+
+!testRun: #CartTest #test01NewCartsAreCreatedEmpty stamp: 'WAL 6/8/2023 19:57:32'!
+PASSED!
+
+!testRun: #CartTest #test02CanNotAddItemsThatDoNotBelongToStore stamp: 'WAL 6/8/2023 19:57:32'!
+PASSED!
+
+!testRun: #CartTest #test03AfterAddingAnItemTheCartIsNotEmptyAnymore stamp: 'WAL 6/8/2023 19:57:32'!
+PASSED!
+
+!testRun: #CartTest #test04CanNotAddNonPositiveNumberOfItems stamp: 'WAL 6/8/2023 19:57:32'!
+PASSED!
+
+!testRun: #CartTest #test05CanNotAddMoreThanOneItemNotSellByTheStore stamp: 'WAL 6/8/2023 19:57:32'!
+PASSED!
+
+!testRun: #CartTest #test06CartRemembersAddedItems stamp: 'WAL 6/8/2023 19:57:32'!
+PASSED!
+
+!testRun: #CartTest #test07CartDoesNotHoldNotAddedItems stamp: 'WAL 6/8/2023 19:57:32'!
+PASSED!
+
+!testRun: #CartTest #test08CartRemembersTheNumberOfAddedItems stamp: 'WAL 6/8/2023 19:57:32'!
+PASSED!
+!CashierTest methodsFor: 'tests' stamp: 'WAL 6/8/2023 19:58:35' prior: 50624594!
+test01EmptyCartCanNotBeCharged
+
+	testSupport createCart! !
+
+!classDefinition: #CashierTest category: 'TusLibros' stamp: 'WAL 6/8/2023 19:58:53'!
+TestCase subclass: #CashierTest
+	instanceVariableNames: 'testSupport cart'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros'!
+!CashierTest methodsFor: 'tests' stamp: 'WAL 6/8/2023 19:58:51' prior: 50624782!
+test01EmptyCartCanNotBeCharged
+
+	cart := testSupport createCart! !
+
+!classDefinition: #Cashier category: 'TusLibros' stamp: 'WAL 6/8/2023 20:00:15'!
+Object subclass: #Cashier
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros'!
+!CashierTest methodsFor: 'tests' stamp: 'WAL 6/8/2023 20:00:01' prior: 50624794!
+test01EmptyCartCanNotBeCharged
+
+	| cashier |
+	cart := testSupport createCart.
+	
+	cashier := Cashier new.
+	
+	
+	! !
+!CashierTest methodsFor: 'tests' stamp: 'WAL 6/8/2023 20:00:41' prior: 50624806!
+test01EmptyCartCanNotBeCharged
+
+	| cashier |
+	cart := testSupport createCart.
+	
+	cashier := Cashier new.
+	
+	cashier checkOut: cart
+	! !
+!CashierTest methodsFor: 'tests' stamp: 'WAL 6/8/2023 20:02:42' prior: 50624813!
+test01EmptyCartCanNotBeCharged
+
+	| cashier |
+	cart := testSupport createCart.
+	
+	cashier := Cashier new.
+	
+	self
+		should: [cashier checkOut: cart ]
+		raise: Error
+		withExceptionDo: [ : anError | 
+			self assert: Cashier emptyCartCanNotBeChargedErrorDescription equals: anError description ]
+	! !
+
+!testRun: #CashierTest #test01EmptyCartCanNotBeCharged stamp: 'WAL 6/8/2023 20:02:45'!
+ERROR!
+
+!testRun: #CashierTest #test01EmptyCartCanNotBeCharged stamp: 'WAL 6/8/2023 20:03:07'!
+ERROR!
+
+!testRun: #CartTest #test01NewCartsAreCreatedEmpty stamp: 'WAL 6/8/2023 20:03:25'!
+PASSED!
+
+!testRun: #CartTest #test02CanNotAddItemsThatDoNotBelongToStore stamp: 'WAL 6/8/2023 20:03:25'!
+PASSED!
+
+!testRun: #CartTest #test03AfterAddingAnItemTheCartIsNotEmptyAnymore stamp: 'WAL 6/8/2023 20:03:25'!
+PASSED!
+
+!testRun: #CartTest #test04CanNotAddNonPositiveNumberOfItems stamp: 'WAL 6/8/2023 20:03:25'!
+PASSED!
+
+!testRun: #CartTest #test05CanNotAddMoreThanOneItemNotSellByTheStore stamp: 'WAL 6/8/2023 20:03:25'!
+PASSED!
+
+!testRun: #CartTest #test06CartRemembersAddedItems stamp: 'WAL 6/8/2023 20:03:25'!
+PASSED!
+
+!testRun: #CartTest #test07CartDoesNotHoldNotAddedItems stamp: 'WAL 6/8/2023 20:03:25'!
+PASSED!
+
+!testRun: #CartTest #test08CartRemembersTheNumberOfAddedItems stamp: 'WAL 6/8/2023 20:03:25'!
+PASSED!
+!CashierTest methodsFor: 'setUp/tearDown' stamp: 'WAL 6/8/2023 20:03:37' overrides: 16961394!
+setUp
+
+	testSupport :=TestSupport new! !
+
+!methodRemoval: CashierTest #setup stamp: 'WAL 6/8/2023 20:03:37'!
+setup
+
+	testSupport :=TestSupport new!
+
+!testRun: #CashierTest #test01EmptyCartCanNotBeCharged stamp: 'WAL 6/8/2023 20:03:40'!
+ERROR!
+
+!testRun: #CashierTest #test01EmptyCartCanNotBeCharged stamp: 'WAL 6/8/2023 20:03:40'!
+ERROR!
+!CashierTest methodsFor: 'tests' stamp: 'WAL 6/8/2023 20:04:14' prior: 50624820!
+test01EmptyCartCanNotBeCharged
+
+	| cashier |
+	cart := testSupport createCart.
+	
+	cashier := Cashier new.
+	
+	self
+		should: [ cashier checkOut: cart ]
+		raise: Error
+		withExceptionDo: [ : anError | 
+			self assert: Cashier emptyCartCanNotBeChargedErrorDescription equals: anError description ]
+	! !
+!Cashier class methodsFor: 'no messages' stamp: 'WAL 6/8/2023 20:04:44'!
+emptyCartCanNotBeChargedErrorDescription
+
+	^'Empty cart can not be charged'! !
+
+!testRun: #CashierTest #test01EmptyCartCanNotBeCharged stamp: 'WAL 6/8/2023 20:04:49'!
+FAILURE!
+
+!testRun: #CashierTest #test01EmptyCartCanNotBeCharged stamp: 'WAL 6/8/2023 20:04:49'!
+FAILURE!
+!Cashier methodsFor: 'no messages' stamp: 'WAL 6/8/2023 20:06:20'!
+checkOut: aCart
+
+	aCart isEmpty ifTrue: [ self error: Cashier emptyCartCanNotBeChargedErrorDescription ]! !
+
+!testRun: #CashierTest #test01EmptyCartCanNotBeCharged stamp: 'WAL 6/8/2023 20:06:24'!
+FAILURE!
+
+!testRun: #CashierTest #test01EmptyCartCanNotBeCharged stamp: 'WAL 6/8/2023 20:06:24'!
+FAILURE!
+
+!testRun: #CashierTest #test01EmptyCartCanNotBeCharged stamp: 'WAL 6/8/2023 20:06:54'!
+FAILURE!
+
+!testRun: #CashierTest #test01EmptyCartCanNotBeCharged stamp: 'WAL 6/8/2023 20:06:54'!
+FAILURE!
+
+!testRun: #CartTest #test01NewCartsAreCreatedEmpty stamp: 'WAL 6/8/2023 20:07:58'!
+PASSED!
+
+!testRun: #CartTest #test02CanNotAddItemsThatDoNotBelongToStore stamp: 'WAL 6/8/2023 20:07:58'!
+PASSED!
+
+!testRun: #CartTest #test03AfterAddingAnItemTheCartIsNotEmptyAnymore stamp: 'WAL 6/8/2023 20:07:58'!
+PASSED!
+
+!testRun: #CartTest #test04CanNotAddNonPositiveNumberOfItems stamp: 'WAL 6/8/2023 20:07:58'!
+PASSED!
+
+!testRun: #CartTest #test05CanNotAddMoreThanOneItemNotSellByTheStore stamp: 'WAL 6/8/2023 20:07:58'!
+PASSED!
+
+!testRun: #CartTest #test06CartRemembersAddedItems stamp: 'WAL 6/8/2023 20:07:58'!
+PASSED!
+
+!testRun: #CartTest #test07CartDoesNotHoldNotAddedItems stamp: 'WAL 6/8/2023 20:07:58'!
+PASSED!
+
+!testRun: #CartTest #test08CartRemembersTheNumberOfAddedItems stamp: 'WAL 6/8/2023 20:07:58'!
+PASSED!
+
+!testRun: #CashierTest #test01EmptyCartCanNotBeCharged stamp: 'WAL 6/8/2023 20:07:58'!
+FAILURE!
+
+!testRun: #CashierTest #test01EmptyCartCanNotBeCharged stamp: 'WAL 6/8/2023 20:07:58'!
+FAILURE!
+!CashierTest methodsFor: 'tests' stamp: 'WAL 6/8/2023 20:08:34' prior: 50624878!
+test01EmptyCartCanNotBeCharged
+
+	| cashier |
+	cart := testSupport createCart.
+	
+	cashier := Cashier new.
+	
+	self
+		should: [ cashier checkOut: cart ]
+		raise: Error
+		withExceptionDo: [ : anError | 
+			self assert: Cashier emptyCartCanNotBeChargedErrorDescription equals: anError messageText ]
+	! !
+
+!testRun: #CashierTest #test01EmptyCartCanNotBeCharged stamp: 'WAL 6/8/2023 20:08:35'!
+PASSED!
+
+!testRun: #CashierTest #test01EmptyCartCanNotBeCharged stamp: 'WAL 6/8/2023 20:08:35'!
+PASSED!
+!TestSupport methodsFor: 'as yet unclassified' stamp: 'WAL 6/8/2023 20:10:55' prior: 50624614!
+defaultCatalog
+	
+	^Dictionary new at: self itemSellByTheStore! !
+!TestSupport methodsFor: 'as yet unclassified' stamp: 'WAL 6/8/2023 20:12:04' prior: 50624970!
+defaultCatalog
+	
+	^Dictionary atFromPair: self itemSellByTheStore! !
+!TestSupport methodsFor: 'as yet unclassified' stamp: 'WAL 6/8/2023 20:13:16' prior: 50624975!
+defaultCatalog
+	
+	^Dictionary newFromPairs: self itemSellByTheStore ! !
+!TestSupport methodsFor: 'as yet unclassified' stamp: 'WAL 6/8/2023 20:14:03' prior: 50624635!
+itemSellByTheStore
+	
+	^ { 'validBook' . 150 }! !
+
+!testRun: #CartTest #test01NewCartsAreCreatedEmpty stamp: 'WAL 6/8/2023 20:14:38'!
+PASSED!
+
+!testRun: #CartTest #test02CanNotAddItemsThatDoNotBelongToStore stamp: 'WAL 6/8/2023 20:14:38'!
+PASSED!
+
+!testRun: #CartTest #test03AfterAddingAnItemTheCartIsNotEmptyAnymore stamp: 'WAL 6/8/2023 20:14:38'!
+ERROR!
+
+!testRun: #CartTest #test04CanNotAddNonPositiveNumberOfItems stamp: 'WAL 6/8/2023 20:14:38'!
+PASSED!
+
+!testRun: #CartTest #test05CanNotAddMoreThanOneItemNotSellByTheStore stamp: 'WAL 6/8/2023 20:14:38'!
+PASSED!
+
+!testRun: #CartTest #test06CartRemembersAddedItems stamp: 'WAL 6/8/2023 20:14:38'!
+ERROR!
+
+!testRun: #CartTest #test07CartDoesNotHoldNotAddedItems stamp: 'WAL 6/8/2023 20:14:38'!
+PASSED!
+
+!testRun: #CartTest #test08CartRemembersTheNumberOfAddedItems stamp: 'WAL 6/8/2023 20:14:38'!
+ERROR!
+
+!testRun: #CartTest #test01NewCartsAreCreatedEmpty stamp: 'WAL 6/8/2023 20:15:50'!
+PASSED!
+
+!testRun: #CartTest #test02CanNotAddItemsThatDoNotBelongToStore stamp: 'WAL 6/8/2023 20:15:50'!
+PASSED!
+
+!testRun: #CartTest #test03AfterAddingAnItemTheCartIsNotEmptyAnymore stamp: 'WAL 6/8/2023 20:15:50'!
+ERROR!
+
+!testRun: #CartTest #test04CanNotAddNonPositiveNumberOfItems stamp: 'WAL 6/8/2023 20:15:50'!
+PASSED!
+
+!testRun: #CartTest #test05CanNotAddMoreThanOneItemNotSellByTheStore stamp: 'WAL 6/8/2023 20:15:50'!
+PASSED!
+
+!testRun: #CartTest #test06CartRemembersAddedItems stamp: 'WAL 6/8/2023 20:15:50'!
+ERROR!
+
+!testRun: #CartTest #test07CartDoesNotHoldNotAddedItems stamp: 'WAL 6/8/2023 20:15:50'!
+PASSED!
+
+!testRun: #CartTest #test08CartRemembersTheNumberOfAddedItems stamp: 'WAL 6/8/2023 20:15:50'!
+ERROR!
+
+!testRun: #CartTest #test03AfterAddingAnItemTheCartIsNotEmptyAnymore stamp: 'WAL 6/8/2023 20:15:51'!
+ERROR!
+!TestSupport methodsFor: 'as yet unclassified' stamp: 'WAL 6/8/2023 20:17:30' prior: 50624987!
+itemSellByTheStore
+	
+	^ 'validBook' ! !
+!TestSupport methodsFor: 'as yet unclassified' stamp: 'WAL 6/8/2023 20:17:41' prior: 50624981!
+defaultCatalog
+	
+	^Dictionary newFromPairs: { self itemSellByTheStore . 150 }! !
+
+!testRun: #CartTest #test01NewCartsAreCreatedEmpty stamp: 'WAL 6/8/2023 20:17:44'!
+PASSED!
+
+!testRun: #CartTest #test02CanNotAddItemsThatDoNotBelongToStore stamp: 'WAL 6/8/2023 20:17:44'!
+PASSED!
+
+!testRun: #CartTest #test03AfterAddingAnItemTheCartIsNotEmptyAnymore stamp: 'WAL 6/8/2023 20:17:44'!
+ERROR!
+
+!testRun: #CartTest #test04CanNotAddNonPositiveNumberOfItems stamp: 'WAL 6/8/2023 20:17:44'!
+PASSED!
+
+!testRun: #CartTest #test05CanNotAddMoreThanOneItemNotSellByTheStore stamp: 'WAL 6/8/2023 20:17:44'!
+PASSED!
+
+!testRun: #CartTest #test06CartRemembersAddedItems stamp: 'WAL 6/8/2023 20:17:44'!
+ERROR!
+
+!testRun: #CartTest #test07CartDoesNotHoldNotAddedItems stamp: 'WAL 6/8/2023 20:17:44'!
+PASSED!
+
+!testRun: #CartTest #test08CartRemembersTheNumberOfAddedItems stamp: 'WAL 6/8/2023 20:17:44'!
+ERROR!
+
+!testRun: #CartTest #test03AfterAddingAnItemTheCartIsNotEmptyAnymore stamp: 'WAL 6/8/2023 20:17:46'!
+ERROR!
+
+!testRun: #CartTest #test01NewCartsAreCreatedEmpty stamp: 'WAL 6/8/2023 20:19:03'!
+PASSED!
+
+!testRun: #CartTest #test02CanNotAddItemsThatDoNotBelongToStore stamp: 'WAL 6/8/2023 20:19:03'!
+PASSED!
+
+!testRun: #CartTest #test03AfterAddingAnItemTheCartIsNotEmptyAnymore stamp: 'WAL 6/8/2023 20:19:03'!
+ERROR!
+
+!testRun: #CartTest #test04CanNotAddNonPositiveNumberOfItems stamp: 'WAL 6/8/2023 20:19:03'!
+PASSED!
+
+!testRun: #CartTest #test05CanNotAddMoreThanOneItemNotSellByTheStore stamp: 'WAL 6/8/2023 20:19:03'!
+PASSED!
+
+!testRun: #CartTest #test06CartRemembersAddedItems stamp: 'WAL 6/8/2023 20:19:03'!
+ERROR!
+
+!testRun: #CartTest #test07CartDoesNotHoldNotAddedItems stamp: 'WAL 6/8/2023 20:19:03'!
+PASSED!
+
+!testRun: #CartTest #test08CartRemembersTheNumberOfAddedItems stamp: 'WAL 6/8/2023 20:19:03'!
+ERROR!
+
+!testRun: #CartTest #test03AfterAddingAnItemTheCartIsNotEmptyAnymore stamp: 'WAL 6/8/2023 20:19:04'!
+ERROR!
+!Cart methodsFor: 'assertions' stamp: 'WAL 6/8/2023 20:19:24' prior: 50624389!
+assertIsValidItem: anItem
+
+	(catalog keys includes: anItem) ifFalse: [ self error: self invalidItemErrorMessage ]! !
+
+!testRun: #CartTest #test03AfterAddingAnItemTheCartIsNotEmptyAnymore stamp: 'WAL 6/8/2023 20:19:27'!
+PASSED!
+
+!testRun: #CartTest #test06CartRemembersAddedItems stamp: 'WAL 6/8/2023 20:19:29'!
+PASSED!
+
+!testRun: #CartTest #test08CartRemembersTheNumberOfAddedItems stamp: 'WAL 6/8/2023 20:19:29'!
+PASSED!
+
+!testRun: #CashierTest #test01EmptyCartCanNotBeCharged stamp: 'WAL 6/8/2023 20:19:35'!
+PASSED!
+!CashierTest methodsFor: 'tests' stamp: 'WAL 6/8/2023 20:23:02'!
+test02CartWithOneItemBillsItemPrice
+
+	| cashier bill |
+	cart := testSupport createCart.
+	cart add: testSupport itemSellByTheStore.
+	
+	cashier := Cashier new.
+	
+	bill := cashier checkOut: cart 
+	
+	
+	! !
+!CashierTest methodsFor: 'tests' stamp: 'WAL 6/8/2023 20:23:45' prior: 50625133!
+test02CartWithOneItemBillsItemPrice
+
+	| cashier bill |
+	cart := testSupport createCart.
+	cart add: testSupport itemSellByTheStore.
+	
+	cashier := Cashier new.
+	
+	bill := cashier checkOut: cart .
+	
+	self assert: 150 equals: bill.
+	! !
+!TestSupport methodsFor: 'as yet unclassified' stamp: 'WAL 6/8/2023 20:24:00'!
+itemSellByTheStorePrice
+	
+	^ 150! !
+!CashierTest methodsFor: 'tests' stamp: 'WAL 6/8/2023 20:24:21' prior: 50625142!
+test02CartWithOneItemBillsItemPrice
+
+	| cashier bill |
+	cart := testSupport createCart.
+	cart add: testSupport itemSellByTheStore.
+	
+	cashier := Cashier new.
+	
+	bill := cashier checkOut: cart .
+	
+	self assert: testSupport itemSellByTheStorePrice equals: bill.
+	! !
+
+!testRun: #CashierTest #test02CartWithOneItemBillsItemPrice stamp: 'WAL 6/8/2023 20:24:34'!
+FAILURE!
+
+!testRun: #CashierTest #test02CartWithOneItemBillsItemPrice stamp: 'WAL 6/8/2023 20:24:41'!
+FAILURE!
+!Cashier methodsFor: 'as yet unclassified' stamp: 'WAL 6/8/2023 20:25:09' prior: 50624901!
+checkOut: aCart
+
+	aCart isEmpty ifTrue: [ self error: Cashier emptyCartCanNotBeChargedErrorDescription ]
+	
+	^ aCart ! !
+!Cart methodsFor: 'testing' stamp: 'WAL 6/8/2023 20:26:25'!
+list
+
+	^items copy! !
+!Cashier methodsFor: 'as yet unclassified' stamp: 'WAL 6/8/2023 21:16:49' prior: 50625174!
+checkOut: aCart
+
+	aCart isEmpty ifTrue: [ self error: Cashier emptyCartCanNotBeChargedErrorDescription ]
+	
+	^ aCart total! !
+!Cashier methodsFor: 'as yet unclassified' stamp: 'WAL 6/8/2023 21:16:56' prior: 50625184!
+checkOut: aCart
+
+	aCart isEmpty ifTrue: [ self error: Cashier emptyCartCanNotBeChargedErrorDescription ].
+	
+	^ aCart total! !
+
+!testRun: #CashierTest #test01EmptyCartCanNotBeCharged stamp: 'WAL 6/8/2023 21:17:00'!
+PASSED!
+
+!testRun: #CashierTest #test02CartWithOneItemBillsItemPrice stamp: 'WAL 6/8/2023 21:17:00'!
+ERROR!
+
+!testRun: #CashierTest #test02CartWithOneItemBillsItemPrice stamp: 'WAL 6/8/2023 21:17:00'!
+ERROR!
+!Cart methodsFor: 'adding' stamp: 'WAL 6/8/2023 21:18:33'!
+total
+
+	^ items first! !
+
+!classDefinition: #Cart category: 'TusLibros' stamp: 'WAL 6/8/2023 21:18:48'!
+Object subclass: #Cart
+	instanceVariableNames: 'priceList items'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros'!
+!Cart methodsFor: 'as yet unclassified' stamp: 'WAL 6/8/2023 21:18:48' prior: 50624402!
+initializeAcceptingItemsOf: aCatalog
+
+	priceList := aCatalog.
+	items := OrderedCollection new.! !
+!Cart methodsFor: 'as yet unclassified' stamp: 'WAL 6/8/2023 21:18:48' prior: 50625114!
+assertIsValidItem: anItem
+
+	(priceList keys includes: anItem) ifFalse: [ self error: self invalidItemErrorMessage ]! !
+!Cart methodsFor: 'adding' stamp: 'WAL 6/8/2023 21:19:14' prior: 50625207!
+total
+
+	^ priceList at: items first! !
+
+!testRun: #CashierTest #test01EmptyCartCanNotBeCharged stamp: 'WAL 6/8/2023 21:19:17'!
+PASSED!
+
+!testRun: #CashierTest #test02CartWithOneItemBillsItemPrice stamp: 'WAL 6/8/2023 21:19:17'!
+PASSED!
+!CashierTest methodsFor: 'tests' stamp: 'WAL 6/8/2023 21:19:57'!
+test03CartWithManyItemsBillsTotalAmount
+
+	| cashier bill |
+	cart := testSupport createCart.
+	cart add: testSupport itemSellByTheStore.
+	
+	cashier := Cashier new.
+	
+	bill := cashier checkOut: cart .
+	
+	self assert: testSupport itemSellByTheStorePrice equals: bill.
+	! !
+!CashierTest methodsFor: 'tests' stamp: 'WAL 6/8/2023 21:20:56' prior: 50625241!
+test03CartWithManyItemsBillsTotalAmount
+
+	| cashier bill |
+	cart := testSupport createCart.
+	cart add: testSupport itemSellByTheStore.
+	cart add: testSupport anotherItemSellByTheStore.
+	
+	cashier := Cashier new.
+	
+	bill := cashier checkOut: cart .
+	
+	self assert: testSupport itemSellByTheStorePrice equals: bill.
+	! !
+!TestSupport methodsFor: 'as yet unclassified' stamp: 'WAL 6/8/2023 21:21:16'!
+anotherItemSellByTheStore
+	
+	^ 'anotherValidBook' ! !
+!TestSupport methodsFor: 'as yet unclassified' stamp: 'WAL 6/8/2023 21:21:32'!
+anotherItemSellByTheStorePrice
+	
+	^ 200! !
+!TestSupport methodsFor: 'as yet unclassified' stamp: 'WAL 6/8/2023 21:22:44' prior: 50625051!
+defaultCatalog
+	
+	^Dictionary newFromPairs: 
+		{ self itemSellByTheStore             . self itemSellByTheStorePrice             .
+		   self anotherItemSellByTheStore . self anotherItemSellByTheStorePrice}! !
+!CashierTest methodsFor: 'tests' stamp: 'WAL 6/8/2023 21:23:13' prior: 50625252!
+test03CartWithManyItemsBillsTotalAmount
+
+	| cashier bill |
+	cart := testSupport createCart.
+	cart add: testSupport itemSellByTheStore.
+	cart add: testSupport anotherItemSellByTheStore.
+	
+	cashier := Cashier new.
+	
+	bill := cashier checkOut: cart .
+	
+	self assert: testSupport itemSellByTheStorePrice + testSupport anotherItemSellByTheStorePrice equals: bill.
+	! !
+
+!testRun: #CashierTest #test03CartWithManyItemsBillsTotalAmount stamp: 'WAL 6/8/2023 21:23:14'!
+FAILURE!
+!Cart methodsFor: 'adding' stamp: 'WAL 6/8/2023 21:25:12' prior: 50625231!
+total
+
+	^items sum: [ : item | priceList at: item ] ifEmpty: 0s! !
+!Cart methodsFor: 'adding' stamp: 'WAL 6/8/2023 21:25:14' prior: 50625303!
+total
+
+	^items sum: [ : item | priceList at: item ] ifEmpty: 0! !
+
+!testRun: #CartTest #test01NewCartsAreCreatedEmpty stamp: 'WAL 6/8/2023 21:25:16'!
+PASSED!
+
+!testRun: #CartTest #test02CanNotAddItemsThatDoNotBelongToStore stamp: 'WAL 6/8/2023 21:25:16'!
+PASSED!
+
+!testRun: #CartTest #test03AfterAddingAnItemTheCartIsNotEmptyAnymore stamp: 'WAL 6/8/2023 21:25:16'!
+PASSED!
+
+!testRun: #CartTest #test04CanNotAddNonPositiveNumberOfItems stamp: 'WAL 6/8/2023 21:25:16'!
+PASSED!
+
+!testRun: #CartTest #test05CanNotAddMoreThanOneItemNotSellByTheStore stamp: 'WAL 6/8/2023 21:25:16'!
+PASSED!
+
+!testRun: #CartTest #test06CartRemembersAddedItems stamp: 'WAL 6/8/2023 21:25:16'!
+PASSED!
+
+!testRun: #CartTest #test07CartDoesNotHoldNotAddedItems stamp: 'WAL 6/8/2023 21:25:16'!
+PASSED!
+
+!testRun: #CartTest #test08CartRemembersTheNumberOfAddedItems stamp: 'WAL 6/8/2023 21:25:16'!
+PASSED!
+
+!testRun: #CashierTest #test01EmptyCartCanNotBeCharged stamp: 'WAL 6/8/2023 21:25:19'!
+PASSED!
+
+!testRun: #CashierTest #test02CartWithOneItemBillsItemPrice stamp: 'WAL 6/8/2023 21:25:19'!
+PASSED!
+
+!testRun: #CashierTest #test03CartWithManyItemsBillsTotalAmount stamp: 'WAL 6/8/2023 21:25:19'!
+PASSED!
+!CashierTest methodsFor: 'tests' stamp: 'WAL 6/8/2023 21:26:31'!
+test04ValidateCreditCardExpirationDate
+
+	| cashier bill |
+	cart := testSupport createCart.
+	cart add: testSupport itemSellByTheStore.
+	cart add: testSupport anotherItemSellByTheStore.
+	
+	cashier := Cashier new.
+	
+	bill := cashier checkOut: cart .
+	
+	self assert: testSupport itemSellByTheStorePrice + testSupport anotherItemSellByTheStorePrice equals: bill.
+	! !
+!CashierTest methodsFor: 'tests' stamp: 'WAL 6/8/2023 21:26:35' prior: 50625347!
+test04ValidateCreditCardExpirationDate
+
+	| cashier bill |
+	
+	cart := testSupport createCart.
+	cart add: testSupport itemSellByTheStore.
+	cart add: testSupport anotherItemSellByTheStore.
+	
+	cashier := Cashier new.
+	
+	bill := cashier checkOut: cart .
+	
+	self assert: testSupport itemSellByTheStorePrice + testSupport anotherItemSellByTheStorePrice equals: bill.
+	! !
+!CashierTest methodsFor: 'tests' stamp: 'WAL 6/8/2023 21:30:34' prior: 50625361!
+test04ValidateCreditCardExpirationDate
+
+	| cashier bill |
+	
+	cart := testSupport createCart.
+	cart add: testSupport itemSellByTheStore.
+	
+	cashier := Cashier new.
+	
+	bill := cashier checkOut: cart charge: testSupport validCreditCard on: testSupport currentDate .
+	
+	self assert: testSupport itemSellByTheStorePrice equals: bill.
+	! !
+
+!classRenamed: #TestSupport as: #TestObjectsFactory stamp: 'WAL 6/8/2023 21:31:25'!
+Smalltalk renameClassNamed: #TestSupport as: #TestObjectsFactory!
+!CashierTest methodsFor: 'as yet unclassified' stamp: 'WAL 6/8/2023 21:31:26' prior: 50624864 overrides: 16961394!
+setUp
+
+	testSupport :=TestObjectsFactory new! !
+!CartTest methodsFor: 'as yet unclassified' stamp: 'WAL 6/8/2023 21:31:26' prior: 50624749 overrides: 16961394!
+setUp
+
+	testSupport :=TestObjectsFactory new! !
+!TestObjectsFactory methodsFor: 'as yet unclassified' stamp: 'WAL 6/8/2023 21:32:09'!
+currentDate
+	
+	^ June / 8! !
+!TestObjectsFactory methodsFor: 'as yet unclassified' stamp: 'WAL 6/8/2023 21:33:51' prior: 50625404!
+currentDate
+	
+	^ June / 8 / 2023! !
+
+June / 8 / 2023!
+
+!classDefinition: #CreditCard category: 'TusLibros' stamp: 'WAL 6/8/2023 21:39:14'!
+Object subclass: #CreditCard
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros'!
+!TestObjectsFactory methodsFor: 'as yet unclassified' stamp: 'WAL 6/8/2023 21:38:46'!
+validCreditCard
+
+	^CreditCard number: '1234567890123456' owner: 'PEPE' expiration: May / 12! !
+!TestObjectsFactory methodsFor: 'as yet unclassified' stamp: 'WAL 6/8/2023 21:40:47' prior: 50625420!
+validCreditCard
+
+	^CreditCard number: '1234567890123456' owner: 'PEPE' expiration: (GregorianMonthOfYear year: 2027 month: May)! !
+!CreditCard class methodsFor: 'no messages' stamp: 'WAL 6/8/2023 21:42:40'!
+number: aString owner: aName expiration: aGregorianMonthOfYear
+
+	self new.
+	self initializeWithNumber: aString owner: aName expiration: aGregorianMonthOfYear! !
+
+!classDefinition: #CreditCard category: 'TusLibros' stamp: 'WAL 6/8/2023 21:43:35'!
+Object subclass: #CreditCard
+	instanceVariableNames: 'number'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros'!
+
+!classDefinition: #CreditCard category: 'TusLibros' stamp: 'WAL 6/8/2023 21:43:37'!
+Object subclass: #CreditCard
+	instanceVariableNames: 'number name'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros'!
+
+!classDefinition: #CreditCard category: 'TusLibros' stamp: 'WAL 6/8/2023 21:43:38'!
+Object subclass: #CreditCard
+	instanceVariableNames: 'number name expiration'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros'!
+!CreditCard methodsFor: 'no messages' stamp: 'WAL 6/8/2023 21:43:33'!
+initializeWithNumber: aString owner: aName expiration: aGregorianMonthOfYear
+
+	number := aString.
+	name := aName.
+	expiration := aGregorianMonthOfYear
+	
+	! !
+
+!testRun: #CashierTest #test04ValidateCreditCardExpirationDate stamp: 'WAL 6/8/2023 21:43:49'!
+ERROR!
+!CreditCard class methodsFor: 'as yet unclassified' stamp: 'WAL 6/8/2023 21:44:22' prior: 50625434!
+number: aString owner: aName expiration: aGregorianMonthOfYear
+
+	self new initializeWithNumber: aString owner: aName expiration: aGregorianMonthOfYear! !
+
+!testRun: #CashierTest #test04ValidateCreditCardExpirationDate stamp: 'WAL 6/8/2023 21:44:28'!
+ERROR!
+
+!testRun: #CashierTest #test04ValidateCreditCardExpirationDate stamp: 'WAL 6/8/2023 21:44:28'!
+ERROR!
+!Cashier methodsFor: 'as yet unclassified' stamp: 'WAL 6/8/2023 21:44:46'!
+checkOut: aCart charge: aRenameMe1 on: aRenameMe2 
+	self shouldBeImplemented.! !
+!Cashier methodsFor: 'as yet unclassified' stamp: 'WAL 6/8/2023 21:46:19'!
+assertCartIsNotEmpty: aCart
+
+	^ aCart isEmpty ifTrue: [ self error: Cashier emptyCartCanNotBeChargedErrorDescription ]! !
+!Cashier methodsFor: 'as yet unclassified' stamp: 'WAL 6/8/2023 21:46:19' prior: 50625191!
+checkOut: aCart
+
+	self assertCartIsNotEmpty: aCart.
+	
+	^ aCart total! !
+!Cashier methodsFor: 'as yet unclassified' stamp: 'WAL 6/8/2023 21:46:37' prior: 50625501!
+checkOut: aCart
+
+	self assertCartIsNotEmpty: aCart.
+
+	^ aCart total! !
+!Cashier methodsFor: 'as yet unclassified' stamp: 'WAL 6/8/2023 21:46:44' prior: 50625489!
+checkOut: aCart charge: aRenameMe1 on: aRenameMe2 
+
+	self assertCartIsNotEmpty: aCart.
+
+	^ aCart total! !
+
+!methodRemoval: Cashier #checkOut: stamp: 'WAL 6/8/2023 21:46:47'!
+checkOut: aCart
+
+	self assertCartIsNotEmpty: aCart.
+
+	^ aCart total!
+!Cashier methodsFor: 'as yet unclassified' stamp: 'WAL 6/8/2023 21:47:22' prior: 50625513!
+checkOut: aCart charge: aCreditCard on: aMonthOfYear
+
+	self assertCartIsNotEmpty: aCart.
+
+	
+
+	^ aCart total! !
+!Cashier methodsFor: 'as yet unclassified' stamp: 'WAL 6/8/2023 21:49:00' prior: 50625524!
+checkOut: aCart charge: aCreditCard on: aGregorianDate
+
+	self assertCartIsNotEmpty: aCart.
+
+	aCreditCard isNotExpiredOn: aGregorianDate.
+
+	^ aCart total! !
+
+----SNAPSHOT----(8 June 2023 21:49:18) CuisUniversity-5832.image priorSource: 9366758!

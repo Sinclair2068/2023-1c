@@ -1,0 +1,703 @@
+
+
+----QUIT----(30 May 2023 00:05:32) CuisUniversity-5832.image priorSource: 4928100!
+
+----STARTUP---- (30 May 2023 00:05:33) as /Users/hernan/Documents/Cuis/5.0-64Bits/Cuis-University-Installer/CuisUniversity-5832.image!
+
+
+----QUIT----(30 May 2023 00:05:33) CuisUniversity-5832.image priorSource: 9366537!
+
+----STARTUP---- (9 June 2023 19:41:17) as /home/a/s/sw/smalltalk5/CuisUniversity-5832.image!
+
+
+----End fileIn of /home/a/s/e/c/is1/git/2023-1c/09-TusLibros/Iteracion2/TusLibros.st----!
+
+!testRun: #CashierTest #test01EmptyCartCanNotBeCharged stamp: 'WAL 6/9/2023 19:43:11'!
+FAILURE!
+
+!testRun: #CashierTest #test02CartWithOneItemBillsItemPrice stamp: 'WAL 6/9/2023 19:43:11'!
+ERROR!
+
+!testRun: #CashierTest #test03CartWithManyItemsBillsTotalAmount stamp: 'WAL 6/9/2023 19:43:11'!
+ERROR!
+
+!testRun: #CashierTest #test04ValidateCreditCardExpirationDate stamp: 'WAL 6/9/2023 19:43:11'!
+ERROR!
+
+!testRun: #CashierTest #test03CartWithManyItemsBillsTotalAmount stamp: 'WAL 6/9/2023 19:44:04'!
+ERROR!
+
+!testRun: #CashierTest #test03CartWithManyItemsBillsTotalAmount stamp: 'WAL 6/9/2023 19:44:04'!
+ERROR!
+!CashierTest methodsFor: 'tests' stamp: 'WAL 6/9/2023 19:44:34' prior: 50624499!
+test03CartWithManyItemsBillsTotalAmount
+
+	| cashier bill |
+	cart := testSupport createCart.
+	cart add: testSupport itemSellByTheStore.
+	cart add: testSupport anotherItemSellByTheStore.
+	
+	cashier := Cashier new.
+	
+	bill := cashier checkOut: cart charge: testSupport validCreditCard on: testSupport currentDate .
+	
+	self assert: testSupport itemSellByTheStorePrice + testSupport anotherItemSellByTheStorePrice equals: bill.
+	! !
+
+!testRun: #CashierTest #test03CartWithManyItemsBillsTotalAmount stamp: 'WAL 6/9/2023 19:44:40'!
+ERROR!
+!CreditCard methodsFor: 'initialization' stamp: 'WAL 6/9/2023 19:45:47'!
+isNotExpiredOn: aGregorianDate
+
+	! !
+!CreditCard methodsFor: 'initialization' stamp: 'WAL 6/9/2023 19:46:25' prior: 50624781!
+isNotExpiredOn: aGregorianDate
+
+	! !
+
+!testRun: #CashierTest #test01EmptyCartCanNotBeCharged stamp: 'WAL 6/9/2023 19:46:30'!
+FAILURE!
+
+!testRun: #CashierTest #test02CartWithOneItemBillsItemPrice stamp: 'WAL 6/9/2023 19:46:30'!
+ERROR!
+
+!testRun: #CashierTest #test03CartWithManyItemsBillsTotalAmount stamp: 'WAL 6/9/2023 19:46:30'!
+ERROR!
+
+!testRun: #CashierTest #test04ValidateCreditCardExpirationDate stamp: 'WAL 6/9/2023 19:46:30'!
+ERROR!
+
+!testRun: #CashierTest #test01EmptyCartCanNotBeCharged stamp: 'WAL 6/9/2023 19:46:38'!
+FAILURE!
+!CashierTest methodsFor: 'tests' stamp: 'WAL 6/9/2023 19:47:37' prior: 50624488!
+test02CartWithOneItemBillsItemPrice
+
+	| cashier bill |
+	cart := testSupport createCart.
+	cart add: testSupport itemSellByTheStore.
+	
+	cashier := Cashier new.
+	
+	bill := cashier checkOut: cart charge: testSupport validCreditCard on: testSupport currentDate.
+	
+	self assert: testSupport itemSellByTheStorePrice equals: bill.
+	! !
+!CashierTest methodsFor: 'tests' stamp: 'WAL 6/9/2023 19:47:55' prior: 50624476!
+test01EmptyCartCanNotBeCharged
+
+	| cashier |
+	cart := testSupport createCart.
+	
+	cashier := Cashier new.
+	
+	self
+		should: [ cashier checkOut: cart charge: testSupport validCreditCard on: testSupport currentDate ]
+		raise: Error
+		withExceptionDo: [ : anError | 
+			self assert: Cashier emptyCartCanNotBeChargedErrorDescription equals: anError messageText ]
+	! !
+
+!testRun: #CashierTest #test01EmptyCartCanNotBeCharged stamp: 'WAL 6/9/2023 19:47:57'!
+PASSED!
+
+!testRun: #CashierTest #test01EmptyCartCanNotBeCharged stamp: 'WAL 6/9/2023 19:47:57'!
+PASSED!
+
+!testRun: #CashierTest #test02CartWithOneItemBillsItemPrice stamp: 'WAL 6/9/2023 19:47:57'!
+ERROR!
+
+!testRun: #CashierTest #test03CartWithManyItemsBillsTotalAmount stamp: 'WAL 6/9/2023 19:47:57'!
+ERROR!
+
+!testRun: #CashierTest #test04ValidateCreditCardExpirationDate stamp: 'WAL 6/9/2023 19:47:57'!
+ERROR!
+
+!testRun: #CashierTest #test02CartWithOneItemBillsItemPrice stamp: 'WAL 6/9/2023 19:48:03'!
+ERROR!
+
+!testRun: #CashierTest #test02CartWithOneItemBillsItemPrice stamp: 'WAL 6/9/2023 19:48:13'!
+ERROR!
+
+!testRun: #CashierTest #test01EmptyCartCanNotBeCharged stamp: 'WAL 6/9/2023 19:50:15'!
+PASSED!
+
+!testRun: #CashierTest #test02CartWithOneItemBillsItemPrice stamp: 'WAL 6/9/2023 19:50:15'!
+ERROR!
+
+!testRun: #CashierTest #test03CartWithManyItemsBillsTotalAmount stamp: 'WAL 6/9/2023 19:50:15'!
+ERROR!
+
+!testRun: #CashierTest #test04ValidateCreditCardExpirationDate stamp: 'WAL 6/9/2023 19:50:15'!
+ERROR!
+
+!testRun: #CashierTest #test02CartWithOneItemBillsItemPrice stamp: 'WAL 6/9/2023 19:50:17'!
+ERROR!
+
+!testRun: #CashierTest #test04ValidateCreditCardExpirationDate stamp: 'WAL 6/9/2023 19:52:12'!
+ERROR!
+
+!testRun: #CashierTest #test04ValidateCreditCardExpirationDate stamp: 'WAL 6/9/2023 19:52:12'!
+ERROR!
+!CreditCard class methodsFor: 'instance creation' stamp: 'WAL 6/9/2023 19:53:22' prior: 50624672!
+number: aString owner: aName expiration: aGregorianMonthOfYear
+
+	^self new initializeWithNumber: aString owner: aName expiration: aGregorianMonthOfYear! !
+
+!testRun: #CashierTest #test01EmptyCartCanNotBeCharged stamp: 'WAL 6/9/2023 19:53:26'!
+PASSED!
+
+!testRun: #CashierTest #test02CartWithOneItemBillsItemPrice stamp: 'WAL 6/9/2023 19:53:26'!
+PASSED!
+
+!testRun: #CashierTest #test03CartWithManyItemsBillsTotalAmount stamp: 'WAL 6/9/2023 19:53:26'!
+PASSED!
+
+!testRun: #CashierTest #test04ValidateCreditCardExpirationDate stamp: 'WAL 6/9/2023 19:53:26'!
+PASSED!
+
+!testRun: #CashierTest #test01EmptyCartCanNotBeCharged stamp: 'WAL 6/9/2023 19:56:14'!
+PASSED!
+
+!testRun: #CashierTest #test02CartWithOneItemBillsItemPrice stamp: 'WAL 6/9/2023 19:56:14'!
+PASSED!
+
+!testRun: #CashierTest #test03CartWithManyItemsBillsTotalAmount stamp: 'WAL 6/9/2023 19:56:14'!
+PASSED!
+
+!testRun: #CashierTest #test04ValidateCreditCardExpirationDate stamp: 'WAL 6/9/2023 19:56:14'!
+PASSED!
+!Cashier methodsFor: 'as yet unclassified' stamp: 'WAL 6/9/2023 19:58:11' prior: 50624624!
+checkOut: aCart charge: aCreditCard on: aGregorianDate
+
+	self assertCartIsNotEmpty: aCart.
+
+	(aCreditCard isNotExpiredOn: aGregorianDate) ifTrue: [
+
+		^ aCart total
+	]! !
+
+!testRun: #CashierTest #test01EmptyCartCanNotBeCharged stamp: 'WAL 6/9/2023 19:58:17'!
+PASSED!
+
+!testRun: #CashierTest #test02CartWithOneItemBillsItemPrice stamp: 'WAL 6/9/2023 19:58:17'!
+ERROR!
+
+!testRun: #CashierTest #test03CartWithManyItemsBillsTotalAmount stamp: 'WAL 6/9/2023 19:58:17'!
+ERROR!
+
+!testRun: #CashierTest #test04ValidateCreditCardExpirationDate stamp: 'WAL 6/9/2023 19:58:17'!
+ERROR!
+
+!testRun: #CashierTest #test01EmptyCartCanNotBeCharged stamp: 'WAL 6/9/2023 19:58:26'!
+PASSED!
+
+!testRun: #CashierTest #test02CartWithOneItemBillsItemPrice stamp: 'WAL 6/9/2023 19:58:26'!
+ERROR!
+
+!testRun: #CashierTest #test03CartWithManyItemsBillsTotalAmount stamp: 'WAL 6/9/2023 19:58:26'!
+ERROR!
+
+!testRun: #CashierTest #test04ValidateCreditCardExpirationDate stamp: 'WAL 6/9/2023 19:58:26'!
+ERROR!
+!CreditCard methodsFor: 'accessing' stamp: 'WAL 6/9/2023 19:59:29' prior: 50624785!
+isNotExpiredOn: aGregorianDate
+
+	^true! !
+
+!testRun: #CashierTest #test01EmptyCartCanNotBeCharged stamp: 'WAL 6/9/2023 19:59:34'!
+PASSED!
+
+!testRun: #CashierTest #test02CartWithOneItemBillsItemPrice stamp: 'WAL 6/9/2023 19:59:34'!
+PASSED!
+
+!testRun: #CashierTest #test03CartWithManyItemsBillsTotalAmount stamp: 'WAL 6/9/2023 19:59:34'!
+PASSED!
+
+!testRun: #CashierTest #test04ValidateCreditCardExpirationDate stamp: 'WAL 6/9/2023 19:59:34'!
+PASSED!
+!CreditCard methodsFor: 'accessing' stamp: 'WAL 6/9/2023 20:00:39'!
+isExpiredOn: aGregorianDate
+
+	^true! !
+!Cashier methodsFor: 'as yet unclassified' stamp: 'WAL 6/9/2023 20:00:39' prior: 50624911!
+checkOut: aCart charge: aCreditCard on: aGregorianDate
+
+	self assertCartIsNotEmpty: aCart.
+
+	(aCreditCard isExpiredOn: aGregorianDate) ifTrue: [
+
+		^ aCart total
+	]! !
+
+!methodRemoval: CreditCard #isNotExpiredOn: stamp: 'WAL 6/9/2023 20:00:39'!
+isNotExpiredOn: aGregorianDate
+
+	^true!
+!CreditCard methodsFor: 'accessing' stamp: 'WAL 6/9/2023 20:00:44' prior: 50624962!
+isExpiredOn: aGregorianDate
+
+	^false! !
+!Cashier methodsFor: 'as yet unclassified' stamp: 'WAL 6/9/2023 20:00:57' prior: 50624967!
+checkOut: aCart charge: aCreditCard on: aGregorianDate
+
+	self assertCartIsNotEmpty: aCart.
+
+	(aCreditCard isExpiredOn: aGregorianDate) ifFalse: [
+
+		^ aCart total
+	]! !
+
+!testRun: #CashierTest #test04ValidateCreditCardExpirationDate stamp: 'WAL 6/9/2023 20:01:01'!
+PASSED!
+
+!testRun: #CashierTest #test04ValidateCreditCardExpirationDate stamp: 'WAL 6/9/2023 20:01:04'!
+PASSED!
+
+!testRun: #CashierTest #test01EmptyCartCanNotBeCharged stamp: 'WAL 6/9/2023 20:01:04'!
+PASSED!
+
+!testRun: #CashierTest #test02CartWithOneItemBillsItemPrice stamp: 'WAL 6/9/2023 20:01:04'!
+PASSED!
+
+!testRun: #CashierTest #test03CartWithManyItemsBillsTotalAmount stamp: 'WAL 6/9/2023 20:01:04'!
+PASSED!
+
+!testRun: #CashierTest #test04ValidateCreditCardExpirationDate stamp: 'WAL 6/9/2023 20:01:04'!
+PASSED!
+!CashierTest methodsFor: 'tests' stamp: 'WAL 6/9/2023 20:05:30'!
+test05ExpiredCreditCardShouldRaiseError
+
+	| cashier |
+	
+	cart := testSupport createCart.
+	cart add: testSupport itemSellByTheStore.
+	
+	cashier := Cashier new.
+	
+	self
+		should: 	[ cashier checkOut: cart charge: testSupport expiredCreditCard on: testSupport currentDate ]
+		raise: Error
+		withExceptionDo: [ : anError | self assert: CreditCard expiredCreditCardErrorDescription equals: anError message ]
+	
+	
+	! !
+
+!testRun: #CashierTest #test05ExpiredCreditCardShouldRaiseError stamp: 'WAL 6/9/2023 20:05:41'!
+ERROR!
+!CreditCard class methodsFor: 'error descriptions' stamp: 'WAL 6/9/2023 20:06:00'!
+expiredCreditCardErrorDescription
+	self shouldBeImplemented.! !
+!CreditCard class methodsFor: 'error descriptions' stamp: 'WAL 6/9/2023 20:06:25' prior: 50625030!
+expiredCreditCardErrorDescription
+	
+	^'Credit card expired'! !
+
+!testRun: #CashierTest #test05ExpiredCreditCardShouldRaiseError stamp: 'WAL 6/9/2023 20:06:29'!
+FAILURE!
+
+!testRun: #CashierTest #test01EmptyCartCanNotBeCharged stamp: 'WAL 6/9/2023 20:07:20'!
+PASSED!
+
+!testRun: #CashierTest #test02CartWithOneItemBillsItemPrice stamp: 'WAL 6/9/2023 20:07:20'!
+PASSED!
+
+!testRun: #CashierTest #test03CartWithManyItemsBillsTotalAmount stamp: 'WAL 6/9/2023 20:07:20'!
+PASSED!
+
+!testRun: #CashierTest #test04ValidateCreditCardExpirationDate stamp: 'WAL 6/9/2023 20:07:20'!
+PASSED!
+
+!testRun: #CashierTest #test05ExpiredCreditCardShouldRaiseError stamp: 'WAL 6/9/2023 20:07:20'!
+FAILURE!
+
+!testRun: #CashierTest #test05ExpiredCreditCardShouldRaiseError stamp: 'WAL 6/9/2023 20:07:21'!
+FAILURE!
+!CashierTest methodsFor: 'tests' stamp: 'WAL 6/9/2023 20:08:25' prior: 50625011!
+test05ExpiredCreditCardShouldRaiseError
+
+	| cashier |
+	
+	cart := testSupport createCart.
+	cart add: testSupport itemSellByTheStore.
+	
+	cashier := Cashier new.
+	
+	self
+		should: 	[ cashier checkOut: cart charge: testSupport expiredCreditCard on: testSupport currentDate ]
+		raise: Error
+		withExceptionDo: [ : anError | self assert: CreditCard expiredCreditCardErrorDescription equals: anError messageText ]
+	
+	
+	! !
+
+!testRun: #CashierTest #test05ExpiredCreditCardShouldRaiseError stamp: 'WAL 6/9/2023 20:08:31'!
+FAILURE!
+!TestObjectsFactory methodsFor: 'credit cards' stamp: 'WAL 6/9/2023 20:09:07'!
+expiredCreditCard
+
+	^CreditCard number: '1234567890123456' owner: 'PEPE' expiration: (GregorianMonthOfYear year: 2027 month: May)! !
+!TestObjectsFactory methodsFor: 'credit cards' stamp: 'WAL 6/9/2023 20:09:32' prior: 50625083!
+expiredCreditCard
+
+	^CreditCard number: '1234567890123456' owner: 'PEPE' expiration: (GregorianMonthOfYear year: 2020 month: January)! !
+
+!testRun: #CashierTest #test01EmptyCartCanNotBeCharged stamp: 'WAL 6/9/2023 20:09:36'!
+PASSED!
+
+!testRun: #CashierTest #test02CartWithOneItemBillsItemPrice stamp: 'WAL 6/9/2023 20:09:36'!
+PASSED!
+
+!testRun: #CashierTest #test03CartWithManyItemsBillsTotalAmount stamp: 'WAL 6/9/2023 20:09:36'!
+PASSED!
+
+!testRun: #CashierTest #test04ValidateCreditCardExpirationDate stamp: 'WAL 6/9/2023 20:09:36'!
+PASSED!
+
+!testRun: #CashierTest #test05ExpiredCreditCardShouldRaiseError stamp: 'WAL 6/9/2023 20:09:36'!
+FAILURE!
+
+!testRun: #CashierTest #test05ExpiredCreditCardShouldRaiseError stamp: 'WAL 6/9/2023 20:09:36'!
+FAILURE!
+!CreditCard methodsFor: 'accessing' stamp: 'WAL 6/9/2023 20:13:13' prior: 50624979!
+isExpiredOn: aGregorianDate
+
+	^aGregorianDate monthOfYear >= expiration ! !
+!CreditCard methodsFor: 'accessing' stamp: 'WAL 6/9/2023 20:14:56' prior: 50625118!
+isExpiredOn: aGregorianDate
+
+	^expiration > aGregorianDate monthOfYear! !
+
+!testRun: #CashierTest #test01EmptyCartCanNotBeCharged stamp: 'WAL 6/9/2023 20:15:20'!
+PASSED!
+
+!testRun: #CashierTest #test02CartWithOneItemBillsItemPrice stamp: 'WAL 6/9/2023 20:15:20'!
+ERROR!
+
+!testRun: #CashierTest #test03CartWithManyItemsBillsTotalAmount stamp: 'WAL 6/9/2023 20:15:20'!
+ERROR!
+
+!testRun: #CashierTest #test04ValidateCreditCardExpirationDate stamp: 'WAL 6/9/2023 20:15:20'!
+ERROR!
+
+!testRun: #CashierTest #test05ExpiredCreditCardShouldRaiseError stamp: 'WAL 6/9/2023 20:15:20'!
+FAILURE!
+!CreditCard methodsFor: 'accessing' stamp: 'WAL 6/9/2023 20:15:30' prior: 50625123!
+isExpiredOn: aGregorianDate
+
+	^expiration < aGregorianDate monthOfYear! !
+
+!testRun: #CashierTest #test01EmptyCartCanNotBeCharged stamp: 'WAL 6/9/2023 20:15:31'!
+PASSED!
+
+!testRun: #CashierTest #test02CartWithOneItemBillsItemPrice stamp: 'WAL 6/9/2023 20:15:31'!
+ERROR!
+
+!testRun: #CashierTest #test03CartWithManyItemsBillsTotalAmount stamp: 'WAL 6/9/2023 20:15:31'!
+ERROR!
+
+!testRun: #CashierTest #test04ValidateCreditCardExpirationDate stamp: 'WAL 6/9/2023 20:15:31'!
+ERROR!
+
+!testRun: #CashierTest #test05ExpiredCreditCardShouldRaiseError stamp: 'WAL 6/9/2023 20:15:31'!
+FAILURE!
+!CreditCard methodsFor: 'accessing' stamp: 'WAL 6/9/2023 20:16:30' prior: 50625144!
+isExpiredOn: aGregorianDate
+
+	^expiration < aGregorianDate monthOfYear ! !
+
+!testRun: #CashierTest #test01EmptyCartCanNotBeCharged stamp: 'WAL 6/9/2023 20:16:31'!
+PASSED!
+
+!testRun: #CashierTest #test02CartWithOneItemBillsItemPrice stamp: 'WAL 6/9/2023 20:16:31'!
+ERROR!
+
+!testRun: #CashierTest #test03CartWithManyItemsBillsTotalAmount stamp: 'WAL 6/9/2023 20:16:31'!
+ERROR!
+
+!testRun: #CashierTest #test04ValidateCreditCardExpirationDate stamp: 'WAL 6/9/2023 20:16:31'!
+ERROR!
+
+!testRun: #CashierTest #test05ExpiredCreditCardShouldRaiseError stamp: 'WAL 6/9/2023 20:16:31'!
+FAILURE!
+
+!testRun: #CashierTest #test01EmptyCartCanNotBeCharged stamp: 'WAL 6/9/2023 20:16:45'!
+PASSED!
+
+!testRun: #CashierTest #test02CartWithOneItemBillsItemPrice stamp: 'WAL 6/9/2023 20:16:45'!
+ERROR!
+
+!testRun: #CashierTest #test03CartWithManyItemsBillsTotalAmount stamp: 'WAL 6/9/2023 20:16:45'!
+ERROR!
+
+!testRun: #CashierTest #test04ValidateCreditCardExpirationDate stamp: 'WAL 6/9/2023 20:16:45'!
+ERROR!
+
+!testRun: #CashierTest #test05ExpiredCreditCardShouldRaiseError stamp: 'WAL 6/9/2023 20:16:45'!
+FAILURE!
+
+!testRun: #CashierTest #test02CartWithOneItemBillsItemPrice stamp: 'WAL 6/9/2023 20:16:48'!
+ERROR!
+
+year class!
+
+aGregorianMonth year!
+
+expiration class!
+
+aGregorianDate monthOfYear !
+
+aGregorianDate monthOfYear class!
+
+year class!
+
+aGregorianMonth year class!
+!CreditCard methodsFor: 'accessing' stamp: 'WAL 6/9/2023 20:27:56' prior: 50625165!
+isExpiredOn: aGregorianDate
+
+	(expiration year < aGregorianDate year)
+		ifTrue: [ ^true ]
+		ifFalse: [ 
+			(expiration year = aGregorianDate year) ifTrue: [
+				expiration month < aGregorianDate month
+			] ifFalse: [
+				^false
+			]
+		]! !
+
+!testRun: #CashierTest #test01EmptyCartCanNotBeCharged stamp: 'WAL 6/9/2023 20:27:58'!
+PASSED!
+
+!testRun: #CashierTest #test02CartWithOneItemBillsItemPrice stamp: 'WAL 6/9/2023 20:27:58'!
+ERROR!
+
+!testRun: #CashierTest #test03CartWithManyItemsBillsTotalAmount stamp: 'WAL 6/9/2023 20:27:58'!
+ERROR!
+
+!testRun: #CashierTest #test04ValidateCreditCardExpirationDate stamp: 'WAL 6/9/2023 20:27:58'!
+ERROR!
+
+!testRun: #CashierTest #test05ExpiredCreditCardShouldRaiseError stamp: 'WAL 6/9/2023 20:27:58'!
+FAILURE!
+
+!testRun: #CashierTest #test01EmptyCartCanNotBeCharged stamp: 'WAL 6/9/2023 20:28:04'!
+PASSED!
+
+!testRun: #CashierTest #test02CartWithOneItemBillsItemPrice stamp: 'WAL 6/9/2023 20:28:04'!
+ERROR!
+
+!testRun: #CashierTest #test03CartWithManyItemsBillsTotalAmount stamp: 'WAL 6/9/2023 20:28:04'!
+ERROR!
+
+!testRun: #CashierTest #test04ValidateCreditCardExpirationDate stamp: 'WAL 6/9/2023 20:28:04'!
+ERROR!
+
+!testRun: #CashierTest #test05ExpiredCreditCardShouldRaiseError stamp: 'WAL 6/9/2023 20:28:04'!
+FAILURE!
+
+!testRun: #CashierTest #test02CartWithOneItemBillsItemPrice stamp: 'WAL 6/9/2023 20:28:05'!
+ERROR!
+!TestObjectsFactory methodsFor: 'as yet unclassified' stamp: 'WAL 6/9/2023 20:30:23' prior: 50624706!
+currentDate
+	
+	^ GregorianDate year: 2023 month: June dayNumber: 8! !
+
+!testRun: #CashierTest #test01EmptyCartCanNotBeCharged stamp: 'WAL 6/9/2023 20:30:24'!
+FAILURE!
+
+!testRun: #CashierTest #test02CartWithOneItemBillsItemPrice stamp: 'WAL 6/9/2023 20:30:24'!
+ERROR!
+
+!testRun: #CashierTest #test03CartWithManyItemsBillsTotalAmount stamp: 'WAL 6/9/2023 20:30:24'!
+ERROR!
+
+!testRun: #CashierTest #test04ValidateCreditCardExpirationDate stamp: 'WAL 6/9/2023 20:30:24'!
+ERROR!
+
+!testRun: #CashierTest #test05ExpiredCreditCardShouldRaiseError stamp: 'WAL 6/9/2023 20:30:24'!
+FAILURE!
+
+!testRun: #CartTest #test01NewCartsAreCreatedEmpty stamp: 'WAL 6/9/2023 20:30:24'!
+PASSED!
+
+!testRun: #CartTest #test02CanNotAddItemsThatDoNotBelongToStore stamp: 'WAL 6/9/2023 20:30:24'!
+PASSED!
+
+!testRun: #CartTest #test03AfterAddingAnItemTheCartIsNotEmptyAnymore stamp: 'WAL 6/9/2023 20:30:24'!
+PASSED!
+
+!testRun: #CartTest #test04CanNotAddNonPositiveNumberOfItems stamp: 'WAL 6/9/2023 20:30:24'!
+PASSED!
+
+!testRun: #CartTest #test05CanNotAddMoreThanOneItemNotSellByTheStore stamp: 'WAL 6/9/2023 20:30:24'!
+PASSED!
+
+!testRun: #CartTest #test06CartRemembersAddedItems stamp: 'WAL 6/9/2023 20:30:24'!
+PASSED!
+
+!testRun: #CartTest #test07CartDoesNotHoldNotAddedItems stamp: 'WAL 6/9/2023 20:30:24'!
+PASSED!
+
+!testRun: #CartTest #test08CartRemembersTheNumberOfAddedItems stamp: 'WAL 6/9/2023 20:30:24'!
+PASSED!
+!TestObjectsFactory methodsFor: 'as yet unclassified' stamp: 'WAL 6/9/2023 20:32:56' prior: 50625256!
+currentDate
+	
+	^ June/8/2023! !
+
+!testRun: #CashierTest #test01EmptyCartCanNotBeCharged stamp: 'WAL 6/9/2023 20:32:57'!
+PASSED!
+
+!testRun: #CashierTest #test02CartWithOneItemBillsItemPrice stamp: 'WAL 6/9/2023 20:32:57'!
+ERROR!
+
+!testRun: #CashierTest #test03CartWithManyItemsBillsTotalAmount stamp: 'WAL 6/9/2023 20:32:57'!
+ERROR!
+
+!testRun: #CashierTest #test04ValidateCreditCardExpirationDate stamp: 'WAL 6/9/2023 20:32:57'!
+ERROR!
+
+!testRun: #CashierTest #test05ExpiredCreditCardShouldRaiseError stamp: 'WAL 6/9/2023 20:32:57'!
+FAILURE!
+
+!testRun: #CartTest #test01NewCartsAreCreatedEmpty stamp: 'WAL 6/9/2023 20:32:57'!
+PASSED!
+
+!testRun: #CartTest #test02CanNotAddItemsThatDoNotBelongToStore stamp: 'WAL 6/9/2023 20:32:57'!
+PASSED!
+
+!testRun: #CartTest #test03AfterAddingAnItemTheCartIsNotEmptyAnymore stamp: 'WAL 6/9/2023 20:32:57'!
+PASSED!
+
+!testRun: #CartTest #test04CanNotAddNonPositiveNumberOfItems stamp: 'WAL 6/9/2023 20:32:57'!
+PASSED!
+
+!testRun: #CartTest #test05CanNotAddMoreThanOneItemNotSellByTheStore stamp: 'WAL 6/9/2023 20:32:57'!
+PASSED!
+
+!testRun: #CartTest #test06CartRemembersAddedItems stamp: 'WAL 6/9/2023 20:32:57'!
+PASSED!
+
+!testRun: #CartTest #test07CartDoesNotHoldNotAddedItems stamp: 'WAL 6/9/2023 20:32:57'!
+PASSED!
+
+!testRun: #CartTest #test08CartRemembersTheNumberOfAddedItems stamp: 'WAL 6/9/2023 20:32:57'!
+PASSED!
+
+!testRun: #CashierTest #test02CartWithOneItemBillsItemPrice stamp: 'WAL 6/9/2023 20:33:07'!
+ERROR!
+!TestObjectsFactory methodsFor: 'as yet unclassified' stamp: 'WAL 6/9/2023 20:38:13' prior: 50625303!
+currentDate
+	
+	^ GregorianMonthOfYear year: 2023 month: June! !
+!CreditCard methodsFor: 'accessing' stamp: 'WAL 6/9/2023 20:38:45' prior: 50625210!
+isExpiredOn: aGregorianDate
+
+	expiration < aGregorianDate! !
+
+!testRun: #CashierTest #test01EmptyCartCanNotBeCharged stamp: 'WAL 6/9/2023 20:38:47'!
+PASSED!
+
+!testRun: #CashierTest #test02CartWithOneItemBillsItemPrice stamp: 'WAL 6/9/2023 20:38:47'!
+ERROR!
+
+!testRun: #CashierTest #test03CartWithManyItemsBillsTotalAmount stamp: 'WAL 6/9/2023 20:38:47'!
+ERROR!
+
+!testRun: #CashierTest #test04ValidateCreditCardExpirationDate stamp: 'WAL 6/9/2023 20:38:47'!
+ERROR!
+
+!testRun: #CashierTest #test05ExpiredCreditCardShouldRaiseError stamp: 'WAL 6/9/2023 20:38:47'!
+FAILURE!
+
+!testRun: #CashierTest #test02CartWithOneItemBillsItemPrice stamp: 'WAL 6/9/2023 20:38:51'!
+ERROR!
+!CreditCard methodsFor: 'accessing' stamp: 'WAL 6/9/2023 20:39:34' prior: 50625357!
+isExpiredOn: aGregorianDate
+
+	^expiration < aGregorianDate! !
+
+!testRun: #CashierTest #test01EmptyCartCanNotBeCharged stamp: 'WAL 6/9/2023 20:39:37'!
+PASSED!
+
+!testRun: #CashierTest #test02CartWithOneItemBillsItemPrice stamp: 'WAL 6/9/2023 20:39:37'!
+PASSED!
+
+!testRun: #CashierTest #test03CartWithManyItemsBillsTotalAmount stamp: 'WAL 6/9/2023 20:39:37'!
+PASSED!
+
+!testRun: #CashierTest #test04ValidateCreditCardExpirationDate stamp: 'WAL 6/9/2023 20:39:37'!
+PASSED!
+
+!testRun: #CashierTest #test05ExpiredCreditCardShouldRaiseError stamp: 'WAL 6/9/2023 20:39:37'!
+FAILURE!
+
+!testRun: #CashierTest #test05ExpiredCreditCardShouldRaiseError stamp: 'WAL 6/9/2023 20:39:37'!
+FAILURE!
+
+!testRun: #CashierTest #test01EmptyCartCanNotBeCharged stamp: 'WAL 6/9/2023 20:40:07'!
+PASSED!
+
+!testRun: #CashierTest #test02CartWithOneItemBillsItemPrice stamp: 'WAL 6/9/2023 20:40:07'!
+PASSED!
+
+!testRun: #CashierTest #test03CartWithManyItemsBillsTotalAmount stamp: 'WAL 6/9/2023 20:40:07'!
+PASSED!
+
+!testRun: #CashierTest #test04ValidateCreditCardExpirationDate stamp: 'WAL 6/9/2023 20:40:07'!
+PASSED!
+
+!testRun: #CashierTest #test05ExpiredCreditCardShouldRaiseError stamp: 'WAL 6/9/2023 20:40:07'!
+FAILURE!
+
+!testRun: #CashierTest #test05ExpiredCreditCardShouldRaiseError stamp: 'WAL 6/9/2023 20:40:07'!
+FAILURE!
+
+!testRun: #CashierTest #test05ExpiredCreditCardShouldRaiseError stamp: 'WAL 6/9/2023 20:41:14'!
+FAILURE!
+
+!testRun: #CashierTest #test05ExpiredCreditCardShouldRaiseError stamp: 'WAL 6/9/2023 20:41:14'!
+FAILURE!
+!Cashier methodsFor: 'as yet unclassified' stamp: 'WAL 6/9/2023 20:42:27' prior: 50624984!
+checkOut: aCart charge: aCreditCard on: aGregorianDate
+
+	self assertCartIsNotEmpty: aCart.
+
+	(aCreditCard isExpiredOn: aGregorianDate) ifFalse: [
+		^ aCart total
+	] ifTrue: [
+		self error: CreditCard expiredCreditCardErrorDescription 
+	]! !
+
+!testRun: #CashierTest #test01EmptyCartCanNotBeCharged stamp: 'WAL 6/9/2023 20:42:38'!
+PASSED!
+
+!testRun: #CashierTest #test02CartWithOneItemBillsItemPrice stamp: 'WAL 6/9/2023 20:42:38'!
+PASSED!
+
+!testRun: #CashierTest #test03CartWithManyItemsBillsTotalAmount stamp: 'WAL 6/9/2023 20:42:38'!
+PASSED!
+
+!testRun: #CashierTest #test04ValidateCreditCardExpirationDate stamp: 'WAL 6/9/2023 20:42:38'!
+PASSED!
+
+!testRun: #CashierTest #test05ExpiredCreditCardShouldRaiseError stamp: 'WAL 6/9/2023 20:42:38'!
+PASSED!
+!Cashier class methodsFor: 'as yet unclassified' stamp: 'WAL 6/9/2023 20:43:11'!
+expiredCreditCardErrorDescription
+	
+	^'Credit card expired'! !
+!Cashier methodsFor: 'as yet unclassified' stamp: 'WAL 6/9/2023 20:43:23' prior: 50625432!
+checkOut: aCart charge: aCreditCard on: aGregorianDate
+
+	self assertCartIsNotEmpty: aCart.
+
+	(aCreditCard isExpiredOn: aGregorianDate) ifFalse: [
+		^ aCart total
+	] ifTrue: [
+		self error: Cashier expiredCreditCardErrorDescription 
+	]! !
+
+!methodRemoval: CreditCard class #expiredCreditCardErrorDescription stamp: 'WAL 6/9/2023 20:43:48'!
+expiredCreditCardErrorDescription
+	
+	^'Credit card expired'!
