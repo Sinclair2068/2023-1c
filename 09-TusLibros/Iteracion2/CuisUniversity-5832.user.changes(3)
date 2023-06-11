@@ -5583,3 +5583,574 @@ PASSED!
 ERROR!
 
 ----SNAPSHOT----(10 June 2023 14:58:15) CuisUniversity-5832.image priorSource: 9366758!
+
+----STARTUP---- (10 June 2023 23:35:09) as /home/a/s/sw/smalltalk5/CuisUniversity-5832.image!
+
+
+!testRun: #CashierTest #test01EmptyCartCanNotBeCharged stamp: 'WAL 6/10/2023 23:35:54'!
+PASSED!
+
+!testRun: #CashierTest #test02CartWithOneItemBillsItemPrice stamp: 'WAL 6/10/2023 23:35:54'!
+ERROR!
+
+!testRun: #CashierTest #test03CartWithManyItemsBillsTotalAmount stamp: 'WAL 6/10/2023 23:35:54'!
+ERROR!
+
+!testRun: #CashierTest #test04ValidateCreditCardExpirationDate stamp: 'WAL 6/10/2023 23:35:54'!
+ERROR!
+
+!testRun: #CashierTest #test05ExpiredCreditCardShouldRaiseError stamp: 'WAL 6/10/2023 23:35:54'!
+PASSED!
+
+!testRun: #CashierTest #test06InvalidNumberedCreditCardShouldRaiseError stamp: 'WAL 6/10/2023 23:35:54'!
+PASSED!
+
+!testRun: #CashierTest #test07CreditCardWithoutNameShouldRaiseError stamp: 'WAL 6/10/2023 23:35:54'!
+PASSED!
+
+!testRun: #CashierTest #test08StolenCreditCardShouldRaiseError stamp: 'WAL 6/10/2023 23:35:54'!
+PASSED!
+
+!testRun: #CashierTest #test09CreditCardWithNoCreditShouldRaiseError stamp: 'WAL 6/10/2023 23:35:54'!
+PASSED!
+
+!testRun: #CashierTest #test02CartWithOneItemBillsItemPrice stamp: 'WAL 6/10/2023 23:36:10'!
+ERROR!
+
+!classDefinition: #MerchantProcessorSimulator category: 'TusLibros' stamp: 'WAL 6/10/2023 23:37:59'!
+Object subclass: #MerchantProcessorSimulator
+	instanceVariableNames: 'stolenCreditCardsNumbers validCreditCardNumbers'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros'!
+!MerchantProcessorSimulator methodsFor: 'as yet unclassified' stamp: 'WAL 6/10/2023 23:37:59' prior: 50629515!
+stolenCreditCardNumbers
+
+	^stolenCreditCardsNumbers! !
+!MerchantProcessorSimulator methodsFor: 'as yet unclassified' stamp: 'WAL 6/10/2023 23:37:59' prior: 50629497 overrides: 16920235!
+initialize
+
+	validCreditCardNumbers := Dictionary new.
+	stolenCreditCardsNumbers := Set new! !
+!MerchantProcessorSimulator methodsFor: 'as yet unclassified' stamp: 'WAL 6/10/2023 23:37:59' prior: 50630277!
+debit: anAmount from: aCreditCard
+
+	(stolenCreditCardsNumbers includes: aCreditCard number) ifTrue: [
+		self error: 'Stolen credit card'
+	].
+
+	(validCreditCardNumbers at: aCreditCard number < anAmount) ifTrue: [
+		self error: 'Not enough credit on credit card'
+	]
+
+	! !
+
+!classDefinition: #MerchantProcessorSimulator category: 'TusLibros' stamp: 'WAL 6/10/2023 23:38:29'!
+Object subclass: #MerchantProcessorSimulator
+	instanceVariableNames: 'stolenCreditCardsNumbers validCreditCardsCredits'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros'!
+!MerchantProcessorSimulator methodsFor: 'as yet unclassified' stamp: 'WAL 6/10/2023 23:38:29' prior: 50630387!
+debit: anAmount from: aCreditCard
+
+	(stolenCreditCardsNumbers includes: aCreditCard number) ifTrue: [
+		self error: 'Stolen credit card'
+	].
+
+	(validCreditCardsCredits at: aCreditCard number < anAmount) ifTrue: [
+		self error: 'Not enough credit on credit card'
+	]
+
+	! !
+!MerchantProcessorSimulator methodsFor: 'as yet unclassified' stamp: 'WAL 6/10/2023 23:38:29' prior: 50630380 overrides: 16920235!
+initialize
+
+	validCreditCardsCredits := Dictionary new.
+	stolenCreditCardsNumbers := Set new! !
+!MerchantProcessorSimulator methodsFor: 'as yet unclassified' stamp: 'WAL 6/10/2023 23:38:29' prior: 50629510!
+validCreditCardNumbers
+
+	^validCreditCardsCredits! !
+!MerchantProcessorSimulator methodsFor: 'initialize' stamp: 'WAL 6/10/2023 23:39:37'!
+validCreditCardsNumbers
+
+	^validCreditCardsCredits! !
+!TestObjectsFactory methodsFor: 'as yet unclassified' stamp: 'WAL 6/10/2023 23:39:37' prior: 50630261!
+merchantProcessor
+	
+	| merchantProcessor |
+	
+	merchantProcessor := MerchantProcessorSimulator new.
+	
+	merchantProcessor stolenCreditCardNumbers add: self stolenCreditCard number.
+	
+	merchantProcessor validCreditCardsNumbers at: self validCreditCard put: 1000.
+	merchantProcessor validCreditCardsNumbers at: self validCreditCardWithoutEnoughCredit put: 10.
+	
+	^ merchantProcessor! !
+
+!methodRemoval: MerchantProcessorSimulator #validCreditCardNumbers stamp: 'WAL 6/10/2023 23:39:37'!
+validCreditCardNumbers
+
+	^validCreditCardsCredits!
+!MerchantProcessorSimulator methodsFor: 'initialize' stamp: 'WAL 6/10/2023 23:40:05'!
+validCreditCardsCredits
+
+	^validCreditCardsCredits! !
+!TestObjectsFactory methodsFor: 'as yet unclassified' stamp: 'WAL 6/10/2023 23:40:05' prior: 50630439!
+merchantProcessor
+	
+	| merchantProcessor |
+	
+	merchantProcessor := MerchantProcessorSimulator new.
+	
+	merchantProcessor stolenCreditCardNumbers add: self stolenCreditCard number.
+	
+	merchantProcessor validCreditCardsCredits at: self validCreditCard put: 1000.
+	merchantProcessor validCreditCardsCredits at: self validCreditCardWithoutEnoughCredit put: 10.
+	
+	^ merchantProcessor! !
+
+!methodRemoval: MerchantProcessorSimulator #validCreditCardsNumbers stamp: 'WAL 6/10/2023 23:40:05'!
+validCreditCardsNumbers
+
+	^validCreditCardsCredits!
+!MerchantProcessorSimulator methodsFor: 'initialize' stamp: 'WAL 6/10/2023 23:42:41'!
+stolenCreditCards
+
+	^stolenCreditCardsNumbers! !
+!TestObjectsFactory methodsFor: 'as yet unclassified' stamp: 'WAL 6/10/2023 23:42:41' prior: 50630464!
+merchantProcessor
+	
+	| merchantProcessor |
+	
+	merchantProcessor := MerchantProcessorSimulator new.
+	
+	merchantProcessor stolenCreditCards add: self stolenCreditCard number.
+	
+	merchantProcessor validCreditCardsCredits at: self validCreditCard put: 1000.
+	merchantProcessor validCreditCardsCredits at: self validCreditCardWithoutEnoughCredit put: 10.
+	
+	^ merchantProcessor! !
+
+!methodRemoval: MerchantProcessorSimulator #stolenCreditCardNumbers stamp: 'WAL 6/10/2023 23:42:41'!
+stolenCreditCardNumbers
+
+	^stolenCreditCardsNumbers!
+
+!classDefinition: #MerchantProcessorSimulator category: 'TusLibros' stamp: 'WAL 6/10/2023 23:42:47'!
+Object subclass: #MerchantProcessorSimulator
+	instanceVariableNames: 'stolenCreditCards validCreditCardsCredits'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros'!
+!MerchantProcessorSimulator methodsFor: 'as yet unclassified' stamp: 'WAL 6/10/2023 23:42:47' prior: 50630409!
+debit: anAmount from: aCreditCard
+
+	(stolenCreditCards includes: aCreditCard number) ifTrue: [
+		self error: 'Stolen credit card'
+	].
+
+	(validCreditCardsCredits at: aCreditCard number < anAmount) ifTrue: [
+		self error: 'Not enough credit on credit card'
+	]
+
+	! !
+!MerchantProcessorSimulator methodsFor: 'as yet unclassified' stamp: 'WAL 6/10/2023 23:42:47' prior: 50630422 overrides: 16920235!
+initialize
+
+	validCreditCardsCredits := Dictionary new.
+	stolenCreditCards := Set new! !
+!MerchantProcessorSimulator methodsFor: 'as yet unclassified' stamp: 'WAL 6/10/2023 23:42:47' prior: 50630484!
+stolenCreditCards
+
+	^stolenCreditCards! !
+
+!classDefinition: #MerchantProcessorSimulator category: 'TusLibros' stamp: 'WAL 6/10/2023 23:42:54'!
+Object subclass: #MerchantProcessorSimulator
+	instanceVariableNames: 'stolenCreditCards validCreditCards'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros'!
+!MerchantProcessorSimulator methodsFor: 'as yet unclassified' stamp: 'WAL 6/10/2023 23:42:54' prior: 50630459!
+validCreditCardsCredits
+
+	^validCreditCards! !
+!MerchantProcessorSimulator methodsFor: 'as yet unclassified' stamp: 'WAL 6/10/2023 23:42:54' prior: 50630531 overrides: 16920235!
+initialize
+
+	validCreditCards := Dictionary new.
+	stolenCreditCards := Set new! !
+!MerchantProcessorSimulator methodsFor: 'as yet unclassified' stamp: 'WAL 6/10/2023 23:42:54' prior: 50630518!
+debit: anAmount from: aCreditCard
+
+	(stolenCreditCards includes: aCreditCard number) ifTrue: [
+		self error: 'Stolen credit card'
+	].
+
+	(validCreditCards at: aCreditCard number < anAmount) ifTrue: [
+		self error: 'Not enough credit on credit card'
+	]
+
+	! !
+!MerchantProcessorSimulator methodsFor: 'initialize' stamp: 'WAL 6/10/2023 23:43:02'!
+validCreditCards
+
+	^validCreditCards! !
+!TestObjectsFactory methodsFor: 'as yet unclassified' stamp: 'WAL 6/10/2023 23:43:02' prior: 50630489!
+merchantProcessor
+	
+	| merchantProcessor |
+	
+	merchantProcessor := MerchantProcessorSimulator new.
+	
+	merchantProcessor stolenCreditCards add: self stolenCreditCard number.
+	
+	merchantProcessor validCreditCards at: self validCreditCard put: 1000.
+	merchantProcessor validCreditCards at: self validCreditCardWithoutEnoughCredit put: 10.
+	
+	^ merchantProcessor! !
+
+!methodRemoval: MerchantProcessorSimulator #validCreditCardsCredits stamp: 'WAL 6/10/2023 23:43:02'!
+validCreditCardsCredits
+
+	^validCreditCards!
+!TestObjectsFactory methodsFor: 'merchant processors' stamp: 'WAL 6/10/2023 23:45:02' prior: 50630581!
+merchantProcessor
+	
+	| merchantProcessor |
+	
+	merchantProcessor := MerchantProcessorSimulator new.
+	
+	merchantProcessor stolenCreditCards add: self stolenCreditCard number.
+	
+	merchantProcessor validCreditCards at: self validCreditCard number put: 1000.
+	merchantProcessor validCreditCards at: self validCreditCardWithoutEnoughCredit number put: 10.
+	
+	^ merchantProcessor! !
+
+!testRun: #CashierTest #test01EmptyCartCanNotBeCharged stamp: 'WAL 6/10/2023 23:45:05'!
+PASSED!
+
+!testRun: #CashierTest #test02CartWithOneItemBillsItemPrice stamp: 'WAL 6/10/2023 23:45:05'!
+ERROR!
+
+!testRun: #CashierTest #test03CartWithManyItemsBillsTotalAmount stamp: 'WAL 6/10/2023 23:45:05'!
+ERROR!
+
+!testRun: #CashierTest #test04ValidateCreditCardExpirationDate stamp: 'WAL 6/10/2023 23:45:05'!
+ERROR!
+
+!testRun: #CashierTest #test05ExpiredCreditCardShouldRaiseError stamp: 'WAL 6/10/2023 23:45:05'!
+PASSED!
+
+!testRun: #CashierTest #test06InvalidNumberedCreditCardShouldRaiseError stamp: 'WAL 6/10/2023 23:45:05'!
+PASSED!
+
+!testRun: #CashierTest #test07CreditCardWithoutNameShouldRaiseError stamp: 'WAL 6/10/2023 23:45:05'!
+PASSED!
+
+!testRun: #CashierTest #test08StolenCreditCardShouldRaiseError stamp: 'WAL 6/10/2023 23:45:05'!
+PASSED!
+
+!testRun: #CashierTest #test09CreditCardWithNoCreditShouldRaiseError stamp: 'WAL 6/10/2023 23:45:05'!
+PASSED!
+
+!testRun: #CashierTest #test02CartWithOneItemBillsItemPrice stamp: 'WAL 6/10/2023 23:45:09'!
+ERROR!
+
+aCreditcard number!
+
+aCreditCard number!
+
+aCreditCard number!
+
+self validCreditCards at: aCreditCard number!
+
+anAmount!
+
+anAmount class!
+
+self validCreditCards at: aCreditCard number!
+
+self validCreditCards at: aCreditCard number class!
+
+(self validCreditCards at: aCreditCard number) class!
+!MerchantProcessorSimulator methodsFor: 'operations' stamp: 'WAL 6/10/2023 23:48:47' prior: 50630565!
+debit: anAmount from: aCreditCard
+
+	(stolenCreditCards includes: aCreditCard number) ifTrue: [
+		self error: 'Stolen credit card'
+	].
+
+	((validCreditCards at: aCreditCard number) < anAmount) ifTrue: [
+		self error: 'Not enough credit on credit card'
+	]
+
+	! !
+
+!testRun: #CashierTest #test02CartWithOneItemBillsItemPrice stamp: 'WAL 6/10/2023 23:48:48'!
+PASSED!
+
+!testRun: #CashierTest #test03CartWithManyItemsBillsTotalAmount stamp: 'WAL 6/10/2023 23:48:50'!
+PASSED!
+
+!testRun: #CashierTest #test04ValidateCreditCardExpirationDate stamp: 'WAL 6/10/2023 23:48:51'!
+PASSED!
+!CreditCard methodsFor: 'assertions' stamp: 'WAL 6/10/2023 23:55:20' prior: 50628383!
+isExpiredOn: aGregorianDate
+
+	^ expiration < aGregorianDate! !
+!CreditCard methodsFor: 'assertions' stamp: 'WAL 6/10/2023 23:55:46' prior: 50630680!
+isExpiredOn: aGregorianMonthOfYear
+
+	^ expiration < aGregorianMonthOfYear! !
+!CreditCard methodsFor: 'assertions' stamp: 'WAL 6/10/2023 23:55:59' prior: 50628563!
+hasNoOwnerName
+
+	^ name = ''! !
+!CreditCard methodsFor: 'assertions' stamp: 'WAL 6/10/2023 23:56:05' prior: 50628462!
+hasInvalidNumber
+
+	^ number size < 16! !
+!TestObjectsFactory methodsFor: 'credit cards' stamp: 'WAL 6/10/2023 23:57:00'!
+invalidNumberCreditCard
+
+	^CreditCard number: '' owner: 'JUAN' expiration: (GregorianMonthOfYear year: 2027 month: May)! !
+!CashierTest methodsFor: 'as yet unclassified' stamp: 'WAL 6/10/2023 23:57:00' prior: 50630139!
+test06InvalidNumberedCreditCardShouldRaiseError
+
+	| cashier salesBook |
+	
+	salesBook := OrderedCollection new.
+	
+	cart := testSupport createCart.
+	cart add: testSupport itemSellByTheStore.
+	
+	cashier := Cashier new.
+	
+	self
+		should: 	[
+			cashier
+				checkOut: cart
+				charge: testSupport invalidNumberCreditCard
+				for: testSupport merchantProcessor
+				on: testSupport currentDate
+				registerOn: salesBook ]
+		raise: Error
+		withExceptionDo: [ : anError |
+			self assert: CreditCard invalidNumberedCreditCardErrorDescription equals: anError messageText.
+			self assert: salesBook isEmpty ]
+	
+	
+	! !
+
+!methodRemoval: TestObjectsFactory #invalidNumberedCreditCard stamp: 'WAL 6/10/2023 23:57:00'!
+invalidNumberedCreditCard
+
+	^CreditCard number: '' owner: 'JUAN' expiration: (GregorianMonthOfYear year: 2027 month: May)!
+!TestObjectsFactory methodsFor: 'credit cards' stamp: 'WAL 6/11/2023 00:12:18'!
+validCreditCardWithNotEnoughCredit
+
+	^CreditCard number: '6543219876543210' owner: 'MARIA' expiration: (GregorianMonthOfYear year: 2027 month: May)! !
+!CashierTest methodsFor: 'as yet unclassified' stamp: 'WAL 6/11/2023 00:12:18' prior: 50630098!
+test09CreditCardWithNoCreditShouldRaiseError
+
+	| cashier salesBook |
+	
+	salesBook := OrderedCollection new.
+	
+	cart := testSupport createCart.
+	cart add: testSupport itemSellByTheStore.
+	
+	cashier := Cashier new.
+	
+	self
+		should: 	[
+			cashier
+				checkOut: cart
+				charge: testSupport validCreditCardWithNotEnoughCredit
+				for: testSupport merchantProcessor
+				on: testSupport currentDate
+				registerOn: salesBook ]
+		raise: Error
+		withExceptionDo: [ : anError |
+			self assert: salesBook isEmpty ]! !
+!TestObjectsFactory methodsFor: 'as yet unclassified' stamp: 'WAL 6/11/2023 00:12:18' prior: 50630601!
+merchantProcessor
+	
+	| merchantProcessor |
+	
+	merchantProcessor := MerchantProcessorSimulator new.
+	
+	merchantProcessor stolenCreditCards add: self stolenCreditCard number.
+	
+	merchantProcessor validCreditCards at: self validCreditCard number put: 1000.
+	merchantProcessor validCreditCards at: self validCreditCardWithNotEnoughCredit number put: 10.
+	
+	^ merchantProcessor! !
+
+!methodRemoval: TestObjectsFactory #validCreditCardWithoutEnoughCredit stamp: 'WAL 6/11/2023 00:12:18'!
+validCreditCardWithoutEnoughCredit
+
+	^CreditCard number: '6543219876543210' owner: 'MARIA' expiration: (GregorianMonthOfYear year: 2027 month: May)!
+
+!testRun: #CashierTest #test09CreditCardWithNoCreditShouldRaiseError stamp: 'WAL 6/11/2023 00:12:22'!
+PASSED!
+
+!testRun: #CashierTest #test01EmptyCartCanNotBeCharged stamp: 'WAL 6/11/2023 00:12:22'!
+PASSED!
+
+!testRun: #CashierTest #test02CartWithOneItemBillsItemPrice stamp: 'WAL 6/11/2023 00:12:22'!
+PASSED!
+
+!testRun: #CashierTest #test03CartWithManyItemsBillsTotalAmount stamp: 'WAL 6/11/2023 00:12:22'!
+PASSED!
+
+!testRun: #CashierTest #test04ValidateCreditCardExpirationDate stamp: 'WAL 6/11/2023 00:12:22'!
+PASSED!
+
+!testRun: #CashierTest #test05ExpiredCreditCardShouldRaiseError stamp: 'WAL 6/11/2023 00:12:22'!
+PASSED!
+
+!testRun: #CashierTest #test06InvalidNumberedCreditCardShouldRaiseError stamp: 'WAL 6/11/2023 00:12:22'!
+PASSED!
+
+!testRun: #CashierTest #test07CreditCardWithoutNameShouldRaiseError stamp: 'WAL 6/11/2023 00:12:22'!
+PASSED!
+
+!testRun: #CashierTest #test08StolenCreditCardShouldRaiseError stamp: 'WAL 6/11/2023 00:12:22'!
+PASSED!
+
+!testRun: #CashierTest #test09CreditCardWithNoCreditShouldRaiseError stamp: 'WAL 6/11/2023 00:12:22'!
+PASSED!
+!CashierTest methodsFor: 'tests' stamp: 'WAL 6/11/2023 00:12:40'!
+test09CreditCardWithNotEnoughCreditShouldRaiseError
+
+	| cashier salesBook |
+	
+	salesBook := OrderedCollection new.
+	
+	cart := testSupport createCart.
+	cart add: testSupport itemSellByTheStore.
+	
+	cashier := Cashier new.
+	
+	self
+		should: 	[
+			cashier
+				checkOut: cart
+				charge: testSupport validCreditCardWithNotEnoughCredit
+				for: testSupport merchantProcessor
+				on: testSupport currentDate
+				registerOn: salesBook ]
+		raise: Error
+		withExceptionDo: [ : anError |
+			self assert: salesBook isEmpty ]! !
+
+!methodRemoval: CashierTest #test09CreditCardWithNoCreditShouldRaiseError stamp: 'WAL 6/11/2023 00:12:40'!
+test09CreditCardWithNoCreditShouldRaiseError
+
+	| cashier salesBook |
+	
+	salesBook := OrderedCollection new.
+	
+	cart := testSupport createCart.
+	cart add: testSupport itemSellByTheStore.
+	
+	cashier := Cashier new.
+	
+	self
+		should: 	[
+			cashier
+				checkOut: cart
+				charge: testSupport validCreditCardWithNotEnoughCredit
+				for: testSupport merchantProcessor
+				on: testSupport currentDate
+				registerOn: salesBook ]
+		raise: Error
+		withExceptionDo: [ : anError |
+			self assert: salesBook isEmpty ]!
+
+!testRun: #CashierTest #test09CreditCardWithNotEnoughCreditShouldRaiseError stamp: 'WAL 6/11/2023 00:12:46'!
+PASSED!
+
+!testRun: #CashierTest #test01EmptyCartCanNotBeCharged stamp: 'WAL 6/11/2023 00:12:46'!
+PASSED!
+
+!testRun: #CashierTest #test02CartWithOneItemBillsItemPrice stamp: 'WAL 6/11/2023 00:12:46'!
+PASSED!
+
+!testRun: #CashierTest #test03CartWithManyItemsBillsTotalAmount stamp: 'WAL 6/11/2023 00:12:46'!
+PASSED!
+
+!testRun: #CashierTest #test04ValidateCreditCardExpirationDate stamp: 'WAL 6/11/2023 00:12:46'!
+PASSED!
+
+!testRun: #CashierTest #test05ExpiredCreditCardShouldRaiseError stamp: 'WAL 6/11/2023 00:12:46'!
+PASSED!
+
+!testRun: #CashierTest #test06InvalidNumberedCreditCardShouldRaiseError stamp: 'WAL 6/11/2023 00:12:46'!
+PASSED!
+
+!testRun: #CashierTest #test07CreditCardWithoutNameShouldRaiseError stamp: 'WAL 6/11/2023 00:12:46'!
+PASSED!
+
+!testRun: #CashierTest #test08StolenCreditCardShouldRaiseError stamp: 'WAL 6/11/2023 00:12:46'!
+PASSED!
+
+!testRun: #CashierTest #test09CreditCardWithNotEnoughCreditShouldRaiseError stamp: 'WAL 6/11/2023 00:12:46'!
+PASSED!
+!CashierTest methodsFor: 'tests' stamp: 'WAL 6/11/2023 00:15:37' prior: 50630819!
+test09CreditCardWithNotEnoughCreditShouldRaiseError
+
+	| cashier salesBook |
+	
+	salesBook := OrderedCollection new.
+	
+	cart := testSupport createCart add: testSupport itemSellByTheStore.
+	
+	cashier := Cashier new.
+	
+	self
+		should: 	[
+			cashier
+				checkOut: cart
+				charge: testSupport validCreditCardWithNotEnoughCredit
+				for: testSupport merchantProcessor
+				on: testSupport currentDate
+				registerOn: salesBook ]
+		raise: Error
+		withExceptionDo: [ : anError |
+			self assert: salesBook isEmpty ]! !
+
+!testRun: #CashierTest #test09CreditCardWithNotEnoughCreditShouldRaiseError stamp: 'WAL 6/11/2023 00:15:38'!
+PASSED!
+
+!testRun: #CashierTest #test01EmptyCartCanNotBeCharged stamp: 'WAL 6/11/2023 00:15:38'!
+PASSED!
+
+!testRun: #CashierTest #test02CartWithOneItemBillsItemPrice stamp: 'WAL 6/11/2023 00:15:38'!
+PASSED!
+
+!testRun: #CashierTest #test03CartWithManyItemsBillsTotalAmount stamp: 'WAL 6/11/2023 00:15:38'!
+PASSED!
+
+!testRun: #CashierTest #test04ValidateCreditCardExpirationDate stamp: 'WAL 6/11/2023 00:15:38'!
+PASSED!
+
+!testRun: #CashierTest #test05ExpiredCreditCardShouldRaiseError stamp: 'WAL 6/11/2023 00:15:38'!
+PASSED!
+
+!testRun: #CashierTest #test06InvalidNumberedCreditCardShouldRaiseError stamp: 'WAL 6/11/2023 00:15:38'!
+PASSED!
+
+!testRun: #CashierTest #test07CreditCardWithoutNameShouldRaiseError stamp: 'WAL 6/11/2023 00:15:38'!
+PASSED!
+
+!testRun: #CashierTest #test08StolenCreditCardShouldRaiseError stamp: 'WAL 6/11/2023 00:15:38'!
+PASSED!
+
+!testRun: #CashierTest #test09CreditCardWithNotEnoughCreditShouldRaiseError stamp: 'WAL 6/11/2023 00:15:38'!
+PASSED!

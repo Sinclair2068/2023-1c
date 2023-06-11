@@ -231,7 +231,7 @@ test05ExpiredCreditCardShouldRaiseError
 	
 	! !
 
-!CashierTest methodsFor: 'tests' stamp: 'WAL 6/10/2023 14:07:40'!
+!CashierTest methodsFor: 'tests' stamp: 'WAL 6/10/2023 23:57:00'!
 test06InvalidNumberedCreditCardShouldRaiseError
 
 	| cashier salesBook |
@@ -247,7 +247,7 @@ test06InvalidNumberedCreditCardShouldRaiseError
 		should: 	[
 			cashier
 				checkOut: cart
-				charge: testSupport invalidNumberedCreditCard
+				charge: testSupport invalidNumberCreditCard
 				for: testSupport merchantProcessor
 				on: testSupport currentDate
 				registerOn: salesBook ]
@@ -311,15 +311,14 @@ test08StolenCreditCardShouldRaiseError
 		withExceptionDo: [ : anError |
 			self assert: salesBook isEmpty ]! !
 
-!CashierTest methodsFor: 'tests' stamp: 'WAL 6/10/2023 14:07:29'!
-test09CreditCardWithNoCreditShouldRaiseError
+!CashierTest methodsFor: 'tests' stamp: 'WAL 6/11/2023 00:15:37'!
+test09CreditCardWithNotEnoughCreditShouldRaiseError
 
 	| cashier salesBook |
 	
 	salesBook := OrderedCollection new.
 	
-	cart := testSupport createCart.
-	cart add: testSupport itemSellByTheStore.
+	cart := testSupport createCart add: testSupport itemSellByTheStore.
 	
 	cashier := Cashier new.
 	
@@ -327,7 +326,7 @@ test09CreditCardWithNoCreditShouldRaiseError
 		should: 	[
 			cashier
 				checkOut: cart
-				charge: testSupport validCreditCardWithoutEnoughCredit
+				charge: testSupport validCreditCardWithNotEnoughCredit
 				for: testSupport merchantProcessor
 				on: testSupport currentDate
 				registerOn: salesBook ]
@@ -471,7 +470,7 @@ Object subclass: #CreditCard
 	poolDictionaries: ''
 	category: 'TusLibros'!
 
-!CreditCard methodsFor: 'as yet unclassified' stamp: 'WAL 6/8/2023 21:43:33'!
+!CreditCard methodsFor: 'initialization' stamp: 'WAL 6/8/2023 21:43:33'!
 initializeWithNumber: aString owner: aName expiration: aGregorianMonthOfYear
 
 	number := aString.
@@ -481,8 +480,7 @@ initializeWithNumber: aString owner: aName expiration: aGregorianMonthOfYear
 	! !
 
 
-
-!CreditCard methodsFor: 'accessing' stamp: 'WAL 6/10/2023 12:20:29'!
+!CreditCard methodsFor: 'assertions' stamp: 'WAL 6/10/2023 12:20:29'!
 assertIsValidOn: aGregorianDate
 
 	(self isExpiredOn: aGregorianDate) ifTrue: [
@@ -495,20 +493,21 @@ assertIsValidOn: aGregorianDate
 		self error: CreditCard creditCardWithoutNameErrorDescription 
 	].! !
 
-!CreditCard methodsFor: 'accessing' stamp: 'WAL 6/10/2023 12:03:24'!
+!CreditCard methodsFor: 'assertions' stamp: 'WAL 6/10/2023 23:56:05'!
 hasInvalidNumber
 
-	^number size < 16! !
+	^ number size < 16! !
 
-!CreditCard methodsFor: 'accessing' stamp: 'WAL 6/10/2023 12:13:17'!
+!CreditCard methodsFor: 'assertions' stamp: 'WAL 6/10/2023 23:55:59'!
 hasNoOwnerName
 
-	^name = ''! !
+	^ name = ''! !
 
-!CreditCard methodsFor: 'accessing' stamp: 'WAL 6/9/2023 20:39:34'!
-isExpiredOn: aGregorianDate
+!CreditCard methodsFor: 'assertions' stamp: 'WAL 6/10/2023 23:55:46'!
+isExpiredOn: aGregorianMonthOfYear
 
-	^expiration < aGregorianDate! !
+	^ expiration < aGregorianMonthOfYear! !
+
 
 !CreditCard methodsFor: 'accessing' stamp: 'WAL 6/10/2023 14:11:07'!
 number
@@ -545,36 +544,36 @@ expiredCreditCardErrorDescription
 
 !classDefinition: #MerchantProcessorSimulator category: 'TusLibros'!
 Object subclass: #MerchantProcessorSimulator
-	instanceVariableNames: 'stolenCreditCardNumbers validCreditCardNumbers'
+	instanceVariableNames: 'stolenCreditCards validCreditCards'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'TusLibros'!
 
-!MerchantProcessorSimulator methodsFor: 'initialize' stamp: 'WAL 6/10/2023 13:37:43'!
+!MerchantProcessorSimulator methodsFor: 'initialize' stamp: 'WAL 6/10/2023 23:42:54'!
 initialize
 
-	validCreditCardNumbers := Dictionary new.
-	stolenCreditCardNumbers := Set new! !
+	validCreditCards := Dictionary new.
+	stolenCreditCards := Set new! !
 
-!MerchantProcessorSimulator methodsFor: 'initialize' stamp: 'WAL 6/10/2023 13:39:07'!
-stolenCreditCardNumbers
+!MerchantProcessorSimulator methodsFor: 'initialize' stamp: 'WAL 6/10/2023 23:42:47'!
+stolenCreditCards
 
-	^stolenCreditCardNumbers! !
+	^stolenCreditCards! !
 
-!MerchantProcessorSimulator methodsFor: 'initialize' stamp: 'WAL 6/10/2023 13:38:49'!
-validCreditCardNumbers
+!MerchantProcessorSimulator methodsFor: 'initialize' stamp: 'WAL 6/10/2023 23:43:02'!
+validCreditCards
 
-	^validCreditCardNumbers! !
+	^validCreditCards! !
 
 
-!MerchantProcessorSimulator methodsFor: 'operations' stamp: 'WAL 6/10/2023 14:32:06'!
+!MerchantProcessorSimulator methodsFor: 'operations' stamp: 'WAL 6/10/2023 23:48:47'!
 debit: anAmount from: aCreditCard
 
-	(stolenCreditCardNumbers includes: aCreditCard number) ifTrue: [
+	(stolenCreditCards includes: aCreditCard number) ifTrue: [
 		self error: 'Stolen credit card'
 	].
 
-	(validCreditCardNumbers at: aCreditCard number < anAmount) ifTrue: [
+	((validCreditCards at: aCreditCard number) < anAmount) ifTrue: [
 		self error: 'Not enough credit on credit card'
 	]
 
@@ -646,8 +645,8 @@ expiredCreditCard
 
 	^CreditCard number: '1234567890123456' owner: 'PEPE' expiration: (GregorianMonthOfYear year: 2020 month: January)! !
 
-!TestObjectsFactory methodsFor: 'credit cards' stamp: 'WAL 6/10/2023 11:55:34'!
-invalidNumberedCreditCard
+!TestObjectsFactory methodsFor: 'credit cards' stamp: 'WAL 6/10/2023 23:57:00'!
+invalidNumberCreditCard
 
 	^CreditCard number: '' owner: 'JUAN' expiration: (GregorianMonthOfYear year: 2027 month: May)! !
 
@@ -656,22 +655,22 @@ stolenCreditCard
 
 	^CreditCard number: '9876543210654321' owner: 'MARIO' expiration: (GregorianMonthOfYear year: 2027 month: May)! !
 
-!TestObjectsFactory methodsFor: 'credit cards' stamp: 'WAL 6/10/2023 13:54:19'!
-validCreditCardWithoutEnoughCredit
+!TestObjectsFactory methodsFor: 'credit cards' stamp: 'WAL 6/11/2023 00:12:18'!
+validCreditCardWithNotEnoughCredit
 
 	^CreditCard number: '6543219876543210' owner: 'MARIA' expiration: (GregorianMonthOfYear year: 2027 month: May)! !
 
 
-!TestObjectsFactory methodsFor: 'merchant processors' stamp: 'WAL 6/10/2023 14:15:56'!
+!TestObjectsFactory methodsFor: 'merchant processors' stamp: 'WAL 6/11/2023 00:12:18'!
 merchantProcessor
 	
 	| merchantProcessor |
 	
 	merchantProcessor := MerchantProcessorSimulator new.
 	
-	merchantProcessor stolenCreditCardNumbers add: self stolenCreditCard number.
+	merchantProcessor stolenCreditCards add: self stolenCreditCard number.
 	
-	merchantProcessor validCreditCardNumbers at: self validCreditCard put: 1000.
-	merchantProcessor validCreditCardNumbers at: self validCreditCardWithoutEnoughCredit put: 10.
+	merchantProcessor validCreditCards at: self validCreditCard number put: 1000.
+	merchantProcessor validCreditCards at: self validCreditCardWithNotEnoughCredit number put: 10.
 	
 	^ merchantProcessor! !
