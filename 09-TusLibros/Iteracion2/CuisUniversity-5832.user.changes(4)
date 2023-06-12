@@ -1,0 +1,1158 @@
+
+
+----QUIT----(30 May 2023 00:05:32) CuisUniversity-5832.image priorSource: 4928100!
+
+----STARTUP---- (30 May 2023 00:05:33) as /Users/hernan/Documents/Cuis/5.0-64Bits/Cuis-University-Installer/CuisUniversity-5832.image!
+
+
+----QUIT----(30 May 2023 00:05:33) CuisUniversity-5832.image priorSource: 9366537!
+
+----STARTUP---- (11 June 2023 18:56:05) as E:\ISW1\CUIS\Tus libros Iteracion 2 - B\CuisUniversity-5832.image!
+
+
+----End fileIn of E:\ISW1\CUIS\Tus libros Iteracion 2 - B\TusLibros.st----!
+
+TestCase subclass: #CreditCardTest
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros'!
+
+!classDefinition: #CreditCardTest category: 'TusLibros' stamp: 'AS 6/11/2023 18:57:17'!
+TestCase subclass: #CreditCardTest
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros'!
+!CreditCardTest methodsFor: 'test' stamp: 'AS 6/11/2023 18:57:49'!
+test01NumberMustHaveSizeEqualsTo16Characters
+	
+	self 
+		should: [ CreditCard 
+					number: '1234' 
+					owner: 'TItular' 
+					expiration: (GregorianMonthOfYear year: 2023 month: April) ]
+		raise: Error
+		withExceptionDo: [ : anError | self assert: CreditCard invalidNumberedCreditCardErrorDescription equals: anError messageText ]! !
+
+!testRun: #CreditCardTest #test01NumberMustHaveSizeEqualsTo16Characters stamp: 'AS 6/11/2023 18:57:51'!
+FAILURE!
+!CreditCard class methodsFor: 'instance creation' stamp: 'AS 6/11/2023 18:58:39' prior: 50624840!
+number: aCreditCardNumberString owner: aName expiration: aGregorianMonthOfYear
+
+	(aCreditCardNumberString size = 16) ifFalse: [ self error: self invalidNumberedCreditCardErrorDescription ].
+
+	^self new initializeWithNumber: aCreditCardNumberString owner: aName expiration: aGregorianMonthOfYear! !
+
+!testRun: #CreditCardTest #test01NumberMustHaveSizeEqualsTo16Characters stamp: 'AS 6/11/2023 18:58:45'!
+PASSED!
+!CreditCardTest methodsFor: 'test' stamp: 'AS 6/11/2023 18:59:07'!
+test02NumberContainsOnlyDigitCharacters
+	
+	self 
+		should: [ CreditCard 
+					number: '1234    9012ABCD' 
+					owner: 'TItular' 
+					expiration: (GregorianMonthOfYear year: 2023 month: April) ]
+		raise: Error
+		withExceptionDo: [ : anError | self assert: CreditCard invalidNumberedCreditCardErrorDescription equals: anError messageText ]! !
+
+!testRun: #CreditCardTest #test02NumberContainsOnlyDigitCharacters stamp: 'AS 6/11/2023 18:59:09'!
+FAILURE!
+!CreditCard class methodsFor: 'instance creation' stamp: 'AS 6/11/2023 18:59:38' prior: 50625043!
+number: aCreditCardNumberString owner: aName expiration: aGregorianMonthOfYear
+
+	(aCreditCardNumberString size = 16) ifFalse: [ self error: self invalidNumberedCreditCardErrorDescription ].
+	(aCreditCardNumberString allSatisfy: [ : char | char isDigit ]) ifFalse: [ self error: self invalidNumberedCreditCardErrorDescription ].
+
+	^self new initializeWithNumber: aCreditCardNumberString owner: aName expiration: aGregorianMonthOfYear! !
+
+!testRun: #CreditCardTest #test01NumberMustHaveSizeEqualsTo16Characters stamp: 'AS 6/11/2023 18:59:40'!
+PASSED!
+
+!testRun: #CreditCardTest #test02NumberContainsOnlyDigitCharacters stamp: 'AS 6/11/2023 18:59:40'!
+PASSED!
+!CreditCard class methodsFor: 'instance creation' stamp: 'AS 6/11/2023 19:00:39'!
+assertCreditCardNumberHave16Character: aCreditCardNumberString
+
+	^ (aCreditCardNumberString size = 16) ifFalse: [ self error: self invalidNumberedCreditCardErrorDescription ]! !
+!CreditCard class methodsFor: 'instance creation' stamp: 'AS 6/11/2023 19:00:39' prior: 50625076!
+number: aCreditCardNumberString owner: aName expiration: aGregorianMonthOfYear
+
+	self assertCreditCardNumberHave16Character: aCreditCardNumberString.
+	(aCreditCardNumberString allSatisfy: [ : char | char isDigit ]) ifFalse: [ self error: self invalidNumberedCreditCardErrorDescription ].
+
+	^self new initializeWithNumber: aCreditCardNumberString owner: aName expiration: aGregorianMonthOfYear! !
+!CreditCard class methodsFor: 'instance creation' stamp: 'AS 6/11/2023 19:01:13'!
+assertCreditCardNumberOnlyHaveDigits: aCreditCardNumberString
+
+	^ (aCreditCardNumberString allSatisfy: [ : char | char isDigit ]) ifFalse: [ self error: self invalidNumberedCreditCardErrorDescription ]! !
+!CreditCard class methodsFor: 'instance creation' stamp: 'AS 6/11/2023 19:01:13' prior: 50625109!
+number: aCreditCardNumberString owner: aName expiration: aGregorianMonthOfYear
+
+	self assertCreditCardNumberHave16Character: aCreditCardNumberString.
+	self assertCreditCardNumberOnlyHaveDigits: aCreditCardNumberString.
+
+	^self new initializeWithNumber: aCreditCardNumberString owner: aName expiration: aGregorianMonthOfYear! !
+!CreditCard class methodsFor: 'instance creation' stamp: 'AS 6/11/2023 19:01:31'!
+assertCreditCardValidNumber: aCreditCardNumberString
+
+	self assertCreditCardNumberHave16Character: aCreditCardNumberString.
+	self assertCreditCardNumberOnlyHaveDigits: aCreditCardNumberString! !
+!CreditCard class methodsFor: 'instance creation' stamp: 'AS 6/11/2023 19:01:31' prior: 50625134!
+number: aCreditCardNumberString owner: aName expiration: aGregorianMonthOfYear
+
+	self assertCreditCardValidNumber: aCreditCardNumberString.
+
+	^self new initializeWithNumber: aCreditCardNumberString owner: aName expiration: aGregorianMonthOfYear! !
+!CreditCardTest methodsFor: 'test' stamp: 'AS 6/11/2023 19:02:24'!
+est03OwnerIsNotAnEmptyString
+	
+	self 
+		should: [ CreditCard 
+					number: '1234123412341234' 
+					owner: '' 
+					expiration: (GregorianMonthOfYear year: 2023 month: April) ]
+		raise: Error
+		withExceptionDo: [ : anError | self assert: CreditCard creditCardWithoutNameErrorDescription equals: anError messageText ]! !
+!CreditCardTest methodsFor: 'test' stamp: 'AS 6/11/2023 19:02:36'!
+test03OwnerIsNotAnEmptyString
+	
+	self 
+		should: [ CreditCard 
+					number: '1234123412341234' 
+					owner: '' 
+					expiration: (GregorianMonthOfYear year: 2023 month: April) ]
+		raise: Error
+		withExceptionDo: [ : anError | self assert: CreditCard creditCardWithoutNameErrorDescription equals: anError messageText ]! !
+
+!methodRemoval: CreditCardTest #est03OwnerIsNotAnEmptyString stamp: 'AS 6/11/2023 19:02:36'!
+est03OwnerIsNotAnEmptyString
+	
+	self 
+		should: [ CreditCard 
+					number: '1234123412341234' 
+					owner: '' 
+					expiration: (GregorianMonthOfYear year: 2023 month: April) ]
+		raise: Error
+		withExceptionDo: [ : anError | self assert: CreditCard creditCardWithoutNameErrorDescription equals: anError messageText ]!
+!CreditCard class methodsFor: 'instance creation' stamp: 'AS 6/11/2023 19:03:40' prior: 50625157!
+number: aCreditCardNumberString owner: aName expiration: aGregorianMonthOfYear
+
+	self assertCreditCardValidNumber: aCreditCardNumberString.
+	(aName isEmpty) ifTrue: [ self error: self creditCardWithoutNameErrorDescription ].
+
+	self new initializeWithNumber: aCreditCardNumberString owner: aName expiration: aGregorianMonthOfYear! !
+
+!testRun: #CreditCardTest #test01NumberMustHaveSizeEqualsTo16Characters stamp: 'AS 6/11/2023 19:03:41'!
+PASSED!
+
+!testRun: #CreditCardTest #test02NumberContainsOnlyDigitCharacters stamp: 'AS 6/11/2023 19:03:41'!
+PASSED!
+
+!testRun: #CreditCardTest #test03OwnerIsNotAnEmptyString stamp: 'AS 6/11/2023 19:03:41'!
+PASSED!
+!CreditCard class methodsFor: 'instance creation' stamp: 'AS 6/11/2023 19:04:02'!
+assertCreditCardOwnerIsNotAnEmptyString: aName
+
+	^ (aName isEmpty) ifTrue: [ self error: self creditCardWithoutNameErrorDescription ]! !
+!CreditCard class methodsFor: 'instance creation' stamp: 'AS 6/11/2023 19:04:03' prior: 50625206!
+number: aCreditCardNumberString owner: aName expiration: aGregorianMonthOfYear
+
+	self assertCreditCardValidNumber: aCreditCardNumberString.
+	self assertCreditCardOwnerIsNotAnEmptyString: aName.
+
+	self new initializeWithNumber: aCreditCardNumberString owner: aName expiration: aGregorianMonthOfYear! !
+!CreditCard class methodsFor: 'instance creation' stamp: 'AS 6/11/2023 19:04:46' prior: 50625237!
+number: aCreditCardNumberString owner: aName expiration: aGregorianMonthOfYear
+
+	self assertCreditCardValidNumber: aCreditCardNumberString.
+	self assertCreditCardOwnerIsNotAnEmptyString: aName.
+
+	^self new 
+		initializeWithNumber: aCreditCardNumberString 
+		owner: aName 
+		expiration: aGregorianMonthOfYear! !
+!CreditCardTest methodsFor: 'test' stamp: 'AS 6/11/2023 19:08:12'!
+assertCreditCard: aCreditCardNumber ownedBy: anOwnerName shouldRise: anErrorMessage
+	
+	self 
+		should: [ CreditCard 
+					number: aCreditCardNumber 
+					owner: anOwnerName
+					expiration: (GregorianMonthOfYear year: 2023 month: April) ]
+		raise: Error
+		withExceptionDo: [ : anError | self assert: anErrorMessage equals: anError messageText ]! !
+!CreditCardTest methodsFor: 'test' stamp: 'AS 6/11/2023 19:09:03' prior: 50625025!
+test01NumberMustHaveSizeEqualsTo16Characters
+	
+	self 
+		assertCreditCard: '1234' 
+		ownedBy: 'Un titular' 
+		shouldRise: CreditCard invalidNumberedCreditCardErrorDescription.
+	! !
+
+!testRun: #CreditCardTest #test01NumberMustHaveSizeEqualsTo16Characters stamp: 'AS 6/11/2023 19:09:04'!
+PASSED!
+
+!testRun: #CreditCardTest #test01NumberMustHaveSizeEqualsTo16Characters stamp: 'AS 6/11/2023 19:09:04'!
+PASSED!
+
+!testRun: #CreditCardTest #test02NumberContainsOnlyDigitCharacters stamp: 'AS 6/11/2023 19:09:04'!
+PASSED!
+
+!testRun: #CreditCardTest #test03OwnerIsNotAnEmptyString stamp: 'AS 6/11/2023 19:09:04'!
+PASSED!
+!CreditCardTest methodsFor: 'test' stamp: 'AS 6/11/2023 19:09:26' prior: 50625058!
+test02NumberContainsOnlyDigitCharacters
+	
+	self 
+		assertCreditCard: '1234    9012ABCD' 
+		ownedBy: 'Un titular' 
+		shouldRise: CreditCard invalidNumberedCreditCardErrorDescription.
+! !
+
+!testRun: #CreditCardTest #test02NumberContainsOnlyDigitCharacters stamp: 'AS 6/11/2023 19:09:27'!
+PASSED!
+
+!testRun: #CreditCardTest #test01NumberMustHaveSizeEqualsTo16Characters stamp: 'AS 6/11/2023 19:09:27'!
+PASSED!
+
+!testRun: #CreditCardTest #test02NumberContainsOnlyDigitCharacters stamp: 'AS 6/11/2023 19:09:27'!
+PASSED!
+
+!testRun: #CreditCardTest #test03OwnerIsNotAnEmptyString stamp: 'AS 6/11/2023 19:09:27'!
+PASSED!
+!CreditCardTest methodsFor: 'test' stamp: 'AS 6/11/2023 19:09:54' prior: 50625180!
+test03OwnerIsNotAnEmptyString
+	
+	self 
+		assertCreditCard: '1234123412341234' 
+		ownedBy: '' 
+		shouldRise: CreditCard creditCardWithoutNameErrorDescription.
+! !
+
+!testRun: #CreditCardTest #test03OwnerIsNotAnEmptyString stamp: 'AS 6/11/2023 19:09:55'!
+PASSED!
+
+!testRun: #CreditCardTest #test01NumberMustHaveSizeEqualsTo16Characters stamp: 'AS 6/11/2023 19:09:56'!
+PASSED!
+
+!testRun: #CreditCardTest #test02NumberContainsOnlyDigitCharacters stamp: 'AS 6/11/2023 19:09:56'!
+PASSED!
+
+!testRun: #CreditCardTest #test03OwnerIsNotAnEmptyString stamp: 'AS 6/11/2023 19:09:56'!
+PASSED!
+!Cashier methodsFor: 'assertions' stamp: 'AS 6/11/2023 19:11:07'!
+assertCreditCard: aCreditCard isNotExpiredOn: aGregorianMonthOfYear
+
+	(aCreditCard isExpiredOn: aGregorianMonthOfYear)
+		ifTrue: [ self error: Cashier creditCardIsExpiredErrorDescription ]! !
+!Cashier class methodsFor: 'as yet unclassified' stamp: 'AS 6/11/2023 19:11:25'!
+creditCardIsExpiredErrorDescription
+
+	^'Credit card is expired'! !
+
+!testRun: #CashierTest #test01EmptyCartCanNotBeCharged stamp: 'AS 6/11/2023 19:11:45'!
+PASSED!
+
+!testRun: #CashierTest #test02CartWithOneItemBillsItemPrice stamp: 'AS 6/11/2023 19:11:45'!
+PASSED!
+
+!testRun: #CashierTest #test03CartWithManyItemsBillsTotalAmount stamp: 'AS 6/11/2023 19:11:46'!
+PASSED!
+
+!testRun: #CashierTest #test04ValidateCreditCardExpirationDate stamp: 'AS 6/11/2023 19:11:46'!
+PASSED!
+
+!testRun: #CashierTest #test05ExpiredCreditCardShouldRaiseError stamp: 'AS 6/11/2023 19:11:46'!
+PASSED!
+
+!testRun: #CashierTest #test06InvalidNumberedCreditCardShouldRaiseError stamp: 'AS 6/11/2023 19:11:46'!
+PASSED!
+
+!testRun: #CashierTest #test07CreditCardWithoutNameShouldRaiseError stamp: 'AS 6/11/2023 19:11:46'!
+PASSED!
+
+!testRun: #CashierTest #test08StolenCreditCardShouldRaiseError stamp: 'AS 6/11/2023 19:11:46'!
+PASSED!
+
+!testRun: #CashierTest #test09CreditCardWithNotEnoughCreditShouldRaiseError stamp: 'AS 6/11/2023 19:11:46'!
+PASSED!
+!Cashier methodsFor: 'operations' stamp: 'AS 6/11/2023 19:12:34' prior: 50624751!
+checkOut: aCart charge: aCreditCard for: aMerchantProcessor on: aGregorianMonthOfYear registerOn: aSalesBook 
+
+	| bill |
+
+	self assertCartIsNotEmpty: aCart.
+	self assertCreditCard: aCreditCard isNotExpiredOn: aGregorianMonthOfYear.
+
+	bill :=  aCart total.
+	
+	aMerchantProcessor debit: bill from: aCreditCard.
+
+	aSalesBook add: bill.
+	^ bill! !
+
+!testRun: #CashierTest #test01EmptyCartCanNotBeCharged stamp: 'AS 6/11/2023 19:12:34'!
+PASSED!
+
+!testRun: #CashierTest #test02CartWithOneItemBillsItemPrice stamp: 'AS 6/11/2023 19:12:34'!
+PASSED!
+
+!testRun: #CashierTest #test03CartWithManyItemsBillsTotalAmount stamp: 'AS 6/11/2023 19:12:34'!
+PASSED!
+
+!testRun: #CashierTest #test04ValidateCreditCardExpirationDate stamp: 'AS 6/11/2023 19:12:34'!
+PASSED!
+
+!testRun: #CashierTest #test05ExpiredCreditCardShouldRaiseError stamp: 'AS 6/11/2023 19:12:34'!
+FAILURE!
+
+!testRun: #CashierTest #test06InvalidNumberedCreditCardShouldRaiseError stamp: 'AS 6/11/2023 19:12:34'!
+PASSED!
+
+!testRun: #CashierTest #test07CreditCardWithoutNameShouldRaiseError stamp: 'AS 6/11/2023 19:12:34'!
+PASSED!
+
+!testRun: #CashierTest #test08StolenCreditCardShouldRaiseError stamp: 'AS 6/11/2023 19:12:34'!
+PASSED!
+
+!testRun: #CashierTest #test09CreditCardWithNotEnoughCreditShouldRaiseError stamp: 'AS 6/11/2023 19:12:35'!
+PASSED!
+
+!testRun: #CashierTest #test05ExpiredCreditCardShouldRaiseError stamp: 'AS 6/11/2023 19:12:35'!
+FAILURE!
+!Cashier methodsFor: 'operations' stamp: 'AS 6/11/2023 19:13:24' prior: 50625385!
+checkOut: aCart charge: aCreditCard for: aMerchantProcessor on: aGregorianMonthOfYear registerOn: aSalesBook 
+
+	| bill |
+
+	self assertCartIsNotEmpty: aCart.
+	self assertCreditCard: aCreditCard isNotExpiredOn: aGregorianMonthOfYear.
+
+	bill :=  aCart total.
+	
+	aMerchantProcessor debit: bill from: aCreditCard.
+
+	aSalesBook add: bill.
+	^ bill! !
+!CashierTest methodsFor: 'tests' stamp: 'AS 6/11/2023 19:14:23' prior: 50624553!
+test05ExpiredCreditCardShouldRaiseError
+
+	| cashier salesBook |
+	
+	salesBook := OrderedCollection new.
+	
+	cart := testSupport createCart.
+	cart add: testSupport itemSellByTheStore.
+	
+	cashier := Cashier new.
+	
+	self
+		should: 	[
+			cashier
+				checkOut: cart
+				charge: testSupport expiredCreditCard
+				for: testSupport merchantProcessor
+				on: testSupport currentDate
+				registerOn: salesBook ]
+		raise: Error
+		withExceptionDo: [ : anError |
+			self assert: Cashier creditCardIsExpiredErrorDescription equals: anError messageText.
+			self assert: salesBook isEmpty ]
+	
+	
+	! !
+
+!classDefinition: #CashierTest category: 'TusLibros' stamp: 'AS 6/11/2023 19:15:17'!
+TestCase subclass: #CashierTest
+	instanceVariableNames: 'testingObjects cart'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros'!
+!CashierTest methodsFor: 'as yet unclassified' stamp: 'AS 6/11/2023 19:15:17' prior: 50624496!
+test02CartWithOneItemBillsItemPrice
+
+	| cashier bill salesBook |
+	
+	salesBook := OrderedCollection new.
+	
+	cart := testingObjects createCart.
+	cart add: testingObjects itemSellByTheStore.
+	
+	cashier := Cashier new.
+	
+	bill := cashier
+		checkOut: cart
+		charge: testingObjects validCreditCard
+		for: testingObjects merchantProcessor
+		on: testingObjects currentDate
+		registerOn: salesBook.
+	
+	self assert: testingObjects itemSellByTheStorePrice equals: bill.
+	self assert: bill equals: salesBook first! !
+!CashierTest methodsFor: 'as yet unclassified' stamp: 'AS 6/11/2023 19:15:17' prior: 50624634!
+test09CreditCardWithNotEnoughCreditShouldRaiseError
+
+	| cashier salesBook |
+	
+	salesBook := OrderedCollection new.
+	
+	cart := testingObjects createCart add: testingObjects itemSellByTheStore.
+	
+	cashier := Cashier new.
+	
+	self
+		should: 	[
+			cashier
+				checkOut: cart
+				charge: testingObjects validCreditCardWithNotEnoughCredit
+				for: testingObjects merchantProcessor
+				on: testingObjects currentDate
+				registerOn: salesBook ]
+		raise: Error
+		withExceptionDo: [ : anError |
+			self assert: salesBook isEmpty ]! !
+!CashierTest methodsFor: 'as yet unclassified' stamp: 'AS 6/11/2023 19:15:17' prior: 50624473 overrides: 16961394!
+setUp
+
+	testingObjects :=TestObjectsFactory new! !
+!CashierTest methodsFor: 'as yet unclassified' stamp: 'AS 6/11/2023 19:15:17' prior: 50624616!
+test08StolenCreditCardShouldRaiseError
+
+	| cashier salesBook |
+	
+	salesBook := OrderedCollection new.
+	
+	cart := testingObjects createCart.
+	cart add: testingObjects itemSellByTheStore.
+	
+	cashier := Cashier new.
+	
+	self
+		should: 	[
+			cashier
+				checkOut: cart
+				charge: testingObjects stolenCreditCard
+				for: testingObjects merchantProcessor
+				on: testingObjects currentDate
+				registerOn: salesBook ]
+		raise: Error
+		withExceptionDo: [ : anError |
+			self assert: salesBook isEmpty ]! !
+!CashierTest methodsFor: 'as yet unclassified' stamp: 'AS 6/11/2023 19:15:17' prior: 50624477!
+test01EmptyCartCanNotBeCharged
+
+	| cashier salesBook |
+	
+	salesBook := OrderedCollection new.
+	
+	cart := testingObjects createCart.
+	
+	cashier := Cashier new.
+	
+	self
+		should: [
+			cashier
+				checkOut: cart
+				charge: testingObjects validCreditCard
+				for: testingObjects merchantProcessor
+				on: testingObjects currentDate
+				registerOn: salesBook ]
+		raise: Error
+		withExceptionDo: [ : anError | 
+			self assert: Cashier emptyCartCanNotBeChargedErrorDescription equals: anError messageText.
+			self assert: salesBook isEmpty ]
+	! !
+!CashierTest methodsFor: 'as yet unclassified' stamp: 'AS 6/11/2023 19:15:17' prior: 50624574!
+test06InvalidNumberedCreditCardShouldRaiseError
+
+	| cashier salesBook |
+	
+	salesBook := OrderedCollection new.
+	
+	cart := testingObjects createCart.
+	cart add: testingObjects itemSellByTheStore.
+	
+	cashier := Cashier new.
+	
+	self
+		should: 	[
+			cashier
+				checkOut: cart
+				charge: testingObjects invalidNumberCreditCard
+				for: testingObjects merchantProcessor
+				on: testingObjects currentDate
+				registerOn: salesBook ]
+		raise: Error
+		withExceptionDo: [ : anError |
+			self assert: CreditCard invalidNumberedCreditCardErrorDescription equals: anError messageText.
+			self assert: salesBook isEmpty ]
+	
+	
+	! !
+!CashierTest methodsFor: 'as yet unclassified' stamp: 'AS 6/11/2023 19:15:17' prior: 50624514!
+test03CartWithManyItemsBillsTotalAmount
+
+	| cashier bill salesBook |
+	
+	salesBook := OrderedCollection new.
+	
+	cart := testingObjects createCart.
+	cart add: testingObjects itemSellByTheStore.
+	cart add: testingObjects anotherItemSellByTheStore.
+	
+	cashier := Cashier new.
+	
+	bill := cashier
+		checkOut: cart
+		charge: testingObjects validCreditCard
+		for: testingObjects merchantProcessor
+		on: testingObjects currentDate
+		registerOn: salesBook .
+	
+	self assert: testingObjects itemSellByTheStorePrice + testingObjects anotherItemSellByTheStorePrice equals: bill.
+	self assert: bill equals: salesBook first! !
+!CashierTest methodsFor: 'as yet unclassified' stamp: 'AS 6/11/2023 19:15:17' prior: 50624595!
+test07CreditCardWithoutNameShouldRaiseError
+
+	| cashier salesBook |
+	
+	salesBook := OrderedCollection new.
+	
+	cart := testingObjects createCart.
+	cart add: testingObjects itemSellByTheStore.
+	
+	cashier := Cashier new.
+	
+	self
+		should: 	[
+			cashier
+				checkOut: cart
+				charge: testingObjects creditCardWithoutName
+				for: testingObjects merchantProcessor
+				on: testingObjects currentDate
+				registerOn: salesBook ]
+		raise: Error
+		withExceptionDo: [ : anError |
+			self assert: CreditCard creditCardWithoutNameErrorDescription equals: anError messageText.
+			self assert: salesBook isEmpty ]
+	
+	
+	! !
+!CashierTest methodsFor: 'as yet unclassified' stamp: 'AS 6/11/2023 19:15:17' prior: 50624535!
+test04ValidateCreditCardExpirationDate
+
+	| cashier bill salesBook |
+	
+	salesBook := OrderedCollection new.
+	
+	cart := testingObjects createCart.
+	cart add: testingObjects itemSellByTheStore.
+	
+	cashier := Cashier new.
+	
+	bill := cashier
+		checkOut: cart
+		charge: testingObjects validCreditCard
+		for: testingObjects merchantProcessor
+		on: testingObjects currentDate
+		registerOn: salesBook.
+	
+	self assert: testingObjects itemSellByTheStorePrice equals: bill.
+	self assert: bill equals: salesBook first! !
+!CashierTest methodsFor: 'as yet unclassified' stamp: 'AS 6/11/2023 19:15:17' prior: 50625446!
+test05ExpiredCreditCardShouldRaiseError
+
+	| cashier salesBook |
+	
+	salesBook := OrderedCollection new.
+	
+	cart := testingObjects createCart.
+	cart add: testingObjects itemSellByTheStore.
+	
+	cashier := Cashier new.
+	
+	self
+		should: 	[
+			cashier
+				checkOut: cart
+				charge: testingObjects expiredCreditCard
+				for: testingObjects merchantProcessor
+				on: testingObjects currentDate
+				registerOn: salesBook ]
+		raise: Error
+		withExceptionDo: [ : anError |
+			self assert: Cashier creditCardIsExpiredErrorDescription equals: anError messageText.
+			self assert: salesBook isEmpty ]
+	
+	
+	! !
+!TestObjectsFactory methodsFor: 'as yet unclassified' stamp: 'AS 6/11/2023 19:15:46'!
+createCartWithItems: anArrayOfItems
+
+	| cart |
+	
+	cart := Cart acceptingItemsOf: self defaultCatalog.
+	anArrayOfItems do: [ : anItem | cart add: anItem ].
+	
+	^cart.! !
+
+!methodRemoval: TestObjectsFactory #invalidNumberCreditCard stamp: 'AS 6/11/2023 19:15:57'!
+invalidNumberCreditCard
+
+	^CreditCard number: '' owner: 'JUAN' expiration: (GregorianMonthOfYear year: 2027 month: May)!
+
+!methodRemoval: TestObjectsFactory #creditCardWithoutName stamp: 'AS 6/11/2023 19:16:00'!
+creditCardWithoutName
+
+	^CreditCard number: '1234567890123456' owner: '' expiration: (GregorianMonthOfYear year: 2027 month: May)!
+!CashierTest methodsFor: 'setUp/tearDown' stamp: 'AS 6/11/2023 19:17:29'!
+testCheckItems: anArrayOfItems chargedTo: aCreditCard shouldRaise: anErrorDescription
+
+	| cashier salesBook |
+	
+	salesBook := OrderedCollection new.
+	
+	cart := testingObjects createCartWithItems: anArrayOfItems.
+	
+	cashier := Cashier new.
+	
+	self
+		should: [
+			cashier
+				checkOut: cart
+				charge: aCreditCard
+				for: testingObjects merchantProcessor
+				on: testingObjects currentDate
+				registerOn: salesBook ]
+		raise: Error
+		withExceptionDo: [ : anError | 
+			self assert: anErrorDescription equals: anError messageText.
+			self assert: salesBook isEmpty ]
+	! !
+!CashierTest methodsFor: 'tests' stamp: 'AS 6/11/2023 19:17:52' prior: 50625538!
+test01EmptyCartCanNotBeCharged
+
+	self 
+		testCheckItems: {} 
+		chargedTo: testingObjects validCreditCard 
+		shouldRaise: Cashier emptyCartCanNotBeChargedErrorDescription! !
+
+!testRun: #CashierTest #test01EmptyCartCanNotBeCharged stamp: 'AS 6/11/2023 19:17:54'!
+PASSED!
+!CashierTest methodsFor: 'private' stamp: 'AS 6/11/2023 19:18:24'!
+testCheckOutItems: anArrayOfItems chargedTo: aCreditCard withAmountOf: anAmount
+
+	| cashier bill salesBook |
+	
+	salesBook := OrderedCollection new.	
+	cart := testingObjects createCartWithItems: anArrayOfItems .
+		
+	cashier := Cashier new.
+	
+	bill := cashier
+		checkOut: cart
+		charge: aCreditCard
+		for: testingObjects merchantProcessor
+		on: testingObjects currentDate
+		registerOn: salesBook.
+	
+	self assert: anAmount equals: bill.
+	self assert: bill equals: salesBook first! !
+!CashierTest methodsFor: 'tests' stamp: 'AS 6/11/2023 19:18:37' prior: 50625475!
+test02CartWithOneItemBillsItemPrice
+
+	self 
+		testCheckOutItems: { testingObjects itemSellByTheStore }
+		chargedTo: testingObjects validCreditCard
+		withAmountOf: testingObjects itemSellByTheStorePrice! !
+!CashierTest methodsFor: 'tests' stamp: 'AS 6/11/2023 19:18:47' prior: 50625581!
+test03CartWithManyItemsBillsTotalAmount
+
+	self 
+		testCheckOutItems: { testingObjects itemSellByTheStore. testingObjects anotherItemSellByTheStore }
+		chargedTo: testingObjects validCreditCard
+		withAmountOf: (testingObjects itemSellByTheStorePrice + testingObjects anotherItemSellByTheStorePrice).! !
+
+!methodRemoval: CashierTest #test04ValidateCreditCardExpirationDate stamp: 'AS 6/11/2023 19:19:24'!
+test04ValidateCreditCardExpirationDate
+
+	| cashier bill salesBook |
+	
+	salesBook := OrderedCollection new.
+	
+	cart := testingObjects createCart.
+	cart add: testingObjects itemSellByTheStore.
+	
+	cashier := Cashier new.
+	
+	bill := cashier
+		checkOut: cart
+		charge: testingObjects validCreditCard
+		for: testingObjects merchantProcessor
+		on: testingObjects currentDate
+		registerOn: salesBook.
+	
+	self assert: testingObjects itemSellByTheStorePrice equals: bill.
+	self assert: bill equals: salesBook first!
+!CashierTest methodsFor: 'tests' stamp: 'AS 6/11/2023 19:19:34'!
+test04ExpiredCreditCardShouldRaiseError
+
+	| cashier salesBook |
+	
+	salesBook := OrderedCollection new.
+	
+	cart := testingObjects createCart.
+	cart add: testingObjects itemSellByTheStore.
+	
+	cashier := Cashier new.
+	
+	self
+		should: 	[
+			cashier
+				checkOut: cart
+				charge: testingObjects expiredCreditCard
+				for: testingObjects merchantProcessor
+				on: testingObjects currentDate
+				registerOn: salesBook ]
+		raise: Error
+		withExceptionDo: [ : anError |
+			self assert: Cashier creditCardIsExpiredErrorDescription equals: anError messageText.
+			self assert: salesBook isEmpty ]
+	
+	
+	! !
+
+!methodRemoval: CashierTest #test05ExpiredCreditCardShouldRaiseError stamp: 'AS 6/11/2023 19:19:34'!
+test05ExpiredCreditCardShouldRaiseError
+
+	| cashier salesBook |
+	
+	salesBook := OrderedCollection new.
+	
+	cart := testingObjects createCart.
+	cart add: testingObjects itemSellByTheStore.
+	
+	cashier := Cashier new.
+	
+	self
+		should: 	[
+			cashier
+				checkOut: cart
+				charge: testingObjects expiredCreditCard
+				for: testingObjects merchantProcessor
+				on: testingObjects currentDate
+				registerOn: salesBook ]
+		raise: Error
+		withExceptionDo: [ : anError |
+			self assert: Cashier creditCardIsExpiredErrorDescription equals: anError messageText.
+			self assert: salesBook isEmpty ]
+	
+	
+	!
+!CashierTest methodsFor: 'tests' stamp: 'AS 6/11/2023 19:19:49' prior: 50625780!
+test04ExpiredCreditCardShouldRaiseError
+
+	self 
+		testCheckItems: { testingObjects itemSellByTheStore. } 
+		chargedTo: testingObjects expiredCreditCard 
+		shouldRaise: Cashier creditCardIsExpiredErrorDescription	! !
+
+!testRun: #CashierTest #test04ExpiredCreditCardShouldRaiseError stamp: 'AS 6/11/2023 19:19:50'!
+PASSED!
+
+!testRun: #CashierTest #test01EmptyCartCanNotBeCharged stamp: 'AS 6/11/2023 19:19:50'!
+PASSED!
+
+!testRun: #CashierTest #test02CartWithOneItemBillsItemPrice stamp: 'AS 6/11/2023 19:19:50'!
+PASSED!
+
+!testRun: #CashierTest #test03CartWithManyItemsBillsTotalAmount stamp: 'AS 6/11/2023 19:19:50'!
+PASSED!
+
+!testRun: #CashierTest #test04ExpiredCreditCardShouldRaiseError stamp: 'AS 6/11/2023 19:19:50'!
+PASSED!
+
+!testRun: #CashierTest #test06InvalidNumberedCreditCardShouldRaiseError stamp: 'AS 6/11/2023 19:19:50'!
+FAILURE!
+
+!testRun: #CashierTest #test07CreditCardWithoutNameShouldRaiseError stamp: 'AS 6/11/2023 19:19:50'!
+FAILURE!
+
+!testRun: #CashierTest #test08StolenCreditCardShouldRaiseError stamp: 'AS 6/11/2023 19:19:50'!
+PASSED!
+
+!testRun: #CashierTest #test09CreditCardWithNotEnoughCreditShouldRaiseError stamp: 'AS 6/11/2023 19:19:50'!
+PASSED!
+
+!testRun: #CashierTest #test06InvalidNumberedCreditCardShouldRaiseError stamp: 'AS 6/11/2023 19:19:53'!
+FAILURE!
+
+!testRun: #CashierTest #test04ExpiredCreditCardShouldRaiseError stamp: 'AS 6/11/2023 19:20:05'!
+PASSED!
+
+!testRun: #CashierTest #test03CartWithManyItemsBillsTotalAmount stamp: 'AS 6/11/2023 19:20:08'!
+PASSED!
+
+!testRun: #CashierTest #test02CartWithOneItemBillsItemPrice stamp: 'AS 6/11/2023 19:20:10'!
+PASSED!
+
+!testRun: #CashierTest #test01EmptyCartCanNotBeCharged stamp: 'AS 6/11/2023 19:20:13'!
+PASSED!
+
+!methodRemoval: CashierTest #test06InvalidNumberedCreditCardShouldRaiseError stamp: 'AS 6/11/2023 19:20:18'!
+test06InvalidNumberedCreditCardShouldRaiseError
+
+	| cashier salesBook |
+	
+	salesBook := OrderedCollection new.
+	
+	cart := testingObjects createCart.
+	cart add: testingObjects itemSellByTheStore.
+	
+	cashier := Cashier new.
+	
+	self
+		should: 	[
+			cashier
+				checkOut: cart
+				charge: testingObjects invalidNumberCreditCard
+				for: testingObjects merchantProcessor
+				on: testingObjects currentDate
+				registerOn: salesBook ]
+		raise: Error
+		withExceptionDo: [ : anError |
+			self assert: CreditCard invalidNumberedCreditCardErrorDescription equals: anError messageText.
+			self assert: salesBook isEmpty ]
+	
+	
+	!
+
+!methodRemoval: CashierTest #test07CreditCardWithoutNameShouldRaiseError stamp: 'AS 6/11/2023 19:20:20'!
+test07CreditCardWithoutNameShouldRaiseError
+
+	| cashier salesBook |
+	
+	salesBook := OrderedCollection new.
+	
+	cart := testingObjects createCart.
+	cart add: testingObjects itemSellByTheStore.
+	
+	cashier := Cashier new.
+	
+	self
+		should: 	[
+			cashier
+				checkOut: cart
+				charge: testingObjects creditCardWithoutName
+				for: testingObjects merchantProcessor
+				on: testingObjects currentDate
+				registerOn: salesBook ]
+		raise: Error
+		withExceptionDo: [ : anError |
+			self assert: CreditCard creditCardWithoutNameErrorDescription equals: anError messageText.
+			self assert: salesBook isEmpty ]
+	
+	
+	!
+!CashierTest methodsFor: 'tests' stamp: 'AS 6/11/2023 19:20:35'!
+test05StolenCreditCardShouldRaiseError
+
+	| cashier salesBook |
+	
+	salesBook := OrderedCollection new.
+	
+	cart := testingObjects createCart.
+	cart add: testingObjects itemSellByTheStore.
+	
+	cashier := Cashier new.
+	
+	self
+		should: 	[
+			cashier
+				checkOut: cart
+				charge: testingObjects stolenCreditCard
+				for: testingObjects merchantProcessor
+				on: testingObjects currentDate
+				registerOn: salesBook ]
+		raise: Error
+		withExceptionDo: [ : anError |
+			self assert: salesBook isEmpty ]! !
+
+!methodRemoval: CashierTest #test08StolenCreditCardShouldRaiseError stamp: 'AS 6/11/2023 19:20:35'!
+test08StolenCreditCardShouldRaiseError
+
+	| cashier salesBook |
+	
+	salesBook := OrderedCollection new.
+	
+	cart := testingObjects createCart.
+	cart add: testingObjects itemSellByTheStore.
+	
+	cashier := Cashier new.
+	
+	self
+		should: 	[
+			cashier
+				checkOut: cart
+				charge: testingObjects stolenCreditCard
+				for: testingObjects merchantProcessor
+				on: testingObjects currentDate
+				registerOn: salesBook ]
+		raise: Error
+		withExceptionDo: [ : anError |
+			self assert: salesBook isEmpty ]!
+!CashierTest methodsFor: 'tests' stamp: 'AS 6/11/2023 19:22:03' prior: 50625924!
+test05StolenCreditCardShouldRaiseError
+
+	self 
+		testCheckItems: { testingObjects itemSellByTheStore. } 
+		chargedTo: testingObjects stolenCreditCard 
+		shouldRaise: MerchantProcessorSimulator creditCardIsStolenErrorDescription! !
+!MerchantProcessorSimulator class methodsFor: 'error descriptions' stamp: 'AS 6/11/2023 19:22:37'!
+creditCardIsStolenErrorDescription
+	
+	^'Credit card is stolen'! !
+!MerchantProcessorSimulator methodsFor: 'operations' stamp: 'AS 6/11/2023 19:23:23' prior: 50624888!
+debit: anAmount from: aCreditCard
+
+	(stolenCreditCards includes: aCreditCard number) ifTrue: [
+		self error: MerchantProcessorSimulator creditCardIsStolenErrorDescription.
+	].
+
+	((validCreditCards at: aCreditCard number) < anAmount) ifTrue: [
+		self error: 'Not enough credit on credit card'
+	]
+
+	! !
+
+!testRun: #CashierTest #test05StolenCreditCardShouldRaiseError stamp: 'AS 6/11/2023 19:23:30'!
+PASSED!
+!CashierTest methodsFor: 'tests' stamp: 'AS 6/11/2023 19:23:50'!
+test06CreditCardWithNotEnoughCreditShouldRaiseError
+
+	| cashier salesBook |
+	
+	salesBook := OrderedCollection new.
+	
+	cart := testingObjects createCart add: testingObjects itemSellByTheStore.
+	
+	cashier := Cashier new.
+	
+	self
+		should: 	[
+			cashier
+				checkOut: cart
+				charge: testingObjects validCreditCardWithNotEnoughCredit
+				for: testingObjects merchantProcessor
+				on: testingObjects currentDate
+				registerOn: salesBook ]
+		raise: Error
+		withExceptionDo: [ : anError |
+			self assert: salesBook isEmpty ]! !
+
+!methodRemoval: CashierTest #test09CreditCardWithNotEnoughCreditShouldRaiseError stamp: 'AS 6/11/2023 19:23:50'!
+test09CreditCardWithNotEnoughCreditShouldRaiseError
+
+	| cashier salesBook |
+	
+	salesBook := OrderedCollection new.
+	
+	cart := testingObjects createCart add: testingObjects itemSellByTheStore.
+	
+	cashier := Cashier new.
+	
+	self
+		should: 	[
+			cashier
+				checkOut: cart
+				charge: testingObjects validCreditCardWithNotEnoughCredit
+				for: testingObjects merchantProcessor
+				on: testingObjects currentDate
+				registerOn: salesBook ]
+		raise: Error
+		withExceptionDo: [ : anError |
+			self assert: salesBook isEmpty ]!
+!CashierTest methodsFor: 'tests' stamp: 'AS 6/11/2023 19:24:22' prior: 50625993!
+test06CreditCardWithNotEnoughCreditShouldRaiseError
+
+	self 
+		testCheckItems: { testingObjects itemSellByTheStore. } 
+		chargedTo: testingObjects validCreditCardWithNotEnoughCredit 
+		shouldRaise: MerchantProcessorSimulator creditCardDoesNotHaveEnoughCredit! !
+!MerchantProcessorSimulator class methodsFor: 'error descriptions' stamp: 'AS 6/11/2023 19:24:42'!
+creditCardDoesNotHaveEnoughCredit
+	
+	^'Credit card does not have enough credit'! !
+
+!testRun: #CashierTest #test01EmptyCartCanNotBeCharged stamp: 'AS 6/11/2023 19:24:59'!
+PASSED!
+
+!testRun: #CashierTest #test02CartWithOneItemBillsItemPrice stamp: 'AS 6/11/2023 19:25:00'!
+PASSED!
+
+!testRun: #CashierTest #test03CartWithManyItemsBillsTotalAmount stamp: 'AS 6/11/2023 19:25:00'!
+PASSED!
+
+!testRun: #CashierTest #test04ExpiredCreditCardShouldRaiseError stamp: 'AS 6/11/2023 19:25:00'!
+PASSED!
+
+!testRun: #CashierTest #test05StolenCreditCardShouldRaiseError stamp: 'AS 6/11/2023 19:25:00'!
+PASSED!
+
+!testRun: #CashierTest #test06CreditCardWithNotEnoughCreditShouldRaiseError stamp: 'AS 6/11/2023 19:25:00'!
+FAILURE!
+
+!testRun: #CashierTest #test06CreditCardWithNotEnoughCreditShouldRaiseError stamp: 'AS 6/11/2023 19:25:00'!
+FAILURE!
+!MerchantProcessorSimulator methodsFor: 'operations' stamp: 'AS 6/11/2023 19:25:24' prior: 50625978!
+debit: anAmount from: aCreditCard
+
+	(stolenCreditCards includes: aCreditCard number) ifTrue: [
+		self error: MerchantProcessorSimulator creditCardIsStolenErrorDescription.
+	].
+
+	((validCreditCards at: aCreditCard number) < anAmount) ifTrue: [
+		self error: MerchantProcessorSimulator creditCardDoesNotHaveEnoughCredit 
+	]
+
+	! !
+
+!testRun: #CreditCardTest #test01NumberMustHaveSizeEqualsTo16Characters stamp: 'AS 6/11/2023 19:25:27'!
+PASSED!
+
+!testRun: #CreditCardTest #test02NumberContainsOnlyDigitCharacters stamp: 'AS 6/11/2023 19:25:27'!
+PASSED!
+
+!testRun: #CreditCardTest #test03OwnerIsNotAnEmptyString stamp: 'AS 6/11/2023 19:25:27'!
+PASSED!
+!TestObjectsFactory methodsFor: 'merchant processors' stamp: 'AS 6/11/2023 19:26:00' prior: 50624997!
+merchantProcessor
+	
+	| merchantProcessor |
+	
+	merchantProcessor := MerchantProcessorSimulator new.
+	
+	merchantProcessor stolenCreditCards add: self stolenCreditCard number.
+	
+	merchantProcessor validCreditCards at: self validCreditCard number put: 1000.
+	merchantProcessor validCreditCards at: self validCreditCardWithNotEnoughCredit number put: 10.
+	merchantProcessor validCreditCards at: self stolenCreditCard number put: 0.
+	
+	^ merchantProcessor! !
+!TestObjectsFactory methodsFor: 'credit cards' stamp: 'AS 6/11/2023 19:26:11'!
+invalidCreditCard
+
+	^CreditCard number: '1234567890123456' owner: 'PEPE' expiration: (GregorianMonthOfYear year: 2027 month: May)! !
+!TestObjectsFactory methodsFor: 'credit cards' stamp: 'AS 6/11/2023 19:26:19' prior: 50626115!
+invalidCreditCard
+
+	^CreditCard number: '1234123412341234' owner: 'PEPE' expiration: (GregorianMonthOfYear year: 2027 month: May)! !
+!CashierTest methodsFor: 'tests' stamp: 'AS 6/11/2023 19:26:58'!
+test07InvalidCreditCardShouldRaiseError	
+	
+	self 
+		testCheckItems: { testingObjects itemSellByTheStore. } 
+		chargedTo: testingObjects invalidCreditCard 
+		shouldRaise: MerchantProcessorSimulator creditCardIsNotValidErrorDescription 	
+! !
+!MerchantProcessorSimulator class methodsFor: 'error descriptions' stamp: 'AS 6/11/2023 19:27:16'!
+creditCardIsNotValidErrorDescription
+	
+	^'Credit card is not valid'! !
+
+!testRun: #CashierTest #test01EmptyCartCanNotBeCharged stamp: 'AS 6/11/2023 19:27:23'!
+PASSED!
+
+!testRun: #CashierTest #test02CartWithOneItemBillsItemPrice stamp: 'AS 6/11/2023 19:27:24'!
+PASSED!
+
+!testRun: #CashierTest #test03CartWithManyItemsBillsTotalAmount stamp: 'AS 6/11/2023 19:27:24'!
+PASSED!
+
+!testRun: #CashierTest #test04ExpiredCreditCardShouldRaiseError stamp: 'AS 6/11/2023 19:27:24'!
+PASSED!
+
+!testRun: #CashierTest #test05StolenCreditCardShouldRaiseError stamp: 'AS 6/11/2023 19:27:24'!
+PASSED!
+
+!testRun: #CashierTest #test06CreditCardWithNotEnoughCreditShouldRaiseError stamp: 'AS 6/11/2023 19:27:24'!
+PASSED!
+
+!testRun: #CashierTest #test07InvalidCreditCardShouldRaiseError stamp: 'AS 6/11/2023 19:27:24'!
+FAILURE!
+
+!testRun: #CashierTest #test07InvalidCreditCardShouldRaiseError stamp: 'AS 6/11/2023 19:27:24'!
+FAILURE!
+!MerchantProcessorSimulator methodsFor: 'operations' stamp: 'AS 6/11/2023 19:29:18' prior: 50626074!
+debit: anAmount from: aCreditCard
+
+	(validCreditCards keys includes: aCreditCard number) ifFalse: [
+		self error: MerchantProcessorSimulator creditCardIsNotValidErrorDescription
+	].
+
+	(stolenCreditCards includes: aCreditCard number) ifTrue: [
+		self error: MerchantProcessorSimulator creditCardIsStolenErrorDescription.
+	].
+
+	((validCreditCards at: aCreditCard number) < anAmount) ifTrue: [
+		self error: MerchantProcessorSimulator creditCardDoesNotHaveEnoughCredit 
+	]
+
+	! !
+
+!testRun: #CashierTest #test01EmptyCartCanNotBeCharged stamp: 'AS 6/11/2023 19:29:22'!
+PASSED!
+
+!testRun: #CashierTest #test02CartWithOneItemBillsItemPrice stamp: 'AS 6/11/2023 19:29:22'!
+PASSED!
+
+!testRun: #CashierTest #test03CartWithManyItemsBillsTotalAmount stamp: 'AS 6/11/2023 19:29:22'!
+PASSED!
+
+!testRun: #CashierTest #test04ExpiredCreditCardShouldRaiseError stamp: 'AS 6/11/2023 19:29:22'!
+PASSED!
+
+!testRun: #CashierTest #test05StolenCreditCardShouldRaiseError stamp: 'AS 6/11/2023 19:29:23'!
+PASSED!
+
+!testRun: #CashierTest #test06CreditCardWithNotEnoughCreditShouldRaiseError stamp: 'AS 6/11/2023 19:29:23'!
+PASSED!
+
+!testRun: #CashierTest #test07InvalidCreditCardShouldRaiseError stamp: 'AS 6/11/2023 19:29:23'!
+PASSED!
+
+!testRun: #CreditCardTest #test01NumberMustHaveSizeEqualsTo16Characters stamp: 'AS 6/11/2023 19:29:26'!
+PASSED!
+
+!testRun: #CreditCardTest #test02NumberContainsOnlyDigitCharacters stamp: 'AS 6/11/2023 19:29:26'!
+PASSED!
+
+!testRun: #CreditCardTest #test03OwnerIsNotAnEmptyString stamp: 'AS 6/11/2023 19:29:26'!
+PASSED!
+
+!testRun: #CartTest #test01NewCartsAreCreatedEmpty stamp: 'AS 6/11/2023 19:29:30'!
+PASSED!
+
+!testRun: #CartTest #test02CanNotAddItemsThatDoNotBelongToStore stamp: 'AS 6/11/2023 19:29:30'!
+PASSED!
+
+!testRun: #CartTest #test03AfterAddingAnItemTheCartIsNotEmptyAnymore stamp: 'AS 6/11/2023 19:29:30'!
+PASSED!
+
+!testRun: #CartTest #test04CanNotAddNonPositiveNumberOfItems stamp: 'AS 6/11/2023 19:29:30'!
+PASSED!
+
+!testRun: #CartTest #test05CanNotAddMoreThanOneItemNotSellByTheStore stamp: 'AS 6/11/2023 19:29:30'!
+PASSED!
+
+!testRun: #CartTest #test06CartRemembersAddedItems stamp: 'AS 6/11/2023 19:29:30'!
+PASSED!
+
+!testRun: #CartTest #test07CartDoesNotHoldNotAddedItems stamp: 'AS 6/11/2023 19:29:30'!
+PASSED!
+
+!testRun: #CartTest #test08CartRemembersTheNumberOfAddedItems stamp: 'AS 6/11/2023 19:29:30'!
+PASSED!
