@@ -1,0 +1,2028 @@
+
+
+----QUIT----(30 May 2023 00:05:32) CuisUniversity-5832.image priorSource: 4928100!
+
+----STARTUP---- (30 May 2023 00:05:33) as /Users/hernan/Documents/Cuis/5.0-64Bits/Cuis-University-Installer/CuisUniversity-5832.image!
+
+
+----QUIT----(30 May 2023 00:05:33) CuisUniversity-5832.image priorSource: 9366537!
+
+----STARTUP---- (14 June 2023 18:28:13) as E:\ISW1\CUIS\Tus Libros Iteracion 2.5\CuisUniversity-5832.image!
+
+
+----End fileIn of E:\ISW1\CUIS\Tus Libros Iteracion 2.5\TusLibros.st----!
+!RestInterfaceTest methodsFor: 'as yet unclassified' stamp: 'AS 6/14/2023 18:47:39'!
+test17AddItemResetsTimeOut
+
+	| interface cartId  itemSellByTheStore |
+
+	interface := self createDefaultInterface.
+
+	cartId := interface createCartFor: self validUser authenticatedWith: self validUserPassword.
+	
+	timeSimulator advanceOn: (Duration minutes: 29).
+	
+	interface add: itemSellByTheStore quantity: 1 toCartIdentifiedAs: cartId.
+	
+	timeSimulator advanceOn: (Duration minutes: 5).
+	
+	self
+		shouldnt: [ interface listCartIdentifiedAs: cartId ]
+		raise: Error! !
+!RestInterfaceTest methodsFor: 'as yet unclassified' stamp: 'AS 6/14/2023 18:48:18' prior: 50625494!
+test17AddItemResetsTimeOut
+
+	| interface cartId |
+
+	interface := self createDefaultInterface.
+
+	cartId := interface createCartFor: self validUser authenticatedWith: self validUserPassword.
+	
+	timeSimulator advanceOn: (Duration minutes: 29).
+	
+	interface add: self validBook quantity: 1 toCartIdentifiedAs: cartId.
+	
+	timeSimulator advanceOn: (Duration minutes: 5).
+	
+	self
+		shouldnt: [ interface listCartIdentifiedAs: cartId ]
+		raise: Error! !
+
+!testRun: #RestInterfaceTest #test17AddItemResetsTimeOut stamp: 'AS 6/14/2023 18:48:20'!
+FAILURE!
+!RestInterface methodsFor: 'operations' stamp: 'AS 6/14/2023 18:49:09' prior: 50625271!
+add: aBook quantity: anAmount toCartIdentifiedAs: aCartId
+
+	| cart |
+	
+	cart := carts at: aCartId ifAbsent: [ self signalInvalidCartId ].
+	
+	self assertNotTimedOut: aCartId.
+	
+	cartsLastInteraction at: aCartId put: timeServer currentTime.
+	
+	cart add: anAmount of: aBook.
+	! !
+
+!testRun: #RestInterfaceTest #test01CanCreateCartWithValidUserAndPassword stamp: 'AS 6/14/2023 18:49:12'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test02CanNotCreateCartWithInvalidUser stamp: 'AS 6/14/2023 18:49:13'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test03CanNotCreateCartWithInvalidPassword stamp: 'AS 6/14/2023 18:49:13'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test04CanAddItemsToACreatedCart stamp: 'AS 6/14/2023 18:49:13'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test05CanNotAddItemToNotCreatedCart stamp: 'AS 6/14/2023 18:49:13'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test06CanNotAddItemNotSellByTheStore stamp: 'AS 6/14/2023 18:49:13'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test07ListCartOfAnEmptyCartReturnsAnEmptyBag stamp: 'AS 6/14/2023 18:49:13'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test08CanNotListCartOfInvalidCartId stamp: 'AS 6/14/2023 18:49:13'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test09ListCartReturnsTheRightNumberOfItems stamp: 'AS 6/14/2023 18:49:13'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test10CanCheckoutACart stamp: 'AS 6/14/2023 18:49:13'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test11CanNotCheckoutANotCreatedCart stamp: 'AS 6/14/2023 18:49:13'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test12CanNotCheckoutAnEmptyCart stamp: 'AS 6/14/2023 18:49:13'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test13CanNotListCartAfterTimeOut stamp: 'AS 6/14/2023 18:49:13'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test14CanNotAddItemToCartAfterTimeOut stamp: 'AS 6/14/2023 18:49:13'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test15CanNotAddItemToCartAfterTimeOut stamp: 'AS 6/14/2023 18:49:13'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test16ListCartResetsTimeOut stamp: 'AS 6/14/2023 18:49:13'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test17AddItemResetsTimeOut stamp: 'AS 6/14/2023 18:49:13'!
+PASSED!
+!RestInterfaceTest methodsFor: 'as yet unclassified' stamp: 'AS 6/14/2023 18:49:36'!
+test18CartIsNotAvailableAfterCheckOut
+
+	| interface cartId |
+
+	interface := self createDefaultInterface.
+
+	cartId := interface createCartFor: self validUser authenticatedWith: self validUserPassword.
+	
+	timeSimulator advanceOn: (Duration minutes: 29).
+	
+	interface add: self validBook quantity: 1 toCartIdentifiedAs: cartId.
+	
+	timeSimulator advanceOn: (Duration minutes: 5).
+	
+	self
+		shouldnt: [ interface listCartIdentifiedAs: cartId ]
+		raise: Error! !
+!RestInterfaceTest methodsFor: 'as yet unclassified' stamp: 'AS 6/14/2023 18:50:43' prior: 50625601!
+test18CartIsNotAvailableAfterCheckOut
+
+	| interface cartId |
+
+	cartId := interface createCartFor: self validUser authenticatedWith: self validUserPassword.
+	interface add: self validBook quantity: 1 toCartIdentifiedAs: cartId.
+	
+	interface 
+		checkOutCartIdentifiedAs: cartId 
+		withCreditCardNumbered: '1111222233334444' 
+		ownedBy: 'Juan Perez' 
+		expiringOn: testObjectsFactory notExpiredMonthOfYear.
+	
+	! !
+!RestInterfaceTest methodsFor: 'as yet unclassified' stamp: 'AS 6/14/2023 18:52:01' prior: 50625619!
+test18CartIsNotAvailableAfterCheckOut
+
+	| interface cartId |
+
+	cartId := interface createCartFor: self validUser authenticatedWith: self validUserPassword.
+	interface add: self validBook quantity: 1 toCartIdentifiedAs: cartId.
+	
+	interface 
+		checkOutCartIdentifiedAs: cartId 
+		withCreditCardNumbered: '1111222233334444' 
+		ownedBy: 'Juan Perez' 
+		expiringOn: testObjectsFactory notExpiredMonthOfYear.
+	
+	self should: [ interface listCartIdentifiedAs: cartId ]
+	raise: Error - MessageNotUnderstood
+		withExceptionDo: [ :anError |
+			self assert: anError messageText = interface invalidCartIdErrorDescription ]		
+	
+	! !
+!RestInterfaceTest methodsFor: 'as yet unclassified' stamp: 'AS 6/14/2023 18:52:29' prior: 50625635!
+test18CartIsNotAvailableAfterCheckOut
+
+	| interface cartId |
+
+	interface := self createDefaultInterface.
+	
+	cartId := interface createCartFor: self validUser authenticatedWith: self validUserPassword.
+	interface add: self validBook quantity: 1 toCartIdentifiedAs: cartId.
+	
+	interface 
+		checkOutCartIdentifiedAs: cartId 
+		withCreditCardNumbered: '1111222233334444' 
+		ownedBy: 'Juan Perez' 
+		expiringOn: testObjectsFactory notExpiredMonthOfYear.
+	
+	self should: [ interface listCartIdentifiedAs: cartId ]
+	raise: Error - MessageNotUnderstood
+		withExceptionDo: [ :anError |
+			self assert: anError messageText = interface invalidCartIdErrorDescription ]		
+	
+	! !
+
+!testRun: #RestInterfaceTest #test18CartIsNotAvailableAfterCheckOut stamp: 'AS 6/14/2023 18:52:33'!
+FAILURE!
+!RestInterfaceTest methodsFor: 'as yet unclassified' stamp: 'AS 6/14/2023 18:53:04'!
+test18CartIsNotAvailableToListAfterCheckOut
+
+	| interface cartId |
+
+	interface := self createDefaultInterface.
+	
+	cartId := interface createCartFor: self validUser authenticatedWith: self validUserPassword.
+	interface add: self validBook quantity: 1 toCartIdentifiedAs: cartId.
+	
+	interface 
+		checkOutCartIdentifiedAs: cartId 
+		withCreditCardNumbered: '1111222233334444' 
+		ownedBy: 'Juan Perez' 
+		expiringOn: testObjectsFactory notExpiredMonthOfYear.
+	
+	self should: [ interface listCartIdentifiedAs: cartId ]
+	raise: Error - MessageNotUnderstood
+		withExceptionDo: [ :anError |
+			self assert: anError messageText = interface invalidCartIdErrorDescription ]		
+	
+	! !
+
+!methodRemoval: RestInterfaceTest #test18CartIsNotAvailableAfterCheckOut stamp: 'AS 6/14/2023 18:53:04'!
+test18CartIsNotAvailableAfterCheckOut
+
+	| interface cartId |
+
+	interface := self createDefaultInterface.
+	
+	cartId := interface createCartFor: self validUser authenticatedWith: self validUserPassword.
+	interface add: self validBook quantity: 1 toCartIdentifiedAs: cartId.
+	
+	interface 
+		checkOutCartIdentifiedAs: cartId 
+		withCreditCardNumbered: '1111222233334444' 
+		ownedBy: 'Juan Perez' 
+		expiringOn: testObjectsFactory notExpiredMonthOfYear.
+	
+	self should: [ interface listCartIdentifiedAs: cartId ]
+	raise: Error - MessageNotUnderstood
+		withExceptionDo: [ :anError |
+			self assert: anError messageText = interface invalidCartIdErrorDescription ]		
+	
+	!
+!RestInterface methodsFor: 'operations' stamp: 'AS 6/14/2023 18:54:04' prior: 50625280!
+checkOutCartIdentifiedAs: aCartId withCreditCardNumbered: aCreditCartNumber ownedBy: anOwner expiringOn: anExpirationMonthOfYear
+
+	| cart |
+	
+	cart := carts at: aCartId ifAbsent: [self signalInvalidCartId ].
+	
+	self assertNotTimedOut: aCartId.	
+	
+	Cashier 
+		toCheckout: cart 
+		charging: (CreditCard expiringOn: anExpirationMonthOfYear) 
+		throught: merchantProcessor 
+		on: self today 
+		registeringOn: salesBook.
+		
+	carts remove: aCartId.! !
+!RestInterface methodsFor: 'operations' stamp: 'AS 6/14/2023 18:54:46' prior: 50625733!
+checkOutCartIdentifiedAs: aCartId withCreditCardNumbered: aCreditCartNumber ownedBy: anOwner expiringOn: anExpirationMonthOfYear
+
+	| cart |
+	
+	cart := carts at: aCartId ifAbsent: [self signalInvalidCartId ].
+	
+	self assertNotTimedOut: aCartId.	
+	
+	Cashier 
+		toCheckout: cart 
+		charging: (CreditCard expiringOn: anExpirationMonthOfYear) 
+		throught: merchantProcessor 
+		on: self today 
+		registeringOn: salesBook.
+		
+	carts removeKey: aCartId.! !
+
+!testRun: #RestInterfaceTest #test01CanCreateCartWithValidUserAndPassword stamp: 'AS 6/14/2023 18:55:02'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test02CanNotCreateCartWithInvalidUser stamp: 'AS 6/14/2023 18:55:02'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test03CanNotCreateCartWithInvalidPassword stamp: 'AS 6/14/2023 18:55:02'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test04CanAddItemsToACreatedCart stamp: 'AS 6/14/2023 18:55:02'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test05CanNotAddItemToNotCreatedCart stamp: 'AS 6/14/2023 18:55:02'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test06CanNotAddItemNotSellByTheStore stamp: 'AS 6/14/2023 18:55:02'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test07ListCartOfAnEmptyCartReturnsAnEmptyBag stamp: 'AS 6/14/2023 18:55:02'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test08CanNotListCartOfInvalidCartId stamp: 'AS 6/14/2023 18:55:02'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test09ListCartReturnsTheRightNumberOfItems stamp: 'AS 6/14/2023 18:55:02'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test10CanCheckoutACart stamp: 'AS 6/14/2023 18:55:02'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test11CanNotCheckoutANotCreatedCart stamp: 'AS 6/14/2023 18:55:02'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test12CanNotCheckoutAnEmptyCart stamp: 'AS 6/14/2023 18:55:02'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test13CanNotListCartAfterTimeOut stamp: 'AS 6/14/2023 18:55:02'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test14CanNotAddItemToCartAfterTimeOut stamp: 'AS 6/14/2023 18:55:02'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test15CanNotAddItemToCartAfterTimeOut stamp: 'AS 6/14/2023 18:55:02'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test16ListCartResetsTimeOut stamp: 'AS 6/14/2023 18:55:02'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test17AddItemResetsTimeOut stamp: 'AS 6/14/2023 18:55:02'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test18CartIsNotAvailableToListAfterCheckOut stamp: 'AS 6/14/2023 18:55:02'!
+PASSED!
+!RestInterfaceTest methodsFor: 'as yet unclassified' stamp: 'AS 6/14/2023 18:55:38' prior: 50625685!
+test18CartIsNotAvailableToListAfterCheckOut
+
+	| interface cartId |
+
+	interface := self createDefaultInterface.
+	
+	cartId := interface createCartFor: self validUser authenticatedWith: self validUserPassword.
+	interface add: self validBook quantity: 1 toCartIdentifiedAs: cartId.
+	
+	interface 
+		checkOutCartIdentifiedAs: cartId 
+		withCreditCardNumbered: '1111222233334444' 
+		ownedBy: 'Juan Perez' 
+		expiringOn: testObjectsFactory notExpiredMonthOfYear.
+	
+	self should: [ interface add: self validBook quantity: 1 toCartIdentifiedAs: cartId ]
+	raise: Error - MessageNotUnderstood
+		withExceptionDo: [ :anError |
+			self assert: anError messageText = interface invalidCartIdErrorDescription ]		
+	
+	! !
+
+!testRun: #RestInterfaceTest #test18CartIsNotAvailableToListAfterCheckOut stamp: 'AS 6/14/2023 18:55:44'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test01CanCreateCartWithValidUserAndPassword stamp: 'AS 6/14/2023 18:55:44'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test02CanNotCreateCartWithInvalidUser stamp: 'AS 6/14/2023 18:55:44'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test03CanNotCreateCartWithInvalidPassword stamp: 'AS 6/14/2023 18:55:44'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test04CanAddItemsToACreatedCart stamp: 'AS 6/14/2023 18:55:44'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test05CanNotAddItemToNotCreatedCart stamp: 'AS 6/14/2023 18:55:44'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test06CanNotAddItemNotSellByTheStore stamp: 'AS 6/14/2023 18:55:44'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test07ListCartOfAnEmptyCartReturnsAnEmptyBag stamp: 'AS 6/14/2023 18:55:44'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test08CanNotListCartOfInvalidCartId stamp: 'AS 6/14/2023 18:55:44'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test09ListCartReturnsTheRightNumberOfItems stamp: 'AS 6/14/2023 18:55:44'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test10CanCheckoutACart stamp: 'AS 6/14/2023 18:55:44'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test11CanNotCheckoutANotCreatedCart stamp: 'AS 6/14/2023 18:55:44'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test12CanNotCheckoutAnEmptyCart stamp: 'AS 6/14/2023 18:55:44'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test13CanNotListCartAfterTimeOut stamp: 'AS 6/14/2023 18:55:44'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test14CanNotAddItemToCartAfterTimeOut stamp: 'AS 6/14/2023 18:55:44'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test15CanNotAddItemToCartAfterTimeOut stamp: 'AS 6/14/2023 18:55:44'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test16ListCartResetsTimeOut stamp: 'AS 6/14/2023 18:55:44'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test17AddItemResetsTimeOut stamp: 'AS 6/14/2023 18:55:44'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test18CartIsNotAvailableToListAfterCheckOut stamp: 'AS 6/14/2023 18:55:44'!
+PASSED!
+!RestInterfaceTest methodsFor: 'as yet unclassified' stamp: 'AS 6/14/2023 18:56:06' prior: 50625828!
+test18CartIsNotAvailableToListAfterCheckOut
+
+	| interface cartId |
+
+	interface := self createDefaultInterface.
+	
+	cartId := interface createCartFor: self validUser authenticatedWith: self validUserPassword.
+	interface add: self validBook quantity: 1 toCartIdentifiedAs: cartId.
+	
+	interface 
+		checkOutCartIdentifiedAs: cartId 
+		withCreditCardNumbered: '1111222233334444' 
+		ownedBy: 'Juan Perez' 
+		expiringOn: testObjectsFactory notExpiredMonthOfYear.
+	
+	self should: [ interface listCartIdentifiedAs: cartId ]
+	raise: Error - MessageNotUnderstood
+		withExceptionDo: [ :anError |
+			self assert: anError messageText = interface invalidCartIdErrorDescription ]		
+	
+	! !
+!RestInterfaceTest methodsFor: 'as yet unclassified' stamp: 'AS 6/14/2023 18:56:15'!
+test18CartIsNotAvailableAfterCheckOut
+
+	| interface cartId |
+
+	interface := self createDefaultInterface.
+	
+	cartId := interface createCartFor: self validUser authenticatedWith: self validUserPassword.
+	interface add: self validBook quantity: 1 toCartIdentifiedAs: cartId.
+	
+	interface 
+		checkOutCartIdentifiedAs: cartId 
+		withCreditCardNumbered: '1111222233334444' 
+		ownedBy: 'Juan Perez' 
+		expiringOn: testObjectsFactory notExpiredMonthOfYear.
+	
+	self should: [ interface listCartIdentifiedAs: cartId ]
+	raise: Error - MessageNotUnderstood
+		withExceptionDo: [ :anError |
+			self assert: anError messageText = interface invalidCartIdErrorDescription ]		
+	
+	! !
+
+!methodRemoval: RestInterfaceTest #test18CartIsNotAvailableToListAfterCheckOut stamp: 'AS 6/14/2023 18:56:15'!
+test18CartIsNotAvailableToListAfterCheckOut
+
+	| interface cartId |
+
+	interface := self createDefaultInterface.
+	
+	cartId := interface createCartFor: self validUser authenticatedWith: self validUserPassword.
+	interface add: self validBook quantity: 1 toCartIdentifiedAs: cartId.
+	
+	interface 
+		checkOutCartIdentifiedAs: cartId 
+		withCreditCardNumbered: '1111222233334444' 
+		ownedBy: 'Juan Perez' 
+		expiringOn: testObjectsFactory notExpiredMonthOfYear.
+	
+	self should: [ interface listCartIdentifiedAs: cartId ]
+	raise: Error - MessageNotUnderstood
+		withExceptionDo: [ :anError |
+			self assert: anError messageText = interface invalidCartIdErrorDescription ]		
+	
+	!
+
+!testRun: #RestInterfaceTest #test18CartIsNotAvailableAfterCheckOut stamp: 'AS 6/14/2023 18:56:18'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test01CanCreateCartWithValidUserAndPassword stamp: 'AS 6/14/2023 18:56:18'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test02CanNotCreateCartWithInvalidUser stamp: 'AS 6/14/2023 18:56:18'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test03CanNotCreateCartWithInvalidPassword stamp: 'AS 6/14/2023 18:56:18'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test04CanAddItemsToACreatedCart stamp: 'AS 6/14/2023 18:56:18'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test05CanNotAddItemToNotCreatedCart stamp: 'AS 6/14/2023 18:56:18'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test06CanNotAddItemNotSellByTheStore stamp: 'AS 6/14/2023 18:56:18'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test07ListCartOfAnEmptyCartReturnsAnEmptyBag stamp: 'AS 6/14/2023 18:56:18'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test08CanNotListCartOfInvalidCartId stamp: 'AS 6/14/2023 18:56:18'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test09ListCartReturnsTheRightNumberOfItems stamp: 'AS 6/14/2023 18:56:18'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test10CanCheckoutACart stamp: 'AS 6/14/2023 18:56:18'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test11CanNotCheckoutANotCreatedCart stamp: 'AS 6/14/2023 18:56:18'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test12CanNotCheckoutAnEmptyCart stamp: 'AS 6/14/2023 18:56:19'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test13CanNotListCartAfterTimeOut stamp: 'AS 6/14/2023 18:56:19'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test14CanNotAddItemToCartAfterTimeOut stamp: 'AS 6/14/2023 18:56:19'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test15CanNotAddItemToCartAfterTimeOut stamp: 'AS 6/14/2023 18:56:19'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test16ListCartResetsTimeOut stamp: 'AS 6/14/2023 18:56:19'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test17AddItemResetsTimeOut stamp: 'AS 6/14/2023 18:56:19'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test18CartIsNotAvailableAfterCheckOut stamp: 'AS 6/14/2023 18:56:19'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test01CanCreateCartWithValidUserAndPassword stamp: 'AS 6/14/2023 18:58:56'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test02CanNotCreateCartWithInvalidUser stamp: 'AS 6/14/2023 18:58:56'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test03CanNotCreateCartWithInvalidPassword stamp: 'AS 6/14/2023 18:58:56'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test04CanAddItemsToACreatedCart stamp: 'AS 6/14/2023 18:58:56'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test05CanNotAddItemToNotCreatedCart stamp: 'AS 6/14/2023 18:58:56'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test06CanNotAddItemNotSellByTheStore stamp: 'AS 6/14/2023 18:58:56'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test07ListCartOfAnEmptyCartReturnsAnEmptyBag stamp: 'AS 6/14/2023 18:58:56'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test08CanNotListCartOfInvalidCartId stamp: 'AS 6/14/2023 18:58:56'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test09ListCartReturnsTheRightNumberOfItems stamp: 'AS 6/14/2023 18:58:56'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test10CanCheckoutACart stamp: 'AS 6/14/2023 18:58:56'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test11CanNotCheckoutANotCreatedCart stamp: 'AS 6/14/2023 18:58:56'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test12CanNotCheckoutAnEmptyCart stamp: 'AS 6/14/2023 18:58:56'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test13CanNotListCartAfterTimeOut stamp: 'AS 6/14/2023 18:58:56'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test14CanNotAddItemToCartAfterTimeOut stamp: 'AS 6/14/2023 18:58:56'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test15CanNotAddItemToCartAfterTimeOut stamp: 'AS 6/14/2023 18:58:56'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test16ListCartResetsTimeOut stamp: 'AS 6/14/2023 18:58:56'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test17AddItemResetsTimeOut stamp: 'AS 6/14/2023 18:58:56'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test18CartIsNotAvailableAfterCheckOut stamp: 'AS 6/14/2023 18:58:56'!
+PASSED!
+!RestInterfaceTest methodsFor: 'users' stamp: 'AS 6/14/2023 18:59:56' prior: 50624672!
+is: aUser authenticatingWith: aPassword 
+
+	| storedPassword |
+	
+	storedPassword := self validUsersAndPasswords at: aUser ifAbsent: [ ^false ].
+	^aPassword = storedPassword ! !
+!RestInterfaceTest methodsFor: 'users' stamp: 'AS 6/14/2023 18:59:58' prior: 50626113!
+is: aUser authenticatingWith: aPassword 
+
+	| storedPassword |
+	
+	storedPassword := self validUsersAndPasswords at: aUser ifAbsent: [ ^false ].
+	
+	^aPassword = storedPassword ! !
+!RestInterface methodsFor: 'assertions' stamp: 'AS 6/14/2023 19:02:23' prior: 50625330!
+assertNotTimedOut: aCartId
+
+	| lastInteraction |
+	
+	lastInteraction := cartsLastInteraction at: aCartId.
+	
+	((timeServer minutesElapsedSince: lastInteraction)  > 30 ) 
+		ifTrue: [ self error: RestInterface timeOutErrorDescription ].! !
+!RestInterface methodsFor: 'assertions' stamp: 'AS 6/14/2023 19:02:35' prior: 50626131!
+assertNotTimedOut: aCartId
+
+	| lastInteraction |
+	
+	lastInteraction := cartsLastInteraction at: aCartId.
+	
+	((timeServer minutesElapsedSince: lastInteraction)  > 30 ) 
+		ifTrue: [ self error: self class timeOutErrorDescription ].! !
+!RestInterfaceTest methodsFor: 'test' stamp: 'AS 6/14/2023 19:22:04'!
+assertShould: aBlock raiseError: anErrorMessage
+
+	| interface |
+
+	interface := self createDefaultInterface.
+
+	self
+		should: [ aBlock value: interface ]
+		raise: Error - MessageNotUnderstood
+		withExceptionDo: [ :anError | 
+			self assert: anError messageText = anErrorMessage ]! !
+!RestInterfaceTest methodsFor: 'test' stamp: 'AS 6/14/2023 19:23:56' prior: 50624700!
+test02CanNotCreateCartWithInvalidUser
+
+	| interface |
+
+	interface := self createDefaultInterface.
+
+	self 
+		assertShould: [ interface createCartFor: self invalidUser authenticatedWith: self validUserPassword ] 
+		raiseError: interface invalidUserAndOrPasswordErrorDescription
+
+"
+	| interface |
+
+	interface := self createDefaultInterface.
+
+	self
+		should: [ interface createCartFor: self invalidUser authenticatedWith: self validUserPassword ]
+		raise: Error - MessageNotUnderstood
+		withExceptionDo: [ :anError | 
+			self assert: anError messageText = interface invalidUserAndOrPasswordErrorDescription ]
+		"! !
+
+!testRun: #RestInterfaceTest #test02CanNotCreateCartWithInvalidUser stamp: 'AS 6/14/2023 19:24:01'!
+FAILURE!
+!RestInterfaceTest methodsFor: 'test' stamp: 'AS 6/14/2023 19:24:40' prior: 50626152!
+assertShould: aBlock raiseError: anErrorMessage
+
+	| interface |
+
+	interface := self createDefaultInterface.
+
+	self
+		should: aBlock value
+		raise: Error - MessageNotUnderstood
+		withExceptionDo: [ :anError | 
+			self assert: anError messageText = anErrorMessage ]! !
+
+!testRun: #RestInterfaceTest #test02CanNotCreateCartWithInvalidUser stamp: 'AS 6/14/2023 19:24:50'!
+ERROR!
+!RestInterfaceTest methodsFor: 'test' stamp: 'AS 6/14/2023 19:25:01' prior: 50626190!
+assertShould: aBlock raiseError: anErrorMessage
+
+	| interface |
+
+	interface := self createDefaultInterface.
+
+	self
+		should: aBlock
+		raise: Error - MessageNotUnderstood
+		withExceptionDo: [ :anError | 
+			self assert: anError messageText = anErrorMessage ]! !
+!RestInterfaceTest methodsFor: 'test' stamp: 'AS 6/14/2023 19:25:18' prior: 50626205!
+assertShould: aBlock raiseError: anErrorMessage
+
+	self
+		should: aBlock
+		raise: Error - MessageNotUnderstood
+		withExceptionDo: [ :anError | 
+			self assert: anError messageText = anErrorMessage ]! !
+
+!testRun: #RestInterfaceTest #test02CanNotCreateCartWithInvalidUser stamp: 'AS 6/14/2023 19:25:22'!
+PASSED!
+!RestInterfaceTest methodsFor: 'test' stamp: 'AS 6/14/2023 19:26:00' prior: 50624715!
+test03CanNotCreateCartWithInvalidPassword
+
+	| interface |
+
+	interface := self createDefaultInterface.
+
+	self 
+		assertShould: [ interface createCartFor: self validUser authenticatedWith: self invalidPassword ]
+		raiseError: interface invalidUserAndOrPasswordErrorDescription
+	"
+	self
+		should: [ interface createCartFor: self validUser authenticatedWith: self invalidPassword ]
+		raise: Error - MessageNotUnderstood
+		withExceptionDo: [ :anError | 
+			self assert: anError messageText = interface invalidUserAndOrPasswordErrorDescription ]
+		"! !
+
+!testRun: #RestInterfaceTest #test03CanNotCreateCartWithInvalidPassword stamp: 'AS 6/14/2023 19:26:01'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test01CanCreateCartWithValidUserAndPassword stamp: 'AS 6/14/2023 19:26:01'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test02CanNotCreateCartWithInvalidUser stamp: 'AS 6/14/2023 19:26:01'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test03CanNotCreateCartWithInvalidPassword stamp: 'AS 6/14/2023 19:26:01'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test04CanAddItemsToACreatedCart stamp: 'AS 6/14/2023 19:26:01'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test05CanNotAddItemToNotCreatedCart stamp: 'AS 6/14/2023 19:26:01'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test06CanNotAddItemNotSellByTheStore stamp: 'AS 6/14/2023 19:26:01'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test07ListCartOfAnEmptyCartReturnsAnEmptyBag stamp: 'AS 6/14/2023 19:26:01'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test08CanNotListCartOfInvalidCartId stamp: 'AS 6/14/2023 19:26:01'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test09ListCartReturnsTheRightNumberOfItems stamp: 'AS 6/14/2023 19:26:01'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test10CanCheckoutACart stamp: 'AS 6/14/2023 19:26:01'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test11CanNotCheckoutANotCreatedCart stamp: 'AS 6/14/2023 19:26:01'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test12CanNotCheckoutAnEmptyCart stamp: 'AS 6/14/2023 19:26:01'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test13CanNotListCartAfterTimeOut stamp: 'AS 6/14/2023 19:26:01'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test14CanNotAddItemToCartAfterTimeOut stamp: 'AS 6/14/2023 19:26:01'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test15CanNotAddItemToCartAfterTimeOut stamp: 'AS 6/14/2023 19:26:01'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test16ListCartResetsTimeOut stamp: 'AS 6/14/2023 19:26:01'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test17AddItemResetsTimeOut stamp: 'AS 6/14/2023 19:26:01'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test18CartIsNotAvailableAfterCheckOut stamp: 'AS 6/14/2023 19:26:01'!
+PASSED!
+!RestInterfaceTest methodsFor: 'test' stamp: 'AS 6/14/2023 19:26:09' prior: 50626229!
+test03CanNotCreateCartWithInvalidPassword
+
+	| interface |
+
+	interface := self createDefaultInterface.
+
+	self 
+		assertShould: [ interface createCartFor: self validUser authenticatedWith: self invalidPassword ]
+		raiseError: interface invalidUserAndOrPasswordErrorDescription
+! !
+!RestInterfaceTest methodsFor: 'test' stamp: 'AS 6/14/2023 19:26:17' prior: 50626164!
+test02CanNotCreateCartWithInvalidUser
+
+	| interface |
+
+	interface := self createDefaultInterface.
+
+	self 
+		assertShould: [ interface createCartFor: self invalidUser authenticatedWith: self validUserPassword ] 
+		raiseError: interface invalidUserAndOrPasswordErrorDescription! !
+!RestInterfaceTest methodsFor: 'test' stamp: 'AS 6/14/2023 19:27:12' prior: 50626325!
+test02CanNotCreateCartWithInvalidUser
+
+	| interface |
+
+	interface := self createDefaultInterface.
+
+	self 
+		assertShould: [ :anInterface | interface createCartFor: self invalidUser authenticatedWith: self validUserPassword ] 
+		raiseError: interface invalidUserAndOrPasswordErrorDescription! !
+!RestInterface class methodsFor: 'error descriptions' stamp: 'AS 6/14/2023 19:27:43'!
+invalidUserAndOrPasswordErrorDescription
+	
+	^'Invalid user and/or password'! !
+
+!methodRemoval: RestInterface class #authenticatingWith:acceptingItemsOf:merchantProcessor: stamp: 'AS 6/14/2023 19:28:09'!
+authenticatingWith: aValidUsersAndPasswords acceptingItemsOf: aCatalog merchantProcessor: anMP
+
+	^self new initializeAuthenticatingWith: aValidUsersAndPasswords acceptingItemsOf: aCatalog merchantProcessor: anMP timeServer: timeServer!
+!RestInterfaceTest methodsFor: 'test' stamp: 'AS 6/14/2023 19:28:56' prior: 50626337!
+test02CanNotCreateCartWithInvalidUser
+
+	| interface |
+
+	interface := self createDefaultInterface.
+
+	self 
+		assertShould: [ :anInterface | interface createCartFor: self invalidUser authenticatedWith: self validUserPassword ] 
+		raiseError: RestInterface invalidUserAndOrPasswordErrorDescription! !
+!RestInterfaceTest methodsFor: 'test' stamp: 'AS 6/14/2023 19:29:08' prior: 50626366!
+test02CanNotCreateCartWithInvalidUser
+
+"	| interface |
+
+	interface := self createDefaultInterface."
+
+	self 
+		assertShould: [ :anInterface | anInterface createCartFor: self invalidUser authenticatedWith: self validUserPassword ] 
+		raiseError: RestInterface invalidUserAndOrPasswordErrorDescription! !
+!RestInterfaceTest methodsFor: 'test' stamp: 'AS 6/14/2023 19:29:44' prior: 50626216!
+assertShould: aBlock raiseError: anErrorMessage
+
+	| interface |
+
+	interface := self createDefaultInterface.
+	
+	self
+		should: [ aBlock value: interface ]
+		raise: Error - MessageNotUnderstood
+		withExceptionDo: [ :anError | 
+			self assert: anError messageText = anErrorMessage ]! !
+
+!testRun: #RestInterfaceTest #test02CanNotCreateCartWithInvalidUser stamp: 'AS 6/14/2023 19:29:56'!
+PASSED!
+!RestInterfaceTest methodsFor: 'test' stamp: 'AS 6/14/2023 19:30:43' prior: 50626378!
+test02CanNotCreateCartWithInvalidUser
+
+	self 
+		assertShould: [ :anInterface | anInterface createCartFor: self invalidUser authenticatedWith: self validUserPassword ] 
+		raiseError: RestInterface invalidUserAndOrPasswordErrorDescription! !
+!RestInterfaceTest methodsFor: 'test' stamp: 'AS 6/14/2023 19:31:23' prior: 50626313!
+test03CanNotCreateCartWithInvalidPassword
+
+	self 
+		assertShould: [ :anInterface | anInterface createCartFor: self validUser authenticatedWith: self invalidPassword ]
+		raiseError: RestInterface invalidUserAndOrPasswordErrorDescription
+! !
+
+!testRun: #RestInterfaceTest #test03CanNotCreateCartWithInvalidPassword stamp: 'AS 6/14/2023 19:31:26'!
+PASSED!
+!RestInterfaceTest methodsFor: 'assertions' stamp: 'AS 6/14/2023 19:34:19'!
+assertAfter: previousActionsBlock should: anErrorRaisingBlock raiseError: anErrorMessage
+
+	| interface |
+
+	interface := self createDefaultInterface.
+	
+	previousActionsBlock value: interface.
+	
+	self
+		should: [ anErrorRaisingBlock value: interface ]
+		raise: Error - MessageNotUnderstood
+		withExceptionDo: [ :anError | 
+			self assert: anError messageText = anErrorMessage ]! !
+!RestInterfaceTest methodsFor: 'assertions' stamp: 'AS 6/14/2023 19:35:05' prior: 50626391!
+assertShould: anErrorRaisingBlock raiseError: anErrorMessage
+
+	| interface |
+
+	interface := self createDefaultInterface.
+	
+	self
+		should: [ anErrorRaisingBlock value: interface ]
+		raise: Error - MessageNotUnderstood
+		withExceptionDo: [ :anError | 
+			self assert: anError messageText = anErrorMessage ]! !
+!RestInterfaceTest methodsFor: 'test' stamp: 'AS 6/14/2023 19:37:03' prior: 50624744!
+test05CanNotAddItemToNotCreatedCart
+
+	self 
+		assertShould: [ :anInterface | anInterface add: self validBook quantity: 1 toCartIdentifiedAs: self invalidCartId ]
+		raiseError: RestInterface invalidCartIdErrorDescription.
+		! !
+!RestInterface class methodsFor: 'error descriptions' stamp: 'AS 6/14/2023 19:37:24'!
+invalidCartIdErrorDescription
+	
+	^'Invalid cart id'! !
+
+!methodRemoval: RestInterface #invalidUserAndOrPasswordErrorDescription stamp: 'AS 6/14/2023 19:38:30'!
+invalidUserAndOrPasswordErrorDescription
+	
+	^'Invalid user and/or password'!
+
+!methodRemoval: RestInterface #invalidCartIdErrorDescription stamp: 'AS 6/14/2023 19:38:45'!
+invalidCartIdErrorDescription
+	
+	^'Invalid cart id'!
+
+!testRun: #RestInterfaceTest #test05CanNotAddItemToNotCreatedCart stamp: 'AS 6/14/2023 19:39:03'!
+ERROR!
+
+!testRun: #RestInterfaceTest #test05CanNotAddItemToNotCreatedCart stamp: 'AS 6/14/2023 19:39:03'!
+ERROR!
+
+!testRun: #RestInterfaceTest #test05CanNotAddItemToNotCreatedCart stamp: 'AS 6/14/2023 19:39:25'!
+ERROR!
+
+!testRun: #RestInterfaceTest #test05CanNotAddItemToNotCreatedCart stamp: 'AS 6/14/2023 19:39:26'!
+ERROR!
+
+!testRun: #RestInterfaceTest #test05CanNotAddItemToNotCreatedCart stamp: 'AS 6/14/2023 19:40:22'!
+ERROR!
+
+!testRun: #RestInterfaceTest #test05CanNotAddItemToNotCreatedCart stamp: 'AS 6/14/2023 19:40:22'!
+ERROR!
+!RestInterface methodsFor: 'errors' stamp: 'AS 6/14/2023 19:40:40' prior: 50625255!
+signalInvalidCartId
+	
+	self error: RestInterface invalidCartIdErrorDescription ! !
+
+!testRun: #RestInterfaceTest #test05CanNotAddItemToNotCreatedCart stamp: 'AS 6/14/2023 19:40:41'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test05CanNotAddItemToNotCreatedCart stamp: 'AS 6/14/2023 19:40:44'!
+PASSED!
+!RestInterfaceTest methodsFor: 'test' stamp: 'AS 6/14/2023 19:41:49' prior: 50624787!
+test08CanNotListCartOfInvalidCartId
+
+	self 
+		assertShould: [ :anInterface | anInterface listCartIdentifiedAs: self invalidCartId ]
+		raiseError: RestInterface invalidCartIdErrorDescription.
+		! !
+
+!testRun: #RestInterfaceTest #test08CanNotListCartOfInvalidCartId stamp: 'AS 6/14/2023 19:41:52'!
+PASSED!
+!RestInterfaceTest methodsFor: 'test' stamp: 'AS 6/14/2023 19:43:26' prior: 50624841!
+test11CanNotCheckoutANotCreatedCart
+
+	self 
+		assertShould: [ :anInterface | anInterface checkOutCartIdentifiedAs: self invalidCartId  
+			withCreditCardNumbered: '1111222233334444' 
+			ownedBy: 'Juan Perez' 
+			expiringOn: testObjectsFactory notExpiredMonthOfYear ]
+		raiseError: RestInterface invalidCartIdErrorDescription.
+
+		! !
+
+!testRun: #RestInterfaceTest #test11CanNotCheckoutANotCreatedCart stamp: 'AS 6/14/2023 19:43:32'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test01CanCreateCartWithValidUserAndPassword stamp: 'AS 6/14/2023 19:44:04'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test02CanNotCreateCartWithInvalidUser stamp: 'AS 6/14/2023 19:44:04'!
+ERROR!
+
+!testRun: #RestInterfaceTest #test03CanNotCreateCartWithInvalidPassword stamp: 'AS 6/14/2023 19:44:04'!
+ERROR!
+
+!testRun: #RestInterfaceTest #test04CanAddItemsToACreatedCart stamp: 'AS 6/14/2023 19:44:04'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test05CanNotAddItemToNotCreatedCart stamp: 'AS 6/14/2023 19:44:04'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test06CanNotAddItemNotSellByTheStore stamp: 'AS 6/14/2023 19:44:04'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test07ListCartOfAnEmptyCartReturnsAnEmptyBag stamp: 'AS 6/14/2023 19:44:04'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test08CanNotListCartOfInvalidCartId stamp: 'AS 6/14/2023 19:44:04'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test09ListCartReturnsTheRightNumberOfItems stamp: 'AS 6/14/2023 19:44:04'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test10CanCheckoutACart stamp: 'AS 6/14/2023 19:44:04'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test11CanNotCheckoutANotCreatedCart stamp: 'AS 6/14/2023 19:44:04'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test12CanNotCheckoutAnEmptyCart stamp: 'AS 6/14/2023 19:44:04'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test13CanNotListCartAfterTimeOut stamp: 'AS 6/14/2023 19:44:04'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test14CanNotAddItemToCartAfterTimeOut stamp: 'AS 6/14/2023 19:44:04'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test15CanNotAddItemToCartAfterTimeOut stamp: 'AS 6/14/2023 19:44:04'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test16ListCartResetsTimeOut stamp: 'AS 6/14/2023 19:44:04'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test17AddItemResetsTimeOut stamp: 'AS 6/14/2023 19:44:04'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test18CartIsNotAvailableAfterCheckOut stamp: 'AS 6/14/2023 19:44:04'!
+ERROR!
+
+!testRun: #RestInterfaceTest #test02CanNotCreateCartWithInvalidUser stamp: 'AS 6/14/2023 19:44:07'!
+ERROR!
+!RestInterface methodsFor: 'errors' stamp: 'AS 6/14/2023 19:44:17' prior: 50625261!
+signalInvalidUserAndOrPassword
+	
+	self error: RestInterface invalidUserAndOrPasswordErrorDescription! !
+
+!testRun: #RestInterfaceTest #test02CanNotCreateCartWithInvalidUser stamp: 'AS 6/14/2023 19:44:18'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test03CanNotCreateCartWithInvalidPassword stamp: 'AS 6/14/2023 19:44:20'!
+PASSED!
+!RestInterfaceTest methodsFor: 'test' stamp: 'AS 6/14/2023 19:44:31' prior: 50625941!
+test18CartIsNotAvailableAfterCheckOut
+
+	| interface cartId |
+
+	interface := self createDefaultInterface.
+	
+	cartId := interface createCartFor: self validUser authenticatedWith: self validUserPassword.
+	interface add: self validBook quantity: 1 toCartIdentifiedAs: cartId.
+	
+	interface 
+		checkOutCartIdentifiedAs: cartId 
+		withCreditCardNumbered: '1111222233334444' 
+		ownedBy: 'Juan Perez' 
+		expiringOn: testObjectsFactory notExpiredMonthOfYear.
+	
+	self should: [ interface listCartIdentifiedAs: cartId ]
+	raise: Error - MessageNotUnderstood
+		withExceptionDo: [ :anError |
+			self assert: anError messageText = RestInterface invalidCartIdErrorDescription ]		
+	
+	! !
+
+!testRun: #RestInterfaceTest #test18CartIsNotAvailableAfterCheckOut stamp: 'AS 6/14/2023 19:44:35'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test01CanCreateCartWithValidUserAndPassword stamp: 'AS 6/14/2023 19:44:38'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test02CanNotCreateCartWithInvalidUser stamp: 'AS 6/14/2023 19:44:38'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test03CanNotCreateCartWithInvalidPassword stamp: 'AS 6/14/2023 19:44:39'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test04CanAddItemsToACreatedCart stamp: 'AS 6/14/2023 19:44:39'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test05CanNotAddItemToNotCreatedCart stamp: 'AS 6/14/2023 19:44:39'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test06CanNotAddItemNotSellByTheStore stamp: 'AS 6/14/2023 19:44:39'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test07ListCartOfAnEmptyCartReturnsAnEmptyBag stamp: 'AS 6/14/2023 19:44:39'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test08CanNotListCartOfInvalidCartId stamp: 'AS 6/14/2023 19:44:39'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test09ListCartReturnsTheRightNumberOfItems stamp: 'AS 6/14/2023 19:44:39'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test10CanCheckoutACart stamp: 'AS 6/14/2023 19:44:39'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test11CanNotCheckoutANotCreatedCart stamp: 'AS 6/14/2023 19:44:39'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test12CanNotCheckoutAnEmptyCart stamp: 'AS 6/14/2023 19:44:39'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test13CanNotListCartAfterTimeOut stamp: 'AS 6/14/2023 19:44:39'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test14CanNotAddItemToCartAfterTimeOut stamp: 'AS 6/14/2023 19:44:39'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test15CanNotAddItemToCartAfterTimeOut stamp: 'AS 6/14/2023 19:44:39'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test16ListCartResetsTimeOut stamp: 'AS 6/14/2023 19:44:39'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test17AddItemResetsTimeOut stamp: 'AS 6/14/2023 19:44:39'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test18CartIsNotAvailableAfterCheckOut stamp: 'AS 6/14/2023 19:44:39'!
+PASSED!
+!RestInterfaceTest methodsFor: 'assertions' stamp: 'AS 6/14/2023 19:47:07' prior: 50626431!
+assertAfter: previousActionsBlock should: anErrorRaisingBlock raiseError: anErrorMessage
+
+	| interface cartId |
+
+	interface := self createDefaultInterface.
+	
+	cartId := interface createCartFor: self validUser authenticatedWith: self validUserPassword.
+	
+	previousActionsBlock value: interface value: cartId.
+	
+	self
+		should: [ anErrorRaisingBlock value: interface value: cartId ]
+		raise: Error - MessageNotUnderstood
+		withExceptionDo: [ :anError | 
+			self assert: anError messageText = anErrorMessage ]! !
+!RestInterfaceTest methodsFor: 'test' stamp: 'AS 6/14/2023 19:49:52' prior: 50624758!
+test06CanNotAddItemNotSellByTheStore
+
+	self
+		assertAfter: []
+		should: [ :anInterface :aCartId | anInterface add: self invalidBook quantity: 1 toCartIdentifiedAs: aCartId ]
+		raiseError: RestInterface invalidItemErrorMessage.
+		! !
+!RestInterface class methodsFor: 'error descriptions' stamp: 'AS 6/14/2023 19:50:14'!
+invalidItemErrorMessage
+	
+	^Cart invalidItemErrorMessage ! !
+
+!testRun: #RestInterfaceTest #test06CanNotAddItemNotSellByTheStore stamp: 'AS 6/14/2023 19:50:37'!
+ERROR!
+
+!testRun: #RestInterfaceTest #test06CanNotAddItemNotSellByTheStore stamp: 'AS 6/14/2023 19:50:37'!
+ERROR!
+!RestInterfaceTest methodsFor: 'test' stamp: 'AS 6/14/2023 19:51:10' prior: 50626729!
+test06CanNotAddItemNotSellByTheStore
+
+	self
+		assertAfter: [ :anInterface :aCartId ]
+		should: [ :anInterface :aCartId | anInterface add: self invalidBook quantity: 1 toCartIdentifiedAs: aCartId ]
+		raiseError: RestInterface invalidItemErrorMessage.
+		! !
+
+!testRun: #RestInterfaceTest #test06CanNotAddItemNotSellByTheStore stamp: 'AS 6/14/2023 19:51:15'!
+PASSED!
+!RestInterfaceTest methodsFor: 'assertions' stamp: 'AS 6/14/2023 19:51:52'!
+assertCartShould: anErrorRaisingBlock raiseError: anErrorMessage
+
+	| interface cartId |
+
+	interface := self createDefaultInterface.
+	
+	cartId := interface createCartFor: self validUser authenticatedWith: self validUserPassword.
+	
+	self
+		should: [ anErrorRaisingBlock value: interface value: cartId ]
+		raise: Error - MessageNotUnderstood
+		withExceptionDo: [ :anError | 
+			self assert: anError messageText = anErrorMessage ]! !
+!RestInterfaceTest methodsFor: 'assertions' stamp: 'AS 6/14/2023 19:52:13' prior: 50626765!
+assertCartShould: anErrorRaisingBlock raiseError: anErrorMessage
+
+	| interface cartId |
+
+	interface := self createDefaultInterface.
+	
+	cartId := interface createCartFor: self validUser authenticatedWith: self validUserPassword.
+	
+	self
+		should: [ anErrorRaisingBlock value: interface value: cartId ]
+		raise: Error - MessageNotUnderstood
+		withExceptionDo: [ :anError | 
+			self assert: anError messageText = anErrorMessage ]! !
+!RestInterfaceTest methodsFor: 'assertions' stamp: 'AS 6/14/2023 19:52:49'!
+assertWithCartShould: anErrorRaisingBlock raiseError: anErrorMessage
+
+	| interface cartId |
+
+	interface := self createDefaultInterface.
+	
+	cartId := interface createCartFor: self validUser authenticatedWith: self validUserPassword.
+	
+	self
+		should: [ anErrorRaisingBlock value: interface value: cartId ]
+		raise: Error - MessageNotUnderstood
+		withExceptionDo: [ :anError | 
+			self assert: anError messageText = anErrorMessage ]! !
+
+!methodRemoval: RestInterfaceTest #assertCartShould:raiseError: stamp: 'AS 6/14/2023 19:52:49'!
+assertCartShould: anErrorRaisingBlock raiseError: anErrorMessage
+
+	| interface cartId |
+
+	interface := self createDefaultInterface.
+	
+	cartId := interface createCartFor: self validUser authenticatedWith: self validUserPassword.
+	
+	self
+		should: [ anErrorRaisingBlock value: interface value: cartId ]
+		raise: Error - MessageNotUnderstood
+		withExceptionDo: [ :anError | 
+			self assert: anError messageText = anErrorMessage ]!
+!RestInterfaceTest methodsFor: 'test' stamp: 'AS 6/14/2023 19:53:13' prior: 50626751!
+test06CanNotAddItemNotSellByTheStore
+
+	self
+		assertWithCartShould: [ :anInterface :aCartId | anInterface add: self invalidBook quantity: 1 toCartIdentifiedAs: aCartId ]
+		raiseError: RestInterface invalidItemErrorMessage.
+		! !
+
+!testRun: #RestInterfaceTest #test06CanNotAddItemNotSellByTheStore stamp: 'AS 6/14/2023 19:53:16'!
+PASSED!
+!RestInterfaceTest methodsFor: 'test' stamp: 'AS 6/14/2023 19:55:42' prior: 50624859!
+test12CanNotCheckoutAnEmptyCart
+
+	self assertWithCartShould: [ :anInterface :aCartId | 
+			anInterface checkOutCartIdentifiedAs: aCartId 
+			withCreditCardNumbered: '1111222233334444' 
+			ownedBy: 'Juan Perez' 
+			expiringOn: testObjectsFactory notExpiredMonthOfYear ]
+		raiseError: RestInterface cartCanNotBeEmptyErrorMessage
+		
+		! !
+!RestInterface class methodsFor: 'error descriptions' stamp: 'AS 6/14/2023 19:56:01'!
+cartCanNotBeEmptyErrorMessage
+	
+	^Cashier cartCanNotBeEmptyErrorMessage ! !
+
+!testRun: #RestInterfaceTest #test01CanCreateCartWithValidUserAndPassword stamp: 'AS 6/14/2023 19:56:11'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test02CanNotCreateCartWithInvalidUser stamp: 'AS 6/14/2023 19:56:12'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test03CanNotCreateCartWithInvalidPassword stamp: 'AS 6/14/2023 19:56:12'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test04CanAddItemsToACreatedCart stamp: 'AS 6/14/2023 19:56:12'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test05CanNotAddItemToNotCreatedCart stamp: 'AS 6/14/2023 19:56:12'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test06CanNotAddItemNotSellByTheStore stamp: 'AS 6/14/2023 19:56:12'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test07ListCartOfAnEmptyCartReturnsAnEmptyBag stamp: 'AS 6/14/2023 19:56:12'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test08CanNotListCartOfInvalidCartId stamp: 'AS 6/14/2023 19:56:12'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test09ListCartReturnsTheRightNumberOfItems stamp: 'AS 6/14/2023 19:56:12'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test10CanCheckoutACart stamp: 'AS 6/14/2023 19:56:12'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test11CanNotCheckoutANotCreatedCart stamp: 'AS 6/14/2023 19:56:12'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test12CanNotCheckoutAnEmptyCart stamp: 'AS 6/14/2023 19:56:12'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test13CanNotListCartAfterTimeOut stamp: 'AS 6/14/2023 19:56:12'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test14CanNotAddItemToCartAfterTimeOut stamp: 'AS 6/14/2023 19:56:12'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test15CanNotAddItemToCartAfterTimeOut stamp: 'AS 6/14/2023 19:56:12'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test16ListCartResetsTimeOut stamp: 'AS 6/14/2023 19:56:12'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test17AddItemResetsTimeOut stamp: 'AS 6/14/2023 19:56:12'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test18CartIsNotAvailableAfterCheckOut stamp: 'AS 6/14/2023 19:56:12'!
+PASSED!
+
+!methodRemoval: RestInterface #cartCanNotBeEmptyErrorMessage stamp: 'AS 6/14/2023 19:56:22'!
+cartCanNotBeEmptyErrorMessage
+	
+	^Cashier cartCanNotBeEmptyErrorMessage !
+
+!methodRemoval: RestInterface #invalidItemErrorMessage stamp: 'AS 6/14/2023 19:56:25'!
+invalidItemErrorMessage
+	
+	^Cart invalidItemErrorMessage !
+
+!testRun: #RestInterfaceTest #test01CanCreateCartWithValidUserAndPassword stamp: 'AS 6/14/2023 19:56:31'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test02CanNotCreateCartWithInvalidUser stamp: 'AS 6/14/2023 19:56:31'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test03CanNotCreateCartWithInvalidPassword stamp: 'AS 6/14/2023 19:56:31'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test04CanAddItemsToACreatedCart stamp: 'AS 6/14/2023 19:56:31'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test05CanNotAddItemToNotCreatedCart stamp: 'AS 6/14/2023 19:56:31'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test06CanNotAddItemNotSellByTheStore stamp: 'AS 6/14/2023 19:56:31'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test07ListCartOfAnEmptyCartReturnsAnEmptyBag stamp: 'AS 6/14/2023 19:56:31'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test08CanNotListCartOfInvalidCartId stamp: 'AS 6/14/2023 19:56:31'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test09ListCartReturnsTheRightNumberOfItems stamp: 'AS 6/14/2023 19:56:31'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test10CanCheckoutACart stamp: 'AS 6/14/2023 19:56:31'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test11CanNotCheckoutANotCreatedCart stamp: 'AS 6/14/2023 19:56:31'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test12CanNotCheckoutAnEmptyCart stamp: 'AS 6/14/2023 19:56:31'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test13CanNotListCartAfterTimeOut stamp: 'AS 6/14/2023 19:56:31'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test14CanNotAddItemToCartAfterTimeOut stamp: 'AS 6/14/2023 19:56:31'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test15CanNotAddItemToCartAfterTimeOut stamp: 'AS 6/14/2023 19:56:31'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test16ListCartResetsTimeOut stamp: 'AS 6/14/2023 19:56:31'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test17AddItemResetsTimeOut stamp: 'AS 6/14/2023 19:56:31'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test18CartIsNotAvailableAfterCheckOut stamp: 'AS 6/14/2023 19:56:31'!
+PASSED!
+!RestInterfaceTest methodsFor: 'test' stamp: 'AS 6/14/2023 19:59:32' prior: 50624879!
+test13CanNotListCartAfterTimeOut
+
+	self 
+		assertAfter: [ timeSimulator advanceOn: (Duration minutes: 35) ] 
+		should: [ :anInterface :aCartId | anInterface listCartIdentifiedAs: aCartId ] 
+		raiseError: RestInterface timeOutErrorDescription.	! !
+
+!testRun: #RestInterfaceTest #test13CanNotListCartAfterTimeOut stamp: 'AS 6/14/2023 19:59:35'!
+ERROR!
+
+!testRun: #RestInterfaceTest #test13CanNotListCartAfterTimeOut stamp: 'AS 6/14/2023 19:59:35'!
+ERROR!
+!RestInterfaceTest methodsFor: 'test' stamp: 'AS 6/14/2023 20:00:25' prior: 50626995!
+test13CanNotListCartAfterTimeOut
+
+	self 
+		assertAfter: [ :anInterface :aCartId | timeSimulator advanceOn: (Duration minutes: 35) ] 
+		should: [ :anInterface :aCartId | anInterface listCartIdentifiedAs: aCartId ] 
+		raiseError: RestInterface timeOutErrorDescription.	! !
+
+!testRun: #RestInterfaceTest #test13CanNotListCartAfterTimeOut stamp: 'AS 6/14/2023 20:00:28'!
+PASSED!
+!RestInterfaceTest methodsFor: 'test' stamp: 'AS 6/14/2023 20:01:24' prior: 50624896!
+test14CanNotAddItemToCartAfterTimeOut
+
+	self 
+		assertAfter: [ :anInterface :aCartId | timeSimulator advanceOn: (Duration minutes: 35) ] 
+		should: [ :anInterface :aCartId | anInterface add: self validBook quantity: 1 toCartIdentifiedAs: aCartId ] 
+		raiseError: RestInterface timeOutErrorDescription.	
+! !
+
+!testRun: #RestInterfaceTest #test14CanNotAddItemToCartAfterTimeOut stamp: 'AS 6/14/2023 20:01:27'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test01CanCreateCartWithValidUserAndPassword stamp: 'AS 6/14/2023 20:01:33'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test02CanNotCreateCartWithInvalidUser stamp: 'AS 6/14/2023 20:01:33'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test03CanNotCreateCartWithInvalidPassword stamp: 'AS 6/14/2023 20:01:33'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test04CanAddItemsToACreatedCart stamp: 'AS 6/14/2023 20:01:33'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test05CanNotAddItemToNotCreatedCart stamp: 'AS 6/14/2023 20:01:33'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test06CanNotAddItemNotSellByTheStore stamp: 'AS 6/14/2023 20:01:33'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test07ListCartOfAnEmptyCartReturnsAnEmptyBag stamp: 'AS 6/14/2023 20:01:33'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test08CanNotListCartOfInvalidCartId stamp: 'AS 6/14/2023 20:01:33'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test09ListCartReturnsTheRightNumberOfItems stamp: 'AS 6/14/2023 20:01:33'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test10CanCheckoutACart stamp: 'AS 6/14/2023 20:01:33'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test11CanNotCheckoutANotCreatedCart stamp: 'AS 6/14/2023 20:01:33'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test12CanNotCheckoutAnEmptyCart stamp: 'AS 6/14/2023 20:01:33'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test13CanNotListCartAfterTimeOut stamp: 'AS 6/14/2023 20:01:33'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test14CanNotAddItemToCartAfterTimeOut stamp: 'AS 6/14/2023 20:01:33'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test15CanNotAddItemToCartAfterTimeOut stamp: 'AS 6/14/2023 20:01:33'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test16ListCartResetsTimeOut stamp: 'AS 6/14/2023 20:01:33'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test17AddItemResetsTimeOut stamp: 'AS 6/14/2023 20:01:33'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test18CartIsNotAvailableAfterCheckOut stamp: 'AS 6/14/2023 20:01:33'!
+PASSED!
+!RestInterfaceTest methodsFor: 'test' stamp: 'AS 6/14/2023 20:05:07' prior: 50626622!
+test18CartIsNotAvailableAfterCheckOut
+
+	self 
+		assertAfter: [ :anInterface :aCartId |
+				anInterface add: self validBook quantity: 1 toCartIdentifiedAs: aCartId.
+				anInterface 		checkOutCartIdentifiedAs: aCartId 
+						    withCreditCardNumbered: '1111222233334444' 
+						    ownedBy: 'Juan Perez' 
+						    expiringOn: testObjectsFactory notExpiredMonthOfYear. ] 
+		should: [ :anInterface :aCartId | anInterface listCartIdentifiedAs: aCartId ] 
+		raiseError: RestInterface invalidCartIdErrorDescription.	
+	
+	! !
+
+!testRun: #RestInterfaceTest #test18CartIsNotAvailableAfterCheckOut stamp: 'AS 6/14/2023 20:05:11'!
+PASSED!
+!RestInterfaceTest methodsFor: 'assertions' stamp: 'AS 6/14/2023 20:07:06'!
+assertAfter: previousActionsBlock shouldntRaiseError: anErrorRaisingBlock
+
+	| interface cartId |
+
+	interface := self createDefaultInterface.
+	
+	cartId := interface createCartFor: self validUser authenticatedWith: self validUserPassword.
+	
+	previousActionsBlock value: interface value: cartId.
+	
+	self
+		shouldnt: [ anErrorRaisingBlock value: interface value: cartId ]
+		raise: Error - MessageNotUnderstood
+! !
+!RestInterfaceTest methodsFor: 'test' stamp: 'AS 6/14/2023 20:09:20' prior: 50624938!
+test16ListCartResetsTimeOut
+
+	self 
+		assertAfter: [ :anInterface :aCartId | 
+			timeSimulator advanceOn: (Duration minutes: 29).
+			anInterface listCartIdentifiedAs: aCartId.
+			timeSimulator advanceOn: (Duration minutes: 5). ] 
+		shouldntRaiseError: [ :anInterface :aCartId | anInterface listCartIdentifiedAs: aCartId ]
+! !
+
+!testRun: #RestInterfaceTest #test16ListCartResetsTimeOut stamp: 'AS 6/14/2023 20:09:22'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test01CanCreateCartWithValidUserAndPassword stamp: 'AS 6/14/2023 20:09:22'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test02CanNotCreateCartWithInvalidUser stamp: 'AS 6/14/2023 20:09:22'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test03CanNotCreateCartWithInvalidPassword stamp: 'AS 6/14/2023 20:09:22'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test04CanAddItemsToACreatedCart stamp: 'AS 6/14/2023 20:09:22'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test05CanNotAddItemToNotCreatedCart stamp: 'AS 6/14/2023 20:09:22'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test06CanNotAddItemNotSellByTheStore stamp: 'AS 6/14/2023 20:09:22'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test07ListCartOfAnEmptyCartReturnsAnEmptyBag stamp: 'AS 6/14/2023 20:09:22'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test08CanNotListCartOfInvalidCartId stamp: 'AS 6/14/2023 20:09:22'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test09ListCartReturnsTheRightNumberOfItems stamp: 'AS 6/14/2023 20:09:22'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test10CanCheckoutACart stamp: 'AS 6/14/2023 20:09:22'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test11CanNotCheckoutANotCreatedCart stamp: 'AS 6/14/2023 20:09:22'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test12CanNotCheckoutAnEmptyCart stamp: 'AS 6/14/2023 20:09:22'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test13CanNotListCartAfterTimeOut stamp: 'AS 6/14/2023 20:09:22'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test14CanNotAddItemToCartAfterTimeOut stamp: 'AS 6/14/2023 20:09:22'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test15CanNotAddItemToCartAfterTimeOut stamp: 'AS 6/14/2023 20:09:22'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test16ListCartResetsTimeOut stamp: 'AS 6/14/2023 20:09:22'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test17AddItemResetsTimeOut stamp: 'AS 6/14/2023 20:09:22'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test18CartIsNotAvailableAfterCheckOut stamp: 'AS 6/14/2023 20:09:22'!
+PASSED!
+!RestInterfaceTest methodsFor: 'test' stamp: 'AS 6/14/2023 20:10:01' prior: 50625512!
+test17AddItemResetsTimeOut
+
+	self 
+		assertAfter: [ :anInterface :aCartId | 
+			timeSimulator advanceOn: (Duration minutes: 29).
+			anInterface add: self validBook quantity: 1 toCartIdentifiedAs: aCartId.
+			timeSimulator advanceOn: (Duration minutes: 5). ] 
+		shouldntRaiseError: [ :anInterface :aCartId | anInterface listCartIdentifiedAs: aCartId ]
+	! !
+
+!testRun: #RestInterfaceTest #test01CanCreateCartWithValidUserAndPassword stamp: 'AS 6/14/2023 20:10:05'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test02CanNotCreateCartWithInvalidUser stamp: 'AS 6/14/2023 20:10:05'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test03CanNotCreateCartWithInvalidPassword stamp: 'AS 6/14/2023 20:10:05'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test04CanAddItemsToACreatedCart stamp: 'AS 6/14/2023 20:10:05'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test05CanNotAddItemToNotCreatedCart stamp: 'AS 6/14/2023 20:10:05'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test06CanNotAddItemNotSellByTheStore stamp: 'AS 6/14/2023 20:10:05'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test07ListCartOfAnEmptyCartReturnsAnEmptyBag stamp: 'AS 6/14/2023 20:10:05'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test08CanNotListCartOfInvalidCartId stamp: 'AS 6/14/2023 20:10:05'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test09ListCartReturnsTheRightNumberOfItems stamp: 'AS 6/14/2023 20:10:05'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test10CanCheckoutACart stamp: 'AS 6/14/2023 20:10:05'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test11CanNotCheckoutANotCreatedCart stamp: 'AS 6/14/2023 20:10:05'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test12CanNotCheckoutAnEmptyCart stamp: 'AS 6/14/2023 20:10:05'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test13CanNotListCartAfterTimeOut stamp: 'AS 6/14/2023 20:10:05'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test14CanNotAddItemToCartAfterTimeOut stamp: 'AS 6/14/2023 20:10:05'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test15CanNotAddItemToCartAfterTimeOut stamp: 'AS 6/14/2023 20:10:06'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test16ListCartResetsTimeOut stamp: 'AS 6/14/2023 20:10:06'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test17AddItemResetsTimeOut stamp: 'AS 6/14/2023 20:10:06'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test18CartIsNotAvailableAfterCheckOut stamp: 'AS 6/14/2023 20:10:06'!
+PASSED!
+!RestInterfaceTest methodsFor: 'test' stamp: 'AS 6/14/2023 20:12:04' prior: 50624822!
+test10CanCheckoutACart
+
+	| interface cartId  |
+	
+	interface := self createDefaultInterface.
+
+	cartId := interface createCartFor: self validUser authenticatedWith: self validUserPassword.
+	interface add: self validBook quantity: 1 toCartIdentifiedAs: cartId.
+	self
+		shouldnt: [interface 
+			checkOutCartIdentifiedAs: cartId 
+			withCreditCardNumbered: '1111222233334444' 
+			ownedBy: 'Juan Perez' 
+			expiringOn: testObjectsFactory notExpiredMonthOfYear ]
+		raise: Error - MessageNotUnderstood
+		
+		! !
+!RestInterfaceTest methodsFor: 'test' stamp: 'AS 6/14/2023 20:13:48' prior: 50627292!
+test10CanCheckoutACart
+
+	
+	
+
+	self 
+		assertAfter: [ :anInterface :aCartId | 
+			anInterface add: self validBook quantity: 1 toCartIdentifiedAs: aCartId. ]
+		shouldntRaiseError: [ :anInterface :aCartId |
+			anInterface checkOutCartIdentifiedAs: aCartId 
+					   withCreditCardNumbered: '1111222233334444' 
+					   ownedBy: 'Juan Perez' 
+					   expiringOn: testObjectsFactory notExpiredMonthOfYear ]	
+		
+		! !
+!RestInterfaceTest methodsFor: 'test' stamp: 'AS 6/14/2023 20:13:56' prior: 50627311!
+test10CanCheckoutACart
+
+	self 
+		assertAfter: [ :anInterface :aCartId | 
+			anInterface add: self validBook quantity: 1 toCartIdentifiedAs: aCartId. ]
+		shouldntRaiseError: [ :anInterface :aCartId |
+			anInterface checkOutCartIdentifiedAs: aCartId 
+					   withCreditCardNumbered: '1111222233334444' 
+					   ownedBy: 'Juan Perez' 
+					   expiringOn: testObjectsFactory notExpiredMonthOfYear ]	
+		
+		! !
+
+!testRun: #RestInterfaceTest #test10CanCheckoutACart stamp: 'AS 6/14/2023 20:13:59'!
+PASSED!
+!RestInterfaceTest methodsFor: 'test' stamp: 'AS 6/14/2023 20:17:25' prior: 50624914!
+test15CanNotAddItemToCartAfterTimeOut
+
+	self 
+		assertAfter: [ :anInterface :aCartId | 
+					anInterface add: self validBook quantity: 1 toCartIdentifiedAs: aCartId.
+					timeSimulator advanceOn: (Duration minutes: 35) ]
+		 should:  [ :anInterface :aCartId |
+					anInterface checkOutCartIdentifiedAs: aCartId 
+					   withCreditCardNumbered: '1111222233334444' 
+					   ownedBy: 'Juan Perez' 
+					   expiringOn: testObjectsFactory notExpiredMonthOfYear ]
+		raiseError:  RestInterface timeOutErrorDescription
+! !
+
+!testRun: #RestInterfaceTest #test15CanNotAddItemToCartAfterTimeOut stamp: 'AS 6/14/2023 20:17:28'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test01CanCreateCartWithValidUserAndPassword stamp: 'AS 6/14/2023 20:17:28'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test02CanNotCreateCartWithInvalidUser stamp: 'AS 6/14/2023 20:17:28'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test03CanNotCreateCartWithInvalidPassword stamp: 'AS 6/14/2023 20:17:28'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test04CanAddItemsToACreatedCart stamp: 'AS 6/14/2023 20:17:28'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test05CanNotAddItemToNotCreatedCart stamp: 'AS 6/14/2023 20:17:28'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test06CanNotAddItemNotSellByTheStore stamp: 'AS 6/14/2023 20:17:28'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test07ListCartOfAnEmptyCartReturnsAnEmptyBag stamp: 'AS 6/14/2023 20:17:28'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test08CanNotListCartOfInvalidCartId stamp: 'AS 6/14/2023 20:17:28'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test09ListCartReturnsTheRightNumberOfItems stamp: 'AS 6/14/2023 20:17:28'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test10CanCheckoutACart stamp: 'AS 6/14/2023 20:17:28'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test11CanNotCheckoutANotCreatedCart stamp: 'AS 6/14/2023 20:17:28'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test12CanNotCheckoutAnEmptyCart stamp: 'AS 6/14/2023 20:17:28'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test13CanNotListCartAfterTimeOut stamp: 'AS 6/14/2023 20:17:28'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test14CanNotAddItemToCartAfterTimeOut stamp: 'AS 6/14/2023 20:17:28'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test15CanNotAddItemToCartAfterTimeOut stamp: 'AS 6/14/2023 20:17:28'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test16ListCartResetsTimeOut stamp: 'AS 6/14/2023 20:17:28'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test17AddItemResetsTimeOut stamp: 'AS 6/14/2023 20:17:28'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test18CartIsNotAvailableAfterCheckOut stamp: 'AS 6/14/2023 20:17:28'!
+PASSED!
+!RestInterfaceTest methodsFor: 'assertions' stamp: 'AS 6/14/2023 20:21:23'!
+assertWithCart: anAssertionsBlock
+
+	| interface cartId |
+	
+	interface := self createDefaultInterface.
+
+	cartId := interface createCartFor: self validUser authenticatedWith: self validUserPassword.
+
+	anAssertionsBlock value: interface value: cartId	.! !
+!RestInterfaceTest methodsFor: 'test' stamp: 'AS 6/14/2023 20:22:19' prior: 50624688!
+test01CanCreateCartWithValidUserAndPassword
+	
+	self assertWithCart: [ :anInterface :aCartId | self assert: (anInterface listCartIdentifiedAs: aCartId) isEmpty ]
+! !
+
+!testRun: #RestInterfaceTest #test01CanCreateCartWithValidUserAndPassword stamp: 'AS 6/14/2023 20:22:21'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test01CanCreateCartWithValidUserAndPassword stamp: 'AS 6/14/2023 20:22:21'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test02CanNotCreateCartWithInvalidUser stamp: 'AS 6/14/2023 20:22:21'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test03CanNotCreateCartWithInvalidPassword stamp: 'AS 6/14/2023 20:22:21'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test04CanAddItemsToACreatedCart stamp: 'AS 6/14/2023 20:22:21'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test05CanNotAddItemToNotCreatedCart stamp: 'AS 6/14/2023 20:22:21'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test06CanNotAddItemNotSellByTheStore stamp: 'AS 6/14/2023 20:22:21'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test07ListCartOfAnEmptyCartReturnsAnEmptyBag stamp: 'AS 6/14/2023 20:22:22'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test08CanNotListCartOfInvalidCartId stamp: 'AS 6/14/2023 20:22:22'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test09ListCartReturnsTheRightNumberOfItems stamp: 'AS 6/14/2023 20:22:22'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test10CanCheckoutACart stamp: 'AS 6/14/2023 20:22:22'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test11CanNotCheckoutANotCreatedCart stamp: 'AS 6/14/2023 20:22:22'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test12CanNotCheckoutAnEmptyCart stamp: 'AS 6/14/2023 20:22:22'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test13CanNotListCartAfterTimeOut stamp: 'AS 6/14/2023 20:22:22'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test14CanNotAddItemToCartAfterTimeOut stamp: 'AS 6/14/2023 20:22:22'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test15CanNotAddItemToCartAfterTimeOut stamp: 'AS 6/14/2023 20:22:22'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test16ListCartResetsTimeOut stamp: 'AS 6/14/2023 20:22:22'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test17AddItemResetsTimeOut stamp: 'AS 6/14/2023 20:22:22'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test18CartIsNotAvailableAfterCheckOut stamp: 'AS 6/14/2023 20:22:22'!
+PASSED!
+!RestInterfaceTest methodsFor: 'test' stamp: 'AS 6/14/2023 20:23:09' prior: 50624775!
+test07ListCartOfAnEmptyCartReturnsAnEmptyBag
+
+	self assertWithCart: [ :anInterface :aCartId | self assert: (anInterface listCartIdentifiedAs: aCartId) isEmpty ].
+			
+	! !
+
+!testRun: #RestInterfaceTest #test07ListCartOfAnEmptyCartReturnsAnEmptyBag stamp: 'AS 6/14/2023 20:23:13'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test01CanCreateCartWithValidUserAndPassword stamp: 'AS 6/14/2023 20:23:13'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test02CanNotCreateCartWithInvalidUser stamp: 'AS 6/14/2023 20:23:13'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test03CanNotCreateCartWithInvalidPassword stamp: 'AS 6/14/2023 20:23:13'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test04CanAddItemsToACreatedCart stamp: 'AS 6/14/2023 20:23:13'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test05CanNotAddItemToNotCreatedCart stamp: 'AS 6/14/2023 20:23:13'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test06CanNotAddItemNotSellByTheStore stamp: 'AS 6/14/2023 20:23:13'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test07ListCartOfAnEmptyCartReturnsAnEmptyBag stamp: 'AS 6/14/2023 20:23:13'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test08CanNotListCartOfInvalidCartId stamp: 'AS 6/14/2023 20:23:13'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test09ListCartReturnsTheRightNumberOfItems stamp: 'AS 6/14/2023 20:23:13'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test10CanCheckoutACart stamp: 'AS 6/14/2023 20:23:13'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test11CanNotCheckoutANotCreatedCart stamp: 'AS 6/14/2023 20:23:13'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test12CanNotCheckoutAnEmptyCart stamp: 'AS 6/14/2023 20:23:13'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test13CanNotListCartAfterTimeOut stamp: 'AS 6/14/2023 20:23:13'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test14CanNotAddItemToCartAfterTimeOut stamp: 'AS 6/14/2023 20:23:13'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test15CanNotAddItemToCartAfterTimeOut stamp: 'AS 6/14/2023 20:23:13'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test16ListCartResetsTimeOut stamp: 'AS 6/14/2023 20:23:13'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test17AddItemResetsTimeOut stamp: 'AS 6/14/2023 20:23:13'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test18CartIsNotAvailableAfterCheckOut stamp: 'AS 6/14/2023 20:23:13'!
+PASSED!
+!RestInterfaceTest methodsFor: 'assertions' stamp: 'AS 6/14/2023 20:24:33' prior: 50627428!
+assertWithCart: anAssertionsBlock
+
+	| interface cartId |
+	
+	interface := self createDefaultInterface.
+
+	cartId := interface createCartFor: self validUser authenticatedWith: self validUserPassword.
+
+	self assert: [ anAssertionsBlock value: interface value: cartId	. ]! !
+!RestInterfaceTest methodsFor: 'test' stamp: 'AS 6/14/2023 20:24:44' prior: 50627439!
+test01CanCreateCartWithValidUserAndPassword
+	
+	self assertWithCart: [ :anInterface :aCartId | (anInterface listCartIdentifiedAs: aCartId) isEmpty ]
+! !
+
+!testRun: #RestInterfaceTest #test01CanCreateCartWithValidUserAndPassword stamp: 'AS 6/14/2023 20:24:47'!
+PASSED!
+!RestInterfaceTest methodsFor: 'test' stamp: 'AS 6/14/2023 20:25:21' prior: 50627511!
+test07ListCartOfAnEmptyCartReturnsAnEmptyBag
+
+	self assertWithCart: [ :anInterface :aCartId | (anInterface listCartIdentifiedAs: aCartId) isEmpty ].
+			
+	! !
+
+!testRun: #RestInterfaceTest #test01CanCreateCartWithValidUserAndPassword stamp: 'AS 6/14/2023 20:25:24'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test02CanNotCreateCartWithInvalidUser stamp: 'AS 6/14/2023 20:25:24'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test03CanNotCreateCartWithInvalidPassword stamp: 'AS 6/14/2023 20:25:24'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test04CanAddItemsToACreatedCart stamp: 'AS 6/14/2023 20:25:24'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test05CanNotAddItemToNotCreatedCart stamp: 'AS 6/14/2023 20:25:24'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test06CanNotAddItemNotSellByTheStore stamp: 'AS 6/14/2023 20:25:24'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test07ListCartOfAnEmptyCartReturnsAnEmptyBag stamp: 'AS 6/14/2023 20:25:24'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test08CanNotListCartOfInvalidCartId stamp: 'AS 6/14/2023 20:25:24'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test09ListCartReturnsTheRightNumberOfItems stamp: 'AS 6/14/2023 20:25:24'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test10CanCheckoutACart stamp: 'AS 6/14/2023 20:25:24'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test11CanNotCheckoutANotCreatedCart stamp: 'AS 6/14/2023 20:25:24'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test12CanNotCheckoutAnEmptyCart stamp: 'AS 6/14/2023 20:25:24'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test13CanNotListCartAfterTimeOut stamp: 'AS 6/14/2023 20:25:24'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test14CanNotAddItemToCartAfterTimeOut stamp: 'AS 6/14/2023 20:25:24'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test15CanNotAddItemToCartAfterTimeOut stamp: 'AS 6/14/2023 20:25:24'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test16ListCartResetsTimeOut stamp: 'AS 6/14/2023 20:25:24'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test17AddItemResetsTimeOut stamp: 'AS 6/14/2023 20:25:24'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test18CartIsNotAvailableAfterCheckOut stamp: 'AS 6/14/2023 20:25:24'!
+PASSED!
+!RestInterfaceTest methodsFor: 'assertions' stamp: 'AS 6/14/2023 20:27:27' prior: 50627583!
+assertWithCart: anAssertionsBlock
+
+	| interface cartId |
+	
+	interface := self createDefaultInterface.
+
+	cartId := interface createCartFor: self validUser authenticatedWith: self validUserPassword.
+
+	anAssertionsBlock value: interface value: cartId	.! !
+!RestInterfaceTest methodsFor: 'test' stamp: 'AS 6/14/2023 20:27:41' prior: 50627595!
+test01CanCreateCartWithValidUserAndPassword
+	
+	self assertWithCart: [ :anInterface :aCartId | self assert: (anInterface listCartIdentifiedAs: aCartId) isEmpty ]
+! !
+!RestInterfaceTest methodsFor: 'test' stamp: 'AS 6/14/2023 20:27:53' prior: 50627607!
+test07ListCartOfAnEmptyCartReturnsAnEmptyBag
+
+	self assertWithCart: [ :anInterface :aCartId | self assert: (anInterface listCartIdentifiedAs: aCartId) isEmpty ].
+			
+	! !
+
+!testRun: #RestInterfaceTest #test01CanCreateCartWithValidUserAndPassword stamp: 'AS 6/14/2023 20:27:56'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test02CanNotCreateCartWithInvalidUser stamp: 'AS 6/14/2023 20:27:56'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test03CanNotCreateCartWithInvalidPassword stamp: 'AS 6/14/2023 20:27:56'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test04CanAddItemsToACreatedCart stamp: 'AS 6/14/2023 20:27:56'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test05CanNotAddItemToNotCreatedCart stamp: 'AS 6/14/2023 20:27:56'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test06CanNotAddItemNotSellByTheStore stamp: 'AS 6/14/2023 20:27:56'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test07ListCartOfAnEmptyCartReturnsAnEmptyBag stamp: 'AS 6/14/2023 20:27:56'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test08CanNotListCartOfInvalidCartId stamp: 'AS 6/14/2023 20:27:56'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test09ListCartReturnsTheRightNumberOfItems stamp: 'AS 6/14/2023 20:27:56'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test10CanCheckoutACart stamp: 'AS 6/14/2023 20:27:56'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test11CanNotCheckoutANotCreatedCart stamp: 'AS 6/14/2023 20:27:56'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test12CanNotCheckoutAnEmptyCart stamp: 'AS 6/14/2023 20:27:56'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test13CanNotListCartAfterTimeOut stamp: 'AS 6/14/2023 20:27:56'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test14CanNotAddItemToCartAfterTimeOut stamp: 'AS 6/14/2023 20:27:56'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test15CanNotAddItemToCartAfterTimeOut stamp: 'AS 6/14/2023 20:27:56'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test16ListCartResetsTimeOut stamp: 'AS 6/14/2023 20:27:56'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test17AddItemResetsTimeOut stamp: 'AS 6/14/2023 20:27:56'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test18CartIsNotAvailableAfterCheckOut stamp: 'AS 6/14/2023 20:27:56'!
+PASSED!
+!RestInterfaceTest methodsFor: 'test' stamp: 'AS 6/14/2023 20:29:57' prior: 50624801!
+test09ListCartReturnsTheRightNumberOfItems
+
+	self assertWithCart: [ :anInterface :aCartId | 
+		
+		| cartContent |
+		
+		anInterface add: self validBook quantity: 1 toCartIdentifiedAs: aCartId.
+		anInterface add: self anotherValidBook quantity: 2 toCartIdentifiedAs: aCartId.
+		
+		cartContent := anInterface listCartIdentifiedAs: aCartId.
+	
+		self assert: (cartContent occurrencesOf: self validBook) = 1. 
+		self assert: (cartContent occurrencesOf: self anotherValidBook) = 2		 ].
+
+! !
+
+!testRun: #RestInterfaceTest #test09ListCartReturnsTheRightNumberOfItems stamp: 'AS 6/14/2023 20:30:00'!
+PASSED!
+
+----SNAPSHOT----(14 June 2023 20:35:33) CuisUniversity-5832.image priorSource: 9366758!
