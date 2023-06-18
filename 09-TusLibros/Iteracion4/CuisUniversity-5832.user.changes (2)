@@ -1,0 +1,460 @@
+
+
+----QUIT----(30 May 2023 00:05:32) CuisUniversity-5832.image priorSource: 4928100!
+
+----STARTUP---- (30 May 2023 00:05:33) as /Users/hernan/Documents/Cuis/5.0-64Bits/Cuis-University-Installer/CuisUniversity-5832.image!
+
+
+----QUIT----(30 May 2023 00:05:33) CuisUniversity-5832.image priorSource: 9366537!
+
+----STARTUP---- (18 June 2023 11:24:47) as E:\ISW1\CUIS\Tus Libros Iteracion 4\CuisUniversity-5832.image!
+
+
+----End fileIn of E:\ISW1\CUIS\Tus Libros Iteracion 4\TusLibros.st----!
+
+----End fileIn of E:\ISW1\CUIS\Tus Libros Iteracion 4\TusLibrosREST.st----!
+
+----End fileIn of E:\ISW1\CUIS\Tus Libros Iteracion 4\Packages\System\Collections-CompactArrays.pck.st----!
+
+----End fileIn of E:\ISW1\CUIS\Tus Libros Iteracion 4\Packages\Features\Compression.pck.st----!
+
+----End fileIn of E:\ISW1\CUIS\Tus Libros Iteracion 4\Packages\Features\Sound.pck.st----!
+
+----End fileIn of E:\ISW1\CUIS\Tus Libros Iteracion 4\Packages\Features\Cryptography-DigitalSignatures.pck.st----!
+
+----End fileIn of E:\ISW1\CUIS\Tus Libros Iteracion 4\Packages\Features\Identities-UUID.pck.st----!
+
+----End fileIn of E:\ISW1\CUIS\Tus Libros Iteracion 4\Packages\System\Network-Kernel.pck.st----!
+
+----End fileIn of E:\ISW1\CUIS\Tus Libros Iteracion 4\ConsignaIteracion4 (1)\WebClient.pck.st----!
+
+----End fileIn of E:\ISW1\CUIS\Tus Libros Iteracion 4\ConsignaIteracion4 (1)\TusLibros-Tests Ejercicio it4.st----!
+!TusLibrosClientTestWindowModel methodsFor: 'buttonSelectors' stamp: 'AS 6/18/2023 11:29:57' prior: 50626900!
+createCart
+
+	[
+		| newCartId |
+	
+		newCartId := restInterface createCartFor: 'hernan' password: 'smalltalk'. 
+	
+		cartIds add: newCartId.
+	
+		self triggerEvent: #newCartIdArrived 
+	] 
+	on: Error do: [ : anError | self triggerEvent: #errorRaised with: anError messageText ]! !
+!TusLibrosClientTestWindowModel methodsFor: 'buttonSelectors' stamp: 'AS 6/18/2023 11:30:43' prior: 50626909!
+listCart
+	
+	(self isCartIdSelected) ifTrue: [
+		 	
+		[
+			| cartId |
+		
+			cartId := self selectedCartId.			
+			currentSelectedCartContent := restInterface listCart: cartId.			
+			self triggerEvent: #newCurrentSelectedCartContentArrived with: cartId 
+		
+		] on: Error do: [ : anError | self triggerEvent: #errorRaised with: anError messageText ]		
+	] ! !
+
+Object subclass: #TusLibrosClientRestInterface
+	instanceVariableNames: 'port observers'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibrosREST'!
+
+!classDefinition: #TusLibrosClientRestInterface category: 'TusLibrosREST' stamp: 'AS 6/18/2023 11:35:07'!
+Object subclass: #TusLibrosClientRestInterface
+	instanceVariableNames: 'port observers'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibrosREST'!
+
+Object subclass: #TusLibrosClientRestInterface
+	instanceVariableNames: 'port'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibrosREST'!
+
+!classDefinition: #TusLibrosClientRestInterface category: 'TusLibrosREST' stamp: 'AS 6/18/2023 11:37:28'!
+Object subclass: #TusLibrosClientRestInterface
+	instanceVariableNames: 'port'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibrosREST'!
+!TusLibrosClientRestInterface methodsFor: 'requests' stamp: 'AS 6/18/2023 11:38:43' prior: 50626789!
+listCart: cartId
+
+	| fieldDict resp |
+	
+	fieldDict := Dictionary newFromPairs: {'cartId'. cartId. }.		
+	
+	resp := WebClient htmlSubmit: (self url,'/listCart') fields: fieldDict.
+		
+	resp isSuccess 
+		ifTrue:[^(WebUtils jsonDecode: ((resp content) readStream)) asOrderedCollection] 
+		ifFalse:[^self error: resp content]! !
+
+Object subclass: #TusLibrosClientRestInterfaceAsync
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibrosREST'!
+
+!classDefinition: #TusLibrosClientRestInterfaceAsync category: 'TusLibrosREST' stamp: 'AS 6/18/2023 11:38:55'!
+Object subclass: #TusLibrosClientRestInterfaceAsync
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibrosREST'!
+!TusLibrosClientRestInterfaceAsync methodsFor: 'request' stamp: 'AS 6/18/2023 11:39:24'!
+listCart: cartId
+
+	| fieldDict resp |
+	
+	fieldDict := Dictionary newFromPairs: {'cartId'. cartId. }.		
+	
+	resp := WebClient htmlSubmit: (self url,'/listCart') fields: fieldDict.
+		
+	resp isSuccess 
+		ifTrue:[^(WebUtils jsonDecode: ((resp content) readStream)) asOrderedCollection] 
+		ifFalse:[^self error: resp content]! !
+
+Object subclass: #TusLibrosClientRestInterfaceAsync
+	instanceVariableNames: 'decoratee'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibrosREST'!
+
+!classDefinition: #TusLibrosClientRestInterfaceAsync category: 'TusLibrosREST' stamp: 'AS 6/18/2023 11:39:37'!
+Object subclass: #TusLibrosClientRestInterfaceAsync
+	instanceVariableNames: 'decoratee'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibrosREST'!
+!TusLibrosClientRestInterfaceAsync class methodsFor: 'no messages' stamp: 'AS 6/18/2023 11:39:59'!
+decorate: anInterface
+
+	^self new initializeWith: anInterface! !
+!TusLibrosClientRestInterfaceAsync methodsFor: 'initialization' stamp: 'AS 6/18/2023 11:40:22'!
+initializeWith: anInterface
+
+	decoratee := anInterface! !
+!TusLibrosClientRestInterfaceAsync methodsFor: 'request' stamp: 'AS 6/18/2023 11:43:24' prior: 50665343!
+listCart: cartId
+
+	| result |
+	
+	[ result := decoratee listCart: cartId. ] fork
+! !
+!TusLibrosClientRestInterfaceAsync methodsFor: 'request' stamp: 'AS 6/18/2023 11:43:39' prior: 50665382!
+listCart: cartId
+
+	| result |
+	
+	[ result := decoratee listCart: cartId. ^result ] fork
+! !
+!TusLibrosClientTestWindowModel methodsFor: 'initialization' stamp: 'AS 6/18/2023 11:44:20' prior: 50626932 overrides: 16920235!
+initialize
+
+	cartIds := OrderedCollection new.
+	currentSelectedCartContent := OrderedCollection new.
+	selectedCartIdsIndex := 0.
+	selectedBookCatalogIndex := 0.
+	restInterface := TusLibrosClientRestInterfaceAsync decorate: TusLibrosClientRestInterface new.! !
+
+TusLibrosServerRestInterface installForDefaultSystem!
+
+TusLibrosClientTestWindow open!
+!TusLibrosClientRestInterfaceAsync methodsFor: 'request' stamp: 'AS 6/18/2023 11:46:51'!
+createCartFor: aUser password: aPassword
+
+	^decoratee createCartFor: aUser password: aPassword! !
+!TusLibrosClientRestInterfaceAsync methodsFor: 'request' stamp: 'AS 6/18/2023 11:47:04' prior: 50665388!
+listCart: cartId
+
+	^decoratee listCart: cartId.
+! !
+!TusLibrosClientRestInterfaceAsync methodsFor: 'request' stamp: 'AS 6/18/2023 11:47:37'!
+add: quantity of: bookIsbn toCartIdentifiedAs: cartId
+
+	decoratee add: quantity of: bookIsbn toCartIdentifiedAs: cartId.! !
+!TusLibrosClientRestInterfaceAsync methodsFor: 'request' stamp: 'AS 6/18/2023 11:49:59' prior: 50665416!
+listCart: cartId
+
+	[
+		| result |
+		
+		result := decoratee listCart: cartId.
+		decoratee listCartAnswer: result.		
+	] fork.
+! !
+!TusLibrosClientTestWindowModel methodsFor: 'buttonSelectors' stamp: 'AS 6/18/2023 11:51:25'!
+listCartAnswer: aCartId
+	
+	self triggerEvent: #newCurrentSelectedCartContentArrived with: aCartId 
+! !
+!TusLibrosClientTestWindowModel methodsFor: 'buttonSelectors' stamp: 'AS 6/18/2023 11:51:54' prior: 50665276!
+listCart
+	
+	(self isCartIdSelected) ifTrue: [
+		 	
+		[
+			| cartId |
+		
+			cartId := self selectedCartId.			
+			currentSelectedCartContent := restInterface listCart: cartId.			
+			"self triggerEvent: #newCurrentSelectedCartContentArrived with: cartId "
+		
+		] on: Error do: [ : anError | self triggerEvent: #errorRaised with: anError messageText ]		
+	] ! !
+!TusLibrosClientTestWindowModel methodsFor: 'buttonSelectors' stamp: 'AS 6/18/2023 11:56:15' prior: 50665443!
+listCart
+	
+	(self isCartIdSelected) ifTrue: [
+		 	
+		[
+			| cartId |
+		
+			cartId := self selectedCartId.			
+			currentSelectedCartContent := restInterface  listCart: cartId 
+												whenFinishDo: [ self triggerEvent: #newCurrentSelectedCartContentArrived with: cartId ].			
+		
+		] on: Error do: [ : anError | self triggerEvent: #errorRaised with: anError messageText ]		
+	] ! !
+!TusLibrosClientRestInterfaceAsync methodsFor: 'request' stamp: 'AS 6/18/2023 11:56:37'!
+listCart: cartId whenFinishDo: aBlockToExecute
+
+	[
+		| result |
+		
+		result := decoratee listCart: cartId.
+		decoratee listCartAnswer: result.		
+	] fork.
+! !
+
+!methodRemoval: TusLibrosClientRestInterfaceAsync #listCart: stamp: 'AS 6/18/2023 11:56:40'!
+listCart: cartId
+
+	[
+		| result |
+		
+		result := decoratee listCart: cartId.
+		decoratee listCartAnswer: result.		
+	] fork.
+!
+!TusLibrosClientRestInterfaceAsync methodsFor: 'request' stamp: 'AS 6/18/2023 11:57:18' prior: 50665473!
+listCart: cartId whenFinishDo: aBlockToExecute
+
+	[
+		| result |
+		
+		result := decoratee listCart: cartId.
+		aBlockToExecute value: result.
+		
+	] fork.
+! !
+
+!methodRemoval: TusLibrosClientTestWindowModel #listCartAnswer: stamp: 'AS 6/18/2023 11:57:51'!
+listCartAnswer: aCartId
+	
+	self triggerEvent: #newCurrentSelectedCartContentArrived with: aCartId 
+!
+!TusLibrosClientTestWindowModel methodsFor: 'buttonSelectors' stamp: 'AS 6/18/2023 11:58:15' prior: 50665458!
+listCart
+	
+	(self isCartIdSelected) ifTrue: [
+		 	
+		[
+			| cartId |
+		
+			cartId := self selectedCartId.			
+			currentSelectedCartContent := restInterface  listCart: cartId 
+												whenFinishDo: [ :aResult | self triggerEvent: #newCurrentSelectedCartContentArrived with: cartId ].			
+		
+		] on: Error do: [ : anError | self triggerEvent: #errorRaised with: anError messageText ]		
+	] ! !
+!TusLibrosClientRestInterfaceAsync methodsFor: 'request' stamp: 'AS 6/18/2023 11:59:39' prior: 50665489!
+listCart: cartId whenFinishDo: aBlockToExecute
+
+	[
+		| result |
+		
+		result := decoratee listCart: cartId.
+		
+		self halt.
+		
+		aBlockToExecute value: result.
+		
+	] fork.
+! !
+!TusLibrosClientTestWindow methodsFor: 'events' stamp: 'AS 6/18/2023 12:01:51' prior: 50626566!
+refreshListOfCartIds
+
+	self halt.
+	cartIdsListMorph updateList
+	! !
+!TusLibrosClientTestWindow methodsFor: 'events' stamp: 'AS 6/18/2023 12:02:32' prior: 50665529!
+refreshListOfCartIds
+
+	cartIdsListMorph updateList
+	! !
+!TusLibrosClientTestWindow methodsFor: 'events' stamp: 'AS 6/18/2023 12:02:37' prior: 50626558!
+refreshCurrentSelectedCartContent: cartId
+
+	self halt.
+	cartContentListMorph updateList.
+	selectedCartLabelMorph contents: 'Books in CartId: ', cartId
+	
+	
+	! !
+!TusLibrosClientRestInterfaceAsync methodsFor: 'request' stamp: 'AS 6/18/2023 12:05:56' overrides: 50337880!
+doesNotUnderstand: aMessage
+	
+	! !
+!TusLibrosClientRestInterfaceAsync methodsFor: 'request' stamp: 'AS 6/18/2023 12:06:37' prior: 50665549 overrides: 50337880!
+doesNotUnderstand: aMessage
+	
+	^decoratee
+		perform: aMessage selector
+		withArguments: aMessage arguments	! !
+
+TusLibrosClientTestWindow open!
+!TusLibrosClientRestInterfaceAsync methodsFor: 'request' stamp: 'AS 6/18/2023 12:08:32' prior: 50665554 overrides: 50337880!
+doesNotUnderstand: aMessage
+	
+	self halt.
+	
+	^decoratee
+		perform: aMessage selector
+		withArguments: aMessage arguments	! !
+
+(aMessage selector)!
+
+aMessage!
+
+aMessage arguments!
+!TusLibrosClientRestInterfaceAsync methodsFor: 'request' stamp: 'AS 6/18/2023 12:12:23' prior: 50665520!
+listCart: cartId whenFinishDo: aBlockToExecute
+
+	| result semaphore |
+
+	semaphore := Semaphore new.
+	[	
+		result := decoratee listCart: cartId.
+		semaphore signal.
+	] fork.
+
+	semaphore wait.	
+	aBlockToExecute value: result.
+		
+	
+! !
+!TusLibrosClientTestWindow methodsFor: 'events' stamp: 'AS 6/18/2023 12:13:08' prior: 50665540!
+refreshCurrentSelectedCartContent: cartId
+
+	cartContentListMorph updateList.
+	selectedCartLabelMorph contents: 'Books in CartId: ', cartId
+	
+	
+	! !
+!TusLibrosClientRestInterfaceAsync methodsFor: 'request' stamp: 'AS 6/18/2023 12:13:18' prior: 50665563 overrides: 50337880!
+doesNotUnderstand: aMessage
+			
+	^decoratee
+		perform: aMessage selector
+		withArguments: aMessage arguments	! !
+!TusLibrosClientRestInterfaceAsync methodsFor: 'request' stamp: 'AS 6/18/2023 12:14:03' prior: 50665572!
+listCart: cartId whenFinishDo: aBlockToExecute
+
+	[	
+		| result |
+		
+		result := decoratee listCart: cartId.
+		aBlockToExecute value: result.
+	] fork.
+	
+		
+	
+! !
+!TusLibrosClientTestWindowModel methodsFor: 'buttonSelectors' stamp: 'AS 6/18/2023 12:15:47' prior: 50665504!
+listCart
+	
+	(self isCartIdSelected) ifTrue: [
+		 	
+		[
+			| cartId |
+		
+			cartId := self selectedCartId.			
+			restInterface   listCart: cartId 
+						whenFinishDo: [ :aResult | 
+										currentSelectedCartContent := aResult.
+										self triggerEvent: #newCurrentSelectedCartContentArrived with: cartId ].			
+		
+		] on: Error do: [ : anError | self triggerEvent: #errorRaised with: anError messageText ]		
+	] ! !
+!TusLibrosClientTestWindowModel methodsFor: 'buttonSelectors' stamp: 'AS 6/18/2023 12:18:38' prior: 50665263!
+createCart
+
+	[
+	
+		restInterface    createCartFor: 'hernan' 
+					password: 'smalltalk'	
+					whenFinishDo: [ :newCartId | 
+									cartIds add: newCartId.	
+									self triggerEvent: #newCartIdArrived ].
+	] 
+	on: Error do: [ : anError | self triggerEvent: #errorRaised with: anError messageText ]! !
+!TusLibrosClientRestInterfaceAsync methodsFor: 'request' stamp: 'AS 6/18/2023 12:20:14'!
+createCartFor: aUser password: aPassword whenFinishDo: aBlockToExecute
+
+	[
+		| result |
+		
+		result := decoratee createCartFor: aUser password: aPassword.
+		aBlockToExecute value: result.
+	] fork.	! !
+
+!methodRemoval: TusLibrosClientRestInterfaceAsync #createCartFor:password: stamp: 'AS 6/18/2023 12:20:20'!
+createCartFor: aUser password: aPassword
+
+	^decoratee createCartFor: aUser password: aPassword!
+!TusLibrosClientTestWindowModel methodsFor: 'buttonSelectors' stamp: 'AS 6/18/2023 12:22:27' prior: 50626887!
+addToCart
+
+	| cartId bookIsbn |
+
+	(self areCartIdAndBookSelected) ifTrue:[
+		cartId := self selectedCartId.
+		bookIsbn := self selectedBook.
+		restInterface    add: 1 
+					of: bookIsbn
+					toCartIdentifiedAs: cartId
+					whenFinishDo: [ :aResult | 		self triggerEvent: #bookAddedToCart withArguments: (Array with: bookIsbn with: cartId) ].
+	]! !
+!TusLibrosClientRestInterfaceAsync methodsFor: 'request' stamp: 'AS 6/18/2023 12:23:09'!
+add: quantity of: bookIsbn toCartIdentifiedAs: cartId whenFinishDo: aBlockToExecute
+
+	[
+		decoratee add: quantity of: bookIsbn toCartIdentifiedAs: cartId.
+		aBlockToExecute value.
+	] fork.! !
+
+!methodRemoval: TusLibrosClientRestInterfaceAsync #add:of:toCartIdentifiedAs: stamp: 'AS 6/18/2023 12:23:18'!
+add: quantity of: bookIsbn toCartIdentifiedAs: cartId
+
+	decoratee add: quantity of: bookIsbn toCartIdentifiedAs: cartId.!
+
+!methodRemoval: TusLibrosClientRestInterfaceAsync #doesNotUnderstand: stamp: 'AS 6/18/2023 12:24:09'!
+doesNotUnderstand: aMessage
+			
+	^decoratee
+		perform: aMessage selector
+		withArguments: aMessage arguments	!
+!TusLibrosClientRestInterfaceAsync methodsFor: 'request' stamp: 'AS 6/18/2023 12:24:41' prior: 50665669!
+add: quantity of: bookIsbn toCartIdentifiedAs: cartId whenFinishDo: aBlockToExecute
+
+	[
+		decoratee add: quantity of: bookIsbn toCartIdentifiedAs: cartId.
+		aBlockToExecute value: nil.
+	] fork.! !
