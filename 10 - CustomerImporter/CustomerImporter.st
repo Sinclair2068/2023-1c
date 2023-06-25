@@ -1,3 +1,435 @@
+!classDefinition: #AddressTest category: 'CustomerImporter'!
+TestCase subclass: #AddressTest
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'CustomerImporter'!
+
+!AddressTest methodsFor: 'test' stamp: 'AS 6/25/2023 09:52:17'!
+test01InitializeAssignColaboratorsValues
+	
+	| address |
+	
+	address := Address 
+					withStreetName: 'San Martin'
+					streetNumber: 3388
+					town: 'Olivos'
+					zipCode: 1636
+					province: 'Buenos Aires'.	
+					
+	self assert: 'San Martin' equals: address streetName.
+	self assert: 3388 equals: address streetNumber.
+	self assert: 'Olivos' equals: address town.
+	self assert: 1636 equals: address zipCode.
+	self assert: 'Buenos Aires' equals: address province.! !
+
+!AddressTest methodsFor: 'test' stamp: 'AS 6/25/2023 09:53:35'!
+test02EqualsIsTrueWhenAllValuesAreEquals
+	
+	| address1 address2 |
+	
+	address1 := Address 
+					withStreetName: 'San Martin'
+					streetNumber: 3388
+					town: 'Olivos'
+					zipCode: 1636
+					province: 'Buenos Aires'.	
+					
+	address2 := Address 
+					withStreetName: 'San Martin'
+					streetNumber: 3388
+					town: 'Olivos'
+					zipCode: 1636
+					province: 'Buenos Aires'.						
+					
+	self assert: address1 equals: address2.
+! !
+
+!AddressTest methodsFor: 'test' stamp: 'AS 6/25/2023 09:55:21'!
+test03EqualsIsFalseWhenStreetNameIsNotEqual
+	
+	| address1 address2 |
+	
+	address1 := Address 
+					withStreetName: 'San Martin'
+					streetNumber: 3388
+					town: 'Olivos'
+					zipCode: 1636
+					province: 'Buenos Aires'.	
+					
+	address2 := Address 
+					withStreetName: 'Jose de San Martin'
+					streetNumber: 3388
+					town: 'Olivos'
+					zipCode: 1636
+					province: 'Buenos Aires'.						
+					
+	self assert: (address1 ~= address2).
+! !
+
+!AddressTest methodsFor: 'test' stamp: 'AS 6/25/2023 09:55:52'!
+test04EqualsIsFalseWhenStreetNumberIsNotEqual
+	
+	| address1 address2 |
+	
+	address1 := Address 
+					withStreetName: 'San Martin'
+					streetNumber: 3388
+					town: 'Olivos'
+					zipCode: 1636
+					province: 'Buenos Aires'.	
+					
+	address2 := Address 
+					withStreetName: 'San Martin'
+					streetNumber: 33881
+					town: 'Olivos'
+					zipCode: 1636
+					province: 'Buenos Aires'.						
+					
+	self assert: (address1 ~= address2).
+! !
+
+!AddressTest methodsFor: 'test' stamp: 'AS 6/25/2023 09:56:17'!
+test05EqualsIsFalseWhenTownIsNotEqual
+	
+	| address1 address2 |
+	
+	address1 := Address 
+					withStreetName: 'San Martin'
+					streetNumber: 3388
+					town: 'Olivos'
+					zipCode: 1636
+					province: 'Buenos Aires'.	
+					
+	address2 := Address 
+					withStreetName: 'San Martin'
+					streetNumber: 3388
+					town: 'Florida'
+					zipCode: 1636
+					province: 'Buenos Aires'.						
+					
+	self assert: (address1 ~= address2).
+! !
+
+!AddressTest methodsFor: 'test' stamp: 'AS 6/25/2023 09:56:39'!
+test06EqualsIsFalseWhenZipCodeIsNotEqual
+	
+	| address1 address2 |
+	
+	address1 := Address 
+					withStreetName: 'San Martin'
+					streetNumber: 3388
+					town: 'Olivos'
+					zipCode: 1636
+					province: 'Buenos Aires'.	
+					
+	address2 := Address 
+					withStreetName: 'San Martin'
+					streetNumber: 3388
+					town: 'Olivos'
+					zipCode: 1640
+					province: 'Buenos Aires'.						
+					
+	self assert: (address1 ~= address2).
+! !
+
+!AddressTest methodsFor: 'test' stamp: 'AS 6/25/2023 09:56:57'!
+test07EqualsIsFalseWhenProvinceIsNotEqual
+	
+	| address1 address2 |
+	
+	address1 := Address 
+					withStreetName: 'San Martin'
+					streetNumber: 3388
+					town: 'Olivos'
+					zipCode: 1636
+					province: 'Buenos Aires'.	
+					
+	address2 := Address 
+					withStreetName: 'San Martin'
+					streetNumber: 3388
+					town: 'Olivos'
+					zipCode: 1640
+					province: 'BsAs'.						
+					
+	self assert: (address1 ~= address2).
+! !
+
+!AddressTest methodsFor: 'test' stamp: 'AS 6/25/2023 09:57:34'!
+test08SameObjectMustHaveSameHash
+	
+	| address1 address2 |
+	
+	address1 := Address 
+					withStreetName: 'San Martin'
+					streetNumber: 3388
+					town: 'Olivos'
+					zipCode: 1636
+					province: 'Buenos Aires'.	
+					
+	address2 := Address 
+					withStreetName: 'San Martin'
+					streetNumber: 3388
+					town: 'Olivos'
+					zipCode: 1636
+					province: 'Buenos Aires'.						
+					
+	self assert: address1 hash equals: address2 hash.
+! !
+
+!AddressTest methodsFor: 'test' stamp: 'AS 6/25/2023 09:58:38'!
+test09DifferentObjectShouldHaveDifferentHash
+	
+	| address1 address2 |
+	
+	address1 := Address 
+					withStreetName: 'San Martin'
+					streetNumber: 3388
+					town: 'Olivos'
+					zipCode: 1636
+					province: 'Buenos Aires'.	
+					
+	address2 := Address 
+					withStreetName: 'Jode de San Martin'
+					streetNumber: 3388
+					town: 'Olivos'
+					zipCode: 1636
+					province: 'Buenos Aires'.						
+					
+	self assert: (address1 hash ~= address2 hash).
+! !
+
+
+!classDefinition: #CustomerTest category: 'CustomerImporter'!
+TestCase subclass: #CustomerTest
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'CustomerImporter'!
+
+!CustomerTest methodsFor: 'test' stamp: 'AS 6/25/2023 10:42:12'!
+test01InitializeAssignColaboratorsValues
+	
+	| customer |
+	
+	customer := Customer 
+					withIdentificationType: 'D'
+					identificationNumber: '11112222'
+					firstName: 'Juan'
+					lastName: 'Perez'
+					addresses: #().
+						
+	self assert: 'D' equals: customer identificationType.
+	self assert: '11112222' equals: customer identificationNumber .
+	self assert: 'Juan' equals: customer firstName .
+	self assert: 'Perez' equals: customer lastName.
+	self assert: 0 equals: customer addressesSize.! !
+
+!CustomerTest methodsFor: 'test' stamp: 'AS 6/25/2023 10:42:12'!
+test02InitializeAddAddresses
+	
+	| customer |
+	
+	customer := Customer 
+					withIdentificationType: 'D'
+					identificationNumber: '11112222'
+					firstName: 'Juan'
+					lastName: 'Perez'
+					addresses: { Address withStreetName: 'San Martin' streetNumber: 3388 town: 'Olivos' zipCode: 1636  province: 'Buenos Aires' }.
+						
+	self assert: 1 equals: customer addressesSize.! !
+
+!CustomerTest methodsFor: 'test' stamp: 'AS 6/25/2023 10:42:12'!
+test03CustomerAreEqualsIfTheyHaveSameValues
+	
+	| customer1 customer2 |
+	
+	customer1 := Customer 
+					withIdentificationType: 'D'
+					identificationNumber: '11112222'
+					firstName: 'Juan'
+					lastName: 'Perez'
+					addresses: { Address withStreetName: 'San Martin' streetNumber: 3388 town: 'Olivos' zipCode: 1636  province: 'Buenos Aires' }.
+					
+	customer2 := Customer 
+					withIdentificationType: 'D'
+					identificationNumber: '11112222'
+					firstName: 'Juan'
+					lastName: 'Perez'
+					addresses: { Address withStreetName: 'San Martin' streetNumber: 3388 town: 'Olivos' zipCode: 1636  province: 'Buenos Aires' }.					
+						
+	self assert: customer1 equals: customer2.! !
+
+!CustomerTest methodsFor: 'test' stamp: 'AS 6/25/2023 10:42:12'!
+test04CustomerAreNotEqualsIfIdentificationTypeIsDifferent
+	
+	| customer1 customer2 |
+	
+	customer1 := Customer 
+					withIdentificationType: 'D'
+					identificationNumber: '11112222'
+					firstName: 'Juan'
+					lastName: 'Perez'
+					addresses: { Address withStreetName: 'San Martin' streetNumber: 3388 town: 'Olivos' zipCode: 1636  province: 'Buenos Aires' }.
+					
+	customer2 := Customer 
+					withIdentificationType: 'C'
+					identificationNumber: '11112222'
+					firstName: 'Juan'
+					lastName: 'Perez'
+					addresses: { Address withStreetName: 'San Martin' streetNumber: 3388 town: 'Olivos' zipCode: 1636  province: 'Buenos Aires' }.					
+						
+	self assert: (customer1 ~= customer2).! !
+
+!CustomerTest methodsFor: 'test' stamp: 'AS 6/25/2023 10:42:12'!
+test05CustomerAreNotEqualsIfIdentificationNumberIsDifferent
+	
+	| customer1 customer2 |
+	
+	customer1 := Customer 
+					withIdentificationType: 'D'
+					identificationNumber: '11112222'
+					firstName: 'Juan'
+					lastName: 'Perez'
+					addresses: { Address withStreetName: 'San Martin' streetNumber: 3388 town: 'Olivos' zipCode: 1636  province: 'Buenos Aires' }.
+					
+	customer2 := Customer 
+					withIdentificationType: 'D'
+					identificationNumber: '11112223'
+					firstName: 'Juan'
+					lastName: 'Perez'
+					addresses: { Address withStreetName: 'San Martin' streetNumber: 3388 town: 'Olivos' zipCode: 1636  province: 'Buenos Aires' }.					
+						
+	self assert: (customer1 ~= customer2).! !
+
+!CustomerTest methodsFor: 'test' stamp: 'AS 6/25/2023 10:42:12'!
+test06CustomerAreNotEqualsIfFirstNameIsDifferent
+	
+	| customer1 customer2 |
+	
+	customer1 := Customer 
+					withIdentificationType: 'D'
+					identificationNumber: '11112222'
+					firstName: 'Juan'
+					lastName: 'Perez'
+					addresses: { Address withStreetName: 'San Martin' streetNumber: 3388 town: 'Olivos' zipCode: 1636  province: 'Buenos Aires' }.
+					
+	customer2 := Customer 
+					withIdentificationType: 'D'
+					identificationNumber: '11112222'
+					firstName: 'Juancito'
+					lastName: 'Perez'
+					addresses: { Address withStreetName: 'San Martin' streetNumber: 3388 town: 'Olivos' zipCode: 1636  province: 'Buenos Aires' }.					
+						
+	self assert: (customer1 ~= customer2).! !
+
+!CustomerTest methodsFor: 'test' stamp: 'AS 6/25/2023 10:42:12'!
+test07CustomerAreNotEqualsIfLastNameIsDifferent
+	
+	| customer1 customer2 |
+	
+	customer1 := Customer 
+					withIdentificationType: 'D'
+					identificationNumber: '11112222'
+					firstName: 'Juan'
+					lastName: 'Perez'
+					addresses: { Address withStreetName: 'San Martin' streetNumber: 3388 town: 'Olivos' zipCode: 1636  province: 'Buenos Aires' }.
+					
+	customer2 := Customer 
+					withIdentificationType: 'D'
+					identificationNumber: '11112222'
+					firstName: 'Juan'
+					lastName: 'Peres'
+					addresses: { Address withStreetName: 'San Martin' streetNumber: 3388 town: 'Olivos' zipCode: 1636  province: 'Buenos Aires' }.					
+						
+	self assert: (customer1 ~= customer2).! !
+
+!CustomerTest methodsFor: 'test' stamp: 'AS 6/25/2023 10:42:12'!
+test08CustomerAreNotEqualsIfAddressesSizeIsDifferent
+	
+	| customer1 customer2 |
+	
+	customer1 := Customer 
+					withIdentificationType: 'D'
+					identificationNumber: '11112222'
+					firstName: 'Juan'
+					lastName: 'Perez'
+					addresses: { Address withStreetName: 'San Martin' streetNumber: 3388 town: 'Olivos' zipCode: 1636  province: 'Buenos Aires' }.
+					
+	customer2 := Customer 
+					withIdentificationType: 'D'
+					identificationNumber: '11112222'
+					firstName: 'Juan'
+					lastName: 'Perez'
+					addresses: { Address withStreetName: 'San Martin' streetNumber: 3388 town: 'Olivos' zipCode: 1636  province: 'Buenos Aires'.
+								Address withStreetName: 'Roca' streetNumber: 1234 town: 'Olivos' zipCode: 1636  province: 'Buenos Aires' }.					
+						
+	self assert: (customer1 ~= customer2).! !
+
+!CustomerTest methodsFor: 'test' stamp: 'AS 6/25/2023 10:42:12'!
+test09CustomerAreNotEqualsIfAddressesAreDifferent
+	
+	| customer1 customer2 |
+	
+	customer1 := Customer 
+					withIdentificationType: 'D'
+					identificationNumber: '11112222'
+					firstName: 'Juan'
+					lastName: 'Perez'
+					addresses: { Address withStreetName: 'San Martin' streetNumber: 3388 town: 'Olivos' zipCode: 1636  province: 'Buenos Aires' }.
+					
+	customer2 := Customer 
+					withIdentificationType: 'D'
+					identificationNumber: '11112222'
+					firstName: 'Juan'
+					lastName: 'Perez'
+					addresses: { Address withStreetName: 'Roca' streetNumber: 3388 town: 'Olivos' zipCode: 1636  province: 'Buenos Aires'.								}.
+						
+	self assert: (customer1 ~= customer2).! !
+
+!CustomerTest methodsFor: 'test' stamp: 'AS 6/25/2023 10:42:12'!
+test10IfCustomerAreEqualsTheyHaveTheSameHash
+	
+	| customer1 customer2 |
+	
+	customer1 := Customer 
+					withIdentificationType: 'D'
+					identificationNumber: '11112222'
+					firstName: 'Juan'
+					lastName: 'Perez'
+					addresses: { Address withStreetName: 'San Martin' streetNumber: 3388 town: 'Olivos' zipCode: 1636  province: 'Buenos Aires' }.
+					
+	customer2 := Customer 
+					withIdentificationType: 'D'
+					identificationNumber: '11112222'
+					firstName: 'Juan'
+					lastName: 'Perez'
+					addresses: { Address withStreetName: 'San Martin' streetNumber: 3388 town: 'Olivos' zipCode: 1636  province: 'Buenos Aires'.								}.
+						
+	self assert: customer1 hash equals: customer2 hash.! !
+
+!CustomerTest methodsFor: 'test' stamp: 'AS 6/25/2023 10:42:12'!
+test11IfCustomerAreNotEqualsTheyShouldHaveDifferentHash
+	
+	| customer1 customer2 |
+	
+	customer1 := Customer 
+					withIdentificationType: 'D'
+					identificationNumber: '11112222'
+					firstName: 'Juan'
+					lastName: 'Perez'
+					addresses: { Address withStreetName: 'San Martin' streetNumber: 3388 town: 'Olivos' zipCode: 1636  province: 'Buenos Aires' }.
+					
+	customer2 := Customer 
+					withIdentificationType: 'C'
+					identificationNumber: '11112222'
+					firstName: 'Juan'
+					lastName: 'Perez'
+					addresses: { Address withStreetName: 'San Martin' streetNumber: 3388 town: 'Olivos' zipCode: 1636  province: 'Buenos Aires'.								}.
+						
+	self assert: (customer1 hash ~= customer2 hash).! !
+
+
 !classDefinition: #ImportTest category: 'CustomerImporter'!
 TestCase subclass: #ImportTest
 	instanceVariableNames: 'session'
@@ -5,120 +437,60 @@ TestCase subclass: #ImportTest
 	poolDictionaries: ''
 	category: 'CustomerImporter'!
 
-!ImportTest methodsFor: 'as yet unclassified' stamp: 'AS 6/24/2023 16:35:03'!
-assertAddressOfCustomerType: anIdentificationType number: anIdentificationNumber addresses: anArrayOfAddress  
-
-	| customer index |
-	
-	customer := (self selectCustomerWith: anIdentificationType number: anIdentificationNumber) anyOne.
-	
-	index := 1.
-	[index <= anArrayOfAddress size] whileTrue: [self assert: (customer addresses at: index) equals: (anArrayOfAddress at: index).
-		index := index + 1 ]! !
-
-!ImportTest methodsFor: 'as yet unclassified' stamp: 'AS 6/24/2023 20:18:29'!
-assertCustomerType: anIdentificationType number: anIdentificationNumber firstName: aFirstName lastName: aLastName addresses: anArrayOfAddresses    
-
-	self assertSelectCustomerType: anIdentificationType 	number: anIdentificationNumber 
-		firstName: aFirstName lastName: aLastName.	
-		
-	self assertAddressOfCustomerType: anIdentificationType number: anIdentificationNumber 
-		addresses:  anArrayOfAddresses! !
-
-!ImportTest methodsFor: 'as yet unclassified' stamp: 'AS 6/24/2023 15:56:12'!
-assertSelectCustomerType: identificationType number: anIdentificationNumber firstName: aFirstName lastName: aLastName   
-
-	| queryResult customer |
-	
-	queryResult := self selectCustomerWith: identificationType number: anIdentificationNumber.
-	self assert: 1 equals: queryResult size.
-	
-	customer := queryResult anyOne.
-	
-	self assert: aFirstName equals: customer firstName.
-	self assert: aLastName equals: customer lastName.! !
-
-!ImportTest methodsFor: 'as yet unclassified' stamp: 'AS 6/24/2023 21:03:06'!
-crlf
-
-	^String with: Character cr with: Character lf! !
-
-!ImportTest methodsFor: 'as yet unclassified' stamp: 'AS 6/24/2023 20:21:25'!
-importCustomers: aStream
-
-	"
-	self importCustomers
-	"
-	| inputStream  newCustomer line |
-
-	inputStream := aStream.
-
-	line := inputStream nextLine.
-	[ line notNil ] whileTrue: [
-		(line beginsWith: 'C') ifTrue: [ | customerData |
-			customerData := line findTokens: $,.
-			newCustomer := Customer new.
-			newCustomer firstName: customerData second.
-			newCustomer lastName: customerData third.
-			newCustomer identificationType: customerData fourth.
-			newCustomer identificationNumber: customerData fifth.
-			session persist: newCustomer ].
-
-		(line beginsWith: 'A') ifTrue: [ | addressData newAddress |
-			addressData := line findTokens: $,.
-			newAddress := Address new.
-			newCustomer addAddress: newAddress.
-			newAddress streetName: addressData second.
-			newAddress streetNumber: addressData third asNumber .
-			newAddress town: addressData fourth.
-			newAddress zipCode: addressData fifth asNumber .
-			newAddress province: addressData sixth.
-			session persist: newAddress ].
-
-		line := inputStream nextLine. ].
-
-	inputStream close.
-	! !
-
-!ImportTest methodsFor: 'as yet unclassified' stamp: 'AS 6/24/2023 15:55:20'!
-selectCustomerWith: anIdentificationType number: anIdentificationNumber 
-	
-	^session select: [ :customer | (customer identificationType = anIdentificationType) and: [customer identificationNumber = anIdentificationNumber] ] ofType: Customer.
-! !
-
-!ImportTest methodsFor: 'as yet unclassified' stamp: 'WAL 6/22/2023 20:46:35'!
+!ImportTest methodsFor: 'setup' stamp: 'WAL 6/22/2023 20:46:35'!
 setUp
 
 	session := DataBaseSession for: (Array with: Address with: Customer).
 	session beginTransaction! !
 
-!ImportTest methodsFor: 'as yet unclassified' stamp: 'WAL 6/22/2023 20:47:00'!
+!ImportTest methodsFor: 'setup' stamp: 'WAL 6/22/2023 20:47:00'!
 tearDown
 
 	session commit.
 	session close! !
 
-!ImportTest methodsFor: 'as yet unclassified' stamp: 'AS 6/24/2023 21:13:26'!
+
+!ImportTest methodsFor: 'stream' stamp: 'AS 6/25/2023 09:15:38'!
+concatenatedStringFrom: anArrayOfStrings
+
+	^ anArrayOfStrings inject: ''  into: [ :inputString :string | inputString, string, self crlf ]! !
+
+!ImportTest methodsFor: 'stream' stamp: 'AS 6/25/2023 09:15:38'!
+createStream: anArrayOfStrings
+
+	^ ReadStream on: (self concatenatedStringFrom: anArrayOfStrings).! !
+
+!ImportTest methodsFor: 'stream' stamp: 'AS 6/24/2023 21:03:06'!
+crlf
+
+	^String with: Character cr with: Character lf! !
+
+
+!ImportTest methodsFor: 'session' stamp: 'AS 6/24/2023 15:55:20'!
+selectCustomerWith: anIdentificationType number: anIdentificationNumber 
+	
+	^session select: [ :customer | (customer identificationType = anIdentificationType) and: [customer identificationNumber = anIdentificationNumber] ] ofType: Customer.
+! !
+
+
+!ImportTest methodsFor: 'test' stamp: 'AS 6/25/2023 10:42:12'!
 test01Import
 
-	| allCustomers stream crlf |
-	
-	"self importCustomers: (UniFileStream new open: 'input.txt' forWrite: false)."
-	
-	crlf := String with: (Character cr)			 with: (Character lf).
-	stream := ReadStream on: {						'C,Pepe,Sanchez,D,22333444', crlf.
-							'A,San Martin,3322,Olivos,1636,BsAs', crlf. 
-							'A,Maipu,888,Florida,1122,Buenos Aires', crlf.
-							'C,Juan,Perez,C,23-25666777-9',crlf. 
-							'A,Alem,1122,CABA,1001,CABA',crlf
-							}.
-	
-	self importCustomers: stream.
+	| allCustomers stream importCostumers |
+		
+	stream := self createStream: { 'C,Pepe,Sanchez,D,22333444'.
+							  'A,San Martin,3322,Olivos,1636,BsAs'.
+							  'A,Maipu,888,Florida,1122,Buenos Aires'.
+							  'C,Juan,Perez,C,23-25666777-9'.
+							  'A,Alem,1122,CABA,1001,CABA' }.
+								
+	importCostumers := ImportCustomers session: session inputStream: stream.
+	importCostumers import.
 	
 	allCustomers := session selectAllOfType: Customer.
 	self assert: 2 equals: (allCustomers size).
 	
-	self assertCustomerType: 'D' number: '22333444' firstName: 'Pepe' lastName: 'Sanchez' addresses: {
+	self assertSelectCustomer: (Customer withIdentificationType: 'D' identificationNumber: '22333444' firstName: 'Pepe' lastName: 'Sanchez' addresses: {
 			Address 
 				withStreetName: 'San Martin'
 				streetNumber: 3322
@@ -131,16 +503,53 @@ test01Import
 				streetNumber: 888
 				town: 'Florida'
 				zipCode: 1122
-				province: 'Buenos Aires' }.
+				province: 'Buenos Aires' }).
 
-	self assertCustomerType: 'C' number: '23-25666777-9' firstName: 'Juan' lastName: 'Perez' addresses: {
+	self assertSelectCustomer: (Customer withIdentificationType: 'C' identificationNumber: '23-25666777-9' firstName: 'Juan' lastName: 'Perez' addresses: {
 			Address 
 				withStreetName: 'Alem'
 				streetNumber: 1122
 				town: 'CABA'
 				zipCode: 1001
-				province: 'CABA'. }
+				province: 'CABA'. })
 ! !
+
+
+!ImportTest methodsFor: 'assertions' stamp: 'AS 6/25/2023 10:39:08'!
+assertAddressOfCustomer: aCustomer
+
+"
+	No es necesario si implementamos el = en Customer
+	
+	| customer index |
+	
+	customer := (self selectCustomerWith: aCustomer identificationType number: aCustomer identificationNumber) anyOne.
+	
+	index := 1.
+	[index <= aCustomer addressesSize] whileTrue: [self assert: (customer addresses at: index) equals: (aCustomer addresses at: index).
+		index := index + 1 ]
+	"! !
+
+!ImportTest methodsFor: 'assertions' stamp: 'AS 6/25/2023 10:38:50'!
+assertCustomer: aCustomer
+"
+	No es necesario si implementamos el = en Customer
+	
+	self assertSelectCustomer: aCustomer.		
+	self assertAddressOfCustomer: aCustomer
+	"! !
+
+!ImportTest methodsFor: 'assertions' stamp: 'AS 6/25/2023 10:36:00'!
+assertSelectCustomer: aCustomer
+
+	| queryResult selectedCustomer |
+	
+	queryResult := self selectCustomerWith: aCustomer identificationType number: aCustomer identificationNumber.
+	self assert: 1 equals: queryResult size.
+	
+	selectedCustomer := queryResult anyOne.
+	
+	self assert: aCustomer equals: selectedCustomer! !
 
 
 !classDefinition: #Address category: 'CustomerImporter'!
@@ -150,7 +559,7 @@ Object subclass: #Address
 	poolDictionaries: ''
 	category: 'CustomerImporter'!
 
-!Address methodsFor: 'province' stamp: 'AS 6/24/2023 16:41:17'!
+!Address methodsFor: 'comparing' stamp: 'AS 6/24/2023 16:41:17'!
 = otherAddress
 	
 	^(streetName = otherAddress streetName)
@@ -159,7 +568,7 @@ Object subclass: #Address
 		and: [zipCode = otherAddress zipCode]
 		and: [province = otherAddress province].! !
 
-!Address methodsFor: 'province' stamp: 'AS 6/24/2023 16:44:25'!
+!Address methodsFor: 'comparing' stamp: 'AS 6/24/2023 16:44:25'!
 hash
 	
 	^((((streetName hash) 
@@ -167,6 +576,7 @@ hash
 			bitXor: (town hash))
 				bitXor: (zipCode hash))
 					bitXor: (province hash)! !
+
 
 !Address methodsFor: 'province' stamp: 'HAW 5/22/2022 00:19:29'!
 province
@@ -261,6 +671,11 @@ addresses
 
 	^ addresses! !
 
+!Customer methodsFor: 'addresses' stamp: 'AS 6/25/2023 09:34:47'!
+addressesSize
+	
+	^ addresses size! !
+
 
 !Customer methodsFor: 'name' stamp: 'HAW 5/22/2022 00:19:29'!
 firstName
@@ -305,11 +720,52 @@ identificationType: anIdentificationType
 	identificationType := anIdentificationType! !
 
 
-!Customer methodsFor: 'initialization' stamp: 'HAW 5/22/2022 00:19:29'!
+!Customer methodsFor: 'initialization' stamp: 'AS 6/25/2023 09:26:45'!
 initialize
 
-	super initialize.
-	addresses := OrderedCollection new.! !
+	super initialize.	
+	addresses ifNil: [ 	addresses := OrderedCollection new. ].! !
+
+!Customer methodsFor: 'initialization' stamp: 'AS 6/25/2023 10:42:31'!
+initializeWithIdentificationType: anIdentificationType identificationNumber: anIdentificationNumber firstName: aFirstName lastName: aLastName addresses: anArrayOfAddresses 
+
+	identificationType := anIdentificationType.
+	identificationNumber := anIdentificationNumber.
+	firstName := aFirstName.
+	lastName := aLastName.
+	addresses := OrderedCollection withAll: anArrayOfAddresses.! !
+
+
+!Customer methodsFor: 'comparing' stamp: 'AS 6/25/2023 10:41:36'!
+= otherCustomer
+	
+	^(identificationType = otherCustomer identificationType)
+	and: [ identificationNumber = otherCustomer identificationNumber ]
+	and: [ firstName = otherCustomer firstName ]
+	and: [ lastName = otherCustomer lastName ]
+	and: [ addresses =  otherCustomer addresses ]
+! !
+
+!Customer methodsFor: 'comparing' stamp: 'AS 6/25/2023 10:32:16'!
+hash
+	
+	^((((identificationType hash)
+		bitXor: 	(identificationNumber hash))
+			bitXor: (firstName hash))
+				bitXor: (lastName hash))
+					bitXor: (addresses hash).
+! !
+
+"-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- "!
+
+!classDefinition: 'Customer class' category: 'CustomerImporter'!
+Customer class
+	instanceVariableNames: ''!
+
+!Customer class methodsFor: 'instance creation' stamp: 'AS 6/25/2023 10:42:31'!
+withIdentificationType: anIdentificationType identificationNumber: anIdentificationNumber firstName: aFirstName lastName: aLastName addresses: anArrayOfAddresses 
+
+	^self new initializeWithIdentificationType: anIdentificationType identificationNumber: anIdentificationNumber firstName: aFirstName lastName: aLastName addresses: anArrayOfAddresses ! !
 
 
 !classDefinition: #DataBaseSession category: 'CustomerImporter'!
@@ -410,3 +866,63 @@ DataBaseSession class
 for: aConfiguration
 
 	^self new initializeFor: aConfiguration! !
+
+
+!classDefinition: #ImportCustomers category: 'CustomerImporter'!
+Object subclass: #ImportCustomers
+	instanceVariableNames: 'session stream'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'CustomerImporter'!
+
+!ImportCustomers methodsFor: 'initialization' stamp: 'AS 6/25/2023 08:41:51'!
+initializeSession: aSession inputStream: anInputStream
+
+	session := aSession.
+	stream := anInputStream.! !
+
+
+!ImportCustomers methodsFor: 'evaluating' stamp: 'AS 6/25/2023 08:42:09'!
+import
+
+	| inputStream  newCustomer line |
+
+	inputStream := stream.
+
+	line := inputStream nextLine.
+	[ line notNil ] whileTrue: [
+		(line beginsWith: 'C') ifTrue: [ | customerData |
+			customerData := line findTokens: $,.
+			newCustomer := Customer new.
+			newCustomer firstName: customerData second.
+			newCustomer lastName: customerData third.
+			newCustomer identificationType: customerData fourth.
+			newCustomer identificationNumber: customerData fifth.
+			session persist: newCustomer ].
+
+		(line beginsWith: 'A') ifTrue: [ | addressData newAddress |
+			addressData := line findTokens: $,.
+			newAddress := Address new.
+			newCustomer addAddress: newAddress.
+			newAddress streetName: addressData second.
+			newAddress streetNumber: addressData third asNumber .
+			newAddress town: addressData fourth.
+			newAddress zipCode: addressData fifth asNumber .
+			newAddress province: addressData sixth.
+			session persist: newAddress ].
+
+		line := inputStream nextLine. ].
+
+	inputStream close.
+	! !
+
+"-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- "!
+
+!classDefinition: 'ImportCustomers class' category: 'CustomerImporter'!
+ImportCustomers class
+	instanceVariableNames: ''!
+
+!ImportCustomers class methodsFor: 'instance creation' stamp: 'AS 6/25/2023 08:41:37'!
+session: aSession inputStream: anInputStream
+
+	^self new initializeSession: aSession inputStream: anInputStream! !
