@@ -1,0 +1,2896 @@
+
+
+----QUIT----(30 May 2023 00:05:32) CuisUniversity-5832.image priorSource: 4928100!
+
+----STARTUP---- (30 May 2023 00:05:33) as /Users/hernan/Documents/Cuis/5.0-64Bits/Cuis-University-Installer/CuisUniversity-5832.image!
+
+
+----QUIT----(30 May 2023 00:05:33) CuisUniversity-5832.image priorSource: 9366537!
+
+----STARTUP---- (26 June 2023 17:23:53) as /home/clinux01/linux64/CuisUniversity-5832.image!
+
+
+----End fileIn of /home/clinux01/linux64/CustomerImporter-35.st----!
+!CustomerImporter methodsFor: 'evaluating' stamp: 'WAL 6/26/2023 19:08:42' prior: 50624630 overrides: 16902254!
+value
+
+	"
+	self importCustomers
+	"
+	| newCustomer line |
+
+	line := readStream nextLine.
+	[ line notNil ] whileTrue: [
+		(line beginsWith: 'C') ifTrue: [ | data |
+			data := line findTokens: $,.
+			newCustomer := Customer new.
+			newCustomer firstName: data second.
+			newCustomer lastName: data third.
+			newCustomer identificationType: data fourth.
+			newCustomer identificationNumber: data fifth.
+			session persist: newCustomer ].
+
+		(line beginsWith: 'A') ifTrue: [ | addressData newAddress |
+			addressData := line findTokens: $,.
+			newAddress := Address new.
+			newCustomer addAddress: newAddress.
+			newAddress streetName: addressData second.
+			newAddress streetNumber: addressData third asNumber .
+			newAddress town: addressData fourth.
+			newAddress zipCode: addressData fifth asNumber .
+			newAddress province: addressData sixth ].
+
+		line := readStream nextLine. ].
+
+	! !
+!CustomerImporter methodsFor: 'evaluating' stamp: 'WAL 6/26/2023 19:09:28' prior: 50624781 overrides: 16902254!
+value
+
+	"
+	self importCustomers
+	"
+	| newCustomer line |
+
+	line := readStream nextLine.
+	[ line notNil ] whileTrue: [
+		| data |
+		data := line findTokens: $,.
+		(line beginsWith: 'C') ifTrue: [ 
+			newCustomer := Customer new.
+			newCustomer firstName: data second.
+			newCustomer lastName: data third.
+			newCustomer identificationType: data fourth.
+			newCustomer identificationNumber: data fifth.
+			session persist: newCustomer ].
+
+		(line beginsWith: 'A') ifTrue: [ | newAddress |
+			newAddress := Address new.
+			newCustomer addAddress: newAddress.
+			newAddress streetName: data second.
+			newAddress streetNumber: data third asNumber .
+			newAddress town: data fourth.
+			newAddress zipCode: data fifth asNumber .
+			newAddress province: data sixth ].
+
+		line := readStream nextLine. ].
+
+	! !
+
+!testRun: #ImportTest #test01Import stamp: 'WAL 6/26/2023 19:09:30'!
+PASSED!
+!CustomerImporter methodsFor: 'as yet unclassified' stamp: 'WAL 6/26/2023 19:10:49' prior: 50624813 overrides: 16902254!
+value
+
+	"
+	self importCustomers
+	"
+	| newCustomer  |
+
+	line := readStream nextLine.
+	[ line notNil ] whileTrue: [
+		(line beginsWith: 'C') ifTrue: [ | data |
+			data := line findTokens: $,.
+			newCustomer := Customer new.
+			newCustomer firstName: data second.
+			newCustomer lastName: data third.
+			newCustomer identificationType: data fourth.
+			newCustomer identificationNumber: data fifth.
+			session persist: newCustomer ].
+
+		(line beginsWith: 'A') ifTrue: [ | addressData newAddress |
+			addressData := line findTokens: $,.
+			newAddress := Address new.
+			newCustomer addAddress: newAddress.
+			newAddress streetName: addressData second.
+			newAddress streetNumber: addressData third asNumber .
+			newAddress town: addressData fourth.
+			newAddress zipCode: addressData fifth asNumber .
+			newAddress province: addressData sixth ].
+
+		line := readStream nextLine. ].
+
+	! !
+
+!classDefinition: #CustomerImporter category: 'CustomerImporter' stamp: 'WAL 6/26/2023 19:10:49'!
+Object subclass: #CustomerImporter
+	instanceVariableNames: 'session readStream line'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'CustomerImporter'!
+!CustomerImporter methodsFor: 'evaluating' stamp: 'WAL 6/26/2023 19:11:10' prior: 50624845 overrides: 16902254!
+value
+
+	"
+	self importCustomers
+	"
+	| newCustomer  |
+
+	line := readStream nextLine.
+	[ line notNil ] whileTrue: [
+		(line beginsWith: 'C') ifTrue: [ | customerData |
+			customerData := line findTokens: $,.
+			newCustomer := Customer new.
+			newCustomer firstName: customerData second.
+			newCustomer lastName: customerData third.
+			newCustomer identificationType: customerData fourth.
+			newCustomer identificationNumber: customerData fifth.
+			session persist: newCustomer ].
+
+		(line beginsWith: 'A') ifTrue: [ | addressData newAddress |
+			addressData := line findTokens: $,.
+			newAddress := Address new.
+			newCustomer addAddress: newAddress.
+			newAddress streetName: addressData second.
+			newAddress streetNumber: addressData third asNumber .
+			newAddress town: addressData fourth.
+			newAddress zipCode: addressData fifth asNumber .
+			newAddress province: addressData sixth ].
+
+		line := readStream nextLine. ].
+
+	! !
+!CustomerImporter methodsFor: 'as yet unclassified' stamp: 'WAL 6/26/2023 19:11:57' prior: 50624885 overrides: 16902254!
+value
+
+	"
+	self importCustomers
+	"
+	 
+
+	line := readStream nextLine.
+	[ line notNil ] whileTrue: [
+		(line beginsWith: 'C') ifTrue: [ | customerData |
+			customerData := line findTokens: $,.
+			newCustomer := Customer new.
+			newCustomer firstName: customerData second.
+			newCustomer lastName: customerData third.
+			newCustomer identificationType: customerData fourth.
+			newCustomer identificationNumber: customerData fifth.
+			session persist: newCustomer ].
+
+		(line beginsWith: 'A') ifTrue: [ | addressData newAddress |
+			addressData := line findTokens: $,.
+			newAddress := Address new.
+			newCustomer addAddress: newAddress.
+			newAddress streetName: addressData second.
+			newAddress streetNumber: addressData third asNumber .
+			newAddress town: addressData fourth.
+			newAddress zipCode: addressData fifth asNumber .
+			newAddress province: addressData sixth ].
+
+		line := readStream nextLine. ].
+
+	! !
+
+!classDefinition: #CustomerImporter category: 'CustomerImporter' stamp: 'WAL 6/26/2023 19:11:57'!
+Object subclass: #CustomerImporter
+	instanceVariableNames: 'session readStream line newCustomer'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'CustomerImporter'!
+!CustomerImporter methodsFor: 'evaluating' stamp: 'WAL 6/26/2023 19:12:25'!
+importCustomer
+
+	| customerData |
+			customerData := line findTokens: $,.
+			newCustomer := Customer new.
+			newCustomer firstName: customerData second.
+			newCustomer lastName: customerData third.
+			newCustomer identificationType: customerData fourth.
+			newCustomer identificationNumber: customerData fifth.
+			session persist: newCustomer! !
+!CustomerImporter methodsFor: 'evaluating' stamp: 'WAL 6/26/2023 19:12:25' prior: 50624918 overrides: 16902254!
+value
+
+	"
+	self importCustomers
+	"
+	 
+
+	line := readStream nextLine.
+	[ line notNil ] whileTrue: [
+		(line beginsWith: 'C') ifTrue: [ self importCustomer ].
+
+		(line beginsWith: 'A') ifTrue: [ | addressData newAddress |
+			addressData := line findTokens: $,.
+			newAddress := Address new.
+			newCustomer addAddress: newAddress.
+			newAddress streetName: addressData second.
+			newAddress streetNumber: addressData third asNumber .
+			newAddress town: addressData fourth.
+			newAddress zipCode: addressData fifth asNumber .
+			newAddress province: addressData sixth ].
+
+		line := readStream nextLine. ].
+
+	! !
+!CustomerImporter methodsFor: 'evaluating' stamp: 'WAL 6/26/2023 19:12:49'!
+importAddress
+
+	| addressData newAddress |
+			addressData := line findTokens: $,.
+			newAddress := Address new.
+			newCustomer addAddress: newAddress.
+			newAddress streetName: addressData second.
+			newAddress streetNumber: addressData third asNumber .
+			newAddress town: addressData fourth.
+			newAddress zipCode: addressData fifth asNumber .
+			newAddress province: addressData sixth! !
+!CustomerImporter methodsFor: 'evaluating' stamp: 'WAL 6/26/2023 19:12:49' prior: 50624973 overrides: 16902254!
+value
+
+	"
+	self importCustomers
+	"
+	 
+
+	line := readStream nextLine.
+	[ line notNil ] whileTrue: [
+		(line beginsWith: 'C') ifTrue: [ self importCustomer ].
+
+		(line beginsWith: 'A') ifTrue: [ self importAddress ].
+
+		line := readStream nextLine. ].
+
+	! !
+!CustomerImporter methodsFor: 'evaluating' stamp: 'WAL 6/26/2023 19:12:58' prior: 50625011 overrides: 16902254!
+value
+
+	"
+	self importCustomers
+	"
+	 
+
+	line := readStream nextLine.
+	[ line notNil ] whileTrue: [
+		
+		(line beginsWith: 'C') ifTrue: [ self importCustomer ].
+		(line beginsWith: 'A') ifTrue: [ self importAddress ].
+		
+		line := readStream nextLine. ].
+
+	! !
+
+!testRun: #ImportTest #test01Import stamp: 'WAL 6/26/2023 19:13:00'!
+PASSED!
+
+!testRun: #ImportTest #test01Import stamp: 'WAL 6/26/2023 19:13:24'!
+PASSED!
+!CustomerImporter methodsFor: 'evaluating' stamp: 'WAL 6/26/2023 19:13:49' prior: 50624958!
+importCustomer
+
+	| customerData |
+	
+	customerData := line findTokens: $,.
+	
+	newCustomer := Customer new.
+	newCustomer firstName: customerData second.
+	newCustomer lastName: customerData third.
+	newCustomer identificationType: customerData fourth.
+	newCustomer identificationNumber: customerData fifth.
+	
+	session persist: newCustomer
+			
+	^newCustomer! !
+
+!testRun: #ImportTest #test01Import stamp: 'WAL 6/26/2023 19:13:50'!
+ERROR!
+
+!testRun: #ImportTest #test01Import stamp: 'WAL 6/26/2023 19:13:50'!
+ERROR!
+!CustomerImporter methodsFor: 'evaluating' stamp: 'WAL 6/26/2023 19:13:58' prior: 50625039!
+importCustomer
+
+	| customerData |
+	
+	customerData := line findTokens: $,.
+	
+	newCustomer := Customer new.
+	newCustomer firstName: customerData second.
+	newCustomer lastName: customerData third.
+	newCustomer identificationType: customerData fourth.
+	newCustomer identificationNumber: customerData fifth.
+	
+	session persist: newCustomer.
+			
+	^newCustomer! !
+
+!testRun: #ImportTest #test01Import stamp: 'WAL 6/26/2023 19:13:59'!
+PASSED!
+!CustomerImporter methodsFor: 'evaluating' stamp: 'WAL 6/26/2023 19:15:04' prior: 50624995!
+importAddress
+
+	| addressData newAddress |
+	
+	addressData := line findTokens: $,.
+	
+	newAddress := Address new.
+	
+	newAddress streetName: addressData second.
+	newAddress streetNumber: addressData third asNumber .
+	newAddress town: addressData fourth.
+	newAddress zipCode: addressData fifth asNumber .
+	newAddress province: addressData sixth.
+	
+	newCustomer addAddress: newAddress.! !
+!CustomerImporter methodsFor: 'evaluating' stamp: 'WAL 6/26/2023 19:17:30'!
+importAddress: aCustomer
+
+	| addressData newAddress |
+	
+	addressData := line findTokens: $,.
+	
+	newAddress := Address new.
+	
+	newAddress streetName: addressData second.
+	newAddress streetNumber: addressData third asNumber .
+	newAddress town: addressData fourth.
+	newAddress zipCode: addressData fifth asNumber .
+	newAddress province: addressData sixth.
+	
+	newCustomer addAddress: newAddress.! !
+!CustomerImporter methodsFor: 'as yet unclassified' stamp: 'WAL 6/26/2023 19:17:30' prior: 50625023 overrides: 16902254!
+value
+
+	"
+	self importCustomers
+	"
+	 
+
+	line := readStream nextLine.
+	[ line notNil ] whileTrue: [
+		
+		(line beginsWith: 'C') ifTrue: [ self importCustomer ].
+		(line beginsWith: 'A') ifTrue: [ self importAddress: customer ].
+		
+		line := readStream nextLine. ].
+
+	! !
+
+!methodRemoval: CustomerImporter #importAddress stamp: 'WAL 6/26/2023 19:17:30'!
+importAddress
+
+	| addressData newAddress |
+	
+	addressData := line findTokens: $,.
+	
+	newAddress := Address new.
+	
+	newAddress streetName: addressData second.
+	newAddress streetNumber: addressData third asNumber .
+	newAddress town: addressData fourth.
+	newAddress zipCode: addressData fifth asNumber .
+	newAddress province: addressData sixth.
+	
+	newCustomer addAddress: newAddress.!
+!CustomerImporter methodsFor: 'evaluating' stamp: 'WAL 6/26/2023 19:17:34' prior: 50625090!
+importAddress: aCustomer
+
+	| addressData newAddress |
+	
+	addressData := line findTokens: $,.
+	
+	newAddress := Address new.
+	
+	newAddress streetName: addressData second.
+	newAddress streetNumber: addressData third asNumber .
+	newAddress town: addressData fourth.
+	newAddress zipCode: addressData fifth asNumber .
+	newAddress province: addressData sixth.
+	
+	aCustomer addAddress: newAddress.! !
+!CustomerImporter methodsFor: 'evaluating' stamp: 'WAL 6/26/2023 19:18:34' prior: 50625058!
+importCustomer
+
+	| customerData customer |
+	
+	customerData := line findTokens: $,.
+	
+	customer := Customer new.
+	customer firstName: customerData second.
+	customer lastName: customerData third.
+	customer identificationType: customerData fourth.
+	customer identificationNumber: customerData fifth.
+	
+	session persist: customer.
+			
+	^customer! !
+!CustomerImporter methodsFor: 'evaluating' stamp: 'WAL 6/26/2023 19:19:23' prior: 50625107 overrides: 16902254!
+value
+
+	"
+	self importCustomers
+	"
+	 
+
+	line := readStream nextLine.
+	[ line notNil ] whileTrue: [
+		| customer |
+		(line beginsWith: 'C') ifTrue: [ customer := self importCustomer ].
+		(line beginsWith: 'A') ifTrue: [ self importAddress: customer ].
+		
+		line := readStream nextLine. ].
+
+	! !
+
+!testRun: #ImportTest #test01Import stamp: 'WAL 6/26/2023 19:19:26'!
+ERROR!
+
+!testRun: #ImportTest #test01Import stamp: 'WAL 6/26/2023 19:19:26'!
+ERROR!
+
+!testRun: #ImportTest #test01Import stamp: 'WAL 6/26/2023 19:19:42'!
+ERROR!
+
+!testRun: #ImportTest #test01Import stamp: 'WAL 6/26/2023 19:19:42'!
+ERROR!
+!CustomerImporter methodsFor: 'evaluating' stamp: 'WAL 6/26/2023 19:19:51' prior: 50625164 overrides: 16902254!
+value
+
+	"
+	self importCustomers
+	"
+	| customer |	 
+
+	line := readStream nextLine.
+	[ line notNil ] whileTrue: [
+		
+		(line beginsWith: 'C') ifTrue: [ customer := self importCustomer ].
+		(line beginsWith: 'A') ifTrue: [ self importAddress: customer ].
+		
+		line := readStream nextLine. ].
+
+	! !
+
+!testRun: #ImportTest #test01Import stamp: 'WAL 6/26/2023 19:19:52'!
+PASSED!
+!CustomerImporter methodsFor: 'evaluating' stamp: 'WAL 6/26/2023 19:22:17' prior: 50625187 overrides: 16902254!
+value
+
+	"
+	self importCustomers
+	"
+	
+	line := readStream nextLine.
+	[ line notNil ] whileTrue: [
+		
+		(line beginsWith: 'C') ifTrue: [ self importCustomer ].
+		(line beginsWith: 'A') ifTrue: [ self importAddress ].
+		
+		line := readStream nextLine. ].
+
+	! !
+!CustomerImporter methodsFor: 'evaluating' stamp: 'WAL 6/26/2023 19:22:28'!
+importAddress
+
+	| addressData newAddress |
+	
+	addressData := line findTokens: $,.
+	
+	newAddress := Address new.
+	
+	newAddress streetName: addressData second.
+	newAddress streetNumber: addressData third asNumber .
+	newAddress town: addressData fourth.
+	newAddress zipCode: addressData fifth asNumber .
+	newAddress province: addressData sixth.
+	
+	newCustomer addAddress: newAddress.! !
+
+!testRun: #ImportTest #test01Import stamp: 'WAL 6/26/2023 19:22:30'!
+ERROR!
+
+!testRun: #ImportTest #test01Import stamp: 'WAL 6/26/2023 19:22:30'!
+ERROR!
+!CustomerImporter methodsFor: 'evaluating' stamp: 'WAL 6/26/2023 19:23:10' prior: 50625149!
+importCustomer
+
+	| customerData |
+	
+	customerData := line findTokens: $,.
+	
+	newCustomer := Customer new.
+	newCustomer firstName: customerData second.
+	newCustomer lastName: customerData third.
+	newCustomer identificationType: customerData fourth.
+	newCustomer identificationNumber: customerData fifth.
+	
+	session persist: newCustomer.! !
+
+!testRun: #ImportTest #test01Import stamp: 'WAL 6/26/2023 19:23:13'!
+PASSED!
+
+!methodRemoval: CustomerImporter #importAddress: stamp: 'WAL 6/26/2023 19:23:18'!
+importAddress: aCustomer
+
+	| addressData newAddress |
+	
+	addressData := line findTokens: $,.
+	
+	newAddress := Address new.
+	
+	newAddress streetName: addressData second.
+	newAddress streetNumber: addressData third asNumber .
+	newAddress town: addressData fourth.
+	newAddress zipCode: addressData fifth asNumber .
+	newAddress province: addressData sixth.
+	
+	aCustomer addAddress: newAddress.!
+!CustomerImporter methodsFor: 'evaluating' stamp: 'WAL 6/26/2023 19:25:23'!
+findTokensInLine
+
+	^ line findTokens: $,! !
+!CustomerImporter methodsFor: 'evaluating' stamp: 'WAL 6/26/2023 19:25:23' prior: 50625234!
+importCustomer
+
+	| customerData |
+	
+	customerData := self findTokensInLine.
+	
+	newCustomer := Customer new.
+	newCustomer firstName: customerData second.
+	newCustomer lastName: customerData third.
+	newCustomer identificationType: customerData fourth.
+	newCustomer identificationNumber: customerData fifth.
+	
+	session persist: newCustomer.! !
+!CustomerImporter methodsFor: 'evaluating' stamp: 'WAL 6/26/2023 19:25:23' prior: 50625214!
+importAddress
+
+	| addressData newAddress |
+	
+	addressData := self findTokensInLine.
+	
+	newAddress := Address new.
+	
+	newAddress streetName: addressData second.
+	newAddress streetNumber: addressData third asNumber .
+	newAddress town: addressData fourth.
+	newAddress zipCode: addressData fifth asNumber .
+	newAddress province: addressData sixth.
+	
+	newCustomer addAddress: newAddress.! !
+!CustomerImporter methodsFor: 'evaluating' stamp: 'WAL 6/26/2023 19:26:09'!
+findTokensInLine: aLine
+
+	^ line findTokens: $,! !
+!CustomerImporter methodsFor: 'as yet unclassified' stamp: 'WAL 6/26/2023 19:26:09' prior: 50625284!
+importAddress
+
+	| addressData newAddress |
+	
+	addressData := self findTokensInLine: line.
+	
+	newAddress := Address new.
+	
+	newAddress streetName: addressData second.
+	newAddress streetNumber: addressData third asNumber .
+	newAddress town: addressData fourth.
+	newAddress zipCode: addressData fifth asNumber .
+	newAddress province: addressData sixth.
+	
+	newCustomer addAddress: newAddress.! !
+!CustomerImporter methodsFor: 'as yet unclassified' stamp: 'WAL 6/26/2023 19:26:09' prior: 50625270!
+importCustomer
+
+	| customerData |
+	
+	customerData := self findTokensInLine: line.
+	
+	newCustomer := Customer new.
+	newCustomer firstName: customerData second.
+	newCustomer lastName: customerData third.
+	newCustomer identificationType: customerData fourth.
+	newCustomer identificationNumber: customerData fifth.
+	
+	session persist: newCustomer.! !
+
+!methodRemoval: CustomerImporter #findTokensInLine stamp: 'WAL 6/26/2023 19:26:09'!
+findTokensInLine
+
+	^ line findTokens: $,!
+!CustomerImporter methodsFor: 'evaluating' stamp: 'WAL 6/26/2023 19:26:26' prior: 50625299!
+findTokensInLine: aLine
+
+	^ aLine findTokens: $,! !
+!CustomerImporter methodsFor: 'evaluating' stamp: 'WAL 6/26/2023 19:27:29'!
+importAddress: aLine
+
+	| addressData newAddress |
+	
+	addressData := self findTokensInLine: line.
+	
+	newAddress := Address new.
+	
+	newAddress streetName: addressData second.
+	newAddress streetNumber: addressData third asNumber .
+	newAddress town: addressData fourth.
+	newAddress zipCode: addressData fifth asNumber .
+	newAddress province: addressData sixth.
+	
+	newCustomer addAddress: newAddress.! !
+!CustomerImporter methodsFor: 'as yet unclassified' stamp: 'WAL 6/26/2023 19:27:29' prior: 50625203 overrides: 16902254!
+value
+
+	"
+	self importCustomers
+	"
+	
+	line := readStream nextLine.
+	[ line notNil ] whileTrue: [
+		
+		(line beginsWith: 'C') ifTrue: [ self importCustomer ].
+		(line beginsWith: 'A') ifTrue: [ self importAddress: line ].
+		
+		line := readStream nextLine. ].
+
+	! !
+
+!methodRemoval: CustomerImporter #importAddress stamp: 'WAL 6/26/2023 19:27:29'!
+importAddress
+
+	| addressData newAddress |
+	
+	addressData := self findTokensInLine: line.
+	
+	newAddress := Address new.
+	
+	newAddress streetName: addressData second.
+	newAddress streetNumber: addressData third asNumber .
+	newAddress town: addressData fourth.
+	newAddress zipCode: addressData fifth asNumber .
+	newAddress province: addressData sixth.
+	
+	newCustomer addAddress: newAddress.!
+!CustomerImporter methodsFor: 'evaluating' stamp: 'WAL 6/26/2023 19:27:35' prior: 50625342!
+importAddress: aLine
+
+	| addressData newAddress |
+	
+	addressData := self findTokensInLine: aLine.
+	
+	newAddress := Address new.
+	
+	newAddress streetName: addressData second.
+	newAddress streetNumber: addressData third asNumber .
+	newAddress town: addressData fourth.
+	newAddress zipCode: addressData fifth asNumber .
+	newAddress province: addressData sixth.
+	
+	newCustomer addAddress: newAddress.! !
+
+!testRun: #ImportTest #test01Import stamp: 'WAL 6/26/2023 19:27:38'!
+PASSED!
+!CustomerImporter methodsFor: 'evaluating' stamp: 'WAL 6/26/2023 19:28:30'!
+importCustomer: aLine
+
+	| customerData |
+	
+	customerData := self findTokensInLine: line.
+	
+	newCustomer := Customer new.
+	newCustomer firstName: customerData second.
+	newCustomer lastName: customerData third.
+	newCustomer identificationType: customerData fourth.
+	newCustomer identificationNumber: customerData fifth.
+	
+	session persist: newCustomer.! !
+!CustomerImporter methodsFor: 'as yet unclassified' stamp: 'WAL 6/26/2023 19:28:30' prior: 50625359 overrides: 16902254!
+value
+
+	"
+	self importCustomers
+	"
+	
+	line := readStream nextLine.
+	[ line notNil ] whileTrue: [
+		
+		(line beginsWith: 'C') ifTrue: [ self importCustomer: line ].
+		(line beginsWith: 'A') ifTrue: [ self importAddress: line ].
+		
+		line := readStream nextLine. ].
+
+	! !
+
+!methodRemoval: CustomerImporter #importCustomer stamp: 'WAL 6/26/2023 19:28:30'!
+importCustomer
+
+	| customerData |
+	
+	customerData := self findTokensInLine: line.
+	
+	newCustomer := Customer new.
+	newCustomer firstName: customerData second.
+	newCustomer lastName: customerData third.
+	newCustomer identificationType: customerData fourth.
+	newCustomer identificationNumber: customerData fifth.
+	
+	session persist: newCustomer.!
+!CustomerImporter methodsFor: 'evaluating' stamp: 'WAL 6/26/2023 19:28:46' prior: 50625418 overrides: 16902254!
+value
+
+	"
+	self importCustomers
+	"
+	
+	| line2 |
+	
+	line := readStream nextLine.
+	[ line notNil ] whileTrue: [
+		
+		(line beginsWith: 'C') ifTrue: [ self importCustomer: line ].
+		(line beginsWith: 'A') ifTrue: [ self importAddress: line ].
+		
+		line := readStream nextLine. ].
+
+	! !
+!CustomerImporter methodsFor: 'evaluating' stamp: 'WAL 6/26/2023 19:29:10' prior: 50625444 overrides: 16902254!
+value
+
+	"
+	self importCustomers
+	"
+	
+	| line2 |
+	
+	line2 := readStream nextLine.
+	[ line2 notNil ] whileTrue: [
+		
+		(line2 beginsWith: 'C') ifTrue: [ self importCustomer: line2 ].
+		(line2 beginsWith: 'A') ifTrue: [ self importAddress: line2 ].
+		
+		line2 := readStream nextLine. ].
+
+	! !
+!CustomerImporter methodsFor: 'evaluating' stamp: 'WAL 6/26/2023 19:30:05' prior: 50625403!
+importCustomer: aLine
+
+	| customerData |
+	
+	customerData := self findTokensInLine: aLine.
+	
+	newCustomer := Customer new.
+	newCustomer firstName: customerData second.
+	newCustomer lastName: customerData third.
+	newCustomer identificationType: customerData fourth.
+	newCustomer identificationNumber: customerData fifth.
+	
+	session persist: newCustomer.! !
+
+!classDefinition: #CustomerImporter category: 'CustomerImporter' stamp: 'WAL 6/26/2023 19:30:14'!
+Object subclass: #CustomerImporter
+	instanceVariableNames: 'session readStream newCustomer'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'CustomerImporter'!
+!CustomerImporter methodsFor: 'evaluating' stamp: 'WAL 6/26/2023 19:30:24' prior: 50625457 overrides: 16902254!
+value
+
+	"
+	self importCustomers
+	"
+	
+	| line |
+	
+	line := readStream nextLine.
+	[ line notNil ] whileTrue: [
+		
+		(line beginsWith: 'C') ifTrue: [ self importCustomer: line ].
+		(line beginsWith: 'A') ifTrue: [ self importAddress: line ].
+		
+		line := readStream nextLine. ].
+
+	! !
+!CustomerImporter methodsFor: 'evaluating' stamp: 'WAL 6/26/2023 19:33:08'!
+importLine: aLine
+
+	(aLine beginsWith: 'C') ifTrue: [ self importCustomer: aLine ].
+	(aLine beginsWith: 'A') ifTrue: [ self importAddress: aLine ].! !
+!CustomerImporter methodsFor: 'evaluating' stamp: 'WAL 6/26/2023 19:33:21' prior: 50625492 overrides: 16902254!
+value
+
+	"
+	self importCustomers
+	"
+	
+	| line |
+	
+	line := readStream nextLine.
+	[ line notNil ] whileTrue: [
+		
+		self importLine: line.
+		
+		line := readStream nextLine. ].
+
+	! !
+
+!testRun: #ImportTest #test01Import stamp: 'WAL 6/26/2023 19:33:23'!
+PASSED!
+!CustomerImporter methodsFor: 'evaluating' stamp: 'WAL 6/26/2023 19:34:28' prior: 50625469!
+importCustomer: aLine
+
+	| customerData |
+	
+	customerData := self findTokensInLine: aLine.
+	
+	newCustomer := Customer new.
+	
+	newCustomer firstName: customerData second.
+	newCustomer lastName: customerData third.
+	newCustomer identificationType: customerData fourth.
+	newCustomer identificationNumber: customerData fifth.
+	
+	session persist: newCustomer.! !
+!ImportTest methodsFor: 'tests' stamp: 'WAL 6/26/2023 19:42:27'!
+test01ImportValidData
+
+	CustomerImporter valueFrom: self validImportData into: session..
+
+	self assertImportedRightNumberOfCustomers.
+	self assertPepeSanchezWasImportedCorrecty.
+	self assertJuanPerezWasImportedCorrectly ! !
+
+!methodRemoval: ImportTest #test01Import stamp: 'WAL 6/26/2023 19:42:27'!
+test01Import
+
+	CustomerImporter valueFrom: self validImportData into: session..
+
+	self assertImportedRightNumberOfCustomers.
+	self assertPepeSanchezWasImportedCorrecty.
+	self assertJuanPerezWasImportedCorrectly !
+!ImportTest methodsFor: 'test data' stamp: 'WAL 6/26/2023 19:43:20'!
+invalidImportData
+
+	^ ReadStream on:
+'C,Pepe,Sanchez,D,22333444
+A,San Martin,3322,Olivos,1636
+A,Maipu,888,Florida,1122,Buenos Aires
+C,Juan,Perez,C,23-25666777-9
+A,Alem,1122,CABA,1001,CABA'! !
+!ImportTest methodsFor: 'tests' stamp: 'WAL 6/26/2023 19:45:12'!
+test02ImportDataWithMissingFieldShouldRiseError
+
+	CustomerImporter valueFrom: self inputStreamWithMissingField into: session..
+
+	self assertImportedRightNumberOfCustomers.
+	self assertPepeSanchezWasImportedCorrecty.
+	self assertJuanPerezWasImportedCorrectly ! !
+!ImportTest methodsFor: 'test data' stamp: 'WAL 6/26/2023 19:45:19'!
+inputStreamWithMissingField
+
+	^ ReadStream on:
+'C,Pepe,Sanchez,D,22333444
+A,San Martin,3322,Olivos,1636
+A,Maipu,888,Florida,1122,Buenos Aires
+C,Juan,Perez,C,23-25666777-9
+A,Alem,1122,CABA,1001,CABA'! !
+
+!methodRemoval: ImportTest #invalidImportData stamp: 'WAL 6/26/2023 19:45:19'!
+invalidImportData
+
+	^ ReadStream on:
+'C,Pepe,Sanchez,D,22333444
+A,San Martin,3322,Olivos,1636
+A,Maipu,888,Florida,1122,Buenos Aires
+C,Juan,Perez,C,23-25666777-9
+A,Alem,1122,CABA,1001,CABA'!
+!ImportTest methodsFor: 'tests' stamp: 'WAL 6/26/2023 19:45:29' prior: 50625566!
+test02ImportDataWithMissingFieldShouldRiseError
+
+	CustomerImporter valueFrom: self inputStreamWithMissingField into: session.
+
+	self assertImportedRightNumberOfCustomers.
+	self assertPepeSanchezWasImportedCorrecty.
+	self assertJuanPerezWasImportedCorrectly ! !
+!ImportTest methodsFor: 'tests' stamp: 'WAL 6/26/2023 19:46:42' prior: 50625595!
+test02ImportDataWithMissingFieldShouldRiseError
+
+	self
+		should: [ CustomerImporter valueFrom: self inputStreamWithMissingField into: session ]
+		raise: Error! !
+
+!testRun: #ImportTest #test02ImportDataWithMissingFieldShouldRiseError stamp: 'WAL 6/26/2023 19:46:44'!
+PASSED!
+
+!testRun: #ImportTest #test01ImportValidData stamp: 'WAL 6/26/2023 19:46:45'!
+PASSED!
+
+!testRun: #ImportTest #test02ImportDataWithMissingFieldShouldRiseError stamp: 'WAL 6/26/2023 19:46:45'!
+PASSED!
+!ImportTest methodsFor: 'tests' stamp: 'WAL 6/26/2023 19:47:27' prior: 50625606!
+test02ImportDataWithMissingFieldShouldRiseError
+
+	self
+		"should: [" CustomerImporter valueFrom: self inputStreamWithMissingField into: session "]
+		raise: Error
+		withExceptionDo: [
+			self assert: Error
+			]"! !
+
+!testRun: #ImportTest #test02ImportDataWithMissingFieldShouldRiseError stamp: 'WAL 6/26/2023 19:47:30'!
+ERROR!
+!ImportTest methodsFor: 'tests' stamp: 'WAL 6/26/2023 19:48:02' prior: 50625624!
+test02ImportDataWithMissingFieldShouldRiseError
+
+	"self
+		should: [" CustomerImporter valueFrom: self inputStreamWithMissingField into: session "]
+		raise: Error
+		withExceptionDo: [
+			self assert: Error
+			]"! !
+
+!testRun: #ImportTest #test02ImportDataWithMissingFieldShouldRiseError stamp: 'WAL 6/26/2023 19:48:03'!
+ERROR!
+!ImportTest methodsFor: 'tests' stamp: 'WAL 6/26/2023 19:51:14' prior: 50625637!
+test02ImportDataWithMissingFieldShouldRiseError
+
+	self
+		should: [ CustomerImporter valueFrom: self inputStreamWithMissingField into: session ]
+		raise: Error
+		withExceptionDo: [ :anError |
+			self assert: 'Field missing in line' equals: anError messageText 
+			]! !
+
+!testRun: #ImportTest #test02ImportDataWithMissingFieldShouldRiseError stamp: 'WAL 6/26/2023 19:51:15'!
+FAILURE!
+!ImportTest methodsFor: 'tests' stamp: 'WAL 6/26/2023 19:51:24' prior: 50625650!
+test02ImportDataWithMissingFieldShouldRiseError
+
+	self
+		should: [ CustomerImporter valueFrom: self inputStreamWithMissingField into: session ]
+		raise: Error
+		withExceptionDo: [ :anError |
+			self assert: 'Field missing in line.' equals: anError messageText 
+			]! !
+!CustomerImporter class methodsFor: 'error descriptions' stamp: 'WAL 6/26/2023 19:52:37'!
+missingFieldInLineErrorDescription
+	
+	^'Missing field in line.'! !
+!ImportTest methodsFor: 'tests' stamp: 'WAL 6/26/2023 19:53:09' prior: 50625665!
+test02ImportDataWithMissingFieldShouldRiseError
+
+	self
+		should: [ CustomerImporter valueFrom: self inputStreamWithMissingField into: session ]
+		raise: Error
+		withExceptionDo: [ :anError |
+			self assert: CustomerImporter missingFieldInLineErrorDescription equals: anError messageText 
+			]! !
+!CustomerImporter methodsFor: 'evaluating' stamp: 'WAL 6/26/2023 20:36:36' prior: 50625513 overrides: 16902254!
+value
+
+	| line |
+	
+	line := readStream nextLine.
+	[ line notNil ] whileTrue: [
+		
+		self importLine: line.
+		
+		line := readStream nextLine. ].
+
+	! !
+
+!testRun: #ImportTest #test02ImportDataWithMissingFieldShouldRiseError stamp: 'WAL 6/26/2023 20:40:02'!
+FAILURE!
+!ImportTest methodsFor: 'tests' stamp: 'WAL 6/26/2023 20:41:04' prior: 50625682!
+test02ImportDataWithMissingFieldShouldRiseError
+
+	self
+		should: [ CustomerImporter valueFrom: self inputStreamWithMissingField into: session ]
+		raise: Error
+		withExceptionDo: [ :anError |
+			self assert: CustomerImporter missingFieldInLineErrorDescription equals: anError messageText ]! !
+
+!testRun: #ImportTest #test02ImportDataWithMissingFieldShouldRiseError stamp: 'WAL 6/26/2023 20:41:18'!
+FAILURE!
+
+!testRun: #ImportTest #test02ImportDataWithMissingFieldShouldRiseError stamp: 'WAL 6/26/2023 20:41:24'!
+FAILURE!
+!CustomerImporter methodsFor: 'evaluating' stamp: 'WAL 6/26/2023 20:44:26' prior: 50625524!
+importCustomer: aLine
+
+	| customerData |
+	
+	customerData := self findTokensInLine: aLine.
+	
+	(customerData size <5) ifTrue: [ self error: CustomerImporter missingFieldInLineErrorDescription ].
+	
+	newCustomer := Customer new.
+	
+	newCustomer firstName: customerData second.
+	newCustomer lastName: customerData third.
+	newCustomer identificationType: customerData fourth.
+	newCustomer identificationNumber: customerData fifth.
+	
+	session persist: newCustomer.! !
+
+!testRun: #ImportTest #test01ImportValidData stamp: 'WAL 6/26/2023 20:44:30'!
+PASSED!
+
+!testRun: #ImportTest #test02ImportDataWithMissingFieldShouldRiseError stamp: 'WAL 6/26/2023 20:44:30'!
+FAILURE!
+
+!testRun: #ImportTest #test02ImportDataWithMissingFieldShouldRiseError stamp: 'WAL 6/26/2023 20:44:30'!
+FAILURE!
+!ImportTest methodsFor: 'test data' stamp: 'WAL 6/26/2023 20:45:27' prior: 50625577!
+inputStreamWithMissingField
+
+	^ ReadStream on:
+'C,Pepe,Sanchez,D,22333444
+A,San Martin,3322,Olivos,1636,BsAs
+A,Maipu,888,Florida,1122,Buenos Aires
+C,Juan,Perez,C,23-25666777-9
+A,Alem,1122,CABA,1001,CABA'! !
+!ImportTest methodsFor: 'test data' stamp: 'WAL 6/26/2023 20:45:40'!
+inputStreamWithMissingFieldOnCustomer
+
+	^ ReadStream on:
+'C,Pepe,Sanchez,D,22333444
+A,San Martin,3322,Olivos,1636,BsAs
+A,Maipu,888,Florida,1122,Buenos Aires
+C,Juan,Perez,C,23-25666777-9
+A,Alem,1122,CABA,1001,CABA'! !
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'WAL 6/26/2023 20:45:40' prior: 50625706!
+test02ImportDataWithMissingFieldShouldRiseError
+
+	self
+		should: [ CustomerImporter valueFrom: self inputStreamWithMissingFieldOnCustomer into: session ]
+		raise: Error
+		withExceptionDo: [ :anError |
+			self assert: CustomerImporter missingFieldInLineErrorDescription equals: anError messageText ]! !
+
+!methodRemoval: ImportTest #inputStreamWithMissingField stamp: 'WAL 6/26/2023 20:45:40'!
+inputStreamWithMissingField
+
+	^ ReadStream on:
+'C,Pepe,Sanchez,D,22333444
+A,San Martin,3322,Olivos,1636,BsAs
+A,Maipu,888,Florida,1122,Buenos Aires
+C,Juan,Perez,C,23-25666777-9
+A,Alem,1122,CABA,1001,CABA'!
+!ImportTest methodsFor: 'test data' stamp: 'WAL 6/26/2023 20:45:48' prior: 50625762!
+inputStreamWithMissingFieldOnCustomer
+
+	^ ReadStream on:
+'C,Pepe,Sanchez,D
+A,San Martin,3322,Olivos,1636,BsAs
+A,Maipu,888,Florida,1122,Buenos Aires
+C,Juan,Perez,C,23-25666777-9
+A,Alem,1122,CABA,1001,CABA'! !
+
+!testRun: #ImportTest #test01ImportValidData stamp: 'WAL 6/26/2023 20:45:49'!
+PASSED!
+
+!testRun: #ImportTest #test02ImportDataWithMissingFieldShouldRiseError stamp: 'WAL 6/26/2023 20:45:50'!
+PASSED!
+!ImportTest methodsFor: 'test data' stamp: 'WAL 6/26/2023 20:46:02' prior: 50625794!
+inputStreamWithMissingFieldOnCustomer
+
+	^ ReadStream on:
+'C,Pepe,Sanchez,D
+A,San Martin,3322,Olivos,1636,BsAs
+A,Maipu,888,Florida,1122,Buenos Aires
+C,Juan,Perez,C,23-25666777-9
+A,Alem,1122,CABA,1001,CABA'! !
+!ImportTest methodsFor: 'test data' stamp: 'WAL 6/26/2023 20:46:12' prior: 50625810!
+inputStreamWithMissingFieldOnCustomer
+
+	^ ReadStream on:
+'C,Pepe,Sanchez,D
+A,San Martin,3322,Olivos,1636,BsAs
+A,Maipu,888,Florida,1122,Buenos Aires
+C,Juan,Perez,C,23-25666777-9
+A,Alem,1122,CABA,1001,CABA'! !
+!ImportTest methodsFor: 'test data' stamp: 'WAL 6/26/2023 20:46:23' prior: 50625820!
+inputStreamWithMissingFieldOnCustomer
+
+	^ ReadStream on:
+'C,Pepe,Sanchez,D
+A,San Martin,3322,Olivos,1636,BsAs
+A,Maipu,888,Florida,1122,Buenos Aires
+C,Juan,Perez,C,23-25666777-9
+A,Alem,1122,CABA,1001,CABA'! !
+!ImportTest methodsFor: 'test data' stamp: 'WAL 6/26/2023 20:46:40'!
+inputStreamWithMissingFieldOnAddress
+
+	^ ReadStream on:
+'C,Pepe,Sanchez,D,22333444
+A,San Martin,3322,Olivos,1636
+A,Maipu,888,Florida,1122,Buenos Aires
+C,Juan,Perez,C,23-25666777-9
+A,Alem,1122,CABA,1001,CABA'! !
+!ImportTest methodsFor: 'tests' stamp: 'WAL 6/26/2023 20:47:06'!
+test02ImportDataWithMissingFieldOnCustomerShouldRiseError
+
+	self
+		should: [ CustomerImporter valueFrom: self inputStreamWithMissingFieldOnCustomer into: session ]
+		raise: Error
+		withExceptionDo: [ :anError |
+			self assert: CustomerImporter missingFieldInLineErrorDescription equals: anError messageText ]! !
+
+!methodRemoval: ImportTest #test02ImportDataWithMissingFieldShouldRiseError stamp: 'WAL 6/26/2023 20:47:06'!
+test02ImportDataWithMissingFieldShouldRiseError
+
+	self
+		should: [ CustomerImporter valueFrom: self inputStreamWithMissingFieldOnCustomer into: session ]
+		raise: Error
+		withExceptionDo: [ :anError |
+			self assert: CustomerImporter missingFieldInLineErrorDescription equals: anError messageText ]!
+!ImportTest methodsFor: 'tests' stamp: 'WAL 6/26/2023 20:48:45'!
+test03ImportDataWithMissingFieldOnAddressShouldRiseError
+
+	self
+		should: [ CustomerImporter valueFrom: self inputStreamWithMissingFieldOnAddress into: session ]
+		raise: Error
+		withExceptionDo: [ :anError |
+			self assert: CustomerImporter missingFieldOnAddressErrorDescription equals: anError messageText ]! !
+
+!testRun: #ImportTest #test03ImportDataWithMissingFieldOnAddressShouldRiseError stamp: 'WAL 6/26/2023 20:48:52'!
+ERROR!
+
+!testRun: #ImportTest #test03ImportDataWithMissingFieldOnAddressShouldRiseError stamp: 'WAL 6/26/2023 20:49:22'!
+ERROR!
+!CustomerImporter class methodsFor: 'error descriptions' stamp: 'WAL 6/26/2023 20:49:41'!
+missingFieldOnCustomerErrorDescription
+	
+	^'Missing field in line.'! !
+!CustomerImporter methodsFor: 'as yet unclassified' stamp: 'WAL 6/26/2023 20:49:41' prior: 50625726!
+importCustomer: aLine
+
+	| customerData |
+	
+	customerData := self findTokensInLine: aLine.
+	
+	(customerData size <5) ifTrue: [ self error: CustomerImporter missingFieldOnCustomerErrorDescription ].
+	
+	newCustomer := Customer new.
+	
+	newCustomer firstName: customerData second.
+	newCustomer lastName: customerData third.
+	newCustomer identificationType: customerData fourth.
+	newCustomer identificationNumber: customerData fifth.
+	
+	session persist: newCustomer.! !
+
+!methodRemoval: CustomerImporter class #missingFieldInLineErrorDescription stamp: 'WAL 6/26/2023 20:49:41'!
+missingFieldInLineErrorDescription
+	
+	^'Missing field in line.'!
+
+!testRun: #ImportTest #test01ImportValidData stamp: 'WAL 6/26/2023 20:49:43'!
+PASSED!
+
+!testRun: #ImportTest #test02ImportDataWithMissingFieldOnCustomerShouldRiseError stamp: 'WAL 6/26/2023 20:49:43'!
+ERROR!
+
+!testRun: #ImportTest #test03ImportDataWithMissingFieldOnAddressShouldRiseError stamp: 'WAL 6/26/2023 20:49:43'!
+ERROR!
+!ImportTest methodsFor: 'tests' stamp: 'WAL 6/26/2023 20:50:02' prior: 50625848!
+test02ImportDataWithMissingFieldOnCustomerShouldRiseError
+
+	self
+		should: [ CustomerImporter valueFrom: self inputStreamWithMissingFieldOnCustomer into: session ]
+		raise: Error
+		withExceptionDo: [ :anError |
+			self assert: CustomerImporter missingFieldOnCustomerErrorDescription equals: anError messageText ]! !
+
+!testRun: #ImportTest #test02ImportDataWithMissingFieldOnCustomerShouldRiseError stamp: 'WAL 6/26/2023 20:50:03'!
+PASSED!
+
+!testRun: #ImportTest #test01ImportValidData stamp: 'WAL 6/26/2023 20:50:04'!
+PASSED!
+
+!testRun: #ImportTest #test02ImportDataWithMissingFieldOnCustomerShouldRiseError stamp: 'WAL 6/26/2023 20:50:04'!
+PASSED!
+
+!testRun: #ImportTest #test03ImportDataWithMissingFieldOnAddressShouldRiseError stamp: 'WAL 6/26/2023 20:50:04'!
+ERROR!
+
+!testRun: #ImportTest #test03ImportDataWithMissingFieldOnAddressShouldRiseError stamp: 'WAL 6/26/2023 20:50:04'!
+ERROR!
+!CustomerImporter class methodsFor: 'error descriptions' stamp: 'WAL 6/26/2023 20:50:20'!
+missingFieldOnAddressErrorDescription
+	
+	^'Missing field in line.'! !
+!CustomerImporter class methodsFor: 'error descriptions' stamp: 'WAL 6/26/2023 20:50:31' prior: 50625964!
+missingFieldOnAddressErrorDescription
+	
+	^'Missing field on Address.'! !
+!CustomerImporter class methodsFor: 'error descriptions' stamp: 'WAL 6/26/2023 20:50:39' prior: 50625894!
+missingFieldOnCustomerErrorDescription
+	
+	^'Missing field on Customer.'! !
+
+!testRun: #ImportTest #test01ImportValidData stamp: 'WAL 6/26/2023 20:50:40'!
+PASSED!
+
+!testRun: #ImportTest #test02ImportDataWithMissingFieldOnCustomerShouldRiseError stamp: 'WAL 6/26/2023 20:50:41'!
+PASSED!
+
+!testRun: #ImportTest #test03ImportDataWithMissingFieldOnAddressShouldRiseError stamp: 'WAL 6/26/2023 20:50:41'!
+FAILURE!
+
+!testRun: #ImportTest #test03ImportDataWithMissingFieldOnAddressShouldRiseError stamp: 'WAL 6/26/2023 20:50:41'!
+FAILURE!
+!CustomerImporter methodsFor: 'evaluating' stamp: 'WAL 6/26/2023 20:51:13' prior: 50625385!
+importAddress: aLine
+
+	| addressData newAddress |
+	
+	addressData := self findTokensInLine: aLine.
+	
+	(addressData size <6) ifTrue: [ self error: CustomerImporter missingFieldOnCustomerErrorDescription ].
+	
+	newAddress := Address new.
+	
+	newAddress streetName: addressData second.
+	newAddress streetNumber: addressData third asNumber .
+	newAddress town: addressData fourth.
+	newAddress zipCode: addressData fifth asNumber .
+	newAddress province: addressData sixth.
+	
+	newCustomer addAddress: newAddress.! !
+
+!testRun: #ImportTest #test01ImportValidData stamp: 'WAL 6/26/2023 20:51:15'!
+PASSED!
+
+!testRun: #ImportTest #test02ImportDataWithMissingFieldOnCustomerShouldRiseError stamp: 'WAL 6/26/2023 20:51:15'!
+PASSED!
+
+!testRun: #ImportTest #test03ImportDataWithMissingFieldOnAddressShouldRiseError stamp: 'WAL 6/26/2023 20:51:15'!
+FAILURE!
+
+!testRun: #ImportTest #test03ImportDataWithMissingFieldOnAddressShouldRiseError stamp: 'WAL 6/26/2023 20:51:16'!
+FAILURE!
+!CustomerImporter methodsFor: 'evaluating' stamp: 'WAL 6/26/2023 20:51:23' prior: 50625996!
+importAddress: aLine
+
+	| addressData newAddress |
+	
+	addressData := self findTokensInLine: aLine.
+	
+	(addressData size <6) ifTrue: [ self error: CustomerImporter missingFieldOnAddressErrorDescription ].
+	
+	newAddress := Address new.
+	
+	newAddress streetName: addressData second.
+	newAddress streetNumber: addressData third asNumber .
+	newAddress town: addressData fourth.
+	newAddress zipCode: addressData fifth asNumber .
+	newAddress province: addressData sixth.
+	
+	newCustomer addAddress: newAddress.! !
+
+!testRun: #ImportTest #test01ImportValidData stamp: 'WAL 6/26/2023 20:51:25'!
+PASSED!
+
+!testRun: #ImportTest #test02ImportDataWithMissingFieldOnCustomerShouldRiseError stamp: 'WAL 6/26/2023 20:51:25'!
+PASSED!
+
+!testRun: #ImportTest #test03ImportDataWithMissingFieldOnAddressShouldRiseError stamp: 'WAL 6/26/2023 20:51:25'!
+PASSED!
+!ImportTest methodsFor: 'tests' stamp: 'WAL 6/26/2023 20:56:26'!
+test04ImportDataWithExcessFieldsOnCustomerShouldRiseError
+
+	self
+		should: [ CustomerImporter valueFrom: self inputStreamWithExcessFieldsOnCustomer into: session ]
+		raise: Error
+		withExceptionDo: [ :anError |
+			self assert: CustomerImporter invalidNumberOfFieldsErrorDescription equals: anError messageText ]! !
+!ImportTest methodsFor: 'tests' stamp: 'WAL 6/26/2023 20:56:49' prior: 50626058!
+test04ImportDataWithExcessFieldsOnCustomerShouldRiseError
+
+	self
+		should: [ CustomerImporter valueFrom: self inputStreamWithExcessFieldsOnCustomer into: session ]
+		raise: Error
+		withExceptionDo: [ :anError |
+			self assert: CustomerImporter invalidNumberOfCustomerFieldsErrorDescription equals: anError messageText ]! !
+!CustomerImporter class methodsFor: 'error descriptions' stamp: 'WAL 6/26/2023 20:57:13'!
+invalidNumberOfCustomerFieldsErrorDescription
+	
+	^'Missing field on Customer.'! !
+!CustomerImporter methodsFor: 'as yet unclassified' stamp: 'WAL 6/26/2023 20:57:13' prior: 50625900!
+importCustomer: aLine
+
+	| customerData |
+	
+	customerData := self findTokensInLine: aLine.
+	
+	(customerData size <5) ifTrue: [ self error: CustomerImporter invalidNumberOfCustomerFieldsErrorDescription ].
+	
+	newCustomer := Customer new.
+	
+	newCustomer firstName: customerData second.
+	newCustomer lastName: customerData third.
+	newCustomer identificationType: customerData fourth.
+	newCustomer identificationNumber: customerData fifth.
+	
+	session persist: newCustomer.! !
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'WAL 6/26/2023 20:57:13' prior: 50625933!
+test02ImportDataWithMissingFieldOnCustomerShouldRiseError
+
+	self
+		should: [ CustomerImporter valueFrom: self inputStreamWithMissingFieldOnCustomer into: session ]
+		raise: Error
+		withExceptionDo: [ :anError |
+			self assert: CustomerImporter invalidNumberOfCustomerFieldsErrorDescription equals: anError messageText ]! !
+
+!methodRemoval: CustomerImporter class #missingFieldOnCustomerErrorDescription stamp: 'WAL 6/26/2023 20:57:13'!
+missingFieldOnCustomerErrorDescription
+	
+	^'Missing field on Customer.'!
+!CustomerImporter class methodsFor: 'error descriptions' stamp: 'WAL 6/26/2023 20:57:37' prior: 50626084!
+invalidNumberOfCustomerFieldsErrorDescription
+	
+	^'Invalid number of customer fields.'! !
+!CustomerImporter class methodsFor: 'error descriptions' stamp: 'WAL 6/26/2023 20:58:20'!
+invalidNumberOfAddressFieldsErrorDescription
+	
+	^'Missing field on Address.'! !
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'WAL 6/26/2023 20:58:20' prior: 50625873!
+test03ImportDataWithMissingFieldOnAddressShouldRiseError
+
+	self
+		should: [ CustomerImporter valueFrom: self inputStreamWithMissingFieldOnAddress into: session ]
+		raise: Error
+		withExceptionDo: [ :anError |
+			self assert: CustomerImporter invalidNumberOfAddressFieldsErrorDescription equals: anError messageText ]! !
+!CustomerImporter methodsFor: 'as yet unclassified' stamp: 'WAL 6/26/2023 20:58:20' prior: 50626029!
+importAddress: aLine
+
+	| addressData newAddress |
+	
+	addressData := self findTokensInLine: aLine.
+	
+	(addressData size <6) ifTrue: [ self error: CustomerImporter invalidNumberOfAddressFieldsErrorDescription ].
+	
+	newAddress := Address new.
+	
+	newAddress streetName: addressData second.
+	newAddress streetNumber: addressData third asNumber .
+	newAddress town: addressData fourth.
+	newAddress zipCode: addressData fifth asNumber .
+	newAddress province: addressData sixth.
+	
+	newCustomer addAddress: newAddress.! !
+
+!methodRemoval: CustomerImporter class #missingFieldOnAddressErrorDescription stamp: 'WAL 6/26/2023 20:58:20'!
+missingFieldOnAddressErrorDescription
+	
+	^'Missing field on Address.'!
+!CustomerImporter class methodsFor: 'error descriptions' stamp: 'WAL 6/26/2023 20:58:39' prior: 50626134!
+invalidNumberOfAddressFieldsErrorDescription
+	
+	^'Invalid number of address fields.'! !
+!ImportTest methodsFor: 'test data' stamp: 'WAL 6/26/2023 20:59:09'!
+inputStreamWithExcessFieldsOnCustomer
+
+	^ ReadStream on:
+'C,Pepe,Sanchez,D
+A,San Martin,3322,Olivos,1636,BsAs
+A,Maipu,888,Florida,1122,Buenos Aires
+C,Juan,Perez,C,23-25666777-9
+A,Alem,1122,CABA,1001,CABA'! !
+!ImportTest methodsFor: 'test data' stamp: 'WAL 6/26/2023 20:59:21' prior: 50626185!
+inputStreamWithExcessFieldsOnCustomer
+
+	^ ReadStream on:
+'C,Pepe,Sanchez,D,
+A,San Martin,3322,Olivos,1636,BsAs
+A,Maipu,888,Florida,1122,Buenos Aires
+C,Juan,Perez,C,23-25666777-9
+A,Alem,1122,CABA,1001,CABA'! !
+!ImportTest methodsFor: 'test data' stamp: 'WAL 6/26/2023 20:59:31' prior: 50626195!
+inputStreamWithExcessFieldsOnCustomer
+
+	^ ReadStream on:
+'C,Pepe,Sanchez,D,22333444,Pepe
+A,San Martin,3322,Olivos,1636,BsAs
+A,Maipu,888,Florida,1122,Buenos Aires
+C,Juan,Perez,C,23-25666777-9
+A,Alem,1122,CABA,1001,CABA'! !
+
+!testRun: #ImportTest #test01ImportValidData stamp: 'WAL 6/26/2023 20:59:36'!
+PASSED!
+
+!testRun: #ImportTest #test02ImportDataWithMissingFieldOnCustomerShouldRiseError stamp: 'WAL 6/26/2023 20:59:36'!
+PASSED!
+
+!testRun: #ImportTest #test03ImportDataWithMissingFieldOnAddressShouldRiseError stamp: 'WAL 6/26/2023 20:59:36'!
+PASSED!
+
+!testRun: #ImportTest #test04ImportDataWithExcessFieldsOnCustomerShouldRiseError stamp: 'WAL 6/26/2023 20:59:37'!
+FAILURE!
+
+!testRun: #ImportTest #test04ImportDataWithExcessFieldsOnCustomerShouldRiseError stamp: 'WAL 6/26/2023 20:59:37'!
+FAILURE!
+
+!testRun: #ImportTest #test04ImportDataWithExcessFieldsOnCustomerShouldRiseError stamp: 'WAL 6/26/2023 21:00:04'!
+FAILURE!
+!CustomerImporter methodsFor: 'evaluating' stamp: 'WAL 6/26/2023 21:00:43' prior: 50626090!
+importCustomer: aLine
+
+	| customerData |
+	
+	customerData := self findTokensInLine: aLine.
+	
+	(customerData size = 5) ifFalse: [ self error: CustomerImporter invalidNumberOfCustomerFieldsErrorDescription ].
+	
+	newCustomer := Customer new.
+	
+	newCustomer firstName: customerData second.
+	newCustomer lastName: customerData third.
+	newCustomer identificationType: customerData fourth.
+	newCustomer identificationNumber: customerData fifth.
+	
+	session persist: newCustomer.! !
+
+!testRun: #ImportTest #test01ImportValidData stamp: 'WAL 6/26/2023 21:00:45'!
+PASSED!
+
+!testRun: #ImportTest #test02ImportDataWithMissingFieldOnCustomerShouldRiseError stamp: 'WAL 6/26/2023 21:00:45'!
+PASSED!
+
+!testRun: #ImportTest #test03ImportDataWithMissingFieldOnAddressShouldRiseError stamp: 'WAL 6/26/2023 21:00:45'!
+PASSED!
+
+!testRun: #ImportTest #test04ImportDataWithExcessFieldsOnCustomerShouldRiseError stamp: 'WAL 6/26/2023 21:00:45'!
+PASSED!
+!ImportTest methodsFor: 'tests' stamp: 'WAL 6/26/2023 21:01:48'!
+test05ImportDataWithExcessFieldsOnAddressShouldRiseError
+
+	self
+		should: [ CustomerImporter valueFrom: self inputStreamWithExcessFieldsOnAddress into: session ]
+		raise: Error
+		withExceptionDo: [ :anError |
+			self assert: CustomerImporter invalidNumberOfAddressFieldsErrorDescription equals: anError messageText ]! !
+!ImportTest methodsFor: 'test data' stamp: 'WAL 6/26/2023 21:03:01'!
+inputStreamWithExcessFieldsOnAddress
+
+	^ ReadStream on:
+'C,Pepe,Sanchez,D,22333444
+A,San Martin,3322,Olivos,1636,BsAs,San Martin
+A,Maipu,888,Florida,1122,Buenos Aires
+C,Juan,Perez,C,23-25666777-9
+A,Alem,1122,CABA,1001,CABA'! !
+
+!testRun: #ImportTest #test01ImportValidData stamp: 'WAL 6/26/2023 21:03:19'!
+PASSED!
+
+!testRun: #ImportTest #test02ImportDataWithMissingFieldOnCustomerShouldRiseError stamp: 'WAL 6/26/2023 21:03:19'!
+PASSED!
+
+!testRun: #ImportTest #test03ImportDataWithMissingFieldOnAddressShouldRiseError stamp: 'WAL 6/26/2023 21:03:19'!
+PASSED!
+
+!testRun: #ImportTest #test04ImportDataWithExcessFieldsOnCustomerShouldRiseError stamp: 'WAL 6/26/2023 21:03:19'!
+PASSED!
+
+!testRun: #ImportTest #test05ImportDataWithExcessFieldsOnAddressShouldRiseError stamp: 'WAL 6/26/2023 21:03:19'!
+FAILURE!
+
+!testRun: #ImportTest #test05ImportDataWithExcessFieldsOnAddressShouldRiseError stamp: 'WAL 6/26/2023 21:03:20'!
+FAILURE!
+!CustomerImporter methodsFor: 'evaluating' stamp: 'WAL 6/26/2023 21:03:30' prior: 50626154!
+importAddress: aLine
+
+	| addressData newAddress |
+	
+	addressData := self findTokensInLine: aLine.
+	
+	(addressData size =6) ifFalse: [ self error: CustomerImporter invalidNumberOfAddressFieldsErrorDescription ].
+	
+	newAddress := Address new.
+	
+	newAddress streetName: addressData second.
+	newAddress streetNumber: addressData third asNumber .
+	newAddress town: addressData fourth.
+	newAddress zipCode: addressData fifth asNumber .
+	newAddress province: addressData sixth.
+	
+	newCustomer addAddress: newAddress.! !
+
+!testRun: #ImportTest #test01ImportValidData stamp: 'WAL 6/26/2023 21:03:32'!
+PASSED!
+
+!testRun: #ImportTest #test02ImportDataWithMissingFieldOnCustomerShouldRiseError stamp: 'WAL 6/26/2023 21:03:32'!
+PASSED!
+
+!testRun: #ImportTest #test03ImportDataWithMissingFieldOnAddressShouldRiseError stamp: 'WAL 6/26/2023 21:03:32'!
+PASSED!
+
+!testRun: #ImportTest #test04ImportDataWithExcessFieldsOnCustomerShouldRiseError stamp: 'WAL 6/26/2023 21:03:32'!
+PASSED!
+
+!testRun: #ImportTest #test05ImportDataWithExcessFieldsOnAddressShouldRiseError stamp: 'WAL 6/26/2023 21:03:32'!
+PASSED!
+!CustomerImporter methodsFor: 'evaluating' stamp: 'WAL 6/26/2023 21:04:17'!
+assertValidNumberOfAddressFields: addressData
+
+	^ (addressData size =6) ifFalse: [ self error: CustomerImporter invalidNumberOfAddressFieldsErrorDescription ]! !
+!CustomerImporter methodsFor: 'evaluating' stamp: 'WAL 6/26/2023 21:04:17' prior: 50626314!
+importAddress: aLine
+
+	| addressData newAddress |
+	
+	addressData := self findTokensInLine: aLine.
+	
+	self assertValidNumberOfAddressFields: addressData.
+	
+	newAddress := Address new.
+	
+	newAddress streetName: addressData second.
+	newAddress streetNumber: addressData third asNumber .
+	newAddress town: addressData fourth.
+	newAddress zipCode: addressData fifth asNumber .
+	newAddress province: addressData sixth.
+	
+	newCustomer addAddress: newAddress.! !
+!CustomerImporter methodsFor: 'evaluating' stamp: 'WAL 6/26/2023 21:04:41'!
+assertValidNumberOfCustomerFields: customerData
+
+	^ (customerData size = 5) ifFalse: [ self error: CustomerImporter invalidNumberOfCustomerFieldsErrorDescription ]! !
+!CustomerImporter methodsFor: 'evaluating' stamp: 'WAL 6/26/2023 21:04:41' prior: 50626237!
+importCustomer: aLine
+
+	| customerData |
+	
+	customerData := self findTokensInLine: aLine.
+	
+	self assertValidNumberOfCustomerFields: customerData.
+	
+	newCustomer := Customer new.
+	
+	newCustomer firstName: customerData second.
+	newCustomer lastName: customerData third.
+	newCustomer identificationType: customerData fourth.
+	newCustomer identificationNumber: customerData fifth.
+	
+	session persist: newCustomer.! !
+
+!testRun: #ImportTest #test01ImportValidData stamp: 'WAL 6/26/2023 21:04:44'!
+PASSED!
+
+!testRun: #ImportTest #test02ImportDataWithMissingFieldOnCustomerShouldRiseError stamp: 'WAL 6/26/2023 21:04:44'!
+PASSED!
+
+!testRun: #ImportTest #test03ImportDataWithMissingFieldOnAddressShouldRiseError stamp: 'WAL 6/26/2023 21:04:44'!
+PASSED!
+
+!testRun: #ImportTest #test04ImportDataWithExcessFieldsOnCustomerShouldRiseError stamp: 'WAL 6/26/2023 21:04:44'!
+PASSED!
+
+!testRun: #ImportTest #test05ImportDataWithExcessFieldsOnAddressShouldRiseError stamp: 'WAL 6/26/2023 21:04:44'!
+PASSED!
+!ImportTest methodsFor: 'test data' stamp: 'WAL 6/26/2023 21:06:44'!
+inputStreamWithInvalidRecordType
+
+	^ ReadStream on:
+'C,Pepe,Sanchez,D,22333444
+X,San Martin,3322,Olivos,1636,BsAs
+A,Maipu,888,Florida,1122,Buenos Aires
+C,Juan,Perez,C,23-25666777-9
+A,Alem,1122,CABA,1001,CABA'! !
+!ImportTest methodsFor: 'tests' stamp: 'WAL 6/26/2023 21:07:40'!
+test06ImportDataWithInvalidRecordTypeShouldRiseError
+
+	self
+		should: [ CustomerImporter valueFrom: self inputStreamWithInvalidRecordType into: session ]
+		raise: Error
+		withExceptionDo: [ :anError |
+			self assert: CustomerImporter invalidRecordTypeErrorDescription equals: anError messageText ]! !
+
+!testRun: #ImportTest #test06ImportDataWithInvalidRecordTypeShouldRiseError stamp: 'WAL 6/26/2023 21:07:45'!
+FAILURE!
+!CustomerImporter methodsFor: 'evaluating' stamp: 'WAL 6/26/2023 21:08:39' prior: 50625504!
+importLine: aLine
+
+	(aLine beginsWith: 'C') ifTrue: [ self importCustomer: aLine ].
+	(aLine beginsWith: 'A') ifTrue: [ self importAddress: aLine ].
+	! !
+!CustomerImporter methodsFor: 'evaluating' stamp: 'WAL 6/26/2023 21:14:16' prior: 50626444!
+importLine: aLine
+
+	
+
+	(aLine beginsWith: 'C') ifTrue: [ self importCustomer: aLine ] ifFalse: [
+		(aLine beginsWith: 'A') ifTrue: [ self importAddress: aLine ] ifFalse: [
+			self error: CustomerImporter invalidTypeOfRecordErrorDescription ] ]! !
+
+!testRun: #ImportTest #test01ImportValidData stamp: 'WAL 6/26/2023 21:14:19'!
+PASSED!
+
+!testRun: #ImportTest #test02ImportDataWithMissingFieldOnCustomerShouldRiseError stamp: 'WAL 6/26/2023 21:14:19'!
+PASSED!
+
+!testRun: #ImportTest #test03ImportDataWithMissingFieldOnAddressShouldRiseError stamp: 'WAL 6/26/2023 21:14:19'!
+PASSED!
+
+!testRun: #ImportTest #test04ImportDataWithExcessFieldsOnCustomerShouldRiseError stamp: 'WAL 6/26/2023 21:14:19'!
+PASSED!
+
+!testRun: #ImportTest #test05ImportDataWithExcessFieldsOnAddressShouldRiseError stamp: 'WAL 6/26/2023 21:14:19'!
+PASSED!
+
+!testRun: #ImportTest #test06ImportDataWithInvalidRecordTypeShouldRiseError stamp: 'WAL 6/26/2023 21:14:19'!
+ERROR!
+
+!testRun: #ImportTest #test06ImportDataWithInvalidRecordTypeShouldRiseError stamp: 'WAL 6/26/2023 21:14:20'!
+ERROR!
+
+!testRun: #ImportTest #test01ImportValidData stamp: 'WAL 6/26/2023 21:14:36'!
+PASSED!
+
+!testRun: #ImportTest #test02ImportDataWithMissingFieldOnCustomerShouldRiseError stamp: 'WAL 6/26/2023 21:14:36'!
+PASSED!
+
+!testRun: #ImportTest #test03ImportDataWithMissingFieldOnAddressShouldRiseError stamp: 'WAL 6/26/2023 21:14:36'!
+PASSED!
+
+!testRun: #ImportTest #test04ImportDataWithExcessFieldsOnCustomerShouldRiseError stamp: 'WAL 6/26/2023 21:14:36'!
+PASSED!
+
+!testRun: #ImportTest #test05ImportDataWithExcessFieldsOnAddressShouldRiseError stamp: 'WAL 6/26/2023 21:14:36'!
+PASSED!
+
+!testRun: #ImportTest #test06ImportDataWithInvalidRecordTypeShouldRiseError stamp: 'WAL 6/26/2023 21:14:36'!
+ERROR!
+
+!testRun: #ImportTest #test06ImportDataWithInvalidRecordTypeShouldRiseError stamp: 'WAL 6/26/2023 21:14:37'!
+ERROR!
+!CustomerImporter class methodsFor: 'error descriptions' stamp: 'WAL 6/26/2023 21:14:44'!
+invalidRecordTypeErrorDescription
+	self shouldBeImplemented.! !
+!CustomerImporter class methodsFor: 'error descriptions' stamp: 'WAL 6/26/2023 21:15:07' prior: 50626514!
+invalidRecordTypeErrorDescription
+	
+	^'Invalid record type.'! !
+
+!testRun: #ImportTest #test06ImportDataWithInvalidRecordTypeShouldRiseError stamp: 'WAL 6/26/2023 21:15:09'!
+FAILURE!
+!CustomerImporter methodsFor: 'evaluating' stamp: 'WAL 6/26/2023 21:15:53' prior: 50626452!
+importLine: aLine
+
+	
+
+	(aLine beginsWith: 'C') ifTrue: [ self importCustomer: aLine ] ifFalse: [
+		(aLine beginsWith: 'A') ifTrue: [ self importAddress: aLine ] ifFalse: [
+			self error: CustomerImporter invalidRecordTypeErrorDescription ] ]! !
+
+!testRun: #ImportTest #test01ImportValidData stamp: 'WAL 6/26/2023 21:15:56'!
+PASSED!
+
+!testRun: #ImportTest #test02ImportDataWithMissingFieldOnCustomerShouldRiseError stamp: 'WAL 6/26/2023 21:15:56'!
+PASSED!
+
+!testRun: #ImportTest #test03ImportDataWithMissingFieldOnAddressShouldRiseError stamp: 'WAL 6/26/2023 21:15:56'!
+PASSED!
+
+!testRun: #ImportTest #test04ImportDataWithExcessFieldsOnCustomerShouldRiseError stamp: 'WAL 6/26/2023 21:15:56'!
+PASSED!
+
+!testRun: #ImportTest #test05ImportDataWithExcessFieldsOnAddressShouldRiseError stamp: 'WAL 6/26/2023 21:15:56'!
+PASSED!
+
+!testRun: #ImportTest #test06ImportDataWithInvalidRecordTypeShouldRiseError stamp: 'WAL 6/26/2023 21:15:56'!
+PASSED!
+!ImportTest methodsFor: 'test data' stamp: 'WAL 6/26/2023 21:16:59' prior: 50626419!
+inputStreamWithInvalidRecordType
+
+	^ ReadStream on:
+'C,Pepe,Sanchez,D,22333444
+,San Martin,3322,Olivos,1636,BsAs
+A,Maipu,888,Florida,1122,Buenos Aires
+C,Juan,Perez,C,23-25666777-9
+A,Alem,1122,CABA,1001,CABA'! !
+
+!testRun: #ImportTest #test01ImportValidData stamp: 'WAL 6/26/2023 21:17:01'!
+PASSED!
+
+!testRun: #ImportTest #test02ImportDataWithMissingFieldOnCustomerShouldRiseError stamp: 'WAL 6/26/2023 21:17:02'!
+PASSED!
+
+!testRun: #ImportTest #test03ImportDataWithMissingFieldOnAddressShouldRiseError stamp: 'WAL 6/26/2023 21:17:02'!
+PASSED!
+
+!testRun: #ImportTest #test04ImportDataWithExcessFieldsOnCustomerShouldRiseError stamp: 'WAL 6/26/2023 21:17:02'!
+PASSED!
+
+!testRun: #ImportTest #test05ImportDataWithExcessFieldsOnAddressShouldRiseError stamp: 'WAL 6/26/2023 21:17:02'!
+PASSED!
+
+!testRun: #ImportTest #test06ImportDataWithInvalidRecordTypeShouldRiseError stamp: 'WAL 6/26/2023 21:17:02'!
+PASSED!
+!ImportTest methodsFor: 'test data' stamp: 'WAL 6/26/2023 21:18:10'!
+inputStreamWithInvalidRecordTypeLength
+
+	^ ReadStream on:
+'Customer,Pepe,Sanchez,D,22333444
+A,San Martin,3322,Olivos,1636,BsAs
+A,Maipu,888,Florida,1122,Buenos Aires
+C,Juan,Perez,C,23-25666777-9
+A,Alem,1122,CABA,1001,CABA'! !
+!ImportTest methodsFor: 'tests' stamp: 'WAL 6/26/2023 21:18:57'!
+test07ImportDataWithInvalidRecordTypeLengthShouldRiseError
+
+	self
+		should: [ CustomerImporter valueFrom: self inputStreamWithInvalidRecordTypeLength into: session ]
+		raise: Error
+		withExceptionDo: [ :anError |
+			self assert: CustomerImporter invalidRecordTypeErrorDescription equals: anError messageText ]! !
+
+!testRun: #ImportTest #test07ImportDataWithInvalidRecordTypeLengthShouldRiseError stamp: 'WAL 6/26/2023 21:19:01'!
+FAILURE!
+!CustomerImporter methodsFor: 'evaluating' stamp: 'WAL 6/26/2023 21:21:06' prior: 50626385!
+importCustomer: aLine
+
+	self assertValidNumberOfCustomerFields: self findTokensInLine: aLine.
+	
+	newCustomer := Customer new.
+	
+	newCustomer firstName: (self findTokensInLine: aLine) second.
+	newCustomer lastName: (self findTokensInLine: aLine) third.
+	newCustomer identificationType: (self findTokensInLine: aLine) fourth.
+	newCustomer identificationNumber: (self findTokensInLine: aLine) fifth.
+	
+	session persist: newCustomer.! !
+!CustomerImporter methodsFor: 'evaluating' stamp: 'WAL 6/26/2023 21:04:41' prior: 50626620!
+importCustomer: aLine
+
+	| customerData |
+	
+	customerData := self findTokensInLine: aLine.
+	
+	self assertValidNumberOfCustomerFields: customerData.
+	
+	newCustomer := Customer new.
+	
+	newCustomer firstName: customerData second.
+	newCustomer lastName: customerData third.
+	newCustomer identificationType: customerData fourth.
+	newCustomer identificationNumber: customerData fifth.
+	
+	session persist: newCustomer.! !
+!CustomerImporter methodsFor: 'evaluating' stamp: 'WAL 6/26/2023 21:23:17' prior: 50626637!
+importCustomer: aLine
+
+	| customerData |
+	
+	customerData := self findTokensInLine: aLine.
+	
+	"self assertValidNumberOfCustomerFields: customerData."
+	
+	newCustomer := Customer new.
+	
+	newCustomer firstName: customerData second.
+	newCustomer lastName: customerData third.
+	newCustomer identificationType: customerData fourth.
+	newCustomer identificationNumber: customerData fifth.
+	
+	session persist: newCustomer.! !
+!CustomerImporter methodsFor: 'evaluating' stamp: 'WAL 6/26/2023 21:23:56' prior: 50626376!
+assertValidNumberOfCustomerFields: aCustomerData
+
+	^ (aCustomerData size = 5) ifFalse: [ self error: CustomerImporter invalidNumberOfCustomerFieldsErrorDescription ]! !
+!CustomerImporter methodsFor: 'evaluating' stamp: 'WAL 6/26/2023 21:24:25' prior: 50626653!
+importCustomer: aLine
+
+	| customerData |
+	
+	customerData := self findTokensInLine: aLine.
+	
+	self assertValidNumberOfCustomerFields: customerData.
+	
+	newCustomer := Customer new.
+	
+	newCustomer firstName: customerData second.
+	newCustomer lastName: customerData third.
+	newCustomer identificationType: customerData fourth.
+	newCustomer identificationNumber: customerData fifth.
+	
+	session persist: newCustomer.! !
+!CustomerImporter methodsFor: 'as yet unclassified' stamp: 'WAL 6/26/2023 21:24:28' prior: 50626678!
+importCustomer: aLine
+
+	 
+	
+	customerData := self findTokensInLine: aLine.
+	
+	self assertValidNumberOfCustomerFields: customerData.
+	
+	newCustomer := Customer new.
+	
+	newCustomer firstName: customerData second.
+	newCustomer lastName: customerData third.
+	newCustomer identificationType: customerData fourth.
+	newCustomer identificationNumber: customerData fifth.
+	
+	session persist: newCustomer.! !
+
+!classDefinition: #CustomerImporter category: 'CustomerImporter' stamp: 'WAL 6/26/2023 21:24:28'!
+Object subclass: #CustomerImporter
+	instanceVariableNames: 'session readStream newCustomer customerData'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'CustomerImporter'!
+!CustomerImporter methodsFor: 'evaluating' stamp: 'WAL 6/26/2023 21:24:43' prior: 50626695!
+importCustomer: aLine
+
+	customerData := self findTokensInLine: aLine.
+	
+	self assertValidNumberOfCustomerFields: customerData.
+	
+	newCustomer := Customer new.
+	
+	newCustomer firstName: customerData second.
+	newCustomer lastName: customerData third.
+	newCustomer identificationType: customerData fourth.
+	newCustomer identificationNumber: customerData fifth.
+	
+	session persist: newCustomer.! !
+
+!classDefinition: #CustomerImporter category: 'CustomerImporter' stamp: 'WAL 6/26/2023 21:25:17'!
+Object subclass: #CustomerImporter
+	instanceVariableNames: 'session readStream newCustomer register'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'CustomerImporter'!
+!CustomerImporter methodsFor: 'as yet unclassified' stamp: 'WAL 6/26/2023 21:25:17' prior: 50626720!
+importCustomer: aLine
+
+	register := self findTokensInLine: aLine.
+	
+	self assertValidNumberOfCustomerFields: register.
+	
+	newCustomer := Customer new.
+	
+	newCustomer firstName: register second.
+	newCustomer lastName: register third.
+	newCustomer identificationType: register fourth.
+	newCustomer identificationNumber: register fifth.
+	
+	session persist: newCustomer.! !
+!CustomerImporter methodsFor: 'evaluating' stamp: 'WAL 6/26/2023 21:26:34' prior: 50626359!
+importAddress: aLine
+
+	| newAddress |
+	
+	register := self findTokensInLine: aLine.
+	
+	self assertValidNumberOfAddressFields: register.
+	
+	newAddress := Address new.
+	
+	newAddress streetName: register second.
+	newAddress streetNumber: register third asNumber .
+	newAddress town: register fourth.
+	newAddress zipCode: register fifth asNumber .
+	newAddress province: register sixth.
+	
+	newCustomer addAddress: newAddress.! !
+!CustomerImporter methodsFor: 'evaluating' stamp: 'WAL 6/26/2023 21:27:21'!
+createRecord: aLine
+
+	^ register := self findTokensInLine: aLine! !
+!CustomerImporter methodsFor: 'evaluating' stamp: 'WAL 6/26/2023 21:27:21' prior: 50626745!
+importCustomer: aLine
+
+	self createRecord: aLine.
+	
+	self assertValidNumberOfCustomerFields: register.
+	
+	newCustomer := Customer new.
+	
+	newCustomer firstName: register second.
+	newCustomer lastName: register third.
+	newCustomer identificationType: register fourth.
+	newCustomer identificationNumber: register fifth.
+	
+	session persist: newCustomer.! !
+!CustomerImporter methodsFor: 'evaluating' stamp: 'WAL 6/26/2023 21:27:21' prior: 50626760!
+importAddress: aLine
+
+	| newAddress |
+	
+	self createRecord: aLine.
+	
+	self assertValidNumberOfAddressFields: register.
+	
+	newAddress := Address new.
+	
+	newAddress streetName: register second.
+	newAddress streetNumber: register third asNumber .
+	newAddress town: register fourth.
+	newAddress zipCode: register fifth asNumber .
+	newAddress province: register sixth.
+	
+	newCustomer addAddress: newAddress.! !
+!CustomerImporter methodsFor: 'evaluating' stamp: 'WAL 6/26/2023 21:27:35' prior: 50626795!
+importAddress: aLine
+
+	| newAddress |
+	
+		self assertValidNumberOfAddressFields: register.
+	
+	newAddress := Address new.
+	
+	newAddress streetName: register second.
+	newAddress streetNumber: register third asNumber .
+	newAddress town: register fourth.
+	newAddress zipCode: register fifth asNumber .
+	newAddress province: register sixth.
+	
+	newCustomer addAddress: newAddress.! !
+!CustomerImporter methodsFor: 'evaluating' stamp: 'WAL 6/26/2023 21:27:39' prior: 50626781!
+importCustomer: aLine
+
+	self assertValidNumberOfCustomerFields: register.
+	
+	newCustomer := Customer new.
+	
+	newCustomer firstName: register second.
+	newCustomer lastName: register third.
+	newCustomer identificationType: register fourth.
+	newCustomer identificationNumber: register fifth.
+	
+	session persist: newCustomer.! !
+!CustomerImporter methodsFor: 'evaluating' stamp: 'WAL 6/26/2023 21:28:20' prior: 50626776!
+createRecord: aLine
+
+	register := self findTokensInLine: aLine! !
+
+!classDefinition: #CustomerImporter category: 'CustomerImporter' stamp: 'WAL 6/26/2023 21:28:24'!
+Object subclass: #CustomerImporter
+	instanceVariableNames: 'session readStream newCustomer record'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'CustomerImporter'!
+!CustomerImporter methodsFor: 'as yet unclassified' stamp: 'WAL 6/26/2023 21:28:24' prior: 50626840!
+createRecord: aLine
+
+	record := self findTokensInLine: aLine! !
+!CustomerImporter methodsFor: 'as yet unclassified' stamp: 'WAL 6/26/2023 21:28:24' prior: 50626811!
+importAddress: aLine
+
+	| newAddress |
+	
+		self assertValidNumberOfAddressFields: record.
+	
+	newAddress := Address new.
+	
+	newAddress streetName: record second.
+	newAddress streetNumber: record third asNumber .
+	newAddress town: record fourth.
+	newAddress zipCode: record fifth asNumber .
+	newAddress province: record sixth.
+	
+	newCustomer addAddress: newAddress.! !
+!CustomerImporter methodsFor: 'as yet unclassified' stamp: 'WAL 6/26/2023 21:28:24' prior: 50626826!
+importCustomer: aLine
+
+	self assertValidNumberOfCustomerFields: record.
+	
+	newCustomer := Customer new.
+	
+	newCustomer firstName: record second.
+	newCustomer lastName: record third.
+	newCustomer identificationType: record fourth.
+	newCustomer identificationNumber: record fifth.
+	
+	session persist: newCustomer.! !
+!CustomerImporter methodsFor: 'evaluating' stamp: 'WAL 6/26/2023 21:29:05' prior: 50625695 overrides: 16902254!
+value
+
+	| line |
+	
+	line := readStream nextLine.
+	[ line notNil ] whileTrue: [
+		self createRecord: line.
+	
+		self importLine: line.
+		
+		line := readStream nextLine. ].
+
+	! !
+!CustomerImporter methodsFor: 'evaluating' stamp: 'WAL 6/26/2023 21:29:49'!
+importRecord: aLine
+
+	
+
+	(aLine beginsWith: 'C') ifTrue: [ self importCustomer: aLine ] ifFalse: [
+		(aLine beginsWith: 'A') ifTrue: [ self importAddress: aLine ] ifFalse: [
+			self error: CustomerImporter invalidRecordTypeErrorDescription ] ]! !
+!CustomerImporter methodsFor: 'as yet unclassified' stamp: 'WAL 6/26/2023 21:29:49' prior: 50626889 overrides: 16902254!
+value
+
+	| line |
+	
+	line := readStream nextLine.
+	[ line notNil ] whileTrue: [
+		self createRecord: line.
+	
+		self importRecord: line.
+		
+		line := readStream nextLine. ].
+
+	! !
+
+!methodRemoval: CustomerImporter #importLine: stamp: 'WAL 6/26/2023 21:29:49'!
+importLine: aLine
+
+	
+
+	(aLine beginsWith: 'C') ifTrue: [ self importCustomer: aLine ] ifFalse: [
+		(aLine beginsWith: 'A') ifTrue: [ self importAddress: aLine ] ifFalse: [
+			self error: CustomerImporter invalidRecordTypeErrorDescription ] ]!
+!CustomerImporter methodsFor: 'as yet unclassified' stamp: 'WAL 6/26/2023 21:31:39' prior: 50626909 overrides: 16902254!
+value
+
+	 
+	
+	line := readStream nextLine.
+	[ line notNil ] whileTrue: [
+		self createRecord: line.
+	
+		self importRecord: line.
+		
+		line := readStream nextLine. ].
+
+	! !
+
+!classDefinition: #CustomerImporter category: 'CustomerImporter' stamp: 'WAL 6/26/2023 21:31:39'!
+Object subclass: #CustomerImporter
+	instanceVariableNames: 'session readStream newCustomer record line'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'CustomerImporter'!
+!CustomerImporter methodsFor: 'evaluating' stamp: 'WAL 6/26/2023 21:32:48' prior: 50625338!
+findTokensInLine: aLine
+
+	^ line findTokens: $,! !
+!CustomerImporter methodsFor: 'evaluating' stamp: 'WAL 6/26/2023 21:33:00'!
+findTokensInLine
+
+	^ line findTokens: $,! !
+!CustomerImporter methodsFor: 'as yet unclassified' stamp: 'WAL 6/26/2023 21:33:00' prior: 50626854!
+createRecord: aLine
+
+	record := self findTokensInLine! !
+
+!methodRemoval: CustomerImporter #findTokensInLine: stamp: 'WAL 6/26/2023 21:33:00'!
+findTokensInLine: aLine
+
+	^ line findTokens: $,!
+!CustomerImporter methodsFor: 'evaluating' stamp: 'WAL 6/26/2023 21:33:35'!
+importAddress
+
+	| newAddress |
+	
+		self assertValidNumberOfAddressFields: record.
+	
+	newAddress := Address new.
+	
+	newAddress streetName: record second.
+	newAddress streetNumber: record third asNumber .
+	newAddress town: record fourth.
+	newAddress zipCode: record fifth asNumber .
+	newAddress province: record sixth.
+	
+	newCustomer addAddress: newAddress.! !
+
+!methodRemoval: CustomerImporter #importAddress: stamp: 'WAL 6/26/2023 21:33:42'!
+importAddress: aLine
+
+	| newAddress |
+	
+		self assertValidNumberOfAddressFields: record.
+	
+	newAddress := Address new.
+	
+	newAddress streetName: record second.
+	newAddress streetNumber: record third asNumber .
+	newAddress town: record fourth.
+	newAddress zipCode: record fifth asNumber .
+	newAddress province: record sixth.
+	
+	newCustomer addAddress: newAddress.!
+!CustomerImporter methodsFor: 'evaluating' stamp: 'WAL 6/26/2023 21:33:55' prior: 50626897!
+importRecord: aLine
+
+	
+
+	(aLine beginsWith: 'C') ifTrue: [ self importCustomer ] ifFalse: [
+		(aLine beginsWith: 'A') ifTrue: [ self importAddress ] ifFalse: [
+			self error: CustomerImporter invalidRecordTypeErrorDescription ] ]! !
+!CustomerImporter methodsFor: 'evaluating' stamp: 'WAL 6/26/2023 21:34:03'!
+importCustomer
+
+	self assertValidNumberOfCustomerFields: record.
+	
+	newCustomer := Customer new.
+	
+	newCustomer firstName: record second.
+	newCustomer lastName: record third.
+	newCustomer identificationType: record fourth.
+	newCustomer identificationNumber: record fifth.
+	
+	session persist: newCustomer.! !
+
+!methodRemoval: CustomerImporter #importCustomer: stamp: 'WAL 6/26/2023 21:34:03'!
+importCustomer: aLine
+
+	self assertValidNumberOfCustomerFields: record.
+	
+	newCustomer := Customer new.
+	
+	newCustomer firstName: record second.
+	newCustomer lastName: record third.
+	newCustomer identificationType: record fourth.
+	newCustomer identificationNumber: record fifth.
+	
+	session persist: newCustomer.!
+!CustomerImporter methodsFor: 'evaluating' stamp: 'WAL 6/26/2023 21:34:21' prior: 50626993!
+importRecord: aLine
+
+	
+
+	(line beginsWith: 'C') ifTrue: [ self importCustomer ] ifFalse: [
+		(line beginsWith: 'A') ifTrue: [ self importAddress ] ifFalse: [
+			self error: CustomerImporter invalidRecordTypeErrorDescription ] ]! !
+!CustomerImporter methodsFor: 'evaluating' stamp: 'WAL 6/26/2023 21:34:27'!
+importRecord
+
+	
+
+	(line beginsWith: 'C') ifTrue: [ self importCustomer ] ifFalse: [
+		(line beginsWith: 'A') ifTrue: [ self importAddress ] ifFalse: [
+			self error: CustomerImporter invalidRecordTypeErrorDescription ] ]! !
+!CustomerImporter methodsFor: 'as yet unclassified' stamp: 'WAL 6/26/2023 21:34:27' prior: 50626929 overrides: 16902254!
+value
+
+	 
+	
+	line := readStream nextLine.
+	[ line notNil ] whileTrue: [
+		self createRecord: line.
+	
+		self importRecord.
+		
+		line := readStream nextLine. ].
+
+	! !
+
+!methodRemoval: CustomerImporter #importRecord: stamp: 'WAL 6/26/2023 21:34:27'!
+importRecord: aLine
+
+	
+
+	(line beginsWith: 'C') ifTrue: [ self importCustomer ] ifFalse: [
+		(line beginsWith: 'A') ifTrue: [ self importAddress ] ifFalse: [
+			self error: CustomerImporter invalidRecordTypeErrorDescription ] ]!
+!CustomerImporter methodsFor: 'evaluating' stamp: 'WAL 6/26/2023 21:34:47'!
+createRecord
+
+	record := self findTokensInLine! !
+!CustomerImporter methodsFor: 'as yet unclassified' stamp: 'WAL 6/26/2023 21:34:48' prior: 50627049 overrides: 16902254!
+value
+
+	 
+	
+	line := readStream nextLine.
+	[ line notNil ] whileTrue: [
+		self createRecord.
+	
+		self importRecord.
+		
+		line := readStream nextLine. ].
+
+	! !
+
+!methodRemoval: CustomerImporter #createRecord: stamp: 'WAL 6/26/2023 21:34:48'!
+createRecord: aLine
+
+	record := self findTokensInLine!
+
+!testRun: #ImportTest #test01ImportValidData stamp: 'WAL 6/26/2023 21:34:54'!
+PASSED!
+
+!testRun: #ImportTest #test02ImportDataWithMissingFieldOnCustomerShouldRiseError stamp: 'WAL 6/26/2023 21:34:55'!
+PASSED!
+
+!testRun: #ImportTest #test03ImportDataWithMissingFieldOnAddressShouldRiseError stamp: 'WAL 6/26/2023 21:34:55'!
+PASSED!
+
+!testRun: #ImportTest #test04ImportDataWithExcessFieldsOnCustomerShouldRiseError stamp: 'WAL 6/26/2023 21:34:55'!
+PASSED!
+
+!testRun: #ImportTest #test05ImportDataWithExcessFieldsOnAddressShouldRiseError stamp: 'WAL 6/26/2023 21:34:55'!
+PASSED!
+
+!testRun: #ImportTest #test06ImportDataWithInvalidRecordTypeShouldRiseError stamp: 'WAL 6/26/2023 21:34:55'!
+PASSED!
+
+!testRun: #ImportTest #test07ImportDataWithInvalidRecordTypeLengthShouldRiseError stamp: 'WAL 6/26/2023 21:34:55'!
+FAILURE!
+
+!testRun: #ImportTest #test07ImportDataWithInvalidRecordTypeLengthShouldRiseError stamp: 'WAL 6/26/2023 21:34:56'!
+FAILURE!
+!CustomerImporter methodsFor: 'evaluating' stamp: 'WAL 6/26/2023 21:35:41' prior: 50627073 overrides: 16902254!
+value
+
+	 
+	
+	
+	[ line := readStream nextLine.
+	  line notNil ] whileTrue: [
+		self createRecord.
+		self importRecord.
+		].
+
+	! !
+
+!testRun: #ImportTest #test01ImportValidData stamp: 'WAL 6/26/2023 21:35:43'!
+PASSED!
+
+!testRun: #ImportTest #test02ImportDataWithMissingFieldOnCustomerShouldRiseError stamp: 'WAL 6/26/2023 21:35:43'!
+PASSED!
+
+!testRun: #ImportTest #test03ImportDataWithMissingFieldOnAddressShouldRiseError stamp: 'WAL 6/26/2023 21:35:43'!
+PASSED!
+
+!testRun: #ImportTest #test04ImportDataWithExcessFieldsOnCustomerShouldRiseError stamp: 'WAL 6/26/2023 21:35:43'!
+PASSED!
+
+!testRun: #ImportTest #test05ImportDataWithExcessFieldsOnAddressShouldRiseError stamp: 'WAL 6/26/2023 21:35:43'!
+PASSED!
+
+!testRun: #ImportTest #test06ImportDataWithInvalidRecordTypeShouldRiseError stamp: 'WAL 6/26/2023 21:35:44'!
+PASSED!
+
+!testRun: #ImportTest #test07ImportDataWithInvalidRecordTypeLengthShouldRiseError stamp: 'WAL 6/26/2023 21:35:44'!
+FAILURE!
+
+!testRun: #ImportTest #test07ImportDataWithInvalidRecordTypeLengthShouldRiseError stamp: 'WAL 6/26/2023 21:35:44'!
+FAILURE!
+!CustomerImporter methodsFor: 'evaluating' stamp: 'WAL 6/26/2023 21:35:50' prior: 50627116 overrides: 16902254!
+value
+
+	[ line := readStream nextLine.
+	  line notNil ] whileTrue: [
+		self createRecord.
+		self importRecord.
+		].
+
+	! !
+!CustomerImporter methodsFor: 'evaluating' stamp: 'WAL 6/26/2023 21:36:33' prior: 50627038!
+importRecord
+
+	
+
+	(record first = 'C') ifTrue: [ self importCustomer ] ifFalse: [
+		(record first = 'A') ifTrue: [ self importAddress ] ifFalse: [
+			self error: CustomerImporter invalidRecordTypeErrorDescription ] ]! !
+
+!testRun: #ImportTest #test01ImportValidData stamp: 'WAL 6/26/2023 21:36:36'!
+PASSED!
+
+!testRun: #ImportTest #test02ImportDataWithMissingFieldOnCustomerShouldRiseError stamp: 'WAL 6/26/2023 21:36:36'!
+PASSED!
+
+!testRun: #ImportTest #test03ImportDataWithMissingFieldOnAddressShouldRiseError stamp: 'WAL 6/26/2023 21:36:36'!
+PASSED!
+
+!testRun: #ImportTest #test04ImportDataWithExcessFieldsOnCustomerShouldRiseError stamp: 'WAL 6/26/2023 21:36:36'!
+PASSED!
+
+!testRun: #ImportTest #test05ImportDataWithExcessFieldsOnAddressShouldRiseError stamp: 'WAL 6/26/2023 21:36:36'!
+PASSED!
+
+!testRun: #ImportTest #test06ImportDataWithInvalidRecordTypeShouldRiseError stamp: 'WAL 6/26/2023 21:36:36'!
+PASSED!
+
+!testRun: #ImportTest #test07ImportDataWithInvalidRecordTypeLengthShouldRiseError stamp: 'WAL 6/26/2023 21:36:36'!
+PASSED!
+!CustomerImporter methodsFor: 'evaluating' stamp: 'WAL 6/26/2023 21:36:43' prior: 50627161!
+importRecord
+
+	(record first = 'C') ifTrue: [ self importCustomer ] ifFalse: [
+		(record first = 'A') ifTrue: [ self importAddress ] ifFalse: [
+			self error: CustomerImporter invalidRecordTypeErrorDescription ] ]! !
+!CustomerImporter methodsFor: 'evaluating' stamp: 'WAL 6/26/2023 21:37:15'!
+recordIsCustomer
+
+	^ record first = 'C'! !
+!CustomerImporter methodsFor: 'evaluating' stamp: 'WAL 6/26/2023 21:37:15' prior: 50627197!
+importRecord
+
+	(self recordIsCustomer) ifTrue: [ self importCustomer ] ifFalse: [
+		(record first = 'A') ifTrue: [ self importAddress ] ifFalse: [
+			self error: CustomerImporter invalidRecordTypeErrorDescription ] ]! !
+!CustomerImporter methodsFor: 'evaluating' stamp: 'WAL 6/26/2023 21:37:19' prior: 50627212!
+importRecord
+
+	self recordIsCustomer ifTrue: [ self importCustomer ] ifFalse: [
+		(record first = 'A') ifTrue: [ self importAddress ] ifFalse: [
+			self error: CustomerImporter invalidRecordTypeErrorDescription ] ]! !
+!CustomerImporter methodsFor: 'evaluating' stamp: 'WAL 6/26/2023 21:37:28'!
+recordIsAddress
+
+	^ record first = 'A'! !
+!CustomerImporter methodsFor: 'evaluating' stamp: 'WAL 6/26/2023 21:37:28' prior: 50627222!
+importRecord
+
+	self recordIsCustomer ifTrue: [ self importCustomer ] ifFalse: [
+		(self recordIsAddress) ifTrue: [ self importAddress ] ifFalse: [
+			self error: CustomerImporter invalidRecordTypeErrorDescription ] ]! !
+!ImportTest methodsFor: 'tests' stamp: 'WAL 6/26/2023 21:40:26'!
+test08AddressBeforeFirstCustomerShouldRiseError
+
+	self
+		should: [ CustomerImporter valueFrom: self inputStreamWithAddressBeforeFirstCustomer into: session ]
+		raise: Error
+		withExceptionDo: [ :anError |
+			self assert: CustomerImporter invalidRecordTypeErrorDescription equals: anError messageText ]! !
+!ImportTest methodsFor: 'test data' stamp: 'WAL 6/26/2023 21:40:46'!
+inputStreamWithAddressBeforeFirstCustomer
+
+	^ ReadStream on:
+'A,San Martin,3322,Olivos,1636,BsAs
+C,Pepe,Sanchez,D,22333444
+A,Maipu,888,Florida,1122,Buenos Aires
+C,Juan,Perez,C,23-25666777-9
+A,Alem,1122,CABA,1001,CABA'! !
+
+!testRun: #ImportTest #test08AddressBeforeFirstCustomerShouldRiseError stamp: 'WAL 6/26/2023 21:40:56'!
+FAILURE!
+!ImportTest methodsFor: 'tests' stamp: 'WAL 6/26/2023 21:41:31' prior: 50627246!
+test08AddressBeforeFirstCustomerShouldRiseError
+
+	self
+		should: [ CustomerImporter valueFrom: self inputStreamWithAddressBeforeFirstCustomer into: session ]
+		raise: Error
+		withExceptionDo: [ :anError |
+			self assert: CustomerImporter addressBeforeFirstCustomerErrorDescription equals: anError messageText ]! !
+!CustomerImporter class methodsFor: 'error descriptions' stamp: 'WAL 6/26/2023 21:41:59'!
+addressBeforeFirstCustomerErrorDescription
+	
+	^'Address before first customer.'! !
+!CustomerImporter methodsFor: 'evaluating' stamp: 'WAL 6/26/2023 21:42:54' prior: 50626964!
+importAddress
+
+	| newAddress |
+	
+	self assertValidNumberOfAddressFields: record.
+	
+	newAddress := Address new.
+	
+	newAddress streetName: record second.
+	newAddress streetNumber: record third asNumber .
+	newAddress town: record fourth.
+	newAddress zipCode: record fifth asNumber .
+	newAddress province: record sixth.
+	
+	newCustomer addAddress: newAddress.! !
+!CustomerImporter methodsFor: 'evaluating' stamp: 'WAL 6/26/2023 21:45:21' prior: 50627290!
+importAddress
+
+	| newAddress |
+	
+	self assertValidNumberOfAddressFields: record.
+	
+	newAddress := Address new.
+	
+	newAddress streetName: record second.
+	newAddress streetNumber: record third asNumber .
+	newAddress town: record fourth.
+	newAddress zipCode: record fifth asNumber .
+	newAddress province: record sixth.
+	
+	(newCustomer isNil) ifTrue: [ self error: CustomerImporter addressBeforeFirstCustomerErrorDescription ].
+	
+	newCustomer addAddress: newAddress.! !
+
+!testRun: #ImportTest #test01ImportValidData stamp: 'WAL 6/26/2023 21:45:23'!
+PASSED!
+
+!testRun: #ImportTest #test02ImportDataWithMissingFieldOnCustomerShouldRiseError stamp: 'WAL 6/26/2023 21:45:23'!
+PASSED!
+
+!testRun: #ImportTest #test03ImportDataWithMissingFieldOnAddressShouldRiseError stamp: 'WAL 6/26/2023 21:45:23'!
+PASSED!
+
+!testRun: #ImportTest #test04ImportDataWithExcessFieldsOnCustomerShouldRiseError stamp: 'WAL 6/26/2023 21:45:23'!
+PASSED!
+
+!testRun: #ImportTest #test05ImportDataWithExcessFieldsOnAddressShouldRiseError stamp: 'WAL 6/26/2023 21:45:23'!
+PASSED!
+
+!testRun: #ImportTest #test06ImportDataWithInvalidRecordTypeShouldRiseError stamp: 'WAL 6/26/2023 21:45:23'!
+PASSED!
+
+!testRun: #ImportTest #test07ImportDataWithInvalidRecordTypeLengthShouldRiseError stamp: 'WAL 6/26/2023 21:45:23'!
+PASSED!
+
+!testRun: #ImportTest #test08AddressBeforeFirstCustomerShouldRiseError stamp: 'WAL 6/26/2023 21:45:23'!
+PASSED!
+!CustomerImporter methodsFor: 'evaluating' stamp: 'WAL 6/26/2023 21:46:23'!
+assertAddressNotBeforeFirstCustomerErrorDescription
+
+	^ (newCustomer isNil) ifTrue: [ self error: CustomerImporter addressBeforeFirstCustomerErrorDescription ]! !
+!CustomerImporter methodsFor: 'evaluating' stamp: 'WAL 6/26/2023 21:46:23' prior: 50627305!
+importAddress
+
+	| newAddress |
+	
+	self assertValidNumberOfAddressFields: record.
+	
+	newAddress := Address new.
+	
+	newAddress streetName: record second.
+	newAddress streetNumber: record third asNumber .
+	newAddress town: record fourth.
+	newAddress zipCode: record fifth asNumber .
+	newAddress province: record sixth.
+	
+	self assertAddressNotBeforeFirstCustomerErrorDescription.
+	
+	newCustomer addAddress: newAddress.! !
+!CustomerImporter methodsFor: 'evaluating' stamp: 'WAL 6/26/2023 21:46:35'!
+assertAddressNotBeforeFirstCustomer
+
+	^ (newCustomer isNil) ifTrue: [ self error: CustomerImporter addressBeforeFirstCustomerErrorDescription ]! !
+!CustomerImporter methodsFor: 'as yet unclassified' stamp: 'WAL 6/26/2023 21:46:35' prior: 50627360!
+importAddress
+
+	| newAddress |
+	
+	self assertValidNumberOfAddressFields: record.
+	
+	newAddress := Address new.
+	
+	newAddress streetName: record second.
+	newAddress streetNumber: record third asNumber .
+	newAddress town: record fourth.
+	newAddress zipCode: record fifth asNumber .
+	newAddress province: record sixth.
+	
+	self assertAddressNotBeforeFirstCustomer.
+	
+	newCustomer addAddress: newAddress.! !
+
+!methodRemoval: CustomerImporter #assertAddressNotBeforeFirstCustomerErrorDescription stamp: 'WAL 6/26/2023 21:46:35'!
+assertAddressNotBeforeFirstCustomerErrorDescription
+
+	^ (newCustomer isNil) ifTrue: [ self error: CustomerImporter addressBeforeFirstCustomerErrorDescription ]!
+!CustomerImporter methodsFor: 'evaluating' stamp: 'WAL 6/26/2023 21:47:43'!
+assertCustomerInstantiated
+
+	^ (newCustomer isNil) ifTrue: [ self error: CustomerImporter addressBeforeFirstCustomerErrorDescription ]! !
+!CustomerImporter methodsFor: 'as yet unclassified' stamp: 'WAL 6/26/2023 21:47:43' prior: 50627384!
+importAddress
+
+	| newAddress |
+	
+	self assertValidNumberOfAddressFields: record.
+	
+	newAddress := Address new.
+	
+	newAddress streetName: record second.
+	newAddress streetNumber: record third asNumber .
+	newAddress town: record fourth.
+	newAddress zipCode: record fifth asNumber .
+	newAddress province: record sixth.
+	
+	self assertCustomerInstantiated.
+	
+	newCustomer addAddress: newAddress.! !
+
+!methodRemoval: CustomerImporter #assertAddressNotBeforeFirstCustomer stamp: 'WAL 6/26/2023 21:47:43'!
+assertAddressNotBeforeFirstCustomer
+
+	^ (newCustomer isNil) ifTrue: [ self error: CustomerImporter addressBeforeFirstCustomerErrorDescription ]!
+!CustomerImporter methodsFor: 'evaluating' stamp: 'WAL 6/26/2023 21:47:52'!
+assertCustomerIsInstantiated
+
+	^ (newCustomer isNil) ifTrue: [ self error: CustomerImporter addressBeforeFirstCustomerErrorDescription ]! !
+!CustomerImporter methodsFor: 'as yet unclassified' stamp: 'WAL 6/26/2023 21:47:52' prior: 50627416!
+importAddress
+
+	| newAddress |
+	
+	self assertValidNumberOfAddressFields: record.
+	
+	newAddress := Address new.
+	
+	newAddress streetName: record second.
+	newAddress streetNumber: record third asNumber .
+	newAddress town: record fourth.
+	newAddress zipCode: record fifth asNumber .
+	newAddress province: record sixth.
+	
+	self assertCustomerIsInstantiated.
+	
+	newCustomer addAddress: newAddress.! !
+
+!methodRemoval: CustomerImporter #assertCustomerInstantiated stamp: 'WAL 6/26/2023 21:47:52'!
+assertCustomerInstantiated
+
+	^ (newCustomer isNil) ifTrue: [ self error: CustomerImporter addressBeforeFirstCustomerErrorDescription ]!
+!CustomerImporter class methodsFor: 'error descriptions' stamp: 'WAL 6/26/2023 21:49:19'!
+addressCanNotBeImportedWithoutCustomer
+	
+	^'Address before first customer.'! !
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'WAL 6/26/2023 21:49:19' prior: 50627271!
+test08AddressBeforeFirstCustomerShouldRiseError
+
+	self
+		should: [ CustomerImporter valueFrom: self inputStreamWithAddressBeforeFirstCustomer into: session ]
+		raise: Error
+		withExceptionDo: [ :anError |
+			self assert: CustomerImporter addressCanNotBeImportedWithoutCustomer equals: anError messageText ]! !
+!CustomerImporter methodsFor: 'as yet unclassified' stamp: 'WAL 6/26/2023 21:49:19' prior: 50627439!
+assertCustomerIsInstantiated
+
+	^ (newCustomer isNil) ifTrue: [ self error: CustomerImporter addressCanNotBeImportedWithoutCustomer ]! !
+
+!methodRemoval: CustomerImporter class #addressBeforeFirstCustomerErrorDescription stamp: 'WAL 6/26/2023 21:49:19'!
+addressBeforeFirstCustomerErrorDescription
+	
+	^'Address before first customer.'!
+!CustomerImporter class methodsFor: 'error descriptions' stamp: 'WAL 6/26/2023 21:49:38' prior: 50627470!
+addressCanNotBeImportedWithoutCustomer
+	
+	^'Address can not be imported without customer.'! !
+
+!testRun: #ImportTest #test01ImportValidData stamp: 'WAL 6/26/2023 21:49:42'!
+PASSED!
+
+!testRun: #ImportTest #test02ImportDataWithMissingFieldOnCustomerShouldRiseError stamp: 'WAL 6/26/2023 21:49:42'!
+PASSED!
+
+!testRun: #ImportTest #test03ImportDataWithMissingFieldOnAddressShouldRiseError stamp: 'WAL 6/26/2023 21:49:42'!
+PASSED!
+
+!testRun: #ImportTest #test04ImportDataWithExcessFieldsOnCustomerShouldRiseError stamp: 'WAL 6/26/2023 21:49:42'!
+PASSED!
+
+!testRun: #ImportTest #test05ImportDataWithExcessFieldsOnAddressShouldRiseError stamp: 'WAL 6/26/2023 21:49:42'!
+PASSED!
+
+!testRun: #ImportTest #test06ImportDataWithInvalidRecordTypeShouldRiseError stamp: 'WAL 6/26/2023 21:49:42'!
+PASSED!
+
+!testRun: #ImportTest #test07ImportDataWithInvalidRecordTypeLengthShouldRiseError stamp: 'WAL 6/26/2023 21:49:42'!
+PASSED!
+
+!testRun: #ImportTest #test08AddressBeforeFirstCustomerShouldRiseError stamp: 'WAL 6/26/2023 21:49:42'!
+PASSED!
+!ImportTest methodsFor: 'tests' stamp: 'WAL 6/26/2023 21:50:07'!
+test08AddressWithoutCustomerShouldRiseError
+
+	self
+		should: [ CustomerImporter valueFrom: self inputStreamWithAddressBeforeFirstCustomer into: session ]
+		raise: Error
+		withExceptionDo: [ :anError |
+			self assert: CustomerImporter addressCanNotBeImportedWithoutCustomer equals: anError messageText ]! !
+
+!methodRemoval: ImportTest #test08AddressBeforeFirstCustomerShouldRiseError stamp: 'WAL 6/26/2023 21:50:07'!
+test08AddressBeforeFirstCustomerShouldRiseError
+
+	self
+		should: [ CustomerImporter valueFrom: self inputStreamWithAddressBeforeFirstCustomer into: session ]
+		raise: Error
+		withExceptionDo: [ :anError |
+			self assert: CustomerImporter addressCanNotBeImportedWithoutCustomer equals: anError messageText ]!
+!ImportTest methodsFor: 'test data' stamp: 'WAL 6/26/2023 21:50:44' prior: 50624482!
+validImportData
+
+	^ ReadStream on:
+'C,Pepe,Sanchez,D,22333444
+A,San Martin,3322,Olivos,1636,BsAs
+
+A,Maipu,888,Florida,1122,Buenos Aires
+C,Juan,Perez,C,23-25666777-9
+A,Alem,1122,CABA,1001,CABA'! !
+!ImportTest methodsFor: 'test data' stamp: 'WAL 6/26/2023 21:52:29' prior: 50627564!
+validImportData
+
+	^ ReadStream on:
+'C,Pepe,Sanchez,D,22333444
+A,San Martin,3322,Olivos,1636,BsAs
+A,Maipu,888,Florida,1122,Buenos Aires
+C,Juan,Perez,C,23-25666777-9
+A,Alem,1122,CABA,1001,CABA'! !
+!ImportTest methodsFor: 'test data' stamp: 'WAL 6/26/2023 21:52:57' prior: 50626282!
+inputStreamWithExcessFieldsOnAddress
+
+	^ ReadStream on:
+'C,Pepe,Sanchez,D,22333444
+
+A,San Martin,3322,Olivos,1636,BsAs,San Martin
+A,Maipu,888,Florida,1122,Buenos Aires
+C,Juan,Perez,C,23-25666777-9
+A,Alem,1122,CABA,1001,CABA'! !
+
+!testRun: #ImportTest #test01ImportValidData stamp: 'WAL 6/26/2023 21:53:00'!
+PASSED!
+
+!testRun: #ImportTest #test02ImportDataWithMissingFieldOnCustomerShouldRiseError stamp: 'WAL 6/26/2023 21:53:00'!
+PASSED!
+
+!testRun: #ImportTest #test03ImportDataWithMissingFieldOnAddressShouldRiseError stamp: 'WAL 6/26/2023 21:53:00'!
+PASSED!
+
+!testRun: #ImportTest #test04ImportDataWithExcessFieldsOnCustomerShouldRiseError stamp: 'WAL 6/26/2023 21:53:00'!
+PASSED!
+
+!testRun: #ImportTest #test05ImportDataWithExcessFieldsOnAddressShouldRiseError stamp: 'WAL 6/26/2023 21:53:00'!
+FAILURE!
+
+!testRun: #ImportTest #test06ImportDataWithInvalidRecordTypeShouldRiseError stamp: 'WAL 6/26/2023 21:53:00'!
+PASSED!
+
+!testRun: #ImportTest #test07ImportDataWithInvalidRecordTypeLengthShouldRiseError stamp: 'WAL 6/26/2023 21:53:00'!
+PASSED!
+
+!testRun: #ImportTest #test08AddressWithoutCustomerShouldRiseError stamp: 'WAL 6/26/2023 21:53:00'!
+PASSED!
+
+!testRun: #ImportTest #test05ImportDataWithExcessFieldsOnAddressShouldRiseError stamp: 'WAL 6/26/2023 21:53:00'!
+FAILURE!
+!ImportTest methodsFor: 'test data' stamp: 'WAL 6/26/2023 21:53:17' prior: 50627582!
+inputStreamWithExcessFieldsOnAddress
+
+	^ ReadStream on:
+'C,Pepe,Sanchez,D,22333444
+A,San Martin,3322,Olivos,1636,BsAs,San Martin
+A,Maipu,888,Florida,1122,Buenos Aires
+C,Juan,Perez,C,23-25666777-9
+A,Alem,1122,CABA,1001,CABA'! !
+!ImportTest methodsFor: 'test data' stamp: 'WAL 6/26/2023 21:55:05' prior: 50626205!
+inputStreamWithExcessFieldsOnCustomer
+
+	^ ReadStream on:
+'C,Pepe,Sanchez,D,22333444,Pepe
+
+A,San Martin,3322,Olivos,1636,BsAs
+A,Maipu,888,Florida,1122,Buenos Aires
+C,Juan,Perez,C,23-25666777-9
+A,Alem,1122,CABA,1001,CABA'! !
+
+!testRun: #ImportTest #test01ImportValidData stamp: 'WAL 6/26/2023 21:55:09'!
+PASSED!
+
+!testRun: #ImportTest #test02ImportDataWithMissingFieldOnCustomerShouldRiseError stamp: 'WAL 6/26/2023 21:55:10'!
+PASSED!
+
+!testRun: #ImportTest #test03ImportDataWithMissingFieldOnAddressShouldRiseError stamp: 'WAL 6/26/2023 21:55:10'!
+PASSED!
+
+!testRun: #ImportTest #test04ImportDataWithExcessFieldsOnCustomerShouldRiseError stamp: 'WAL 6/26/2023 21:55:10'!
+PASSED!
+
+!testRun: #ImportTest #test05ImportDataWithExcessFieldsOnAddressShouldRiseError stamp: 'WAL 6/26/2023 21:55:10'!
+PASSED!
+
+!testRun: #ImportTest #test06ImportDataWithInvalidRecordTypeShouldRiseError stamp: 'WAL 6/26/2023 21:55:10'!
+PASSED!
+
+!testRun: #ImportTest #test07ImportDataWithInvalidRecordTypeLengthShouldRiseError stamp: 'WAL 6/26/2023 21:55:10'!
+PASSED!
+
+!testRun: #ImportTest #test08AddressWithoutCustomerShouldRiseError stamp: 'WAL 6/26/2023 21:55:10'!
+PASSED!
+!ImportTest methodsFor: 'test data' stamp: 'WAL 6/26/2023 21:55:26' prior: 50627635!
+inputStreamWithExcessFieldsOnCustomer
+
+	^ ReadStream on:
+'C,Pepe,Sanchez,D,22333444,Pepe
+A,San Martin,3322,Olivos,1636,BsAs
+A,Maipu,888,Florida,1122,Buenos Aires
+C,Juan,Perez,C,23-25666777-9
+A,Alem,1122,CABA,1001,CABA'! !
+!ImportTest methodsFor: 'test data' stamp: 'WAL 6/26/2023 21:55:29' prior: 50627625!
+inputStreamWithExcessFieldsOnAddress
+
+	^ ReadStream on:
+'C,Pepe,Sanchez,D,22333444
+
+A,San Martin,3322,Olivos,1636,BsAs,San Martin
+A,Maipu,888,Florida,1122,Buenos Aires
+C,Juan,Perez,C,23-25666777-9
+A,Alem,1122,CABA,1001,CABA'! !
+
+!testRun: #ImportTest #test01ImportValidData stamp: 'WAL 6/26/2023 21:55:34'!
+PASSED!
+
+!testRun: #ImportTest #test02ImportDataWithMissingFieldOnCustomerShouldRiseError stamp: 'WAL 6/26/2023 21:55:34'!
+PASSED!
+
+!testRun: #ImportTest #test03ImportDataWithMissingFieldOnAddressShouldRiseError stamp: 'WAL 6/26/2023 21:55:34'!
+PASSED!
+
+!testRun: #ImportTest #test04ImportDataWithExcessFieldsOnCustomerShouldRiseError stamp: 'WAL 6/26/2023 21:55:34'!
+PASSED!
+
+!testRun: #ImportTest #test05ImportDataWithExcessFieldsOnAddressShouldRiseError stamp: 'WAL 6/26/2023 21:55:35'!
+FAILURE!
+
+!testRun: #ImportTest #test06ImportDataWithInvalidRecordTypeShouldRiseError stamp: 'WAL 6/26/2023 21:55:35'!
+PASSED!
+
+!testRun: #ImportTest #test07ImportDataWithInvalidRecordTypeLengthShouldRiseError stamp: 'WAL 6/26/2023 21:55:35'!
+PASSED!
+
+!testRun: #ImportTest #test08AddressWithoutCustomerShouldRiseError stamp: 'WAL 6/26/2023 21:55:35'!
+PASSED!
+
+!testRun: #ImportTest #test05ImportDataWithExcessFieldsOnAddressShouldRiseError stamp: 'WAL 6/26/2023 21:55:35'!
+FAILURE!
+!ImportTest methodsFor: 'test data' stamp: 'WAL 6/26/2023 21:55:59' prior: 50627684!
+inputStreamWithExcessFieldsOnAddress
+
+	^ ReadStream on:
+'C,Pepe,Sanchez,D,22333444
+A,San Martin,3322,Olivos,1636,BsAs,San Martin
+A,Maipu,888,Florida,1122,Buenos Aires
+C,Juan,Perez,C,23-25666777-9
+A,Alem,1122,CABA,1001,CABA'! !
+!ImportTest methodsFor: 'test data' stamp: 'WAL 6/26/2023 21:56:25'!
+inputStreamWithEmptyLine
+
+	^ ReadStream on:
+'C,Pepe,Sanchez,D,22333444
+
+A,San Martin,3322,Olivos,1636,BsAs
+A,Maipu,888,Florida,1122,Buenos Aires
+C,Juan,Perez,C,23-25666777-9
+A,Alem,1122,CABA,1001,CABA'! !
+!ImportTest methodsFor: 'tests' stamp: 'WAL 6/26/2023 21:57:31'!
+test09ImportDataWithEmptyLineShouldRiseError
+
+	self
+		should: [ CustomerImporter valueFrom: self inputStreamWithEmptyLine into: session ]
+		raise: Error
+		withExceptionDo: [ :anError |
+			self assert: CustomerImporter inputStreamWithEmptyLineErrorDescription equals: anError messageText ]! !
+!CustomerImporter class methodsFor: 'error descriptions' stamp: 'WAL 6/26/2023 21:57:52'!
+addressCanNotBeImportedWithoutCustomerErrorDescription
+	
+	^'Address can not be imported without customer.'! !
+!CustomerImporter methodsFor: 'as yet unclassified' stamp: 'WAL 6/26/2023 21:57:52' prior: 50627489!
+assertCustomerIsInstantiated
+
+	^ (newCustomer isNil) ifTrue: [ self error: CustomerImporter addressCanNotBeImportedWithoutCustomerErrorDescription ]! !
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'WAL 6/26/2023 21:57:52' prior: 50627538!
+test08AddressWithoutCustomerShouldRiseError
+
+	self
+		should: [ CustomerImporter valueFrom: self inputStreamWithAddressBeforeFirstCustomer into: session ]
+		raise: Error
+		withExceptionDo: [ :anError |
+			self assert: CustomerImporter addressCanNotBeImportedWithoutCustomerErrorDescription equals: anError messageText ]! !
+
+!methodRemoval: CustomerImporter class #addressCanNotBeImportedWithoutCustomer stamp: 'WAL 6/26/2023 21:57:52'!
+addressCanNotBeImportedWithoutCustomer
+	
+	^'Address can not be imported without customer.'!
+!CustomerImporter class methodsFor: 'error descriptions' stamp: 'WAL 6/26/2023 21:58:31'!
+inputStreamWithEmptyLineErrorDescription
+	
+	^'Input stream has empty line.'! !
+
+!testRun: #ImportTest #test01ImportValidData stamp: 'WAL 6/26/2023 21:58:33'!
+PASSED!
+
+!testRun: #ImportTest #test02ImportDataWithMissingFieldOnCustomerShouldRiseError stamp: 'WAL 6/26/2023 21:58:33'!
+PASSED!
+
+!testRun: #ImportTest #test03ImportDataWithMissingFieldOnAddressShouldRiseError stamp: 'WAL 6/26/2023 21:58:33'!
+PASSED!
+
+!testRun: #ImportTest #test04ImportDataWithExcessFieldsOnCustomerShouldRiseError stamp: 'WAL 6/26/2023 21:58:33'!
+PASSED!
+
+!testRun: #ImportTest #test05ImportDataWithExcessFieldsOnAddressShouldRiseError stamp: 'WAL 6/26/2023 21:58:33'!
+PASSED!
+
+!testRun: #ImportTest #test06ImportDataWithInvalidRecordTypeShouldRiseError stamp: 'WAL 6/26/2023 21:58:33'!
+PASSED!
+
+!testRun: #ImportTest #test07ImportDataWithInvalidRecordTypeLengthShouldRiseError stamp: 'WAL 6/26/2023 21:58:33'!
+PASSED!
+
+!testRun: #ImportTest #test08AddressWithoutCustomerShouldRiseError stamp: 'WAL 6/26/2023 21:58:33'!
+PASSED!
+
+!testRun: #ImportTest #test09ImportDataWithEmptyLineShouldRiseError stamp: 'WAL 6/26/2023 21:58:34'!
+FAILURE!
+
+!testRun: #ImportTest #test09ImportDataWithEmptyLineShouldRiseError stamp: 'WAL 6/26/2023 21:58:34'!
+FAILURE!
+!CustomerImporter methodsFor: 'evaluating' stamp: 'WAL 6/26/2023 21:59:59' prior: 50627067!
+createRecord
+
+	record := self findTokensInLine.
+	
+	record ifEmpty: (self error: CustomerImporter inputStreamWithEmptyLineErrorDescription)! !
+
+!testRun: #ImportTest #test01ImportValidData stamp: 'WAL 6/26/2023 22:00:00'!
+ERROR!
+
+!testRun: #ImportTest #test02ImportDataWithMissingFieldOnCustomerShouldRiseError stamp: 'WAL 6/26/2023 22:00:00'!
+FAILURE!
+
+!testRun: #ImportTest #test03ImportDataWithMissingFieldOnAddressShouldRiseError stamp: 'WAL 6/26/2023 22:00:00'!
+FAILURE!
+
+!testRun: #ImportTest #test04ImportDataWithExcessFieldsOnCustomerShouldRiseError stamp: 'WAL 6/26/2023 22:00:00'!
+FAILURE!
+
+!testRun: #ImportTest #test05ImportDataWithExcessFieldsOnAddressShouldRiseError stamp: 'WAL 6/26/2023 22:00:00'!
+FAILURE!
+
+!testRun: #ImportTest #test06ImportDataWithInvalidRecordTypeShouldRiseError stamp: 'WAL 6/26/2023 22:00:00'!
+FAILURE!
+
+!testRun: #ImportTest #test07ImportDataWithInvalidRecordTypeLengthShouldRiseError stamp: 'WAL 6/26/2023 22:00:00'!
+FAILURE!
+
+!testRun: #ImportTest #test08AddressWithoutCustomerShouldRiseError stamp: 'WAL 6/26/2023 22:00:00'!
+FAILURE!
+
+!testRun: #ImportTest #test09ImportDataWithEmptyLineShouldRiseError stamp: 'WAL 6/26/2023 22:00:00'!
+PASSED!
+!CustomerImporter methodsFor: 'evaluating' stamp: 'WAL 6/26/2023 22:00:21' prior: 50627835!
+createRecord
+
+	record := self findTokensInLine.
+	
+	(record isEmpty) ifTrue: (self error: CustomerImporter inputStreamWithEmptyLineErrorDescription)! !
+
+!testRun: #ImportTest #test01ImportValidData stamp: 'WAL 6/26/2023 22:00:22'!
+ERROR!
+
+!testRun: #ImportTest #test02ImportDataWithMissingFieldOnCustomerShouldRiseError stamp: 'WAL 6/26/2023 22:00:22'!
+FAILURE!
+
+!testRun: #ImportTest #test03ImportDataWithMissingFieldOnAddressShouldRiseError stamp: 'WAL 6/26/2023 22:00:22'!
+FAILURE!
+
+!testRun: #ImportTest #test04ImportDataWithExcessFieldsOnCustomerShouldRiseError stamp: 'WAL 6/26/2023 22:00:22'!
+FAILURE!
+
+!testRun: #ImportTest #test05ImportDataWithExcessFieldsOnAddressShouldRiseError stamp: 'WAL 6/26/2023 22:00:22'!
+FAILURE!
+
+!testRun: #ImportTest #test06ImportDataWithInvalidRecordTypeShouldRiseError stamp: 'WAL 6/26/2023 22:00:22'!
+FAILURE!
+
+!testRun: #ImportTest #test07ImportDataWithInvalidRecordTypeLengthShouldRiseError stamp: 'WAL 6/26/2023 22:00:22'!
+FAILURE!
+
+!testRun: #ImportTest #test08AddressWithoutCustomerShouldRiseError stamp: 'WAL 6/26/2023 22:00:22'!
+FAILURE!
+
+!testRun: #ImportTest #test09ImportDataWithEmptyLineShouldRiseError stamp: 'WAL 6/26/2023 22:00:22'!
+PASSED!

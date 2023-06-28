@@ -1,0 +1,5222 @@
+
+
+----SNAPSHOT----(13 June 2023 01:08:53) CuisUniversity-5832.image priorSource: 9614460!
+
+----STARTUP---- (14 June 2023 19:03:47) as /home/a/s/sw/smalltalk5/CuisUniversity-5832.image!
+
+
+!classRemoval: #TestObjectsFactory stamp: 'WAL 6/14/2023 19:04:18'!
+Object subclass: #TestObjectsFactory
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros'!
+
+!classRemoval: #MerchantProcessorSimulator stamp: 'WAL 6/14/2023 19:04:18'!
+Object subclass: #MerchantProcessorSimulator
+	instanceVariableNames: 'stolenCreditCards activeCreditCards'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros'!
+
+!classRemoval: #CreditCard stamp: 'WAL 6/14/2023 19:04:18'!
+Object subclass: #CreditCard
+	instanceVariableNames: 'number name expiration'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros'!
+
+!classRemoval: #Cashier stamp: 'WAL 6/14/2023 19:04:18'!
+Object subclass: #Cashier
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros'!
+
+!classRemoval: #Cart stamp: 'WAL 6/14/2023 19:04:19'!
+Object subclass: #Cart
+	instanceVariableNames: 'priceList items'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros'!
+
+!classRemoval: #CreditCardTest stamp: 'WAL 6/14/2023 19:04:19'!
+TestCase subclass: #CreditCardTest
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros'!
+
+!classRemoval: #CashierTest stamp: 'WAL 6/14/2023 19:04:19'!
+TestCase subclass: #CashierTest
+	instanceVariableNames: 'testingObjects cart'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros'!
+
+!classRemoval: #CartTest stamp: 'WAL 6/14/2023 19:04:19'!
+TestCase subclass: #CartTest
+	instanceVariableNames: 'testSupport'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros'!
+
+----STARTUP---- (17 June 2023 14:14:03) as /home/a/s/sw/smalltalk5/CuisUniversity-5832.image!
+
+
+!classRemoval: #TestObjectsFactory stamp: 'WAL 6/17/2023 14:14:21'!
+Object subclass: #TestObjectsFactory
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros'!
+
+!classRemoval: #MerchantProcessorSimulator stamp: 'WAL 6/17/2023 14:14:22'!
+Object subclass: #MerchantProcessorSimulator
+	instanceVariableNames: 'stolenCreditCards activeCreditCards'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros'!
+
+!classRemoval: #CreditCard stamp: 'WAL 6/17/2023 14:14:22'!
+Object subclass: #CreditCard
+	instanceVariableNames: 'number name expiration'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros'!
+
+!classRemoval: #Cashier stamp: 'WAL 6/17/2023 14:14:22'!
+Object subclass: #Cashier
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros'!
+
+!classRemoval: #Cart stamp: 'WAL 6/17/2023 14:14:22'!
+Object subclass: #Cart
+	instanceVariableNames: 'priceList items'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros'!
+
+!classRemoval: #CreditCardTest stamp: 'WAL 6/17/2023 14:14:22'!
+TestCase subclass: #CreditCardTest
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros'!
+
+!classRemoval: #CashierTest stamp: 'WAL 6/17/2023 14:14:23'!
+TestCase subclass: #CashierTest
+	instanceVariableNames: 'testingObjects cart'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros'!
+
+!classRemoval: #CartTest stamp: 'WAL 6/17/2023 14:14:23'!
+TestCase subclass: #CartTest
+	instanceVariableNames: 'testSupport'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros'!
+
+----End fileIn of /home/a/s/e/c/is1/tp/09_TusLibros/iteracion4/TusLibrosREST Ejercicio it4.st----!
+
+----End fileIn of /home/a/s/e/c/is1/tp/09_TusLibros/iteracion4/TusLibros-Tests Ejercicio it4.st----!
+
+----End fileIn of /home/a/s/sw/smalltalk5/Packages/System/Collections-CompactArrays.pck.st----!
+
+----End fileIn of /home/a/s/sw/smalltalk5/Packages/Features/Compression.pck.st----!
+
+----End fileIn of /home/a/s/sw/smalltalk5/Packages/Features/Sound.pck.st----!
+
+----End fileIn of /home/a/s/sw/smalltalk5/Packages/Features/Cryptography-DigitalSignatures.pck.st----!
+
+----End fileIn of /home/a/s/sw/smalltalk5/Packages/Features/Identities-UUID.pck.st----!
+
+----End fileIn of /home/a/s/sw/smalltalk5/Packages/System/Network-Kernel.pck.st----!
+
+----End fileIn of /home/a/s/e/c/is1/tp/09_TusLibros/iteracion4/WebClient.pck.st----!
+
+----End fileIn of /home/a/s/e/c/is1/tp_rep_grupo/2023-1c/09-TusLibros/iteracion4/TusLibros.st----!
+
+Object subclass: #NameOfSubclass
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros-REST'!
+
+!classDefinition: #NameOfSubclass category: 'TusLibros-REST' stamp: 'WAL 6/17/2023 14:25:33'!
+Object subclass: #NameOfSubclass
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros-REST'!
+
+!testRun: #TusLibrosSystemFacadeTest #test21StorePerformanceShouldNotTakeTooLong stamp: 'WAL 6/17/2023 14:26:14'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test01CanCreateCartWithValidUserAndPassword stamp: 'WAL 6/17/2023 14:26:14'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test02CanNotCreateCartWithInvalidUser stamp: 'WAL 6/17/2023 14:26:14'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test03CanNotCreateCartWithInvalidPassword stamp: 'WAL 6/17/2023 14:26:14'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test04CanAddItemsToACreatedCart stamp: 'WAL 6/17/2023 14:26:14'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test05CanNotAddItemToNotCreatedCart stamp: 'WAL 6/17/2023 14:26:14'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test06CanNotAddItemNotSellByTheStore stamp: 'WAL 6/17/2023 14:26:14'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test08CanNotListCartOfInvalidCartId stamp: 'WAL 6/17/2023 14:26:14'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test09ListCartReturnsTheRightNumberOfItems stamp: 'WAL 6/17/2023 14:26:14'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test10CheckOutReturnsTransactionIdAndImpactsCustomerPurchases stamp: 'WAL 6/17/2023 14:26:14'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test10_1_CanNotCheckoutAnAlreadyCheckedOutCart stamp: 'WAL 6/17/2023 14:26:14'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test11CanNotCheckoutANotCreatedCart stamp: 'WAL 6/17/2023 14:26:14'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test12CanNotCheckoutAnEmptyCart stamp: 'WAL 6/17/2023 14:26:14'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test13CanNotCheckoutWithAnExpiredCreditCard stamp: 'WAL 6/17/2023 14:26:14'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test14ListPurchasesIncludesBoughtItems stamp: 'WAL 6/17/2023 14:26:14'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test15CanNotListPurchasesOfInvalidCustomer stamp: 'WAL 6/17/2023 14:26:14'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test16CanNotListPurchasesOfValidCustomerWithInvalidPassword stamp: 'WAL 6/17/2023 14:26:14'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test17CanNotAddToCartWhenSessionIsExpired stamp: 'WAL 6/17/2023 14:26:14'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test18CanNotListCartWhenSessionIsExpired stamp: 'WAL 6/17/2023 14:26:14'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test19CanNotCheckOutCartWhenSessionIsExpired stamp: 'WAL 6/17/2023 14:26:14'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test20BookPerformanceShouldNotTakeTooLong stamp: 'WAL 6/17/2023 14:26:15'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test21StorePerformanceShouldNotTakeTooLong stamp: 'WAL 6/17/2023 14:26:16'!
+PASSED!
+
+Object subclass: #ThreadProcessor
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros-ThreadProcessor'!
+
+!classDefinition: #ThreadProcessor category: 'TusLibros-ThreadProcessor' stamp: 'WAL 6/17/2023 14:29:05'!
+Object subclass: #ThreadProcessor
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros-ThreadProcessor'!
+!ThreadProcessor methodsFor: 'no messages' stamp: 'WAL 6/17/2023 14:30:51'!
+processThreads: aCollectionOfBlocks
+
+	| semaphores |
+		
+	semaphores := OrderedCollection new.
+	
+	aCollectionOfBlocks do: [ :aBlock | 
+			| semaphore |
+			semaphore := Semaphore new.
+			semaphores add: semaphore. 			
+			[ aBlock value. 
+			semaphore signal. ] fork].
+	
+	semaphores do: [ :semaphore | semaphore wait ].! !
+
+!methodRemoval: TusLibrosSystemFacade #processThreads: stamp: 'WAL 6/17/2023 14:31:46'!
+processThreads: aCollectionOfBlocks
+
+	| semaphores |
+		
+	semaphores := OrderedCollection new.
+	
+	aCollectionOfBlocks do: [ :aBlock | 
+			| semaphore |
+			semaphore := Semaphore new.
+			semaphores add: semaphore. 			
+			[ aBlock value. 
+			semaphore signal. ] fork].
+	
+	semaphores do: [ :semaphore | semaphore wait ].
+	
+	
+	
+	
+
+!
+!TusLibrosSystemFacade methodsFor: 'private' stamp: 'WAL 6/17/2023 14:33:49' prior: 50671609!
+storePerformance
+
+	| totalMoney totalSales performance salesSemaphore |
+	
+	performance := Dictionary new.
+	"
+	salesSemaphore := Semaphore new.
+	moneySemaphore := Semaphore new.
+	
+	[ totalSales := self totalSales. salesSemaphore signal. ] fork.
+	[ totalMoney := self totalMoneyRaised. moneySemaphore signal. ] fork.
+	
+	salesSemaphore wait.
+	moneySemaphore wait. 
+	" 
+	ThreadProcessor new processThreads: {
+	[ totalSales := self totalSales ].
+	[ totalMoney := self totalMoneyRaised ] }.
+		
+	performance at: 'quantity' put: totalSales.
+	performance at: 'total' put: totalMoney.
+	performance at: 'summary' put: 'The store selled a total of ',totalSales asString, ' books and raised a total amount of money equal to: ', totalMoney asString.
+	
+	^performance
+	
+
+! !
+
+!testRun: #TusLibrosSystemFacadeTest #test21StorePerformanceShouldNotTakeTooLong stamp: 'WAL 6/17/2023 14:34:19'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test01CanCreateCartWithValidUserAndPassword stamp: 'WAL 6/17/2023 14:34:19'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test02CanNotCreateCartWithInvalidUser stamp: 'WAL 6/17/2023 14:34:19'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test03CanNotCreateCartWithInvalidPassword stamp: 'WAL 6/17/2023 14:34:19'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test04CanAddItemsToACreatedCart stamp: 'WAL 6/17/2023 14:34:19'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test05CanNotAddItemToNotCreatedCart stamp: 'WAL 6/17/2023 14:34:19'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test06CanNotAddItemNotSellByTheStore stamp: 'WAL 6/17/2023 14:34:19'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test08CanNotListCartOfInvalidCartId stamp: 'WAL 6/17/2023 14:34:19'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test09ListCartReturnsTheRightNumberOfItems stamp: 'WAL 6/17/2023 14:34:19'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test10CheckOutReturnsTransactionIdAndImpactsCustomerPurchases stamp: 'WAL 6/17/2023 14:34:19'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test10_1_CanNotCheckoutAnAlreadyCheckedOutCart stamp: 'WAL 6/17/2023 14:34:19'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test11CanNotCheckoutANotCreatedCart stamp: 'WAL 6/17/2023 14:34:19'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test12CanNotCheckoutAnEmptyCart stamp: 'WAL 6/17/2023 14:34:19'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test13CanNotCheckoutWithAnExpiredCreditCard stamp: 'WAL 6/17/2023 14:34:19'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test14ListPurchasesIncludesBoughtItems stamp: 'WAL 6/17/2023 14:34:19'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test15CanNotListPurchasesOfInvalidCustomer stamp: 'WAL 6/17/2023 14:34:19'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test16CanNotListPurchasesOfValidCustomerWithInvalidPassword stamp: 'WAL 6/17/2023 14:34:19'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test17CanNotAddToCartWhenSessionIsExpired stamp: 'WAL 6/17/2023 14:34:19'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test18CanNotListCartWhenSessionIsExpired stamp: 'WAL 6/17/2023 14:34:19'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test19CanNotCheckOutCartWhenSessionIsExpired stamp: 'WAL 6/17/2023 14:34:19'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test20BookPerformanceShouldNotTakeTooLong stamp: 'WAL 6/17/2023 14:34:20'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test21StorePerformanceShouldNotTakeTooLong stamp: 'WAL 6/17/2023 14:34:21'!
+PASSED!
+!TusLibrosSystemFacade methodsFor: 'private' stamp: 'WAL 6/17/2023 14:35:31' prior: 50673058!
+storePerformance
+
+	| totalMoney totalSales performance |
+	
+	performance := Dictionary new.
+
+	ThreadProcessor new processThreads: {
+		[ totalSales := self totalSales ].
+		[ totalMoney := self totalMoneyRaised ] }.
+		
+	performance at: 'quantity' put: totalSales.
+	performance at: 'total' put: totalMoney.
+	performance at: 'summary' put: 'The store selled a total of ', totalSales asString, ' books and raised a total amount of money equal to: ', totalMoney asString.
+	
+	^performance
+	
+
+! !
+!TusLibrosSystemFacade methodsFor: 'private' stamp: 'WAL 6/17/2023 14:36:55' prior: 50671547!
+bookPerformance: anItem
+
+	| bookPerformance totalMoney totalSales |
+
+	bookPerformance := Dictionary new.
+	
+	"salesSemaphore := Semaphore new.
+	moneySemaphore := Semaphore new.
+			
+	[ totalSales := self totalSalesOf: anItem. salesSemaphore signal ] fork.
+	[ totalMoney := self totalMoneyRaisedBy: anItem. moneySemaphore signal. ] fork.
+		
+	salesSemaphore wait.
+	moneySemaphore wait."
+	
+	ThreadProcessor new processThreads: {
+		[ totalSales := self totalSalesOf: anItem ].
+		[ totalMoney := self totalMoneyRaisedBy: anItem ] }.
+	
+	bookPerformance at: 'quantity' put: totalSales.
+	bookPerformance at: 'total' put: totalMoney.
+	bookPerformance at: 'summary' put: anItem,' was selled ',totalSales asString, ' times and raised a total amount of money equal to: ', totalMoney asString.
+	
+	^bookPerformance
+	
+
+! !
+
+!testRun: #TusLibrosSystemFacadeTest #test01CanCreateCartWithValidUserAndPassword stamp: 'WAL 6/17/2023 14:37:08'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test02CanNotCreateCartWithInvalidUser stamp: 'WAL 6/17/2023 14:37:08'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test03CanNotCreateCartWithInvalidPassword stamp: 'WAL 6/17/2023 14:37:08'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test04CanAddItemsToACreatedCart stamp: 'WAL 6/17/2023 14:37:08'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test05CanNotAddItemToNotCreatedCart stamp: 'WAL 6/17/2023 14:37:08'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test06CanNotAddItemNotSellByTheStore stamp: 'WAL 6/17/2023 14:37:08'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test08CanNotListCartOfInvalidCartId stamp: 'WAL 6/17/2023 14:37:08'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test09ListCartReturnsTheRightNumberOfItems stamp: 'WAL 6/17/2023 14:37:08'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test10CheckOutReturnsTransactionIdAndImpactsCustomerPurchases stamp: 'WAL 6/17/2023 14:37:08'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test10_1_CanNotCheckoutAnAlreadyCheckedOutCart stamp: 'WAL 6/17/2023 14:37:08'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test11CanNotCheckoutANotCreatedCart stamp: 'WAL 6/17/2023 14:37:08'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test12CanNotCheckoutAnEmptyCart stamp: 'WAL 6/17/2023 14:37:08'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test13CanNotCheckoutWithAnExpiredCreditCard stamp: 'WAL 6/17/2023 14:37:08'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test14ListPurchasesIncludesBoughtItems stamp: 'WAL 6/17/2023 14:37:08'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test15CanNotListPurchasesOfInvalidCustomer stamp: 'WAL 6/17/2023 14:37:08'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test16CanNotListPurchasesOfValidCustomerWithInvalidPassword stamp: 'WAL 6/17/2023 14:37:08'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test17CanNotAddToCartWhenSessionIsExpired stamp: 'WAL 6/17/2023 14:37:08'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test18CanNotListCartWhenSessionIsExpired stamp: 'WAL 6/17/2023 14:37:08'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test19CanNotCheckOutCartWhenSessionIsExpired stamp: 'WAL 6/17/2023 14:37:08'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test20BookPerformanceShouldNotTakeTooLong stamp: 'WAL 6/17/2023 14:37:09'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test21StorePerformanceShouldNotTakeTooLong stamp: 'WAL 6/17/2023 14:37:10'!
+PASSED!
+!TusLibrosSystemFacade methodsFor: 'private' stamp: 'WAL 6/17/2023 14:37:27' prior: 50673188!
+bookPerformance: anItem
+
+	| bookPerformance totalMoney totalSales |
+
+	bookPerformance := Dictionary new.
+	
+	ThreadProcessor new processThreads: {
+		[ totalSales := self totalSalesOf: anItem ].
+		[ totalMoney := self totalMoneyRaisedBy: anItem ] }.
+	
+	bookPerformance at: 'quantity' put: totalSales.
+	bookPerformance at: 'total' put: totalMoney.
+	bookPerformance at: 'summary' put: anItem,' was selled ',totalSales asString, ' times and raised a total amount of money equal to: ', totalMoney asString.
+	
+	^bookPerformance
+	
+
+! !
+
+!testRun: #TusLibrosSystemFacadeTest #test01CanCreateCartWithValidUserAndPassword stamp: 'WAL 6/17/2023 14:37:30'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test02CanNotCreateCartWithInvalidUser stamp: 'WAL 6/17/2023 14:37:30'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test03CanNotCreateCartWithInvalidPassword stamp: 'WAL 6/17/2023 14:37:30'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test04CanAddItemsToACreatedCart stamp: 'WAL 6/17/2023 14:37:30'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test05CanNotAddItemToNotCreatedCart stamp: 'WAL 6/17/2023 14:37:30'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test06CanNotAddItemNotSellByTheStore stamp: 'WAL 6/17/2023 14:37:30'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test08CanNotListCartOfInvalidCartId stamp: 'WAL 6/17/2023 14:37:30'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test09ListCartReturnsTheRightNumberOfItems stamp: 'WAL 6/17/2023 14:37:30'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test10CheckOutReturnsTransactionIdAndImpactsCustomerPurchases stamp: 'WAL 6/17/2023 14:37:30'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test10_1_CanNotCheckoutAnAlreadyCheckedOutCart stamp: 'WAL 6/17/2023 14:37:30'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test11CanNotCheckoutANotCreatedCart stamp: 'WAL 6/17/2023 14:37:30'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test12CanNotCheckoutAnEmptyCart stamp: 'WAL 6/17/2023 14:37:30'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test13CanNotCheckoutWithAnExpiredCreditCard stamp: 'WAL 6/17/2023 14:37:30'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test14ListPurchasesIncludesBoughtItems stamp: 'WAL 6/17/2023 14:37:30'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test15CanNotListPurchasesOfInvalidCustomer stamp: 'WAL 6/17/2023 14:37:30'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test16CanNotListPurchasesOfValidCustomerWithInvalidPassword stamp: 'WAL 6/17/2023 14:37:30'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test17CanNotAddToCartWhenSessionIsExpired stamp: 'WAL 6/17/2023 14:37:30'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test18CanNotListCartWhenSessionIsExpired stamp: 'WAL 6/17/2023 14:37:30'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test19CanNotCheckOutCartWhenSessionIsExpired stamp: 'WAL 6/17/2023 14:37:30'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test20BookPerformanceShouldNotTakeTooLong stamp: 'WAL 6/17/2023 14:37:31'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test21StorePerformanceShouldNotTakeTooLong stamp: 'WAL 6/17/2023 14:37:32'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test20BookPerformanceShouldNotTakeTooLong stamp: 'WAL 6/17/2023 14:51:22'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test01CanCreateCartWithValidUserAndPassword stamp: 'WAL 6/17/2023 14:51:22'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test02CanNotCreateCartWithInvalidUser stamp: 'WAL 6/17/2023 14:51:22'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test03CanNotCreateCartWithInvalidPassword stamp: 'WAL 6/17/2023 14:51:22'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test04CanAddItemsToACreatedCart stamp: 'WAL 6/17/2023 14:51:22'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test05CanNotAddItemToNotCreatedCart stamp: 'WAL 6/17/2023 14:51:22'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test06CanNotAddItemNotSellByTheStore stamp: 'WAL 6/17/2023 14:51:22'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test08CanNotListCartOfInvalidCartId stamp: 'WAL 6/17/2023 14:51:22'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test09ListCartReturnsTheRightNumberOfItems stamp: 'WAL 6/17/2023 14:51:22'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test10CheckOutReturnsTransactionIdAndImpactsCustomerPurchases stamp: 'WAL 6/17/2023 14:51:22'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test10_1_CanNotCheckoutAnAlreadyCheckedOutCart stamp: 'WAL 6/17/2023 14:51:22'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test11CanNotCheckoutANotCreatedCart stamp: 'WAL 6/17/2023 14:51:22'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test12CanNotCheckoutAnEmptyCart stamp: 'WAL 6/17/2023 14:51:22'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test13CanNotCheckoutWithAnExpiredCreditCard stamp: 'WAL 6/17/2023 14:51:22'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test14ListPurchasesIncludesBoughtItems stamp: 'WAL 6/17/2023 14:51:22'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test15CanNotListPurchasesOfInvalidCustomer stamp: 'WAL 6/17/2023 14:51:22'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test16CanNotListPurchasesOfValidCustomerWithInvalidPassword stamp: 'WAL 6/17/2023 14:51:22'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test17CanNotAddToCartWhenSessionIsExpired stamp: 'WAL 6/17/2023 14:51:22'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test18CanNotListCartWhenSessionIsExpired stamp: 'WAL 6/17/2023 14:51:22'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test19CanNotCheckOutCartWhenSessionIsExpired stamp: 'WAL 6/17/2023 14:51:22'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test20BookPerformanceShouldNotTakeTooLong stamp: 'WAL 6/17/2023 14:51:23'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test21StorePerformanceShouldNotTakeTooLong stamp: 'WAL 6/17/2023 14:51:24'!
+PASSED!
+!ThreadProcessor methodsFor: 'operations' stamp: 'WAL 6/17/2023 14:53:00' prior: 50673032!
+processThreads: aCollectionOfBlocks
+
+	| semaphores |
+		
+	semaphores := OrderedCollection new.
+	
+	aCollectionOfBlocks do: [ :aBlock | 
+			| semaphore |
+			semaphore := Semaphore new.
+			semaphores add: semaphore. 			
+			
+			[ aBlock value. 
+			semaphore signal. ] fork ].
+	
+	semaphores do: [ :semaphore | semaphore wait ].! !
+
+TusLibrosServerRestInterface installForDefaultSystem!
+
+TusLibrosClientTestWindow open!
+!TusLibrosClientTestWindowModel methodsFor: 'buttonSelectors' stamp: 'WAL 6/17/2023 15:40:57' prior: 50632583!
+createCart
+
+	| newCartId semaphore |
+	
+	semaphore := Semaphore new.
+	
+	[ newCartId := restInterface createCartFor: 'hernan' password: 'smalltalk'. semaphore signal ] fork.
+	
+	semaphore wait.
+	
+	cartIds add: newCartId.
+	self triggerEvent: #newCartIdArrived! !
+!TusLibrosClientTestWindowModel methodsFor: 'buttonSelectors' stamp: 'WAL 6/17/2023 15:43:23' prior: 50632592!
+listCart
+
+	| cartId  |
+	
+	(self isCartIdSelected) ifTrue:[
+		
+		| semaphore |
+		
+		cartId := self selectedCartId.
+		
+		semaphore := Semaphore new.
+		
+		[ currentSelectedCartContent := restInterface listCart: cartId. semaphore signal ] fork.
+		
+		semaphore wait.
+		
+		self triggerEvent: #newCurrentSelectedCartContentArrived with: cartId ].! !
+!TusLibrosClientTestWindowModel methodsFor: 'buttonSelectors' stamp: 'WAL 6/17/2023 15:45:00' prior: 50673510!
+listCart
+
+	| cartId  |
+	
+	(self isCartIdSelected) ifTrue:[
+		
+		| semaphore |
+		
+		semaphore := Semaphore new.
+		
+		[ cartId := self selectedCartId. currentSelectedCartContent := restInterface listCart: cartId. semaphore signal ] fork.
+		
+		semaphore wait.
+		
+		self triggerEvent: #newCurrentSelectedCartContentArrived with: cartId ].! !
+
+!classRemoval: #NameOfSubclass stamp: 'WAL 6/17/2023 15:47:03'!
+Object subclass: #NameOfSubclass
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros-REST'!
+!TusLibrosServerRestInterface class methodsFor: 'installation' stamp: 'WAL 6/17/2023 15:53:27' prior: 50632837!
+installForDefaultSystem
+
+	"self installForDefaultSystem"
+	
+	| server port interface |
+	
+	interface := self on: self defaultSystem.
+	
+	"Esto es para poder acceder a la interface de manera global - Hernan"
+	Smalltalk at: #CurrentTusLibrosRestInterface put: interface.
+	
+	port := 9999.
+	server := WebServer reset default.
+	server listenOn: port.
+	server 
+		addService: '/createCart' 
+		action: [:request | interface createCart: request ].
+	server 
+		addService: '/addToCart' 
+		action: [:request | interface addToCart: request ].
+	server
+		addService: '/listCart' 
+		action: [:request | self halt. interface listCart: request ].
+	server
+		addService: '/checkOutCart' 
+		action: [:request | interface checkOutCart: request ].
+	server
+		addService: '/listPurchases' 
+		action: [:request | interface listPurchases: request ].
+	server useDebugErrorHandler ! !
+!TusLibrosServerRestInterface methodsFor: 'rest interface' stamp: 'WAL 6/17/2023 15:54:34' prior: 50632748!
+listCart: aRequest
+
+	| cartId |
+
+	self halt. 
+
+	(Delay forSeconds: 10) wait.
+	
+	self withFieldsOf: aRequest do: [ :requestFields |
+		cartId := self cartIdFrom: requestFields ].
+	
+	self 
+		answer: [(systemFacade listCartIdentifiedAs: cartId) asArray]
+		to: aRequest 
+! !
+!TusLibrosServerRestInterface class methodsFor: 'installation' stamp: 'WAL 6/17/2023 16:00:05' prior: 50673546!
+installForDefaultSystem
+
+	"self installForDefaultSystem"
+	
+	| server port interface |
+	
+	interface := self on: self defaultSystem.
+	
+	"Esto es para poder acceder a la interface de manera global - Hernan"
+	Smalltalk at: #CurrentTusLibrosRestInterface put: interface.
+	
+	port := 9999.
+	server := WebServer reset default.
+	server listenOn: port.
+	server 
+		addService: '/createCart' 
+		action: [:request | interface createCart: request ].
+	server 
+		addService: '/addToCart' 
+		action: [:request | interface addToCart: request ].
+	server
+		addService: '/listCart' 
+		action: [:request | [ interface listCart: request ] fork ].
+	server
+		addService: '/checkOutCart' 
+		action: [:request | interface checkOutCart: request ].
+	server
+		addService: '/listPurchases' 
+		action: [:request | interface listPurchases: request ].
+	server useDebugErrorHandler ! !
+
+WebServer reset!
+
+TusLibrosServerRestInterface installForDefaultSystem!
+!TusLibrosServerRestInterface methodsFor: 'rest interface' stamp: 'WAL 6/17/2023 16:02:09' prior: 50673577!
+listCart: aRequest
+
+	| cartId |
+
+	(Delay forSeconds: 10) wait.
+	
+	self withFieldsOf: aRequest do: [ :requestFields |
+		cartId := self cartIdFrom: requestFields ].
+	
+	self 
+		answer: [(systemFacade listCartIdentifiedAs: cartId) asArray]
+		to: aRequest 
+! !
+!TusLibrosClientTestWindowModel methodsFor: 'buttonSelectors' stamp: 'WAL 6/17/2023 16:03:55' prior: 50673525!
+listCart
+
+	| cartId  |
+	
+	(self isCartIdSelected) ifTrue:[
+		
+		"| semaphore |
+		
+		semaphore := Semaphore new."
+		
+		[ cartId := self selectedCartId. currentSelectedCartContent := restInterface listCart: cartId. "semaphore signal" ] fork.
+		
+		"semaphore wait."
+		
+		self triggerEvent: #newCurrentSelectedCartContentArrived with: cartId ].! !
+!TusLibrosClientTestWindowModel methodsFor: 'buttonSelectors' stamp: 'WAL 6/17/2023 16:14:10' prior: 50673634!
+listCart
+
+	| cartId  |
+	
+	(self isCartIdSelected) ifTrue: [
+		
+		[ cartId := self selectedCartId. currentSelectedCartContent := restInterface listCart: cartId.
+
+		self triggerEvent: #newCurrentSelectedCartContentArrived with: cartId ]. ] fork.! !
+!TusLibrosClientTestWindowModel methodsFor: 'buttonSelectors' stamp: 'WAL 6/17/2023 16:14:15' prior: 50673649!
+listCart
+
+	| cartId  |
+	
+	(self isCartIdSelected) ifTrue: [
+		
+		[ cartId := self selectedCartId. currentSelectedCartContent := restInterface listCart: cartId.
+
+		self triggerEvent: #newCurrentSelectedCartContentArrived with: cartId ].
+	
+	] fork.! !
+!TusLibrosClientTestWindowModel methodsFor: 'buttonSelectors' stamp: 'WAL 6/17/2023 16:17:23' prior: 50673661!
+listCart
+
+	| cartId  |
+	
+	(self isCartIdSelected) ifTrue: [
+		
+		[ cartId := self selectedCartId. currentSelectedCartContent := restInterface listCart: cartId.
+
+		self halt.
+
+		self triggerEvent: #newCurrentSelectedCartContentArrived with: cartId ].
+	
+	] fork.! !
+!TusLibrosClientTestWindowModel methodsFor: 'buttonSelectors' stamp: 'WAL 6/17/2023 16:18:18' prior: 50673673!
+listCart
+
+	| cartId  |
+	
+	(self isCartIdSelected) ifTrue: [
+		
+		[ 
+		self halt.
+			
+		cartId := self selectedCartId. currentSelectedCartContent := restInterface listCart: cartId.
+
+		self halt.
+
+		self triggerEvent: #newCurrentSelectedCartContentArrived with: cartId ].
+	
+	] fork.! !
+!TusLibrosClientTestWindowModel methodsFor: 'buttonSelectors' stamp: 'WAL 6/17/2023 16:18:22' prior: 50673685!
+listCart
+
+	| cartId  |
+	
+	(self isCartIdSelected) ifTrue: [
+		
+		[ 
+			
+		self halt.
+			
+		cartId := self selectedCartId. currentSelectedCartContent := restInterface listCart: cartId.
+
+		self halt.
+
+		self triggerEvent: #newCurrentSelectedCartContentArrived with: cartId ].
+	
+	] fork.! !
+!TusLibrosClientTestWindowModel methodsFor: 'buttonSelectors' stamp: 'WAL 6/17/2023 16:18:42' prior: 50673698!
+listCart
+
+	| cartId  |
+	
+	(self isCartIdSelected) ifTrue: [
+		
+		self halt.
+		
+		[ 
+			
+		self halt.
+			
+		cartId := self selectedCartId. currentSelectedCartContent := restInterface listCart: cartId.
+
+		self halt.
+
+		self triggerEvent: #newCurrentSelectedCartContentArrived with: cartId ].
+	
+	] fork.! !
+!TusLibrosClientTestWindowModel methodsFor: 'buttonSelectors' stamp: 'WAL 6/17/2023 16:20:17' prior: 50673711!
+listCart
+
+	| cartId  |
+	
+	(self isCartIdSelected) ifTrue: [
+		
+		[ cartId := self selectedCartId. currentSelectedCartContent := restInterface listCart: cartId.
+
+		self triggerEvent: #newCurrentSelectedCartContentArrived with: cartId ] fork
+	] ! !
+!TusLibrosClientTestWindowModel methodsFor: 'buttonSelectors' stamp: 'WAL 6/17/2023 16:21:55' prior: 50673498!
+createCart
+
+	| newCartId |
+	
+	[ newCartId := restInterface createCartFor: 'hernan' password: 'smalltalk'. 
+	
+	cartIds add: newCartId.
+	self triggerEvent: #newCartIdArrived ] fork.! !
+!TusLibrosClientTestWindowModel methodsFor: 'buttonSelectors' stamp: 'WAL 6/17/2023 16:24:13' prior: 50632570!
+addToCart
+
+	| cartId bookIsbn |
+
+	(self areCartIdAndBookSelected) ifTrue:[
+		[cartId := self selectedCartId.
+		bookIsbn := self selectedBook.
+		restInterface add: 1 of: bookIsbn toCartIdentifiedAs: cartId.
+		self triggerEvent: #bookAddedToCart withArguments: (Array with: bookIsbn with: cartId) ] fork
+	]! !
+!TusLibrosClientTestWindowModel methodsFor: 'buttonSelectors' stamp: 'WAL 6/17/2023 16:24:44' prior: 50673736!
+createCart
+
+	[
+	| newCartId |
+	
+	 newCartId := restInterface createCartFor: 'hernan' password: 'smalltalk'. 
+	
+	cartIds add: newCartId.
+	self triggerEvent: #newCartIdArrived ] fork.! !
+!TusLibrosClientTestWindowModel methodsFor: 'buttonSelectors' stamp: 'WAL 6/17/2023 16:25:26' prior: 50673724!
+listCart
+
+	
+	
+	(self isCartIdSelected) ifTrue: [
+		
+		[ 	| cartId |
+			cartId := self selectedCartId. currentSelectedCartContent := restInterface listCart: cartId.
+			self triggerEvent: #newCurrentSelectedCartContentArrived with: cartId ] fork
+	] ! !
+
+!classDefinition: #InterfaceAsyncronousDecorator category: 'TusLibrosREST' stamp: 'WAL 6/17/2023 16:44:37'!
+Object subclass: #InterfaceAsyncronousDecorator
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibrosREST'!
+!TusLibrosServerRestInterface class methodsFor: 'installation' stamp: 'WAL 6/17/2023 16:44:47' prior: 50673589!
+installForDefaultSystem
+
+	"self installForDefaultSystem"
+	
+	| server port interface asyncronousDecorator |
+	
+	interface := self on: self defaultSystem.
+	
+	asyncronousDecorator := InterfaceAsyncronousDecorator on: interface.
+	
+	"Esto es para poder acceder a la interface de manera global - Hernan"
+	Smalltalk at: #CurrentTusLibrosRestInterface put: interface.
+	
+	port := 9999.
+	server := WebServer reset default.
+	server listenOn: port.
+	server 
+		addService: '/createCart' 
+		action: [:request | asyncronousDecorator createCart: request ].
+	server 
+		addService: '/addToCart' 
+		action: [:request | asyncronousDecorator addToCart: request ].
+	server
+		addService: '/listCart' 
+		action: [:request | asyncronousDecorator listCart: request ].
+	server
+		addService: '/checkOutCart' 
+		action: [:request | asyncronousDecorator checkOutCart: request ].
+	server
+		addService: '/listPurchases' 
+		action: [:request | asyncronousDecorator listPurchases: request ].
+	server useDebugErrorHandler ! !
+!TusLibrosServerRestInterface class methodsFor: 'installation' stamp: 'WAL 6/17/2023 16:45:00' prior: 50673790!
+installForDefaultSystem
+
+	"self installForDefaultSystem"
+	
+	| server port interface interfaceAsyncronousDecorator |
+	
+	interface := self on: self defaultSystem.
+	
+	interfaceAsyncronousDecorator := InterfaceAsyncronousDecorator on: interface.
+	
+	"Esto es para poder acceder a la interface de manera global - Hernan"
+	Smalltalk at: #CurrentTusLibrosRestInterface put: interface.
+	
+	port := 9999.
+	server := WebServer reset default.
+	server listenOn: port.
+	server 
+		addService: '/createCart' 
+		action: [:request | interfaceAsyncronousDecorator createCart: request ].
+	server 
+		addService: '/addToCart' 
+		action: [:request | interfaceAsyncronousDecorator addToCart: request ].
+	server
+		addService: '/listCart' 
+		action: [:request | interfaceAsyncronousDecorator listCart: request ].
+	server
+		addService: '/checkOutCart' 
+		action: [:request | interfaceAsyncronousDecorator checkOutCart: request ].
+	server
+		addService: '/listPurchases' 
+		action: [:request | interfaceAsyncronousDecorator listPurchases: request ].
+	server useDebugErrorHandler ! !
+!TusLibrosServerRestInterface class methodsFor: 'installation' stamp: 'WAL 6/17/2023 16:45:40' prior: 50673825!
+installForDefaultSystem
+
+	"self installForDefaultSystem"
+	
+	| server port interface interfaceAsyncronousDecorator |
+	
+	interface := self on: self defaultSystem.
+	
+	interfaceAsyncronousDecorator := InterfaceAsyncronousDecorator decorate: interface.
+	
+	"Esto es para poder acceder a la interface de manera global - Hernan"
+	Smalltalk at: #CurrentTusLibrosRestInterface put: interface.
+	
+	port := 9999.
+	server := WebServer reset default.
+	server listenOn: port.
+	server 
+		addService: '/createCart' 
+		action: [:request | interfaceAsyncronousDecorator createCart: request ].
+	server 
+		addService: '/addToCart' 
+		action: [:request | interfaceAsyncronousDecorator addToCart: request ].
+	server
+		addService: '/listCart' 
+		action: [:request | interfaceAsyncronousDecorator listCart: request ].
+	server
+		addService: '/checkOutCart' 
+		action: [:request | interfaceAsyncronousDecorator checkOutCart: request ].
+	server
+		addService: '/listPurchases' 
+		action: [:request | interfaceAsyncronousDecorator listPurchases: request ].
+	server useDebugErrorHandler ! !
+
+!classRenamed: #InterfaceAsyncronousDecorator as: #AsyncronousInterface stamp: 'WAL 6/17/2023 16:45:49'!
+Smalltalk renameClassNamed: #InterfaceAsyncronousDecorator as: #AsyncronousInterface!
+!TusLibrosServerRestInterface class methodsFor: 'as yet unclassified' stamp: 'WAL 6/17/2023 16:45:50' prior: 50673862!
+installForDefaultSystem
+
+	"self installForDefaultSystem"
+	
+	| server port interface interfaceAsyncronousDecorator |
+	
+	interface := self on: self defaultSystem.
+	
+	interfaceAsyncronousDecorator := AsyncronousInterface decorate: interface.
+	
+	"Esto es para poder acceder a la interface de manera global - Hernan"
+	Smalltalk at: #CurrentTusLibrosRestInterface put: interface.
+	
+	port := 9999.
+	server := WebServer reset default.
+	server listenOn: port.
+	server 
+		addService: '/createCart' 
+		action: [:request | interfaceAsyncronousDecorator createCart: request ].
+	server 
+		addService: '/addToCart' 
+		action: [:request | interfaceAsyncronousDecorator addToCart: request ].
+	server
+		addService: '/listCart' 
+		action: [:request | interfaceAsyncronousDecorator listCart: request ].
+	server
+		addService: '/checkOutCart' 
+		action: [:request | interfaceAsyncronousDecorator checkOutCart: request ].
+	server
+		addService: '/listPurchases' 
+		action: [:request | interfaceAsyncronousDecorator listPurchases: request ].
+	server useDebugErrorHandler ! !
+!AsyncronousInterface class methodsFor: 'no messages' stamp: 'WAL 6/17/2023 16:47:26'!
+decorate: anInterface
+
+	^self new initializeWith: anInterface! !
+
+!classDefinition: #AsyncronousInterface category: 'TusLibrosREST' stamp: 'WAL 6/17/2023 16:51:51'!
+Object subclass: #AsyncronousInterface
+	instanceVariableNames: 'decoratee'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibrosREST'!
+!AsyncronousInterface methodsFor: 'no messages' stamp: 'WAL 6/17/2023 16:51:49'!
+initializeWith: anInterface
+
+	decoratee := anInterface! !
+!AsyncronousInterface methodsFor: 'operations' stamp: 'WAL 6/17/2023 16:56:30'!
+createCart: request
+
+	[ decoratee createCart: request ] fork! !
+!AsyncronousInterface methodsFor: 'operations' stamp: 'WAL 6/17/2023 16:56:44'!
+addToCart: request
+
+	[ decoratee addToCart: request ] fork! !
+!AsyncronousInterface methodsFor: 'operations' stamp: 'WAL 6/17/2023 16:56:52'!
+listCart: request
+
+	[ decoratee listCart: request ] fork! !
+!AsyncronousInterface methodsFor: 'operations' stamp: 'WAL 6/17/2023 16:57:03'!
+checkOutCart: request
+
+	[ decoratee checkOutCart: request ] fork! !
+!AsyncronousInterface methodsFor: 'operations' stamp: 'WAL 6/17/2023 16:57:11'!
+listPurchases: request
+
+	[ decoratee listPurchases: request ] fork! !
+
+WebServer reset!
+
+TusLibrosServerRestInterface installForDefaultSystem!
+
+TusLibrosClientTestWindow open!
+
+Object subclass: #TusLibrosClientRestInterfaceAsync
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibrosREST'!
+
+!classDefinition: #TusLibrosClientRestInterfaceAsync category: 'TusLibrosREST' stamp: 'WAL 6/17/2023 17:02:52'!
+Object subclass: #TusLibrosClientRestInterfaceAsync
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibrosREST'!
+!TusLibrosClientRestInterfaceAsync class methodsFor: 'no messages' stamp: 'WAL 6/17/2023 17:03:54'!
+decorate: aClientRestInterface
+
+	^self new initializeWith: aClientRestInterface! !
+
+Object subclass: #TusLibrosClientRestInterfaceAsync
+	instanceVariableNames: 'decoratee'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibrosREST'!
+
+!classDefinition: #TusLibrosClientRestInterfaceAsync category: 'TusLibrosREST' stamp: 'WAL 6/17/2023 17:04:22'!
+Object subclass: #TusLibrosClientRestInterfaceAsync
+	instanceVariableNames: 'decoratee'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibrosREST'!
+!TusLibrosClientRestInterfaceAsync methodsFor: 'no messages' stamp: 'WAL 6/17/2023 17:04:43'!
+initializeWith: aClientRestInterface
+
+	decoratee := aClientRestInterface! !
+!TusLibrosClientRestInterfaceAsync methodsFor: 'requests' stamp: 'WAL 6/17/2023 17:06:40'!
+add: quantity of: bookIsbn toCartIdentifiedAs: cartId
+
+	[ decoratee add: quantity of: bookIsbn toCartIdentifiedAs: cartId ] fork! !
+!TusLibrosClientRestInterfaceAsync methodsFor: 'requests' stamp: 'WAL 6/17/2023 17:06:57'!
+createCartFor: aUser password: aPassword
+
+	[ decoratee createCartFor: aUser password: aPassword ] fork! !
+!TusLibrosClientRestInterfaceAsync methodsFor: 'requests' stamp: 'WAL 6/17/2023 17:07:08'!
+listCart: cartId
+
+	[ decoratee listCart: cartId ] fork! !
+!TusLibrosClientTestWindowModel methodsFor: 'initialization' stamp: 'WAL 6/17/2023 17:08:19' prior: 50632612 overrides: 16920235!
+initialize
+
+	cartIds := OrderedCollection new.
+	currentSelectedCartContent := OrderedCollection new.
+	selectedCartIdsIndex := 0.
+	selectedBookCatalogIndex := 0.
+	restInterface := TusLibrosClientRestInterfaceAsync decorate: TusLibrosClientRestInterface new.! !
+
+!classRenamed: #AsyncronousInterface as: #TusLibrosServerRestInterfaceAsync stamp: 'WAL 6/17/2023 17:14:22'!
+Smalltalk renameClassNamed: #AsyncronousInterface as: #TusLibrosServerRestInterfaceAsync!
+!TusLibrosServerRestInterface class methodsFor: 'as yet unclassified' stamp: 'WAL 6/17/2023 17:14:22' prior: 50673905!
+installForDefaultSystem
+
+	"self installForDefaultSystem"
+	
+	| server port interface interfaceAsyncronousDecorator |
+	
+	interface := self on: self defaultSystem.
+	
+	interfaceAsyncronousDecorator := TusLibrosServerRestInterfaceAsync decorate: interface.
+	
+	"Esto es para poder acceder a la interface de manera global - Hernan"
+	Smalltalk at: #CurrentTusLibrosRestInterface put: interface.
+	
+	port := 9999.
+	server := WebServer reset default.
+	server listenOn: port.
+	server 
+		addService: '/createCart' 
+		action: [:request | interfaceAsyncronousDecorator createCart: request ].
+	server 
+		addService: '/addToCart' 
+		action: [:request | interfaceAsyncronousDecorator addToCart: request ].
+	server
+		addService: '/listCart' 
+		action: [:request | interfaceAsyncronousDecorator listCart: request ].
+	server
+		addService: '/checkOutCart' 
+		action: [:request | interfaceAsyncronousDecorator checkOutCart: request ].
+	server
+		addService: '/listPurchases' 
+		action: [:request | interfaceAsyncronousDecorator listPurchases: request ].
+	server useDebugErrorHandler ! !
+
+WebServer reset!
+
+WebServer reset!
+
+TusLibrosServerRestInterface installForDefaultSystem.!
+
+TusLibrosServerRestInterface installForDefaultSystem.!
+
+TusLibrosClientTestWindow open.!
+!TusLibrosClientRestInterfaceAsync methodsFor: 'requests' stamp: 'WAL 6/17/2023 17:21:12' prior: 50674027!
+add: quantity of: bookIsbn toCartIdentifiedAs: cartId
+
+	[ ^decoratee add: quantity of: bookIsbn toCartIdentifiedAs: cartId ] fork! !
+!TusLibrosClientRestInterfaceAsync methodsFor: 'requests' stamp: 'WAL 6/17/2023 17:21:16' prior: 50674034!
+createCartFor: aUser password: aPassword
+
+	[ ^decoratee createCartFor: aUser password: aPassword ] fork! !
+!TusLibrosClientRestInterfaceAsync methodsFor: 'requests' stamp: 'WAL 6/17/2023 17:21:27' prior: 50674041!
+listCart: cartId
+
+	[ ^decoratee listCart: cartId ] fork! !
+
+----SNAPSHOT----(17 June 2023 17:22:02) CuisUniversity-5832.image priorSource: 9614549!
+
+TusLibrosClientTestWindow open.!
+!TusLibrosClientTestWindowModel methodsFor: 'buttonSelectors' stamp: 'WAL 6/17/2023 17:24:31' prior: 50673770!
+listCart
+
+	
+	
+	(self isCartIdSelected) ifTrue: [
+	 	| cartId |
+		cartId := self selectedCartId. currentSelectedCartContent := restInterface listCart: cartId.
+		self triggerEvent: #newCurrentSelectedCartContentArrived with: cartId ] ! !
+!TusLibrosClientTestWindowModel methodsFor: 'buttonSelectors' stamp: 'WAL 6/17/2023 17:24:47' prior: 50673760!
+createCart
+
+	| newCartId |
+	
+	 newCartId := restInterface createCartFor: 'hernan' password: 'smalltalk'. 
+	
+	cartIds add: newCartId.
+	self triggerEvent: #newCartIdArrived ! !
+!TusLibrosClientTestWindowModel methodsFor: 'buttonSelectors' stamp: 'WAL 6/17/2023 17:24:54' prior: 50674134!
+listCart
+	
+	(self isCartIdSelected) ifTrue: [
+	 	| cartId |
+		cartId := self selectedCartId. currentSelectedCartContent := restInterface listCart: cartId.
+		self triggerEvent: #newCurrentSelectedCartContentArrived with: cartId ] ! !
+!TusLibrosClientTestWindowModel methodsFor: 'buttonSelectors' stamp: 'WAL 6/17/2023 17:25:08' prior: 50673746!
+addToCart
+
+	| cartId bookIsbn |
+
+	(self areCartIdAndBookSelected) ifTrue:[
+		cartId := self selectedCartId.
+		bookIsbn := self selectedBook.
+		restInterface add: 1 of: bookIsbn toCartIdentifiedAs: cartId.
+		self triggerEvent: #bookAddedToCart withArguments: (Array with: bookIsbn with: cartId) 
+	]! !
+!TusLibrosClientRestInterfaceAsync methodsFor: 'requests' stamp: 'WAL 6/17/2023 17:28:58' prior: 50674124!
+listCart: cartId
+
+	[ ^decoratee listCart: cartId ] fork! !
+!TusLibrosClientTestWindowModel methodsFor: 'buttonSelectors' stamp: 'WAL 6/17/2023 17:32:32' prior: 50674154!
+listCart
+	
+	(self isCartIdSelected) ifTrue: [
+		
+	 	| cartId |
+		
+		cartId := self selectedCartId.
+		
+		currentSelectedCartContent := restInterface listCart: cartId.
+		
+		self triggerEvent: #newCurrentSelectedCartContentArrived with: cartId 
+		
+		] ! !
+
+!classRenamed: #TusLibrosClientRestInterfaceAsync as: #TusLibrosClientTestWindowModelAsync stamp: 'WAL 6/17/2023 17:33:37'!
+Smalltalk renameClassNamed: #TusLibrosClientRestInterfaceAsync as: #TusLibrosClientTestWindowModelAsync!
+!TusLibrosClientTestWindowModel methodsFor: 'as yet unclassified' stamp: 'WAL 6/17/2023 17:33:37' prior: 50674047 overrides: 16920235!
+initialize
+
+	cartIds := OrderedCollection new.
+	currentSelectedCartContent := OrderedCollection new.
+	selectedCartIdsIndex := 0.
+	selectedBookCatalogIndex := 0.
+	restInterface := TusLibrosClientTestWindowModelAsync decorate: TusLibrosClientRestInterface new.! !
+!TusLibrosClientTestWindowModel methodsFor: 'initialization' stamp: 'WAL 6/17/2023 17:34:05' prior: 50674204 overrides: 16920235!
+initialize
+
+	cartIds := OrderedCollection new.
+	currentSelectedCartContent := OrderedCollection new.
+	selectedCartIdsIndex := 0.
+	selectedBookCatalogIndex := 0.
+	restInterface := TusLibrosClientRestInterface new.! !
+!TusLibrosClientTestWindowModelAsync class methodsFor: 'instance creation' stamp: 'WAL 6/17/2023 17:34:41' prior: 50674001!
+decorate: aClientTestWindowModel
+
+	^self new initializeWith: aClientTestWindowModel! !
+
+!methodRemoval: TusLibrosClientTestWindowModelAsync #add:of:toCartIdentifiedAs: stamp: 'WAL 6/17/2023 17:34:51'!
+add: quantity of: bookIsbn toCartIdentifiedAs: cartId
+
+	[ ^decoratee add: quantity of: bookIsbn toCartIdentifiedAs: cartId ] fork!
+
+!methodRemoval: TusLibrosClientTestWindowModelAsync #createCartFor:password: stamp: 'WAL 6/17/2023 17:34:54'!
+createCartFor: aUser password: aPassword
+
+	[ ^decoratee createCartFor: aUser password: aPassword ] fork!
+!TusLibrosClientTestWindowModelAsync methodsFor: 'requests' stamp: 'WAL 6/17/2023 17:35:06'!
+listCart
+
+	[ ^decoratee listCart ] fork! !
+
+!methodRemoval: TusLibrosClientTestWindowModelAsync #listCart: stamp: 'WAL 6/17/2023 17:35:08'!
+listCart: cartId
+
+	[ ^decoratee listCart: cartId ] fork!
+!TusLibrosClientTestWindowModelAsync methodsFor: 'requests' stamp: 'WAL 6/17/2023 17:36:10' prior: 50674249!
+listCart
+
+	[ decoratee listCart ] fork! !
+!TusLibrosClientTestWindowModelAsync methodsFor: 'requests' stamp: 'WAL 6/17/2023 17:36:20'!
+createCart
+
+	[ decoratee createCart ] fork! !
+!TusLibrosClientTestWindowModelAsync methodsFor: 'requests' stamp: 'WAL 6/17/2023 17:36:39'!
+addToCart
+
+	[ decoratee addToCart ] fork! !
+!TusLibrosClientTestWindow methodsFor: 'initialization' stamp: 'WAL 6/17/2023 17:37:54' prior: 50632352!
+initializeWith: aTitle
+
+	self setLabel: aTitle.
+	self model: (TusLibrosClientTestWindowModelAsync decorate: TusLibrosClientTestWindowModel new).
+	self morphExtent: (self defaultExtent).
+	self buildMorphicWindow.
+	self openInWorld.
+			
+	self model when: #newCartIdArrived send: #refreshListOfCartIds to: self.		
+	self model when: #selectedCartChanged send: #refreshCartButtonsLabels: to: self.	
+	self model when: #bookAddedToCart send: #informBook:addedToCart: to: self.
+	self model when: #newCurrentSelectedCartContentArrived send: #refreshCurrentSelectedCartContent: to: self! !
+
+TusLibrosClientTestWindow open. !
+
+TusLibrosClientTestWindow open. !
+
+TusLibrosClientTestWindow open. !
+!TusLibrosClientTestWindowModelAsync methodsFor: 'buttonSelector' stamp: 'WAL 6/17/2023 17:43:19' overrides: 50337880!
+doesNotUnderstand: aMessage
+
+	aMessage sendTo: decoratee  ! !
+
+TusLibrosClientTestWindow open. !
+!TusLibrosClientTestWindowModelAsync methodsFor: 'forwarding' stamp: 'WAL 6/17/2023 17:46:45' prior: 50674300 overrides: 50337880!
+doesNotUnderstand: aMessage
+
+	aMessage sendTo: decoratee.! !
+!TusLibrosClientTestWindowModelAsync methodsFor: 'forwarding' stamp: 'WAL 6/17/2023 17:48:13' prior: 50674308 overrides: 50337880!
+doesNotUnderstand: aMessage
+
+	^decoratee
+		perform: aMessage selector
+		withArguments: aMessage arguments! !
+
+TusLibrosClientTestWindow open. !
+!TusLibrosClientTestWindowModel methodsFor: 'buttonSelectors' stamp: 'WAL 6/17/2023 17:52:03' prior: 50674145!
+createCart
+
+	| newCartId |
+	
+	self halt.
+	
+	newCartId := restInterface createCartFor: 'hernan' password: 'smalltalk'. 
+	
+	self halt.
+	
+	cartIds add: newCartId.
+	self triggerEvent: #newCartIdArrived ! !
+
+resp content!
+
+^(WebUtils jsonDecode: ((resp content) readStream))!
+!TusLibrosClientTestWindow methodsFor: 'initialization' stamp: 'WAL 6/17/2023 17:59:29' prior: 50674274!
+initializeWith: aTitle
+
+	| m |
+	self setLabel: aTitle.
+	m := TusLibrosClientTestWindowModel new.
+	self model: (TusLibrosClientTestWindowModelAsync decorate: m).
+	self morphExtent: (self defaultExtent).
+	self buildMorphicWindow.
+	self openInWorld.
+			
+	m when: #newCartIdArrived send: #refreshListOfCartIds to: self.		
+	m when: #selectedCartChanged send: #refreshCartButtonsLabels: to: self.	
+	m when: #bookAddedToCart send: #informBook:addedToCart: to: self.
+	m when: #newCurrentSelectedCartContentArrived send: #refreshCurrentSelectedCartContent: to: self! !
+!TusLibrosClientTestWindow methodsFor: 'initialization' stamp: 'WAL 6/17/2023 17:59:34' prior: 50674334!
+initializeWith: aTitle
+
+	| m |
+	
+	self setLabel: aTitle.
+	m := TusLibrosClientTestWindowModel new.
+	self model: (TusLibrosClientTestWindowModelAsync decorate: m).
+	self morphExtent: (self defaultExtent).
+	self buildMorphicWindow.
+	self openInWorld.
+			
+	m when: #newCartIdArrived send: #refreshListOfCartIds to: self.		
+	m when: #selectedCartChanged send: #refreshCartButtonsLabels: to: self.	
+	m when: #bookAddedToCart send: #informBook:addedToCart: to: self.
+	m when: #newCurrentSelectedCartContentArrived send: #refreshCurrentSelectedCartContent: to: self! !
+
+TusLibrosClientTestWindow open. !
+!TusLibrosClientTestWindowModel methodsFor: 'buttonSelectors' stamp: 'WAL 6/17/2023 18:10:16' prior: 50674322!
+createCart
+
+	| newCartId |
+	
+	newCartId := restInterface createCartFor: 'hernan' password: 'smalltalk'. 
+	
+	cartIds add: newCartId.
+	self triggerEvent: #newCartIdArrived ! !
+!TusLibrosClientTestWindow methodsFor: 'initialization' stamp: 'NR 6/13/2022 07:07:04' prior: 50674355!
+initializeWith: aTitle
+
+	self setLabel: aTitle.
+	self model: (TusLibrosClientTestWindowModel new).
+	self morphExtent: (self defaultExtent).
+	self buildMorphicWindow.
+	self openInWorld.
+			
+	self model when: #newCartIdArrived send: #refreshListOfCartIds to: self.		
+	self model when: #selectedCartChanged send: #refreshCartButtonsLabels: to: self.	
+	self model when: #bookAddedToCart send: #informBook:addedToCart: to: self.
+	self model when: #newCurrentSelectedCartContentArrived send: #refreshCurrentSelectedCartContent: to: self! !
+!TusLibrosClientTestWindowModel methodsFor: 'buttonSelectors' stamp: 'WAL 6/17/2023 18:23:19' prior: 50674378!
+createCart
+
+	| newCartId |
+	
+	newCartId := restInterface createCartFor: 'hernan' password: 'smalltalk'. 
+	
+	cartIds add: newCartId.
+	
+	self triggerEvent: #newCartIdArrived ! !
+
+WebServer reset.!
+
+WebServer reset.!
+
+TusLibrosServerRestInterface installForDefaultSystem.!
+!TusLibrosClientTestWindow methodsFor: 'events' stamp: 'WAL 6/17/2023 18:39:42'!
+informError: anErrorDescription
+
+	self inform: anErrorDescription
+	
+! !
+!TusLibrosClientTestWindow methodsFor: 'initialization' stamp: 'WAL 6/17/2023 18:41:53' prior: 50674387!
+initializeWith: aTitle
+
+	self setLabel: aTitle.
+	self model: (TusLibrosClientTestWindowModel new).
+	self morphExtent: (self defaultExtent).
+	self buildMorphicWindow.
+	self openInWorld.
+			
+	self model when: #newCartIdArrived send: #refreshListOfCartIds to: self.		
+	self model when: #selectedCartChanged send: #refreshCartButtonsLabels: to: self.	
+	self model when: #bookAddedToCart send: #informBook:addedToCart: to: self.
+	self model when: #newCurrentSelectedCartContentArrived send: #refreshCurrentSelectedCartContent: to: self.
+	self model when: #errorRaised send: #informError: to: self! !
+!TusLibrosClientTestWindowModel methodsFor: 'buttonSelectors' stamp: 'WAL 6/17/2023 18:44:23' prior: 50674184!
+listCart
+	
+	(self isCartIdSelected) ifTrue: [
+		
+	 	[ 	| cartId |
+		
+			cartId := self selectedCartId.
+			
+			currentSelectedCartContent := restInterface listCart: cartId.
+			
+			self triggerEvent: #newCurrentSelectedCartContentArrived with: cartId 
+		
+		] on: Error do: [ self triggerEvent: #informError: ]
+		
+		] ! !
+!TusLibrosClientTestWindowModel methodsFor: 'buttonSelectors' stamp: 'WAL 6/17/2023 18:45:34' prior: 50674448!
+listCart
+	
+	(self isCartIdSelected) ifTrue: [
+		
+	 	[ 	| cartId |
+		
+			cartId := self selectedCartId.
+			
+			currentSelectedCartContent := restInterface listCart: cartId.
+			
+			self triggerEvent: #newCurrentSelectedCartContentArrived with: cartId 
+		
+		] on: Error do: [ self triggerEvent: #errorRaised with: Error messageText ]
+		
+		] ! !
+!TusLibrosClientTestWindowModel methodsFor: 'buttonSelectors' stamp: 'WAL 6/17/2023 18:47:19' prior: 50674462!
+listCart
+	
+	(self isCartIdSelected) ifTrue: [
+		
+	 	[ 	| cartId |
+		
+			cartId := self selectedCartId.
+			
+			currentSelectedCartContent := restInterface listCart: cartId.
+			
+			self triggerEvent: #newCurrentSelectedCartContentArrived with: cartId 
+		
+		] on: Error do: [ : anError | self triggerEvent: #errorRaised with: anError messageText ]
+		
+		] ! !
+
+TusLibrosClientTestWindow open.!
+
+WebServer reset.!
+
+TusLibrosServerRestInterface installForDefaultSystem.!
+
+----SNAPSHOT----(17 June 2023 18:53:21) CuisUniversity-5832.image priorSource: 10959290!
+
+----SNAPSHOT----(17 June 2023 19:08:52) CuisUniversity-5832.image priorSource: 10970992!
+
+----STARTUP---- (19 June 2023 09:54:22) as /home/a/s/sw/smalltalk5/CuisUniversity-5832.image!
+
+
+----End fileIn of /home/a/s/sw/smalltalk5/TusLibros.st----!
+
+!classRemoval: #ThreadProcessor stamp: 'WAL 6/19/2023 09:55:00'!
+Object subclass: #ThreadProcessor
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros-ThreadProcessor'!
+
+!classRemoval: #TusLibrosSystemFacade stamp: 'WAL 6/19/2023 09:55:01'!
+Object subclass: #TusLibrosSystemFacade
+	instanceVariableNames: 'validUsersAndPasswords catalog lastId merchantProcessor salesBook clock cartSessions'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros-Model'!
+
+!classRemoval: #Ticket stamp: 'WAL 6/19/2023 09:55:01'!
+Object subclass: #Ticket
+	instanceVariableNames: 'lineItems transactionId transactionIdSale transactionIdTaxes'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros-Model'!
+
+!classRemoval: #Sale stamp: 'WAL 6/19/2023 09:55:01'!
+Object subclass: #Sale
+	instanceVariableNames: 'customer ticket'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros-Model'!
+
+!classRemoval: #MerchantProcessor stamp: 'WAL 6/19/2023 09:55:01'!
+Object subclass: #MerchantProcessor
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros-Model'!
+
+!classRemoval: #LineItem stamp: 'WAL 6/19/2023 09:55:02'!
+Object subclass: #LineItem
+	instanceVariableNames: 'item quantity total'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros-Model'!
+
+!classRemoval: #CreditCard stamp: 'WAL 6/19/2023 09:55:02'!
+Object subclass: #CreditCard
+	instanceVariableNames: 'expiration number ownerName'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros-Model'!
+
+!classRemoval: #Clock stamp: 'WAL 6/19/2023 09:55:02'!
+Object subclass: #Clock
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros-Model'!
+
+!classRemoval: #Cashier stamp: 'WAL 6/19/2023 09:55:02'!
+Object subclass: #Cashier
+	instanceVariableNames: 'cart salesBook merchantProcessor creditCard owner ticket'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros-Model'!
+
+!classRemoval: #CartSession stamp: 'WAL 6/19/2023 09:55:02'!
+Object subclass: #CartSession
+	instanceVariableNames: 'owner cart lastUsedTime systemFacade'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros-Model'!
+
+!classRemoval: #Cart stamp: 'WAL 6/19/2023 09:55:03'!
+Object subclass: #Cart
+	instanceVariableNames: 'catalog items'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros-Model'!
+
+!classRemoval: #StoreTestObjectsFactory stamp: 'WAL 6/19/2023 09:55:03'!
+Object subclass: #StoreTestObjectsFactory
+	instanceVariableNames: 'today'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros-Tests'!
+
+!classRemoval: #TusLibrosSystemFacadeTest stamp: 'WAL 6/19/2023 09:55:03'!
+TestCase subclass: #TusLibrosSystemFacadeTest
+	instanceVariableNames: 'testObjectsFactory clock systemFacade merchantProcessorTransactionId'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros-Tests'!
+
+!classRemoval: #CreditCardTest stamp: 'WAL 6/19/2023 09:55:04'!
+TestCase subclass: #CreditCardTest
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros-Tests'!
+
+!classRemoval: #CashierTest stamp: 'WAL 6/19/2023 09:55:04'!
+TestCase subclass: #CashierTest
+	instanceVariableNames: 'testObjectsFactory debitBehavior'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros-Tests'!
+
+!classRemoval: #CartTest stamp: 'WAL 6/19/2023 09:55:04'!
+TestCase subclass: #CartTest
+	instanceVariableNames: 'testObjectsFactory'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros-Tests'!
+
+----End fileIn of /home/a/s/sw/smalltalk5/TusLibros.st----!
+
+!classRemoval: #RealTimeClock stamp: 'WAL 6/19/2023 09:56:08'!
+ProtoObject subclass: #RealTimeClock
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibrosREST'!
+
+!classRemoval: #DefaultMerchantProcessor stamp: 'WAL 6/19/2023 09:56:08'!
+ProtoObject subclass: #DefaultMerchantProcessor
+	instanceVariableNames: 'transactionId'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibrosREST'!
+
+!classRemoval: #TusLibrosServerRestInterfaceAsync stamp: 'WAL 6/19/2023 09:56:08'!
+Object subclass: #TusLibrosServerRestInterfaceAsync
+	instanceVariableNames: 'decoratee'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibrosREST'!
+
+!classRemoval: #TusLibrosServerRestInterface stamp: 'WAL 6/19/2023 09:56:08'!
+Object subclass: #TusLibrosServerRestInterface
+	instanceVariableNames: 'systemFacade'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibrosREST'!
+
+!classRemoval: #TusLibrosClientTestWindowModelAsync stamp: 'WAL 6/19/2023 09:56:09'!
+Object subclass: #TusLibrosClientTestWindowModelAsync
+	instanceVariableNames: 'decoratee'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibrosREST'!
+
+!classRemoval: #TusLibrosClientTestWindowModel stamp: 'WAL 6/19/2023 09:56:09'!
+Object subclass: #TusLibrosClientTestWindowModel
+	instanceVariableNames: 'cartIds selectedCartIdsIndex selectedBookCatalogIndex currentSelectedCartContent restInterface'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibrosREST'!
+
+!classRemoval: #TusLibrosClientRestInterface stamp: 'WAL 6/19/2023 09:56:09'!
+Object subclass: #TusLibrosClientRestInterface
+	instanceVariableNames: 'port'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibrosREST'!
+
+!classRemoval: #TusLibrosClientTestWindow stamp: 'WAL 6/19/2023 09:56:09'!
+SystemWindow subclass: #TusLibrosClientTestWindow
+	instanceVariableNames: 'cartIdsListMorph booksCatalogListMorph cartContentListMorph addToCartButtonMorph listCartButtonMorph selectedCartLabelMorph'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibrosREST'!
+
+----End fileIn of /home/a/s/e/c/is1/tp_rep_grupo/2023-1c/09-TusLibros/Iteracion4/TusLibrosREST.st----!
+
+TusLibrosServerRestInterface installForDefaultSystem!
+
+TusLibrosClientTestWindow open.!
+
+----SNAPSHOT----(19 June 2023 22:34:17) CuisUniversity-5832.image priorSource: 10971082!
+
+----STARTUP---- (24 June 2023 20:44:22) as /home/a/s/sw/smalltalk5/CuisUniversity-5832.image!
+
+
+a:=ReadStream on: (OrderedCollection withAll:{ 'a','b'}) from: 1 to: 2 !
+
+a next!
+
+a:=ReadStream on: (OrderedCollection withAll:{ 'a'.'b'}) from: 1 to: 2 .!
+
+a next!
+
+a next!
+
+!classRemoval: #RealTimeClock stamp: 'WAL 6/24/2023 21:59:37'!
+ProtoObject subclass: #RealTimeClock
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibrosREST'!
+
+!classRemoval: #DefaultMerchantProcessor stamp: 'WAL 6/24/2023 21:59:37'!
+ProtoObject subclass: #DefaultMerchantProcessor
+	instanceVariableNames: 'transactionId'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibrosREST'!
+
+!classRemoval: #TusLibrosServerRestInterfaceAsync stamp: 'WAL 6/24/2023 21:59:37'!
+Object subclass: #TusLibrosServerRestInterfaceAsync
+	instanceVariableNames: 'decoratee'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibrosREST'!
+
+!classRemoval: #TusLibrosServerRestInterface stamp: 'WAL 6/24/2023 21:59:37'!
+Object subclass: #TusLibrosServerRestInterface
+	instanceVariableNames: 'systemFacade'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibrosREST'!
+
+!classRemoval: #TusLibrosClientTestWindowModelAsync stamp: 'WAL 6/24/2023 21:59:38'!
+Object subclass: #TusLibrosClientTestWindowModelAsync
+	instanceVariableNames: 'decoratee'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibrosREST'!
+
+!classRemoval: #TusLibrosClientTestWindowModel stamp: 'WAL 6/24/2023 21:59:38'!
+Object subclass: #TusLibrosClientTestWindowModel
+	instanceVariableNames: 'cartIds selectedCartIdsIndex selectedBookCatalogIndex currentSelectedCartContent restInterface'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibrosREST'!
+
+!classRemoval: #TusLibrosClientRestInterfaceAsync stamp: 'WAL 6/24/2023 21:59:38'!
+Object subclass: #TusLibrosClientRestInterfaceAsync
+	instanceVariableNames: 'decoratee'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibrosREST'!
+
+!classRemoval: #TusLibrosClientRestInterface stamp: 'WAL 6/24/2023 21:59:38'!
+Object subclass: #TusLibrosClientRestInterface
+	instanceVariableNames: 'port'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibrosREST'!
+
+!classRemoval: #TusLibrosClientTestWindow stamp: 'WAL 6/24/2023 21:59:38'!
+SystemWindow subclass: #TusLibrosClientTestWindow
+	instanceVariableNames: 'cartIdsListMorph booksCatalogListMorph cartContentListMorph addToCartButtonMorph listCartButtonMorph selectedCartLabelMorph'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibrosREST'!
+
+----End fileIn of /home/a/s/sw/smalltalk5/CustomerImporter.st----!
+
+!testRun: #ImportTest #test01Import stamp: 'WAL 6/24/2023 22:03:23'!
+FAILURE!
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'WAL 6/24/2023 22:03:51' prior: 50680195!
+test01Import
+
+	| allCustomers stream crlf |
+	
+	"self importCustomers: (UniFileStream new open: 'input.txt' forWrite: false)."
+	
+	crlf := String with: (Character cr)			 with: (Character lf).
+	stream := ReadStream on: {	'C,Pepe,Sanchez,D,22333444'.
+							'A,San Martin,3322,Olivos,1636,BsAs'. 
+							'A,Maipu,888,Florida,1122,Buenos Aires'.
+							'C,Juan,Perez,C,23-25666777-9'. 
+							'A,Alem,1122,CABA,1001,CABA'
+							}.
+	
+	self importCustomers: stream.
+	
+	allCustomers := session selectAllOfType: Customer.
+	self assert: 2 equals: (allCustomers size).
+	
+	self assertCustomerType: 'D' number: '22333444' firstName: 'Pepe' lastName: 'Sanchez' addresses: {
+			Address 
+				withStreetName: 'San Martin'
+				streetNumber: 3322
+				town: 'Olivos'
+				zipCode: 1636
+				province: 'BsAs'.
+
+			Address
+				withStreetName: 'Maipu'
+				streetNumber: 888
+				town: 'Florida'
+				zipCode: 1122
+				province: 'Buenos Aires' }.
+
+	self assertCustomerType: 'C' number: '23-25666777-9' firstName: 'Juan' lastName: 'Perez' addresses: {
+			Address 
+				withStreetName: 'Alem'
+				streetNumber: 1122
+				town: 'CABA'
+				zipCode: 1001
+				province: 'CABA'. }
+! !
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'WAL 6/24/2023 22:05:06' prior: 50680173!
+selectCustomerWith: anIdentificationType number: anIdentificationNumber 
+	
+	^session select: [ :customer |
+		(customer identificationType = anIdentificationType) and:
+		[customer identificationNumber = anIdentificationNumber] ] ofType: Customer.
+! !
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'WAL 6/24/2023 22:06:37' prior: 50680137!
+importCustomers: aStream
+
+	"
+	self importCustomers
+	"
+	| inputStream  newCustomer line |
+
+	inputStream := aStream.
+
+	line := inputStream next.
+	[ line notNil ] whileTrue: [
+		(line beginsWith: 'C') ifTrue: [ | customerData |
+			customerData := line findTokens: $,.
+			newCustomer := Customer new.
+			newCustomer firstName: customerData second.
+			newCustomer lastName: customerData third.
+			newCustomer identificationType: customerData fourth.
+			newCustomer identificationNumber: customerData fifth.
+			session persist: newCustomer ].
+
+		(line beginsWith: 'A') ifTrue: [ | addressData newAddress |
+			addressData := line findTokens: $,.
+			newAddress := Address new.
+			newCustomer addAddress: newAddress.
+			newAddress streetName: addressData second.
+			newAddress streetNumber: addressData third asNumber .
+			newAddress town: addressData fourth.
+			newAddress zipCode: addressData fifth asNumber .
+			newAddress province: addressData sixth.
+			session persist: newAddress ].
+
+		line := inputStream nextLine. ].
+
+	inputStream close.
+	! !
+
+!testRun: #ImportTest #test01Import stamp: 'WAL 6/24/2023 22:06:50'!
+FAILURE!
+
+!testRun: #ImportTest #test01Import stamp: 'WAL 6/24/2023 22:06:51'!
+FAILURE!
+!ImportTest methodsFor: 'test' stamp: 'WAL 6/24/2023 22:07:50' prior: 50680491!
+test01Import
+
+	| allCustomers stream |
+	
+	"self importCustomers: (UniFileStream new open: 'input.txt' forWrite: false)."
+	
+	stream := ReadStream on: {	'C,Pepe,Sanchez,D,22333444'.
+							'A,San Martin,3322,Olivos,1636,BsAs'. 
+							'A,Maipu,888,Florida,1122,Buenos Aires'.
+							'C,Juan,Perez,C,23-25666777-9'. 
+							'A,Alem,1122,CABA,1001,CABA'
+							}.
+	
+	self importCustomers: stream.
+	
+	allCustomers := session selectAllOfType: Customer.
+	self assert: 2 equals: (allCustomers size).
+	
+	self assertCustomerType: 'D' number: '22333444' firstName: 'Pepe' lastName: 'Sanchez' addresses: {
+			Address 
+				withStreetName: 'San Martin'
+				streetNumber: 3322
+				town: 'Olivos'
+				zipCode: 1636
+				province: 'BsAs'.
+
+			Address
+				withStreetName: 'Maipu'
+				streetNumber: 888
+				town: 'Florida'
+				zipCode: 1122
+				province: 'Buenos Aires' }.
+
+	self assertCustomerType: 'C' number: '23-25666777-9' firstName: 'Juan' lastName: 'Perez' addresses: {
+			Address 
+				withStreetName: 'Alem'
+				streetNumber: 1122
+				town: 'CABA'
+				zipCode: 1001
+				province: 'CABA'. }
+! !
+
+stream size!
+
+!testRun: #ImportTest #test01Import stamp: 'WAL 6/24/2023 22:11:07'!
+FAILURE!
+!ImportTest methodsFor: 'test' stamp: 'WAL 6/24/2023 22:11:48' prior: 50680581!
+test01Import
+
+	| allCustomers stream |
+	
+	"self importCustomers: (UniFileStream new open: 'input.txt' forWrite: false)."
+	
+	stream := ReadStream on: {	'C,Pepe,Sanchez,D,22333444' .
+							'A,San Martin,3322,Olivos,1636,BsAs' . 
+							'A,Maipu,888,Florida,1122,Buenos Aires' .
+							'C,Juan,Perez,C,23-25666777-9' . 
+							'A,Alem,1122,CABA,1001,CABA'
+							}.
+	
+	self importCustomers: stream.
+	
+	allCustomers := session selectAllOfType: Customer.
+	self assert: 2 equals: (allCustomers size).
+	
+	self assertCustomerType: 'D' number: '22333444' firstName: 'Pepe' lastName: 'Sanchez' addresses: {
+			Address 
+				withStreetName: 'San Martin'
+				streetNumber: 3322
+				town: 'Olivos'
+				zipCode: 1636
+				province: 'BsAs'.
+
+			Address
+				withStreetName: 'Maipu'
+				streetNumber: 888
+				town: 'Florida'
+				zipCode: 1122
+				province: 'Buenos Aires' }.
+
+	self assertCustomerType: 'C' number: '23-25666777-9' firstName: 'Juan' lastName: 'Perez' addresses: {
+			Address 
+				withStreetName: 'Alem'
+				streetNumber: 1122
+				town: 'CABA'
+				zipCode: 1001
+				province: 'CABA'. }
+! !
+
+!testRun: #ImportTest #test01Import stamp: 'WAL 6/24/2023 22:11:51'!
+FAILURE!
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'WAL 6/24/2023 22:13:47' prior: 50680541!
+importCustomers: aStream
+
+	"
+	self importCustomers
+	"
+	| inputStream  newCustomer line |
+
+	inputStream := aStream.
+
+	line := inputStream next.
+	[ line notNil ] whileTrue: [
+		(line beginsWith: 'C') ifTrue: [ | customerData |
+			customerData := line findTokens: $,.
+			newCustomer := Customer new.
+			newCustomer firstName: customerData second.
+			newCustomer lastName: customerData third.
+			newCustomer identificationType: customerData fourth.
+			newCustomer identificationNumber: customerData fifth.
+			session persist: newCustomer ].
+
+		(line beginsWith: 'A') ifTrue: [ | addressData newAddress |
+			addressData := line findTokens: $,.
+			newAddress := Address new.
+			newCustomer addAddress: newAddress.
+			newAddress streetName: addressData second.
+			newAddress streetNumber: addressData third asNumber .
+			newAddress town: addressData fourth.
+			newAddress zipCode: addressData fifth asNumber .
+			newAddress province: addressData sixth.
+			session persist: newAddress ].
+
+		line := inputStream next. ].
+
+	inputStream close.
+	! !
+
+!testRun: #ImportTest #test01Import stamp: 'WAL 6/24/2023 22:14:02'!
+PASSED!
+
+!testRun: #ImportTest #test01Import stamp: 'WAL 6/24/2023 22:14:03'!
+PASSED!
+
+----SNAPSHOT----(24 June 2023 22:15:23) CuisUniversity-5832.image priorSource: 11146807!
+
+----SNAPSHOT----(24 June 2023 22:16:10) CuisUniversity-5832.image priorSource: 11169609!
+
+----STARTUP---- (24 June 2023 22:45:11) as /home/a/s/sw/smalltalk5/CuisUniversity-5832.image!
+
+!ImportTest methodsFor: 'test' stamp: 'WAL 6/24/2023 22:46:44' prior: 50680621!
+test01Import
+
+	| allCustomers stream |
+	
+	stream := ReadStream on:  (UniFileStream new open: 'input.txt' forWrite: false).
+	
+	"stream := ReadStream on: {	'C,Pepe,Sanchez,D,22333444' .
+							'A,San Martin,3322,Olivos,1636,BsAs' . 
+							'A,Maipu,888,Florida,1122,Buenos Aires' .
+							'C,Juan,Perez,C,23-25666777-9' . 
+							'A,Alem,1122,CABA,1001,CABA'
+							}."
+	
+	self importCustomers: stream.
+	
+	allCustomers := session selectAllOfType: Customer.
+	self assert: 2 equals: (allCustomers size).
+	
+	self assertCustomerType: 'D' number: '22333444' firstName: 'Pepe' lastName: 'Sanchez' addresses: {
+			Address 
+				withStreetName: 'San Martin'
+				streetNumber: 3322
+				town: 'Olivos'
+				zipCode: 1636
+				province: 'BsAs'.
+
+			Address
+				withStreetName: 'Maipu'
+				streetNumber: 888
+				town: 'Florida'
+				zipCode: 1122
+				province: 'Buenos Aires' }.
+
+	self assertCustomerType: 'C' number: '23-25666777-9' firstName: 'Juan' lastName: 'Perez' addresses: {
+			Address 
+				withStreetName: 'Alem'
+				streetNumber: 1122
+				town: 'CABA'
+				zipCode: 1001
+				province: 'CABA'. }
+! !
+
+!testRun: #ImportTest #test01Import stamp: 'WAL 6/24/2023 22:46:45'!
+ERROR!
+!ImportTest methodsFor: 'test' stamp: 'WAL 6/24/2023 22:47:31' prior: 50680710!
+test01Import
+
+	| allCustomers stream |
+	
+	stream := (UniFileStream new open: 'input.txt' forWrite: false).
+	
+	"stream := ReadStream on: {	'C,Pepe,Sanchez,D,22333444' .
+							'A,San Martin,3322,Olivos,1636,BsAs' . 
+							'A,Maipu,888,Florida,1122,Buenos Aires' .
+							'C,Juan,Perez,C,23-25666777-9' . 
+							'A,Alem,1122,CABA,1001,CABA'
+							}."
+	
+	self importCustomers: stream.
+	
+	allCustomers := session selectAllOfType: Customer.
+	self assert: 2 equals: (allCustomers size).
+	
+	self assertCustomerType: 'D' number: '22333444' firstName: 'Pepe' lastName: 'Sanchez' addresses: {
+			Address 
+				withStreetName: 'San Martin'
+				streetNumber: 3322
+				town: 'Olivos'
+				zipCode: 1636
+				province: 'BsAs'.
+
+			Address
+				withStreetName: 'Maipu'
+				streetNumber: 888
+				town: 'Florida'
+				zipCode: 1122
+				province: 'Buenos Aires' }.
+
+	self assertCustomerType: 'C' number: '23-25666777-9' firstName: 'Juan' lastName: 'Perez' addresses: {
+			Address 
+				withStreetName: 'Alem'
+				streetNumber: 1122
+				town: 'CABA'
+				zipCode: 1001
+				province: 'CABA'. }
+! !
+
+!testRun: #ImportTest #test01Import stamp: 'WAL 6/24/2023 22:47:32'!
+ERROR!
+!ImportTest methodsFor: 'test' stamp: 'WAL 6/24/2023 22:52:33' prior: 50680749!
+test01Import
+
+	| allCustomers stream fileStream |
+	
+	fileStream := (UniFileStream new open: 'input.txt' forWrite: false).
+	
+	fileStream printOn: stream.
+	
+	"stream := ReadStream on: {	'C,Pepe,Sanchez,D,22333444' .
+							'A,San Martin,3322,Olivos,1636,BsAs' . 
+							'A,Maipu,888,Florida,1122,Buenos Aires' .
+							'C,Juan,Perez,C,23-25666777-9' . 
+							'A,Alem,1122,CABA,1001,CABA'
+							}."
+	
+	self importCustomers: stream.
+	
+	allCustomers := session selectAllOfType: Customer.
+	self assert: 2 equals: (allCustomers size).
+	
+	self assertCustomerType: 'D' number: '22333444' firstName: 'Pepe' lastName: 'Sanchez' addresses: {
+			Address 
+				withStreetName: 'San Martin'
+				streetNumber: 3322
+				town: 'Olivos'
+				zipCode: 1636
+				province: 'BsAs'.
+
+			Address
+				withStreetName: 'Maipu'
+				streetNumber: 888
+				town: 'Florida'
+				zipCode: 1122
+				province: 'Buenos Aires' }.
+
+	self assertCustomerType: 'C' number: '23-25666777-9' firstName: 'Juan' lastName: 'Perez' addresses: {
+			Address 
+				withStreetName: 'Alem'
+				streetNumber: 1122
+				town: 'CABA'
+				zipCode: 1001
+				province: 'CABA'. }
+! !
+
+!testRun: #ImportTest #test01Import stamp: 'WAL 6/24/2023 22:52:44'!
+ERROR!
+!ImportTest methodsFor: 'test' stamp: 'WAL 6/24/2023 22:53:46' prior: 50680788!
+test01Import
+
+	| allCustomers stream fileStream |
+	
+	fileStream := (UniFileStream new open: 'input.txt' forWrite: false).
+	
+	stream := ReadStream new.
+	
+	fileStream printOn: stream.
+	
+	"stream := ReadStream on: {	'C,Pepe,Sanchez,D,22333444' .
+							'A,San Martin,3322,Olivos,1636,BsAs' . 
+							'A,Maipu,888,Florida,1122,Buenos Aires' .
+							'C,Juan,Perez,C,23-25666777-9' . 
+							'A,Alem,1122,CABA,1001,CABA'
+							}."
+	
+	self importCustomers: stream.
+	
+	allCustomers := session selectAllOfType: Customer.
+	self assert: 2 equals: (allCustomers size).
+	
+	self assertCustomerType: 'D' number: '22333444' firstName: 'Pepe' lastName: 'Sanchez' addresses: {
+			Address 
+				withStreetName: 'San Martin'
+				streetNumber: 3322
+				town: 'Olivos'
+				zipCode: 1636
+				province: 'BsAs'.
+
+			Address
+				withStreetName: 'Maipu'
+				streetNumber: 888
+				town: 'Florida'
+				zipCode: 1122
+				province: 'Buenos Aires' }.
+
+	self assertCustomerType: 'C' number: '23-25666777-9' firstName: 'Juan' lastName: 'Perez' addresses: {
+			Address 
+				withStreetName: 'Alem'
+				streetNumber: 1122
+				town: 'CABA'
+				zipCode: 1001
+				province: 'CABA'. }
+! !
+
+!testRun: #ImportTest #test01Import stamp: 'WAL 6/24/2023 22:53:48'!
+ERROR!
+!ImportTest methodsFor: 'test' stamp: 'WAL 6/24/2023 22:54:06' prior: 50680828!
+test01Import
+
+	| allCustomers stream fileStream |
+	
+	fileStream := (UniFileStream new open: 'input.txt' forWrite: false).
+	
+	stream := WriteStream new.
+	
+	fileStream printOn: stream.
+	
+	"stream := ReadStream on: {	'C,Pepe,Sanchez,D,22333444' .
+							'A,San Martin,3322,Olivos,1636,BsAs' . 
+							'A,Maipu,888,Florida,1122,Buenos Aires' .
+							'C,Juan,Perez,C,23-25666777-9' . 
+							'A,Alem,1122,CABA,1001,CABA'
+							}."
+	
+	self importCustomers: stream.
+	
+	allCustomers := session selectAllOfType: Customer.
+	self assert: 2 equals: (allCustomers size).
+	
+	self assertCustomerType: 'D' number: '22333444' firstName: 'Pepe' lastName: 'Sanchez' addresses: {
+			Address 
+				withStreetName: 'San Martin'
+				streetNumber: 3322
+				town: 'Olivos'
+				zipCode: 1636
+				province: 'BsAs'.
+
+			Address
+				withStreetName: 'Maipu'
+				streetNumber: 888
+				town: 'Florida'
+				zipCode: 1122
+				province: 'Buenos Aires' }.
+
+	self assertCustomerType: 'C' number: '23-25666777-9' firstName: 'Juan' lastName: 'Perez' addresses: {
+			Address 
+				withStreetName: 'Alem'
+				streetNumber: 1122
+				town: 'CABA'
+				zipCode: 1001
+				province: 'CABA'. }
+! !
+
+!testRun: #ImportTest #test01Import stamp: 'WAL 6/24/2023 22:54:07'!
+ERROR!
+!ImportTest methodsFor: 'test' stamp: 'WAL 6/24/2023 23:01:17' prior: 50680869!
+test01Import
+
+	| allCustomers stream fileStream |
+	
+	stream := WriteStream on: {}.
+	fileStream := (UniFileStream new open: 'input.txt' forWrite: false) printOn: stream.
+
+	"stream := ReadStream on: {	'C,Pepe,Sanchez,D,22333444' .
+							'A,San Martin,3322,Olivos,1636,BsAs' . 
+							'A,Maipu,888,Florida,1122,Buenos Aires' .
+							'C,Juan,Perez,C,23-25666777-9' . 
+							'A,Alem,1122,CABA,1001,CABA'
+							}."
+	
+	self importCustomers: stream.
+	
+	allCustomers := session selectAllOfType: Customer.
+	self assert: 2 equals: (allCustomers size).
+	
+	self assertCustomerType: 'D' number: '22333444' firstName: 'Pepe' lastName: 'Sanchez' addresses: {
+			Address 
+				withStreetName: 'San Martin'
+				streetNumber: 3322
+				town: 'Olivos'
+				zipCode: 1636
+				province: 'BsAs'.
+
+			Address
+				withStreetName: 'Maipu'
+				streetNumber: 888
+				town: 'Florida'
+				zipCode: 1122
+				province: 'Buenos Aires' }.
+
+	self assertCustomerType: 'C' number: '23-25666777-9' firstName: 'Juan' lastName: 'Perez' addresses: {
+			Address 
+				withStreetName: 'Alem'
+				streetNumber: 1122
+				town: 'CABA'
+				zipCode: 1001
+				province: 'CABA'. }
+! !
+
+!testRun: #ImportTest #test01Import stamp: 'WAL 6/24/2023 23:01:25'!
+ERROR!
+
+!testRun: #ImportTest #test01Import stamp: 'WAL 6/24/2023 23:06:18'!
+ERROR!
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'WAL 6/24/2023 23:15:25'!
+convert: aFileStream to: aWriteStream
+
+	| line |
+
+	line := aFileStream nextLine.
+	[ line notNil ] whileTrue: [
+		aWriteStream next: line.
+		line := aFileStream nextLine. ].
+
+	aFileStream close.! !
+!ImportTest methodsFor: 'test' stamp: 'WAL 6/24/2023 23:17:32' prior: 50680910!
+test01Import
+
+	| allCustomers stream fileStream |
+	
+	stream := WriteStream on: {}.
+	fileStream := UniFileStream new open: 'input.txt' forWrite: false.
+	
+	self convert: fileStream to: stream.
+
+	"stream := ReadStream on: {	'C,Pepe,Sanchez,D,22333444' .
+							'A,San Martin,3322,Olivos,1636,BsAs' . 
+							'A,Maipu,888,Florida,1122,Buenos Aires' .
+							'C,Juan,Perez,C,23-25666777-9' . 
+							'A,Alem,1122,CABA,1001,CABA'
+							}."
+	
+	self importCustomers: stream.
+	
+	allCustomers := session selectAllOfType: Customer.
+	self assert: 2 equals: (allCustomers size).
+	
+	self assertCustomerType: 'D' number: '22333444' firstName: 'Pepe' lastName: 'Sanchez' addresses: {
+			Address 
+				withStreetName: 'San Martin'
+				streetNumber: 3322
+				town: 'Olivos'
+				zipCode: 1636
+				province: 'BsAs'.
+
+			Address
+				withStreetName: 'Maipu'
+				streetNumber: 888
+				town: 'Florida'
+				zipCode: 1122
+				province: 'Buenos Aires' }.
+
+	self assertCustomerType: 'C' number: '23-25666777-9' firstName: 'Juan' lastName: 'Perez' addresses: {
+			Address 
+				withStreetName: 'Alem'
+				streetNumber: 1122
+				town: 'CABA'
+				zipCode: 1001
+				province: 'CABA'. }
+! !
+
+!testRun: #ImportTest #test01Import stamp: 'WAL 6/24/2023 23:17:34'!
+ERROR!
+!ImportTest methodsFor: 'test' stamp: 'WAL 6/24/2023 23:20:50' prior: 50680962!
+test01Import
+
+	| allCustomers stream fileStream |
+	
+	fileStream := UniFileStream new open: 'input.txt' forWrite: false.
+	
+	stream := self readStreamFromFile: fileStream.
+
+	"stream := ReadStream on: {	'C,Pepe,Sanchez,D,22333444' .
+							'A,San Martin,3322,Olivos,1636,BsAs' . 
+							'A,Maipu,888,Florida,1122,Buenos Aires' .
+							'C,Juan,Perez,C,23-25666777-9' . 
+							'A,Alem,1122,CABA,1001,CABA'
+							}."
+	
+	self importCustomers: stream.
+	
+	allCustomers := session selectAllOfType: Customer.
+	self assert: 2 equals: (allCustomers size).
+	
+	self assertCustomerType: 'D' number: '22333444' firstName: 'Pepe' lastName: 'Sanchez' addresses: {
+			Address 
+				withStreetName: 'San Martin'
+				streetNumber: 3322
+				town: 'Olivos'
+				zipCode: 1636
+				province: 'BsAs'.
+
+			Address
+				withStreetName: 'Maipu'
+				streetNumber: 888
+				town: 'Florida'
+				zipCode: 1122
+				province: 'Buenos Aires' }.
+
+	self assertCustomerType: 'C' number: '23-25666777-9' firstName: 'Juan' lastName: 'Perez' addresses: {
+			Address 
+				withStreetName: 'Alem'
+				streetNumber: 1122
+				town: 'CABA'
+				zipCode: 1001
+				province: 'CABA'. }
+! !
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'WAL 6/24/2023 23:23:35'!
+readStreamFromFile: aFileStream
+
+	| line orderedCollection |
+
+	orderedCollection := OrderedCollection new.
+
+	line := aFileStream nextLine.
+	[ line notNil ] whileTrue: [
+		orderedCollection add: line.
+		line := aFileStream nextLine. ].
+
+	aFileStream close.
+	
+	^ReadStream on: orderedCollection! !
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'WAL 6/24/2023 23:23:57' prior: 50681042!
+readStreamFromFile: aFileStream
+
+	| line stream |
+
+	stream := OrderedCollection new.
+
+	line := aFileStream nextLine.
+	[ line notNil ] whileTrue: [
+		stream add: line.
+		line := aFileStream nextLine. ].
+
+	aFileStream close.
+	
+	^ReadStream on: stream! !
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'WAL 6/24/2023 23:24:24' prior: 50681055!
+readStreamFromFile: aFileStream
+
+	| line streamedElements |
+
+	streamedElements := OrderedCollection new.
+
+	line := aFileStream nextLine.
+	[ line notNil ] whileTrue: [
+		streamedElements add: line.
+		line := aFileStream nextLine. ].
+
+	aFileStream close.
+	
+	^ReadStream on: streamedElements! !
+
+!testRun: #ImportTest #test01Import stamp: 'WAL 6/24/2023 23:24:46'!
+PASSED!
+
+!testRun: #ImportTest #test01Import stamp: 'WAL 6/24/2023 23:24:47'!
+PASSED!
+!ImportTest methodsFor: 'test' stamp: 'WAL 6/24/2023 23:25:22' prior: 50681004!
+test01Import
+
+	| allCustomers stream fileStream |
+	
+	fileStream := UniFileStream new open: 'input.txt' forWrite: false.
+	stream := self readStreamFromFile: fileStream.
+
+	"stream := ReadStream on: {	'C,Pepe,Sanchez,D,22333444' .
+							'A,San Martin,3322,Olivos,1636,BsAs' . 
+							'A,Maipu,888,Florida,1122,Buenos Aires' .
+							'C,Juan,Perez,C,23-25666777-9' . 
+							'A,Alem,1122,CABA,1001,CABA'
+							}."
+	
+	self importCustomers: stream.
+	
+	allCustomers := session selectAllOfType: Customer.
+	self assert: 2 equals: (allCustomers size).
+	
+	self assertCustomerType: 'D' number: '22333444' firstName: 'Pepe' lastName: 'Sanchez' addresses: {
+			Address 
+				withStreetName: 'San Martin'
+				streetNumber: 3322
+				town: 'Olivos'
+				zipCode: 1636
+				province: 'BsAs'.
+
+			Address
+				withStreetName: 'Maipu'
+				streetNumber: 888
+				town: 'Florida'
+				zipCode: 1122
+				province: 'Buenos Aires' }.
+
+	self assertCustomerType: 'C' number: '23-25666777-9' firstName: 'Juan' lastName: 'Perez' addresses: {
+			Address 
+				withStreetName: 'Alem'
+				streetNumber: 1122
+				town: 'CABA'
+				zipCode: 1001
+				province: 'CABA'. }
+! !
+
+!testRun: #ImportTest #test01Import stamp: 'WAL 6/24/2023 23:25:26'!
+PASSED!
+
+!testRun: #ImportTest #test01Import stamp: 'WAL 6/24/2023 23:25:27'!
+PASSED!
+!ImportTest methodsFor: 'test' stamp: 'WAL 6/24/2023 23:25:44' prior: 50681083!
+test01Import
+
+	| allCustomers stream fileStream |
+	
+	"fileStream := UniFileStream new open: 'input.txt' forWrite: false.
+	stream := self readStreamFromFile: fileStream."
+
+	stream := ReadStream on: {	'C,Pepe,Sanchez,D,22333444' .
+							'A,San Martin,3322,Olivos,1636,BsAs' . 
+							'A,Maipu,888,Florida,1122,Buenos Aires' .
+							'C,Juan,Perez,C,23-25666777-9' . 
+							'A,Alem,1122,CABA,1001,CABA'
+							}.
+	
+	self importCustomers: stream.
+	
+	allCustomers := session selectAllOfType: Customer.
+	self assert: 2 equals: (allCustomers size).
+	
+	self assertCustomerType: 'D' number: '22333444' firstName: 'Pepe' lastName: 'Sanchez' addresses: {
+			Address 
+				withStreetName: 'San Martin'
+				streetNumber: 3322
+				town: 'Olivos'
+				zipCode: 1636
+				province: 'BsAs'.
+
+			Address
+				withStreetName: 'Maipu'
+				streetNumber: 888
+				town: 'Florida'
+				zipCode: 1122
+				province: 'Buenos Aires' }.
+
+	self assertCustomerType: 'C' number: '23-25666777-9' firstName: 'Juan' lastName: 'Perez' addresses: {
+			Address 
+				withStreetName: 'Alem'
+				streetNumber: 1122
+				town: 'CABA'
+				zipCode: 1001
+				province: 'CABA'. }
+! !
+
+!testRun: #ImportTest #test01Import stamp: 'WAL 6/24/2023 23:25:49'!
+PASSED!
+
+!testRun: #ImportTest #test01Import stamp: 'WAL 6/24/2023 23:25:51'!
+PASSED!
+
+!testRun: #ImportTest #test01Import stamp: 'WAL 6/24/2023 23:37:37'!
+PASSED!
+
+!testRun: #ImportTest #test01Import stamp: 'WAL 6/24/2023 23:37:38'!
+PASSED!
+!ImportTest methodsFor: 'test' stamp: 'WAL 6/24/2023 23:37:43' prior: 50681126!
+test01Import
+
+	| allCustomers stream fileStream |
+	
+	"fileStream := UniFileStream new open: 'input.txt' forWrite: false.
+	stream := self readStreamFromFile: fileStream."
+
+	stream := RWBinaryOrTextStream on: {	'C,Pepe,Sanchez,D,22333444' .
+							'A,San Martin,3322,Olivos,1636,BsAs' . 
+							'A,Maipu,888,Florida,1122,Buenos Aires' .
+							'C,Juan,Perez,C,23-25666777-9' . 
+							'A,Alem,1122,CABA,1001,CABA'
+							}.
+	
+	self importCustomers: stream.
+	
+	allCustomers := session selectAllOfType: Customer.
+	self assert: 2 equals: (allCustomers size).
+	
+	self assertCustomerType: 'D' number: '22333444' firstName: 'Pepe' lastName: 'Sanchez' addresses: {
+			Address 
+				withStreetName: 'San Martin'
+				streetNumber: 3322
+				town: 'Olivos'
+				zipCode: 1636
+				province: 'BsAs'.
+
+			Address
+				withStreetName: 'Maipu'
+				streetNumber: 888
+				town: 'Florida'
+				zipCode: 1122
+				province: 'Buenos Aires' }.
+
+	self assertCustomerType: 'C' number: '23-25666777-9' firstName: 'Juan' lastName: 'Perez' addresses: {
+			Address 
+				withStreetName: 'Alem'
+				streetNumber: 1122
+				town: 'CABA'
+				zipCode: 1001
+				province: 'CABA'. }
+! !
+
+!testRun: #ImportTest #test01Import stamp: 'WAL 6/24/2023 23:37:52'!
+FAILURE!
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'WAL 6/24/2023 23:38:31' prior: 50680661!
+importCustomers: aStream
+
+	"
+	self importCustomers
+	"
+	| inputStream  newCustomer line |
+
+	inputStream := aStream.
+
+	line := inputStream nextLine.
+	[ line notNil ] whileTrue: [
+		(line beginsWith: 'C') ifTrue: [ | customerData |
+			customerData := line findTokens: $,.
+			newCustomer := Customer new.
+			newCustomer firstName: customerData second.
+			newCustomer lastName: customerData third.
+			newCustomer identificationType: customerData fourth.
+			newCustomer identificationNumber: customerData fifth.
+			session persist: newCustomer ].
+
+		(line beginsWith: 'A') ifTrue: [ | addressData newAddress |
+			addressData := line findTokens: $,.
+			newAddress := Address new.
+			newCustomer addAddress: newAddress.
+			newAddress streetName: addressData second.
+			newAddress streetNumber: addressData third asNumber .
+			newAddress town: addressData fourth.
+			newAddress zipCode: addressData fifth asNumber .
+			newAddress province: addressData sixth.
+			session persist: newAddress ].
+
+		line := inputStream next. ].
+
+	inputStream close.
+	! !
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'WAL 6/24/2023 23:38:37' prior: 50681216!
+importCustomers: aStream
+
+	"
+	self importCustomers
+	"
+	| inputStream  newCustomer line |
+
+	inputStream := aStream.
+
+	line := inputStream nextLine.
+	[ line notNil ] whileTrue: [
+		(line beginsWith: 'C') ifTrue: [ | customerData |
+			customerData := line findTokens: $,.
+			newCustomer := Customer new.
+			newCustomer firstName: customerData second.
+			newCustomer lastName: customerData third.
+			newCustomer identificationType: customerData fourth.
+			newCustomer identificationNumber: customerData fifth.
+			session persist: newCustomer ].
+
+		(line beginsWith: 'A') ifTrue: [ | addressData newAddress |
+			addressData := line findTokens: $,.
+			newAddress := Address new.
+			newCustomer addAddress: newAddress.
+			newAddress streetName: addressData second.
+			newAddress streetNumber: addressData third asNumber .
+			newAddress town: addressData fourth.
+			newAddress zipCode: addressData fifth asNumber .
+			newAddress province: addressData sixth.
+			session persist: newAddress ].
+
+		line := inputStream nextLine. ].
+
+	inputStream close.
+	! !
+
+!testRun: #ImportTest #test01Import stamp: 'WAL 6/24/2023 23:38:57'!
+FAILURE!
+
+RWBinaryOrTextStream!
+
+!testRun: #ImportTest #test01Import stamp: 'WAL 6/24/2023 23:40:58'!
+FAILURE!
+!ImportTest methodsFor: 'test' stamp: 'WAL 6/24/2023 23:41:36' prior: 50681174!
+test01Import
+
+	| allCustomers stream fileStream |
+	
+	"fileStream := UniFileStream new open: 'input.txt' forWrite: false.
+	stream := self readStreamFromFile: fileStream."
+
+	stream := ReadWriteStream on: {	'C,Pepe,Sanchez,D,22333444' .
+							'A,San Martin,3322,Olivos,1636,BsAs' . 
+							'A,Maipu,888,Florida,1122,Buenos Aires' .
+							'C,Juan,Perez,C,23-25666777-9' . 
+							'A,Alem,1122,CABA,1001,CABA'
+							}.
+	
+	self importCustomers: stream.
+	
+	allCustomers := session selectAllOfType: Customer.
+	self assert: 2 equals: (allCustomers size).
+	
+	self assertCustomerType: 'D' number: '22333444' firstName: 'Pepe' lastName: 'Sanchez' addresses: {
+			Address 
+				withStreetName: 'San Martin'
+				streetNumber: 3322
+				town: 'Olivos'
+				zipCode: 1636
+				province: 'BsAs'.
+
+			Address
+				withStreetName: 'Maipu'
+				streetNumber: 888
+				town: 'Florida'
+				zipCode: 1122
+				province: 'Buenos Aires' }.
+
+	self assertCustomerType: 'C' number: '23-25666777-9' firstName: 'Juan' lastName: 'Perez' addresses: {
+			Address 
+				withStreetName: 'Alem'
+				streetNumber: 1122
+				town: 'CABA'
+				zipCode: 1001
+				province: 'CABA'. }
+! !
+
+!testRun: #ImportTest #test01Import stamp: 'WAL 6/24/2023 23:41:41'!
+FAILURE!
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'WAL 6/24/2023 23:42:16' prior: 50681252!
+importCustomers: aStream
+
+	"
+	self importCustomers
+	"
+	| inputStream  newCustomer line |
+
+	inputStream := aStream.
+
+	line := inputStream next.
+	[ line notNil ] whileTrue: [
+		(line beginsWith: 'C') ifTrue: [ | customerData |
+			customerData := line findTokens: $,.
+			newCustomer := Customer new.
+			newCustomer firstName: customerData second.
+			newCustomer lastName: customerData third.
+			newCustomer identificationType: customerData fourth.
+			newCustomer identificationNumber: customerData fifth.
+			session persist: newCustomer ].
+
+		(line beginsWith: 'A') ifTrue: [ | addressData newAddress |
+			addressData := line findTokens: $,.
+			newAddress := Address new.
+			newCustomer addAddress: newAddress.
+			newAddress streetName: addressData second.
+			newAddress streetNumber: addressData third asNumber .
+			newAddress town: addressData fourth.
+			newAddress zipCode: addressData fifth asNumber .
+			newAddress province: addressData sixth.
+			session persist: newAddress ].
+
+		line := inputStream next. ].
+
+	inputStream close.
+	! !
+
+!testRun: #ImportTest #test01Import stamp: 'WAL 6/24/2023 23:42:16'!
+FAILURE!
+
+!testRun: #ImportTest #test01Import stamp: 'WAL 6/24/2023 23:42:17'!
+FAILURE!
+!ImportTest methodsFor: 'test' stamp: 'WAL 6/24/2023 23:42:30' prior: 50681293!
+test01Import
+
+	| allCustomers stream |
+	
+	"fileStream := UniFileStream new open: 'input.txt' forWrite: false.
+	stream := self readStreamFromFile: fileStream."
+
+	stream := ReadStream on: {	'C,Pepe,Sanchez,D,22333444' .
+							'A,San Martin,3322,Olivos,1636,BsAs' . 
+							'A,Maipu,888,Florida,1122,Buenos Aires' .
+							'C,Juan,Perez,C,23-25666777-9' . 
+							'A,Alem,1122,CABA,1001,CABA'
+							}.
+	
+	self importCustomers: stream.
+	
+	allCustomers := session selectAllOfType: Customer.
+	self assert: 2 equals: (allCustomers size).
+	
+	self assertCustomerType: 'D' number: '22333444' firstName: 'Pepe' lastName: 'Sanchez' addresses: {
+			Address 
+				withStreetName: 'San Martin'
+				streetNumber: 3322
+				town: 'Olivos'
+				zipCode: 1636
+				province: 'BsAs'.
+
+			Address
+				withStreetName: 'Maipu'
+				streetNumber: 888
+				town: 'Florida'
+				zipCode: 1122
+				province: 'Buenos Aires' }.
+
+	self assertCustomerType: 'C' number: '23-25666777-9' firstName: 'Juan' lastName: 'Perez' addresses: {
+			Address 
+				withStreetName: 'Alem'
+				streetNumber: 1122
+				town: 'CABA'
+				zipCode: 1001
+				province: 'CABA'. }
+! !
+
+!testRun: #ImportTest #test01Import stamp: 'WAL 6/24/2023 23:42:34'!
+PASSED!
+
+!testRun: #ImportTest #test01Import stamp: 'WAL 6/24/2023 23:42:35'!
+PASSED!
+!ImportTest methodsFor: 'test' stamp: 'WAL 6/24/2023 23:43:02' prior: 50681375!
+test01Import
+
+	| allCustomers stream |
+	
+	"fileStream := UniFileStream new open: 'input.txt' forWrite: false.
+	stream := self readStreamFromFile: fileStream."
+
+	stream := ReadWriteStream on: {	'C,Pepe,Sanchez,D,22333444' .
+							'A,San Martin,3322,Olivos,1636,BsAs' . 
+							'A,Maipu,888,Florida,1122,Buenos Aires' .
+							'C,Juan,Perez,C,23-25666777-9' . 
+							'A,Alem,1122,CABA,1001,CABA'
+							}.
+	
+	self importCustomers: stream.
+	
+	allCustomers := session selectAllOfType: Customer.
+	self assert: 2 equals: (allCustomers size).
+	
+	self assertCustomerType: 'D' number: '22333444' firstName: 'Pepe' lastName: 'Sanchez' addresses: {
+			Address 
+				withStreetName: 'San Martin'
+				streetNumber: 3322
+				town: 'Olivos'
+				zipCode: 1636
+				province: 'BsAs'.
+
+			Address
+				withStreetName: 'Maipu'
+				streetNumber: 888
+				town: 'Florida'
+				zipCode: 1122
+				province: 'Buenos Aires' }.
+
+	self assertCustomerType: 'C' number: '23-25666777-9' firstName: 'Juan' lastName: 'Perez' addresses: {
+			Address 
+				withStreetName: 'Alem'
+				streetNumber: 1122
+				town: 'CABA'
+				zipCode: 1001
+				province: 'CABA'. }
+! !
+
+!testRun: #ImportTest #test01Import stamp: 'WAL 6/24/2023 23:43:05'!
+FAILURE!
+!ImportTest methodsFor: 'test' stamp: 'WAL 6/24/2023 23:44:21' prior: 50681418!
+test01Import
+
+	| allCustomers stream |
+	
+	"fileStream := UniFileStream new open: 'input.txt' forWrite: false.
+	stream := self readStreamFromFile: fileStream."
+
+	stream := Utf8EncodedWriteStream on: {	'C,Pepe,Sanchez,D,22333444' .
+							'A,San Martin,3322,Olivos,1636,BsAs' . 
+							'A,Maipu,888,Florida,1122,Buenos Aires' .
+							'C,Juan,Perez,C,23-25666777-9' . 
+							'A,Alem,1122,CABA,1001,CABA'
+							}.
+	
+	self importCustomers: stream.
+	
+	allCustomers := session selectAllOfType: Customer.
+	self assert: 2 equals: (allCustomers size).
+	
+	self assertCustomerType: 'D' number: '22333444' firstName: 'Pepe' lastName: 'Sanchez' addresses: {
+			Address 
+				withStreetName: 'San Martin'
+				streetNumber: 3322
+				town: 'Olivos'
+				zipCode: 1636
+				province: 'BsAs'.
+
+			Address
+				withStreetName: 'Maipu'
+				streetNumber: 888
+				town: 'Florida'
+				zipCode: 1122
+				province: 'Buenos Aires' }.
+
+	self assertCustomerType: 'C' number: '23-25666777-9' firstName: 'Juan' lastName: 'Perez' addresses: {
+			Address 
+				withStreetName: 'Alem'
+				streetNumber: 1122
+				town: 'CABA'
+				zipCode: 1001
+				province: 'CABA'. }
+! !
+
+!testRun: #ImportTest #test01Import stamp: 'WAL 6/24/2023 23:44:22'!
+ERROR!
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'WAL 6/24/2023 23:44:47' prior: 50681335!
+importCustomers: aStream
+
+	"
+	self importCustomers
+	"
+	| inputStream  newCustomer line |
+
+	inputStream := aStream.
+
+	line := inputStream nextLine.
+	[ line notNil ] whileTrue: [
+		(line beginsWith: 'C') ifTrue: [ | customerData |
+			customerData := line findTokens: $,.
+			newCustomer := Customer new.
+			newCustomer firstName: customerData second.
+			newCustomer lastName: customerData third.
+			newCustomer identificationType: customerData fourth.
+			newCustomer identificationNumber: customerData fifth.
+			session persist: newCustomer ].
+
+		(line beginsWith: 'A') ifTrue: [ | addressData newAddress |
+			addressData := line findTokens: $,.
+			newAddress := Address new.
+			newCustomer addAddress: newAddress.
+			newAddress streetName: addressData second.
+			newAddress streetNumber: addressData third asNumber .
+			newAddress town: addressData fourth.
+			newAddress zipCode: addressData fifth asNumber .
+			newAddress province: addressData sixth.
+			session persist: newAddress ].
+
+		line := inputStream next. ].
+
+	inputStream close.
+	! !
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'WAL 6/24/2023 23:44:53' prior: 50681500!
+importCustomers: aStream
+
+	"
+	self importCustomers
+	"
+	| inputStream  newCustomer line |
+
+	inputStream := aStream.
+
+	line := inputStream nextLine.
+	[ line notNil ] whileTrue: [
+		(line beginsWith: 'C') ifTrue: [ | customerData |
+			customerData := line findTokens: $,.
+			newCustomer := Customer new.
+			newCustomer firstName: customerData second.
+			newCustomer lastName: customerData third.
+			newCustomer identificationType: customerData fourth.
+			newCustomer identificationNumber: customerData fifth.
+			session persist: newCustomer ].
+
+		(line beginsWith: 'A') ifTrue: [ | addressData newAddress |
+			addressData := line findTokens: $,.
+			newAddress := Address new.
+			newCustomer addAddress: newAddress.
+			newAddress streetName: addressData second.
+			newAddress streetNumber: addressData third asNumber .
+			newAddress town: addressData fourth.
+			newAddress zipCode: addressData fifth asNumber .
+			newAddress province: addressData sixth.
+			session persist: newAddress ].
+
+		line := inputStream nextLine. ].
+
+	inputStream close.
+	! !
+
+!testRun: #ImportTest #test01Import stamp: 'WAL 6/24/2023 23:44:54'!
+FAILURE!
+
+!testRun: #ImportTest #test01Import stamp: 'WAL 6/24/2023 23:44:54'!
+FAILURE!
+
+!testRun: #ImportTest #test01Import stamp: 'WAL 6/24/2023 23:46:10'!
+FAILURE!
+
+!testRun: #ImportTest #test01Import stamp: 'WAL 6/24/2023 23:46:24'!
+FAILURE!
+!ImportTest methodsFor: 'test' stamp: 'WAL 6/25/2023 00:02:18' prior: 50681459!
+test01Import
+
+	| allCustomers stream |
+	
+	"fileStream := UniFileStream new open: 'input.txt' forWrite: false.
+	stream := self readStreamFromFile: fileStream."
+
+	stream := ReadStream with: {	'C,Pepe,Sanchez,D,22333444' .
+							'A,San Martin,3322,Olivos,1636,BsAs' . 
+							'A,Maipu,888,Florida,1122,Buenos Aires' .
+							'C,Juan,Perez,C,23-25666777-9' . 
+							'A,Alem,1122,CABA,1001,CABA'
+							}.
+	
+	self importCustomers: stream.
+	
+	allCustomers := session selectAllOfType: Customer.
+	self assert: 2 equals: (allCustomers size).
+	
+	self assertCustomerType: 'D' number: '22333444' firstName: 'Pepe' lastName: 'Sanchez' addresses: {
+			Address 
+				withStreetName: 'San Martin'
+				streetNumber: 3322
+				town: 'Olivos'
+				zipCode: 1636
+				province: 'BsAs'.
+
+			Address
+				withStreetName: 'Maipu'
+				streetNumber: 888
+				town: 'Florida'
+				zipCode: 1122
+				province: 'Buenos Aires' }.
+
+	self assertCustomerType: 'C' number: '23-25666777-9' firstName: 'Juan' lastName: 'Perez' addresses: {
+			Address 
+				withStreetName: 'Alem'
+				streetNumber: 1122
+				town: 'CABA'
+				zipCode: 1001
+				province: 'CABA'. }
+! !
+
+!testRun: #ImportTest #test01Import stamp: 'WAL 6/25/2023 00:02:30'!
+ERROR!
+!ImportTest methodsFor: 'test' stamp: 'WAL 6/25/2023 00:02:45' prior: 50681582!
+test01Import
+
+	| allCustomers stream |
+	
+	"fileStream := UniFileStream new open: 'input.txt' forWrite: false.
+	stream := self readStreamFromFile: fileStream."
+
+	stream := ReadWriteStream with: {	'C,Pepe,Sanchez,D,22333444' .
+							'A,San Martin,3322,Olivos,1636,BsAs' . 
+							'A,Maipu,888,Florida,1122,Buenos Aires' .
+							'C,Juan,Perez,C,23-25666777-9' . 
+							'A,Alem,1122,CABA,1001,CABA'
+							}.
+	
+	self importCustomers: stream.
+	
+	allCustomers := session selectAllOfType: Customer.
+	self assert: 2 equals: (allCustomers size).
+	
+	self assertCustomerType: 'D' number: '22333444' firstName: 'Pepe' lastName: 'Sanchez' addresses: {
+			Address 
+				withStreetName: 'San Martin'
+				streetNumber: 3322
+				town: 'Olivos'
+				zipCode: 1636
+				province: 'BsAs'.
+
+			Address
+				withStreetName: 'Maipu'
+				streetNumber: 888
+				town: 'Florida'
+				zipCode: 1122
+				province: 'Buenos Aires' }.
+
+	self assertCustomerType: 'C' number: '23-25666777-9' firstName: 'Juan' lastName: 'Perez' addresses: {
+			Address 
+				withStreetName: 'Alem'
+				streetNumber: 1122
+				town: 'CABA'
+				zipCode: 1001
+				province: 'CABA'. }
+! !
+
+!testRun: #ImportTest #test01Import stamp: 'WAL 6/25/2023 00:02:46'!
+FAILURE!
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'WAL 6/25/2023 00:03:07' prior: 50681536!
+importCustomers: aStream
+
+	"
+	self importCustomers
+	"
+	| inputStream  newCustomer line |
+
+	inputStream := aStream.
+
+	line := inputStream next.
+	[ line notNil ] whileTrue: [
+		(line beginsWith: 'C') ifTrue: [ | customerData |
+			customerData := line findTokens: $,.
+			newCustomer := Customer new.
+			newCustomer firstName: customerData second.
+			newCustomer lastName: customerData third.
+			newCustomer identificationType: customerData fourth.
+			newCustomer identificationNumber: customerData fifth.
+			session persist: newCustomer ].
+
+		(line beginsWith: 'A') ifTrue: [ | addressData newAddress |
+			addressData := line findTokens: $,.
+			newAddress := Address new.
+			newCustomer addAddress: newAddress.
+			newAddress streetName: addressData second.
+			newAddress streetNumber: addressData third asNumber .
+			newAddress town: addressData fourth.
+			newAddress zipCode: addressData fifth asNumber .
+			newAddress province: addressData sixth.
+			session persist: newAddress ].
+
+		line := inputStream next. ].
+
+	inputStream close.
+	! !
+
+!testRun: #ImportTest #test01Import stamp: 'WAL 6/25/2023 00:03:08'!
+FAILURE!
+
+!testRun: #ImportTest #test01Import stamp: 'WAL 6/25/2023 00:03:09'!
+FAILURE!
+!ImportTest methodsFor: 'test' stamp: 'WAL 6/25/2023 00:14:01' prior: 50681623!
+test01Import
+
+	| allCustomers stream |
+	
+	"fileStream := UniFileStream new open: 'input.txt' forWrite: false.
+	stream := self readStreamFromFile: fileStream."
+
+	stream := ReadStream with: {	'C,Pepe,Sanchez,D,22333444' .
+							'A,San Martin,3322,Olivos,1636,BsAs' . 
+							'A,Maipu,888,Florida,1122,Buenos Aires' .
+							'C,Juan,Perez,C,23-25666777-9' . 
+							'A,Alem,1122,CABA,1001,CABA'
+							}.
+	
+	self importCustomers: stream.
+	
+	allCustomers := session selectAllOfType: Customer.
+	self assert: 2 equals: (allCustomers size).
+	
+	self assertCustomerType: 'D' number: '22333444' firstName: 'Pepe' lastName: 'Sanchez' addresses: {
+			Address 
+				withStreetName: 'San Martin'
+				streetNumber: 3322
+				town: 'Olivos'
+				zipCode: 1636
+				province: 'BsAs'.
+
+			Address
+				withStreetName: 'Maipu'
+				streetNumber: 888
+				town: 'Florida'
+				zipCode: 1122
+				province: 'Buenos Aires' }.
+
+	self assertCustomerType: 'C' number: '23-25666777-9' firstName: 'Juan' lastName: 'Perez' addresses: {
+			Address 
+				withStreetName: 'Alem'
+				streetNumber: 1122
+				town: 'CABA'
+				zipCode: 1001
+				province: 'CABA'. }
+! !
+
+!testRun: #ImportTest #test01Import stamp: 'WAL 6/25/2023 00:14:03'!
+ERROR!
+!ImportTest methodsFor: 'test' stamp: 'WAL 6/25/2023 00:14:11' prior: 50681704!
+test01Import
+
+	| allCustomers stream |
+	
+	"fileStream := UniFileStream new open: 'input.txt' forWrite: false.
+	stream := self readStreamFromFile: fileStream."
+
+	stream := ReadStream on: {	'C,Pepe,Sanchez,D,22333444' .
+							'A,San Martin,3322,Olivos,1636,BsAs' . 
+							'A,Maipu,888,Florida,1122,Buenos Aires' .
+							'C,Juan,Perez,C,23-25666777-9' . 
+							'A,Alem,1122,CABA,1001,CABA'
+							}.
+	
+	self importCustomers: stream.
+	
+	allCustomers := session selectAllOfType: Customer.
+	self assert: 2 equals: (allCustomers size).
+	
+	self assertCustomerType: 'D' number: '22333444' firstName: 'Pepe' lastName: 'Sanchez' addresses: {
+			Address 
+				withStreetName: 'San Martin'
+				streetNumber: 3322
+				town: 'Olivos'
+				zipCode: 1636
+				province: 'BsAs'.
+
+			Address
+				withStreetName: 'Maipu'
+				streetNumber: 888
+				town: 'Florida'
+				zipCode: 1122
+				province: 'Buenos Aires' }.
+
+	self assertCustomerType: 'C' number: '23-25666777-9' firstName: 'Juan' lastName: 'Perez' addresses: {
+			Address 
+				withStreetName: 'Alem'
+				streetNumber: 1122
+				town: 'CABA'
+				zipCode: 1001
+				province: 'CABA'. }
+! !
+
+!testRun: #ImportTest #test01Import stamp: 'WAL 6/25/2023 00:14:14'!
+PASSED!
+
+!testRun: #ImportTest #test01Import stamp: 'WAL 6/25/2023 00:14:15'!
+PASSED!
+!ImportTest methodsFor: 'test' stamp: 'WAL 6/25/2023 00:14:41' prior: 50681745!
+test01Import
+
+	| allCustomers stream fileStream |
+	
+	fileStream := UniFileStream new open: 'input.txt' forWrite: false.
+	stream := self readStreamFromFile: fileStream.
+
+	"stream := ReadStream on: {	'C,Pepe,Sanchez,D,22333444' .
+							'A,San Martin,3322,Olivos,1636,BsAs' . 
+							'A,Maipu,888,Florida,1122,Buenos Aires' .
+							'C,Juan,Perez,C,23-25666777-9' . 
+							'A,Alem,1122,CABA,1001,CABA'
+							}."
+	
+	self importCustomers: stream.
+	
+	allCustomers := session selectAllOfType: Customer.
+	self assert: 2 equals: (allCustomers size).
+	
+	self assertCustomerType: 'D' number: '22333444' firstName: 'Pepe' lastName: 'Sanchez' addresses: {
+			Address 
+				withStreetName: 'San Martin'
+				streetNumber: 3322
+				town: 'Olivos'
+				zipCode: 1636
+				province: 'BsAs'.
+
+			Address
+				withStreetName: 'Maipu'
+				streetNumber: 888
+				town: 'Florida'
+				zipCode: 1122
+				province: 'Buenos Aires' }.
+
+	self assertCustomerType: 'C' number: '23-25666777-9' firstName: 'Juan' lastName: 'Perez' addresses: {
+			Address 
+				withStreetName: 'Alem'
+				streetNumber: 1122
+				town: 'CABA'
+				zipCode: 1001
+				province: 'CABA'. }
+! !
+!ImportTest methodsFor: 'test' stamp: 'WAL 6/25/2023 00:15:38' prior: 50681788!
+test01Import
+
+	| allCustomers stream |
+	
+	"fileStream := UniFileStream new open: 'input.txt' forWrite: false.
+	stream := self readStreamFromFile: fileStream."
+
+	stream := ReadStream on: (UniFileStream new open: 'input.txt' forWrite: false) contents.
+
+	"stream := ReadStream on: {	'C,Pepe,Sanchez,D,22333444' .
+							'A,San Martin,3322,Olivos,1636,BsAs' . 
+							'A,Maipu,888,Florida,1122,Buenos Aires' .
+							'C,Juan,Perez,C,23-25666777-9' . 
+							'A,Alem,1122,CABA,1001,CABA'
+							}."
+	
+	self importCustomers: stream.
+	
+	allCustomers := session selectAllOfType: Customer.
+	self assert: 2 equals: (allCustomers size).
+	
+	self assertCustomerType: 'D' number: '22333444' firstName: 'Pepe' lastName: 'Sanchez' addresses: {
+			Address 
+				withStreetName: 'San Martin'
+				streetNumber: 3322
+				town: 'Olivos'
+				zipCode: 1636
+				province: 'BsAs'.
+
+			Address
+				withStreetName: 'Maipu'
+				streetNumber: 888
+				town: 'Florida'
+				zipCode: 1122
+				province: 'Buenos Aires' }.
+
+	self assertCustomerType: 'C' number: '23-25666777-9' firstName: 'Juan' lastName: 'Perez' addresses: {
+			Address 
+				withStreetName: 'Alem'
+				streetNumber: 1122
+				town: 'CABA'
+				zipCode: 1001
+				province: 'CABA'. }
+! !
+
+!testRun: #ImportTest #test01Import stamp: 'WAL 6/25/2023 00:15:41'!
+ERROR!
+
+(UniFileStream new open: 'input.txt' forWrite: false) contents!
+
+(UniFileStream new open: 'input.txt' forWrite: false) contents!
+!ImportTest methodsFor: 'test' stamp: 'WAL 6/25/2023 00:38:39' prior: 50681826!
+test01Import
+
+	| allCustomers stream |
+	
+	"fileStream := UniFileStream new open: 'input.txt' forWrite: false.
+	stream := self readStreamFromFile: fileStream."
+
+	stream := ReadStream on: {	'C,Pepe,Sanchez,D,22333444' .
+							'A,San Martin,3322,Olivos,1636,BsAs' . 
+							'A,Maipu,888,Florida,1122,Buenos Aires' .
+							'C,Juan,Perez,C,23-25666777-9' . 
+							'A,Alem,1122,CABA,1001,CABA'
+							}.
+	
+	self importCustomers: stream.
+	
+	allCustomers := session selectAllOfType: Customer.
+	self assert: 2 equals: (allCustomers size).
+	
+	self assertCustomerType: 'D' number: '22333444' firstName: 'Pepe' lastName: 'Sanchez' addresses: {
+			Address 
+				withStreetName: 'San Martin'
+				streetNumber: 3322
+				town: 'Olivos'
+				zipCode: 1636
+				province: 'BsAs'.
+
+			Address
+				withStreetName: 'Maipu'
+				streetNumber: 888
+				town: 'Florida'
+				zipCode: 1122
+				province: 'Buenos Aires' }.
+
+	self assertCustomerType: 'C' number: '23-25666777-9' firstName: 'Juan' lastName: 'Perez' addresses: {
+			Address 
+				withStreetName: 'Alem'
+				streetNumber: 1122
+				town: 'CABA'
+				zipCode: 1001
+				province: 'CABA'. }
+! !
+
+!testRun: #ImportTest #test01Import stamp: 'WAL 6/25/2023 00:38:41'!
+PASSED!
+
+!testRun: #ImportTest #test01Import stamp: 'WAL 6/25/2023 00:38:43'!
+PASSED!
+!ImportTest methodsFor: 'test' stamp: 'WAL 6/25/2023 00:38:59' prior: 50681873!
+test01Import
+
+	| allCustomers stream fileStream |
+	
+	fileStream := UniFileStream new open: 'input.txt' forWrite: false.
+	stream := self readStreamFromFile: fileStream.
+
+	"stream := ReadStream on: {	'C,Pepe,Sanchez,D,22333444' .
+							'A,San Martin,3322,Olivos,1636,BsAs' . 
+							'A,Maipu,888,Florida,1122,Buenos Aires' .
+							'C,Juan,Perez,C,23-25666777-9' . 
+							'A,Alem,1122,CABA,1001,CABA'
+							}."
+	
+	self importCustomers: stream.
+	
+	allCustomers := session selectAllOfType: Customer.
+	self assert: 2 equals: (allCustomers size).
+	
+	self assertCustomerType: 'D' number: '22333444' firstName: 'Pepe' lastName: 'Sanchez' addresses: {
+			Address 
+				withStreetName: 'San Martin'
+				streetNumber: 3322
+				town: 'Olivos'
+				zipCode: 1636
+				province: 'BsAs'.
+
+			Address
+				withStreetName: 'Maipu'
+				streetNumber: 888
+				town: 'Florida'
+				zipCode: 1122
+				province: 'Buenos Aires' }.
+
+	self assertCustomerType: 'C' number: '23-25666777-9' firstName: 'Juan' lastName: 'Perez' addresses: {
+			Address 
+				withStreetName: 'Alem'
+				streetNumber: 1122
+				town: 'CABA'
+				zipCode: 1001
+				province: 'CABA'. }
+! !
+
+!testRun: #ImportTest #test01Import stamp: 'WAL 6/25/2023 00:39:01'!
+PASSED!
+
+!testRun: #ImportTest #test01Import stamp: 'WAL 6/25/2023 00:39:02'!
+PASSED!
+!ImportTest methodsFor: 'test' stamp: 'WAL 6/25/2023 00:39:13' prior: 50681916!
+test01Import
+
+	| allCustomers readStream fileStream |
+	
+	fileStream := UniFileStream new open: 'input.txt' forWrite: false.
+	readStream := self readStreamFromFile: fileStream.
+
+	"stream := ReadStream on: {	'C,Pepe,Sanchez,D,22333444' .
+							'A,San Martin,3322,Olivos,1636,BsAs' . 
+							'A,Maipu,888,Florida,1122,Buenos Aires' .
+							'C,Juan,Perez,C,23-25666777-9' . 
+							'A,Alem,1122,CABA,1001,CABA'
+							}."
+	
+	self importCustomers: readStream.
+	
+	allCustomers := session selectAllOfType: Customer.
+	self assert: 2 equals: (allCustomers size).
+	
+	self assertCustomerType: 'D' number: '22333444' firstName: 'Pepe' lastName: 'Sanchez' addresses: {
+			Address 
+				withStreetName: 'San Martin'
+				streetNumber: 3322
+				town: 'Olivos'
+				zipCode: 1636
+				province: 'BsAs'.
+
+			Address
+				withStreetName: 'Maipu'
+				streetNumber: 888
+				town: 'Florida'
+				zipCode: 1122
+				province: 'Buenos Aires' }.
+
+	self assertCustomerType: 'C' number: '23-25666777-9' firstName: 'Juan' lastName: 'Perez' addresses: {
+			Address 
+				withStreetName: 'Alem'
+				streetNumber: 1122
+				town: 'CABA'
+				zipCode: 1001
+				province: 'CABA'. }
+! !
+
+----STARTUP---- (25 June 2023 00:42:00) as /home/a/s/sw/smalltalk5/CuisUniversity-5832.image!
+
+
+!testRun: #ImportTest #test01Import stamp: 'WAL 6/25/2023 00:42:22'!
+PASSED!
+
+!testRun: #ImportTest #test01Import stamp: 'WAL 6/25/2023 00:42:23'!
+PASSED!
+
+!classRemoval: #DataBaseSession stamp: 'WAL 6/25/2023 00:42:40'!
+Object subclass: #DataBaseSession
+	instanceVariableNames: 'configuration tables id'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'CustomerImporter'!
+
+!classRemoval: #Customer stamp: 'WAL 6/25/2023 00:42:40'!
+Object subclass: #Customer
+	instanceVariableNames: 'id firstName lastName identificationType identificationNumber addresses'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'CustomerImporter'!
+
+!classRemoval: #Address stamp: 'WAL 6/25/2023 00:42:40'!
+Object subclass: #Address
+	instanceVariableNames: 'id streetName streetNumber town zipCode province'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'CustomerImporter'!
+
+!classRemoval: #ImportTest stamp: 'WAL 6/25/2023 00:42:40'!
+TestCase subclass: #ImportTest
+	instanceVariableNames: 'session'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'CustomerImporter'!
+
+----End fileIn of /home/a/s/sw/smalltalk5/CustomerImporter.st----!
+
+----SNAPSHOT----(25 June 2023 00:48:17) CuisUniversity-5832.image priorSource: 11169699!
+
+----STARTUP---- (25 June 2023 21:50:18) as /home/a/s/sw/smalltalk5/CuisUniversity-5832.image!
+
+
+!classRemoval: #DataBaseSession stamp: 'WAL 6/25/2023 21:51:36'!
+Object subclass: #DataBaseSession
+	instanceVariableNames: 'configuration tables id'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'CustomerImporter'!
+
+!classRemoval: #Customer stamp: 'WAL 6/25/2023 21:51:36'!
+Object subclass: #Customer
+	instanceVariableNames: 'id firstName lastName identificationType identificationNumber addresses'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'CustomerImporter'!
+
+!classRemoval: #Address stamp: 'WAL 6/25/2023 21:51:36'!
+Object subclass: #Address
+	instanceVariableNames: 'id streetName streetNumber town zipCode province'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'CustomerImporter'!
+
+!classRemoval: #ImportTest stamp: 'WAL 6/25/2023 21:51:36'!
+TestCase subclass: #ImportTest
+	instanceVariableNames: 'session'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'CustomerImporter'!
+
+----End fileIn of /home/a/s/sw/smalltalk5/CustomerImporter.st----!
+!ImportTest methodsFor: 'stream' stamp: 'WAL 6/25/2023 21:54:15'!
+concatenateWithBreakLinesFrom: anArrayOfStrings
+
+	^ anArrayOfStrings inject: ''  into: [ :inputString :string | inputString, string, self crlf ]! !
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'WAL 6/25/2023 21:54:15' prior: 50681661!
+createStream: anArrayOfStrings
+
+	^ ReadStream on: (self concatenateWithBreakLinesFrom: anArrayOfStrings).! !
+
+!methodRemoval: ImportTest #concatenatedStringFrom: stamp: 'WAL 6/25/2023 21:54:15'!
+concatenatedStringFrom: anArrayOfStrings
+
+	^ anArrayOfStrings inject: ''  into: [ :inputString :string | inputString, string, self crlf ]!
+!ImportTest methodsFor: 'test' stamp: 'WAL 6/25/2023 21:56:26' prior: 50681681!
+test01Import
+
+	| allCustomers stream importCostumers |
+		
+	stream := self createStream: { 'C,Pepe,Sanchez,D,22333444'.
+							  'A,San Martin,3322,Olivos,1636,BsAs'.
+							  'A,Maipu,888,Florida,1122,Buenos Aires'.
+							  'C,Juan,Perez,C,23-25666777-9'.
+							  'A,Alem,1122,CABA,1001,CABA' }.
+								
+	importCostumers := ImportCustomers session: session inputStream: stream.
+	importCostumers import.
+	
+	allCustomers := session selectAllOfType: Customer.
+	self assert: 2 equals: (allCustomers size).
+	
+	self assertSelectCustomer: (Customer withIdentificationType: 'D' identificationNumber: '22333444'
+		firstName: 'Pepe' lastName: 'Sanchez'
+		addresses: {
+			Address 
+				withStreetName: 'San Martin'
+				streetNumber: 3322
+				town: 'Olivos'
+				zipCode: 1636
+				province: 'BsAs'.
+			Address
+				withStreetName: 'Maipu'
+				streetNumber: 888
+				town: 'Florida'
+				zipCode: 1122
+				province: 'Buenos Aires' }).
+
+	self assertSelectCustomer: (Customer withIdentificationType: 'C' identificationNumber: '23-25666777-9'
+		firstName: 'Juan' lastName: 'Perez'
+		addresses: {
+			Address 
+				withStreetName: 'Alem'
+				streetNumber: 1122
+				town: 'CABA'
+				zipCode: 1001
+				province: 'CABA'. })
+! !
+
+!testRun: #ImportTest #test01Import stamp: 'WAL 6/25/2023 21:56:28'!
+PASSED!
+
+!testRun: #ImportTest #test01Import stamp: 'WAL 6/25/2023 21:56:29'!
+PASSED!
+
+!testRun: #AddressTest #test01InitializeAssignColaboratorsValues stamp: 'WAL 6/25/2023 21:56:34'!
+PASSED!
+
+!testRun: #AddressTest #test02EqualsIsTrueWhenAllValuesAreEquals stamp: 'WAL 6/25/2023 21:56:34'!
+PASSED!
+
+!testRun: #AddressTest #test03EqualsIsFalseWhenStreetNameIsNotEqual stamp: 'WAL 6/25/2023 21:56:34'!
+PASSED!
+
+!testRun: #AddressTest #test04EqualsIsFalseWhenStreetNumberIsNotEqual stamp: 'WAL 6/25/2023 21:56:34'!
+PASSED!
+
+!testRun: #AddressTest #test05EqualsIsFalseWhenTownIsNotEqual stamp: 'WAL 6/25/2023 21:56:34'!
+PASSED!
+
+!testRun: #AddressTest #test06EqualsIsFalseWhenZipCodeIsNotEqual stamp: 'WAL 6/25/2023 21:56:34'!
+PASSED!
+
+!testRun: #AddressTest #test07EqualsIsFalseWhenProvinceIsNotEqual stamp: 'WAL 6/25/2023 21:56:34'!
+PASSED!
+
+!testRun: #AddressTest #test08SameObjectMustHaveSameHash stamp: 'WAL 6/25/2023 21:56:34'!
+PASSED!
+
+!testRun: #AddressTest #test09DifferentObjectShouldHaveDifferentHash stamp: 'WAL 6/25/2023 21:56:34'!
+PASSED!
+
+!testRun: #CustomerTest #test01InitializeAssignColaboratorsValues stamp: 'WAL 6/25/2023 21:56:38'!
+PASSED!
+
+!testRun: #CustomerTest #test02InitializeAddAddresses stamp: 'WAL 6/25/2023 21:56:38'!
+PASSED!
+
+!testRun: #CustomerTest #test03CustomerAreEqualsIfTheyHaveSameValues stamp: 'WAL 6/25/2023 21:56:38'!
+PASSED!
+
+!testRun: #CustomerTest #test04CustomerAreNotEqualsIfIdentificationTypeIsDifferent stamp: 'WAL 6/25/2023 21:56:38'!
+PASSED!
+
+!testRun: #CustomerTest #test05CustomerAreNotEqualsIfIdentificationNumberIsDifferent stamp: 'WAL 6/25/2023 21:56:38'!
+PASSED!
+
+!testRun: #CustomerTest #test06CustomerAreNotEqualsIfFirstNameIsDifferent stamp: 'WAL 6/25/2023 21:56:38'!
+PASSED!
+
+!testRun: #CustomerTest #test07CustomerAreNotEqualsIfLastNameIsDifferent stamp: 'WAL 6/25/2023 21:56:38'!
+PASSED!
+
+!testRun: #CustomerTest #test08CustomerAreNotEqualsIfAddressesSizeIsDifferent stamp: 'WAL 6/25/2023 21:56:38'!
+PASSED!
+
+!testRun: #CustomerTest #test09CustomerAreNotEqualsIfAddressesAreDifferent stamp: 'WAL 6/25/2023 21:56:38'!
+PASSED!
+
+!testRun: #CustomerTest #test10IfCustomerAreEqualsTheyHaveTheSameHash stamp: 'WAL 6/25/2023 21:56:38'!
+PASSED!
+
+!testRun: #CustomerTest #test11IfCustomerAreNotEqualsTheyShouldHaveDifferentHash stamp: 'WAL 6/25/2023 21:56:38'!
+PASSED!
+
+----SNAPSHOT----(25 June 2023 22:23:25) CuisUniversity-5832.image priorSource: 11184804!
+
+----STARTUP---- (28 June 2023 19:04:52) as /home/a/s/sw/smalltalk5/CuisUniversity-5832.image!
+
+
+----End fileIn of /home/a/s/sw/smalltalk5/CustomerImporter.st----!
+
+!classRemoval: #ImportCustomers stamp: 'WAL 6/28/2023 19:05:26'!
+Object subclass: #ImportCustomers
+	instanceVariableNames: 'session stream'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'CustomerImporter'!
+
+!classRemoval: #DataBaseSession stamp: 'WAL 6/28/2023 19:05:26'!
+Object subclass: #DataBaseSession
+	instanceVariableNames: 'configuration tables id'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'CustomerImporter'!
+
+!classRemoval: #CustomerImporter stamp: 'WAL 6/28/2023 19:05:26'!
+Object subclass: #CustomerImporter
+	instanceVariableNames: 'session readStream newCustomer record line'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'CustomerImporter'!
+
+!classRemoval: #Customer stamp: 'WAL 6/28/2023 19:05:27'!
+Object subclass: #Customer
+	instanceVariableNames: 'id firstName lastName identificationType identificationNumber addresses'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'CustomerImporter'!
+
+!classRemoval: #Address stamp: 'WAL 6/28/2023 19:05:27'!
+Object subclass: #Address
+	instanceVariableNames: 'id streetName streetNumber town zipCode province'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'CustomerImporter'!
+
+!classRemoval: #ImportTest stamp: 'WAL 6/28/2023 19:05:27'!
+TestCase subclass: #ImportTest
+	instanceVariableNames: 'session'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'CustomerImporter'!
+
+!classRemoval: #CustomerTest stamp: 'WAL 6/28/2023 19:05:27'!
+TestCase subclass: #CustomerTest
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'CustomerImporter'!
+
+!classRemoval: #AddressTest stamp: 'WAL 6/28/2023 19:05:28'!
+TestCase subclass: #AddressTest
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'CustomerImporter'!
+
+----End fileIn of /home/a/s/sw/smalltalk5/CustomerImporter.st----!
+
+!testRun: #ImportTest #test01ImportValidData stamp: 'WAL 6/28/2023 19:06:33'!
+ERROR!
+
+!testRun: #ImportTest #test02ImportDataWithMissingFieldOnCustomerShouldRiseError stamp: 'WAL 6/28/2023 19:06:33'!
+FAILURE!
+
+!testRun: #ImportTest #test03ImportDataWithMissingFieldOnAddressShouldRiseError stamp: 'WAL 6/28/2023 19:06:33'!
+FAILURE!
+
+!testRun: #ImportTest #test04ImportDataWithExcessFieldsOnCustomerShouldRiseError stamp: 'WAL 6/28/2023 19:06:33'!
+FAILURE!
+
+!testRun: #ImportTest #test05ImportDataWithExcessFieldsOnAddressShouldRiseError stamp: 'WAL 6/28/2023 19:06:33'!
+FAILURE!
+
+!testRun: #ImportTest #test06ImportDataWithInvalidRecordTypeShouldRiseError stamp: 'WAL 6/28/2023 19:06:33'!
+FAILURE!
+
+!testRun: #ImportTest #test07ImportDataWithInvalidRecordTypeLengthShouldRiseError stamp: 'WAL 6/28/2023 19:06:33'!
+FAILURE!
+
+!testRun: #ImportTest #test08AddressWithoutCustomerShouldRiseError stamp: 'WAL 6/28/2023 19:06:33'!
+FAILURE!
+
+!testRun: #ImportTest #test09ImportDataWithEmptyLineShouldRiseError stamp: 'WAL 6/28/2023 19:06:33'!
+PASSED!
+
+!testRun: #ImportTest #test01ImportValidData stamp: 'WAL 6/28/2023 19:06:38'!
+ERROR!
+
+record isEmpty!
+
+record isEmpty!
+!CustomerImporter methodsFor: 'evaluating' stamp: 'WAL 6/28/2023 19:09:08' prior: 50683503!
+createRecord
+
+	record := self findTokensInLine.
+	
+	(record isEmpty) ifTrue: [self error: CustomerImporter inputStreamWithEmptyLineErrorDescription]! !
+
+!testRun: #ImportTest #test01ImportValidData stamp: 'WAL 6/28/2023 19:09:10'!
+PASSED!
+
+!testRun: #ImportTest #test02ImportDataWithMissingFieldOnCustomerShouldRiseError stamp: 'WAL 6/28/2023 19:09:12'!
+PASSED!
+
+!testRun: #ImportTest #test03ImportDataWithMissingFieldOnAddressShouldRiseError stamp: 'WAL 6/28/2023 19:09:12'!
+PASSED!
+
+!testRun: #ImportTest #test04ImportDataWithExcessFieldsOnCustomerShouldRiseError stamp: 'WAL 6/28/2023 19:09:12'!
+PASSED!
+
+!testRun: #ImportTest #test05ImportDataWithExcessFieldsOnAddressShouldRiseError stamp: 'WAL 6/28/2023 19:09:12'!
+PASSED!
+
+!testRun: #ImportTest #test06ImportDataWithInvalidRecordTypeShouldRiseError stamp: 'WAL 6/28/2023 19:09:13'!
+PASSED!
+
+!testRun: #ImportTest #test07ImportDataWithInvalidRecordTypeLengthShouldRiseError stamp: 'WAL 6/28/2023 19:09:13'!
+PASSED!
+
+!testRun: #ImportTest #test08AddressWithoutCustomerShouldRiseError stamp: 'WAL 6/28/2023 19:09:23'!
+PASSED!
+!ImportTest methodsFor: 'test data' stamp: 'WAL 6/28/2023 19:13:52'!
+inputStreamEmpty
+
+	^ ReadStream on: ''! !
+!ImportTest methodsFor: 'tests' stamp: 'WAL 6/28/2023 19:15:15'!
+test10EmptyStreamShouldRiseError
+
+	self
+		should: [ CustomerImporter valueFrom: self inputStreamEmpty into: session ]
+		raise: Error
+		withExceptionDo: [ :anError |
+			self assert: CustomerImporter inputStreamEmptyErrorDescription equals: anError messageText ]! !
+!ImportTest methodsFor: 'tests' stamp: 'WAL 6/28/2023 19:15:30' prior: 50683792!
+test10EmptyStreamShouldRiseError
+
+	CustomerImporter valueFrom: self inputStreamEmpty into: session
+
+	"self
+		should: [ CustomerImporter valueFrom: self inputStreamEmpty into: session ]
+		raise: Error
+		withExceptionDo: [ :anError |
+			self assert: CustomerImporter inputStreamEmptyErrorDescription equals: anError messageText ]"! !
+
+!testRun: #ImportTest #test10EmptyStreamShouldRiseError stamp: 'WAL 6/28/2023 19:15:31'!
+PASSED!
+
+!testRun: #ImportTest #test01ImportValidData stamp: 'WAL 6/28/2023 19:15:32'!
+PASSED!
+
+!testRun: #ImportTest #test02ImportDataWithMissingFieldOnCustomerShouldRiseError stamp: 'WAL 6/28/2023 19:15:32'!
+PASSED!
+
+!testRun: #ImportTest #test03ImportDataWithMissingFieldOnAddressShouldRiseError stamp: 'WAL 6/28/2023 19:15:32'!
+PASSED!
+
+!testRun: #ImportTest #test04ImportDataWithExcessFieldsOnCustomerShouldRiseError stamp: 'WAL 6/28/2023 19:15:32'!
+PASSED!
+
+!testRun: #ImportTest #test05ImportDataWithExcessFieldsOnAddressShouldRiseError stamp: 'WAL 6/28/2023 19:15:32'!
+PASSED!
+
+!testRun: #ImportTest #test06ImportDataWithInvalidRecordTypeShouldRiseError stamp: 'WAL 6/28/2023 19:15:33'!
+PASSED!
+
+!testRun: #ImportTest #test07ImportDataWithInvalidRecordTypeLengthShouldRiseError stamp: 'WAL 6/28/2023 19:15:33'!
+PASSED!
+
+!testRun: #ImportTest #test08AddressWithoutCustomerShouldRiseError stamp: 'WAL 6/28/2023 19:15:33'!
+PASSED!
+
+!testRun: #ImportTest #test09ImportDataWithEmptyLineShouldRiseError stamp: 'WAL 6/28/2023 19:15:33'!
+PASSED!
+
+!testRun: #ImportTest #test10EmptyStreamShouldRiseError stamp: 'WAL 6/28/2023 19:15:33'!
+PASSED!
+!ImportTest methodsFor: 'tests' stamp: 'WAL 6/28/2023 19:15:44' prior: 50683803!
+test10EmptyStreamShouldRiseError
+
+	self
+		should: [ CustomerImporter valueFrom: self inputStreamEmpty into: session ]
+		raise: Error
+		withExceptionDo: [ :anError |
+			self assert: CustomerImporter inputStreamEmptyErrorDescription equals: anError messageText ]! !
+
+!testRun: #ImportTest #test10EmptyStreamShouldRiseError stamp: 'WAL 6/28/2023 19:15:47'!
+FAILURE!
+!CustomerImporter class methodsFor: 'instance creation' stamp: 'WAL 6/28/2023 19:25:45' prior: 50683606!
+from: aReadStream into: aSession
+
+	(aReadStream size = 0) ifTrue: [ self error: self  ].
+
+	^self new initializeFrom: aReadStream into: aSession! !
+!CustomerImporter class methodsFor: 'instance creation' stamp: 'WAL 6/28/2023 19:26:05' prior: 50683870!
+from: aReadStream into: aSession
+
+	(aReadStream size = 0) ifTrue: [ self error: self inputStreamEmptyErrorDescription ].
+
+	^self new initializeFrom: aReadStream into: aSession! !
+!CustomerImporter class methodsFor: 'error descriptions' stamp: 'WAL 6/28/2023 19:26:26'!
+inputStreamEmptyErrorDescription
+	
+	^'Input stream is empty.'! !
+
+!testRun: #ImportTest #test10EmptyStreamShouldRiseError stamp: 'WAL 6/28/2023 19:26:33'!
+PASSED!
+
+!testRun: #ImportTest #test01ImportValidData stamp: 'WAL 6/28/2023 19:26:34'!
+PASSED!
+
+!testRun: #ImportTest #test02ImportDataWithMissingFieldOnCustomerShouldRiseError stamp: 'WAL 6/28/2023 19:26:34'!
+PASSED!
+
+!testRun: #ImportTest #test03ImportDataWithMissingFieldOnAddressShouldRiseError stamp: 'WAL 6/28/2023 19:26:34'!
+PASSED!
+
+!testRun: #ImportTest #test04ImportDataWithExcessFieldsOnCustomerShouldRiseError stamp: 'WAL 6/28/2023 19:26:34'!
+PASSED!
+
+!testRun: #ImportTest #test05ImportDataWithExcessFieldsOnAddressShouldRiseError stamp: 'WAL 6/28/2023 19:26:35'!
+PASSED!
+
+!testRun: #ImportTest #test06ImportDataWithInvalidRecordTypeShouldRiseError stamp: 'WAL 6/28/2023 19:26:35'!
+PASSED!
+
+!testRun: #ImportTest #test07ImportDataWithInvalidRecordTypeLengthShouldRiseError stamp: 'WAL 6/28/2023 19:26:35'!
+PASSED!
+
+!testRun: #ImportTest #test08AddressWithoutCustomerShouldRiseError stamp: 'WAL 6/28/2023 19:26:35'!
+PASSED!
+
+!testRun: #ImportTest #test09ImportDataWithEmptyLineShouldRiseError stamp: 'WAL 6/28/2023 19:26:35'!
+PASSED!
+
+!testRun: #ImportTest #test10EmptyStreamShouldRiseError stamp: 'WAL 6/28/2023 19:26:35'!
+PASSED!
+!ImportTest methodsFor: 'test data' stamp: 'WAL 6/28/2023 19:30:18'!
+inputStreamWithNotNumericStreetNumber
+
+	^ ReadStream on:
+'C,Pepe,Sanchez,D,22333444
+A,San Martin,3322A,Olivos,1636,BsAs
+A,Maipu,888,Florida,1122,Buenos Aires
+C,Juan,Perez,C,23-25666777-9
+A,Alem,1122,CABA,1001,CABA'! !
+!ImportTest methodsFor: 'tests' stamp: 'WAL 6/28/2023 19:30:38'!
+test07InvalidRecordTypeLengthShouldRiseError
+
+	self
+		should: [ CustomerImporter valueFrom: self inputStreamWithInvalidRecordTypeLength into: session ]
+		raise: Error
+		withExceptionDo: [ :anError |
+			self assert: CustomerImporter invalidRecordTypeErrorDescription equals: anError messageText ]! !
+
+!methodRemoval: ImportTest #test07ImportDataWithInvalidRecordTypeLengthShouldRiseError stamp: 'WAL 6/28/2023 19:30:38'!
+test07ImportDataWithInvalidRecordTypeLengthShouldRiseError
+
+	self
+		should: [ CustomerImporter valueFrom: self inputStreamWithInvalidRecordTypeLength into: session ]
+		raise: Error
+		withExceptionDo: [ :anError |
+			self assert: CustomerImporter invalidRecordTypeErrorDescription equals: anError messageText ]!
+!ImportTest methodsFor: 'tests' stamp: 'WAL 6/28/2023 19:30:46'!
+test064InvalidRecordTypeShouldRiseError
+
+	self
+		should: [ CustomerImporter valueFrom: self inputStreamWithInvalidRecordType into: session ]
+		raise: Error
+		withExceptionDo: [ :anError |
+			self assert: CustomerImporter invalidRecordTypeErrorDescription equals: anError messageText ]! !
+
+!methodRemoval: ImportTest #test06ImportDataWithInvalidRecordTypeShouldRiseError stamp: 'WAL 6/28/2023 19:30:46'!
+test06ImportDataWithInvalidRecordTypeShouldRiseError
+
+	self
+		should: [ CustomerImporter valueFrom: self inputStreamWithInvalidRecordType into: session ]
+		raise: Error
+		withExceptionDo: [ :anError |
+			self assert: CustomerImporter invalidRecordTypeErrorDescription equals: anError messageText ]!
+!ImportTest methodsFor: 'tests' stamp: 'WAL 6/28/2023 19:30:52'!
+test05ExcessFieldsOnAddressShouldRiseError
+
+	self
+		should: [ CustomerImporter valueFrom: self inputStreamWithExcessFieldsOnAddress into: session ]
+		raise: Error
+		withExceptionDo: [ :anError |
+			self assert: CustomerImporter invalidNumberOfAddressFieldsErrorDescription equals: anError messageText ]! !
+
+!methodRemoval: ImportTest #test05ImportDataWithExcessFieldsOnAddressShouldRiseError stamp: 'WAL 6/28/2023 19:30:52'!
+test05ImportDataWithExcessFieldsOnAddressShouldRiseError
+
+	self
+		should: [ CustomerImporter valueFrom: self inputStreamWithExcessFieldsOnAddress into: session ]
+		raise: Error
+		withExceptionDo: [ :anError |
+			self assert: CustomerImporter invalidNumberOfAddressFieldsErrorDescription equals: anError messageText ]!
+!ImportTest methodsFor: 'tests' stamp: 'WAL 6/28/2023 19:30:57'!
+test04ExcessFieldsOnCustomerShouldRiseError
+
+	self
+		should: [ CustomerImporter valueFrom: self inputStreamWithExcessFieldsOnCustomer into: session ]
+		raise: Error
+		withExceptionDo: [ :anError |
+			self assert: CustomerImporter invalidNumberOfCustomerFieldsErrorDescription equals: anError messageText ]! !
+
+!methodRemoval: ImportTest #test04ImportDataWithExcessFieldsOnCustomerShouldRiseError stamp: 'WAL 6/28/2023 19:30:57'!
+test04ImportDataWithExcessFieldsOnCustomerShouldRiseError
+
+	self
+		should: [ CustomerImporter valueFrom: self inputStreamWithExcessFieldsOnCustomer into: session ]
+		raise: Error
+		withExceptionDo: [ :anError |
+			self assert: CustomerImporter invalidNumberOfCustomerFieldsErrorDescription equals: anError messageText ]!
+!ImportTest methodsFor: 'tests' stamp: 'WAL 6/28/2023 19:31:03'!
+test03MissingFieldOnAddressShouldRiseError
+
+	self
+		should: [ CustomerImporter valueFrom: self inputStreamWithMissingFieldOnAddress into: session ]
+		raise: Error
+		withExceptionDo: [ :anError |
+			self assert: CustomerImporter invalidNumberOfAddressFieldsErrorDescription equals: anError messageText ]! !
+
+!methodRemoval: ImportTest #test03ImportDataWithMissingFieldOnAddressShouldRiseError stamp: 'WAL 6/28/2023 19:31:03'!
+test03ImportDataWithMissingFieldOnAddressShouldRiseError
+
+	self
+		should: [ CustomerImporter valueFrom: self inputStreamWithMissingFieldOnAddress into: session ]
+		raise: Error
+		withExceptionDo: [ :anError |
+			self assert: CustomerImporter invalidNumberOfAddressFieldsErrorDescription equals: anError messageText ]!
+!ImportTest methodsFor: 'tests' stamp: 'WAL 6/28/2023 19:31:08'!
+test02MissingFieldOnCustomerShouldRiseError
+
+	self
+		should: [ CustomerImporter valueFrom: self inputStreamWithMissingFieldOnCustomer into: session ]
+		raise: Error
+		withExceptionDo: [ :anError |
+			self assert: CustomerImporter invalidNumberOfCustomerFieldsErrorDescription equals: anError messageText ]! !
+
+!methodRemoval: ImportTest #test02ImportDataWithMissingFieldOnCustomerShouldRiseError stamp: 'WAL 6/28/2023 19:31:08'!
+test02ImportDataWithMissingFieldOnCustomerShouldRiseError
+
+	self
+		should: [ CustomerImporter valueFrom: self inputStreamWithMissingFieldOnCustomer into: session ]
+		raise: Error
+		withExceptionDo: [ :anError |
+			self assert: CustomerImporter invalidNumberOfCustomerFieldsErrorDescription equals: anError messageText ]!
+!ImportTest methodsFor: 'tests' stamp: 'WAL 6/28/2023 19:31:19'!
+test06InvalidRecordTypeShouldRiseError
+
+	self
+		should: [ CustomerImporter valueFrom: self inputStreamWithInvalidRecordType into: session ]
+		raise: Error
+		withExceptionDo: [ :anError |
+			self assert: CustomerImporter invalidRecordTypeErrorDescription equals: anError messageText ]! !
+
+!methodRemoval: ImportTest #test064InvalidRecordTypeShouldRiseError stamp: 'WAL 6/28/2023 19:31:19'!
+test064InvalidRecordTypeShouldRiseError
+
+	self
+		should: [ CustomerImporter valueFrom: self inputStreamWithInvalidRecordType into: session ]
+		raise: Error
+		withExceptionDo: [ :anError |
+			self assert: CustomerImporter invalidRecordTypeErrorDescription equals: anError messageText ]!
+!ImportTest methodsFor: 'tests' stamp: 'WAL 6/28/2023 19:31:26'!
+test09EmptyLineShouldRiseError
+
+	self
+		should: [ CustomerImporter valueFrom: self inputStreamWithEmptyLine into: session ]
+		raise: Error
+		withExceptionDo: [ :anError |
+			self assert: CustomerImporter inputStreamWithEmptyLineErrorDescription equals: anError messageText ]! !
+
+!methodRemoval: ImportTest #test09ImportDataWithEmptyLineShouldRiseError stamp: 'WAL 6/28/2023 19:31:26'!
+test09ImportDataWithEmptyLineShouldRiseError
+
+	self
+		should: [ CustomerImporter valueFrom: self inputStreamWithEmptyLine into: session ]
+		raise: Error
+		withExceptionDo: [ :anError |
+			self assert: CustomerImporter inputStreamWithEmptyLineErrorDescription equals: anError messageText ]!
+!ImportTest methodsFor: 'tests' stamp: 'WAL 6/28/2023 19:32:34'!
+test11NotNumericStreetNumberShouldRiseError
+
+	self
+		should: [ CustomerImporter valueFrom: self inputStreamWithNotNumericStreetNumber into: session ]
+		raise: Error
+		withExceptionDo: [ :anError |
+			self assert: CustomerImporter inputStreamWithNotNumericStreetNumberErrorDescription equals: anError messageText ]! !
+
+!testRun: #ImportTest #test11NotNumericStreetNumberShouldRiseError stamp: 'WAL 6/28/2023 19:32:36'!
+FAILURE!
+!CustomerImporter class methodsFor: 'error descriptions' stamp: 'WAL 6/28/2023 19:34:39'!
+notNumericStreetNumberErrorDescription
+	
+	^'Street number must be numeric only.'! !
+!CustomerImporter class methodsFor: 'error descriptions' stamp: 'WAL 6/28/2023 19:35:07'!
+emptyInputStreamErrorDescription
+	
+	^'Input stream is empty.'! !
+!CustomerImporter class methodsFor: 'as yet unclassified' stamp: 'WAL 6/28/2023 19:35:07' prior: 50683878!
+from: aReadStream into: aSession
+
+	(aReadStream size = 0) ifTrue: [ self error: self emptyInputStreamErrorDescription ].
+
+	^self new initializeFrom: aReadStream into: aSession! !
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'WAL 6/28/2023 19:35:07' prior: 50683855!
+test10EmptyStreamShouldRiseError
+
+	self
+		should: [ CustomerImporter valueFrom: self inputStreamEmpty into: session ]
+		raise: Error
+		withExceptionDo: [ :anError |
+			self assert: CustomerImporter emptyInputStreamErrorDescription equals: anError messageText ]! !
+
+!methodRemoval: CustomerImporter class #inputStreamEmptyErrorDescription stamp: 'WAL 6/28/2023 19:35:07'!
+inputStreamEmptyErrorDescription
+	
+	^'Input stream is empty.'!
+!CustomerImporter class methodsFor: 'error descriptions' stamp: 'WAL 6/28/2023 19:35:18'!
+emptyLineErrorDescription
+	
+	^'Input stream has empty line.'! !
+!CustomerImporter methodsFor: 'as yet unclassified' stamp: 'WAL 6/28/2023 19:35:18' prior: 50683752!
+createRecord
+
+	record := self findTokensInLine.
+	
+	(record isEmpty) ifTrue: [self error: CustomerImporter emptyLineErrorDescription]! !
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'WAL 6/28/2023 19:35:18' prior: 50684116!
+test09EmptyLineShouldRiseError
+
+	self
+		should: [ CustomerImporter valueFrom: self inputStreamWithEmptyLine into: session ]
+		raise: Error
+		withExceptionDo: [ :anError |
+			self assert: CustomerImporter emptyLineErrorDescription equals: anError messageText ]! !
+
+!methodRemoval: CustomerImporter class #inputStreamWithEmptyLineErrorDescription stamp: 'WAL 6/28/2023 19:35:18'!
+inputStreamWithEmptyLineErrorDescription
+	
+	^'Input stream has empty line.'!
+!ImportTest methodsFor: 'tests' stamp: 'WAL 6/28/2023 19:35:37' prior: 50684140!
+test11NotNumericStreetNumberShouldRiseError
+
+	self
+		should: [ CustomerImporter valueFrom: self inputStreamWithNotNumericStreetNumber into: session ]
+		raise: Error
+		withExceptionDo: [ :anError |
+			self assert: CustomerImporter notNumericStreetNumberErrorDescription equals: anError messageText ]! !
+
+!testRun: #ImportTest #test11NotNumericStreetNumberShouldRiseError stamp: 'WAL 6/28/2023 19:35:39'!
+FAILURE!
+
+!testRun: #ImportTest #test01ImportValidData stamp: 'WAL 6/28/2023 19:36:13'!
+PASSED!
+
+!testRun: #ImportTest #test02MissingFieldOnCustomerShouldRiseError stamp: 'WAL 6/28/2023 19:36:13'!
+PASSED!
+
+!testRun: #ImportTest #test03MissingFieldOnAddressShouldRiseError stamp: 'WAL 6/28/2023 19:36:13'!
+PASSED!
+
+!testRun: #ImportTest #test04ExcessFieldsOnCustomerShouldRiseError stamp: 'WAL 6/28/2023 19:36:13'!
+PASSED!
+
+!testRun: #ImportTest #test05ExcessFieldsOnAddressShouldRiseError stamp: 'WAL 6/28/2023 19:36:13'!
+PASSED!
+
+!testRun: #ImportTest #test06InvalidRecordTypeShouldRiseError stamp: 'WAL 6/28/2023 19:36:14'!
+PASSED!
+
+!testRun: #ImportTest #test07InvalidRecordTypeLengthShouldRiseError stamp: 'WAL 6/28/2023 19:36:14'!
+PASSED!
+
+!testRun: #ImportTest #test08AddressWithoutCustomerShouldRiseError stamp: 'WAL 6/28/2023 19:36:14'!
+PASSED!
+
+!testRun: #ImportTest #test09EmptyLineShouldRiseError stamp: 'WAL 6/28/2023 19:36:14'!
+PASSED!
+
+!testRun: #ImportTest #test10EmptyStreamShouldRiseError stamp: 'WAL 6/28/2023 19:36:14'!
+PASSED!
+
+!testRun: #ImportTest #test11NotNumericStreetNumberShouldRiseError stamp: 'WAL 6/28/2023 19:36:14'!
+FAILURE!
+
+!testRun: #ImportTest #test11NotNumericStreetNumberShouldRiseError stamp: 'WAL 6/28/2023 19:36:14'!
+FAILURE!
+!ImportTest methodsFor: 'tests' stamp: 'WAL 6/28/2023 19:37:01' prior: 50684226!
+test11NotNumericStreetNumberShouldRiseError
+
+	CustomerImporter valueFrom: self inputStreamWithNotNumericStreetNumber into: session
+
+	"self
+		should: [ CustomerImporter valueFrom: self inputStreamWithNotNumericStreetNumber into: session ]
+		raise: Error
+		withExceptionDo: [ :anError |
+			self assert: CustomerImporter notNumericStreetNumberErrorDescription equals: anError messageText ]"! !
+
+!testRun: #ImportTest #test11NotNumericStreetNumberShouldRiseError stamp: 'WAL 6/28/2023 19:37:02'!
+PASSED!
+
+!testRun: #ImportTest #test01ImportValidData stamp: 'WAL 6/28/2023 19:37:03'!
+PASSED!
+
+!testRun: #ImportTest #test02MissingFieldOnCustomerShouldRiseError stamp: 'WAL 6/28/2023 19:37:03'!
+PASSED!
+
+!testRun: #ImportTest #test03MissingFieldOnAddressShouldRiseError stamp: 'WAL 6/28/2023 19:37:03'!
+PASSED!
+
+!testRun: #ImportTest #test04ExcessFieldsOnCustomerShouldRiseError stamp: 'WAL 6/28/2023 19:37:03'!
+PASSED!
+
+!testRun: #ImportTest #test05ExcessFieldsOnAddressShouldRiseError stamp: 'WAL 6/28/2023 19:37:03'!
+PASSED!
+
+!testRun: #ImportTest #test06InvalidRecordTypeShouldRiseError stamp: 'WAL 6/28/2023 19:37:03'!
+PASSED!
+
+!testRun: #ImportTest #test07InvalidRecordTypeLengthShouldRiseError stamp: 'WAL 6/28/2023 19:37:03'!
+PASSED!
+
+!testRun: #ImportTest #test08AddressWithoutCustomerShouldRiseError stamp: 'WAL 6/28/2023 19:37:03'!
+PASSED!
+
+!testRun: #ImportTest #test09EmptyLineShouldRiseError stamp: 'WAL 6/28/2023 19:37:03'!
+PASSED!
+
+!testRun: #ImportTest #test10EmptyStreamShouldRiseError stamp: 'WAL 6/28/2023 19:37:03'!
+PASSED!
+
+!testRun: #ImportTest #test11NotNumericStreetNumberShouldRiseError stamp: 'WAL 6/28/2023 19:37:04'!
+PASSED!
+
+record third asNumber!
+
+record third!
+!ImportTest methodsFor: 'test data' stamp: 'WAL 6/28/2023 19:42:21' prior: 50683930!
+inputStreamWithNotNumericStreetNumber
+
+	^ ReadStream on:
+'C,Pepe,Sanchez,D,22333444
+A,San Martin,A3322,Olivos,1636,BsAs
+A,Maipu,888,Florida,1122,Buenos Aires
+C,Juan,Perez,C,23-25666777-9
+A,Alem,1122,CABA,1001,CABA'! !
+
+!testRun: #ImportTest #test01ImportValidData stamp: 'WAL 6/28/2023 19:42:25'!
+PASSED!
+
+!testRun: #ImportTest #test02MissingFieldOnCustomerShouldRiseError stamp: 'WAL 6/28/2023 19:42:26'!
+PASSED!
+
+!testRun: #ImportTest #test03MissingFieldOnAddressShouldRiseError stamp: 'WAL 6/28/2023 19:42:26'!
+PASSED!
+
+!testRun: #ImportTest #test04ExcessFieldsOnCustomerShouldRiseError stamp: 'WAL 6/28/2023 19:42:26'!
+PASSED!
+
+!testRun: #ImportTest #test05ExcessFieldsOnAddressShouldRiseError stamp: 'WAL 6/28/2023 19:42:26'!
+PASSED!
+
+!testRun: #ImportTest #test06InvalidRecordTypeShouldRiseError stamp: 'WAL 6/28/2023 19:42:26'!
+PASSED!
+
+!testRun: #ImportTest #test07InvalidRecordTypeLengthShouldRiseError stamp: 'WAL 6/28/2023 19:42:26'!
+PASSED!
+
+!testRun: #ImportTest #test08AddressWithoutCustomerShouldRiseError stamp: 'WAL 6/28/2023 19:42:26'!
+PASSED!
+
+!testRun: #ImportTest #test09EmptyLineShouldRiseError stamp: 'WAL 6/28/2023 19:42:26'!
+PASSED!
+
+!testRun: #ImportTest #test10EmptyStreamShouldRiseError stamp: 'WAL 6/28/2023 19:42:26'!
+PASSED!
+
+!testRun: #ImportTest #test11NotNumericStreetNumberShouldRiseError stamp: 'WAL 6/28/2023 19:42:26'!
+ERROR!
+
+!testRun: #ImportTest #test11NotNumericStreetNumberShouldRiseError stamp: 'WAL 6/28/2023 19:42:26'!
+ERROR!
+!CustomerImporter methodsFor: 'evaluating' stamp: 'WAL 6/28/2023 19:47:45' prior: 50683515!
+importAddress
+
+	| newAddress |
+	
+	self assertValidNumberOfAddressFields: record.
+	
+	(record third allSatisfy: [ : aCharacter | aCharacter isDigit ]) ifFalse: [ CustomerImporter ] .
+	
+	newAddress := Address new.
+	
+	newAddress streetName: record second.
+	newAddress streetNumber: record third asNumber .
+	newAddress town: record fourth.
+	newAddress zipCode: record fifth asNumber .
+	newAddress province: record sixth.
+	
+	self assertCustomerIsInstantiated.
+	
+	newCustomer addAddress: newAddress.! !
+!CustomerImporter methodsFor: 'evaluating' stamp: 'WAL 6/28/2023 19:48:45' prior: 50684386!
+importAddress
+
+	| newAddress |
+	
+	self assertValidNumberOfAddressFields: record.
+	
+	(record third allSatisfy: [ : aCharacter | aCharacter isDigit ]) ifFalse: [ self error: CustomerImporter notNumericStreetNumberErrorDescription ].
+	
+	newAddress := Address new.
+	
+	newAddress streetName: record second.
+	newAddress streetNumber: record third asNumber .
+	newAddress town: record fourth.
+	newAddress zipCode: record fifth asNumber .
+	newAddress province: record sixth.
+	
+	self assertCustomerIsInstantiated.
+	
+	newCustomer addAddress: newAddress.! !
+!CustomerImporter methodsFor: 'evaluating' stamp: 'WAL 6/28/2023 19:48:59' prior: 50684405!
+importAddress
+
+	| newAddress |
+	
+	self assertValidNumberOfAddressFields: record.
+	
+	(record third allSatisfy: [ : aCharacter | aCharacter isDigit ]) ifFalse: [ self error: CustomerImporter notNumericStreetNumberErrorDescription ].
+	
+	newAddress := Address new.
+	
+	newAddress streetName: record second.
+	newAddress streetNumber: record third asNumber .
+	newAddress town: record fourth.
+	newAddress zipCode: record fifth asNumber .
+	newAddress province: record sixth.
+	
+	self assertCustomerIsInstantiated.
+	
+	newCustomer addAddress: newAddress.! !
+!ImportTest methodsFor: 'tests' stamp: 'WAL 6/28/2023 19:49:11' prior: 50684281!
+test11NotNumericStreetNumberShouldRiseError
+
+	self
+		should: [ CustomerImporter valueFrom: self inputStreamWithNotNumericStreetNumber into: session ]
+		raise: Error
+		withExceptionDo: [ :anError |
+			self assert: CustomerImporter notNumericStreetNumberErrorDescription equals: anError messageText ]! !
+
+!testRun: #ImportTest #test11NotNumericStreetNumberShouldRiseError stamp: 'WAL 6/28/2023 19:49:14'!
+PASSED!
+
+!testRun: #ImportTest #test01ImportValidData stamp: 'WAL 6/28/2023 19:49:15'!
+PASSED!
+
+!testRun: #ImportTest #test02MissingFieldOnCustomerShouldRiseError stamp: 'WAL 6/28/2023 19:49:15'!
+PASSED!
+
+!testRun: #ImportTest #test03MissingFieldOnAddressShouldRiseError stamp: 'WAL 6/28/2023 19:49:15'!
+PASSED!
+
+!testRun: #ImportTest #test04ExcessFieldsOnCustomerShouldRiseError stamp: 'WAL 6/28/2023 19:49:15'!
+PASSED!
+
+!testRun: #ImportTest #test05ExcessFieldsOnAddressShouldRiseError stamp: 'WAL 6/28/2023 19:49:15'!
+PASSED!
+
+!testRun: #ImportTest #test06InvalidRecordTypeShouldRiseError stamp: 'WAL 6/28/2023 19:49:15'!
+PASSED!
+
+!testRun: #ImportTest #test07InvalidRecordTypeLengthShouldRiseError stamp: 'WAL 6/28/2023 19:49:15'!
+PASSED!
+
+!testRun: #ImportTest #test08AddressWithoutCustomerShouldRiseError stamp: 'WAL 6/28/2023 19:49:15'!
+PASSED!
+
+!testRun: #ImportTest #test09EmptyLineShouldRiseError stamp: 'WAL 6/28/2023 19:49:16'!
+PASSED!
+
+!testRun: #ImportTest #test10EmptyStreamShouldRiseError stamp: 'WAL 6/28/2023 19:49:16'!
+PASSED!
+
+!testRun: #ImportTest #test11NotNumericStreetNumberShouldRiseError stamp: 'WAL 6/28/2023 19:49:16'!
+PASSED!
+!ImportTest methodsFor: 'tests' stamp: 'WAL 6/28/2023 19:50:28'!
+test12NotNumericZipCodeShouldRiseError
+
+	self
+		should: [ CustomerImporter valueFrom: self inputStreamWithNotNumericStreetNumber into: session ]
+		raise: Error
+		withExceptionDo: [ :anError |
+			self assert: CustomerImporter notNumericStreetNumberErrorDescription equals: anError messageText ]! !
+!ImportTest methodsFor: 'test data' stamp: 'WAL 6/28/2023 19:51:33'!
+inputStreamWithNotNumericZipCode
+
+	^ ReadStream on:
+'C,Pepe,Sanchez,D,22333444
+A,San Martin,3322,Olivos,1636A,BsAs
+A,Maipu,888,Florida,1122,Buenos Aires
+C,Juan,Perez,C,23-25666777-9
+A,Alem,1122,CABA,1001,CABA'! !
+!ImportTest methodsFor: 'tests' stamp: 'WAL 6/28/2023 19:51:58' prior: 50684496!
+test12NotNumericZipCodeShouldRiseError
+
+	self
+		should: [ CustomerImporter valueFrom: self inputStreamWithNotNumericZipCode into: session ]
+		raise: Error
+		withExceptionDo: [ :anError |
+			self assert: CustomerImporter notNumericZipCodeErrorDescription equals: anError messageText ]! !
+!CustomerImporter class methodsFor: 'error descriptions' stamp: 'WAL 6/28/2023 19:52:24'!
+notNumericZipCodeErrorDescription
+	
+	^'Zip code must be numeric only.'! !
+!CustomerImporter class methodsFor: 'error descriptions' stamp: 'WAL 6/28/2023 19:52:33' prior: 50684530!
+notNumericZipCodeErrorDescription
+	
+	^'Zip code must be numeric.'! !
+!CustomerImporter class methodsFor: 'error descriptions' stamp: 'WAL 6/28/2023 19:52:37' prior: 50684157!
+notNumericStreetNumberErrorDescription
+	
+	^'Street number must be numeric.'! !
+
+!testRun: #ImportTest #test12NotNumericZipCodeShouldRiseError stamp: 'WAL 6/28/2023 19:52:45'!
+FAILURE!
+
+!testRun: #ImportTest #test12NotNumericZipCodeShouldRiseError stamp: 'WAL 6/28/2023 19:53:06'!
+FAILURE!
+!CustomerImporter methodsFor: 'evaluating' stamp: 'WAL 6/28/2023 19:53:57' prior: 50684425!
+importAddress
+
+	| newAddress |
+	
+	self assertValidNumberOfAddressFields: record.
+	
+	(record third allSatisfy: [ : aCharacter | aCharacter isDigit ]) ifFalse: [ self error: CustomerImporter notNumericStreetNumberErrorDescription ].
+	(record fifth allSatisfy: [ : aCharacter | aCharacter isDigit ]) ifFalse: [ self error: CustomerImporter notNumericZipCodeErrorDescription ].
+	
+	newAddress := Address new.
+	
+	newAddress streetName: record second.
+	newAddress streetNumber: record third asNumber .
+	newAddress town: record fourth.
+	newAddress zipCode: record fifth asNumber .
+	newAddress province: record sixth.
+	
+	self assertCustomerIsInstantiated.
+	
+	newCustomer addAddress: newAddress.! !
+
+!testRun: #ImportTest #test12NotNumericZipCodeShouldRiseError stamp: 'WAL 6/28/2023 19:54:02'!
+PASSED!
+
+!testRun: #ImportTest #test01ImportValidData stamp: 'WAL 6/28/2023 19:54:03'!
+PASSED!
+
+!testRun: #ImportTest #test02MissingFieldOnCustomerShouldRiseError stamp: 'WAL 6/28/2023 19:54:03'!
+PASSED!
+
+!testRun: #ImportTest #test03MissingFieldOnAddressShouldRiseError stamp: 'WAL 6/28/2023 19:54:03'!
+PASSED!
+
+!testRun: #ImportTest #test04ExcessFieldsOnCustomerShouldRiseError stamp: 'WAL 6/28/2023 19:54:03'!
+PASSED!
+
+!testRun: #ImportTest #test05ExcessFieldsOnAddressShouldRiseError stamp: 'WAL 6/28/2023 19:54:03'!
+PASSED!
+
+!testRun: #ImportTest #test06InvalidRecordTypeShouldRiseError stamp: 'WAL 6/28/2023 19:54:04'!
+PASSED!
+
+!testRun: #ImportTest #test07InvalidRecordTypeLengthShouldRiseError stamp: 'WAL 6/28/2023 19:54:04'!
+PASSED!
+
+!testRun: #ImportTest #test08AddressWithoutCustomerShouldRiseError stamp: 'WAL 6/28/2023 19:54:04'!
+PASSED!
+
+!testRun: #ImportTest #test09EmptyLineShouldRiseError stamp: 'WAL 6/28/2023 19:54:04'!
+PASSED!
+
+!testRun: #ImportTest #test10EmptyStreamShouldRiseError stamp: 'WAL 6/28/2023 19:54:04'!
+PASSED!
+
+!testRun: #ImportTest #test11NotNumericStreetNumberShouldRiseError stamp: 'WAL 6/28/2023 19:54:04'!
+PASSED!
+
+!testRun: #ImportTest #test12NotNumericZipCodeShouldRiseError stamp: 'WAL 6/28/2023 19:54:04'!
+PASSED!
+!CustomerImporter methodsFor: 'evaluating' stamp: 'WAL 6/28/2023 19:55:34'!
+assertZipCodeIsNumeric
+
+	^ (record fifth allSatisfy: [ : aCharacter | aCharacter isDigit ]) ifFalse: [ self error: CustomerImporter notNumericZipCodeErrorDescription ]! !
+!CustomerImporter methodsFor: 'evaluating' stamp: 'WAL 6/28/2023 19:55:34' prior: 50684554!
+importAddress
+
+	| newAddress |
+	
+	self assertValidNumberOfAddressFields: record.
+	
+	(record third allSatisfy: [ : aCharacter | aCharacter isDigit ]) ifFalse: [ self error: CustomerImporter notNumericStreetNumberErrorDescription ].
+	self assertZipCodeIsNumeric.
+	
+	newAddress := Address new.
+	
+	newAddress streetName: record second.
+	newAddress streetNumber: record third asNumber .
+	newAddress town: record fourth.
+	newAddress zipCode: record fifth asNumber .
+	newAddress province: record sixth.
+	
+	self assertCustomerIsInstantiated.
+	
+	newCustomer addAddress: newAddress.! !
+!CustomerImporter methodsFor: 'evaluating' stamp: 'WAL 6/28/2023 19:55:53'!
+assertStreetNumberIsNumeric
+
+	^ (record third allSatisfy: [ : aCharacter | aCharacter isDigit ]) ifFalse: [ self error: CustomerImporter notNumericStreetNumberErrorDescription ]! !
+!CustomerImporter methodsFor: 'evaluating' stamp: 'WAL 6/28/2023 19:55:53' prior: 50684630!
+importAddress
+
+	| newAddress |
+	
+	self assertValidNumberOfAddressFields: record.
+	
+	self assertStreetNumberIsNumeric.
+	self assertZipCodeIsNumeric.
+	
+	newAddress := Address new.
+	
+	newAddress streetName: record second.
+	newAddress streetNumber: record third asNumber .
+	newAddress town: record fourth.
+	newAddress zipCode: record fifth asNumber .
+	newAddress province: record sixth.
+	
+	self assertCustomerIsInstantiated.
+	
+	newCustomer addAddress: newAddress.! !
+
+!testRun: #ImportTest #test01ImportValidData stamp: 'WAL 6/28/2023 19:55:57'!
+PASSED!
+
+!testRun: #ImportTest #test02MissingFieldOnCustomerShouldRiseError stamp: 'WAL 6/28/2023 19:55:57'!
+PASSED!
+
+!testRun: #ImportTest #test03MissingFieldOnAddressShouldRiseError stamp: 'WAL 6/28/2023 19:55:58'!
+PASSED!
+
+!testRun: #ImportTest #test04ExcessFieldsOnCustomerShouldRiseError stamp: 'WAL 6/28/2023 19:55:58'!
+PASSED!
+
+!testRun: #ImportTest #test05ExcessFieldsOnAddressShouldRiseError stamp: 'WAL 6/28/2023 19:55:58'!
+PASSED!
+
+!testRun: #ImportTest #test06InvalidRecordTypeShouldRiseError stamp: 'WAL 6/28/2023 19:55:58'!
+PASSED!
+
+!testRun: #ImportTest #test07InvalidRecordTypeLengthShouldRiseError stamp: 'WAL 6/28/2023 19:55:58'!
+PASSED!
+
+!testRun: #ImportTest #test08AddressWithoutCustomerShouldRiseError stamp: 'WAL 6/28/2023 19:55:58'!
+PASSED!
+
+!testRun: #ImportTest #test09EmptyLineShouldRiseError stamp: 'WAL 6/28/2023 19:55:58'!
+PASSED!
+
+!testRun: #ImportTest #test10EmptyStreamShouldRiseError stamp: 'WAL 6/28/2023 19:55:58'!
+PASSED!
+
+!testRun: #ImportTest #test11NotNumericStreetNumberShouldRiseError stamp: 'WAL 6/28/2023 19:55:58'!
+PASSED!
+
+!testRun: #ImportTest #test12NotNumericZipCodeShouldRiseError stamp: 'WAL 6/28/2023 19:55:58'!
+PASSED!
+!CustomerImporter methodsFor: 'evaluating' stamp: 'WAL 6/28/2023 19:57:01' prior: 50684660!
+importAddress
+
+	| newAddress |
+	
+	self assertValidNumberOfAddressFields: record.
+	self assertStreetNumberIsNumeric.
+	self assertZipCodeIsNumeric.
+	
+	newAddress := Address new.
+	
+	newAddress streetName: record second.
+	newAddress streetNumber: record third asNumber .
+	newAddress town: record fourth.
+	newAddress zipCode: record fifth asNumber .
+	newAddress province: record sixth.
+	
+	self assertCustomerIsInstantiated.
+	
+	newCustomer addAddress: newAddress.! !
+!CustomerImporter methodsFor: 'assertions' stamp: 'WAL 6/28/2023 19:58:55' prior: 50683487!
+assertValidNumberOfAddressFields: addressData
+
+	^ (record size =6) ifFalse: [ self error: CustomerImporter invalidNumberOfAddressFieldsErrorDescription ]! !
+!CustomerImporter methodsFor: 'assertions' stamp: 'WAL 6/28/2023 19:59:14'!
+assertValidNumberOfAddressFields
+
+	^ (record size =6) ifFalse: [ self error: CustomerImporter invalidNumberOfAddressFieldsErrorDescription ]! !
+!CustomerImporter methodsFor: 'as yet unclassified' stamp: 'WAL 6/28/2023 19:59:14' prior: 50684717!
+importAddress
+
+	| newAddress |
+	
+	self assertValidNumberOfAddressFields.
+	self assertStreetNumberIsNumeric.
+	self assertZipCodeIsNumeric.
+	
+	newAddress := Address new.
+	
+	newAddress streetName: record second.
+	newAddress streetNumber: record third asNumber .
+	newAddress town: record fourth.
+	newAddress zipCode: record fifth asNumber .
+	newAddress province: record sixth.
+	
+	self assertCustomerIsInstantiated.
+	
+	newCustomer addAddress: newAddress.! !
+
+!methodRemoval: CustomerImporter #assertValidNumberOfAddressFields: stamp: 'WAL 6/28/2023 19:59:14'!
+assertValidNumberOfAddressFields: addressData
+
+	^ (record size =6) ifFalse: [ self error: CustomerImporter invalidNumberOfAddressFieldsErrorDescription ]!
+!CustomerImporter methodsFor: 'assertions' stamp: 'WAL 6/28/2023 19:59:25' prior: 50683495!
+assertValidNumberOfCustomerFields: aCustomerData
+
+	^ (record size = 5) ifFalse: [ self error: CustomerImporter invalidNumberOfCustomerFieldsErrorDescription ]! !
+!CustomerImporter methodsFor: 'assertions' stamp: 'WAL 6/28/2023 19:59:29'!
+assertValidNumberOfCustomerFields
+
+	^ (record size = 5) ifFalse: [ self error: CustomerImporter invalidNumberOfCustomerFieldsErrorDescription ]! !
+!CustomerImporter methodsFor: 'as yet unclassified' stamp: 'WAL 6/28/2023 19:59:29' prior: 50683530!
+importCustomer
+
+	self assertValidNumberOfCustomerFields.
+	
+	newCustomer := Customer new.
+	
+	newCustomer firstName: record second.
+	newCustomer lastName: record third.
+	newCustomer identificationType: record fourth.
+	newCustomer identificationNumber: record fifth.
+	
+	session persist: newCustomer.! !
+
+!methodRemoval: CustomerImporter #assertValidNumberOfCustomerFields: stamp: 'WAL 6/28/2023 19:59:29'!
+assertValidNumberOfCustomerFields: aCustomerData
+
+	^ (record size = 5) ifFalse: [ self error: CustomerImporter invalidNumberOfCustomerFieldsErrorDescription ]!
+!CustomerImporter methodsFor: 'evaluating' stamp: 'WAL 6/28/2023 20:00:47'!
+assertAddressRecordIsValid
+
+	self assertValidNumberOfAddressFields.
+	self assertStreetNumberIsNumeric.
+	self assertZipCodeIsNumeric! !
+!CustomerImporter methodsFor: 'evaluating' stamp: 'WAL 6/28/2023 20:00:47' prior: 50684751!
+importAddress
+
+	| newAddress |
+	
+	self assertAddressRecordIsValid.
+	
+	newAddress := Address new.
+	
+	newAddress streetName: record second.
+	newAddress streetNumber: record third asNumber .
+	newAddress town: record fourth.
+	newAddress zipCode: record fifth asNumber .
+	newAddress province: record sixth.
+	
+	self assertCustomerIsInstantiated.
+	
+	newCustomer addAddress: newAddress.! !
+!CustomerImporter methodsFor: 'assertions' stamp: 'WAL 6/28/2023 20:02:32'!
+assertFieldIsNumeric
+
+	^ (record fifth allSatisfy: [ : aCharacter | aCharacter isDigit ]) ifFalse: [ self error: CustomerImporter notNumericZipCodeErrorDescription ]! !
+!CustomerImporter methodsFor: 'as yet unclassified' stamp: 'WAL 6/28/2023 20:02:32' prior: 50684813!
+assertAddressRecordIsValid
+
+	self assertValidNumberOfAddressFields.
+	self assertStreetNumberIsNumeric.
+	self assertFieldIsNumeric! !
+
+!methodRemoval: CustomerImporter #assertZipCodeIsNumeric stamp: 'WAL 6/28/2023 20:02:32'!
+assertZipCodeIsNumeric
+
+	^ (record fifth allSatisfy: [ : aCharacter | aCharacter isDigit ]) ifFalse: [ self error: CustomerImporter notNumericZipCodeErrorDescription ]!
+!CustomerImporter methodsFor: 'assertions' stamp: 'WAL 6/28/2023 20:03:08' prior: 50684836!
+assertFieldIsNumeric
+
+	| field |
+	field := record fifth.
+	^ (field allSatisfy: [ : aCharacter | aCharacter isDigit ]) ifFalse: [ self error: CustomerImporter notNumericZipCodeErrorDescription ]! !
+!CustomerImporter methodsFor: 'assertions' stamp: 'WAL 6/28/2023 20:03:13' prior: 50684861!
+assertFieldIsNumeric
+
+	| field |
+	field := record fifth.
+	
+	^ (field allSatisfy: [ : aCharacter | aCharacter isDigit ]) ifFalse: [ self error: CustomerImporter notNumericZipCodeErrorDescription ]! !
+!CustomerImporter methodsFor: 'assertions' stamp: 'WAL 6/28/2023 20:04:19'!
+assertFieldIsNumeric: aField
+
+	| field |
+	field := record fifth.
+	
+	^ (field allSatisfy: [ : aCharacter | aCharacter isDigit ]) ifFalse: [ self error: CustomerImporter notNumericZipCodeErrorDescription ]! !
+!CustomerImporter methodsFor: 'as yet unclassified' stamp: 'WAL 6/28/2023 20:04:19' prior: 50684845!
+assertAddressRecordIsValid
+
+	self assertValidNumberOfAddressFields.
+	self assertStreetNumberIsNumeric.
+	self assertFieldIsNumeric: record fifth! !
+
+!methodRemoval: CustomerImporter #assertFieldIsNumeric stamp: 'WAL 6/28/2023 20:04:19'!
+assertFieldIsNumeric
+
+	| field |
+	field := record fifth.
+	
+	^ (field allSatisfy: [ : aCharacter | aCharacter isDigit ]) ifFalse: [ self error: CustomerImporter notNumericZipCodeErrorDescription ]!
+!CustomerImporter methodsFor: 'assertions' stamp: 'WAL 6/28/2023 20:04:31' prior: 50684880!
+assertFieldIsNumeric: aField
+	
+	^ (aField allSatisfy: [ : aCharacter | aCharacter isDigit ]) ifFalse: [ self error: CustomerImporter notNumericZipCodeErrorDescription ]! !
+!CustomerImporter methodsFor: 'assertions' stamp: 'WAL 6/28/2023 20:04:48'!
+assertIsNumeric: aField
+	
+	^ (aField allSatisfy: [ : aCharacter | aCharacter isDigit ]) ifFalse: [ self error: CustomerImporter notNumericZipCodeErrorDescription ]! !
+!CustomerImporter methodsFor: 'as yet unclassified' stamp: 'WAL 6/28/2023 20:04:48' prior: 50684890!
+assertAddressRecordIsValid
+
+	self assertValidNumberOfAddressFields.
+	self assertStreetNumberIsNumeric.
+	self assertIsNumeric: record fifth! !
+
+!methodRemoval: CustomerImporter #assertFieldIsNumeric: stamp: 'WAL 6/28/2023 20:04:48'!
+assertFieldIsNumeric: aField
+	
+	^ (aField allSatisfy: [ : aCharacter | aCharacter isDigit ]) ifFalse: [ self error: CustomerImporter notNumericZipCodeErrorDescription ]!
+!CustomerImporter methodsFor: 'assertions' stamp: 'WAL 6/28/2023 20:05:50'!
+assertIsNumeric: aField ifNotErrorDescription: anErrorDescription 
+	
+	^ (aField allSatisfy: [ : aCharacter | aCharacter isDigit ]) ifFalse: [ self error: CustomerImporter notNumericZipCodeErrorDescription ]! !
+!CustomerImporter methodsFor: 'as yet unclassified' stamp: 'WAL 6/28/2023 20:05:50' prior: 50684924!
+assertAddressRecordIsValid
+
+	self assertValidNumberOfAddressFields.
+	self assertStreetNumberIsNumeric.
+	self assertIsNumeric: record fifth ifNotErrorDescription: CustomerImporter notNumericZipCodeErrorDescription! !
+
+!methodRemoval: CustomerImporter #assertIsNumeric: stamp: 'WAL 6/28/2023 20:05:50'!
+assertIsNumeric: aField
+	
+	^ (aField allSatisfy: [ : aCharacter | aCharacter isDigit ]) ifFalse: [ self error: CustomerImporter notNumericZipCodeErrorDescription ]!
+
+!testRun: #ImportTest #test01ImportValidData stamp: 'WAL 6/28/2023 20:05:56'!
+PASSED!
+
+!testRun: #ImportTest #test02MissingFieldOnCustomerShouldRiseError stamp: 'WAL 6/28/2023 20:05:57'!
+PASSED!
+
+!testRun: #ImportTest #test03MissingFieldOnAddressShouldRiseError stamp: 'WAL 6/28/2023 20:05:57'!
+PASSED!
+
+!testRun: #ImportTest #test04ExcessFieldsOnCustomerShouldRiseError stamp: 'WAL 6/28/2023 20:05:57'!
+PASSED!
+
+!testRun: #ImportTest #test05ExcessFieldsOnAddressShouldRiseError stamp: 'WAL 6/28/2023 20:05:57'!
+PASSED!
+
+!testRun: #ImportTest #test06InvalidRecordTypeShouldRiseError stamp: 'WAL 6/28/2023 20:05:57'!
+PASSED!
+
+!testRun: #ImportTest #test07InvalidRecordTypeLengthShouldRiseError stamp: 'WAL 6/28/2023 20:05:57'!
+PASSED!
+
+!testRun: #ImportTest #test08AddressWithoutCustomerShouldRiseError stamp: 'WAL 6/28/2023 20:05:57'!
+PASSED!
+
+!testRun: #ImportTest #test09EmptyLineShouldRiseError stamp: 'WAL 6/28/2023 20:05:57'!
+PASSED!
+
+!testRun: #ImportTest #test10EmptyStreamShouldRiseError stamp: 'WAL 6/28/2023 20:05:57'!
+PASSED!
+
+!testRun: #ImportTest #test11NotNumericStreetNumberShouldRiseError stamp: 'WAL 6/28/2023 20:05:57'!
+PASSED!
+
+!testRun: #ImportTest #test12NotNumericZipCodeShouldRiseError stamp: 'WAL 6/28/2023 20:05:57'!
+PASSED!
+!CustomerImporter methodsFor: 'assertions' stamp: 'WAL 6/28/2023 20:06:06' prior: 50684939!
+assertIsNumeric: aField ifNotErrorDescription: anErrorDescription 
+	
+	^ (aField allSatisfy: [ : aCharacter | aCharacter isDigit ]) ifFalse: [ self error: anErrorDescription ]! !
+
+!testRun: #ImportTest #test01ImportValidData stamp: 'WAL 6/28/2023 20:06:08'!
+PASSED!
+
+!testRun: #ImportTest #test02MissingFieldOnCustomerShouldRiseError stamp: 'WAL 6/28/2023 20:06:08'!
+PASSED!
+
+!testRun: #ImportTest #test03MissingFieldOnAddressShouldRiseError stamp: 'WAL 6/28/2023 20:06:08'!
+PASSED!
+
+!testRun: #ImportTest #test04ExcessFieldsOnCustomerShouldRiseError stamp: 'WAL 6/28/2023 20:06:08'!
+PASSED!
+
+!testRun: #ImportTest #test05ExcessFieldsOnAddressShouldRiseError stamp: 'WAL 6/28/2023 20:06:08'!
+PASSED!
+
+!testRun: #ImportTest #test06InvalidRecordTypeShouldRiseError stamp: 'WAL 6/28/2023 20:06:08'!
+PASSED!
+
+!testRun: #ImportTest #test07InvalidRecordTypeLengthShouldRiseError stamp: 'WAL 6/28/2023 20:06:08'!
+PASSED!
+
+!testRun: #ImportTest #test08AddressWithoutCustomerShouldRiseError stamp: 'WAL 6/28/2023 20:06:08'!
+PASSED!
+
+!testRun: #ImportTest #test09EmptyLineShouldRiseError stamp: 'WAL 6/28/2023 20:06:08'!
+PASSED!
+
+!testRun: #ImportTest #test10EmptyStreamShouldRiseError stamp: 'WAL 6/28/2023 20:06:08'!
+PASSED!
+
+!testRun: #ImportTest #test11NotNumericStreetNumberShouldRiseError stamp: 'WAL 6/28/2023 20:06:09'!
+PASSED!
+
+!testRun: #ImportTest #test12NotNumericZipCodeShouldRiseError stamp: 'WAL 6/28/2023 20:06:09'!
+PASSED!
+!CustomerImporter methodsFor: 'assertions' stamp: 'WAL 6/28/2023 20:07:44' prior: 50684949!
+assertAddressRecordIsValid
+
+	self assertValidNumberOfAddressFields.
+	self assertIsNumeric: record third ifNotErrorDescription: CustomerImporter notNumericStreetNumberErrorDescription.
+	self assertIsNumeric: record fifth ifNotErrorDescription: CustomerImporter notNumericZipCodeErrorDescription! !
+
+!methodRemoval: CustomerImporter #assertStreetNumberIsNumeric stamp: 'WAL 6/28/2023 20:07:59'!
+assertStreetNumberIsNumeric
+
+	^ (record third allSatisfy: [ : aCharacter | aCharacter isDigit ]) ifFalse: [ self error: CustomerImporter notNumericStreetNumberErrorDescription ]!
+
+!testRun: #ImportTest #test01ImportValidData stamp: 'WAL 6/28/2023 20:08:07'!
+PASSED!
+
+!testRun: #ImportTest #test02MissingFieldOnCustomerShouldRiseError stamp: 'WAL 6/28/2023 20:08:07'!
+PASSED!
+
+!testRun: #ImportTest #test03MissingFieldOnAddressShouldRiseError stamp: 'WAL 6/28/2023 20:08:07'!
+PASSED!
+
+!testRun: #ImportTest #test04ExcessFieldsOnCustomerShouldRiseError stamp: 'WAL 6/28/2023 20:08:07'!
+PASSED!
+
+!testRun: #ImportTest #test05ExcessFieldsOnAddressShouldRiseError stamp: 'WAL 6/28/2023 20:08:07'!
+PASSED!
+
+!testRun: #ImportTest #test06InvalidRecordTypeShouldRiseError stamp: 'WAL 6/28/2023 20:08:07'!
+PASSED!
+
+!testRun: #ImportTest #test07InvalidRecordTypeLengthShouldRiseError stamp: 'WAL 6/28/2023 20:08:07'!
+PASSED!
+
+!testRun: #ImportTest #test08AddressWithoutCustomerShouldRiseError stamp: 'WAL 6/28/2023 20:08:07'!
+PASSED!
+
+!testRun: #ImportTest #test09EmptyLineShouldRiseError stamp: 'WAL 6/28/2023 20:08:07'!
+PASSED!
+
+!testRun: #ImportTest #test10EmptyStreamShouldRiseError stamp: 'WAL 6/28/2023 20:08:07'!
+PASSED!
+
+!testRun: #ImportTest #test11NotNumericStreetNumberShouldRiseError stamp: 'WAL 6/28/2023 20:08:08'!
+PASSED!
+
+!testRun: #ImportTest #test12NotNumericZipCodeShouldRiseError stamp: 'WAL 6/28/2023 20:08:08'!
+PASSED!
+!ImportTest methodsFor: 'test data' stamp: 'WAL 6/28/2023 20:09:37' prior: 50683329!
+validImportData
+
+	^ ReadStream on:
+'C,Pepe,Sanchez,,22333444
+A,San Martin,3322,Olivos,1636,BsAs
+A,Maipu,888,Florida,1122,Buenos Aires
+C,Juan,Perez,C,23-25666777-9
+A,Alem,1122,CABA,1001,CABA'! !
+
+!testRun: #ImportTest #test01ImportValidData stamp: 'WAL 6/28/2023 20:09:39'!
+ERROR!
+
+!testRun: #ImportTest #test02MissingFieldOnCustomerShouldRiseError stamp: 'WAL 6/28/2023 20:09:39'!
+PASSED!
+
+!testRun: #ImportTest #test03MissingFieldOnAddressShouldRiseError stamp: 'WAL 6/28/2023 20:09:39'!
+PASSED!
+
+!testRun: #ImportTest #test04ExcessFieldsOnCustomerShouldRiseError stamp: 'WAL 6/28/2023 20:09:39'!
+PASSED!
+
+!testRun: #ImportTest #test05ExcessFieldsOnAddressShouldRiseError stamp: 'WAL 6/28/2023 20:09:39'!
+PASSED!
+
+!testRun: #ImportTest #test06InvalidRecordTypeShouldRiseError stamp: 'WAL 6/28/2023 20:09:39'!
+PASSED!
+
+!testRun: #ImportTest #test07InvalidRecordTypeLengthShouldRiseError stamp: 'WAL 6/28/2023 20:09:39'!
+PASSED!
+
+!testRun: #ImportTest #test08AddressWithoutCustomerShouldRiseError stamp: 'WAL 6/28/2023 20:09:39'!
+PASSED!
+
+!testRun: #ImportTest #test09EmptyLineShouldRiseError stamp: 'WAL 6/28/2023 20:09:39'!
+PASSED!
+
+!testRun: #ImportTest #test10EmptyStreamShouldRiseError stamp: 'WAL 6/28/2023 20:09:39'!
+PASSED!
+
+!testRun: #ImportTest #test11NotNumericStreetNumberShouldRiseError stamp: 'WAL 6/28/2023 20:09:39'!
+PASSED!
+
+!testRun: #ImportTest #test12NotNumericZipCodeShouldRiseError stamp: 'WAL 6/28/2023 20:09:39'!
+PASSED!
+
+!testRun: #ImportTest #test01ImportValidData stamp: 'WAL 6/28/2023 20:09:39'!
+ERROR!
+
+!testRun: #ImportTest #test01ImportValidData stamp: 'WAL 6/28/2023 20:09:54'!
+ERROR!
+
+!testRun: #ImportTest #test02MissingFieldOnCustomerShouldRiseError stamp: 'WAL 6/28/2023 20:09:54'!
+PASSED!
+
+!testRun: #ImportTest #test03MissingFieldOnAddressShouldRiseError stamp: 'WAL 6/28/2023 20:09:54'!
+PASSED!
+
+!testRun: #ImportTest #test04ExcessFieldsOnCustomerShouldRiseError stamp: 'WAL 6/28/2023 20:09:54'!
+PASSED!
+
+!testRun: #ImportTest #test05ExcessFieldsOnAddressShouldRiseError stamp: 'WAL 6/28/2023 20:09:54'!
+PASSED!
+
+!testRun: #ImportTest #test06InvalidRecordTypeShouldRiseError stamp: 'WAL 6/28/2023 20:09:54'!
+PASSED!
+
+!testRun: #ImportTest #test07InvalidRecordTypeLengthShouldRiseError stamp: 'WAL 6/28/2023 20:09:54'!
+PASSED!
+
+!testRun: #ImportTest #test08AddressWithoutCustomerShouldRiseError stamp: 'WAL 6/28/2023 20:09:54'!
+PASSED!
+
+!testRun: #ImportTest #test09EmptyLineShouldRiseError stamp: 'WAL 6/28/2023 20:09:54'!
+PASSED!
+
+!testRun: #ImportTest #test10EmptyStreamShouldRiseError stamp: 'WAL 6/28/2023 20:09:54'!
+PASSED!
+
+!testRun: #ImportTest #test11NotNumericStreetNumberShouldRiseError stamp: 'WAL 6/28/2023 20:09:54'!
+PASSED!
+
+!testRun: #ImportTest #test12NotNumericZipCodeShouldRiseError stamp: 'WAL 6/28/2023 20:09:54'!
+PASSED!
+
+!testRun: #ImportTest #test01ImportValidData stamp: 'WAL 6/28/2023 20:09:54'!
+ERROR!
+
+!testRun: #ImportTest #test12NotNumericZipCodeShouldRiseError stamp: 'WAL 6/28/2023 20:10:02'!
+PASSED!
+
+!testRun: #ImportTest #test12NotNumericZipCodeShouldRiseError stamp: 'WAL 6/28/2023 20:10:06'!
+PASSED!
+
+!testRun: #ImportTest #test01ImportValidData stamp: 'WAL 6/28/2023 20:10:06'!
+ERROR!
+
+!testRun: #ImportTest #test02MissingFieldOnCustomerShouldRiseError stamp: 'WAL 6/28/2023 20:10:06'!
+PASSED!
+
+!testRun: #ImportTest #test03MissingFieldOnAddressShouldRiseError stamp: 'WAL 6/28/2023 20:10:06'!
+PASSED!
+
+!testRun: #ImportTest #test04ExcessFieldsOnCustomerShouldRiseError stamp: 'WAL 6/28/2023 20:10:06'!
+PASSED!
+
+!testRun: #ImportTest #test05ExcessFieldsOnAddressShouldRiseError stamp: 'WAL 6/28/2023 20:10:06'!
+PASSED!
+
+!testRun: #ImportTest #test06InvalidRecordTypeShouldRiseError stamp: 'WAL 6/28/2023 20:10:06'!
+PASSED!
+
+!testRun: #ImportTest #test07InvalidRecordTypeLengthShouldRiseError stamp: 'WAL 6/28/2023 20:10:06'!
+PASSED!
+
+!testRun: #ImportTest #test08AddressWithoutCustomerShouldRiseError stamp: 'WAL 6/28/2023 20:10:06'!
+PASSED!
+
+!testRun: #ImportTest #test09EmptyLineShouldRiseError stamp: 'WAL 6/28/2023 20:10:06'!
+PASSED!
+
+!testRun: #ImportTest #test10EmptyStreamShouldRiseError stamp: 'WAL 6/28/2023 20:10:06'!
+PASSED!
+
+!testRun: #ImportTest #test11NotNumericStreetNumberShouldRiseError stamp: 'WAL 6/28/2023 20:10:06'!
+PASSED!
+
+!testRun: #ImportTest #test12NotNumericZipCodeShouldRiseError stamp: 'WAL 6/28/2023 20:10:06'!
+PASSED!
+
+!testRun: #ImportTest #test01ImportValidData stamp: 'WAL 6/28/2023 20:10:06'!
+ERROR!
+!ImportTest methodsFor: 'test data' stamp: 'WAL 6/28/2023 20:10:22' prior: 50685114!
+validImportData
+
+	^ ReadStream on:
+'C,Pepe,Sanchez,D,22333444
+A,San Martin,3322,Olivos,1636,BsAs
+A,Maipu,888,Florida,1122,Buenos Aires
+C,Juan,Perez,C,23-25666777-9
+A,Alem,1122,CABA,1001,CABA'! !
+
+!testRun: #ImportTest #test01ImportValidData stamp: 'WAL 6/28/2023 20:10:24'!
+PASSED!
+
+!testRun: #ImportTest #test02MissingFieldOnCustomerShouldRiseError stamp: 'WAL 6/28/2023 20:10:24'!
+PASSED!
+
+!testRun: #ImportTest #test03MissingFieldOnAddressShouldRiseError stamp: 'WAL 6/28/2023 20:10:24'!
+PASSED!
+
+!testRun: #ImportTest #test04ExcessFieldsOnCustomerShouldRiseError stamp: 'WAL 6/28/2023 20:10:24'!
+PASSED!
+
+!testRun: #ImportTest #test05ExcessFieldsOnAddressShouldRiseError stamp: 'WAL 6/28/2023 20:10:24'!
+PASSED!
+
+!testRun: #ImportTest #test06InvalidRecordTypeShouldRiseError stamp: 'WAL 6/28/2023 20:10:25'!
+PASSED!
+
+!testRun: #ImportTest #test07InvalidRecordTypeLengthShouldRiseError stamp: 'WAL 6/28/2023 20:10:25'!
+PASSED!
+
+!testRun: #ImportTest #test08AddressWithoutCustomerShouldRiseError stamp: 'WAL 6/28/2023 20:10:25'!
+PASSED!
+
+!testRun: #ImportTest #test09EmptyLineShouldRiseError stamp: 'WAL 6/28/2023 20:10:25'!
+PASSED!
+
+!testRun: #ImportTest #test10EmptyStreamShouldRiseError stamp: 'WAL 6/28/2023 20:10:25'!
+PASSED!
+
+!testRun: #ImportTest #test11NotNumericStreetNumberShouldRiseError stamp: 'WAL 6/28/2023 20:10:25'!
+PASSED!
+
+!testRun: #ImportTest #test12NotNumericZipCodeShouldRiseError stamp: 'WAL 6/28/2023 20:10:25'!
+PASSED!
+!ImportTest methodsFor: 'assertions' stamp: 'WAL 6/28/2023 20:13:13' prior: 50683159!
+assertAddressOf: importedCustomer at: aStreetName hasNumber: aNumber town: aTown zipCode: aZipCode province: aProvince
+
+	| importedAddress |
+
+	importedAddress := importedCustomer addressAt: aStreetName ifNone: [ self fail ].
+	
+	self assert: aStreetName equals: importedAddress streetName.
+	self assert: aNumber equals: importedAddress streetNumber.
+	self assert: aTown equals: importedAddress town.
+	self assert: aZipCode equals: importedAddress zipCode.
+	self assert: aProvince equals: importedAddress province.
+
+	! !
+!CustomerImporter methodsFor: 'evaluating' stamp: 'WAL 6/28/2023 20:17:28'!
+hasNextLine
+
+	line := readStream nextLine.
+	  line notNil! !
+!CustomerImporter methodsFor: 'evaluating' stamp: 'WAL 6/28/2023 20:17:28' prior: 50683561 overrides: 16902254!
+value
+
+	[ self hasNextLine ] whileTrue: [
+		self createRecord.
+		self importRecord.
+		].
+
+	! !
+
+!testRun: #ImportTest #test01ImportValidData stamp: 'WAL 6/28/2023 20:17:35'!
+ERROR!
+
+!testRun: #ImportTest #test02MissingFieldOnCustomerShouldRiseError stamp: 'WAL 6/28/2023 20:17:35'!
+FAILURE!
+
+!testRun: #ImportTest #test03MissingFieldOnAddressShouldRiseError stamp: 'WAL 6/28/2023 20:17:35'!
+FAILURE!
+
+!testRun: #ImportTest #test04ExcessFieldsOnCustomerShouldRiseError stamp: 'WAL 6/28/2023 20:17:36'!
+FAILURE!
+
+!testRun: #ImportTest #test05ExcessFieldsOnAddressShouldRiseError stamp: 'WAL 6/28/2023 20:17:36'!
+FAILURE!
+
+!testRun: #ImportTest #test06InvalidRecordTypeShouldRiseError stamp: 'WAL 6/28/2023 20:17:36'!
+FAILURE!
+
+!testRun: #ImportTest #test07InvalidRecordTypeLengthShouldRiseError stamp: 'WAL 6/28/2023 20:17:36'!
+FAILURE!
+
+!testRun: #ImportTest #test08AddressWithoutCustomerShouldRiseError stamp: 'WAL 6/28/2023 20:17:36'!
+FAILURE!
+
+!testRun: #ImportTest #test09EmptyLineShouldRiseError stamp: 'WAL 6/28/2023 20:17:36'!
+FAILURE!
+
+!testRun: #ImportTest #test10EmptyStreamShouldRiseError stamp: 'WAL 6/28/2023 20:17:36'!
+PASSED!
+
+!testRun: #ImportTest #test11NotNumericStreetNumberShouldRiseError stamp: 'WAL 6/28/2023 20:17:36'!
+FAILURE!
+
+!testRun: #ImportTest #test12NotNumericZipCodeShouldRiseError stamp: 'WAL 6/28/2023 20:17:36'!
+FAILURE!
+!CustomerImporter methodsFor: 'evaluating' stamp: 'WAL 6/28/2023 20:18:04' prior: 50685322!
+hasNextLine
+
+	line := readStream nextLine.
+	^line notNil! !
+
+!testRun: #ImportTest #test01ImportValidData stamp: 'WAL 6/28/2023 20:18:06'!
+PASSED!
+
+!testRun: #ImportTest #test02MissingFieldOnCustomerShouldRiseError stamp: 'WAL 6/28/2023 20:18:06'!
+PASSED!
+
+!testRun: #ImportTest #test03MissingFieldOnAddressShouldRiseError stamp: 'WAL 6/28/2023 20:18:06'!
+PASSED!
+
+!testRun: #ImportTest #test04ExcessFieldsOnCustomerShouldRiseError stamp: 'WAL 6/28/2023 20:18:06'!
+PASSED!
+
+!testRun: #ImportTest #test05ExcessFieldsOnAddressShouldRiseError stamp: 'WAL 6/28/2023 20:18:06'!
+PASSED!
+
+!testRun: #ImportTest #test06InvalidRecordTypeShouldRiseError stamp: 'WAL 6/28/2023 20:18:07'!
+PASSED!
+
+!testRun: #ImportTest #test07InvalidRecordTypeLengthShouldRiseError stamp: 'WAL 6/28/2023 20:18:07'!
+PASSED!
+
+!testRun: #ImportTest #test08AddressWithoutCustomerShouldRiseError stamp: 'WAL 6/28/2023 20:18:07'!
+PASSED!
+
+!testRun: #ImportTest #test09EmptyLineShouldRiseError stamp: 'WAL 6/28/2023 20:18:07'!
+PASSED!
+
+!testRun: #ImportTest #test10EmptyStreamShouldRiseError stamp: 'WAL 6/28/2023 20:18:07'!
+PASSED!
+
+!testRun: #ImportTest #test11NotNumericStreetNumberShouldRiseError stamp: 'WAL 6/28/2023 20:18:07'!
+PASSED!
+
+!testRun: #ImportTest #test12NotNumericZipCodeShouldRiseError stamp: 'WAL 6/28/2023 20:18:07'!
+PASSED!
+!CustomerImporter methodsFor: 'evaluating' stamp: 'WAL 6/28/2023 20:18:36' prior: 50685328 overrides: 16902254!
+value
+
+	[ self hasNextLine ] whileTrue: [
+		self createRecord.
+		self importRecord ]
+
+	! !
+
+!testRun: #ImportTest #test01ImportValidData stamp: 'WAL 6/28/2023 20:18:38'!
+PASSED!
+
+!testRun: #ImportTest #test02MissingFieldOnCustomerShouldRiseError stamp: 'WAL 6/28/2023 20:18:38'!
+PASSED!
+
+!testRun: #ImportTest #test03MissingFieldOnAddressShouldRiseError stamp: 'WAL 6/28/2023 20:18:38'!
+PASSED!
+
+!testRun: #ImportTest #test04ExcessFieldsOnCustomerShouldRiseError stamp: 'WAL 6/28/2023 20:18:38'!
+PASSED!
+
+!testRun: #ImportTest #test05ExcessFieldsOnAddressShouldRiseError stamp: 'WAL 6/28/2023 20:18:39'!
+PASSED!
+
+!testRun: #ImportTest #test06InvalidRecordTypeShouldRiseError stamp: 'WAL 6/28/2023 20:18:39'!
+PASSED!
+
+!testRun: #ImportTest #test07InvalidRecordTypeLengthShouldRiseError stamp: 'WAL 6/28/2023 20:18:39'!
+PASSED!
+
+!testRun: #ImportTest #test08AddressWithoutCustomerShouldRiseError stamp: 'WAL 6/28/2023 20:18:39'!
+PASSED!
+
+!testRun: #ImportTest #test09EmptyLineShouldRiseError stamp: 'WAL 6/28/2023 20:18:39'!
+PASSED!
+
+!testRun: #ImportTest #test10EmptyStreamShouldRiseError stamp: 'WAL 6/28/2023 20:18:39'!
+PASSED!
+
+!testRun: #ImportTest #test11NotNumericStreetNumberShouldRiseError stamp: 'WAL 6/28/2023 20:18:39'!
+PASSED!
+
+!testRun: #ImportTest #test12NotNumericZipCodeShouldRiseError stamp: 'WAL 6/28/2023 20:18:39'!
+PASSED!
+
+----SNAPSHOT----(28 June 2023 20:32:39) CuisUniversity-5832.image priorSource: 11219978!
